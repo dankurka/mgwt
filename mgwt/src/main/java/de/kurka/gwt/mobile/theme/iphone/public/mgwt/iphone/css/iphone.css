@@ -358,6 +358,14 @@ body.landscape {
 	background-image: url('../images/buttons/UIButtonBarAction.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
+.mgwt-BarButton-arrowdown {
+	background-image: url('../images/buttons/UIButtonBarArrowDown.png');
+}
+
+.mgwt-BarButton-arrowdown:active {
+	background-image: url('../images/buttons/UIButtonBarArrowDown.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
 
 
 .mgwt-TextBox, .mgwt-PasswordTextBox, .mgwt-TextArea, .mgwt-ListBox {

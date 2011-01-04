@@ -10,6 +10,7 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.ActionButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowDownButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.ButtonBar;
 import de.kurka.gwt.mobile.ui.client.menu.bar.RefreshButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
@@ -46,6 +47,7 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 
 		footerPanel.add(new RefreshButton());
 		footerPanel.add(new ActionButton());
+		footerPanel.add(new ArrowDownButton());
 
 		main.add(footerPanel);
 	}
