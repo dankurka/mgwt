@@ -9,9 +9,9 @@
 	<artifactId>mgwt</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>mobile gwt</name>
+	<name>mgwt</name>
 
-	<url>http://code.google.com/p/mobile-gwt/</url>
+	<url>http://code.google.com/p/gwt/</url>
 	<description>using gwt to write mobile (native) apps</description>
 
 	<contributors>
