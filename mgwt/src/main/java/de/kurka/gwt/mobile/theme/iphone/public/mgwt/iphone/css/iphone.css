@@ -366,6 +366,31 @@ body.landscape {
 	background-image: url('../images/buttons/UIButtonBarArrowDown.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
+.mgwt-BarButton-arrowleft {
+	background-image: url('../images/buttons/UIButtonBarArrowLeft.png');
+}
+
+.mgwt-BarButton-arrowleft:active {
+	background-image: url('../images/buttons/UIButtonBarArrowLeft.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-arrowright {
+	background-image: url('../images/buttons/UIButtonBarArrowRight.png');
+}
+
+.mgwt-BarButton-arrowright:active {
+	background-image: url('../images/buttons/UIButtonBarArrowRight.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-arrowup {
+	background-image: url('../images/buttons/UIButtonBarArrowUp.png');
+}
+
+.mgwt-BarButton-arrowup:active {
+	background-image: url('../images/buttons/UIButtonBarArrowUp.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+
 
 
 .mgwt-TextBox, .mgwt-PasswordTextBox, .mgwt-TextArea, .mgwt-ListBox {
