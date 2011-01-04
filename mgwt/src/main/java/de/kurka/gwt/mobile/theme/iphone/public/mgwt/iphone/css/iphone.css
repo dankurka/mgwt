@@ -334,7 +334,7 @@ body.landscape {
 }
 
 .mgwt-RefreshButton {
-	background-image: url('../images/refreshButton.png');
+	background-image: url('../images/buttons/UIButtonBarRefresh.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	width: 40px;
@@ -342,7 +342,7 @@ body.landscape {
 }
 
 .mgwt-RefreshButton:active{
-	background-image: url('../images/refreshButton.png'), url('../images/UIButtonBarPressedIndicator.png');
+	background-image: url('../images/buttons/UIButtonBarRefresh.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 	background-color: transparent;	
 	
 }
