@@ -15,15 +15,14 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.bar;
 
+import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
+
 /**
- * @author Daniel Kurka
+ * @author kurt
  *
  */
-public class RefreshButton extends BarButtonBase {
-	/**
-	 * 
-	 */
-	public RefreshButton() {
-		addStyleDependentName("refresh");
+public class BarButtonBase extends ButtonBase {
+	public BarButtonBase() {
+		setStylePrimaryName("mgwt-BarButton");
 	}
 }

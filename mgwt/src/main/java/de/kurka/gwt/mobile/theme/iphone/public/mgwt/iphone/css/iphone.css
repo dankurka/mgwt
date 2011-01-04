@@ -333,19 +333,32 @@ body.landscape {
 	-webkit-border-image: url('../images/button_touched.png') 0 4 0 4;
 }
 
-.mgwt-RefreshButton {
-	background-image: url('../images/buttons/UIButtonBarRefresh.png');
+.mgwt-BarButton {
+	position: relative;
+	display: inline-block;
 	background-repeat: no-repeat;
 	background-position: center;
 	width: 40px;
 	height: 40px;
 }
 
-.mgwt-RefreshButton:active{
-	background-image: url('../images/buttons/UIButtonBarRefresh.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
-	background-color: transparent;	
-	
+.mgwt-BarButton-refresh {
+	background-image: url('../images/buttons/UIButtonBarRefresh.png');
 }
+
+.mgwt-BarButton-refresh:active {
+	background-image: url('../images/buttons/UIButtonBarRefresh.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-action {
+	background-image: url('../images/buttons/UIButtonBarAction.png');
+}
+
+.mgwt-BarButton-action:active {
+	background-image: url('../images/buttons/UIButtonBarAction.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+
 
 .mgwt-TextBox, .mgwt-PasswordTextBox, .mgwt-TextArea, .mgwt-ListBox {
  
