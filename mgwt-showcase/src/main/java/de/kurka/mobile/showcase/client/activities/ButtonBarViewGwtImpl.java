@@ -14,7 +14,9 @@ import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowDownButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowLeftButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowRightButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowUpButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.BookmarkButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.ButtonBar;
+import de.kurka.gwt.mobile.ui.client.menu.bar.CameraButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.RefreshButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 
@@ -54,6 +56,8 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 		footerPanel.add(new ArrowUpButton());
 		footerPanel.add(new ArrowLeftButton());
 		footerPanel.add(new ArrowRightButton());
+		footerPanel.add(new BookmarkButton());
+		footerPanel.add(new CameraButton());
 
 		main.add(footerPanel);
 	}

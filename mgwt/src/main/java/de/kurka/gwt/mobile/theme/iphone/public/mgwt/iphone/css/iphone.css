@@ -390,6 +390,22 @@ body.landscape {
 	background-image: url('../images/buttons/UIButtonBarArrowUp.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
+.mgwt-BarButton-bookmark {
+	background-image: url('../images/buttons/UIButtonBarBookmarks.png');
+}
+
+.mgwt-BarButton-bookmark:active {
+	background-image: url('../images/buttons/UIButtonBarBookmarks.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-camera {
+	background-image: url('../images/buttons/UIButtonBarCamera.png');
+}
+
+.mgwt-BarButton-camera:active {
+	background-image: url('../images/buttons/UIButtonBarCamera.png'), url('../images/buttons/UIButtonBarCamera.png');
+}
+
 
 
 
