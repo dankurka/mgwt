@@ -6,7 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.kurka.mobile</groupId>
-	<artifactId>mobile-gwt-showcase</artifactId>
+	<artifactId>mgwt-showcase</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Mobile GWT Showcase</name>
@@ -38,7 +38,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>de.kurka.mobile</groupId>
-			<artifactId>mobile-gwt</artifactId>
+			<artifactId>mgwt</artifactId>
 			<version>0.1-SNAPSHOT</version>
 
 		</dependency>
