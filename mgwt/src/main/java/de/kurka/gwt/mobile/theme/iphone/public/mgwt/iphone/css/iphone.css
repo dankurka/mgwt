@@ -403,7 +403,47 @@ body.landscape {
 }
 
 .mgwt-BarButton-camera:active {
-	background-image: url('../images/buttons/UIButtonBarCamera.png'), url('../images/buttons/UIButtonBarCamera.png');
+	background-image: url('../images/buttons/UIButtonBarCamera.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-compose {
+	background-image: url('../images/buttons/UIButtonBarCompose.png');
+}
+
+.mgwt-BarButton-compose:active {
+	background-image: url('../images/buttons/UIButtonBarCompose.png'),url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-contactadd {
+	background-image: url('../images/buttons/UIButtonBarCompose.png');
+}
+
+.mgwt-BarButton-contactadd:active {
+	background-image: url('../images/buttons/UIButtonBarContactAdd.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-delete {
+	background-image: url('../images/buttons/UIButtonBarCompose.png');
+}
+
+.mgwt-BarButton-delete:active {
+	background-image: url('../images/buttons/UIButtonBarContactAdd.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-fastforward {
+	background-image: url('../images/buttons/UIButtonBarDelete.png');
+}
+
+.mgwt-BarButton-fastforward:active {
+	background-image: url('../images/buttons/UIButtonBarDelete.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-info {
+	background-image: url('../images/buttons/UIButtonBarInfo.png');
+}
+
+.mgwt-BarButton-info:active {
+	background-image: url('../images/buttons/UIButtonBarInfo.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
 
