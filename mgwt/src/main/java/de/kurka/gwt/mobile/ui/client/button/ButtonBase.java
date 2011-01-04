@@ -24,7 +24,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public abstract class ButtonBase extends TouchWidget implements HasText, HasSimpleTouchHandler {

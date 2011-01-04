@@ -16,7 +16,7 @@
 package de.kurka.gwt.mobile.ui.client.button;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class HeaderBackButton extends HeaderButton {

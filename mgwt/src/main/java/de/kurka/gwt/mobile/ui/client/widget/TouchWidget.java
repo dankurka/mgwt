@@ -39,7 +39,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchToNativeTouchHandler;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public abstract class TouchWidget extends Widget implements HasTouchHandlers {

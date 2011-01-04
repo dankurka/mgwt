@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class HeaderPanel extends Composite {

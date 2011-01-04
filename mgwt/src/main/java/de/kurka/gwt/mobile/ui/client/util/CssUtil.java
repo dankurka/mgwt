@@ -1,13 +1,24 @@
-/**
- * 19.10.2010
- * created by kurt
+/*
+ * Copyright 2010 Daniel Kurka
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package de.kurka.gwt.mobile.ui.client.util;
 
 import com.google.gwt.user.client.Element;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class CssUtil {
@@ -24,18 +35,18 @@ public class CssUtil {
 	}
 
 	private native static void _translate(Element el, String css)/*-{
-		el.style.webkitTransform = css;
-	}-*/;
+																	el.style.webkitTransform = css;
+																	}-*/;
 
 	public native static void setWebKitTransitionsDelay(Element el, int milliseconds)/*-{
-		el.style.webkitTransitionDelay = milliseconds + "ms";
-	}-*/;
+																						el.style.webkitTransitionDelay = milliseconds + "ms";
+																						}-*/;
 
 	public native static void setOpacity(Element el, double opacity)/*-{
-		el.style.opacity = opacity;
-	}-*/;
+																	el.style.opacity = opacity;
+																	}-*/;
 
 	public native static void setWebKitTransitionDuration(Element el, int time)/*-{
-		el.style.webkitTransitionDuration = time + "ms";
-	}-*/;
+																				el.style.webkitTransitionDuration = time + "ms";
+																				}-*/;
 }
