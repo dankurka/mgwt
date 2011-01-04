@@ -1,0 +1,174 @@
+/**
+ * 28.12.2010
+ * created by kurt
+ */
+package de.kurka.gwt.mobile.mvp.client;
+
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.Style.Display;
+import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.Widget;
+
+/**
+ * @author kurt
+ *
+ */
+public class AnimatableDisplayImpl implements AnimatableDisplay {
+
+	private FlowPanel main;
+
+	private FlowPanel first;
+
+	private FlowPanel second;
+
+	public AnimatableDisplayImpl() {
+		main = new FlowPanel();
+
+		first = new FlowPanel();
+		//TODO move into css
+		first.getElement().getStyle().setPosition(Position.ABSOLUTE);
+		first.getElement().getStyle().setWidth(100, Unit.PCT);
+		first.getElement().getStyle().setHeight(100, Unit.PCT);
+		main.add(first);
+		second = new FlowPanel();
+		//TODO move into css
+		second.getElement().getStyle().setPosition(Position.ABSOLUTE);
+		second.getElement().getStyle().setWidth(100, Unit.PCT);
+		second.getElement().getStyle().setHeight(100, Unit.PCT);
+		main.add(second);
+	}
+
+	@Override
+	public void setFirstWidget(IsWidget w) {
+		first.clear();
+
+		first.add(w);
+
+	}
+
+	@Override
+	public void setSecondWidget(IsWidget w) {
+		second.clear();
+		second.add(w);
+
+	}
+
+	private void removeAllStyles() {
+
+		main.removeStyleName("threedstuff");
+
+		first.removeStyleName("in");
+		first.removeStyleName("out");
+		first.removeStyleName("reverse");
+
+		first.removeStyleName(Animation.ANIMATION_CUBE);
+		first.removeStyleName(Animation.ANIMATION_DISSOLVE);
+		first.removeStyleName(Animation.ANIMATION_FADE);
+		first.removeStyleName(Animation.ANIMATION_FLIP);
+		first.removeStyleName(Animation.ANIMATION_POP);
+		first.removeStyleName(Animation.ANIMATION_SLIDE);
+		first.removeStyleName(Animation.ANIMATION_SLIDE_UP);
+		first.removeStyleName(Animation.ANIMATION_SWAP);
+
+		second.removeStyleName("in");
+		second.removeStyleName("out");
+		second.removeStyleName("reverse");
+
+		second.removeStyleName(Animation.ANIMATION_CUBE);
+		second.removeStyleName(Animation.ANIMATION_DISSOLVE);
+		second.removeStyleName(Animation.ANIMATION_FADE);
+		second.removeStyleName(Animation.ANIMATION_FLIP);
+		second.removeStyleName(Animation.ANIMATION_POP);
+		second.removeStyleName(Animation.ANIMATION_SLIDE);
+		second.removeStyleName(Animation.ANIMATION_SLIDE_UP);
+		second.removeStyleName(Animation.ANIMATION_SWAP);
+
+	}
+
+	private void onAnimationEnd() {
+		if (showFirst) {
+			//second.clear();
+			second.getElement().getStyle().setDisplay(Display.NONE);
+		} else {
+			//first.clear();
+			first.getElement().getStyle().setDisplay(Display.NONE);
+		}
+		removeAllStyles();
+
+		if (addAnimationEndEvent != null) {
+			removeAnimationEndEvent(first.getElement(), addAnimationEndEvent);
+			addAnimationEndEvent = null;
+		}
+
+	}
+
+	private native JavaScriptObject addAnimationEndEvent(Element element)/*-{
+		var instance = this;
+
+		var func = function(){
+		instance.@de.kurka.gwt.mobile.mvp.client.AnimatableDisplayImpl::onAnimationEnd()();
+		};
+
+		element.addEventListener('webkitAnimationEnd', func, false);
+	}-*/;
+
+	private native JavaScriptObject removeAnimationEndEvent(Element element, JavaScriptObject func)/*-{
+		element.removeEventListener('webkitAnimationEnd', func);
+	}-*/;
+
+	private boolean showFirst;
+
+	private JavaScriptObject addAnimationEndEvent;
+
+	@Override
+	public void animate(Animation animation, boolean currentIsFirst) {
+		String type = animation.getType();
+		showFirst = currentIsFirst;
+
+		if (addAnimationEndEvent != null) {
+			removeAnimationEndEvent(first.getElement(), addAnimationEndEvent);
+			addAnimationEndEvent = null;
+		}
+
+		if (!Animation.ANIMATION_SLIDE.equals(type) && !Animation.ANIMATION_SLIDE_UP.equals(type)) {
+			main.addStyleName("threedstuff");
+		}
+
+		addAnimationEndEvent = addAnimationEndEvent(first.getElement());
+
+		first.addStyleName(type);
+		second.addStyleName(type);
+
+		//backwards
+		if (animation.isDirection()) {
+			first.addStyleName("reverse");
+			second.addStyleName("reverse");
+
+		}
+		if (currentIsFirst) {
+			first.addStyleName("in");
+			second.addStyleName("out");
+
+		} else {
+			first.addStyleName("out");
+			second.addStyleName("in");
+		}
+
+		first.getElement().getStyle().setDisplay(Display.BLOCK);
+		second.getElement().getStyle().setDisplay(Display.BLOCK);
+
+	}
+
+	/* (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.IsWidget#asWidget()
+	 */
+	@Override
+	public Widget asWidget() {
+		return main;
+	}
+
+}

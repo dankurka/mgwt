@@ -1,0 +1,6 @@
+<module>
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name='de.kurka.gwt.mobile.dom.DOM'/>
+    <inherits name='de.kurka.gwt.mobile.mvp.MVP'/>
+  	<source path="client"/>
+</module>
