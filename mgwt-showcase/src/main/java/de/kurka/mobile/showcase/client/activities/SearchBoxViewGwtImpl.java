@@ -46,8 +46,9 @@ public class SearchBoxViewGwtImpl implements SearchBoxView {
 		headerPanel.setLeftWidget(backButton);
 
 		main.add(headerPanel);
+		MSearchBox searchBox = new MSearchBox();
 
-		main.add(new MSearchBox());
+		main.add(searchBox);
 	}
 
 	@Override

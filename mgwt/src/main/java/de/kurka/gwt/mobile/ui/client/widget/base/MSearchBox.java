@@ -70,6 +70,8 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 
 		clearButton.addStyleName("clear");
 
+		setPlaceHolder("Search");
+
 	}
 
 	@Override
