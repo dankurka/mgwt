@@ -10,10 +10,11 @@ import com.google.gwt.place.shared.PlaceController;
 import de.kurka.mobile.showcase.client.activities.AboutView;
 import de.kurka.mobile.showcase.client.activities.AnimationDoneView;
 import de.kurka.mobile.showcase.client.activities.AnimationView;
-import de.kurka.mobile.showcase.client.activities.ElementsView;
 import de.kurka.mobile.showcase.client.activities.ButtonBarView;
+import de.kurka.mobile.showcase.client.activities.ElementsView;
 import de.kurka.mobile.showcase.client.activities.HomeView;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetView;
+import de.kurka.mobile.showcase.client.activities.SearchBoxView;
 import de.kurka.mobile.showcase.client.activities.UIView;
 
 /**
@@ -43,5 +44,7 @@ public interface ClientFactory {
 	public ElementsView getElementsView();
 
 	public ButtonBarView getButtonBarView();
+
+	public SearchBoxView getSearchBoxView();
 
 }

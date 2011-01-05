@@ -14,14 +14,16 @@ import de.kurka.mobile.showcase.client.activities.AnimationDoneView;
 import de.kurka.mobile.showcase.client.activities.AnimationDoneViewImpl;
 import de.kurka.mobile.showcase.client.activities.AnimationView;
 import de.kurka.mobile.showcase.client.activities.AnimationViewImpl;
+import de.kurka.mobile.showcase.client.activities.ButtonBarView;
+import de.kurka.mobile.showcase.client.activities.ButtonBarViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.ElementsView;
 import de.kurka.mobile.showcase.client.activities.ElementsViewImpl;
-import de.kurka.mobile.showcase.client.activities.ButtonBarViewGwtImpl;
-import de.kurka.mobile.showcase.client.activities.ButtonBarView;
 import de.kurka.mobile.showcase.client.activities.HomeView;
 import de.kurka.mobile.showcase.client.activities.HomeViewImpl;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetView;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetViewImpl;
+import de.kurka.mobile.showcase.client.activities.SearchBoxView;
+import de.kurka.mobile.showcase.client.activities.SearchBoxViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.UIView;
 import de.kurka.mobile.showcase.client.activities.UIViewImpl;
 
@@ -41,6 +43,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private ScrollWidgetView scrollWidgetView;
 	private ElementsView elementsView;
 	private ButtonBarViewGwtImpl footerPanelView;
+	private SearchBoxViewGwtImpl searchBoxViewGwtImpl;
 
 	public ClientFactoryImpl() {
 		eventBus = new SimpleEventBus();
@@ -141,6 +144,17 @@ public class ClientFactoryImpl implements ClientFactory {
 			footerPanelView = new ButtonBarViewGwtImpl();
 		}
 		return footerPanelView;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.mobile.showcase.client.ClientFactory#getSearchBoxView()
+	 */
+	@Override
+	public SearchBoxView getSearchBoxView() {
+		if (searchBoxViewGwtImpl == null) {
+			searchBoxViewGwtImpl = new SearchBoxViewGwtImpl();
+		}
+		return searchBoxViewGwtImpl;
 	}
 
 }

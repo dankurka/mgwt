@@ -11,10 +11,11 @@ import com.google.gwt.place.shared.Place;
 import de.kurka.mobile.showcase.client.activities.AboutActivity;
 import de.kurka.mobile.showcase.client.activities.AnimationActivity;
 import de.kurka.mobile.showcase.client.activities.AnimationDoneActivity;
-import de.kurka.mobile.showcase.client.activities.ElementsActivity;
 import de.kurka.mobile.showcase.client.activities.ButtonBarActivity;
+import de.kurka.mobile.showcase.client.activities.ElementsActivity;
 import de.kurka.mobile.showcase.client.activities.HomeActivity;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetActivity;
+import de.kurka.mobile.showcase.client.activities.SearchBoxActivity;
 import de.kurka.mobile.showcase.client.activities.UIActivity;
 import de.kurka.mobile.showcase.client.places.AboutPlace;
 import de.kurka.mobile.showcase.client.places.AnimationCubePlace;
@@ -26,10 +27,11 @@ import de.kurka.mobile.showcase.client.places.AnimationPopPlace;
 import de.kurka.mobile.showcase.client.places.AnimationSlidePlace;
 import de.kurka.mobile.showcase.client.places.AnimationSlideUpPlace;
 import de.kurka.mobile.showcase.client.places.AnimationSwapPlace;
-import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
+import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
+import de.kurka.mobile.showcase.client.places.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.places.UIPlace;
 
 /**
@@ -72,6 +74,10 @@ public class AppActivityMapper implements ActivityMapper {
 
 		if (place instanceof ButtonBarPlace) {
 			return new ButtonBarActivity(clientFactory);
+		}
+
+		if (place instanceof SearchBoxPlace) {
+			return new SearchBoxActivity(clientFactory);
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace
