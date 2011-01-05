@@ -22,7 +22,20 @@ import de.kurka.gwt.mobile.ui.client.menu.bar.ContactAddButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.DeleteButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.FastForwardButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.InfoButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.LocateButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.NewButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.NextSlideButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.OrganizeButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.PauseButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.PlayButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.PlusButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.PreviousSlideButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.RefreshButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.ReplyButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.RewindButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.SearchButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.StopButton;
+import de.kurka.gwt.mobile.ui.client.menu.bar.TrashButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 
 /**
@@ -68,6 +81,20 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 		footerPanel.add(new FastForwardButton());
 		footerPanel.add(new DeleteButton());
 		footerPanel.add(new InfoButton());
+
+		footerPanel.add(new LocateButton());
+		footerPanel.add(new NewButton());
+		footerPanel.add(new NextSlideButton());
+		footerPanel.add(new OrganizeButton());
+		footerPanel.add(new PauseButton());
+		footerPanel.add(new PlayButton());
+		footerPanel.add(new PlusButton());
+		footerPanel.add(new PreviousSlideButton());
+		footerPanel.add(new ReplyButton());
+		footerPanel.add(new RewindButton());
+		footerPanel.add(new SearchButton());
+		footerPanel.add(new StopButton());
+		footerPanel.add(new TrashButton());
 
 		main.add(footerPanel);
 	}
