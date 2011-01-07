@@ -1118,13 +1118,13 @@ tab bar
 
 .mgwt-TabBarMoreButton{
 	background-image: url('../images/tabbar/UITabBarMore.png');
-	background-position: 50% 0px;
+	background-position: 50% 15px;
 	background-repeat: no-repeat;
 }
 
 .mgwt-TabBarMoreButton-selected{
 	background-image: url('../images/tabbar/UITabBarMoreSelected.png');
-	background-position: 50% 0px;
+	background-position: 50% 15px;
 	background-repeat: no-repeat;
 	color: white;
 }
