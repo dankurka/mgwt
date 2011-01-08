@@ -111,11 +111,15 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 			@Override
 			public void execute() {
-				hScrollbar = new Scrollbar(Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), widgetToScroll.getOffsetWidth());
-				main.add(hScrollbar);
+				if (scrollingEnabledX) {
+					hScrollbar = new Scrollbar(Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), widgetToScroll.getOffsetWidth());
+					main.add(hScrollbar);
+				}
 
-				vScrollbar = new Scrollbar(Orientation.VERTICAL, has3d, main.getOffsetHeight(), widgetToScroll.getOffsetHeight());
-				main.add(vScrollbar);
+				if (scrollingEnabledY) {
+					vScrollbar = new Scrollbar(Orientation.VERTICAL, has3d, main.getOffsetHeight(), widgetToScroll.getOffsetHeight());
+					main.add(vScrollbar);
+				}
 
 			}
 		});
@@ -359,8 +363,12 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		CssUtil.translate(widgetToScroll.getElement(), newPosX, newPosY);
 
-		vScrollbar.setPosition(newPosY);
-		hScrollbar.setPosition(newPosX);
+		if (scrollingEnabledX) {
+			hScrollbar.setPosition(newPosX);
+		}
+		if (scrollingEnabledY) {
+			vScrollbar.setPosition(newPosY);
+		}
 
 	}
 
