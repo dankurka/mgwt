@@ -27,7 +27,6 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
@@ -144,8 +143,6 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 				}
 
-			} else {
-				Window.alert("cell not found");
 			}
 
 		}
