@@ -22,10 +22,12 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
+import com.google.gwt.dom.client.Node;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
@@ -94,6 +96,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
+
 			x = event.changedTouches().get(0).getPageX();
 			y = event.changedTouches().get(0).getPageY();
 
@@ -104,6 +107,22 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			index = -1;
 			// Get the event target.
 			EventTarget eventTarget = event.getNativeEvent().getEventTarget();
+			if (eventTarget == null) {
+				return;
+			}
+
+			//no textnode or element node
+			if (!Node.is(eventTarget) && !Element.is(eventTarget)) {
+				return;
+			}
+
+			//text node use the parent..
+			if (Node.is(eventTarget) && !Element.is(eventTarget)) {
+				Node target = Node.as(eventTarget);
+				eventTarget = target.getParentElement().cast();
+			}
+
+			//no element
 			if (!Element.is(eventTarget)) {
 				return;
 			}
@@ -112,6 +131,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			// Find cell
 			String idxString = "";
 			while ((target != null) && ((idxString = target.getAttribute("__idx")).length() == 0)) {
+
 				target = target.getParentElement();
 			}
 			if (idxString.length() > 0) {
@@ -124,6 +144,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 				}
 
+			} else {
+				Window.alert("cell not found");
 			}
 
 		}
