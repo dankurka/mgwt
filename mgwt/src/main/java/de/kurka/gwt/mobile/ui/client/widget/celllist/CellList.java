@@ -65,6 +65,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		private boolean moved;
 		private int index;
 		private Element node;
+		private int x;
+		private int y;
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
@@ -73,7 +75,9 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
-			moved = true;
+			if (Math.abs(event.changedTouches().get(0).getPageX() - x) > 5 || Math.abs(event.changedTouches().get(0).getPageY() - y) > 5) {
+				moved = true;
+			}
 
 		}
 
@@ -90,6 +94,9 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
+			x = event.changedTouches().get(0).getPageX();
+			y = event.changedTouches().get(0).getPageY();
+
 			if (node != null) {
 				node.removeClassName("active");
 			}

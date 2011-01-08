@@ -25,7 +25,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartHandler;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, TouchEndHandler, TouchMoveHandler, TouchStartHandler {
@@ -34,6 +34,8 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 
 	private boolean touchCanceled = false;
 	private boolean hasMoved = false;
+	private int x;
+	private int y;
 
 	/**
 	 * 
@@ -48,22 +50,22 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 
 		touchCanceled = false;
 		hasMoved = false;
-		//event.preventDefault();
+		x = event.changedTouches().get(0).getPageX();
+		y = event.changedTouches().get(0).getPageY();
 
 	}
 
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
 
-		hasMoved = true;
-		//event.preventDefault();
+		if (Math.abs(event.changedTouches().get(0).getPageX() - x) > 5 || Math.abs(event.changedTouches().get(0).getPageY() - y) > 5) {
+			hasMoved = true;
+		}
 
 	}
 
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
-
-		//event.preventDefault();
 		if (!hasMoved && !touchCanceled)
 			simpleTouchHandler.onTouch();
 
@@ -71,7 +73,6 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 
 	@Override
 	public void onTouchCanceled(TouchCancelEvent event) {
-		//event.preventDefault();
 		touchCanceled = true;
 
 	}
