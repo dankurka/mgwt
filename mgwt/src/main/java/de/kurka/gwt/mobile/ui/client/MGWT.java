@@ -99,5 +99,7 @@ public class MGWT {
 																};
 
 																el.ontouchmove = func;
+																el.ontouchstart = func;
+																el.ontouchend = func;
 																}-*/;
 }
