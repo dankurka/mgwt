@@ -9,7 +9,10 @@
 }
 
 body {
-	background-image: url("../images/backgroundStripes.png");
+	background-color:#C5CCD4;
+      background-image: -webkit-gradient(linear, left top, right top, from(#C5CCD4), to(#CBD2D8), color-stop(0.6, #C5CCD4), color-stop(0.6, #CBD2D8));
+     -webkit-background-size:7px 7px;
+     background-repeat: repeat;
 	width: 320px;
 	min-height: 416px;
 	
@@ -23,8 +26,9 @@ body.landscape {
 .mgwt-HeaderPanel {
 	position: relative;
 	height: 40px;
-	background-image: url('../images/header_middle.png');
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)));
 	border-bottom: 1px solid rgb(45, 54, 66);
+	
 }
 
 .mgwt-HeaderPanel .left {
@@ -40,11 +44,11 @@ body.landscape {
 }
 
 .mgwt-HeaderButton {
-	/* base metrics used to ensure a minumum size and specify a max size that can be used to trim the contents */
+	
 	min-width: 40px;
 	max-width: 60px;
 	height: 23px;
-	/* enfore trimming if the label is too long */
+	
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -163,7 +167,7 @@ body.landscape {
 }
 
 .constrainHeight.landscape {
-	height: 268px;
+	height: 100px;
 }
 
 
@@ -623,6 +627,7 @@ body.landscape {
 	height: 40px;
 	
 	-webkit-border-radius: 3px;
+
 	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#E6E6E7), to(#BABABB));
 	-webkit-background-clip: padding-box;
 	background-clip: padding-box;
