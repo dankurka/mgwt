@@ -37,7 +37,7 @@ import de.kurka.gwt.mobile.ui.client.widget.TouchPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ScrollPanel extends Composite implements HasOneWidget {
 
@@ -169,23 +169,23 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	}
 
 	private native JavaScriptObject registerTransistionEndDomEvent(Element el) /*-{
-																				var instance = this;
+		var instance = this;
 
-																				var callBack = function(e){
+		var callBack = function(e){
 
-																				instance.@de.kurka.gwt.mobile.ui.client.panel.ScrollPanel::onTransistionEnd()();
-																				};
-
-
-																				el.addEventListener( 'webkitTransitionEnd', callBack, false );
+		instance.@de.kurka.gwt.mobile.ui.client.panel.ScrollPanel::onTransistionEnd()();
+		};
 
 
-																				return callBack;
-																				}-*/;
+		el.addEventListener( 'webkitTransitionEnd', callBack, false );
+
+
+		return callBack;
+	}-*/;
 
 	private native void unregisterTransitionEndDomEvent(Element el, JavaScriptObject listener) /*-{
-																								el.removeEventListener(listener);
-																								}-*/;
+		el.removeEventListener(listener);
+	}-*/;
 
 	@Override
 	protected void onAttach() {
@@ -227,7 +227,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 			setTransistionTime(0);
 
-			Touch touch = event.changedTouches().get(0);
+			Touch touch = event.touches().get(0);
 			touchStartX = touch.getPageX();
 			touchStartY = touch.getPageY();
 
@@ -248,7 +248,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 			if (!currentlyScrolling)
 				return;
 
-			Touch touch = event.changedTouches().get(0);
+			Touch touch = event.touches().get(0);
 
 			//calculate delta
 			int leftDelta = 0;
