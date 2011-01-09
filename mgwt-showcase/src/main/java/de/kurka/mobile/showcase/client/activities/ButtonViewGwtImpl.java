@@ -22,6 +22,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
 
 /**
  * @author Daniel Kurka
@@ -47,46 +48,56 @@ public class ButtonViewGwtImpl implements ButtonView {
 
 		main.add(headerPanel);
 
+		FlowPanel content = new FlowPanel();
+
+		ScrollPanel scrollPanel = new ScrollPanel();
+		scrollPanel.addStyleName("constrainHeight");
+		scrollPanel.setScrollingEnabledX(false);
+
 		Button normalButton = new Button("Normal");
-		main.add(normalButton);
+		content.add(normalButton);
 
 		Button roundButton = new Button("Round");
 		roundButton.setRound(true);
-		main.add(roundButton);
+		content.add(roundButton);
 
 		Button smallButton = new Button("Small");
 		smallButton.setSmall(true);
-		main.add(smallButton);
+		content.add(smallButton);
 
 		Button importantButton = new Button("Important");
 		importantButton.setImportant(true);
-		main.add(importantButton);
+		content.add(importantButton);
 
 		Button importantRoundButton = new Button("Round");
 		importantRoundButton.setImportant(true);
 		importantRoundButton.setRound(true);
-		main.add(importantRoundButton);
+		content.add(importantRoundButton);
 
 		Button importantSmallButton = new Button("Small");
 		importantSmallButton.setImportant(true);
 		importantSmallButton.setSmall(true);
 
-		main.add(importantSmallButton);
+		content.add(importantSmallButton);
 
 		Button conmfirmButton = new Button("Confirm");
 		conmfirmButton.setConfirm(true);
-		main.add(conmfirmButton);
+		content.add(conmfirmButton);
 
 		Button confirmRoundButton = new Button("Round");
 		confirmRoundButton.setConfirm(true);
 		importantRoundButton.setRound(true);
-		main.add(confirmRoundButton);
+		content.add(confirmRoundButton);
 
 		Button confirmSmallButton = new Button("Small");
 		confirmSmallButton.setConfirm(true);
 		confirmSmallButton.setSmall(true);
 
-		main.add(confirmSmallButton);
+		content.add(confirmSmallButton);
+
+		scrollPanel.setWidget(content);
+
+		main.add(scrollPanel);
 
 	}
 
