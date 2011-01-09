@@ -31,13 +31,10 @@ import com.google.gwt.user.client.ui.Composite;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
-import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
-import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndHandler;
+import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
-import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
-import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartHandler;
 import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
 
 /**
@@ -62,7 +59,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	}
 
-	private class InternalTouchHandler implements TouchStartHandler, TouchEndHandler, TouchMoveHandler, TouchCancelHandler {
+	private class InternalTouchHandler implements TouchHandler {
 
 		private boolean moved;
 		private int index;
