@@ -438,8 +438,13 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		if (resetX != position_x || resetY != position_y) {
 			scrollTo(resetX, resetY, 0);
 		} else {
-			vScrollbar.hide();
-			hScrollbar.hide();
+			if (scrollingEnabledX) {
+				hScrollbar.hide();
+			}
+			if (scrollingEnabledY) {
+				vScrollbar.hide();
+			}
+
 		}
 
 	}
