@@ -15,6 +15,7 @@
  */
 package de.kurka.gwt.mobile.dom.client.event.touch.simple;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
@@ -50,15 +51,15 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 
 		touchCanceled = false;
 		hasMoved = false;
-		x = event.changedTouches().get(0).getPageX();
-		y = event.changedTouches().get(0).getPageY();
+		x = event.touches().get(0).getPageX();
+		y = event.touches().get(0).getPageY();
 
 	}
 
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
-
-		if (Math.abs(event.changedTouches().get(0).getPageX() - x) > 5 || Math.abs(event.changedTouches().get(0).getPageY() - y) > 5) {
+		Touch touch = event.touches().get(0);
+		if (Math.abs(touch.getPageX() - x) > 5 || Math.abs(touch.getPageY() - y) > 5) {
 			hasMoved = true;
 		}
 
