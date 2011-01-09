@@ -86,8 +86,7 @@ body.landscape {
 }
 
 .mgwt-HeaderButton-forward:active {
-	-webkit-border-image: url('../images/forward_button_touched.png') 0 13 0
-		4;
+	-webkit-border-image: url('../images/forward_button_touched.png') 0 13 0 4;
 }
 
 .mgwt-ButtonBar {
