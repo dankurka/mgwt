@@ -11,6 +11,7 @@ import com.google.gwt.place.shared.Place;
 import de.kurka.mobile.showcase.client.activities.AboutActivity;
 import de.kurka.mobile.showcase.client.activities.AnimationActivity;
 import de.kurka.mobile.showcase.client.activities.AnimationDoneActivity;
+import de.kurka.mobile.showcase.client.activities.ButtonActivity;
 import de.kurka.mobile.showcase.client.activities.ButtonBarActivity;
 import de.kurka.mobile.showcase.client.activities.ElementsActivity;
 import de.kurka.mobile.showcase.client.activities.HomeActivity;
@@ -29,6 +30,7 @@ import de.kurka.mobile.showcase.client.places.AnimationSlidePlace;
 import de.kurka.mobile.showcase.client.places.AnimationSlideUpPlace;
 import de.kurka.mobile.showcase.client.places.AnimationSwapPlace;
 import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
+import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
@@ -84,6 +86,10 @@ public class AppActivityMapper implements ActivityMapper {
 
 		if (place instanceof TabBarPlace) {
 			return new TabBarActivity(clientFactory);
+		}
+
+		if (place instanceof ButtonPlace) {
+			return new ButtonActivity(clientFactory);
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace

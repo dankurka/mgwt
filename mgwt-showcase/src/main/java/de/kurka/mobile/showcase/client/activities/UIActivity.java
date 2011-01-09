@@ -17,6 +17,7 @@ import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
 import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
+import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
@@ -87,6 +88,11 @@ public class UIActivity extends AbstractActivity {
 					clientFactory.getPlaceController().goTo(new TabBarPlace());
 					break;
 
+				case 5:
+
+					clientFactory.getPlaceController().goTo(new ButtonPlace());
+					break;
+
 				default:
 					break;
 				}
@@ -109,6 +115,7 @@ public class UIActivity extends AbstractActivity {
 		list.add(new Item("ButtonBar"));
 		list.add(new Item("Searchbox"));
 		list.add(new Item("TabBar"));
+		list.add(new Item("Buttons"));
 
 		return list;
 	}

@@ -16,6 +16,8 @@ import de.kurka.mobile.showcase.client.activities.AnimationView;
 import de.kurka.mobile.showcase.client.activities.AnimationViewImpl;
 import de.kurka.mobile.showcase.client.activities.ButtonBarView;
 import de.kurka.mobile.showcase.client.activities.ButtonBarViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.ButtonView;
+import de.kurka.mobile.showcase.client.activities.ButtonViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.ElementsView;
 import de.kurka.mobile.showcase.client.activities.ElementsViewImpl;
 import de.kurka.mobile.showcase.client.activities.HomeView;
@@ -47,6 +49,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private ButtonBarViewGwtImpl footerPanelView;
 	private SearchBoxViewGwtImpl searchBoxViewGwtImpl;
 	private TabBarView tabBarView;
+	private ButtonView buttonView;
 
 	public ClientFactoryImpl() {
 		eventBus = new SimpleEventBus();
@@ -169,6 +172,17 @@ public class ClientFactoryImpl implements ClientFactory {
 			tabBarView = new TabBarViewGwtImpl();
 		}
 		return tabBarView;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.mobile.showcase.client.ClientFactory#getButtonView()
+	 */
+	@Override
+	public ButtonView getButtonView() {
+		if (buttonView == null) {
+			buttonView = new ButtonViewGwtImpl();
+		}
+		return buttonView;
 	}
 
 }

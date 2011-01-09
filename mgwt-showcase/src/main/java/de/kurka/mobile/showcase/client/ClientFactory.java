@@ -11,6 +11,7 @@ import de.kurka.mobile.showcase.client.activities.AboutView;
 import de.kurka.mobile.showcase.client.activities.AnimationDoneView;
 import de.kurka.mobile.showcase.client.activities.AnimationView;
 import de.kurka.mobile.showcase.client.activities.ButtonBarView;
+import de.kurka.mobile.showcase.client.activities.ButtonView;
 import de.kurka.mobile.showcase.client.activities.ElementsView;
 import de.kurka.mobile.showcase.client.activities.HomeView;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetView;
@@ -49,5 +50,7 @@ public interface ClientFactory {
 	public SearchBoxView getSearchBoxView();
 
 	public TabBarView getTabBarView();
+
+	public ButtonView getButtonView();
 
 }

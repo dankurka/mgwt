@@ -305,33 +305,7 @@ body.landscape {
 	font-weight: bold;
 }
 
-/** button */
-.mgwt-Button {
-	/* base metrics used to ensure a minumum size and specify a max size that can be used to trim the contents */
-	min-width: 40px;
-	height: 23px;
-	/* enfore trimming if the label is too long */
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	padding-top: 7px;
-	padding-right: 4px;
-	z-index: 1;
-	font-size: 12px;
-	font-weight: bold;
-	text-align: center;
-	color: white;
-	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
-}
 
-.mgwt-Button-round {
-	border-width: 0 4px 0 4px;
-	-webkit-border-image: url('../images/button.png') 0 4 0 4;
-}
-
-.mgwt-Button-round:active {
-	-webkit-border-image: url('../images/button_touched.png') 0 4 0 4;
-}
 
 .mgwt-BarButton {
 	position: relative;
@@ -640,6 +614,92 @@ body.landscape {
 	 margin: 0;
     padding-left: 10px;
     -webkit-user-select: auto;
+}
+
+/** button */
+.mgwt-Button {
+	
+	min-width: 40px;
+	height: 40px;
+	
+	-webkit-border-radius: 3px;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#E6E6E7), to(#BABABB));
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+	border: 1px solid black;
+	
+	margin: 5px;
+	padding-top: 14px;
+	
+	
+	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+	font-size: 19px;
+	font-weight: bold;
+	text-align: center;
+	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+}
+
+.mgwt-Button:active {
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#C6C6C7), to(#AAAAAB));
+}
+
+.mgwt-Button-small{
+height: 23px;
+font-size: 12px;
+}
+
+.mgwt-Button-round {
+	border-bottom-left-radius: 16px 16px;
+	border-bottom-right-radius: 16px 16px;
+	border-top-left-radius: 16px 16px;
+	border-top-right-radius: 16px 16px;
+}
+
+.mgwt-Button-important {
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.16, rgb(128,4,4)),
+    color-stop(0.58, rgb(219,3,3))
+);
+	
+	
+}
+
+.mgwt-Button-important:ACTIVE {
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.16, rgb(105,3,3)),
+    color-stop(0.58, rgb(171,0,0))
+);
+
+}
+
+.mgwt-Button-confirm {
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.16, rgb(3,105,27)), color-stop(0.58, rgb(4,217,11)));
+}
+
+.mgwt-Button-confirm:ACTIVE {
+background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.16, rgb(5,74,16)),
+    color-stop(0.58, rgb(4,217,54))
+);
+	
+	
 }
 
 
