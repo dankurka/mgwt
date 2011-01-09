@@ -375,9 +375,12 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private void setTransistionTime(int milliseconds) {
 		System.out.println("webkit transition duration: " + milliseconds);
 		widgetToScroll.getElement().getStyle().setProperty("webkitTransitionDuration", milliseconds + "ms");
-
-		vScrollbar.setTransitionTime(milliseconds);
-		hScrollbar.setTransitionTime(milliseconds);
+		if (scrollingEnabledX) {
+			hScrollbar.setTransitionTime(milliseconds);
+		}
+		if (scrollingEnabledY) {
+			vScrollbar.setTransitionTime(milliseconds);
+		}
 
 	}
 
