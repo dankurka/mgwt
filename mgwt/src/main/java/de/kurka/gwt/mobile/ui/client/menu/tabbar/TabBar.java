@@ -17,6 +17,9 @@ package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
 import java.util.LinkedList;
 
+import com.google.gwt.event.logical.shared.HasSelectionHandlers;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -27,7 +30,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
  * @author Daniel Kurka
  *
  */
-public class TabBar extends Composite {
+public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
 	private FlowPanel container;
 	private LinkedList<TabBarButtonBase> children;
@@ -90,6 +93,13 @@ public class TabBar extends Composite {
 	}
 
 	public void setSelectedButton(int index) {
+		if (index < 0) {
+			throw new IllegalArgumentException("invalud index");
+		}
+
+		if (index >= children.size()) {
+			throw new IllegalArgumentException("invalud index");
+		}
 		int count = 0;
 		for (TabBarButtonBase button : children) {
 			if (count == index) {
@@ -99,6 +109,7 @@ public class TabBar extends Composite {
 			}
 			count++;
 		}
+		SelectionEvent.fire(this, Integer.valueOf(index));
 	}
 
 	public void setBottom(boolean bottom) {
@@ -107,6 +118,11 @@ public class TabBar extends Composite {
 		} else {
 			removeStyleDependentName("bottom");
 		}
+	}
+
+	@Override
+	public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
+		return addHandler(handler, SelectionEvent.getType());
 	}
 
 }
