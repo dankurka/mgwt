@@ -29,6 +29,7 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.ui.Composite;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
@@ -76,7 +77,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
-			if (Math.abs(event.changedTouches().get(0).getPageX() - x) > 5 || Math.abs(event.changedTouches().get(0).getPageY() - y) > 5) {
+			Touch touch = event.touches().get(0);
+			if (Math.abs(touch.getPageX() - x) > 5 || Math.abs(touch.getPageY() - y) > 5) {
 				moved = true;
 			}
 
@@ -96,8 +98,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
 
-			x = event.changedTouches().get(0).getPageX();
-			y = event.changedTouches().get(0).getPageY();
+			x = event.touches().get(0).getPageX();
+			y = event.touches().get(0).getPageY();
 
 			if (node != null) {
 				node.removeClassName("active");
