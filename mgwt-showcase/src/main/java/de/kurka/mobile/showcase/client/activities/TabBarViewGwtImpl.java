@@ -16,11 +16,11 @@
 package de.kurka.mobile.showcase.client.activities;
 
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBar;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarBookmarkButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarContactsButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarDownloadsButton;
@@ -31,6 +31,7 @@ import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMoreButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMostRecentButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMostViewedButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarSearchButton;
+import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabPanel;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 
 /**
@@ -57,21 +58,20 @@ public class TabBarViewGwtImpl implements TabBarView {
 
 		main.add(headerPanel);
 
-		TabBar tabBar = new TabBar();
-		tabBar.setBottom(true);
+		TabPanel tabPanel = new TabPanel();
 
-		tabBar.add(new TabBarBookmarkButton());
-		tabBar.add(new TabBarContactsButton());
-		tabBar.add(new TabBarDownloadsButton());
-		tabBar.add(new TabBarFavoritesButton());
-		tabBar.add(new TabBarFeaturedButton());
-		tabBar.add(new TabBarHistoryButton());
-		tabBar.add(new TabBarMoreButton());
-		tabBar.add(new TabBarMostRecentButton());
-		tabBar.add(new TabBarMostViewedButton());
-		tabBar.add(new TabBarSearchButton());
+		tabPanel.add(new TabBarBookmarkButton(), new Label("Bookmark"));
+		tabPanel.add(new TabBarContactsButton(), new Label("Contacts"));
+		tabPanel.add(new TabBarDownloadsButton(), new Label("Downloads"));
+		tabPanel.add(new TabBarFavoritesButton(), new Label("Favorites"));
+		tabPanel.add(new TabBarFeaturedButton(), new Label("Featured"));
+		tabPanel.add(new TabBarHistoryButton(), new Label("History"));
+		tabPanel.add(new TabBarMoreButton(), new Label("More"));
+		tabPanel.add(new TabBarMostRecentButton(), new Label("Most Recent"));
+		tabPanel.add(new TabBarMostViewedButton(), new Label("Most Viewed"));
+		tabPanel.add(new TabBarSearchButton(), new Label("Search"));
 
-		main.add(tabBar);
+		main.add(tabPanel);
 	}
 
 	@Override

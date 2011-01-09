@@ -93,6 +93,10 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 	}
 
 	public void setSelectedButton(int index) {
+		setSelectedButton(index, false);
+	}
+
+	public void setSelectedButton(int index, boolean suppressEvent) {
 		if (index < 0) {
 			throw new IllegalArgumentException("invalud index");
 		}
@@ -109,7 +113,8 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 			}
 			count++;
 		}
-		SelectionEvent.fire(this, Integer.valueOf(index));
+		if (!suppressEvent)
+			SelectionEvent.fire(this, Integer.valueOf(index));
 	}
 
 	public void setBottom(boolean bottom) {
@@ -123,6 +128,22 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 	@Override
 	public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
 		return addHandler(handler, SelectionEvent.getType());
+	}
+
+	/**
+	 * @param index
+	 */
+	public void remove(int index) {
+		TabBarButtonBase w = getWidgetForIndex(index);
+		remove(w);
+	}
+
+	/**
+	 * @param index
+	 * @return
+	 */
+	private TabBarButtonBase getWidgetForIndex(int index) {
+		return children.get(index);
 	}
 
 }
