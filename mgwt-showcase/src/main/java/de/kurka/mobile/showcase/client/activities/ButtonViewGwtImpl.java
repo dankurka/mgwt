@@ -51,6 +51,7 @@ public class ButtonViewGwtImpl implements ButtonView {
 		FlowPanel content = new FlowPanel();
 
 		ScrollPanel scrollPanel = new ScrollPanel();
+		scrollPanel.addStyleName("constrainWidth");
 		scrollPanel.addStyleName("constrainHeight");
 		scrollPanel.setScrollingEnabledX(false);
 

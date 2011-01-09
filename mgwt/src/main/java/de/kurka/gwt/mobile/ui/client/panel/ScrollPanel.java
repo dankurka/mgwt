@@ -163,6 +163,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	}
 
 	private void onTransistionEnd() {
+		System.out.println("trans end");
 		if (listenForTransitionEnd)
 			resetPosition();
 		listenForTransitionEnd = false;
@@ -332,12 +333,13 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 					Momentum m = calculateMomentum(position_x - scrollStartX, scrollTime, -position_x, position_x + widgetToScroll.getOffsetWidth() - main.getOffsetWidth());
 					newDuration = Math.max(m.getTime(), newDuration);
 					newPosX = position_x + m.getDist();
-
+					System.out.println("newDur: " + newDuration);
 				}
 
 				if (scrollingEnabledY) {
 					Momentum m = calculateMomentum(position_y - scrollStartY, scrollTime, -position_y, position_y + widgetToScroll.getOffsetHeight() - main.getOffsetHeight());
 					newDuration = Math.max(m.getTime(), newDuration);
+					System.out.println("newDur: " + newDuration);
 					newPosY = position_y + m.getDist();
 
 				}
@@ -402,6 +404,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		setPosition(destX, destY);
 
 		if (newDuration == 0) {
+			System.out.println("no duration");
 			resetPosition();
 		} else
 
@@ -436,7 +439,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		}
 
 		if (resetX != position_x || resetY != position_y) {
-			scrollTo(resetX, resetY, 0);
+			System.out.println("need to scroll");
+			scrollTo(resetX, resetY, 300);
 		} else {
 			if (scrollingEnabledX) {
 				hScrollbar.hide();
@@ -488,7 +492,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		}
 	}
 
-	private Momentum calculateMomentum(int dist, long time, int maxDistUpper, int maxDistLower) {
+	private Momentum calculateMomentum(double dist, double time, int maxDistUpper, double maxDistLower) {
 
 		double friction = 2.5;
 		double deceleration = 1.2;
@@ -496,22 +500,23 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		System.out.println("calculate Momentum: dist: " + dist + " time: " + time + " upper: " + maxDistUpper + " lower: " + maxDistLower);
 
-		int newDist = (int) Math.round(((speed * speed) / friction) / 1000);
+		double calcNewDist = ((speed * speed) / friction) / 1000;
 
-		if (dist > 0 && newDist > maxDistUpper) {
-			speed = ((speed * maxDistUpper) / newDist) / friction;
-			newDist = maxDistUpper;
-		} else if (dist < 0 && newDist > maxDistLower) {
-			speed = speed * maxDistLower / newDist / friction;
-			newDist = maxDistLower;
+		if (dist > 0 && calcNewDist > maxDistUpper) {
+			speed = Math.abs(((speed * maxDistUpper) / calcNewDist) / friction);
+			calcNewDist = maxDistUpper;
+		} else if (dist < 0 && calcNewDist > maxDistLower) {
+			speed = Math.abs(speed * maxDistLower / calcNewDist / friction);
+			calcNewDist = maxDistLower;
 		}
 
 		if (dist < 0)
-			newDist *= -1;
+			calcNewDist *= -1;
 
 		int newTime = (int) Math.round(speed / deceleration);
+		int newDist = (int) Math.round(calcNewDist);
 
-		System.out.println("momentum: " + newDist + " time: " + time);
+		System.out.println("momentum: " + newDist + " time: " + newTime);
 
 		return new Momentum(newDist, newTime);
 	}
