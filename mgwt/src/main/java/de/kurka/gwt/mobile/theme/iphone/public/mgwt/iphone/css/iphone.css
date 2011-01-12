@@ -835,7 +835,7 @@ key frame for doing nothing
 	-webkit-animation-name: fadein;
 }
 .fade.out {
-	z-index: 0;
+	z-index: 8;
 	-webkit-animation-name: fadeout;
 }
 
