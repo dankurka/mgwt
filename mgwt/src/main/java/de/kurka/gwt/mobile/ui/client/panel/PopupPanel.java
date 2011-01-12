@@ -17,7 +17,6 @@ package de.kurka.gwt.mobile.ui.client.panel;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -39,14 +38,14 @@ public class PopupPanel extends FlowPanel {
 	private JavaScriptObject listener;
 
 	private void onAnimationEnd() {
-		Window.alert("test");
+
 		if (show) {
 
 		} else {
 			RootPanel.get().remove(shadowContainer);
 			RootPanel.get().remove(container);
 		}
-		container.getElement().getStyle().setOpacity(1.0);
+
 		removeAllStyles();
 	}
 
@@ -150,8 +149,6 @@ public class PopupPanel extends FlowPanel {
 		container.addStyleName("fade");
 		container.addStyleName("out");
 		container.addStyleName("reverse");
-
-		container.getElement().getStyle().setOpacity(0.0);
 
 		show = false;
 	}
