@@ -20,6 +20,7 @@ import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
+import de.kurka.mobile.showcase.client.places.PopupPlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
 import de.kurka.mobile.showcase.client.places.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.places.TabBarPlace;
@@ -93,6 +94,11 @@ public class UIActivity extends AbstractActivity {
 					clientFactory.getPlaceController().goTo(new ButtonPlace());
 					break;
 
+				case 6:
+
+					clientFactory.getPlaceController().goTo(new PopupPlace());
+					break;
+
 				default:
 					break;
 				}
@@ -116,6 +122,7 @@ public class UIActivity extends AbstractActivity {
 		list.add(new Item("Searchbox"));
 		list.add(new Item("TabBar"));
 		list.add(new Item("Buttons"));
+		list.add(new Item("Popups"));
 
 		return list;
 	}

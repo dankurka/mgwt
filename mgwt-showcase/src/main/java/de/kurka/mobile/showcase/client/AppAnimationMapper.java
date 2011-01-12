@@ -22,6 +22,7 @@ import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
+import de.kurka.mobile.showcase.client.places.PopupPlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
 import de.kurka.mobile.showcase.client.places.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.places.TabBarPlace;
@@ -149,6 +150,20 @@ public class AppAnimationMapper implements AnimationMapper {
 		}
 
 		if (oldPlace instanceof ButtonPlace && newPlace instanceof UIPlace) {
+			Animation animation = new Animation();
+			animation.setType(Animation.ANIMATION_SLIDE);
+			animation.setDirection(true);
+			return animation;
+		}
+
+		if (oldPlace instanceof UIPlace && newPlace instanceof PopupPlace) {
+			Animation animation = new Animation();
+			animation.setType(Animation.ANIMATION_SLIDE);
+			animation.setDirection(false);
+			return animation;
+		}
+
+		if (oldPlace instanceof PopupPlace && newPlace instanceof UIPlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_SLIDE);
 			animation.setDirection(true);

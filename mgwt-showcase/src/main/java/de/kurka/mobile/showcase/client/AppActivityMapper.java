@@ -15,6 +15,7 @@ import de.kurka.mobile.showcase.client.activities.ButtonActivity;
 import de.kurka.mobile.showcase.client.activities.ButtonBarActivity;
 import de.kurka.mobile.showcase.client.activities.ElementsActivity;
 import de.kurka.mobile.showcase.client.activities.HomeActivity;
+import de.kurka.mobile.showcase.client.activities.PopupActivity;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetActivity;
 import de.kurka.mobile.showcase.client.activities.SearchBoxActivity;
 import de.kurka.mobile.showcase.client.activities.TabBarActivity;
@@ -33,6 +34,7 @@ import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
+import de.kurka.mobile.showcase.client.places.PopupPlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
 import de.kurka.mobile.showcase.client.places.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.places.TabBarPlace;
@@ -90,6 +92,10 @@ public class AppActivityMapper implements ActivityMapper {
 
 		if (place instanceof ButtonPlace) {
 			return new ButtonActivity(clientFactory);
+		}
+
+		if (place instanceof PopupPlace) {
+			return new PopupActivity(clientFactory);
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace
