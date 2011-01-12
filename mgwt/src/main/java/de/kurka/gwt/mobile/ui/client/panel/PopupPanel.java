@@ -17,6 +17,7 @@ package de.kurka.gwt.mobile.ui.client.panel;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -38,13 +39,14 @@ public class PopupPanel extends FlowPanel {
 	private JavaScriptObject listener;
 
 	private void onAnimationEnd() {
-
+		Window.alert("test");
 		if (show) {
 
 		} else {
 			RootPanel.get().remove(shadowContainer);
 			RootPanel.get().remove(container);
 		}
+		container.getElement().getStyle().setOpacity(1.0);
 		removeAllStyles();
 	}
 
@@ -60,21 +62,25 @@ public class PopupPanel extends FlowPanel {
 		container.removeStyleName("in");
 		container.removeStyleName("out");
 		container.removeStyleName("reverse");
+		container.removeStyleName("fade");
 
 	}
 
 	private native JavaScriptObject addAnimationEndEvent(Element element)/*-{
 		var instance = this;
 
-		var func = function(){
+		var func = function(event){
+
 		instance.@de.kurka.gwt.mobile.ui.client.panel.PopupPanel::onAnimationEnd()();
 		};
 
 		element.addEventListener('webkitAnimationEnd', func, false);
+
+		return func;
 	}-*/;
 
 	private native JavaScriptObject removeAnimationEndEvent(Element element, JavaScriptObject func)/*-{
-		element.removeEventListener('webkitAnimationEnd', func);
+		element.removeEventListener('webkitAnimationEnd', func, false);
 	}-*/;
 
 	/* (non-Javadoc)
@@ -141,8 +147,11 @@ public class PopupPanel extends FlowPanel {
 		shadowContainer.addStyleName("fade");
 
 		container.addStyleName("slideup");
+		container.addStyleName("fade");
 		container.addStyleName("out");
 		container.addStyleName("reverse");
+
+		container.getElement().getStyle().setOpacity(0.0);
 
 		show = false;
 	}

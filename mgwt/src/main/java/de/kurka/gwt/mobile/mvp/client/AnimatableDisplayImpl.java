@@ -118,18 +118,19 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	}
 
 	private native JavaScriptObject addAnimationEndEvent(Element element)/*-{
-																			var instance = this;
+		var instance = this;
 
-																			var func = function(){
-																			instance.@de.kurka.gwt.mobile.mvp.client.AnimatableDisplayImpl::onAnimationEnd()();
-																			};
+		var func = function(){
+		instance.@de.kurka.gwt.mobile.mvp.client.AnimatableDisplayImpl::onAnimationEnd()();
+		};
 
-																			element.addEventListener('webkitAnimationEnd', func, false);
-																			}-*/;
+		element.addEventListener('webkitAnimationEnd', func, false);
+		return element;
+	}-*/;
 
 	private native JavaScriptObject removeAnimationEndEvent(Element element, JavaScriptObject func)/*-{
-																									element.removeEventListener('webkitAnimationEnd', func);
-																									}-*/;
+		element.removeEventListener('webkitAnimationEnd', func);
+	}-*/;
 
 	private boolean showFirst;
 
