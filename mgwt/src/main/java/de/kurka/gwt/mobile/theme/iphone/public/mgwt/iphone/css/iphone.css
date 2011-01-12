@@ -414,7 +414,7 @@ body.landscape {
 }
 
 .mgwt-BarButton-delete {
-	background-image: url('../images/buttons/UIButtonBarCompose.png');
+	background-image: url('../images/buttons/UIButtonBarDelete.png');
 }
 
 .mgwt-BarButton-delete:active {
@@ -422,11 +422,11 @@ body.landscape {
 }
 
 .mgwt-BarButton-fastforward {
-	background-image: url('../images/buttons/UIButtonBarDelete.png');
+	background-image: url('../images/buttons/UIButtonBarFastForward.png');
 }
 
 .mgwt-BarButton-fastforward:active {
-	background-image: url('../images/buttons/UIButtonBarDelete.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+	background-image: url('../images/buttons/UIButtonBarFastForward.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
 .mgwt-BarButton-info {
