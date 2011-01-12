@@ -13,14 +13,15 @@ body {
       background-image: -webkit-gradient(linear, left top, right top, from(#C5CCD4), to(#CBD2D8), color-stop(0.6, #C5CCD4), color-stop(0.6, #CBD2D8));
      -webkit-background-size:7px 7px;
      background-repeat: repeat;
-	width: 320px;
-	min-height: 416px;
+	/*width: 320px;
+	min-height: 416px;*/
 	
 }
 
 body.landscape {
+	/*
 	width: 480px;
-	min-height: 268px;
+	min-height: 268px;*/
 }
 
 .mgwt-HeaderPanel {
