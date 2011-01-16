@@ -16,13 +16,16 @@
 package de.kurka.mobile.showcase.client.activities;
 
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
+import de.kurka.gwt.mobile.ui.client.panel.DialogPanel;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel;
 import de.kurka.gwt.mobile.ui.client.panel.PopupPanel;
 
 /**
@@ -85,6 +88,45 @@ public class PopupViewGwtImpl implements PopupView {
 			public void onTouch() {
 
 				popupPanel.show();
+
+			}
+		});
+
+		final OverlayPanel overlayPanel = new OverlayPanel();
+		DialogPanel dialogPanel = new DialogPanel();
+
+		dialogPanel.getContent().add(new HTML("test test test test"));
+		dialogPanel.getDialogTitle().setText("Titleasdf");
+
+		dialogPanel.getOkButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+
+			@Override
+			public void onTouch() {
+				overlayPanel.hide();
+
+			}
+		});
+
+		dialogPanel.getCancelButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+
+			@Override
+			public void onTouch() {
+				overlayPanel.hide();
+
+			}
+		});
+
+		overlayPanel.add(dialogPanel);
+
+		Button alertButton = new Button("Alert");
+
+		main.add(alertButton);
+
+		alertButton.addSimpleTouchHandler(new SimpleTouchHandler() {
+
+			@Override
+			public void onTouch() {
+				overlayPanel.show();
 
 			}
 		});

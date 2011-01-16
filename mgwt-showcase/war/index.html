@@ -6,44 +6,122 @@
 
 
 <style type="text/css">
-.mgwt-PopupPanel{
-position: absolute;
-bottom: 0px;
-left: 0px;
-right: 0px;
-background-color: rgba(0, 0, 0, 0.898438);
-background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(50, 74, 103, 0.898438)), color-stop(0.02, rgba(17, 25, 34, 0.898438)), to(rgba(0, 0, 0, 0.898438)));
-border-top: 1px solid #030507;
-padding: 10px;
+.mgwt-PopupPanel {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.898438);
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(50, 74, 103, 0.898438)
+		), color-stop(0.02, rgba(17, 25, 34, 0.898438) ),
+		to(rgba(0, 0, 0, 0.898438) ) );
+	border-top: 1px solid #030507;
+	padding: 10px;
 }
 
-.mgwt-PopupContainer{
-z-index: 100;
-width: 100%;
-height: 100%;
-position: absolute;
-top: 0px;
-left: 0px;
-margin: 0px;
-padding: 0px;
-
-
+.mgwt-PopupContainer {
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
-.mgwt-PopupContainer-shadow{
-z-index: 99;
-background-color: rgba(0, 0, 0, 0.4);
+.mgwt-PopupContainer-shadow {
+	z-index: 99;
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
+.mgwt-DialogPanel {
+	border: solid 1px #72767b;
+	-webkit-border-radius: 10px;
+	-webkit-box-shadow: 0px 4px 6px #666, 0 0 50px rgba(255, 255, 255, 1);
+	padding: 0px;
+	opacity: 1;
+	width: 70%;
+	max-width: 320px;
+	z-index: 1001;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 15, 70, 0.5
+		) ), to(rgba(0, 0, 70, 0.5) ) );
+}
 
+.mgwt-DialogPanel-container {
+	color: #fff;
+	text-shadow: 0px -1px 1px #000;
+	border: solid 2px #e6e7ed;
+	-webkit-border-radius: 10px;
+	padding: 10px;
+	background-image: -webkit-gradient(radial, 50% -1180, 150, 50% -280, 1400, color-stop(0,
+		rgba(143, 150, 171, 1) ), color-stop(0.48, rgba(143, 150, 171, 1) ),
+		color-stop(0.499, rgba(75, 88, 120, .9) ),
+		color-stop(0.5, rgba(75, 88, 120, 0) ) );
+}
 
+.mgwt-DialogPanel-title {
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	background: none;
+	border: none;
+	color: #fff;
+	text-shadow: 0px -2px 1px #000;
+	width: 100%;
+	text-align: center;
+	font-size: 19px;
+	margin-bottom: 20px;
+}
 
+.mgwt-DialogPanel-content {
+	margin: 10px;
+}
+
+.mgwt-DialogPanel-footer {
+	-webkit-box-pack: justify;
+	margin-top: 10px;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-sizing: border-box;
+}
+
+.mgwt-DialogPanel-button {
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	-webkit-box-flex: 2;
+	margin-top: 10px;
+	margin-right: 5px;
+	height: 32px;
+	line-height: 32px;
+	-webkit-border-radius: 8px;
+	text-shadow: 0px -2px 1px #000;
+}
+
+.mgwt-DialogPanel-okbutton {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b0b6c4),
+		color-stop(0.5, #7a839b), color-stop(0.5, #515d7c), to(#636e8a) );
+}
+
+.mgwt-DialogPanel-cancelbutton {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#828ba3),
+		color-stop(0.5, #4c5a7c), color-stop(0.5, #27375f), to(#2e3d64) );
+}
+
+.mgwt-DialogPanel-cancelbutton:active,.mgwt-DialogPanel-okbutton:active
+	{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#70747f),
+		color-stop(0.5, #424857), color-stop(0.5, #171e30), to(#222839) );
+}
 </style>
 
 <title>MGWT Showcase</title>
 
 
-<script type="text/javascript" language="javascript" src="showcase/showcase.nocache.js"></script>
+<script type="text/javascript" language="javascript"
+	src="showcase/showcase.nocache.js"></script>
 
 </head>
 
@@ -58,7 +136,8 @@ background-color: rgba(0, 0, 0, 0.4);
 
 
 <noscript>
-<div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+<div
+	style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
 Your web browser must have JavaScript enabled in order for this
 application to display correctly.</div>
 </noscript>
