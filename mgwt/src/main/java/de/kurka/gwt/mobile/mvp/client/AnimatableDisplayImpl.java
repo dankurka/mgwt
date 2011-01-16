@@ -38,18 +38,31 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	public AnimatableDisplayImpl() {
 		main = new FlowPanel();
+		//TODO css
+		main.setSize("100%", "100%");
+		main.getElement().getStyle().setPosition(Position.ABSOLUTE);
+		main.getElement().getStyle().setLeft(0, Unit.PX);
+		main.getElement().getStyle().setRight(0, Unit.PX);
+		main.getElement().getStyle().setTop(0, Unit.PX);
+		main.getElement().getStyle().setBottom(0, Unit.PX);
 
 		first = new FlowPanel();
 		//TODO move into css
 		first.getElement().getStyle().setPosition(Position.ABSOLUTE);
 		first.getElement().getStyle().setWidth(100, Unit.PCT);
 		first.getElement().getStyle().setHeight(100, Unit.PCT);
+
+		first.addStyleName("threedstuff");
+
 		main.add(first);
 		second = new FlowPanel();
 		//TODO move into css
 		second.getElement().getStyle().setPosition(Position.ABSOLUTE);
 		second.getElement().getStyle().setWidth(100, Unit.PCT);
 		second.getElement().getStyle().setHeight(100, Unit.PCT);
+
+		second.addStyleName("threedstuff");
+
 		main.add(second);
 	}
 
@@ -69,8 +82,6 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	}
 
 	private void removeAllStyles() {
-
-		main.removeStyleName("threedstuff");
 
 		first.removeStyleName("in");
 		first.removeStyleName("out");
@@ -101,6 +112,10 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	}
 
 	private void onAnimationEnd() {
+
+		first.getElement().getStyle().setZIndex(1);
+		second.getElement().getStyle().setZIndex(1);
+
 		if (showFirst) {
 			//second.clear();
 			second.getElement().getStyle().setDisplay(Display.NONE);
@@ -146,9 +161,9 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			addAnimationEndEvent = null;
 		}
 
-		if (!Animation.ANIMATION_SLIDE.equals(type) && !Animation.ANIMATION_SLIDE_UP.equals(type)) {
-			main.addStyleName("threedstuff");
-		}
+		//if (!Animation.ANIMATION_SLIDE.equals(type) && !Animation.ANIMATION_SLIDE_UP.equals(type)) {
+
+		//}
 
 		addAnimationEndEvent = addAnimationEndEvent(first.getElement());
 
@@ -169,6 +184,9 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			first.addStyleName("out");
 			second.addStyleName("in");
 		}
+
+		first.getElement().getStyle().setZIndex(-1);
+		second.getElement().getStyle().setZIndex(-1);
 
 		first.getElement().getStyle().setDisplay(Display.BLOCK);
 		second.getElement().getStyle().setDisplay(Display.BLOCK);
