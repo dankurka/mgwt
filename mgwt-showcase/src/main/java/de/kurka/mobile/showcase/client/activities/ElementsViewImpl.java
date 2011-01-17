@@ -75,11 +75,12 @@ public class ElementsViewImpl implements ElementsView {
 		widgetList.add(mListBox);
 
 		MCheckBox mCheckBox = new MCheckBox();
-		mCheckBox.setText("smeeee");
+		//mCheckBox.setText("smeeee");
 		widgetList.add(mCheckBox);
 
 		MCheckBox mCheckBox1 = new MCheckBox();
-		mCheckBox1.setText("again");
+		//mCheckBox1.setText("again");
+		mCheckBox1.setImportant(true);
 		widgetList.add(mCheckBox1);
 
 		MRadioButton androidRadioButton = new MRadioButton("os");
