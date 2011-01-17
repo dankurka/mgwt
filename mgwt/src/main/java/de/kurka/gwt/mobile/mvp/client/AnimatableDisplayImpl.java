@@ -113,9 +113,6 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	private void onAnimationEnd() {
 
-		first.getElement().getStyle().setZIndex(1);
-		second.getElement().getStyle().setZIndex(1);
-
 		if (showFirst) {
 			//second.clear();
 			second.getElement().getStyle().setDisplay(Display.NONE);
@@ -184,9 +181,6 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			first.addStyleName("out");
 			second.addStyleName("in");
 		}
-
-		first.getElement().getStyle().setZIndex(-1);
-		second.getElement().getStyle().setZIndex(-1);
 
 		first.getElement().getStyle().setDisplay(Display.BLOCK);
 		second.getElement().getStyle().setDisplay(Display.BLOCK);
