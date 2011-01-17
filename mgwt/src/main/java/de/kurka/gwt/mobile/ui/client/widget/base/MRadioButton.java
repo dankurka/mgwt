@@ -65,8 +65,11 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 
 			private boolean ignore;
 			private boolean labelOrContainer;
-			private int x;
-			private int y;
+			private int start_x;
+			private int start_y;
+
+			private int last_x;
+			private int last_y;
 
 			@Override
 			public void onTouchCanceled(TouchCancelEvent event) {
@@ -81,8 +84,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 				if (ignore)
 					return;
 
-				Touch touch = event.touches().get(0);
-				if (Math.abs(touch.getPageX() - x) < 5 && Math.abs(touch.getPageY() - y) < 5) {
+				if (Math.abs(last_x - start_x) < 8 && Math.abs(last_y - start_y) < 8) {
 					if (labelOrContainer) {
 						inputRadio.setChecked(true);
 						ValueChangeEvent.fire(MRadioButton.this, true);
@@ -95,6 +97,9 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 			public void onTouchMove(TouchMoveEvent event) {
 				if (ignore)
 					return;
+				Touch touch = event.touches().get(0);
+				last_x = touch.getPageX();
+				last_y = touch.getPageY();
 				System.out.println("move" + inputRadio.isChecked());
 
 			}
@@ -108,8 +113,10 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 					return;
 
 				Touch touch = event.touches().get(0);
-				x = touch.getPageX();
-				y = touch.getPageY();
+				start_x = touch.getPageX();
+				start_y = touch.getPageY();
+				last_x = start_x;
+				last_y = start_y;
 
 				EventTarget eventTarget = event.getNativeEvent().getEventTarget();
 				labelOrContainer = true;
@@ -156,9 +163,6 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.event.logical.shared.HasValueChangeHandlers#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)
-	 */
 	@Override
 	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Boolean> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
