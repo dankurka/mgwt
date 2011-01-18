@@ -866,36 +866,45 @@ key frame for doing nothing
 
 
 .slideup.in {
-	-webkit-animation-name: slideup;
+	-webkit-animation-name: slideupfrombottom;
 	z-index: 10;
 }
 
 .slideup.out {
-	-webkit-animation-name: donothing;
+	-webkit-animation-name: slideupfrommiddle;
 	z-index: 0;
 }
 
 .slideup.out.reverse {
 	z-index: 10;
-	-webkit-animation-name: slidedown;
+	-webkit-animation-name: slidedownfrommiddle;
 }
 
 .slideup.in.reverse {
 	z-index: 0;
-	-webkit-animation-name: donothing;
+	-webkit-animation-name: slidedownfromtop;
 }
 
 
-@-webkit-keyframes slideup {
+@-webkit-keyframes slideupfrombottom {
     from { -webkit-transform: translateY(100%); }
     to { -webkit-transform: translateY(0); }
 }
 
-@-webkit-keyframes slidedown {
+@-webkit-keyframes slidedownfrommiddle {
     from { -webkit-transform: translateY(0); }
     to { -webkit-transform: translateY(100%); }
 }
 
+@-webkit-keyframes slideupfrommiddle {
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(-100%); }
+}
+
+@-webkit-keyframes slidedownfromtop {
+    from { -webkit-transform: translateY(-100%); }
+    to { -webkit-transform: translateY(0%); }
+}
 
 
 
