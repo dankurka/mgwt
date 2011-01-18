@@ -87,7 +87,6 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		first.removeStyleName("out");
 		first.removeStyleName("reverse");
 
-		first.removeStyleName(Animation.ANIMATION_CUBE);
 		first.removeStyleName(Animation.ANIMATION_DISSOLVE);
 		first.removeStyleName(Animation.ANIMATION_FADE);
 		first.removeStyleName(Animation.ANIMATION_FLIP);
@@ -100,7 +99,6 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		second.removeStyleName("out");
 		second.removeStyleName("reverse");
 
-		second.removeStyleName(Animation.ANIMATION_CUBE);
 		second.removeStyleName(Animation.ANIMATION_DISSOLVE);
 		second.removeStyleName(Animation.ANIMATION_FADE);
 		second.removeStyleName(Animation.ANIMATION_FLIP);

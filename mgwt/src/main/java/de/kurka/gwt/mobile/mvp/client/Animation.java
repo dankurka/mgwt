@@ -27,7 +27,6 @@ public class Animation {
 	public static final String ANIMATION_FLIP = "flip";
 	public static final String ANIMATION_POP = "pop";
 	public static final String ANIMATION_SWAP = "swap";
-	public static final String ANIMATION_CUBE = "cube";
 
 	private String type = ANIMATION_SLIDE;
 	private boolean direction;
