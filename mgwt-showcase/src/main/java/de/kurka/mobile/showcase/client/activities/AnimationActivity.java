@@ -16,7 +16,6 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
-import de.kurka.mobile.showcase.client.places.AnimationCubePlace;
 import de.kurka.mobile.showcase.client.places.AnimationDissolvePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFadePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFlipPlace;
@@ -97,10 +96,6 @@ public class AnimationActivity extends AbstractActivity {
 					clientFactory.getPlaceController().goTo(new AnimationSwapPlace());
 
 					break;
-				case 7:
-					clientFactory.getPlaceController().goTo(new AnimationCubePlace());
-
-					break;
 
 				default:
 					break;
@@ -126,7 +121,6 @@ public class AnimationActivity extends AbstractActivity {
 		list.add(new Animation("Flip"));
 		list.add(new Animation("Pop"));
 		list.add(new Animation("Swap"));
-		list.add(new Animation("Cube"));
 
 		return list;
 	}

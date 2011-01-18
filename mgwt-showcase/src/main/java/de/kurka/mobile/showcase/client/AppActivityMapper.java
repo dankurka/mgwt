@@ -21,7 +21,6 @@ import de.kurka.mobile.showcase.client.activities.SearchBoxActivity;
 import de.kurka.mobile.showcase.client.activities.TabBarActivity;
 import de.kurka.mobile.showcase.client.activities.UIActivity;
 import de.kurka.mobile.showcase.client.places.AboutPlace;
-import de.kurka.mobile.showcase.client.places.AnimationCubePlace;
 import de.kurka.mobile.showcase.client.places.AnimationDissolvePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFadePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFlipPlace;
@@ -99,7 +98,7 @@ public class AppActivityMapper implements ActivityMapper {
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace
-				|| place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace || place instanceof AnimationSwapPlace || place instanceof AnimationCubePlace) {
+				|| place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace || place instanceof AnimationSwapPlace) {
 			return new AnimationDoneActivity(clientFactory);
 		}
 		return new HomeActivity(clientFactory);

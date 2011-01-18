@@ -9,7 +9,6 @@ import com.google.gwt.place.shared.Place;
 import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.mvp.client.AnimationMapper;
 import de.kurka.mobile.showcase.client.places.AboutPlace;
-import de.kurka.mobile.showcase.client.places.AnimationCubePlace;
 import de.kurka.mobile.showcase.client.places.AnimationDissolvePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFadePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFlipPlace;
@@ -258,20 +257,6 @@ public class AppAnimationMapper implements AnimationMapper {
 		if (oldPlace instanceof AnimationSwapPlace && newPlace instanceof AnimationPlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_SWAP);
-			animation.setDirection(true);
-			return animation;
-		}
-
-		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationCubePlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_CUBE);
-			animation.setDirection(false);
-			return animation;
-		}
-
-		if (oldPlace instanceof AnimationCubePlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_CUBE);
 			animation.setDirection(true);
 			return animation;
 		}
