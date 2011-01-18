@@ -150,6 +150,8 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	@Override
 	public void animate(Animation animation, boolean currentIsFirst) {
+		blurBeforeAnimation();
+
 		String type = animation.getType();
 		showFirst = currentIsFirst;
 
@@ -186,6 +188,22 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		second.getElement().getStyle().setDisplay(Display.BLOCK);
 
 	}
+
+	/**
+	 * 
+	 */
+	private native void blurBeforeAnimation() /*-{
+		var node = $doc.querySelector(":focus");
+
+
+		if(node != null)
+		{
+		if(typeof(node.blur) == "function"){
+		node.blur();
+		}
+
+		}
+	}-*/;
 
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.IsWidget#asWidget()
