@@ -24,6 +24,8 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
+
 /**
  * @author kurt
  *
@@ -114,9 +116,16 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		if (showFirst) {
 			//second.clear();
 			second.getElement().getStyle().setDisplay(Display.NONE);
+			if (FeatureDetection.isPad()) {
+				second.getElement().getStyle().setZIndex(1);
+			}
 		} else {
 			//first.clear();
 			first.getElement().getStyle().setDisplay(Display.NONE);
+			if (FeatureDetection.isPad()) {
+				first.getElement().getStyle().setZIndex(1);
+			}
+
 		}
 		removeAllStyles();
 
@@ -176,10 +185,16 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		if (currentIsFirst) {
 			first.addStyleName("in");
 			second.addStyleName("out");
+			if (FeatureDetection.isPad()) {
+				second.getElement().getStyle().setZIndex(-1);
+			}
 
 		} else {
 			first.addStyleName("out");
 			second.addStyleName("in");
+			if (FeatureDetection.isPad()) {
+				first.getElement().getStyle().setZIndex(-1);
+			}
 		}
 
 		first.getElement().getStyle().setDisplay(Display.BLOCK);

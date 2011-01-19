@@ -32,6 +32,23 @@ public class FeatureDetection {
 	}
 
 	private static native boolean _has3d()/*-{
-											return ('WebKitCSSMatrix' in $wnd && 'm11' in new WebKitCSSMatrix())
-											}-*/;
+		return ('WebKitCSSMatrix' in $wnd && 'm11' in new WebKitCSSMatrix())
+	}-*/;
+
+	private static boolean isPad;
+	private static boolean testedForIpad;
+
+	public static boolean isPad() {
+		if (!testedFor3d) {
+			isPad = _isiPad();
+		}
+		return isPad;
+	}
+
+	/**
+	 * @return
+	 */
+	private static native boolean _isiPad() /*-{
+		return $wnd.navigator.userAgent.toUpperCase().indexOf("IPAD")!=-1
+	}-*/;
 }
