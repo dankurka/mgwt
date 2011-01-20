@@ -15,20 +15,17 @@
  */
 package de.kurka.gwt.mobile.ui.client.widget;
 
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class ProgressBar extends Composite {
-
-	private FlowPanel main;
+public class ProgressBar extends Widget {
 
 	public ProgressBar() {
-		main = new FlowPanel();
-		initWidget(main);
+		setElement(DOM.createDiv());
 
 		setStylePrimaryName("mgwt-ProgressBar");
 	}
