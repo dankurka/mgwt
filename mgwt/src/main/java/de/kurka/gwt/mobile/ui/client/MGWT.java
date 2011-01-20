@@ -96,10 +96,12 @@ public class MGWT {
 	private static native void setUpPreventScrolling(Element el)/*-{
 																var func = function(event){
 																event.preventDefault();
+																event.stopPropagation();
+																return false;
 																};
 
 																el.ontouchmove = func;
-																//el.ontouchstart = func;
-																//el.ontouchend = func;
+																el.ontouchstart = func;
+																el.ontouchend = func;
 																}-*/;
 }
