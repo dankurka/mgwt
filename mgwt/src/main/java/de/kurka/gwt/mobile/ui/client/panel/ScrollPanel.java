@@ -218,9 +218,10 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
 
-			//event.preventDefault();
-			//event.stopPropagation();
+			event.preventDefault();
+			event.stopPropagation();
 			currentlyScrolling = true;
+			//event.stopPropagation();
 
 			moved = false;
 			distX = 0;
@@ -248,6 +249,9 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		public void onTouchMove(TouchMoveEvent event) {
 			if (!currentlyScrolling)
 				return;
+
+			event.preventDefault();
+			event.stopPropagation();
 
 			Touch touch = event.touches().get(0);
 
@@ -311,6 +315,9 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 			if (!currentlyScrolling)
 				return;
 
+			event.preventDefault();
+			event.stopPropagation();
+
 			currentlyScrolling = false;
 
 			if (!moved) {
@@ -350,7 +357,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
-
+			currentlyScrolling = false;
 		}
 
 	}
