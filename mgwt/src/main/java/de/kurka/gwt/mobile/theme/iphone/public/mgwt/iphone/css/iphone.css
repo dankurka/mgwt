@@ -143,34 +143,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 }
 
 
-/*
-.mgwt-HeaderButton-round {
-	border-width: 0 4px 0 4px;
-	-webkit-border-image: url('../images/button.png') 0 4 0 4;
-}
 
-.mgwt-HeaderButton-round:active {
-	-webkit-border-image: url('../images/button_touched.png') 0 4 0 4;
-}
-
-.mgwt-HeaderButton-back {
-	-webkit-border-image: url('../images/back_button.png') 0 4 0 13;
-	border-width: 0 4px 0 13px;
-}
-
-.mgwt-HeaderButton-back:active {
-	-webkit-border-image: url('../images/back_button_touched.png') 0 4 0 13;
-}
-
-.mgwt-HeaderButton-forward {
-	-webkit-border-image: url('../images/forward_button.png') 0 13 0 4;
-	border-width: 0 13px 0 4px;
-}
-
-.mgwt-HeaderButton-forward:active {
-	-webkit-border-image: url('../images/forward_button_touched.png') 0 13 0 4;
-}
-*/
 
 .mgwt-ButtonBar {
 	position: absolute;
@@ -1423,5 +1396,44 @@ Checkbox
 
     100% { background-position-x: 100%; }
 
+}
+
+
+.mgwt-Slider {
+	display: inline-block;
+	height: 9px;
+	width: 277px;
+	-webkit-box-sizing: border-box;
+	-webkit-box-shadow: 2px 2px 4px #666666;
+	-webkit-border-radius: 4px;
+	background-repeat: no-repeat, repeat-x;
+	background-image:
+		-webkit-gradient(linear, left top ,left bottom,
+		   from(#0a3b87),
+		   color-stop(.5, #4c8de7),
+		   color-stop(.95, #6babf5),
+		   to(#0a3b87)),
+		-webkit-gradient(linear, left top ,left bottom,
+			from(#929292),
+			color-stop(.5, #f0f0f0),
+			color-stop(.5, #fff),
+			color-stop(.95, #fff),
+			to(#929292));
+}
+.mgwt-Slider .pointer {
+	position:relative;
+	height:20px;
+	width:20px;
+	left: 0px;
+	top: -6px;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-box-shadow: 2px 2px 3px #666666;
+	-webkit-border-radius: 10px;
+	background-image:
+	   -webkit-gradient(linear, left top, left bottom,
+		   from(#aaaaaa),
+		   color-stop(.5, #eeeeee),
+		   to(#cccccc));
+	
 }
 
