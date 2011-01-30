@@ -15,6 +15,7 @@
  */
 package de.kurka.mobile.showcase.client.activities;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -22,6 +23,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.ProgressBar;
+import de.kurka.gwt.mobile.ui.client.widget.ProgressIndicator;
 
 /**
  * @author Daniel Kurka
@@ -45,6 +47,9 @@ public class ProgressBarViewImpl implements ProgressBarView {
 		main.add(headerPanel);
 
 		main.add(new ProgressBar());
+		ProgressIndicator progressIndicator = new ProgressIndicator();
+		progressIndicator.getElement().getStyle().setMarginLeft(100, Unit.PX);
+		main.add(progressIndicator);
 
 	}
 
