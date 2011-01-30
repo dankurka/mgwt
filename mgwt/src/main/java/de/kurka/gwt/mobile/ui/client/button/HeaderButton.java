@@ -15,16 +15,41 @@
  */
 package de.kurka.gwt.mobile.ui.client.button;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.ParagraphElement;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
+
 /**
  * @author Daniel Kurka
  *
  */
 public class HeaderButton extends ButtonBase {
 
+	private ParagraphElement pElement;
+
 	public HeaderButton() {
 
 		setStylePrimaryName("mgwt-HeaderButton");
 
+		Element pointDiv = DOM.createDiv();
+		Element pointSpan = DOM.createSpan();
+		pointDiv.appendChild(pointSpan);
+		getElement().appendChild(pointDiv);
+
+		pElement = Document.get().createPElement();
+		getElement().appendChild(pElement);
+
 	}
 
+	@Override
+	public void setText(String text) {
+		pElement.setInnerText(text);
+	}
+
+	@Override
+	public String getText() {
+
+		return pElement.getInnerText();
+	}
 }

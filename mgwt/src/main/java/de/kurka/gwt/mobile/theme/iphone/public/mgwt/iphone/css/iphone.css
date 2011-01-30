@@ -47,13 +47,13 @@ body.landscape {
 
 .mgwt-HeaderPanel .left {
 	position: absolute;
-	top: 6px;
+	top: 0px;
 	left: 6px;
 }
 
 .mgwt-HeaderPanel .right {
 	position: absolute;
-	top: 6px;
+	top: 0px;
 	right: 6px;
 }
 
@@ -61,21 +61,89 @@ body.landscape {
 	
 	min-width: 40px;
 	max-width: 60px;
-	height: 23px;
+	
 	
 	white-space: nowrap;
-	overflow: hidden;
+	
 	text-overflow: ellipsis;
-	padding-top: 7px;
-	padding-right: 4px;
+	
 	z-index: 1;
 	font-size: 12px;
 	font-weight: bold;
 	text-align: center;
 	color: white;
 	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+	
+	
+	margin: 6px 0 0 12px;
+	height: 26px;
+	
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	-webkit-border-radius: 5px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#9fb3cc),
+		to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 1px
+		rgba(0, 0, 0, 0.2);
 }
 
+.mgwt-HeaderButton p { 
+    position: relative; 
+    z-index: 2; 
+    
+    margin: 0; 
+    padding: 5px; 
+    font-size: 12px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
+    text-align: center;
+}
+
+
+
+.mgwt-HeaderButton:active {
+background: -webkit-gradient(linear, left top, left bottom, from(#7582a4),
+		to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
+}
+
+
+
+.mgwt-HeaderButton-back div {
+	position: absolute;
+	z-index: 1;
+	top: 4px;
+	left: -7px;
+	-webkit-transform: rotate(51deg);
+}
+
+.mgwt-HeaderButton-back span { 
+    -webkit-transform: skew(15deg);
+    display: block; 
+    width: 15px; 
+    height: 16px; 
+    background: -webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa));   
+    -webkit-border-radius: 1px; 
+    border: 1px solid rgba(0,0,0, 0.4); 
+    border-right: 0; 
+    border-top: 0;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255, 0.25);
+}
+
+.mgwt-HeaderButton:active span{
+background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
+		to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
+}
+
+.mgwt-HeaderButton-forward div {
+	position: absolute;
+	z-index: 1;
+	top: 4px;
+	right: -7px;
+	-webkit-transform: rotate(51deg);
+}
+
+
+/*
 .mgwt-HeaderButton-round {
 	border-width: 0 4px 0 4px;
 	-webkit-border-image: url('../images/button.png') 0 4 0 4;
@@ -102,6 +170,7 @@ body.landscape {
 .mgwt-HeaderButton-forward:active {
 	-webkit-border-image: url('../images/forward_button_touched.png') 0 13 0 4;
 }
+*/
 
 .mgwt-ButtonBar {
 	position: absolute;
