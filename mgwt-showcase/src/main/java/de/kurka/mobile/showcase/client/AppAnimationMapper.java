@@ -22,8 +22,10 @@ import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
 import de.kurka.mobile.showcase.client.places.PopupPlace;
+import de.kurka.mobile.showcase.client.places.ProgressBarPlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
 import de.kurka.mobile.showcase.client.places.SearchBoxPlace;
+import de.kurka.mobile.showcase.client.places.SliderPlace;
 import de.kurka.mobile.showcase.client.places.TabBarPlace;
 import de.kurka.mobile.showcase.client.places.UIPlace;
 
@@ -163,6 +165,34 @@ public class AppAnimationMapper implements AnimationMapper {
 		}
 
 		if (oldPlace instanceof PopupPlace && newPlace instanceof UIPlace) {
+			Animation animation = new Animation();
+			animation.setType(Animation.ANIMATION_SLIDE);
+			animation.setDirection(true);
+			return animation;
+		}
+
+		if (oldPlace instanceof UIPlace && newPlace instanceof ProgressBarPlace) {
+			Animation animation = new Animation();
+			animation.setType(Animation.ANIMATION_SLIDE);
+			animation.setDirection(false);
+			return animation;
+		}
+
+		if (oldPlace instanceof ProgressBarPlace && newPlace instanceof UIPlace) {
+			Animation animation = new Animation();
+			animation.setType(Animation.ANIMATION_SLIDE);
+			animation.setDirection(true);
+			return animation;
+		}
+
+		if (oldPlace instanceof UIPlace && newPlace instanceof SliderPlace) {
+			Animation animation = new Animation();
+			animation.setType(Animation.ANIMATION_SLIDE);
+			animation.setDirection(false);
+			return animation;
+		}
+
+		if (oldPlace instanceof SliderPlace && newPlace instanceof UIPlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_SLIDE);
 			animation.setDirection(true);

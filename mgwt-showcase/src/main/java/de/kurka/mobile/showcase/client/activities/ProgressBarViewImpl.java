@@ -16,51 +16,36 @@
 package de.kurka.mobile.showcase.client.activities;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.FormPanel;
-import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
-import com.google.gwt.user.client.ui.FormPanel.SubmitHandler;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
-import de.kurka.gwt.mobile.ui.client.widget.base.MSearchBox;
+import de.kurka.gwt.mobile.ui.client.widget.ProgressBar;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class SearchBoxViewGwtImpl implements SearchBoxView {
-
+public class ProgressBarViewImpl implements ProgressBarView {
 	private FlowPanel main;
-	private HeaderPanel headerPanel;
-	private HeaderBackButton backButton;
+	private HeaderBackButton headerBackButton;
 
-	public SearchBoxViewGwtImpl() {
+	public ProgressBarViewImpl() {
+
 		main = new FlowPanel();
 
-		headerPanel = new HeaderPanel();
+		HeaderPanel headerPanel = new HeaderPanel();
+		headerPanel.getTitleWidget().setText("ProgressBar");
 
-		headerPanel.getTitleWidget().setText("SearchBox");
-		backButton = new HeaderBackButton();
-
-		backButton.setText("UI");
-
-		headerPanel.setLeftWidget(backButton);
+		headerBackButton = new HeaderBackButton();
+		headerBackButton.setText("UI");
+		headerPanel.setLeftWidget(headerBackButton);
 
 		main.add(headerPanel);
-		FormPanel formPanel = new FormPanel("");
-		formPanel.addSubmitHandler(new SubmitHandler() {
 
-			@Override
-			public void onSubmit(SubmitEvent event) {
-				event.cancel();
+		main.add(new ProgressBar());
 
-			}
-		});
-		MSearchBox searchBox = new MSearchBox();
-		formPanel.setWidget(searchBox);
-		main.add(formPanel);
 	}
 
 	@Override
@@ -68,12 +53,8 @@ public class SearchBoxViewGwtImpl implements SearchBoxView {
 		return main;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.activities.SearchBoxView#getBackButton()
-	 */
 	@Override
 	public HasSimpleTouchHandler getBackButton() {
-		return backButton;
+		return headerBackButton;
 	}
-
 }

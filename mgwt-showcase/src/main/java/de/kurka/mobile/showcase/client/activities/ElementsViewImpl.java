@@ -5,6 +5,7 @@
 package de.kurka.mobile.showcase.client.activities;
 
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
@@ -54,7 +55,10 @@ public class ElementsViewImpl implements ElementsView {
 		WidgetList widgetList = new WidgetList();
 		scrollPanel.setWidget(widgetList);
 
-		main.add(scrollPanel);
+		FormPanel formPanel = new FormPanel();
+		formPanel.setWidget(scrollPanel);
+
+		main.add(formPanel);
 
 		MTextBox mTextBox = new MTextBox();
 		mTextBox.setPlaceHolder("textbox");

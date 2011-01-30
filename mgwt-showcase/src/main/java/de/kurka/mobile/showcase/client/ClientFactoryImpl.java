@@ -1,6 +1,17 @@
-/**
- * 28.12.2010
- * created by kurt
+/*
+ * Copyright 2010 Daniel Kurka
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package de.kurka.mobile.showcase.client;
 
@@ -24,17 +35,21 @@ import de.kurka.mobile.showcase.client.activities.HomeView;
 import de.kurka.mobile.showcase.client.activities.HomeViewImpl;
 import de.kurka.mobile.showcase.client.activities.PopupView;
 import de.kurka.mobile.showcase.client.activities.PopupViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.ProgressBarView;
+import de.kurka.mobile.showcase.client.activities.ProgressBarViewImpl;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetView;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetViewImpl;
 import de.kurka.mobile.showcase.client.activities.SearchBoxView;
 import de.kurka.mobile.showcase.client.activities.SearchBoxViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.SliderView;
+import de.kurka.mobile.showcase.client.activities.SliderViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.TabBarView;
 import de.kurka.mobile.showcase.client.activities.TabBarViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.UIView;
 import de.kurka.mobile.showcase.client.activities.UIViewImpl;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class ClientFactoryImpl implements ClientFactory {
@@ -53,6 +68,9 @@ public class ClientFactoryImpl implements ClientFactory {
 	private TabBarView tabBarView;
 	private ButtonView buttonView;
 	private PopupView popupView;
+	private ProgressBarView progressBarView;
+
+	private SliderView sliderView;
 
 	public ClientFactoryImpl() {
 		eventBus = new SimpleEventBus();
@@ -88,9 +106,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return uiView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getAboutView()
-	 */
 	@Override
 	public AboutView getAboutView() {
 		if (aboutView == null) {
@@ -100,9 +115,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return aboutView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getAnimationView()
-	 */
 	@Override
 	public AnimationView getAnimationView() {
 		if (animationView == null) {
@@ -111,9 +123,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return animationView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getAnimationDoneView()
-	 */
 	@Override
 	public AnimationDoneView getAnimationDoneView() {
 		if (animationDoneView == null) {
@@ -122,9 +131,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return animationDoneView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getScrollWidgetView()
-	 */
 	@Override
 	public ScrollWidgetView getScrollWidgetView() {
 		if (scrollWidgetView == null) {
@@ -133,9 +139,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return scrollWidgetView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getElementsView()
-	 */
 	@Override
 	public ElementsView getElementsView() {
 		if (elementsView == null) {
@@ -144,9 +147,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return elementsView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getFooterPanelView()
-	 */
 	@Override
 	public ButtonBarView getButtonBarView() {
 		if (footerPanelView == null) {
@@ -155,9 +155,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return footerPanelView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getSearchBoxView()
-	 */
 	@Override
 	public SearchBoxView getSearchBoxView() {
 		if (searchBoxViewGwtImpl == null) {
@@ -166,9 +163,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return searchBoxViewGwtImpl;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getTabBarView()
-	 */
 	@Override
 	public TabBarView getTabBarView() {
 		if (tabBarView == null) {
@@ -177,9 +171,6 @@ public class ClientFactoryImpl implements ClientFactory {
 		return tabBarView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getButtonView()
-	 */
 	@Override
 	public ButtonView getButtonView() {
 		if (buttonView == null) {
@@ -188,15 +179,28 @@ public class ClientFactoryImpl implements ClientFactory {
 		return buttonView;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.ClientFactory#getPopupView()
-	 */
 	@Override
 	public PopupView getPopupView() {
 		if (popupView == null) {
 			popupView = new PopupViewGwtImpl();
 		}
 		return popupView;
+	}
+
+	@Override
+	public ProgressBarView getProgressBarView() {
+		if (progressBarView == null) {
+			progressBarView = new ProgressBarViewImpl();
+		}
+		return progressBarView;
+	}
+
+	@Override
+	public SliderView getSliderView() {
+		if (sliderView == null) {
+			sliderView = new SliderViewGwtImpl();
+		}
+		return sliderView;
 	}
 
 }

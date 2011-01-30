@@ -16,8 +16,10 @@ import de.kurka.mobile.showcase.client.activities.ButtonBarActivity;
 import de.kurka.mobile.showcase.client.activities.ElementsActivity;
 import de.kurka.mobile.showcase.client.activities.HomeActivity;
 import de.kurka.mobile.showcase.client.activities.PopupActivity;
+import de.kurka.mobile.showcase.client.activities.ProgressBarActivity;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetActivity;
 import de.kurka.mobile.showcase.client.activities.SearchBoxActivity;
+import de.kurka.mobile.showcase.client.activities.SliderActivity;
 import de.kurka.mobile.showcase.client.activities.TabBarActivity;
 import de.kurka.mobile.showcase.client.activities.UIActivity;
 import de.kurka.mobile.showcase.client.places.AboutPlace;
@@ -34,8 +36,10 @@ import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
 import de.kurka.mobile.showcase.client.places.PopupPlace;
+import de.kurka.mobile.showcase.client.places.ProgressBarPlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
 import de.kurka.mobile.showcase.client.places.SearchBoxPlace;
+import de.kurka.mobile.showcase.client.places.SliderPlace;
 import de.kurka.mobile.showcase.client.places.TabBarPlace;
 import de.kurka.mobile.showcase.client.places.UIPlace;
 
@@ -95,6 +99,14 @@ public class AppActivityMapper implements ActivityMapper {
 
 		if (place instanceof PopupPlace) {
 			return new PopupActivity(clientFactory);
+		}
+
+		if (place instanceof ProgressBarPlace) {
+			return new ProgressBarActivity(clientFactory);
+		}
+
+		if (place instanceof SliderPlace) {
+			return new SliderActivity(clientFactory);
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace

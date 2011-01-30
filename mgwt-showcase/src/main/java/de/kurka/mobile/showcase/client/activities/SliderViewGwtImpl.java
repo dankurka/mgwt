@@ -16,51 +16,45 @@
 package de.kurka.mobile.showcase.client.activities;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.FormPanel;
-import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
-import com.google.gwt.user.client.ui.FormPanel.SubmitHandler;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHTML;
+import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
-import de.kurka.gwt.mobile.ui.client.widget.base.MSearchBox;
+import de.kurka.gwt.mobile.ui.client.widget.base.MSlider;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class SearchBoxViewGwtImpl implements SearchBoxView {
+public class SliderViewGwtImpl implements SliderView {
 
 	private FlowPanel main;
-	private HeaderPanel headerPanel;
-	private HeaderBackButton backButton;
+	private HeaderBackButton headerBackButton;
+	private MSlider mSlider;
+	private HTML valueField;
 
-	public SearchBoxViewGwtImpl() {
+	public SliderViewGwtImpl() {
 		main = new FlowPanel();
 
-		headerPanel = new HeaderPanel();
-
-		headerPanel.getTitleWidget().setText("SearchBox");
-		backButton = new HeaderBackButton();
-
-		backButton.setText("UI");
-
-		headerPanel.setLeftWidget(backButton);
-
+		HeaderPanel headerPanel = new HeaderPanel();
 		main.add(headerPanel);
-		FormPanel formPanel = new FormPanel("");
-		formPanel.addSubmitHandler(new SubmitHandler() {
+		headerPanel.getTitleWidget().setText("Slider");
 
-			@Override
-			public void onSubmit(SubmitEvent event) {
-				event.cancel();
+		headerBackButton = new HeaderBackButton();
+		headerBackButton.setText("UI");
+		headerPanel.setLeftWidget(headerBackButton);
 
-			}
-		});
-		MSearchBox searchBox = new MSearchBox();
-		formPanel.setWidget(searchBox);
-		main.add(formPanel);
+		mSlider = new MSlider();
+		main.add(mSlider);
+		mSlider.setMax(250);
+
+		valueField = new HTML("0");
+		main.add(valueField);
+
 	}
 
 	@Override
@@ -68,12 +62,22 @@ public class SearchBoxViewGwtImpl implements SearchBoxView {
 		return main;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.activities.SearchBoxView#getBackButton()
-	 */
 	@Override
 	public HasSimpleTouchHandler getBackButton() {
-		return backButton;
+		return headerBackButton;
+	}
+
+	@Override
+	public HasValue<Integer> getSliderValue() {
+		return mSlider;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.mobile.showcase.client.activities.SliderView#getTextField()
+	 */
+	@Override
+	public HasHTML getTextField() {
+		return valueField;
 	}
 
 }
