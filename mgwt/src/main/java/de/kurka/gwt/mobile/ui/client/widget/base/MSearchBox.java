@@ -63,6 +63,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		//TODO 
 		box.getElement().setAttribute("autocapitalize", "off");
 		box.getElement().setAttribute("autocorrect", "off");
+		box.getElement().setAttribute("type", "search");
 
 		roundDiv.add(box);
 
