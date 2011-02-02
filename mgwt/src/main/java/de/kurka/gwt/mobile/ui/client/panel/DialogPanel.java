@@ -46,11 +46,12 @@ public class DialogPanel extends Composite {
 	public DialogPanel() {
 
 		wrapper = new FlowPanel();
+		//TODO css?
 		wrapper.getElement().setAttribute("style", "display: table; width: 100%; height:100%");
 		initWidget(wrapper);
 
 		cell = new FlowPanel();
-
+		//TODO css?
 		cell.getElement().setAttribute("style", "display: table-cell;");
 		cell.getElement().getStyle().setVerticalAlign(VerticalAlign.MIDDLE);
 
