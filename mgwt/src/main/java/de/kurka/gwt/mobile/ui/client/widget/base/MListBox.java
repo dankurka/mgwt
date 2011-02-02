@@ -24,6 +24,9 @@ import com.google.gwt.user.client.ui.ListBox;
 public class MListBox extends ListBox {
 
 	public MListBox() {
+
 		setStylePrimaryName("mgwt-ListBox");
+
 	}
+
 }
