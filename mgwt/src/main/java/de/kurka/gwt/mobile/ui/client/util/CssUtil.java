@@ -35,18 +35,18 @@ public class CssUtil {
 	}
 
 	private native static void _translate(Element el, String css)/*-{
-																	el.style.webkitTransform = css;
-																	}-*/;
+		el.style.webkitTransform = css;
+	}-*/;
 
 	public native static void setWebKitTransitionsDelay(Element el, int milliseconds)/*-{
-																						el.style.webkitTransitionDelay = milliseconds + "ms";
-																						}-*/;
+		el.style.webkitTransitionDelay = milliseconds + "ms";
+	}-*/;
 
 	public native static void setOpacity(Element el, double opacity)/*-{
-																	el.style.opacity = opacity;
-																	}-*/;
+		el.style.opacity = opacity;
+	}-*/;
 
 	public native static void setWebKitTransitionDuration(Element el, int time)/*-{
-																				el.style.webkitTransitionDuration = time + "ms";
-																				}-*/;
+		el.style.webkitTransitionDuration = time + "ms";
+	}-*/;
 }
