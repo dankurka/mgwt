@@ -38,6 +38,8 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	private FlowPanel second;
 
+	private boolean lastDir;
+
 	public AnimatableDisplayImpl() {
 		main = new FlowPanel();
 		//TODO css
@@ -117,13 +119,22 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			//second.clear();
 			second.getElement().getStyle().setDisplay(Display.NONE);
 			if (FeatureDetection.isPad()) {
-				second.getElement().getStyle().setZIndex(1);
+				if (!lastDir) {
+					second.getElement().getStyle().setZIndex(1);
+				} else {
+					first.getElement().getStyle().setZIndex(1);
+				}
 			}
 		} else {
 			//first.clear();
 			first.getElement().getStyle().setDisplay(Display.NONE);
 			if (FeatureDetection.isPad()) {
-				first.getElement().getStyle().setZIndex(1);
+				if (!lastDir) {
+					first.getElement().getStyle().setZIndex(1);
+				} else {
+					second.getElement().getStyle().setZIndex(1);
+				}
+
 			}
 
 		}
@@ -176,6 +187,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		first.addStyleName(type);
 		second.addStyleName(type);
 
+		lastDir = animation.isDirection();
 		//backwards
 		if (animation.isDirection()) {
 			first.addStyleName("reverse");
@@ -186,14 +198,23 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			first.addStyleName("in");
 			second.addStyleName("out");
 			if (FeatureDetection.isPad()) {
-				second.getElement().getStyle().setZIndex(-1);
+				if (!lastDir) {
+					second.getElement().getStyle().setZIndex(-1);
+				} else {
+					first.getElement().getStyle().setZIndex(-1);
+				}
+
 			}
 
 		} else {
 			first.addStyleName("out");
 			second.addStyleName("in");
 			if (FeatureDetection.isPad()) {
-				first.getElement().getStyle().setZIndex(-1);
+				if (!lastDir) {
+					first.getElement().getStyle().setZIndex(-1);
+				} else {
+					second.getElement().getStyle().setZIndex(-1);
+				}
 			}
 		}
 
