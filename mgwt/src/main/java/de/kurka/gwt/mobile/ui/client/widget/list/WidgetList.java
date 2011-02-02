@@ -68,6 +68,7 @@ public class WidgetList extends Composite implements HasWidgets {
 	@Override
 	public void clear() {
 		container.clear();
+		map.clear();
 
 	}
 
