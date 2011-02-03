@@ -17,6 +17,11 @@ package de.kurka.gwt.mobile.dom.client.event.animation;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * 
+ * @author Daniel Kurka
+ *
+ */
 public interface TransitionEndHandler extends EventHandler {
 	public void onTransitionEnd(TransitionEndEvent event);
 }
