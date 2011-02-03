@@ -181,7 +181,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 		//}
 
-		first.addDomHandler(listener, AnimationEndEvent.getType());
+		animationEnd = first.addDomHandler(listener, AnimationEndEvent.getType());
 
 		first.addStyleName(type);
 		second.addStyleName(type);
