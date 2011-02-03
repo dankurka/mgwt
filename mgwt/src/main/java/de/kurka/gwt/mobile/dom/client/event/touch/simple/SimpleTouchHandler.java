@@ -16,7 +16,7 @@
 package de.kurka.gwt.mobile.dom.client.event.touch.simple;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public interface SimpleTouchHandler {
