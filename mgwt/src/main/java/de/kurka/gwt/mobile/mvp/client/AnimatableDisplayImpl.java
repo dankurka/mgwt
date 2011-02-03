@@ -130,7 +130,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	private void onAnimationEnd() {
 
 		if (showFirst) {
-			//second.clear();
+
 			second.getElement().getStyle().setDisplay(Display.NONE);
 			if (FeatureDetection.isPad()) {
 				if (!lastDir) {
@@ -140,7 +140,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 				}
 			}
 		} else {
-			//first.clear();
+
 			first.getElement().getStyle().setDisplay(Display.NONE);
 			if (FeatureDetection.isPad()) {
 				if (!lastDir) {
@@ -176,10 +176,6 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			animationEnd.removeHandler();
 			animationEnd = null;
 		}
-
-		//if (!Animation.ANIMATION_SLIDE.equals(type) && !Animation.ANIMATION_SLIDE_UP.equals(type)) {
-
-		//}
 
 		animationEnd = first.addDomHandler(listener, AnimationEndEvent.getType());
 
