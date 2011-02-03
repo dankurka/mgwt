@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class AnimatableDisplayImpl implements AnimatableDisplay {

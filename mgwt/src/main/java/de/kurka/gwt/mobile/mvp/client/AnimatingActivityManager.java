@@ -32,7 +32,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class AnimatingActivityManager implements PlaceChangeEvent.Handler, PlaceChangeRequestEvent.Handler {

@@ -18,7 +18,7 @@ package de.kurka.gwt.mobile.mvp.client;
 import com.google.gwt.user.client.ui.IsWidget;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public interface AnimatableDisplay extends IsWidget {

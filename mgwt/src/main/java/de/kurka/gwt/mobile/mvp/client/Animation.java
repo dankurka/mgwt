@@ -16,7 +16,7 @@
 package de.kurka.gwt.mobile.mvp.client;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class Animation {

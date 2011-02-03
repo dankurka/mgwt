@@ -18,7 +18,7 @@ package de.kurka.gwt.mobile.mvp.client;
 import com.google.gwt.place.shared.Place;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public interface AnimationMapper {
