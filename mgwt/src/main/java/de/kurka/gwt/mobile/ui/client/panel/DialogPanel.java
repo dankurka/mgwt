@@ -15,7 +15,6 @@
  */
 package de.kurka.gwt.mobile.ui.client.panel;
 
-import com.google.gwt.dom.client.Style.VerticalAlign;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -46,21 +45,19 @@ public class DialogPanel extends Composite {
 	public DialogPanel() {
 
 		wrapper = new FlowPanel();
-		//TODO css?
-		wrapper.getElement().setAttribute("style", "display: table; width: 100%; height:100%");
 		initWidget(wrapper);
 
+		wrapper.setStylePrimaryName("mgwt-DialogPanel");
+
 		cell = new FlowPanel();
-		//TODO css?
-		cell.getElement().setAttribute("style", "display: table-cell;");
-		cell.getElement().getStyle().setVerticalAlign(VerticalAlign.MIDDLE);
+		cell.setStylePrimaryName("mgwt-DialogPanel-cell");
 
 		wrapper.add(cell);
 
 		main = new FlowPanel();
 		cell.add(main);
 
-		main.setStylePrimaryName("mgwt-DialogPanel");
+		main.setStylePrimaryName("mgwt-DialogPanel-main");
 
 		container = new FlowPanel();
 		container.addStyleName("mgwt-DialogPanel-container");
