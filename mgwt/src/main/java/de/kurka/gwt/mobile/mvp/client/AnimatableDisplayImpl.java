@@ -15,15 +15,16 @@
  */
 package de.kurka.gwt.mobile.mvp.client;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
+import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
 import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
 
 /**
@@ -68,6 +69,19 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		second.addStyleName("threedstuff");
 
 		main.add(second);
+
+		listener = new AnimationEndListener();
+
+	}
+
+	private class AnimationEndListener implements AnimationEndHandler {
+
+		@Override
+		public void onAnimationEnd(AnimationEndEvent event) {
+			AnimatableDisplayImpl.this.onAnimationEnd();
+
+		}
+
 	}
 
 	@Override
@@ -140,31 +154,16 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		}
 		removeAllStyles();
 
-		if (addAnimationEndEvent != null) {
-			removeAnimationEndEvent(first.getElement(), addAnimationEndEvent);
-			addAnimationEndEvent = null;
+		if (animationEnd != null) {
+			animationEnd.removeHandler();
+			animationEnd = null;
 		}
 
 	}
 
-	private native JavaScriptObject addAnimationEndEvent(Element element)/*-{
-		var instance = this;
-
-		var func = function(){
-		instance.@de.kurka.gwt.mobile.mvp.client.AnimatableDisplayImpl::onAnimationEnd()();
-		};
-
-		element.addEventListener('webkitAnimationEnd', func, false);
-		return element;
-	}-*/;
-
-	private native JavaScriptObject removeAnimationEndEvent(Element element, JavaScriptObject func)/*-{
-		element.removeEventListener('webkitAnimationEnd', func);
-	}-*/;
-
 	private boolean showFirst;
-
-	private JavaScriptObject addAnimationEndEvent;
+	private HandlerRegistration animationEnd;
+	private AnimationEndListener listener;
 
 	@Override
 	public void animate(Animation animation, boolean currentIsFirst) {
@@ -173,16 +172,16 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		String type = animation.getType();
 		showFirst = currentIsFirst;
 
-		if (addAnimationEndEvent != null) {
-			removeAnimationEndEvent(first.getElement(), addAnimationEndEvent);
-			addAnimationEndEvent = null;
+		if (animationEnd != null) {
+			animationEnd.removeHandler();
+			animationEnd = null;
 		}
 
 		//if (!Animation.ANIMATION_SLIDE.equals(type) && !Animation.ANIMATION_SLIDE_UP.equals(type)) {
 
 		//}
 
-		addAnimationEndEvent = addAnimationEndEvent(first.getElement());
+		first.addDomHandler(listener, AnimationEndEvent.getType());
 
 		first.addStyleName(type);
 		second.addStyleName(type);

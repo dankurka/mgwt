@@ -19,7 +19,7 @@ import com.google.gwt.event.dom.client.DomEvent;
 
 public class TransitionEndEvent extends DomEvent<TransitionEndHandler> {
 
-	private static final Type<TransitionEndHandler> TYPE = new Type<TransitionEndHandler>("webkittransitionend", new TransitionEndEvent());
+	private static final Type<TransitionEndHandler> TYPE = new Type<TransitionEndHandler>("webkitTransitionEnd", new TransitionEndEvent());
 
 	/**
 	   * Gets the event type associated with mouse down events.
