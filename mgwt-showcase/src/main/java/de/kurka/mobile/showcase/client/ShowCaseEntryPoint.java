@@ -65,31 +65,6 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		historyHandler.handleCurrentHistory();
 
-		//		final ScrollPanel scrollPanel = new ScrollPanel();
-		//		scrollPanel.setSize("300px", "300px");
-		//
-		//		Image image = new Image("ich.jpg");
-		//		image.setSize("1000px", "1000px");
-		//
-		//		scrollPanel.setWidget(image);
-		//
-		//		RootPanel.get().add(scrollPanel);
-		//
-		//		CellList<Topic> cellList = new CellList<Topic>(new BasicCell());
-		//
-		//		cellList.render(createTopicsList());
-		//
-		//		cellList.addCellSelectedHandler(new CellSelectedHandler() {
-		//
-		//			@Override
-		//			public void onCellSelected(CellSelectedEvent event) {
-		//				System.out.println(event.getIndex());
-		//
-		//			}
-		//		});
-		//
-		//		RootPanel.get().add(cellList);
-
 	}
 
 	private native void alertKeysAndValues(JavaScriptObject o)/*-{
