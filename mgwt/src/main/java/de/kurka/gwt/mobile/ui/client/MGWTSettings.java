@@ -35,6 +35,22 @@ public class MGWTSettings {
 
 	private boolean preventScrolling;
 
+	private boolean orientationSupport = true;
+
+	/**
+	 * @return the orientationSupport
+	 */
+	public boolean isOrientationSupport() {
+		return orientationSupport;
+	}
+
+	/**
+	 * @param orientationSupport the orientationSupport to set
+	 */
+	public void setOrientationSupport(boolean orientationSupport) {
+		this.orientationSupport = orientationSupport;
+	}
+
 	public boolean isAddGlosToIcon() {
 		return addGlosToIcon;
 	}

@@ -12,12 +12,13 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class UIViewImpl implements UIView {
@@ -36,6 +37,11 @@ public class UIViewImpl implements UIView {
 		headerBackButton = new HeaderBackButton();
 		headerPanel.setLeftWidget(headerBackButton);
 
+		ScrollPanel scrollPanel = new ScrollPanel();
+		scrollPanel.addStyleName("constrainWidth");
+		scrollPanel.addStyleName("constrainHeight");
+		scrollPanel.setScrollingEnabledX(false);
+
 		cellListWithHeader = new CellListWithHeader<Item>(new BasicCell<Item>() {
 
 			@Override
@@ -49,7 +55,9 @@ public class UIViewImpl implements UIView {
 			}
 		});
 
-		main.add(cellListWithHeader);
+		scrollPanel.setWidget(cellListWithHeader);
+
+		main.add(scrollPanel);
 
 	}
 

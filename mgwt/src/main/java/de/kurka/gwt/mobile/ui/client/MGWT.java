@@ -91,6 +91,11 @@ public class MGWT {
 			setUpPreventScrolling(body);
 		}
 
+		if (settings.isOrientationSupport()) {
+			setupOrientation();
+			onorientationChange(getOrientation());
+		}
+
 	}
 
 	private static native void setUpPreventScrolling(Element el)/*-{
@@ -103,5 +108,47 @@ public class MGWT {
 		el.ontouchmove = func;
 		el.ontouchstart = func;
 		el.ontouchend = func;
+	}-*/;
+
+	private static native int getOrientation()/*-{
+		if(typeof($wnd.orientation) == 'undefined')
+		{return 0;}
+
+		return $wnd.orientation;
+	}-*/;
+
+	private static native void setClassOnBody(String name)/*-{
+		$doc.body.className = name;
+	}-*/;
+
+	private static void onorientationChange(int orientation) {
+
+		switch (orientation) {
+		case 0:
+		case 180:
+			setClassOnBody("portrait");
+			break;
+
+		case 90:
+		case -90:
+			setClassOnBody("landscape");
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	private static native void setupOrientation()/*-{
+		var func = function(){
+
+		@de.kurka.gwt.mobile.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
+		};
+		$doc.body.onorientationchange = func;
+	}-*/;
+
+	private static native void clearOrientation(BodyElement elem)/*-{
+		$doc.body.onorientationchange = null;
 	}-*/;
 }

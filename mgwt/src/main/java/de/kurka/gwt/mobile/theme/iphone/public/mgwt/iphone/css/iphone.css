@@ -209,21 +209,6 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	position: relative;
 }
 
-.constrainWidth {
-	width: 320px;
-}
-
-.constrainWidth.landscape {
-	width: 480px;
-}
-
-.constrainHeight {
-	height: 416px;
-}
-
-.constrainHeight.landscape {
-	height: 100px;
-}
 
 
 
