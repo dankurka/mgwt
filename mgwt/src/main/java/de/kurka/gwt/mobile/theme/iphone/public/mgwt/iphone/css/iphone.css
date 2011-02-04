@@ -783,6 +783,20 @@ animation stuff
     }
  */
  
+ .mgwt-AnimatableDisplay{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+ }
+ 
+ .mgwt-AnimatableDisplay-container{
+ 	position: absolute;
+	width: 100%;
+	height: 100%;
+ }
+ 
 /**    
 key frame for doing nothing
 */

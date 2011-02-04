@@ -16,8 +16,6 @@
 package de.kurka.gwt.mobile.mvp.client;
 
 import com.google.gwt.dom.client.Style.Display;
-import com.google.gwt.dom.client.Style.Position;
-import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -43,29 +41,16 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	public AnimatableDisplayImpl() {
 		main = new FlowPanel();
-		//TODO css
-		main.setSize("100%", "100%");
-		main.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		main.getElement().getStyle().setLeft(0, Unit.PX);
-		main.getElement().getStyle().setRight(0, Unit.PX);
-		main.getElement().getStyle().setTop(0, Unit.PX);
-		main.getElement().getStyle().setBottom(0, Unit.PX);
+
+		main.setStylePrimaryName("mgwt-AnimatableDisplay");
 
 		first = new FlowPanel();
-		//TODO move into css
-		first.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		first.getElement().getStyle().setWidth(100, Unit.PCT);
-		first.getElement().getStyle().setHeight(100, Unit.PCT);
-
+		first.addStyleName("mgwt-AnimatableDisplay-container");
 		first.addStyleName("threedstuff");
 
 		main.add(first);
 		second = new FlowPanel();
-		//TODO move into css
-		second.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		second.getElement().getStyle().setWidth(100, Unit.PCT);
-		second.getElement().getStyle().setHeight(100, Unit.PCT);
-
+		second.addStyleName("mgwt-AnimatableDisplay-container");
 		second.addStyleName("threedstuff");
 
 		main.add(second);

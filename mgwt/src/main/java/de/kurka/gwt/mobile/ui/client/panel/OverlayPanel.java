@@ -15,12 +15,15 @@
  */
 package de.kurka.gwt.mobile.ui.client.panel;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+
+import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
+import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
+import de.kurka.gwt.mobile.mvp.client.Animation;
 
 /**
  * @author Daniel Kurka
@@ -41,13 +44,12 @@ public class OverlayPanel extends FlowPanel {
 
 	private boolean show;
 
-	private JavaScriptObject listener;
+	private HandlerRegistration handler;
 
 	private void onAnimationEnd() {
 
-		if (show) {
+		if (!show) {
 
-		} else {
 			RootPanel.get().remove(shadowContainer);
 			RootPanel.get().remove(container);
 		}
@@ -55,38 +57,18 @@ public class OverlayPanel extends FlowPanel {
 		removeAllStyles();
 	}
 
-	/**
-	 * 
-	 */
 	private void removeAllStyles() {
 
-		shadowContainer.removeStyleName("fade");
+		shadowContainer.removeStyleName(Animation.ANIMATION_FADE);
 		shadowContainer.removeStyleName("in");
 		shadowContainer.removeStyleName("out");
 
 		container.removeStyleName("in");
 		container.removeStyleName("out");
 		container.removeStyleName("reverse");
-		container.removeStyleName("pop");
+		container.removeStyleName(Animation.ANIMATION_POP);
 
 	}
-
-	private native JavaScriptObject addAnimationEndEvent(Element element)/*-{
-		var instance = this;
-
-		var func = function(event){
-
-		instance.@de.kurka.gwt.mobile.ui.client.panel.OverlayPanel::onAnimationEnd()();
-		};
-
-		element.addEventListener('webkitAnimationEnd', func, false);
-
-		return func;
-	}-*/;
-
-	private native JavaScriptObject removeAnimationEndEvent(Element element, JavaScriptObject func)/*-{
-		element.removeEventListener('webkitAnimationEnd', func, false);
-	}-*/;
 
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Widget#onAttach()
@@ -94,7 +76,15 @@ public class OverlayPanel extends FlowPanel {
 	@Override
 	protected void onAttach() {
 		super.onAttach();
-		listener = addAnimationEndEvent(container.getElement());
+		handler = container.addDomHandler(new AnimationEndHandler() {
+
+			@Override
+			public void onAnimationEnd(AnimationEndEvent event) {
+				OverlayPanel.this.onAnimationEnd();
+
+			}
+		}, AnimationEndEvent.getType());
+
 	}
 
 	/* (non-Javadoc)
@@ -103,7 +93,7 @@ public class OverlayPanel extends FlowPanel {
 	@Override
 	protected void onDetach() {
 		super.onDetach();
-		removeAnimationEndEvent(container.getElement(), listener);
+		handler.removeHandler();
 	}
 
 	/**
@@ -117,7 +107,7 @@ public class OverlayPanel extends FlowPanel {
 			container.setStylePrimaryName("mgwt-PopupContainer");
 
 		}
-		container.addStyleName("pop");
+		container.addStyleName(Animation.ANIMATION_POP);
 		container.addStyleName("in");
 
 		if (shadowContainer == null) {
@@ -127,7 +117,7 @@ public class OverlayPanel extends FlowPanel {
 
 		}
 
-		shadowContainer.addStyleName("fade");
+		shadowContainer.addStyleName(Animation.ANIMATION_FADE);
 		shadowContainer.addStyleName("in");
 
 		shadowContainer.clear();
@@ -149,9 +139,9 @@ public class OverlayPanel extends FlowPanel {
 		}
 
 		shadowContainer.addStyleName("out");
-		shadowContainer.addStyleName("fade");
+		shadowContainer.addStyleName(Animation.ANIMATION_FADE);
 
-		container.addStyleName("pop");
+		container.addStyleName(Animation.ANIMATION_POP);
 		container.addStyleName("out");
 		container.addStyleName("reverse");
 
