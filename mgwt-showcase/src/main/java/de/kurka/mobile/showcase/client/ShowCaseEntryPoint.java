@@ -17,7 +17,6 @@ package de.kurka.mobile.showcase.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -68,13 +67,5 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		historyHandler.handleCurrentHistory();
 
 	}
-
-	private native void alertKeysAndValues(JavaScriptObject o)/*-{
-		alert("hi");
-		for(var key in o){
-		var value = o[key];
-		alert(key + " = " +value);
-		}
-	}-*/;
 
 }
