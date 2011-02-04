@@ -42,7 +42,9 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		settings.setFixViewPort(true);
 		settings.setFullscreen(true);
 		settings.setPreventScrolling(true);
-		MGWT.applySettings(settings);
+
+		MGWT mgwt = new MGWT();
+		mgwt.applySettings(settings);
 
 		ClientFactory clientFactory = new ClientFactoryImpl();
 

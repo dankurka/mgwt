@@ -21,14 +21,22 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.LinkElement;
 import com.google.gwt.dom.client.MetaElement;
 import com.google.gwt.dom.client.NodeList;
+import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.event.shared.HandlerRegistration;
+
+import de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler;
+import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeEvent;
+import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
-public class MGWT {
+public class MGWT implements HasOrientationChangeHandler {
 
-	private static Element getHead() {
+	private final HandlerManager manager = new HandlerManager(this);
+
+	private Element getHead() {
 		NodeList<Element> elementsByTagName = Document.get().getElementsByTagName("head");
 
 		if (elementsByTagName.getLength() != 1) {
@@ -38,7 +46,7 @@ public class MGWT {
 		return elementsByTagName.getItem(0);
 	}
 
-	public static void applySettings(MGWTSettings settings) {
+	public void applySettings(MGWTSettings settings) {
 
 		Element head = getHead();
 
@@ -98,7 +106,7 @@ public class MGWT {
 
 	}
 
-	private static native void setUpPreventScrolling(Element el)/*-{
+	private native void setUpPreventScrolling(Element el)/*-{
 		var func = function(event){
 		event.preventDefault();
 		//event.stopPropagation();
@@ -110,18 +118,18 @@ public class MGWT {
 		el.ontouchend = func;
 	}-*/;
 
-	private static native int getOrientation()/*-{
+	private native int getOrientation()/*-{
 		if(typeof($wnd.orientation) == 'undefined')
 		{return 0;}
 
 		return $wnd.orientation;
 	}-*/;
 
-	private static native void setClassOnBody(String name)/*-{
+	private native void setClassOnBody(String name)/*-{
 		$doc.body.className = name;
 	}-*/;
 
-	private static void onorientationChange(int orientation) {
+	private void onorientationChange(int orientation) {
 
 		switch (orientation) {
 		case 0:
@@ -138,17 +146,29 @@ public class MGWT {
 			break;
 		}
 
+		manager.fireEvent(new OrientationChangeEvent(orientation));
+
 	}
 
-	private static native void setupOrientation()/*-{
+	private native void setupOrientation()/*-{
+		var instance = this;
 		var func = function(){
 
-		@de.kurka.gwt.mobile.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
+		instance.@de.kurka.gwt.mobile.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
 		};
 		$doc.body.onorientationchange = func;
 	}-*/;
 
-	private static native void clearOrientation(BodyElement elem)/*-{
+	private native void clearOrientation(BodyElement elem)/*-{
 		$doc.body.onorientationchange = null;
 	}-*/;
+
+	/* (non-Javadoc)
+	 * @see de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler#addOrientationChangeHandler(de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler)
+	 */
+	@Override
+	public HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
+		return manager.addHandler(OrientationChangeEvent.getType(), handler);
+
+	}
 }
