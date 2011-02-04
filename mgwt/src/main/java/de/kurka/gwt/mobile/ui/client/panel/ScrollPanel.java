@@ -15,15 +15,15 @@
  */
 package de.kurka.gwt.mobile.ui.client.panel;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.gwt.mobile.dom.client.event.animation.TransitionEndEvent;
+import de.kurka.gwt.mobile.dom.client.event.animation.TransitionEndHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
@@ -64,7 +64,6 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private TouchObserver touchObserver;
 
 	private HandlerRegistration touchRegistration;
-	private HandlerRegistration transistionEndEventRegistration;
 
 	private boolean currentlyScrolling = false;
 
@@ -78,13 +77,13 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	private static final int SCROLL_LOCK_THRESHOLD = 3;
 
-	private JavaScriptObject registerTransistionEndDomEvent;
-
 	private boolean has3d;
 
 	private Scrollbar hScrollbar;
 
 	private Scrollbar vScrollbar;
+
+	private HandlerRegistration transEndHandler;
 
 	public ScrollPanel() {
 		main = new TouchPanel();
@@ -142,10 +141,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	public void setWidget(Widget w) {
 		if (widgetToScroll != null) {
 			if (isAttached()) {
-				if (registerTransistionEndDomEvent != null) {
-					unregisterTransitionEndDomEvent(widgetToScroll.getElement(), registerTransistionEndDomEvent);
-					registerTransistionEndDomEvent = null;
-				}
+				transEndHandler.removeHandler();
+
 			}
 			main.remove(widgetToScroll);
 		}
@@ -153,7 +150,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		widgetToScroll = w;
 
 		if (isAttached()) {
-			registerTransistionEndDomEvent = registerTransistionEndDomEvent(widgetToScroll.getElement());
+			transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
 			updateScrollBars();
 		}
 
@@ -164,29 +161,24 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	private void onTransistionEnd() {
 		System.out.println("trans end");
-		if (listenForTransitionEnd)
+
+		if (listenForTransitionEnd) {
+			System.out.println("listenering");
+			listenForTransitionEnd = false;
 			resetPosition();
-		listenForTransitionEnd = false;
+		} else {
+			System.out.println("not listening");
+		}
+
 	}
 
-	private native JavaScriptObject registerTransistionEndDomEvent(Element el) /*-{
-		var instance = this;
+	private class TransistionEndListener implements TransitionEndHandler {
 
-		var callBack = function(e){
-
-		instance.@de.kurka.gwt.mobile.ui.client.panel.ScrollPanel::onTransistionEnd()();
-		};
-
-
-		el.addEventListener( 'webkitTransitionEnd', callBack, false );
-
-
-		return callBack;
-	}-*/;
-
-	private native void unregisterTransitionEndDomEvent(Element el, JavaScriptObject listener) /*-{
-		el.removeEventListener(listener);
-	}-*/;
+		@Override
+		public void onTransitionEnd(TransitionEndEvent event) {
+			ScrollPanel.this.onTransistionEnd();
+		}
+	}
 
 	@Override
 	protected void onAttach() {
@@ -194,11 +186,10 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		touchRegistration = main.addTouchHandler(touchObserver);
 
-		if (widgetToScroll != null)
-
-		{
+		if (widgetToScroll != null) {
 			updateScrollBars();
-			registerTransistionEndDomEvent = registerTransistionEndDomEvent(widgetToScroll.getElement());
+			transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
+
 		}
 	}
 
@@ -206,10 +197,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	protected void onDetach() {
 		super.onDetach();
 		touchRegistration.removeHandler();
-		if (registerTransistionEndDomEvent != null) {
-			unregisterTransitionEndDomEvent(widgetToScroll.getElement(), registerTransistionEndDomEvent);
-			registerTransistionEndDomEvent = null;
-		}
+		transEndHandler.removeHandler();
 
 	}
 
@@ -402,6 +390,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		System.out.println("destX: " + destX + " destY: " + destY + " dur: " + newDuration);
 		if (position_x == destX && position_y == destY) {
 			resetPosition();
+			System.out.println("returning");
 			return;
 		}
 
@@ -413,9 +402,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		if (newDuration == 0) {
 			System.out.println("no duration");
 			resetPosition();
-		} else
 
-		{
+		} else {
 			System.out.println("transistend needs to be listened to!!!");
 			listenForTransitionEnd = true;
 
