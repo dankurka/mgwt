@@ -16,6 +16,9 @@
 package de.kurka.gwt.mobile.ui.client.panel;
 
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.EventTarget;
+import com.google.gwt.dom.client.Node;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasOneWidget;
@@ -205,6 +208,31 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
+
+			EventTarget eventTarget = event.getNativeEvent().getEventTarget();
+			if (eventTarget != null) {
+				//no textnode or element node
+				if (Node.is(eventTarget)) {
+					if (Element.is(eventTarget)) {
+						Element target = eventTarget.cast();
+
+						String nodeName = target.getNodeName();
+
+						if ("INPUT".equals(nodeName)) {
+							return;
+						}
+
+						if ("TEXTAREA".equals(nodeName)) {
+							return;
+						}
+
+						if ("SELECT".equals(nodeName)) {
+							return;
+						}
+
+					}
+				}
+			}
 
 			event.preventDefault();
 			event.stopPropagation();
