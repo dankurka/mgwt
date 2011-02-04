@@ -28,7 +28,7 @@ import de.kurka.gwt.mobile.ui.client.MGWTSettings;
 import de.kurka.mobile.showcase.client.places.HomePlace;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class ShowCaseEntryPoint implements EntryPoint {
