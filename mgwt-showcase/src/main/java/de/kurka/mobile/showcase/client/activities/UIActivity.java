@@ -27,10 +27,10 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
+import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
-import de.kurka.mobile.showcase.client.places.HomePlace;
 import de.kurka.mobile.showcase.client.places.PopupPlace;
 import de.kurka.mobile.showcase.client.places.ProgressBarPlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
@@ -39,7 +39,7 @@ import de.kurka.mobile.showcase.client.places.SliderPlace;
 import de.kurka.mobile.showcase.client.places.TabBarPlace;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class UIActivity extends AbstractActivity {

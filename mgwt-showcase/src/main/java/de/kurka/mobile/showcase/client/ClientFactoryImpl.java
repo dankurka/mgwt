@@ -31,8 +31,6 @@ import de.kurka.mobile.showcase.client.activities.ButtonView;
 import de.kurka.mobile.showcase.client.activities.ButtonViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.ElementsView;
 import de.kurka.mobile.showcase.client.activities.ElementsViewImpl;
-import de.kurka.mobile.showcase.client.activities.HomeView;
-import de.kurka.mobile.showcase.client.activities.HomeViewImpl;
 import de.kurka.mobile.showcase.client.activities.PopupView;
 import de.kurka.mobile.showcase.client.activities.PopupViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.ProgressBarView;
@@ -47,6 +45,8 @@ import de.kurka.mobile.showcase.client.activities.TabBarView;
 import de.kurka.mobile.showcase.client.activities.TabBarViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.UIView;
 import de.kurka.mobile.showcase.client.activities.UIViewImpl;
+import de.kurka.mobile.showcase.client.activities.home.HomeView;
+import de.kurka.mobile.showcase.client.activities.home.HomeViewGwtImpl;
 
 /**
  * @author Daniel Kurka
@@ -77,13 +77,13 @@ public class ClientFactoryImpl implements ClientFactory {
 
 		placeController = new PlaceController(eventBus);
 
-		homeViewImpl = new HomeViewImpl();
+		homeViewImpl = new HomeViewGwtImpl();
 	}
 
 	@Override
 	public HomeView getHomeView() {
 		if (homeViewImpl == null) {
-			homeViewImpl = new HomeViewImpl();
+			homeViewImpl = new HomeViewGwtImpl();
 		}
 		return homeViewImpl;
 	}

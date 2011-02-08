@@ -24,7 +24,6 @@ import de.kurka.mobile.showcase.client.activities.AnimationView;
 import de.kurka.mobile.showcase.client.activities.ButtonBarView;
 import de.kurka.mobile.showcase.client.activities.ButtonView;
 import de.kurka.mobile.showcase.client.activities.ElementsView;
-import de.kurka.mobile.showcase.client.activities.HomeView;
 import de.kurka.mobile.showcase.client.activities.PopupView;
 import de.kurka.mobile.showcase.client.activities.ProgressBarView;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetView;
@@ -32,6 +31,7 @@ import de.kurka.mobile.showcase.client.activities.SearchBoxView;
 import de.kurka.mobile.showcase.client.activities.SliderView;
 import de.kurka.mobile.showcase.client.activities.TabBarView;
 import de.kurka.mobile.showcase.client.activities.UIView;
+import de.kurka.mobile.showcase.client.activities.home.HomeView;
 
 /**
  * @author Daniel Kurka

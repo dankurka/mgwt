@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.home;
 
 import java.util.List;
 
@@ -27,20 +27,19 @@ import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;
-import de.kurka.mobile.showcase.client.Topic;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class HomeViewImpl implements HomeView {
+public class HomeViewGwtImpl implements HomeView {
 
 	private FlowPanel main;
 	private HeaderRoundButton forwardButton;
 	private HeaderPanel headerPanel;
 	private CellListWithHeader<Topic> cellList;
 
-	public HomeViewImpl() {
+	public HomeViewGwtImpl() {
 		main = new FlowPanel();
 
 		headerPanel = new HeaderPanel();
@@ -92,9 +91,6 @@ public class HomeViewImpl implements HomeView {
 		return cellList.getCellList();
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.activities.HomeView#setTopics(java.util.List)
-	 */
 	@Override
 	public void setTopics(List<Topic> createTopicsList) {
 		cellList.getCellList().render(createTopicsList);

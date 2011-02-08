@@ -8,6 +8,7 @@ import com.google.gwt.place.shared.Place;
 
 import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.mvp.client.AnimationMapper;
+import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 import de.kurka.mobile.showcase.client.places.AboutPlace;
 import de.kurka.mobile.showcase.client.places.AnimationDissolvePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFadePlace;
@@ -20,7 +21,6 @@ import de.kurka.mobile.showcase.client.places.AnimationSwapPlace;
 import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
-import de.kurka.mobile.showcase.client.places.HomePlace;
 import de.kurka.mobile.showcase.client.places.PopupPlace;
 import de.kurka.mobile.showcase.client.places.ProgressBarPlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;

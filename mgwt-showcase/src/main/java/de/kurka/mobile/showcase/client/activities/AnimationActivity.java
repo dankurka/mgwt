@@ -26,6 +26,7 @@ import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
+import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 import de.kurka.mobile.showcase.client.places.AnimationDissolvePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFadePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFlipPlace;
@@ -33,7 +34,6 @@ import de.kurka.mobile.showcase.client.places.AnimationPopPlace;
 import de.kurka.mobile.showcase.client.places.AnimationSlidePlace;
 import de.kurka.mobile.showcase.client.places.AnimationSlideUpPlace;
 import de.kurka.mobile.showcase.client.places.AnimationSwapPlace;
-import de.kurka.mobile.showcase.client.places.HomePlace;
 
 /**
  * @author Daniel Kurka

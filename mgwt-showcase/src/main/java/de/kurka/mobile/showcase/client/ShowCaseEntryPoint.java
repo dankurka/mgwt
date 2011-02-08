@@ -25,7 +25,7 @@ import de.kurka.gwt.mobile.mvp.client.AnimatableDisplayImpl;
 import de.kurka.gwt.mobile.mvp.client.AnimatingActivityManager;
 import de.kurka.gwt.mobile.ui.client.MGWT;
 import de.kurka.gwt.mobile.ui.client.MGWTSettings;
-import de.kurka.mobile.showcase.client.places.HomePlace;
+import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 
 /**
  * @author Daniel Kurka
