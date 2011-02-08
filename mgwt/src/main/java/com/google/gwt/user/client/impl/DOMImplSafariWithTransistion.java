@@ -16,7 +16,6 @@
 package com.google.gwt.user.client.impl;
 
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.Window;
 
 /**
  * @author Daniel Kurka
@@ -28,7 +27,7 @@ public class DOMImplSafariWithTransistion extends DOMImplSafari {
 	 * 
 	 */
 	public DOMImplSafariWithTransistion() {
-		Window.alert("with trans");
+
 	}
 
 	@Override
