@@ -5,25 +5,102 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
 
+
+
 <style type="text/css">
 
-/*
-body .constrainWidth {
-	width: 320px;
-}*/
 
-.landscape .constrainWidth {
+.portrait .mgwt-constrainWidth {
+	width: 320px;
+}
+
+.landscape .mgwt-constrainWidth {
 	width: 480px;
 }
 
 
-.portrait  .constrainHeight {
+/**
+browser with url bar
+*/
+.mgwt-ViewPort-normalscreen-portrait  .mgwt-constrainHeight {
+	height: 356px;
+
+}
+
+.mgwt-ViewPort-normalscreen-landscape   .mgwt-constrainHeight {
+	height: 208px;
+	
+}
+
+
+/**
+browser with url bar and header
+*/
+.mgwt-ViewPort-normalscreen-portrait  .mgwt-constrainHeight-header {
+	height: 312px;
+	
+}
+
+.mgwt-ViewPort-normalscreen-landscape   .mgwt-constrainHeight-header {
+	height: 162px;
+	
+}
+
+
+/**
+fullscreen
+*/
+.mgwt-ViewPort-fullscreen-portrait .mgwt-constrainHeight {
+	height: 460px;
+}
+
+.mgwt-ViewPort-fullscreen-landscape .mgwt-constrainHeight {
+	height: 300px;
+}
+
+
+
+
+		
+		
+		
+
+
+/**
+fullscreen with header
+*/
+.mgwt-ViewPort-fullscreen-portrait .mgwt-constrainHeight-header {
 	height: 416px;
 }
 
-.landscape  .constrainHeight {
+.mgwt-ViewPort-fullscreen-landscape .mgwt-constrainHeight-header {
+	height: 260px;
+}
+
+
+/**
+fullscreen with header and bottom
+*/
+.mgwt-ViewPort-fullscreen-portrait .mgwt-constrainHeight-header-bottom {
+	height: 372px;
+}
+
+.mgwt-ViewPort-fullscreen-landscape .mgwt-constrainHeight-header-bottom {
+	height: 216px;
+}
+
+/**
+fullscreen with header and tab
+*/
+.mgwt-ViewPort-fullscreen-portrait .mgwt-constrainHeight-header-tab {
+	height: 356px;
+}
+
+.mgwt-ViewPort-fullscreen-landscape .mgwt-constrainHeight-header-tab {
 	height: 200px;
 }
+
+
 
 
 
@@ -45,7 +122,15 @@ body .constrainWidth {
 	background-color: transparent;
 }
 
-
+.mgwt-AnimatableDisplay{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	margin-right: 1px;
+	margin-bottom: 1px;
+ }
 
 
 
@@ -65,8 +150,7 @@ body .constrainWidth {
 </head>
 
 
-<body>
-
+<body >
 
 
 <!-- OPTIONAL: include this if you want history support -->

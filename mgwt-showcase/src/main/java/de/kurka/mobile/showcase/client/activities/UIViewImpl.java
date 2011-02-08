@@ -38,8 +38,9 @@ public class UIViewImpl implements UIView {
 		headerPanel.setLeftWidget(headerBackButton);
 
 		ScrollPanel scrollPanel = new ScrollPanel();
-		scrollPanel.addStyleName("constrainWidth");
-		scrollPanel.addStyleName("constrainHeight");
+		scrollPanel.constrainWidth(true);
+		scrollPanel.constrainHeight(true);
+		scrollPanel.setHasHeader(true);
 		scrollPanel.setScrollingEnabledX(false);
 
 		cellListWithHeader = new CellListWithHeader<Item>(new BasicCell<Item>() {
