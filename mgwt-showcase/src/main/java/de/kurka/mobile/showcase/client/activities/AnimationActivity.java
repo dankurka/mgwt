@@ -7,12 +7,11 @@ package de.kurka.mobile.showcase.client.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
+import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
@@ -29,11 +28,9 @@ import de.kurka.mobile.showcase.client.places.HomePlace;
  * @author kurt
  *
  */
-public class AnimationActivity extends AbstractActivity {
+public class AnimationActivity extends MGWTAbstractActivity {
 
 	private final ClientFactory clientFactory;
-	private HandlerRegistration handler;
-	private HandlerRegistration cellHandler;
 
 	/**
 	 * 
@@ -52,16 +49,16 @@ public class AnimationActivity extends AbstractActivity {
 
 		view.setAnimations(createAnimations());
 
-		handler = view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch() {
 				clientFactory.getPlaceController().goTo(new HomePlace());
 
 			}
-		});
+		}));
 
-		cellHandler = view.getCellSelectedHandler().addCellSelectedHandler(new CellSelectedHandler() {
+		addHandlerRegistration(view.getCellSelectedHandler().addCellSelectedHandler(new CellSelectedHandler() {
 
 			@Override
 			public void onCellSelected(CellSelectedEvent event) {
@@ -102,7 +99,7 @@ public class AnimationActivity extends AbstractActivity {
 				}
 
 			}
-		});
+		}));
 
 		panel.setWidget(view);
 
@@ -125,18 +122,4 @@ public class AnimationActivity extends AbstractActivity {
 		return list;
 	}
 
-	@Override
-	public void onStop() {
-
-		super.onStop();
-		if (handler != null) {
-			handler.removeHandler();
-			handler = null;
-		}
-
-		if (cellHandler != null) {
-			cellHandler.removeHandler();
-			cellHandler = null;
-		}
-	}
 }
