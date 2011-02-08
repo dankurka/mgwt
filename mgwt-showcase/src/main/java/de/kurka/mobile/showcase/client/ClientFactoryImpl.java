@@ -19,8 +19,6 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.place.shared.PlaceController;
 
-import de.kurka.mobile.showcase.client.activities.AnimationDoneView;
-import de.kurka.mobile.showcase.client.activities.AnimationDoneViewImpl;
 import de.kurka.mobile.showcase.client.activities.ButtonBarView;
 import de.kurka.mobile.showcase.client.activities.ButtonBarViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.ButtonView;
@@ -45,6 +43,8 @@ import de.kurka.mobile.showcase.client.activities.about.AboutView;
 import de.kurka.mobile.showcase.client.activities.about.AboutViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationView;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDoneView;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDoneViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.home.HomeView;
 import de.kurka.mobile.showcase.client.activities.home.HomeViewGwtImpl;
 
@@ -126,7 +126,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public AnimationDoneView getAnimationDoneView() {
 		if (animationDoneView == null) {
-			animationDoneView = new AnimationDoneViewImpl();
+			animationDoneView = new AnimationDoneViewGwtImpl();
 		}
 		return animationDoneView;
 	}

@@ -13,8 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.animationdone;
 
+import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -23,10 +25,10 @@ import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
-public class AnimationDoneViewImpl implements AnimationDoneView {
+public class AnimationDoneViewGwtImpl implements AnimationDoneView {
 
 	private RoundPanel panel;
 	private Button button;
@@ -34,12 +36,16 @@ public class AnimationDoneViewImpl implements AnimationDoneView {
 	/**
 	 * 
 	 */
-	public AnimationDoneViewImpl() {
+	public AnimationDoneViewGwtImpl() {
 		panel = new RoundPanel();
+		panel.setHeight("200px");
+		HTML html = new HTML("<p style='text-align: center; position: relative; top: 75px; font-size: 20px'>great, yeah!<p>");
 
-		panel.add(new HTML("toll, wa?"));
+		panel.add(html);
 
 		button = new Button();
+		button.getElement().getStyle().setTop(125, Unit.PX);
+		button.getElement().getStyle().setPosition(Position.RELATIVE);
 		button.setText("Back");
 		panel.add(button);
 

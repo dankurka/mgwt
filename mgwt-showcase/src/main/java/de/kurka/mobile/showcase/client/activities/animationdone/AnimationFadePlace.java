@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.places;
+package de.kurka.mobile.showcase.client.activities.animationdone;
 
 import com.google.gwt.place.shared.Place;
 
@@ -21,6 +21,6 @@ import com.google.gwt.place.shared.Place;
  * @author Daniel Kurka
  *
  */
-public class AnimationSwapPlace extends Place {
+public class AnimationFadePlace extends Place {
 
 }

@@ -13,17 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.animationdone;
 
-import com.google.gwt.user.client.ui.IsWidget;
-
-import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.google.gwt.place.shared.Place;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
-public interface AnimationDoneView extends IsWidget {
-	public HasSimpleTouchHandler getBackButton();
+public class AnimationSlideUpPlace extends Place {
 
 }
