@@ -25,7 +25,7 @@ import de.kurka.mobile.showcase.client.ClientFactory;
 import de.kurka.mobile.showcase.client.places.UIPlace;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class ButtonBarActivity extends AbstractActivity {
