@@ -236,8 +236,12 @@ public class MGWT implements HasOrientationChangeHandler {
 
 	}
 
-	private native int getWindowInnerHeight()/*-{
+	public native int getWindowInnerHeight()/*-{
 		return $wnd.innerHeight;
+	}-*/;
+
+	public native int getWindowInnerWidth()/*-{
+		return $wnd.innerWidth;
 	}-*/;
 
 	public native boolean isFullScreen()/*-{
