@@ -8,8 +8,8 @@ import com.google.gwt.place.shared.Place;
 
 import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.mvp.client.AnimationMapper;
+import de.kurka.mobile.showcase.client.activities.about.AboutPlace;
 import de.kurka.mobile.showcase.client.activities.home.HomePlace;
-import de.kurka.mobile.showcase.client.places.AboutPlace;
 import de.kurka.mobile.showcase.client.places.AnimationDissolvePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFadePlace;
 import de.kurka.mobile.showcase.client.places.AnimationFlipPlace;
