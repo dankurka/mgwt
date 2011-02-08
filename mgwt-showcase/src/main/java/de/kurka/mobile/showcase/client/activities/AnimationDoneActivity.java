@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
-import de.kurka.mobile.showcase.client.places.AnimationPlace;
+import de.kurka.mobile.showcase.client.activities.animation.AnimationPlace;
 
 /**
  * @author kurt

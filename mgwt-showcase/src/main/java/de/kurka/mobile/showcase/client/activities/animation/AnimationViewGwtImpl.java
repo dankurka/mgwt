@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.animation;
 
 import java.util.List;
 
@@ -29,10 +29,10 @@ import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
-public class AnimationViewImpl implements AnimationView {
+public class AnimationViewGwtImpl implements AnimationView {
 
 	private CellListWithHeader<Animation> list;
 	private FlowPanel main;
@@ -42,7 +42,7 @@ public class AnimationViewImpl implements AnimationView {
 	/**
 	 * 
 	 */
-	public AnimationViewImpl() {
+	public AnimationViewGwtImpl() {
 		main = new FlowPanel();
 
 		headerPanel = new HeaderPanel();

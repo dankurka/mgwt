@@ -13,29 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.animation;
+
+import com.google.gwt.place.shared.Place;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class Animation {
-	private String name;
+public class AnimationPlace extends Place {
 
-	public Animation() {
-
-	}
-
-	public Animation(String name) {
-		this.name = name;
-
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 }

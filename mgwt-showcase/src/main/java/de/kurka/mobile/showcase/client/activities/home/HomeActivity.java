@@ -27,7 +27,7 @@ import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
 import de.kurka.mobile.showcase.client.activities.about.AboutPlace;
-import de.kurka.mobile.showcase.client.places.AnimationPlace;
+import de.kurka.mobile.showcase.client.activities.animation.AnimationPlace;
 import de.kurka.mobile.showcase.client.places.UIPlace;
 
 /**
