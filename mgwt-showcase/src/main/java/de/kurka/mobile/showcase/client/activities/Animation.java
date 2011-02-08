@@ -5,7 +5,7 @@
 package de.kurka.mobile.showcase.client.activities;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class Animation {

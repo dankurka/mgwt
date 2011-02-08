@@ -12,7 +12,7 @@ import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class AboutViewImpl implements AboutView {
@@ -28,6 +28,8 @@ public class AboutViewImpl implements AboutView {
 		main.add(new HTML("Built by Daniel Kurka, @dankurka on Twitter"));
 
 		main.add(new HTML("Using GWT to build mobile apps"));
+
+		main.add(new HTML("www.m-gwt.com"));
 
 		backbutton = new Button();
 
