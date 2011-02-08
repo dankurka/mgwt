@@ -100,6 +100,80 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	}
 
+	private boolean header;
+	private boolean bottom;
+	private boolean tab;
+
+	private boolean constrainHeight;
+	private boolean constrainWidth;
+
+	public void constrainWidth(boolean constrain) {
+		constrainWidth = constrain;
+	}
+
+	public void constrainHeight(boolean constrain) {
+		constrainHeight = constrain;
+
+		removeAllSizingStyles();
+		applyStyles();
+	}
+
+	/**
+	 * 
+	 */
+	private void applyStyles() {
+		if (constrainHeight) {
+			if (header && bottom) {
+				addStyleName("mgwt-constrainHeight-header-bottom");
+			}
+
+			if (header && tab) {
+				addStyleName("mgwt-constrainHeight-header-tab");
+			}
+
+			if (header && !tab && !bottom) {
+				addStyleName("mgwt-constrainHeight-header");
+			}
+
+			if (!header && !tab && !bottom) {
+				addStyleName("mgwt-constrainHeight");
+			}
+		}
+
+		if (constrainWidth) {
+			addStyleName("mgwt-constrainWidth");
+		}
+
+	}
+
+	private void removeAllSizingStyles() {
+		removeStyleName("mgwt-constrainWidth");
+
+		removeStyleName("mgwt-constrainHeight");
+		removeStyleName("mgwt-constrainHeight-header-bottom");
+		removeStyleName("mgwt-constrainHeight-header-tab");
+		removeStyleName("mgwt-constrainHeight-header");
+
+	}
+
+	public void setHasHeader(boolean header) {
+		this.header = header;
+		removeAllSizingStyles();
+		applyStyles();
+	}
+
+	public void setHasBottomBar(boolean bar) {
+		this.bottom = bar;
+		removeAllSizingStyles();
+		applyStyles();
+	}
+
+	public void setHasTabBar(boolean bar) {
+		this.tab = bar;
+		removeAllSizingStyles();
+		applyStyles();
+	}
+
 	private void updateScrollBars() {
 		if (hScrollbar != null) {
 			main.remove(hScrollbar);

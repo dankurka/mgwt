@@ -23,6 +23,7 @@ import com.google.gwt.dom.client.MetaElement;
 import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.FlowPanel;
 
 import de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeEvent;
@@ -35,6 +36,7 @@ import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler
 public class MGWT implements HasOrientationChangeHandler {
 
 	private final HandlerManager manager = new HandlerManager(this);
+	private FlowPanel flowPanel;
 
 	private Element getHead() {
 		NodeList<Element> elementsByTagName = Document.get().getElementsByTagName("head");
@@ -92,6 +94,30 @@ public class MGWT implements HasOrientationChangeHandler {
 				head.appendChild(statusBarMetaTag);
 
 			}
+			//Window.alert("" + getWindowInnerHeight());
+			//RootPanel.get().setHeight((getWindowInnerHeight() + 200) + "px");
+
+			//			flowPanel = new FlowPanel();
+			//			//flowPanel.getElement().getStyle().setPosition(Position.ABSOLUTE);
+			//			flowPanel.setSize((600 + 1) + "px", (600 + 1) + "px");
+			//			RootPanel.get().add(flowPanel);
+			//
+			//			new Timer() {
+			//
+			//				@Override
+			//				public void run() {
+			//
+			//					//make sure we have more height / width than client area
+			//
+			//					//hide nav bar
+			//
+			//					Window.scrollTo(0, 1);
+			//
+			//					Window.alert("" + getWindowInnerHeight());
+			//
+			//				}
+			//			}.schedule(1000);
+
 		}
 
 		if (settings.isPreventScrolling()) {
@@ -102,6 +128,28 @@ public class MGWT implements HasOrientationChangeHandler {
 		if (settings.isOrientationSupport()) {
 			setupOrientation();
 			onorientationChange(getOrientation());
+		}
+
+		if (isFullScreen()) {
+			Document.get().getBody().addClassName("fullscreen");
+		} else {
+			Document.get().getBody().addClassName("normalscreen");
+		}
+
+		//kombinierter 
+		if (isFullScreen()) {
+			if (getOrientation() == 0 || getOrientation() == 180) {
+				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-portrait");
+			} else {
+				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-landscape");
+			}
+
+		} else {
+			if (getOrientation() == 0 || getOrientation() == 180) {
+				Document.get().getBody().addClassName("mgwt-ViewPort-normalscreen-portrait");
+			} else {
+				Document.get().getBody().addClassName("mgwt-ViewPort-normalscreen-landscape");
+			}
 		}
 
 	}
@@ -125,21 +173,37 @@ public class MGWT implements HasOrientationChangeHandler {
 		return $wnd.orientation;
 	}-*/;
 
-	private native void setClassOnBody(String name)/*-{
-		$doc.body.className = name;
-	}-*/;
-
 	private void onorientationChange(int orientation) {
+
+		Document.get().getBody().removeClassName("mgwt-ViewPort-normalscreen-landscape");
+		Document.get().getBody().removeClassName("mgwt-ViewPort-normalscreen-portrait");
+		Document.get().getBody().removeClassName("mgwt-ViewPort-fullscreen-portrait");
+		Document.get().getBody().removeClassName("mgwt-ViewPort-fullscreen-landscape");
 
 		switch (orientation) {
 		case 0:
 		case 180:
-			setClassOnBody("portrait");
+			Document.get().getBody().addClassName("portrait");
+			Document.get().getBody().removeClassName("landscape");
+
+			if (isFullScreen()) {
+				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-portrait");
+			} else {
+				Document.get().getBody().addClassName("mgwt-ViewPort-normalscreen-portrait");
+			}
+
 			break;
 
 		case 90:
 		case -90:
-			setClassOnBody("landscape");
+			Document.get().getBody().addClassName("landscape");
+			Document.get().getBody().removeClassName("portrait");
+
+			if (isFullScreen()) {
+				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-landscape");
+			} else {
+				Document.get().getBody().addClassName("mgwt-ViewPort-normalscreen-landscape");
+			}
 			break;
 
 		default:
@@ -171,4 +235,14 @@ public class MGWT implements HasOrientationChangeHandler {
 		return manager.addHandler(OrientationChangeEvent.getType(), handler);
 
 	}
+
+	private native int getWindowInnerHeight()/*-{
+		return $wnd.innerHeight;
+	}-*/;
+
+	public native boolean isFullScreen()/*-{
+		if($wnd.navigator.standalone)
+		{return true;}
+		return false;
+	}-*/;
 }

@@ -16,7 +16,7 @@ body {
      width: 100%;
 	height: 100%;
 	/*width: 320px;
-	min-height: 416px;*/
+	min-height: 417px;*/
 	position: absolute;
 	
 	-webkit-perspective: 800;
@@ -34,7 +34,7 @@ body.landscape {
 	
 	width: 100%;
 	height: 100%;
-	/*min-height: 268px;*/
+	/*min-height: 269px; */	/* 1px more for scrolling!*/
 }
 
 .mgwt-HeaderPanel {
