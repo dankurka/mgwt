@@ -25,7 +25,7 @@ import de.kurka.mobile.showcase.client.places.AnimationSwapPlace;
 import de.kurka.mobile.showcase.client.places.HomePlace;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class AnimationActivity extends MGWTAbstractActivity {
