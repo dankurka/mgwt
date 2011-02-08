@@ -34,13 +34,13 @@ public class AboutViewImpl implements AboutView {
 	public AboutViewImpl() {
 		main = new RoundPanel();
 
-		main.add(new HTML("mobile gwt"));
-		main.add(new HTML("Version 0.5"));
+		main.add(new HTML("mgwt"));
+		main.add(new HTML("Version 0.5a"));
 		main.add(new HTML("Built by Daniel Kurka, @dankurka on Twitter"));
 
 		main.add(new HTML("Using GWT to build mobile apps"));
 
-		main.add(new HTML("www.m-gwt.com"));
+		main.add(new HTML("<br/><br/><a href='http://www.m-gwt.com'>www.m-gwt.com</a><br/><br/>"));
 
 		backbutton = new Button();
 
