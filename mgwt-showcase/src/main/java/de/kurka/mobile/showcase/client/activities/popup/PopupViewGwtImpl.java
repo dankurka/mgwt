@@ -13,14 +13,13 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.popup;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel;
@@ -37,6 +36,12 @@ public class PopupViewGwtImpl implements PopupView {
 	private FlowPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderBackButton backButton;
+	private Button slideUpButton;
+	private Button alertButton;
+	private PopupPanel popupPanel;
+	private Button popupPanelCloseButton;
+	private DialogPanel dialogPanel;
+	private OverlayPanel overlayPanel;
 
 	/**
 	 * 
@@ -55,10 +60,10 @@ public class PopupViewGwtImpl implements PopupView {
 
 		main.add(headerPanel);
 
-		Button button = new Button("Popup");
-		main.add(button);
+		slideUpButton = new Button("Popup");
+		main.add(slideUpButton);
 
-		final PopupPanel popupPanel = new PopupPanel();
+		popupPanel = new PopupPanel();
 
 		final Button redButton = new Button("Important");
 		redButton.setImportant(true);
@@ -68,68 +73,22 @@ public class PopupViewGwtImpl implements PopupView {
 		okButton.setConfirm(true);
 		popupPanel.add(okButton);
 
-		final Button button2 = new Button("Close");
-		popupPanel.add(button2);
+		popupPanelCloseButton = new Button("Close");
+		popupPanel.add(popupPanelCloseButton);
 
-		button2.addSimpleTouchHandler(new SimpleTouchHandler() {
+		popupPanel.add(popupPanelCloseButton);
 
-			@Override
-			public void onTouch() {
-				popupPanel.hide();
-
-			}
-		});
-
-		popupPanel.add(button2);
-
-		button.addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch() {
-
-				popupPanel.show();
-
-			}
-		});
-
-		final OverlayPanel overlayPanel = new OverlayPanel();
-		DialogPanel dialogPanel = new DialogPanel();
+		overlayPanel = new OverlayPanel();
+		dialogPanel = new DialogPanel();
 
 		dialogPanel.getContent().add(new HTML("test test test test"));
 		dialogPanel.getDialogTitle().setText("Titleasdf");
 
-		dialogPanel.getOkButton().addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch() {
-				overlayPanel.hide();
-
-			}
-		});
-
-		dialogPanel.getCancelButton().addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch() {
-				overlayPanel.hide();
-
-			}
-		});
-
 		overlayPanel.add(dialogPanel);
 
-		Button alertButton = new Button("Alert");
+		alertButton = new Button("Alert");
 
 		main.add(alertButton);
-
-		alertButton.addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch() {
-				overlayPanel.show();
-
-			}
-		});
 
 	}
 
@@ -141,6 +100,55 @@ public class PopupViewGwtImpl implements PopupView {
 	@Override
 	public HasSimpleTouchHandler getBackButton() {
 		return backButton;
+	}
+
+	@Override
+	public HasSimpleTouchHandler getSlideUpButton() {
+		return slideUpButton;
+	}
+
+	@Override
+	public HasSimpleTouchHandler getAlertButton() {
+		return alertButton;
+	}
+
+	@Override
+	public void showPopUpPanel() {
+		popupPanel.show();
+
+	}
+
+	@Override
+	public void hidePopUpPanel() {
+		popupPanel.hide();
+
+	}
+
+	@Override
+	public HasSimpleTouchHandler getPopupCloseButton() {
+		return popupPanelCloseButton;
+	}
+
+	@Override
+	public void hideAlertPanel() {
+		overlayPanel.hide();
+
+	}
+
+	@Override
+	public void showAlertPanel() {
+		overlayPanel.show();
+
+	}
+
+	@Override
+	public HasSimpleTouchHandler getAlertOkButton() {
+		return dialogPanel.getCancelButton();
+	}
+
+	@Override
+	public HasSimpleTouchHandler getAlertCancelButton() {
+		return dialogPanel.getOkButton();
 	}
 
 }

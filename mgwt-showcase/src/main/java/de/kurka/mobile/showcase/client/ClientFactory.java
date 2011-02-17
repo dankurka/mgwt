@@ -18,7 +18,6 @@ package de.kurka.mobile.showcase.client;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
 
-import de.kurka.mobile.showcase.client.activities.PopupView;
 import de.kurka.mobile.showcase.client.activities.ProgressBarView;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetView;
 import de.kurka.mobile.showcase.client.activities.SearchBoxView;
@@ -32,6 +31,7 @@ import de.kurka.mobile.showcase.client.activities.button.ButtonView;
 import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarView;
 import de.kurka.mobile.showcase.client.activities.elements.ElementsView;
 import de.kurka.mobile.showcase.client.activities.home.HomeView;
+import de.kurka.mobile.showcase.client.activities.popup.PopupView;
 
 /**
  * @author Daniel Kurka

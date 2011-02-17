@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.popup;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
@@ -25,4 +25,22 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
  */
 public interface PopupView extends IsWidget {
 	public HasSimpleTouchHandler getBackButton();
+
+	public HasSimpleTouchHandler getSlideUpButton();
+
+	public HasSimpleTouchHandler getAlertButton();
+
+	public void showPopUpPanel();
+
+	public void hidePopUpPanel();
+
+	public HasSimpleTouchHandler getPopupCloseButton();
+
+	public void hideAlertPanel();
+
+	public void showAlertPanel();
+
+	public HasSimpleTouchHandler getAlertOkButton();
+
+	public HasSimpleTouchHandler getAlertCancelButton();
 }
