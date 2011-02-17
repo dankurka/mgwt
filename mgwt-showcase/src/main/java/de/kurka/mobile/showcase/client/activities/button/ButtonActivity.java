@@ -13,14 +13,13 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.button;
 
-import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
+import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.mobile.showcase.client.ClientFactory;
 import de.kurka.mobile.showcase.client.places.UIPlace;
 
@@ -28,10 +27,9 @@ import de.kurka.mobile.showcase.client.places.UIPlace;
  * @author Daniel Kurka
  *
  */
-public class ButtonActivity extends AbstractActivity {
+public class ButtonActivity extends MGWTAbstractActivity {
 
 	private final ClientFactory clientFactory;
-	private HandlerRegistration handler;
 
 	public ButtonActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
@@ -42,26 +40,16 @@ public class ButtonActivity extends AbstractActivity {
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		ButtonView view = clientFactory.getButtonView();
 
-		handler = view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch() {
 				clientFactory.getPlaceController().goTo(new UIPlace());
 
 			}
-		});
+		}));
 
 		panel.setWidget(view);
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-
-		if (handler == null) {
-			handler.removeHandler();
-			handler = null;
-		}
 	}
 
 }

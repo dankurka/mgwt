@@ -8,7 +8,6 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 
-import de.kurka.mobile.showcase.client.activities.ButtonActivity;
 import de.kurka.mobile.showcase.client.activities.ButtonBarActivity;
 import de.kurka.mobile.showcase.client.activities.ElementsActivity;
 import de.kurka.mobile.showcase.client.activities.PopupActivity;
@@ -30,10 +29,11 @@ import de.kurka.mobile.showcase.client.activities.animationdone.AnimationPopPlac
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSlidePlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSlideUpPlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSwapPlace;
+import de.kurka.mobile.showcase.client.activities.button.ButtonActivity;
+import de.kurka.mobile.showcase.client.activities.button.ButtonPlace;
 import de.kurka.mobile.showcase.client.activities.home.HomeActivity;
 import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 import de.kurka.mobile.showcase.client.places.ButtonBarPlace;
-import de.kurka.mobile.showcase.client.places.ButtonPlace;
 import de.kurka.mobile.showcase.client.places.ElementsPlace;
 import de.kurka.mobile.showcase.client.places.PopupPlace;
 import de.kurka.mobile.showcase.client.places.ProgressBarPlace;

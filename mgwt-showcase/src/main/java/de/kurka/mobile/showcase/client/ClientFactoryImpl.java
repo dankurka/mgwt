@@ -21,8 +21,6 @@ import com.google.gwt.place.shared.PlaceController;
 
 import de.kurka.mobile.showcase.client.activities.ButtonBarView;
 import de.kurka.mobile.showcase.client.activities.ButtonBarViewGwtImpl;
-import de.kurka.mobile.showcase.client.activities.ButtonView;
-import de.kurka.mobile.showcase.client.activities.ButtonViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.ElementsView;
 import de.kurka.mobile.showcase.client.activities.ElementsViewImpl;
 import de.kurka.mobile.showcase.client.activities.PopupView;
@@ -45,6 +43,8 @@ import de.kurka.mobile.showcase.client.activities.animation.AnimationView;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDoneView;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDoneViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.button.ButtonView;
+import de.kurka.mobile.showcase.client.activities.button.ButtonViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.home.HomeView;
 import de.kurka.mobile.showcase.client.activities.home.HomeViewGwtImpl;
 
