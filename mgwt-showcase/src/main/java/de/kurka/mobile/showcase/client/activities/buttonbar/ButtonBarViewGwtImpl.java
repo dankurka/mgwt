@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.buttonbar;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -115,9 +115,6 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 		return main;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.mobile.showcase.client.activities.ButtonBarView#getBackButton()
-	 */
 	@Override
 	public HasSimpleTouchHandler getBackButton() {
 		return backButton;
