@@ -54,7 +54,7 @@ public class DOMImplMobileSafari extends DOMImplSafari {
 		case "touchend": return 0x800000;
 
 		//added dom transistionend event
-		case "webkittransitionend": return 0x1000000;
+		case "webkitTransitionEnd": return 0x1000000;
 		//added dom transistionend event
 		case "webkitAnimationEnd": return 0x2000000;
 		}
@@ -119,6 +119,7 @@ public class DOMImplMobileSafari extends DOMImplSafari {
 		//transistion end
 		if (chMask & 0x1000000) {
 		if(bits & 0x1000000){
+		alert("adding listener");
 		elem.addEventListener('webkitTransitionEnd', @com.google.gwt.user.client.impl.DOMImplStandard::dispatchEvent, false);
 		}
 		}

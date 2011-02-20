@@ -20,6 +20,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -218,7 +219,10 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	public void setWidget(Widget w) {
 		if (widgetToScroll != null) {
 			if (isAttached()) {
-				transEndHandler.removeHandler();
+				if (transEndHandler != null) {
+					transEndHandler.removeHandler();
+					transEndHandler = null;
+				}
 
 			}
 			main.remove(widgetToScroll);
@@ -238,7 +242,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	private void onTransistionEnd() {
 		System.out.println("trans end");
-
+		Window.alert("trans end");
 		if (listenForTransitionEnd) {
 			System.out.println("listenering");
 			listenForTransitionEnd = false;
@@ -264,6 +268,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		touchRegistration = main.addTouchHandler(touchObserver);
 
 		if (widgetToScroll != null) {
+
 			updateScrollBars();
 			transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
 
@@ -273,8 +278,12 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	@Override
 	protected void onDetach() {
 		super.onDetach();
+
 		touchRegistration.removeHandler();
-		transEndHandler.removeHandler();
+		if (transEndHandler != null) {
+			transEndHandler.removeHandler();
+			transEndHandler = null;
+		}
 
 	}
 
