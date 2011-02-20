@@ -8,7 +8,6 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 
-import de.kurka.mobile.showcase.client.activities.TabBarActivity;
 import de.kurka.mobile.showcase.client.activities.UIActivity;
 import de.kurka.mobile.showcase.client.activities.about.AboutActivity;
 import de.kurka.mobile.showcase.client.activities.about.AboutPlace;
@@ -40,7 +39,8 @@ import de.kurka.mobile.showcase.client.activities.searchbox.SearchBoxActivity;
 import de.kurka.mobile.showcase.client.activities.searchbox.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.activities.slider.SliderActivity;
 import de.kurka.mobile.showcase.client.activities.slider.SliderPlace;
-import de.kurka.mobile.showcase.client.places.TabBarPlace;
+import de.kurka.mobile.showcase.client.activities.tabbar.TabBarActivity;
+import de.kurka.mobile.showcase.client.activities.tabbar.TabBarPlace;
 import de.kurka.mobile.showcase.client.places.UIPlace;
 
 /**
