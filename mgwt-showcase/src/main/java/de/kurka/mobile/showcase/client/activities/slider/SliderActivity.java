@@ -13,16 +13,15 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.slider;
 
-import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
+import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.mobile.showcase.client.ClientFactory;
 import de.kurka.mobile.showcase.client.places.UIPlace;
 
@@ -30,11 +29,9 @@ import de.kurka.mobile.showcase.client.places.UIPlace;
  * @author Daniel Kurka
  *
  */
-public class SliderActivity extends AbstractActivity {
+public class SliderActivity extends MGWTAbstractActivity {
 
 	private final ClientFactory clientFactory;
-	private HandlerRegistration handler;
-	private HandlerRegistration valueChangeHandler;
 
 	public SliderActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
@@ -45,43 +42,24 @@ public class SliderActivity extends AbstractActivity {
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		final SliderView view = clientFactory.getSliderView();
 
-		handler = view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch() {
 				clientFactory.getPlaceController().goTo(new UIPlace());
 
 			}
-		});
+		}));
 
-		valueChangeHandler = view.getSliderValue().addValueChangeHandler(new ValueChangeHandler<Integer>() {
+		addHandlerRegistration(view.getSliderValue().addValueChangeHandler(new ValueChangeHandler<Integer>() {
 
 			@Override
 			public void onValueChange(ValueChangeEvent<Integer> event) {
 				view.getTextField().setText("" + event.getValue());
 			}
-		});
+		}));
 
 		panel.setWidget(view);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.google.gwt.activity.shared.AbstractActivity#onStop()
-	 */
-	@Override
-	public void onStop() {
-
-		super.onStop();
-		if (handler != null) {
-			handler.removeHandler();
-			handler = null;
-		}
-
-		if (valueChangeHandler != null) {
-			valueChangeHandler.removeHandler();
-			valueChangeHandler = null;
-		}
-
 	}
 
 }
