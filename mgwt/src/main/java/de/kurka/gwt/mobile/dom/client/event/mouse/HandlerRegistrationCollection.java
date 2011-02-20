@@ -20,7 +20,7 @@ import java.util.LinkedList;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class HandlerRegistrationCollection implements HandlerRegistration {

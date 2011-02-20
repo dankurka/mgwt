@@ -23,7 +23,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class SimulatedTouchMoveEvent extends TouchMoveEvent {

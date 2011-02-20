@@ -25,7 +25,7 @@ import com.google.gwt.event.dom.client.MouseUpHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveHandler;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class TouchMoveToMouseMoveHandler implements MouseMoveHandler, MouseDownHandler, MouseUpHandler {

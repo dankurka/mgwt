@@ -23,7 +23,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class SimulatedTouchEndEvent extends TouchEndEvent {

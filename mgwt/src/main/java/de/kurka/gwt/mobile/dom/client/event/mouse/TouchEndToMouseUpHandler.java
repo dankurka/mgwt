@@ -21,7 +21,7 @@ import com.google.gwt.event.dom.client.MouseUpHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndHandler;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class TouchEndToMouseUpHandler implements MouseUpHandler {
