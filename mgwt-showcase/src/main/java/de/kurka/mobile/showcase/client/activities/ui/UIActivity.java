@@ -13,20 +13,20 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.ui;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
+import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
+import de.kurka.mobile.showcase.client.activities.Item;
 import de.kurka.mobile.showcase.client.activities.button.ButtonPlace;
 import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.activities.elements.ElementsPlace;
@@ -42,11 +42,9 @@ import de.kurka.mobile.showcase.client.activities.tabbar.TabBarPlace;
  * @author Daniel Kurka
  *
  */
-public class UIActivity extends AbstractActivity {
+public class UIActivity extends MGWTAbstractActivity {
 
 	private final ClientFactory clientFactory;
-	private HandlerRegistration addSimpleTouchHandler;
-	private HandlerRegistration handler;
 
 	public UIActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
@@ -60,18 +58,18 @@ public class UIActivity extends AbstractActivity {
 		view.setBackButtonText("Home");
 		view.setTitle("UI");
 
-		addSimpleTouchHandler = view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch() {
 				clientFactory.getPlaceController().goTo(new HomePlace());
 
 			}
-		});
+		}));
 
 		view.renderItems(createItems());
 
-		handler = view.getList().addCellSelectedHandler(new CellSelectedHandler() {
+		addHandlerRegistration(view.getList().addCellSelectedHandler(new CellSelectedHandler() {
 
 			@Override
 			public void onCellSelected(CellSelectedEvent event) {
@@ -127,7 +125,7 @@ public class UIActivity extends AbstractActivity {
 				}
 
 			}
-		});
+		}));
 
 		panel.setWidget(view);
 
@@ -150,20 +148,6 @@ public class UIActivity extends AbstractActivity {
 		list.add(new Item("Slider"));
 
 		return list;
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-		if (addSimpleTouchHandler != null) {
-			addSimpleTouchHandler.removeHandler();
-			addSimpleTouchHandler = null;
-		}
-
-		if (handler != null) {
-			handler.removeHandler();
-			handler = null;
-		}
 	}
 
 }

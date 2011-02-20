@@ -27,7 +27,7 @@ import de.kurka.mobile.showcase.client.activities.scrollwidget.ScrollWidgetPlace
 import de.kurka.mobile.showcase.client.activities.searchbox.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.activities.slider.SliderPlace;
 import de.kurka.mobile.showcase.client.activities.tabbar.TabBarPlace;
-import de.kurka.mobile.showcase.client.places.UIPlace;
+import de.kurka.mobile.showcase.client.activities.ui.UIPlace;
 
 /**
  * @author kurt

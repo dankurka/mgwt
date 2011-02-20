@@ -19,8 +19,6 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.place.shared.PlaceController;
 
-import de.kurka.mobile.showcase.client.activities.UIView;
-import de.kurka.mobile.showcase.client.activities.UIViewImpl;
 import de.kurka.mobile.showcase.client.activities.about.AboutView;
 import de.kurka.mobile.showcase.client.activities.about.AboutViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationView;
@@ -47,6 +45,8 @@ import de.kurka.mobile.showcase.client.activities.slider.SliderView;
 import de.kurka.mobile.showcase.client.activities.slider.SliderViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.tabbar.TabBarView;
 import de.kurka.mobile.showcase.client.activities.tabbar.TabBarViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.ui.UIView;
+import de.kurka.mobile.showcase.client.activities.ui.UIViewImpl;
 
 /**
  * @author Daniel Kurka

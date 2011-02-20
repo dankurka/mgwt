@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.ui;
 
 import java.util.List;
 
@@ -21,9 +21,10 @@ import com.google.gwt.user.client.ui.IsWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
+import de.kurka.mobile.showcase.client.activities.Item;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public interface UIView extends IsWidget {
