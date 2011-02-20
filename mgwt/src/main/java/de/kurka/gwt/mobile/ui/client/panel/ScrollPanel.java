@@ -386,6 +386,9 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 						}
 					}
+				} else {
+					newPosY = position_y;
+					newPosX = position_x;
 				}
 
 				setPosition(newPosX, newPosY);
