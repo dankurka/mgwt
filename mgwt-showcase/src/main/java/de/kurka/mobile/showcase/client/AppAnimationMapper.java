@@ -22,7 +22,7 @@ import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.activities.elements.ElementsPlace;
 import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 import de.kurka.mobile.showcase.client.activities.popup.PopupPlace;
-import de.kurka.mobile.showcase.client.places.ProgressBarPlace;
+import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarPlace;
 import de.kurka.mobile.showcase.client.places.ScrollWidgetPlace;
 import de.kurka.mobile.showcase.client.places.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.places.SliderPlace;

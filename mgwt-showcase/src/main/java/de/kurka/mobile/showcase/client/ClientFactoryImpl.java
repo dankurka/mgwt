@@ -19,8 +19,6 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.place.shared.PlaceController;
 
-import de.kurka.mobile.showcase.client.activities.ProgressBarView;
-import de.kurka.mobile.showcase.client.activities.ProgressBarViewImpl;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetView;
 import de.kurka.mobile.showcase.client.activities.ScrollWidgetViewImpl;
 import de.kurka.mobile.showcase.client.activities.SearchBoxView;
@@ -47,6 +45,8 @@ import de.kurka.mobile.showcase.client.activities.home.HomeView;
 import de.kurka.mobile.showcase.client.activities.home.HomeViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.popup.PopupView;
 import de.kurka.mobile.showcase.client.activities.popup.PopupViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarView;
+import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarViewImpl;
 
 /**
  * @author Daniel Kurka
