@@ -16,7 +16,7 @@
 package de.kurka.gwt.mobile.ui.client.menu.bar;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class CameraButton extends BarButtonBase {

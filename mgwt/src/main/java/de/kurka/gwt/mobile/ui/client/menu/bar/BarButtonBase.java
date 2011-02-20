@@ -18,7 +18,7 @@ package de.kurka.gwt.mobile.ui.client.menu.bar;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class BarButtonBase extends ButtonBase {
