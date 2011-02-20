@@ -61,6 +61,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private int scrollStartY;
 
 	private long touchStartTime;
+	private int directionX = 0;
+	private int directionY = 0;
 
 	private TouchObserver touchObserver;
 
@@ -77,8 +79,6 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private static final int SCROLL_THRESHOLD = 5;
 
 	private static final int SCROLL_LOCK_THRESHOLD = 3;
-
-	private boolean lockScrolling;
 
 	private boolean has3d;
 
@@ -98,14 +98,6 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		has3d = FeatureDetection.has3d();
 
-	}
-
-	public boolean isLockScrolling() {
-		return lockScrolling;
-	}
-
-	public void setLockScrolling(boolean lockScrolling) {
-		this.lockScrolling = lockScrolling;
 	}
 
 	private boolean header;
@@ -252,7 +244,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 			listenForTransitionEnd = false;
 			resetPosition();
 		} else {
-			System.out.println("not listening");
+			System.out.println("not listening!");
 		}
 
 	}
@@ -336,6 +328,9 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 			touchStartTime = System.currentTimeMillis();
 
+			directionX = 0;
+			directionY = 0;
+
 			System.out.println("touchstartX : " + touchStartX + " touchstartY: " + touchStartY);
 
 		}
@@ -374,25 +369,31 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 				distX = Math.abs(leftDelta);
 				distY = Math.abs(topDelta);
 			} else {
-
-				if (lockScrolling) {
-					//lock scroll
-					if (distX - SCROLL_LOCK_THRESHOLD > distY) {
-						newPosY = position_y;
-
-					} else {
-						if (distY - SCROLL_LOCK_THRESHOLD > distX) {
-							newPosX = position_x;
-
-						}
-					}
-				} else {
+				//lock scroll
+				if (distX - SCROLL_LOCK_THRESHOLD > distY) {
 					newPosY = position_y;
-					newPosX = position_x;
+					topDelta = 0;
+				} else {
+					if (distY - SCROLL_LOCK_THRESHOLD > distX) {
+						newPosX = position_x;
+						leftDelta = 0;
+					}
 				}
 
 				setPosition(newPosX, newPosY);
 				moved = true;
+
+				if (leftDelta > 0) {
+					directionX = -1;
+				} else {
+					directionX = 1;
+				}
+
+				if (topDelta > 0) {
+					directionY = -1;
+				} else {
+					directionY = 1;
+				}
 
 			}
 
