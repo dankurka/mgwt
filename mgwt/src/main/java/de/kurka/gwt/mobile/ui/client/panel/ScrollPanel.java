@@ -78,6 +78,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	private static final int SCROLL_LOCK_THRESHOLD = 3;
 
+	private boolean lockScrolling;
+
 	private boolean has3d;
 
 	private Scrollbar hScrollbar;
@@ -96,6 +98,14 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		has3d = FeatureDetection.has3d();
 
+	}
+
+	public boolean isLockScrolling() {
+		return lockScrolling;
+	}
+
+	public void setLockScrolling(boolean lockScrolling) {
+		this.lockScrolling = lockScrolling;
 	}
 
 	private boolean header;
@@ -364,14 +374,17 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 				distX = Math.abs(leftDelta);
 				distY = Math.abs(topDelta);
 			} else {
-				//lock scroll
-				if (distX - SCROLL_LOCK_THRESHOLD > distY) {
-					newPosY = position_y;
-					topDelta = 0;
-				} else {
-					if (distY - SCROLL_LOCK_THRESHOLD > distX) {
-						newPosX = position_x;
-						leftDelta = 0;
+
+				if (lockScrolling) {
+					//lock scroll
+					if (distX - SCROLL_LOCK_THRESHOLD > distY) {
+						newPosY = position_y;
+
+					} else {
+						if (distY - SCROLL_LOCK_THRESHOLD > distX) {
+							newPosX = position_x;
+
+						}
 					}
 				}
 
