@@ -61,8 +61,6 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private int scrollStartY;
 
 	private long touchStartTime;
-	private int directionX = 0;
-	private int directionY = 0;
 
 	private TouchObserver touchObserver;
 
@@ -328,9 +326,6 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 			touchStartTime = System.currentTimeMillis();
 
-			directionX = 0;
-			directionY = 0;
-
 			System.out.println("touchstartX : " + touchStartX + " touchstartY: " + touchStartY);
 
 		}
@@ -382,18 +377,6 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 				setPosition(newPosX, newPosY);
 				moved = true;
-
-				if (leftDelta > 0) {
-					directionX = -1;
-				} else {
-					directionX = 1;
-				}
-
-				if (topDelta > 0) {
-					directionY = -1;
-				} else {
-					directionY = 1;
-				}
 
 			}
 
