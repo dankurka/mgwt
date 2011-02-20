@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.places;
+package de.kurka.mobile.showcase.client.activities.scrollwidget;
 
 import com.google.gwt.place.shared.Place;
 

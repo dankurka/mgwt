@@ -13,14 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.scrollwidget;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public interface ScrollWidgetView extends IsWidget {

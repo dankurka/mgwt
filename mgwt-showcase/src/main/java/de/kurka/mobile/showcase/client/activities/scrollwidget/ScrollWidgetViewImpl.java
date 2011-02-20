@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities;
+package de.kurka.mobile.showcase.client.activities.scrollwidget;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -26,7 +26,7 @@ import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class ScrollWidgetViewImpl implements ScrollWidgetView {
@@ -60,7 +60,6 @@ public class ScrollWidgetViewImpl implements ScrollWidgetView {
 
 		main.add(scrollPanel);
 
-		//roundPanel = new RoundPanel();
 	}
 
 	@Override
