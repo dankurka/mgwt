@@ -34,7 +34,7 @@ import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 import de.kurka.mobile.showcase.client.activities.popup.PopupPlace;
 import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarPlace;
 import de.kurka.mobile.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
-import de.kurka.mobile.showcase.client.places.SearchBoxPlace;
+import de.kurka.mobile.showcase.client.activities.searchbox.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.places.SliderPlace;
 import de.kurka.mobile.showcase.client.places.TabBarPlace;
 
