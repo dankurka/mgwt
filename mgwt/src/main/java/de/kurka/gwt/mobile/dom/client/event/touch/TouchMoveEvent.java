@@ -15,17 +15,11 @@
  */
 package de.kurka.gwt.mobile.dom.client.event.touch;
 
-import com.google.gwt.event.dom.client.DomEvent;
 
 public class TouchMoveEvent extends TouchEvent<TouchMoveHandler> {
 
 	private static final Type<TouchMoveHandler> TYPE = new Type<TouchMoveHandler>("touchmove", new TouchMoveEvent());
 
-	/**
-	   * Gets the event type associated with mouse down events.
-	   * 
-	   * @return the handler type
-	   */
 	public static Type<TouchMoveHandler> getType() {
 		return TYPE;
 	}
@@ -35,11 +29,6 @@ public class TouchMoveEvent extends TouchEvent<TouchMoveHandler> {
 		return TYPE;
 	}
 
-	/**
-	   * Protected constructor, use
-	   * {@link DomEvent#fireNativeEvent(com.google.gwt.dom.client.NativeEvent, com.google.gwt.event.shared.HasHandlers)}
-	   * to fire mouse down events.
-	   */
 	protected TouchMoveEvent() {
 
 	}

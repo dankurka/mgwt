@@ -16,7 +16,7 @@
 package de.kurka.gwt.mobile.dom.client.event.touch;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public interface TouchHandler extends TouchStartHandler, TouchMoveHandler, TouchEndHandler, TouchCancelHandler {

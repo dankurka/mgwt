@@ -15,17 +15,11 @@
  */
 package de.kurka.gwt.mobile.dom.client.event.touch;
 
-import com.google.gwt.event.dom.client.DomEvent;
 
 public class TouchEndEvent extends TouchEvent<TouchEndHandler> {
 
 	private static final Type<TouchEndHandler> TYPE = new Type<TouchEndHandler>("touchend", new TouchEndEvent());
 
-	/**
-	   * Gets the event type associated with mouse down events.
-	   * 
-	   * @return the handler type
-	   */
 	public static Type<TouchEndHandler> getType() {
 		return TYPE;
 	}
@@ -35,11 +29,6 @@ public class TouchEndEvent extends TouchEvent<TouchEndHandler> {
 		return TYPE;
 	}
 
-	/**
-	   * Protected constructor, use
-	   * {@link DomEvent#fireNativeEvent(com.google.gwt.dom.client.NativeEvent, com.google.gwt.event.shared.HasHandlers)}
-	   * to fire mouse down events.
-	   */
 	protected TouchEndEvent() {
 
 	}
