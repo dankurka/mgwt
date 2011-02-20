@@ -18,7 +18,7 @@ package de.kurka.gwt.mobile.dom.client.event.animation;
 import com.google.gwt.event.dom.client.DomEvent;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public class AnimationEndEvent extends DomEvent<AnimationEndHandler> {

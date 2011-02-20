@@ -18,7 +18,7 @@ package de.kurka.gwt.mobile.dom.client.event.animation;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public interface AnimationEndHandler extends EventHandler {

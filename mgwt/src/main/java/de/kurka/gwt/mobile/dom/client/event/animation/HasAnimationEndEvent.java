@@ -18,7 +18,7 @@ package de.kurka.gwt.mobile.dom.client.event.animation;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
- * @author kurt
+ * @author Daniel Kurka
  *
  */
 public interface HasAnimationEndEvent {
