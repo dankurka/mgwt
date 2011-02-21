@@ -20,7 +20,6 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -242,7 +241,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	private void onTransistionEnd() {
 		System.out.println("trans end");
-		Window.alert("trans end");
+
 		if (listenForTransitionEnd) {
 			System.out.println("listenering");
 			listenForTransitionEnd = false;
