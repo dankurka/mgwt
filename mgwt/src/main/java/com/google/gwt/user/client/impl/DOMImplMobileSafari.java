@@ -119,7 +119,6 @@ public class DOMImplMobileSafari extends DOMImplSafari {
 		//transistion end
 		if (chMask & 0x1000000) {
 		if(bits & 0x1000000){
-		alert("adding listener");
 		elem.addEventListener('webkitTransitionEnd', @com.google.gwt.user.client.impl.DOMImplStandard::dispatchEvent, false);
 		}
 		}
