@@ -88,7 +88,6 @@ public class HomeActivity extends MGWTAbstractActivity {
 
 		list.add(new Topic("UI", 5));
 		list.add(new Topic("Animations", 5));
-		list.add(new Topic("Credits", 5));
 
 		return list;
 	}
