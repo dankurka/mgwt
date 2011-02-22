@@ -28,7 +28,6 @@ import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
@@ -225,7 +224,6 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		if (models.size() > 0) {
 			String innerHTML = getElement().getInnerHTML();
 			if ("".equals(innerHTML.trim())) {
-				Window.alert("inner html not working");
 				fixBug(html);
 			}
 		}
@@ -240,8 +238,6 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 				getElement().setInnerHTML(html);
 				String innerHTML = getElement().getInnerHTML();
 				if ("".equals(innerHTML.trim())) {
-					Window.alert("inner html not working");
-
 					fixBug(html);
 
 				}
