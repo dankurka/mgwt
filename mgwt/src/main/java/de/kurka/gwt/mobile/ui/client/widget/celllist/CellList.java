@@ -27,6 +27,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
@@ -216,7 +218,26 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			sb.append(LI_TEMPLATE.li(i, clazz, cellBuilder.toSafeHtml()));
 		}
 
-		getElement().setInnerHTML(sb.toSafeHtml().asString());
+		final String html = sb.toSafeHtml().asString();
+
+		getElement().setInnerHTML(html);
+
+		if (models.size() > 0) {
+			String innerHTML = getElement().getInnerHTML();
+			if ("".equals(innerHTML.trim())) {
+				Window.alert("inner html not working");
+
+				new Timer() {
+
+					@Override
+					public void run() {
+						getElement().setInnerHTML(html);
+
+					}
+				}.schedule(100);
+
+			}
+		}
 
 	}
 }
