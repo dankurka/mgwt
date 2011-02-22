@@ -226,18 +226,27 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			String innerHTML = getElement().getInnerHTML();
 			if ("".equals(innerHTML.trim())) {
 				Window.alert("inner html not working");
-
-				new Timer() {
-
-					@Override
-					public void run() {
-						getElement().setInnerHTML(html);
-
-					}
-				}.schedule(100);
-
+				fixBug(html);
 			}
 		}
 
+	}
+
+	private void fixBug(final String html) {
+		new Timer() {
+
+			@Override
+			public void run() {
+				getElement().setInnerHTML(html);
+				String innerHTML = getElement().getInnerHTML();
+				if ("".equals(innerHTML.trim())) {
+					Window.alert("inner html not working");
+
+					fixBug(html);
+
+				}
+
+			}
+		}.schedule(100);
 	}
 }
