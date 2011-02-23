@@ -157,7 +157,10 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 		currentActivity = nextActivity;
 		currentPlace = event.getNewPlace();
-		currentIsFirst = !currentIsFirst;
+
+		if (animation != null) {
+			currentIsFirst = !currentIsFirst;
+		}
 
 		startingNext = true;
 
@@ -184,8 +187,10 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 			throw new UmbrellaException(causes);
 		}
 
-		//animate
-		animate(animation);
+		if (animation != null) {
+			//animate
+			animate(animation);
+		}
 
 	}
 

@@ -77,6 +77,13 @@ public class AppAnimationMapper implements AnimationMapper {
 			return animation;
 		}
 
+		if (oldPlace instanceof HomePlace && newPlace instanceof UIPlace) {
+			Animation animation = new Animation();
+			animation.setType(Animation.ANIMATION_SLIDE);
+			animation.setDirection(false);
+			return animation;
+		}
+
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof HomePlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_SLIDE);
@@ -302,7 +309,7 @@ public class AppAnimationMapper implements AnimationMapper {
 			return animation;
 		}
 
-		return new Animation();
+		return null;
 	}
 
 }
