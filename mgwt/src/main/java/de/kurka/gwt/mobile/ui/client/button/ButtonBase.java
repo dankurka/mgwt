@@ -19,6 +19,11 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
+import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
+import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
+import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
+import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
@@ -31,6 +36,32 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasSimp
 
 	public ButtonBase() {
 		setElement(DOM.createDiv());
+
+		addTouchHandler(new TouchHandler() {
+
+			@Override
+			public void onTouchCanceled(TouchCancelEvent event) {
+				removeStyleDependentName("active");
+
+			}
+
+			@Override
+			public void onTouchEnd(TouchEndEvent event) {
+				removeStyleDependentName("active");
+
+			}
+
+			@Override
+			public void onTouchMove(TouchMoveEvent event) {
+
+			}
+
+			@Override
+			public void onTouchStart(TouchStartEvent event) {
+				addStyleDependentName("active");
+
+			}
+		});
 
 	}
 

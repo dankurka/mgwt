@@ -467,7 +467,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarRefresh.png');
 }
 
-.mgwt-BarButton-refresh:active {
+.mgwt-BarButton-active.mgwt-BarButton-refresh {
 	background-image: url('../images/buttons/UIButtonBarRefresh.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -475,7 +475,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarAction.png');
 }
 
-.mgwt-BarButton-action:active {
+.mgwt-BarButton-active.mgwt-BarButton-action {
 	background-image: url('../images/buttons/UIButtonBarAction.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -483,7 +483,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarArrowDown.png');
 }
 
-.mgwt-BarButton-arrowdown:active {
+.mgwt-BarButton-active.mgwt-BarButton-arrowdown {
 	background-image: url('../images/buttons/UIButtonBarArrowDown.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -491,7 +491,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarArrowLeft.png');
 }
 
-.mgwt-BarButton-arrowleft:active {
+.mgwt-BarButton-active.mgwt-BarButton-arrowleft {
 	background-image: url('../images/buttons/UIButtonBarArrowLeft.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -499,7 +499,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarArrowRight.png');
 }
 
-.mgwt-BarButton-arrowright:active {
+.mgwt-BarButton-active.mgwt-BarButton-arrowright {
 	background-image: url('../images/buttons/UIButtonBarArrowRight.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -507,7 +507,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarArrowUp.png');
 }
 
-.mgwt-BarButton-arrowup:active {
+.mgwt-BarButton-active.mgwt-BarButton-arrowup {
 	background-image: url('../images/buttons/UIButtonBarArrowUp.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -515,7 +515,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarBookmarks.png');
 }
 
-.mgwt-BarButton-bookmark:active {
+.mgwt-BarButton-active.mgwt-BarButton-bookmark {
 	background-image: url('../images/buttons/UIButtonBarBookmarks.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -523,7 +523,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarCamera.png');
 }
 
-.mgwt-BarButton-camera:active {
+.mgwt-BarButton-active.mgwt-BarButton-camera {
 	background-image: url('../images/buttons/UIButtonBarCamera.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -531,7 +531,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarCompose.png');
 }
 
-.mgwt-BarButton-compose:active {
+.mgwt-BarButton-active.mgwt-BarButton-compose {
 	background-image: url('../images/buttons/UIButtonBarCompose.png'),url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -539,7 +539,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarContactAdd.png');
 }
 
-.mgwt-BarButton-contactadd:active {
+.mgwt-BarButton-active.mgwt-BarButton-contactadd {
 	background-image: url('../images/buttons/UIButtonBarContactAdd.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -547,7 +547,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarDelete.png');
 }
 
-.mgwt-BarButton-delete:active {
+.mgwt-BarButton-active.mgwt-BarButton-delete {
 	background-image: url('../images/buttons/UIButtonBarDelete.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -555,7 +555,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarFastForward.png');
 }
 
-.mgwt-BarButton-fastforward:active {
+.mgwt-BarButton-active.mgwt-BarButton-fastforward {
 	background-image: url('../images/buttons/UIButtonBarFastForward.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -563,7 +563,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarInfo.png');
 }
 
-.mgwt-BarButton-info:active {
+.mgwt-BarButton-active.mgwt-BarButton-info {
 	background-image: url('../images/buttons/UIButtonBarInfo.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -571,7 +571,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarLocate.png');
 }
 
-.mgwt-BarButton-locate:active {
+.mgwt-BarButton-active.mgwt-BarButton-locate {
 	background-image: url('../images/buttons/UIButtonBarLocate.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -579,7 +579,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarNew.png');
 }
 
-.mgwt-BarButton-new:active {
+.mgwt-BarButton-active.mgwt-BarButton-new {
 	background-image: url('../images/buttons/UIButtonBarNew.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -587,7 +587,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarNextSlide.png');
 }
 
-.mgwt-BarButton-nextslide:active {
+.mgwt-BarButton-active.mgwt-BarButton-nextslide {
 	background-image: url('../images/buttons/UIButtonBarNextSlide.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -595,7 +595,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarOrganize.png');
 }
 
-.mgwt-BarButton-organize:active {
+.mgwt-BarButton-active.mgwt-BarButton-organize {
 	background-image: url('../images/buttons/UIButtonBarOrganize.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -603,7 +603,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarPause.png');
 }
 
-.mgwt-BarButton-pause:active {
+.mgwt-BarButton-active.mgwt-BarButton-pause {
 	background-image: url('../images/buttons/UIButtonBarPause.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -611,7 +611,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarPlay.png');
 }
 
-.mgwt-BarButton-play:active {
+.mgwt-BarButton-active.mgwt-BarButton-play {
 	background-image: url('../images/buttons/UIButtonBarPlay.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -619,7 +619,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarPlus.png');
 }
 
-.mgwt-BarButton-plus:active {
+.mgwt-BarButton-active.mgwt-BarButton-plus {
 	background-image: url('../images/buttons/UIButtonBarPlus.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -627,7 +627,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarPreviousSlide.png');
 }
 
-.mgwt-BarButton-previousslide:active {
+.mgwt-BarButton-active.mgwt-BarButton-previousslide {
 	background-image: url('../images/buttons/UIButtonBarPreviousSlide.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -635,7 +635,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarReply.png');
 }
 
-.mgwt-BarButton-reply:active {
+.mgwt-BarButton-active.mgwt-BarButton-reply {
 	background-image: url('../images/buttons/UIButtonBarReply.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -643,7 +643,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarRewind.png');
 }
 
-.mgwt-BarButton-rewind:active {
+.mgwt-BarButton-active.mgwt-BarButton-rewind {
 	background-image: url('../images/buttons/UIButtonBarRewind.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -651,7 +651,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarSearch.png');
 }
 
-.mgwt-BarButton-search:active {
+.mgwt-BarButton-active.mgwt-BarButton-search {
 	background-image: url('../images/buttons/UIButtonBarSearch.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -659,7 +659,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarStop.png');
 }
 
-.mgwt-BarButton-stop:active {
+.mgwt-BarButton-active.mgwt-BarButton-stop {
 	background-image: url('../images/buttons/UIButtonBarStop.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
@@ -667,7 +667,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/buttons/UIButtonBarTrash.png');
 }
 
-.mgwt-BarButton-trash:active {
+.mgwt-BarButton-active.mgwt-BarButton-trash {
 	background-image: url('../images/buttons/UIButtonBarTrash.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
 }
 
