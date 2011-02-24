@@ -19,16 +19,13 @@ body {
 	min-height: 417px;*/
 	position: absolute;
 	
-	-webkit-perspective: 800;
-    -webkit-transform-style: preserve-3d;
-    
+	
    
-    
 	
 }
 
 .threedstuff {
--webkit-backface-visibility: hidden;
+
 
 }
 

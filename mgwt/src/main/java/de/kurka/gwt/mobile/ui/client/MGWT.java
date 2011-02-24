@@ -15,6 +15,7 @@
  */
 package de.kurka.gwt.mobile.ui.client;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.BodyElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -250,4 +251,28 @@ public class MGWT implements HasOrientationChangeHandler {
 		{return true;}
 		return false;
 	}-*/;
+
+	/**
+	 * 
+	 */
+	public void loadStyle() {
+		String cssUrl = GWT.getModuleName() + "/mgwt/iphone/css/iphone.css";
+
+		if (FeatureDetection.isPad()) {
+			cssUrl = GWT.getModuleName() + "/mgwt/ipad/css/ipad.css";
+
+		} else {
+			if (FeatureDetection.isAndroid()) {
+				cssUrl = GWT.getModuleName() + "/mgwt/android/css/android.css";
+			}
+		}
+
+		LinkElement linkElement = Document.get().createLinkElement();
+		linkElement.setHref(cssUrl);
+		linkElement.setRel("stylesheet");
+		linkElement.setType("text/css");
+
+		getHead().appendChild(linkElement);
+
+	}
 }

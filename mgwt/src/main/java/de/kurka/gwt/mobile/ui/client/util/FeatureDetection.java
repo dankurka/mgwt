@@ -75,4 +75,22 @@ public class FeatureDetection {
 	public static boolean isiOs() {
 		return isiPhone() || isPad();
 	}
+
+	private static boolean testedForAndroid;
+	private static boolean isAndroid;
+
+	/**
+	 * @return
+	 */
+	public static boolean isAndroid() {
+		if (!testedForAndroid) {
+			isAndroid = _isAndroid();
+			testedForAndroid = true;
+		}
+		return isAndroid;
+	}
+
+	private static native boolean _isAndroid() /*-{
+		return $wnd.navigator.userAgent.toUpperCase().indexOf("ANDROID")!=-1
+	}-*/;
 }
