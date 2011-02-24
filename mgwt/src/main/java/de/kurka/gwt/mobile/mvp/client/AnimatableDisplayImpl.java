@@ -15,6 +15,7 @@
  */
 package de.kurka.gwt.mobile.mvp.client;
 
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -113,6 +114,11 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	}
 
 	private void onAnimationEnd() {
+		if (FeatureDetection.isAndroid()) {
+			Document.get().getBody().setAttribute("style", "");
+			first.getElement().setAttribute("style", "");
+			second.getElement().setAttribute("style", "");
+		}
 
 		if (showFirst) {
 
@@ -163,7 +169,11 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		}
 
 		animationEnd = first.addDomHandler(listener, AnimationEndEvent.getType());
-
+		if (FeatureDetection.isAndroid()) {
+			Document.get().getBody().setAttribute("style", "-webkit-perspective: 800; -webkit-transform-style: preserve-3d;");
+			first.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
+			second.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
+		}
 		first.addStyleName(type);
 		second.addStyleName(type);
 
