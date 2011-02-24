@@ -160,7 +160,7 @@ public class MGWT implements HasOrientationChangeHandler {
 		var func = function(event){
 		event.preventDefault();
 		//event.stopPropagation();
-		//return false;
+		return false;
 		};
 
 		el.ontouchmove = func;
