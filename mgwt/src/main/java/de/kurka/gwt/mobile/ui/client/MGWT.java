@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeEvent;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler;
+import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
 
 /**
  * @author Daniel Kurka
@@ -120,7 +121,7 @@ public class MGWT implements HasOrientationChangeHandler {
 
 		}
 
-		if (settings.isPreventScrolling()) {
+		if (settings.isPreventScrolling() && FeatureDetection.isiOs()) {
 			BodyElement body = Document.get().getBody();
 			setUpPreventScrolling(body);
 		}
@@ -156,9 +157,9 @@ public class MGWT implements HasOrientationChangeHandler {
 
 	private native void setUpPreventScrolling(Element el)/*-{
 		var func = function(event){
-		event.preventDefault();
+		//event.preventDefault();
 		//event.stopPropagation();
-		return false;
+		//return false;
 		};
 
 		el.ontouchmove = func;

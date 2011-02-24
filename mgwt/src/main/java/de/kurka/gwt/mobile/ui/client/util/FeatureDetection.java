@@ -27,6 +27,7 @@ public class FeatureDetection {
 	public static boolean has3d() {
 		if (!testedFor3d) {
 			has3d = _has3d();
+			testedFor3d = true;
 		}
 		return has3d;
 	}
@@ -38,11 +39,23 @@ public class FeatureDetection {
 	private static boolean isPad;
 	private static boolean testedForIpad;
 
+	private static boolean testedForIPhone;
+	private static boolean isiPhone;
+
 	public static boolean isPad() {
-		if (!testedFor3d) {
+		if (!testedForIpad) {
 			isPad = _isiPad();
+			testedForIpad = true;
 		}
 		return isPad;
+	}
+
+	public static boolean isiPhone() {
+		if (!testedForIPhone) {
+			isiPhone = _isiPhone();
+			testedForIPhone = true;
+		}
+		return isiPhone;
 	}
 
 	/**
@@ -51,4 +64,15 @@ public class FeatureDetection {
 	private static native boolean _isiPad() /*-{
 		return $wnd.navigator.userAgent.toUpperCase().indexOf("IPAD")!=-1
 	}-*/;
+
+	private static native boolean _isiPhone() /*-{
+		return $wnd.navigator.userAgent.toUpperCase().indexOf("IPHONE")!=-1
+	}-*/;
+
+	/**
+	 * @return
+	 */
+	public static boolean isiOs() {
+		return isiPhone() || isPad();
+	}
 }
