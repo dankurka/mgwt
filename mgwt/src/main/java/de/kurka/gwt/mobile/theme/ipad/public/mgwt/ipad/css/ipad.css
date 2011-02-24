@@ -1,0 +1,1701 @@
+* {
+	-webkit-user-select: none;
+	-webkit-text-size-adjust: none;
+	margin: 0px;
+	padding: 0px;
+	font-family: Helvetica;
+	-webkit-touch-callout: none;
+	-webkit-text-size-adjust: none;
+}
+
+body {
+	background-color:#C5CCD4;
+      background-image: -webkit-gradient(linear, left top, right top, from(#C5CCD4), to(#CBD2D8), color-stop(0.6, #C5CCD4), color-stop(0.6, #CBD2D8));
+     -webkit-background-size:7px 7px;
+     background-repeat: repeat;
+     width: 100%;
+	height: 100%;
+	/*width: 320px;
+	min-height: 417px;*/
+	position: absolute;
+	
+	-webkit-perspective: 800;
+    -webkit-transform-style: preserve-3d;
+    
+	
+}
+
+.threedstuff {
+-webkit-backface-visibility: hidden;
+
+}
+
+body.landscape {
+	
+	width: 100%;
+	height: 100%;
+	/*min-height: 269px; */	/* 1px more for scrolling!*/
+}
+
+
+.portrait .mgwt-constrainWidth {
+	width: 320px;
+}
+
+.landscape .mgwt-constrainWidth {
+	width: 480px;
+}
+
+
+/**
+browser with url bar
+*/
+.mgwt-ViewPort-normalscreen-portrait  .mgwt-constrainHeight {
+	height: 356px;
+
+}
+
+.mgwt-ViewPort-normalscreen-landscape   .mgwt-constrainHeight {
+	height: 208px;
+	
+}
+
+
+/**
+browser with url bar and header
+*/
+.mgwt-ViewPort-normalscreen-portrait  .mgwt-constrainHeight-header {
+	height: 312px;
+	
+}
+
+.mgwt-ViewPort-normalscreen-landscape   .mgwt-constrainHeight-header {
+	height: 162px;
+	
+}
+
+
+/**
+fullscreen
+*/
+.mgwt-ViewPort-fullscreen-portrait .mgwt-constrainHeight {
+	height: 460px;
+}
+
+.mgwt-ViewPort-fullscreen-landscape .mgwt-constrainHeight {
+	height: 300px;
+}
+
+
+
+
+		
+		
+		
+
+
+/**
+fullscreen with header
+*/
+.mgwt-ViewPort-fullscreen-portrait .mgwt-constrainHeight-header {
+	height: 416px;
+}
+
+.mgwt-ViewPort-fullscreen-landscape .mgwt-constrainHeight-header {
+	height: 260px;
+}
+
+
+/**
+fullscreen with header and bottom
+*/
+.mgwt-ViewPort-fullscreen-portrait .mgwt-constrainHeight-header-bottom {
+	height: 372px;
+}
+
+.mgwt-ViewPort-fullscreen-landscape .mgwt-constrainHeight-header-bottom {
+	height: 216px;
+}
+
+/**
+fullscreen with header and tab
+*/
+.mgwt-ViewPort-fullscreen-portrait .mgwt-constrainHeight-header-tab {
+	height: 356px;
+}
+
+.mgwt-ViewPort-fullscreen-landscape .mgwt-constrainHeight-header-tab {
+	height: 200px;
+}
+
+.mgwt-AnimatableDisplay{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	
+ }
+
+
+.mgwt-HeaderPanel {
+	position: relative;
+	height: 40px;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)));
+	border-bottom: 1px solid rgb(45, 54, 66);
+	
+}
+
+.mgwt-HeaderPanel .left {
+	position: absolute;
+	top: 0px;
+	left: 6px;
+}
+
+.mgwt-HeaderPanel .right {
+	position: absolute;
+	top: 0px;
+	right: 6px;
+}
+
+.mgwt-HeaderButton {
+	
+	min-width: 40px;
+	max-width: 60px;
+	
+	
+	white-space: nowrap;
+	
+	text-overflow: ellipsis;
+	
+	z-index: 1;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+	
+	
+	margin: 6px 0 0 12px;
+	height: 26px;
+	
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	-webkit-border-radius: 5px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#9fb3cc),
+		to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 1px
+		rgba(0, 0, 0, 0.2);
+}
+
+.mgwt-HeaderButton p { 
+    position: relative; 
+    z-index: 2; 
+    
+    margin: 0; 
+    padding: 5px; 
+    font-size: 12px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
+    text-align: center;
+}
+
+
+
+.mgwt-HeaderButton:active {
+background: -webkit-gradient(linear, left top, left bottom, from(#7582a4),
+		to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
+}
+
+
+
+.mgwt-HeaderButton-back div {
+	position: absolute;
+	z-index: 1;
+	top: 4px;
+	left: -7px;
+	-webkit-transform: rotate(51deg);
+}
+
+.mgwt-HeaderButton-back span { 
+    -webkit-transform: skew(15deg);
+    display: block; 
+    width: 15px; 
+    height: 16px; 
+    background: -webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa));   
+    -webkit-border-radius: 1px; 
+    border: 1px solid rgba(0,0,0, 0.4); 
+    border-right: 0; 
+    border-top: 0;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255, 0.25);
+}
+
+.mgwt-HeaderButton:active span{
+background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
+		to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
+}
+
+.mgwt-HeaderButton-forward div {
+	position: absolute;
+	z-index: 1;
+	top: 4px;
+	right: -7px;
+	-webkit-transform: rotate(51deg);
+}
+
+
+
+
+.mgwt-ButtonBar {
+	position: absolute;
+	bottom: 0px;
+	height: 40px;
+	width: 100%;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)));
+	border-top: 1px solid rgb(45, 54, 66);
+}
+
+.mgwt-HeaderPanel .title {
+	position: absolute;
+	left: 50%;
+	opacity: 1;
+	width: 310px;
+	text-align: center;
+	height: 31px;
+	margin-top: 6px;
+	margin-left: -150px;
+	margin-right: 5px;
+	z-index: 0;
+	font-size: 16pt;
+	font-weight: bold;
+	color: white;
+	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.list {
+	position: relative;
+	/*border: #878787 solid 1px;*/
+	margin: 3px 9px 17px;
+	list-style: none;
+}
+
+.list li:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+.list li {
+	background-color: white;
+	position: relative; height 43px;
+	list-style-type: none;
+	display: block;
+	height: 43px;
+	overflow: hidden;
+	border: 1px solid rgb(171, 173, 176);
+	width: auto;
+	border-bottom-width: 0px;
+}
+
+.list li:last-child {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-width: 1px;
+}
+
+.mgwt-ScrollPanel {
+	overflow: hidden;
+	position: relative;
+}
+
+
+
+
+
+.mgwt-ScrollPanel-container {
+	-webkit-transition-property: -webkit-transform;
+	-webkit-transition-timing-function: cubic-bezier(0, 0, 0.25, 1);
+	border: 1px solid green;
+	overflow: visible;
+}
+
+.mgwt-Scrollbar {
+	position: absolute;
+	z-index: 10;
+	pointer-events: none;
+	overflow: hidden;
+	opacity: 0;
+	-webkit-transition-duration: 300ms;
+	-webkit-transition-delay: 0ms;
+	-webkit-transition-property: opacity;
+}
+
+.mgwt-Scrollbar-horizontal {
+	bottom: 2px;
+	left: 2px;
+	right: 7px;
+	height: 5px;
+}
+
+.mgwt-Scrollbar-vertical {
+	top: 2px;
+	right: 2px;
+	bottom: 7px;
+	width: 5px;
+}
+
+.mgwt-Scrollbar-Bar {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	-webkit-transition-timing-function: cubic-bezier(0, 0, 0.25, 1);
+	pointer-events: none;
+	-webkit-transition-duration: 0;
+	-webkit-transition-delay: 0;
+	-webkit-transition-property: -webkit-transform;
+	z-index: 10;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.mgwt-Scrollbar-Bar-vertical {
+	-webkit-border-radius: 2px 3px;
+	min-width: 5px;
+	min-height: 6px;
+}
+
+.mgwt-Scrollbar-Bar-horizontal {
+	-webkit-border-radius: 3px 2px;
+	min-width: 6px;
+	min-height: 5px
+}
+
+.mgwt-List {
+	position: relative;
+	/*border: #878787 solid 1px;*/
+	margin: 3px 9px 17px;
+	list-style: none;
+	padding: 5px;
+	border-bottom-left-radius: 8px 8px;
+	border-bottom-right-radius: 8px 8px;
+	border-top-left-radius: 8px 8px;
+	border-top-right-radius: 8px 8px;
+}
+
+.mgwt-List li:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+.mgwt-List li {
+	background-color: white;
+	position: relative;
+	list-style-type: none;
+	display: block;
+	height: 43px;
+	overflow: hidden;
+	border: 1px solid rgb(171, 173, 176);
+	width: auto;
+	border-bottom-width: 0px;
+	background-origin: padding-box;
+}
+
+.mgwt-List li:last-child {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-width: 1px;
+}
+
+.mgwt-List li {
+	
+}
+
+.mgwt-List li:active {
+	
+}
+
+.mgwt-List .group {
+	background-image: url('../images/chevron.png');
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+
+.mgwt-List .group.active {
+	background-image: url('../images/chevron_touched.png'),
+		-webkit-gradient(linear, 0% 0, 0% 100%, from(#CCCCCC), to(#EEEEEE) );
+	background-repeat: no-repeat, repeat;
+	background-position: 100% 50%, 0 0;
+	color: white;
+}
+
+.mgwt-List-Cell {
+	padding: 12px;
+	text-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+}
+
+.mgwt-List-Header {
+	color: black;
+	font: normal normal bold 18px/normal Helvetica;
+	margin: 10px 20px 5px;
+	text-shadow: rgba(255, 255, 255, 0.19);
+}
+
+.mgwt-roundPanel {
+	-webkit-border-radius: 15px;
+	background-color: white;
+	border: 1px solid rgb(171, 173, 176);
+	margin: 10px;
+	padding: 10px;
+	font-weight: bold;
+}
+
+
+
+.mgwt-BarButton {
+	position: relative;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 40px;
+	height: 40px;
+}
+
+.mgwt-BarButton-refresh {
+	background-image: url('../images/buttons/UIButtonBarRefresh.png');
+}
+
+.mgwt-BarButton-refresh:active {
+	background-image: url('../images/buttons/UIButtonBarRefresh.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-action {
+	background-image: url('../images/buttons/UIButtonBarAction.png');
+}
+
+.mgwt-BarButton-action:active {
+	background-image: url('../images/buttons/UIButtonBarAction.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-arrowdown {
+	background-image: url('../images/buttons/UIButtonBarArrowDown.png');
+}
+
+.mgwt-BarButton-arrowdown:active {
+	background-image: url('../images/buttons/UIButtonBarArrowDown.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-arrowleft {
+	background-image: url('../images/buttons/UIButtonBarArrowLeft.png');
+}
+
+.mgwt-BarButton-arrowleft:active {
+	background-image: url('../images/buttons/UIButtonBarArrowLeft.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-arrowright {
+	background-image: url('../images/buttons/UIButtonBarArrowRight.png');
+}
+
+.mgwt-BarButton-arrowright:active {
+	background-image: url('../images/buttons/UIButtonBarArrowRight.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-arrowup {
+	background-image: url('../images/buttons/UIButtonBarArrowUp.png');
+}
+
+.mgwt-BarButton-arrowup:active {
+	background-image: url('../images/buttons/UIButtonBarArrowUp.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-bookmark {
+	background-image: url('../images/buttons/UIButtonBarBookmarks.png');
+}
+
+.mgwt-BarButton-bookmark:active {
+	background-image: url('../images/buttons/UIButtonBarBookmarks.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-camera {
+	background-image: url('../images/buttons/UIButtonBarCamera.png');
+}
+
+.mgwt-BarButton-camera:active {
+	background-image: url('../images/buttons/UIButtonBarCamera.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-compose {
+	background-image: url('../images/buttons/UIButtonBarCompose.png');
+}
+
+.mgwt-BarButton-compose:active {
+	background-image: url('../images/buttons/UIButtonBarCompose.png'),url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-contactadd {
+	background-image: url('../images/buttons/UIButtonBarContactAdd.png');
+}
+
+.mgwt-BarButton-contactadd:active {
+	background-image: url('../images/buttons/UIButtonBarContactAdd.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-delete {
+	background-image: url('../images/buttons/UIButtonBarDelete.png');
+}
+
+.mgwt-BarButton-delete:active {
+	background-image: url('../images/buttons/UIButtonBarDelete.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-fastforward {
+	background-image: url('../images/buttons/UIButtonBarFastForward.png');
+}
+
+.mgwt-BarButton-fastforward:active {
+	background-image: url('../images/buttons/UIButtonBarFastForward.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-info {
+	background-image: url('../images/buttons/UIButtonBarInfo.png');
+}
+
+.mgwt-BarButton-info:active {
+	background-image: url('../images/buttons/UIButtonBarInfo.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-locate {
+	background-image: url('../images/buttons/UIButtonBarLocate.png');
+}
+
+.mgwt-BarButton-locate:active {
+	background-image: url('../images/buttons/UIButtonBarLocate.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-new {
+	background-image: url('../images/buttons/UIButtonBarNew.png');
+}
+
+.mgwt-BarButton-new:active {
+	background-image: url('../images/buttons/UIButtonBarNew.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-nextslide {
+	background-image: url('../images/buttons/UIButtonBarNextSlide.png');
+}
+
+.mgwt-BarButton-nextslide:active {
+	background-image: url('../images/buttons/UIButtonBarNextSlide.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-organize {
+	background-image: url('../images/buttons/UIButtonBarOrganize.png');
+}
+
+.mgwt-BarButton-organize:active {
+	background-image: url('../images/buttons/UIButtonBarOrganize.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-pause {
+	background-image: url('../images/buttons/UIButtonBarPause.png');
+}
+
+.mgwt-BarButton-pause:active {
+	background-image: url('../images/buttons/UIButtonBarPause.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-play {
+	background-image: url('../images/buttons/UIButtonBarPlay.png');
+}
+
+.mgwt-BarButton-play:active {
+	background-image: url('../images/buttons/UIButtonBarPlay.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-plus {
+	background-image: url('../images/buttons/UIButtonBarPlus.png');
+}
+
+.mgwt-BarButton-plus:active {
+	background-image: url('../images/buttons/UIButtonBarPlus.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-previousslide {
+	background-image: url('../images/buttons/UIButtonBarPreviousSlide.png');
+}
+
+.mgwt-BarButton-previousslide:active {
+	background-image: url('../images/buttons/UIButtonBarPreviousSlide.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-reply {
+	background-image: url('../images/buttons/UIButtonBarReply.png');
+}
+
+.mgwt-BarButton-reply:active {
+	background-image: url('../images/buttons/UIButtonBarReply.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-rewind {
+	background-image: url('../images/buttons/UIButtonBarRewind.png');
+}
+
+.mgwt-BarButton-rewind:active {
+	background-image: url('../images/buttons/UIButtonBarRewind.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-search {
+	background-image: url('../images/buttons/UIButtonBarSearch.png');
+}
+
+.mgwt-BarButton-search:active {
+	background-image: url('../images/buttons/UIButtonBarSearch.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-stop {
+	background-image: url('../images/buttons/UIButtonBarStop.png');
+}
+
+.mgwt-BarButton-stop:active {
+	background-image: url('../images/buttons/UIButtonBarStop.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+.mgwt-BarButton-trash {
+	background-image: url('../images/buttons/UIButtonBarTrash.png');
+}
+
+.mgwt-BarButton-trash:active {
+	background-image: url('../images/buttons/UIButtonBarTrash.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
+}
+
+
+/**
+  Search Box
+*/
+.mgwt-SearchBox {
+	height: 44px;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1f3f4), color-stop(3%, #e0e4e7), color-stop(50%, #c7cfd4), color-stop(51%, #bec7cd), color-stop(97%, #b4bec6), to(#8999a5) );
+	background-size: 100% 44px;
+	background-repeat: repeat;
+	background-position: 0px 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.mgwt-SearchBox .round {
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	background-image: url('../images/UITableViewIndexSearchGlyph.png');
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	border-bottom-left-radius: 16px 16px;
+	border-bottom-right-radius: 16px 16px;
+	border-top-left-radius: 16px 16px;
+	border-top-right-radius: 16px 16px;
+	width: 100%;
+	height: 24px;
+	background-color: white;
+	display: block;
+	position: relative;
+	top: 10px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.mgwt-SearchBox .input {
+	border: 0;
+	-webkit-appearance: none;
+	height: 18px;
+	position: absolute;
+	font-size: 13px;
+	padding: 0;
+	top: 3px;
+	left: 25px;
+	right: 40px;
+	bottom: 0px;
+	-webkit-user-select: text;
+}
+
+.mgwt-SearchBox .clear {
+	position: absolute;
+	top: 1px;
+	right: 20px;
+	width: 20px;
+	height: 20px;
+	font-size: 13px;
+	padding: 0;
+	background-image: url('../images/UITextFieldClearButton.png');
+	background-repeat: no-repeat;
+	background-position: 0px 50%;
+}
+
+.mgwt-SearchBox .clear-active {
+	background-image: url('../images/UITextFieldClearButtonPressed.png');
+}
+
+.mgwt-TextBox, .mgwt-PasswordTextBox, .mgwt-TextArea, .mgwt-ListBox {
+ 
+    color: #777;
+    background: transparent url(../.png);
+    border: 0;
+    font: normal 17px Helvetica;
+    padding: 0;
+    display: inline-block;
+    margin-left: 0px;
+    width: 100%;
+    -webkit-appearance: textarea;
+    -webkit-user-select: text;
+
+}
+
+.mgwt-ListBox{
+-webkit-user-select: auto;
+}
+
+
+
+.mgwt-CheckBox label, ..mgwt-RadioButton label{
+	 margin: 0;
+    padding-left: 10px;
+    -webkit-user-select: auto;
+}
+
+/** button */
+.mgwt-Button {
+	
+	
+	border: solid 3px rgb(110,110,110);
+	-webkit-border-radius: 12px;
+	-webkit-box-shadow: 2px 2px 3px #999; 
+			
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80))); 
+	color: #000;
+	text-shadow: rgba(255, 255, 255, .6) 0 1px 0;
+	
+	padding: 9px 13px;
+	margin: 5px;
+	
+	
+	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+	font-size: 19px;
+	font-weight: bold;
+	text-align: center;
+	
+}
+
+.mgwt-Button:active {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(135,148,203,0.85)), color-stop(0.5, rgba(34,56,159,0.75)), color-stop(0.5, rgba(0,27,145,0.75)), to(rgba(2,59,152,0.65))); 
+	color: #fff;
+	text-shadow: #000 0 1px 0;
+	-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+
+}
+
+.mgwt-Button-small{
+padding: 5px 7px;
+margin: 2px;
+margin-left: 5px;
+margin-right: 5px;
+font-size: 12px;
+}
+
+.mgwt-Button-round {
+	border-bottom-left-radius: 16px 16px;
+	border-bottom-right-radius: 16px 16px;
+	border-top-left-radius: 16px 16px;
+	border-top-right-radius: 16px 16px;
+}
+
+.mgwt-Button-important {
+
+			-webkit-box-shadow: 2px 2px 3px #999; 
+			
+			background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)), color-stop(0.5, rgba(233,72,72,0.80)), color-stop(0.5, rgba(184,0,0,0.70)), to(rgba(255,0,0,0.80))); 
+			color: #fff;
+			text-shadow: #000 0 1px 0;
+			
+			padding: 9px 11px;
+
+	
+	
+}
+
+.mgwt-Button-important:ACTIVE {
+background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,0.80)), color-stop(0.5, rgba(233,40,40,0.90)), color-stop(0.5, rgba(184,0,0,0.80)), to(rgba(255,0,0,0.90))); 
+			
+			
+			
+
+}
+
+.mgwt-Button-confirm {
+	
+			-webkit-box-shadow: 2px 2px 3px #999; 
+			
+			background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), color-stop(0.5, rgba(73,171,14,0.60)), color-stop(0.5, rgba(0,113,0,0.70)), to(rgba(0,150,0,0.80))); 
+			color: #fff;
+			text-shadow: #000 0 1px 0;
+			
+			padding: 9px 11px;
+}
+
+.mgwt-Button-confirm:ACTIVE {
+background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(135,148,203,0.85)), color-stop(0.5, rgba(34,56,159,0.75)), color-stop(0.5, rgba(0,27,145,0.75)), to(rgba(2,59,152,0.65))); 
+			color: #fff;
+			text-shadow: #000 0 1px 0;
+			-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+	
+	
+}
+
+
+
+
+
+/***
+
+animation stuff
+**/
+/*
+.threedstuff{
+ -webkit-perspective: 800;
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    }
+ */
+ 
+ .mgwt-AnimatableDisplay{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+ }
+ 
+ .mgwt-AnimatableDisplay-container{
+ 	position: absolute;
+	width: 100%;
+	height: 100%;
+ }
+ 
+/**    
+key frame for doing nothing
+*/
+@-webkit-keyframes donothing {
+    from { opacity: 1; }
+    to { opacity: 1; }
+}
+
+
+.in, .out {
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-duration: 300ms;
+}
+
+.slide.in {
+	-webkit-animation-name: slideinfromright;
+	
+}
+
+.slide.out {
+	-webkit-animation-name: slideouttoleft;
+}
+
+.slide.in.reverse {
+	-webkit-animation-name: slideinfromleft;
+	
+}
+
+.slide.out.reverse {
+	-webkit-animation-name: slideouttoright;
+}
+
+@-webkit-keyframes slideinfromright {
+    from { -webkit-transform: translateX(100%); }
+    to { -webkit-transform: translateX(0); }
+}
+
+@-webkit-keyframes slideinfromleft {
+    from { -webkit-transform: translateX(-100%); }
+    to { -webkit-transform: translateX(0); }
+}
+
+@-webkit-keyframes slideouttoleft {
+    from { -webkit-transform: translateX(0); }
+    to { -webkit-transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slideouttoright {
+    from { -webkit-transform: translateX(0); }
+    to { -webkit-transform: translateX(100%); }
+}
+
+
+.flip {
+	-webkit-animation-duration: .65s;
+}
+
+.flip.in {
+	-webkit-animation-name: flipinfromleft;
+}
+
+.flip.out {
+	-webkit-animation-name: flipouttoleft;
+}
+
+.flip.in.reverse {
+	-webkit-animation-name: flipinfromright;
+}
+
+.flip.out.reverse {
+	-webkit-animation-name: flipouttoright;
+}
+
+@-webkit-keyframes flipinfromright {
+    from { -webkit-transform: rotateY(-180deg) scale(.8); }
+    to { -webkit-transform: rotateY(0) scale(1); }
+}
+
+@-webkit-keyframes flipinfromleft {
+    from { -webkit-transform: rotateY(180deg) scale(.8); }
+    to { -webkit-transform: rotateY(0) scale(1); }
+}
+
+@-webkit-keyframes flipouttoleft {
+    from { -webkit-transform: rotateY(0) scale(1); }
+    to { -webkit-transform: rotateY(-180deg) scale(.8); }
+}
+
+@-webkit-keyframes flipouttoright {
+    from { -webkit-transform: rotateY(0) scale(1); }
+    to { -webkit-transform: rotateY(180deg) scale(.8); }
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade.in {
+	z-index: 10;
+	-webkit-animation-name: fadein;
+}
+.fade.out {
+	z-index: 8;
+	-webkit-animation-name: fadeout;
+}
+
+.dissolve.in {
+	-webkit-animation-name: fadein;
+}
+
+.dissolve.out {
+	-webkit-animation-name: fadeout;	
+}
+
+
+
+
+
+.slideup.in {
+	-webkit-animation-name: slideupfrombottom;
+	z-index: 10;
+}
+
+.slideup.out {
+	-webkit-animation-name: slideupfrommiddle;
+	z-index: 0;
+}
+
+.slideup.out.reverse {
+	z-index: 10;
+	-webkit-animation-name: slidedownfrommiddle;
+}
+
+.slideup.in.reverse {
+	z-index: 0;
+	-webkit-animation-name: slidedownfromtop;
+}
+
+
+@-webkit-keyframes slideupfrombottom {
+    from { -webkit-transform: translateY(100%); }
+    to { -webkit-transform: translateY(0); }
+}
+
+@-webkit-keyframes slidedownfrommiddle {
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(100%); }
+}
+
+@-webkit-keyframes slideupfrommiddle {
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(-100%); }
+}
+
+@-webkit-keyframes slidedownfromtop {
+    from { -webkit-transform: translateY(-100%); }
+    to { -webkit-transform: translateY(0%); }
+}
+
+
+.swap {
+	-webkit-transform: perspective(800);
+	-webkit-animation-duration: .7s;
+}
+.swap.out {
+	-webkit-animation-name: swapouttoleft;
+}
+.swap.in {
+	-webkit-animation-name: swapinfromright;
+}
+.swap.out.reverse {
+	-webkit-animation-name: swapouttoright;
+}
+.swap.in.reverse {
+	-webkit-animation-name: swapinfromleft;
+}
+
+
+@-webkit-keyframes swapouttoright {
+    0% {
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+        -webkit-animation-timing-function: ease-in-out;
+    }
+    50% {
+    
+        -webkit-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        -webkit-transform:  translate3d(0px, 0px, -800px) rotateY(70deg);
+    }
+}
+
+@-webkit-keyframes swapouttoleft {
+    0% {
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+        -webkit-animation-timing-function: ease-in-out;
+    }
+    50% {
+        -webkit-transform:  translate3d(180px, 0px, -400px) rotateY(-20deg);
+        -webkit-animation-timing-function: ease-in;
+    }
+    100% {
+        -webkit-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
+    }
+}
+
+@-webkit-keyframes swapinfromright {
+    0% {
+        -webkit-transform: translate3d(0px, 0px, -800px) rotateY(70deg);
+        -webkit-animation-timing-function: ease-out;
+    }
+    50% {
+        -webkit-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
+        -webkit-animation-timing-function: ease-in-out;
+    }
+    100% {
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+    }
+}
+
+@-webkit-keyframes swapinfromleft {
+    0% {
+        -webkit-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
+        -webkit-animation-timing-function: ease-out;
+    }
+    50% {
+        -webkit-transform: translate3d(180px, 0px, -400px) rotateY(-20deg);
+        -webkit-animation-timing-function: ease-in-out;
+    }
+    100% {
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+    }
+}
+
+
+
+
+
+/****************************
+*	Pop in animation
+*****************************/
+.pop {
+	-webkit-transform-origin: 50% 50%;
+}
+
+.pop.in {
+	-webkit-animation-name: popin;
+	z-index: 10;
+}
+
+.pop.out.reverse {
+	-webkit-animation-name: popout;
+	z-index: 10;
+}
+
+.pop.in.reverse {
+	z-index: 0;
+	-webkit-animation-name: donothing;
+}
+
+@-webkit-keyframes popin {
+    from {
+        -webkit-transform: scale(.3);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes popout {
+    from {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        -webkit-transform: scale(.3);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+/**
+tab bar
+
+
+*/
+.mgwt-TabBar{
+	width: 100%;
+	height: 49px;
+	background-image: url('../images/UITabBarBackgroundBlack.png');
+	background-repeat: repeat-x;
+}
+
+.mgwt-TabBar-bottom{
+	position: absolute;
+	display: inline-block;
+	bottom: 0px;
+}
+
+.mgwt-TabBarBookmarkButton, .mgwt-TabBarContactsButton, .mgwt-TabBarDownloadsButton, .mgwt-TabBarFavoritesButton, .mgwt-TabBarFeaturedButton, .mgwt-TabBarHistoryButton, .mgwt-TabBarMoreButton, .mgwt-TabBarMostRecentButton, .mgwt-TabBarMostViewedButton, .mgwt-TabBarSearchButton{
+	display: inline-block;
+	position: relative;
+	min-width: 60px;
+	font-size: 9px;
+	color: #999995;
+	padding-top: 33px;
+	margin-top: 3px;
+	text-align: center;
+	
+}
+
+.mgwt-TabBarBookmarkButton{
+	background-image: url('../images/tabbar/UITabBarBookmarks.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarBookmarkButton-selected{
+	background-image: url('../images/tabbar/UITabBarBookmarksSelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.mgwt-TabBarContactsButton{
+	background-image: url('../images/tabbar/UITabBarContacts.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarContactsButton-selected{
+	background-image: url('../images/tabbar/UITabBarContactsSelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.mgwt-TabBarDownloadsButton{
+	background-image: url('../images/tabbar/UITabBarDownloads.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarDownloadsButton-selected{
+	background-image: url('../images/tabbar/UITabBarDownloadsSelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+.mgwt-TabBarFavoritesButton{
+	background-image: url('../images/tabbar/UITabBarFavorites.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarFavoritesButton-selected{
+	background-image: url('../images/tabbar/UITabBarFavoritesSelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.mgwt-TabBarFeaturedButton{
+	background-image: url('../images/tabbar/UITabBarFeatured.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarFeaturedButton-selected{
+	background-image: url('../images/tabbar/UITabBarFeaturedSelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.mgwt-TabBarHistoryButton{
+	background-image: url('../images/tabbar/UITabBarHistory.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarHistoryButton-selected{
+	background-image: url('../images/tabbar/UITabBarHistorySelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.mgwt-TabBarMoreButton{
+	background-image: url('../images/tabbar/UITabBarMore.png');
+	background-position: 50% 15px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarMoreButton-selected{
+	background-image: url('../images/tabbar/UITabBarMoreSelected.png');
+	background-position: 50% 15px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.mgwt-TabBarMostRecentButton{
+	background-image: url('../images/tabbar/UITabBarMostRecent.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarMostRecentButton-selected{
+	background-image: url('../images/tabbar/UITabBarMostRecentSelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.mgwt-TabBarMostViewedButton{
+	background-image: url('../images/tabbar/UITabBarMostViewed.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarMostViewedButton-selected{
+	background-image: url('../images/tabbar/UITabBarMostViewedSelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+.mgwt-TabBarSearchButton{
+	background-image: url('../images/tabbar/UITabBarSearch.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+}
+
+.mgwt-TabBarSearchButton-selected{
+	background-image: url('../images/tabbar/UITabBarSearchSelected.png');
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	color: white;
+}
+
+/*
+Checkbox
+
+*/
+
+.mgwt-CheckBox {
+	
+	width: 94px;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: justify;
+	-webkit-tap-highlight-color: transparent;
+	overflow: hidden;
+	-webkit-border-radius: 6px;
+	text-align: center;
+	line-height: 28px;
+	cursor: pointer;
+	/*border: 1px solid red;*/
+	-webkit-box-sizing: border-box;
+}
+
+.mgwt-CheckBox-middle {
+	-webkit-transition: all 0.1s ease-in-out;
+	-webkit-border-radius: 6px;
+	position: relative;
+	z-index: 1;
+	border: solid 1px #929292;
+}
+
+.mgwt-CheckBox-middle-content {
+	display: block;
+	-webkit-box-sizing: border-box;
+	position: relative;
+	height: 25px;
+	width: 38px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#cecece),
+		to(#fcfcfc) );
+	border-top: solid 1px #eeeeee;
+	-webkit-border-radius: 7px;
+	
+}
+
+.mgwt-CheckBox-on {
+	position: relative;
+	height: 25px;
+	color: #ffffff;
+	margin-right: -6px;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#295ab3),
+		to(#76adfb) );
+	width: 54px;
+	padding-right: 4px;
+	border: solid 1px #093888;
+	-webkit-border-top-left-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	
+	-webkit-transition: all 0.1s ease-in-out;
+
+}
+
+.mgwt-CheckBox-off {
+	position: relative;
+	color: #666666;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b6b6b6),
+		color-stop(0.50, #ffffff) );
+	width: 54px;
+	padding-left: 4px;
+	border: solid 1px #a2a2a2;
+	-webkit-border-top-right-radius: 6px;
+	-webkit-border-bottom-right-radius: 6px;
+	margin-left: -6px;
+	height: 25px;
+	-webkit-transition: all 0.1s ease-in-out;
+
+}
+
+
+
+.mgwt-CheckBox-important .mgwt-CheckBox-on {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#e75f00),
+		color-stop(.5, #fe9c12) );
+	border: solid 1px #d87101;
+}
+
+
+.mgwt-CheckBox-notchecked .mgwt-CheckBox-middle {
+    -webkit-transform: translate3d(-54px,0%,0%);
+}
+
+.mgwt-CheckBox-checked .mgwt-CheckBox-middle {
+    -webkit-transform: translate3d(0px,0%,0%);
+}
+
+.mgwt-CheckBox-notchecked .mgwt-CheckBox-off {
+    -webkit-transform: translate3d(-54px,0%,0%);
+}
+
+.mgwt-CheckBox-checked .mgwt-CheckBox-off {
+    -webkit-transform: translate3d(10px,0%,0%);
+}
+
+.mgwt-CheckBox-notchecked .mgwt-CheckBox-on {
+    -webkit-transform: translate3d(-62px,0%,0%);
+}
+
+.mgwt-CheckBox-checked .mgwt-CheckBox-on {
+    -webkit-transform: translate3d(0px,0%,0%);
+}
+
+.mgwt-RadioButton {
+	
+}
+
+.mgwt-RadioButton>input {
+	-webkit-appearance: none;
+	width: 18px;
+	height: 18px;
+	border: none;
+}
+
+.mgwt-RadioButton>input:CHECKED {
+	-webkit-appearance: none;
+	background-image:
+		url('showcase/mgwt/iphone/images/UIPickerTableCellChecked.png');
+	background-color: transparent;
+}
+
+.mgwt-ProgressBar {
+	position: relative;
+	width: 250px;
+	height: 15px;
+	-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+	border: 1px solid #bebebe;
+	background-color: rgb(57, 137, 214);
+	background-repeat: repeat-x;
+	-webkit-background-size: 25px 15px;
+	background-image: -webkit-gradient(linear, 19 0, 0 10, color-stop(0.25, rgba(255, 255, 255
+		, 0) ), color-stop(0.3, rgba(255, 255, 255, 0.7) ),
+		color-stop(0.3, rgba(255, 255, 255, 1) ),
+		color-stop(0.7, rgba(255, 255, 255, 1) ),
+		color-stop(0.7, rgba(255, 255, 255, 0.7) ),
+		color-stop(0.8, rgba(255, 255, 255, 0) ) ),
+		-webkit-gradient(linear, 0 0, 0 100%, color-stop(0.05, rgba(0, 0, 0, .2)
+		), color-stop(0.06, rgba(255, 255, 255, .8) ),
+		color-stop(0.4, rgba(255, 255, 255, .05) ),
+		color-stop(0.6, rgba(0, 0, 0, .05) ),
+		color-stop(0.9, rgba(0, 0, 0, .2) ),
+		color-stop(0.98, rgba(0, 0, 0, .5) ) ),
+		-webkit-gradient(linear, 0 0, 0 100%, color-stop(0.2, transparent),
+		color-stop(0.2, rgba(255, 255, 255, .5) ),
+		color-stop(0.5, rgba(255, 255, 255, .5) ),
+		color-stop(0.5, transparent) );
+	-webkit-background-position-x: 0%;
+	-webkit-animation-duration: 9s;
+	-webkit-animation-name: anmiateProgressBar;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	-webkit-box-sizing: border-box;
+
+
+
+	-webkit-border-radius: 6px;
+	
+}
+
+@-webkit-keyframes anmiateProgressBar {
+
+    0% { background-position-x:  0%; }
+
+    100% { background-position-x: 100%; }
+
+}
+
+
+.mgwt-Slider {
+	display: inline-block;
+	height: 9px;
+	width: 277px;
+	margin-top: 10px;
+	maring-bottom: 10px;
+	-webkit-box-sizing: border-box;
+	-webkit-box-shadow: 2px 2px 4px #666666;
+	-webkit-border-radius: 4px;
+	background-repeat: no-repeat, repeat-x;
+	background-image:
+		-webkit-gradient(linear, left top ,left bottom,
+		   from(#0a3b87),
+		   color-stop(.5, #4c8de7),
+		   color-stop(.95, #6babf5),
+		   to(#0a3b87)),
+		-webkit-gradient(linear, left top ,left bottom,
+			from(#929292),
+			color-stop(.5, #f0f0f0),
+			color-stop(.5, #fff),
+			color-stop(.95, #fff),
+			to(#929292));
+}
+.mgwt-Slider .pointer {
+	position:relative;
+	height:20px;
+	width:20px;
+	left: 0px;
+	top: -6px;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-box-shadow: 2px 2px 3px #666666;
+	-webkit-border-radius: 10px;
+	background-image:
+	   -webkit-gradient(linear, left top, left bottom,
+		   from(#aaaaaa),
+		   color-stop(.5, #eeeeee),
+		   to(#cccccc));
+	
+}
+
+.mgwt-ProgressIndicator{
+	width: 37px;
+	height: 37px;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAYAAADFniADAAAJI0lEQVRYCcWYe2zNaRrHe9pz0dNW2+lNzbT2tLooStfGauyKTMUQ7UhnQjGsZPhDgk2EHQk2RLJoXOMPuyIRhiWLWAlSjFvZMFWXoepel2otbVVvejtV+/menFO/05t2/bFv8uT3+72X5/2+z/s83+c5x8fn05vpwoUL0eXl5bP0RJ3p01V+uobA+vr65+9peqIu8NNVdkPDxIkTbS9fvkx/+PBhItPbWiJOgDyN8bg2Kk2FhYXBJSUlMatWrfJtM/Y/f1qfP3++FiuUIkVnzpwZiSaj8iQPID0ZSzLsZDpw4EAEoKbfv39/1s2bN3/TZq1h6odX84fXTt+Camtrk4OCgmwmk8k6aNCgLGamI7XuFUaA6jJ++8XHx/+uqKjos3fv3vmBWT5XgDRqYmfNqKCzOX5btmzJkVKn02kJDAwcnpOTM4PJHzuQ6ejRo/3r6upi37x5E/j27Vvb/v37i1nX9vrb7dsdUHXbt2+/lJube0erm5ubzUOHDv3zlClTorraYOzYsbaoqKgRlZWVvVhjevz4cfHOnTv/IxXS01XrFigUPFm+fPkeLOVsaWnx9fPzi1ixYsUS+q2dKPddvXp1Uk1NTSiWsnDtzj179vzCXF35u07WtHZ7geL0/vDND5h7c0FBwXBmabwFKbtx40bu4cOHL2glV2l2OBzfrVu3biCfJrC6Tt/U1OR6ct0RFotFoHr50tB19/r166XMlS8pGExXr14Nf/bs2einT58ms68ffa3NCMq8YMGCrznV95h7UkxMzD8I46zjx4/3YXYD8nTRokU/AroSa5kQG048hv7mNWvWHLxz50752rVrD/LdaLfbw7k2OyDNDQ0NlVlZWbfpf4u04Gf2R48epQQEBEx69epVIsCT58yZ42Cs1deMCK3h4eGxycnJk1AWIKe2Wq0JWOTbefPmWdjkl2vXrjVwHdbRo0cPLS0trVi2bNmPxcXFRefPny/etm1bHs8clD8BuHPYsGGxvFuOHDmSCxWUjBgxounUqVOD2WNMWVlZDICCBJwAMEEz9y9dulTNfFnxAzrebUj/tLS0jMWLF2fGxsZG4DstXIPTZrM18F6E0qzMzExdgUhU/pGHiMV7If5IPSKLSFcYogithqssgByJVcIEBLFhab+KiorKgwcPXgPUI81DXP7WajI69B6MxCOJ8+fP/3Lu3LljevfuHWg2m5uxWiPP8oiIiG8Yl4WloAIRENcJeXqawCgIpPM9/pgBgFD5mPtKG86ePXtv165dhYy/QWqQJs1FvCzl+bbzEoHEhYWFJa5cuXLC+PHjk7GWL4z+ODExMZMx8U13WwB++Q2+FY2v+uACjwmEO4CrRIHA6FA6YNuD0eXdZIkQRNGVlpCQ8MPSpUt3xsXFfce3WLknzR4ZGRlPEH3Vr1+/ZBbK16TbY8l2uozX13ZQY7oGKYhE5DO6LhGgTtfdJh1aK78TZWitrkpU02HTAtPJkye/GDVq1F/JTVHuWS5fcL+LNpx37979W0pKSj7vUtiTJiB1J06ciBowYMBv8UvdgueqWo1CQFWdPn36wsyZM2sEyowTf1lVVZXAvdsA5gHkWfBejh4SEpLG3HNIl8mU8Y6aL9w1AKIMwy8t8KkLlJvvfBTlJPzA4OBgB4vzhdoGgwcNHz58DIBCxE+I1f00u999cNafOIlIsCdX5wFoxZ+C2dgBz/nj5JbGxkaLnp794KuGHTt23KZmq5U1LMgXiLhHvmNkeT5dplaUPETEJ+KnnjbtEeqWjvKlLFeHyGfFVy5akCPKn/ohMqGXTJ48OfHy5cvjNm/eLKfXQXrUtm7daqPcSSDHiWrEhR2JqMjl411usGnTJv+MjIyv/f39vyIJK7kWR0dH/4XFPfEr84MHDyawPgzfdeJTBYcOHSqgNFYAdNg6A+V7+/btFMgzk7v+nMrTrrQAgVYMHjx4Ppped6it4047VpqGnt6AaiFD1ONbFQTVNfLsM5a4nN64VOYyNlNeXp6jT58+fwREIokzQI6pwo4UUU3lmM3ktj5nXN/Ru4lknc+PjxQi0M4BrSqtScypVAslyJUJEyYo1bSCM1rKRL2UAF8thx6Up1R6WAHkJPvfoCw5R8QU7t6928oGqtGrKEN2U3bI8VsVCpV8KD09faxAYKUrU6dOdWKlsIULFw6iWoiHAkQRTsDVk0trqEpPMF/Wd+kxWko1eH/KjnBOE4CldIWPNmzYcIbTKOpKkLqRI0cuoM76XNxF+hhCX969e/fiQ0NDE0m6BfywKCT8f4WVYxX2DocjhTnZHLBx48aNtYw/nT179hBSVl/RgWp/DBDOHEWeC5TRUlZ8xsEpv4ddo/bt25cLLxUwUWDKkQZOnUpxliFeY27d+vXrN2KtZxR4cwFgJyDeDhw4cMe0adPCZs2alYHf9AJsLfz3c2pq6i10yAgBSPC4ceP6cm3xgH3DLVwCmK5QidkrvOUr4pIYRBShSWWIOMpJQRc5Y8aMpVgyCkXmW7du/bxkyZJ/MtZw8eLFP1VXV/vD+nUUgFvp86FU/j2V6RAs2kTEVpBm/kXEVTGkfVRv6Ze09lHaUr9I2WUpo9MqQWqwEJGFniAyqRb5wVVpnCZEgDB7NXSRQ78Aq0YXO1uxlohROuvhtAL6azUmy/LrJtk9JmsIgHS/dD9VbrsA8WwXSeIObSRWFRdpon7l/hpHHUEkKtP7cK3/fvHihVe14M6ZGlZrotytuHLlSj797wWW6x6wd+/eaMbkMtKrvbSHxKtiMFqKsQ6btW/fvn9QNOpXDNdXjBVymSmrehEg457TapM6irkHHKRM1n39+nUvAkOpTPm2y9YdUBb+S2jhGnQ1zXDVaZ7yNZm8q+ZksAYr39DvPnEdUSvQHwVlpITONmiZPn36RSrH5vz8/HIiUL+UxU1eJtdi+McYzQJQn52d/RyfOpeUlBTM9d3XvI81o5LO5upkQUhvRKf3ihS+Pzt27Ng8rigSvyvl19Df6ZMTq0m/KgQlW+mRg8vC7Q5EX2v7qCmZqRMrAmUdlRd69/gOrz5mfu2Ww0m11EO5+I6YWXM8TQD0LYfWoYxr+WzfumOp9qu8e+QCsqQiU1ZQ9HoFAN//l6aAEbjuBM5HAf4XGHKGkj+htssAAAAASUVORK5CYII=");
+	-webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-name: progressIndicatorAnimation;
+	
+}
+
+@-webkit-keyframes progressIndicatorAnimation {
+
+    0% { -webkit-transform: rotate(0deg); }
+
+    100% { -webkit-transform: rotate(360deg); }
+
+}
+
+/*popups*/
+.mgwt-PopupPanel {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.9);
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(50, 74, 103, 0.9)
+		), color-stop(0.02, rgba(20, 25, 35, 0.9) ),
+		to(rgba(0, 0, 0, 0.0) ) );
+	border-top: 1px solid #030506;
+	padding: 10px;
+}
+
+.mgwt-PopupContainer {
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.mgwt-PopupContainer-shadow {
+	z-index: 99;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.mgwt-DialogPanel{
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.mgwt-DialogPanel-cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+.mgwt-DialogPanel-main {
+	
+	border: solid 1px #72767b;
+	-webkit-border-radius: 10px;
+	-webkit-box-shadow: 0px 4px 6px #666666, 0 0 50px rgba(255, 255, 255, 1);
+	padding: 0px;
+	opacity: 1;
+	width: 70%;
+	max-width: 320px;
+	z-index: 1001;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 15, 70, 0.5
+		) ), to(rgba(0, 0, 70, 0.5) ) );
+}
+
+.mgwt-DialogPanel-container {
+	color: #ffffff;
+	text-shadow: 0px -1px 1px #000000;
+	border: solid 2px #e6e6ee;
+	-webkit-border-radius: 10px;
+	padding: 10px;
+	background-image: -webkit-gradient(radial, 50% -1180, 150, 50% -280, 1400, color-stop(0,
+		rgba(140, 150, 170, 1) ), color-stop(0.48, rgba(140, 150, 170, 1) ),
+		color-stop(0.499, rgba(75, 90, 120, .9) ),
+		color-stop(0.5, rgba(75, 90, 120, 0) ) );
+}
+
+.mgwt-DialogPanel-title {
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	color: #ffffff;
+	background: none;
+	border: none;
+	text-shadow: 0px -2px 1px #000000;
+	width: 100%;
+	text-align: center;
+	font-size: 19px;
+	margin-bottom: 20px;
+}
+
+.mgwt-DialogPanel-content {
+	margin: 10px;
+}
+
+.mgwt-DialogPanel-footer {
+	-webkit-box-pack: justify;
+	margin-top: 10px;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-sizing: border-box;
+}
+
+.mgwt-DialogPanel-button {
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	-webkit-box-flex: 2;
+	margin-top: 10px;
+	margin-right: 5px;
+	height: 32px;
+	line-height: 32px;
+	-webkit-border-radius: 8px;
+	text-shadow: 0px -2px 1px #000000;
+}
+
+.mgwt-DialogPanel-okbutton {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#b0b5c5),
+		color-stop(0.5, #7a839b), color-stop(0.5, #515d7c), to(#636e8a) );
+}
+
+.mgwt-DialogPanel-cancelbutton {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#828ba3),
+		color-stop(0.5, #4c5a7c), color-stop(0.5, #27375f), to(#2e3d64) );
+}
+
+.mgwt-DialogPanel-cancelbutton:active,.mgwt-DialogPanel-okbutton:active
+	{
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#70747f),
+		color-stop(0.5, #424857), color-stop(0.5, #171e30), to(#222839) );
+}
+
