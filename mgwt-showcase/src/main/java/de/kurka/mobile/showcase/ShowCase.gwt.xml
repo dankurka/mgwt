@@ -8,6 +8,8 @@
 	<inherits name="com.google.gwt.activity.Activity" />
 	<inherits name="de.kurka.gwt.mobile.MobileGwt"/>
 	<inherits name="de.kurka.gwt.mobile.theme.iphone.IphoneTheme"/>
+		<inherits name="de.kurka.gwt.mobile.theme.ipad.IpadTheme"/>
+			<inherits name="de.kurka.gwt.mobile.theme.android.AndroidTheme"/>
 	
 	<set-property name="user.agent" value="safari" />
 

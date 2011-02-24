@@ -45,6 +45,8 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		MGWT mgwt = new MGWT();
 		mgwt.applySettings(settings);
 
+		mgwt.loadStyle();
+
 		ClientFactory clientFactory = new ClientFactoryImpl();
 
 		AnimatableDisplay display = new AnimatableDisplayImpl();
@@ -66,6 +68,12 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		historyHandler.handleCurrentHistory();
 
+		//alertSomeStuff();
+
 	}
+
+	private native void alertSomeStuff()/*-{
+		alert($wnd.navigator.userAgent);
+	}-*/;
 
 }
