@@ -158,7 +158,7 @@ public class MGWT implements HasOrientationChangeHandler {
 
 	private native void setUpPreventScrolling(Element el)/*-{
 		var func = function(event){
-		//event.preventDefault();
+		event.preventDefault();
 		//event.stopPropagation();
 		//return false;
 		};
