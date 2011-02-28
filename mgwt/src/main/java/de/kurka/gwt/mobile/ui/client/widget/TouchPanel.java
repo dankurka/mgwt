@@ -109,7 +109,7 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers {
 		return handlerRegistrationCollection;
 	}
 
-	protected HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
+	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
 		SimpleTouchToNativeTouchHandler touchHandler = new SimpleTouchToNativeTouchHandler(handler);
 
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
