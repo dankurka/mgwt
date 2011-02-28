@@ -31,6 +31,9 @@ import com.google.gwt.place.shared.PlaceChangeRequestEvent;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 
+import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
+import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
+
 /**
  * @author Daniel Kurka
  *
@@ -114,6 +117,9 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	 * @see com.google.gwt.place.shared.PlaceChangeEvent.Handler#onPlaceChange(PlaceChangeEvent)
 	 */
 	public void onPlaceChange(PlaceChangeEvent event) {
+		if (ignorePlaceChange)
+			return;
+
 		Activity nextActivity = getNextActivity(event);
 		Animation animation = getAnimation(event);
 
@@ -190,8 +196,19 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 		if (animation != null) {
 			//animate
 			animate(animation);
+
 		}
 
+	}
+
+	private boolean listeningForAnimationEnd = false;
+
+	private boolean ignorePlaceChange = false;
+
+	private void onAnimationEnd() {
+		if (listeningForAnimationEnd) {
+			ignorePlaceChange = false;
+		}
 	}
 
 	/**
@@ -199,6 +216,8 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	 * 
 	 */
 	private void animate(Animation animation) {
+		listeningForAnimationEnd = true;
+		ignorePlaceChange = true;
 		display.animate(animation, currentIsFirst);
 
 	}
@@ -240,6 +259,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 		if (wasActive != willBeActive) {
 			updateHandlers(willBeActive);
 		}
+
 	}
 
 	private Activity getNextActivity(PlaceChangeEvent event) {
@@ -276,6 +296,15 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 					placeRequestReg.removeHandler();
 				}
 			};
+
+			this.display.getAnimationHandler().addAnimationEndHandler(new AnimationEndHandler() {
+
+				@Override
+				public void onAnimationEnd(AnimationEndEvent event) {
+					AnimatingActivityManager.this.onAnimationEnd();
+
+				}
+			});
 		} else {
 			if (handlerRegistration != null) {
 				handlerRegistration.removeHandler();

@@ -17,6 +17,8 @@ package de.kurka.gwt.mobile.mvp.client;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
+import de.kurka.gwt.mobile.dom.client.event.animation.HasAnimationEndEvent;
+
 /**
  * @author Daniel Kurka
  *
@@ -31,4 +33,6 @@ public interface AnimatableDisplay extends IsWidget {
 	 * @param currentIsFirst
 	 */
 	public void animate(Animation animation, boolean currentIsFirst);
+
+	public HasAnimationEndEvent getAnimationHandler();
 }

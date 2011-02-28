@@ -24,6 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
+import de.kurka.gwt.mobile.dom.client.event.animation.HasAnimationEndEvent;
 import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
 
 /**
@@ -235,6 +236,23 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	@Override
 	public Widget asWidget() {
 		return main;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.gwt.mobile.mvp.client.AnimatableDisplay#getAnimationHandler()
+	 */
+	@Override
+	public HasAnimationEndEvent getAnimationHandler() {
+		return new AnimationEndWrapper();
+	}
+
+	private class AnimationEndWrapper implements HasAnimationEndEvent {
+
+		@Override
+		public HandlerRegistration addAnimationEndHandler(AnimationEndHandler handler) {
+			return main.addDomHandler(handler, AnimationEndEvent.getType());
+		}
+
 	}
 
 }
