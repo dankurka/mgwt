@@ -34,6 +34,8 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.widget.TouchPanel;
 import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
 
 /**
@@ -49,7 +51,17 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	private FlowPanel roundDiv;
 
 	public MSearchBox() {
-		FlowPanel main = new FlowPanel();
+		TouchPanel main = new TouchPanel();
+
+		main.addSimpleTouchHandler(new SimpleTouchHandler() {
+
+			@Override
+			public void onTouch() {
+				box.setFocus(true);
+
+			}
+		});
+
 		main.addStyleName("mgwt-SearchBox");
 
 		initWidget(main);
