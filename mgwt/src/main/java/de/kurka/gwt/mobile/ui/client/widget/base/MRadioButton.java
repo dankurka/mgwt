@@ -35,6 +35,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
 import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
 
 /**
@@ -84,7 +85,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 				if (ignore)
 					return;
 
-				if (Math.abs(last_x - start_x) < 8 && Math.abs(last_y - start_y) < 8) {
+				if (Math.abs(last_x - start_x) < SimpleTouch.TOUCH_RADIUS && Math.abs(last_y - start_y) < SimpleTouch.TOUCH_RADIUS) {
 					if (labelOrContainer) {
 						inputRadio.setChecked(true);
 						ValueChangeEvent.fire(MRadioButton.this, true);

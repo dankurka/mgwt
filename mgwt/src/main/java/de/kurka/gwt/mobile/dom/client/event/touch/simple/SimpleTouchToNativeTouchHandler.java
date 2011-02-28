@@ -59,7 +59,7 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
 		Touch touch = event.touches().get(0);
-		if (Math.abs(touch.getPageX() - x) > 10 || Math.abs(touch.getPageY() - y) > 10) {
+		if (Math.abs(touch.getPageX() - x) > SimpleTouch.TOUCH_RADIUS || Math.abs(touch.getPageY() - y) > SimpleTouch.TOUCH_RADIUS) {
 			hasMoved = true;
 		}
 

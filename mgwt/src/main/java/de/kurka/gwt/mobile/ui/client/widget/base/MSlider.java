@@ -28,6 +28,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
 import de.kurka.gwt.mobile.ui.client.util.CssUtil;
 import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
 
@@ -68,7 +69,7 @@ public class MSlider extends Composite implements HasValue<Integer> {
 			//is the touch in the area of the slider part
 			int x = event.touches().get(0).getPageX() - POINTER_WIDTH;
 
-			if (Math.abs(x - sliderPos) < 10) {
+			if (Math.abs(x - sliderPos) < SimpleTouch.TOUCH_RADIUS) {
 				//yes we are
 				moving = true;
 			}

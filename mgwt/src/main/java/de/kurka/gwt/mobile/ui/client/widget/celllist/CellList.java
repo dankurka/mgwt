@@ -36,6 +36,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
 import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
 
 /**
@@ -76,7 +77,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
 			Touch touch = event.touches().get(0);
-			if (Math.abs(touch.getPageX() - x) > 5 || Math.abs(touch.getPageY() - y) > 5) {
+			if (Math.abs(touch.getPageX() - x) > SimpleTouch.TOUCH_RADIUS || Math.abs(touch.getPageY() - y) > SimpleTouch.TOUCH_RADIUS) {
 				moved = true;
 			}
 
