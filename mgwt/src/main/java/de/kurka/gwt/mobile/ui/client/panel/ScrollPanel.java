@@ -187,12 +187,12 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 			@Override
 			public void execute() {
-				if (scrollingEnabledX) {
+				if (scrollingEnabledX && widgetToScroll.getOffsetWidth() > 0) {
 					hScrollbar = new Scrollbar(Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), widgetToScroll.getOffsetWidth());
 					main.add(hScrollbar);
 				}
 
-				if (scrollingEnabledY) {
+				if (scrollingEnabledY && widgetToScroll.getOffsetHeight() > 0) {
 					vScrollbar = new Scrollbar(Orientation.VERTICAL, has3d, main.getOffsetHeight(), widgetToScroll.getOffsetHeight());
 					main.add(vScrollbar);
 				}
@@ -470,10 +470,10 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		CssUtil.translate(widgetToScroll.getElement(), newPosX, newPosY);
 
-		if (scrollingEnabledX) {
+		if (scrollingEnabledX && hScrollbar != null) {
 			hScrollbar.setPosition(newPosX);
 		}
-		if (scrollingEnabledY) {
+		if (scrollingEnabledY && vScrollbar != null) {
 			vScrollbar.setPosition(newPosY);
 		}
 
@@ -482,10 +482,10 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private void setTransistionTime(int milliseconds) {
 		System.out.println("webkit transition duration: " + milliseconds);
 		widgetToScroll.getElement().getStyle().setProperty("webkitTransitionDuration", milliseconds + "ms");
-		if (scrollingEnabledX) {
+		if (scrollingEnabledX && hScrollbar != null) {
 			hScrollbar.setTransitionTime(milliseconds);
 		}
-		if (scrollingEnabledY) {
+		if (scrollingEnabledY && vScrollbar != null) {
 			vScrollbar.setTransitionTime(milliseconds);
 		}
 
@@ -547,10 +547,10 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 			System.out.println("need to scroll");
 			scrollTo(resetX, resetY, 300);
 		} else {
-			if (scrollingEnabledX) {
+			if (scrollingEnabledX && hScrollbar != null) {
 				hScrollbar.hide();
 			}
-			if (scrollingEnabledY) {
+			if (scrollingEnabledY && vScrollbar != null) {
 				vScrollbar.hide();
 			}
 
