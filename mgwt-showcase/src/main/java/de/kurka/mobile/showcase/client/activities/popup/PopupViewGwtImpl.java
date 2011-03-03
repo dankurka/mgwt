@@ -20,12 +20,18 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel;
 import de.kurka.gwt.mobile.ui.client.panel.PopupPanel;
+import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IPadMenuBackButton;
+import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenu;
+import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuContentPanel;
+import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuHeader;
+import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuTitle;
 
 /**
  * @author Daniel Kurka
@@ -89,6 +95,34 @@ public class PopupViewGwtImpl implements PopupView {
 		alertButton = new Button("Alert");
 
 		main.add(alertButton);
+
+		Button menuButton = new Button("menu");
+		main.add(menuButton);
+
+		menuButton.addSimpleTouchHandler(new SimpleTouchHandler() {
+
+			@Override
+			public void onTouch() {
+				IpadMenu menu = new IpadMenu();
+
+				IpadMenuHeader ipadMenuHeader = new IpadMenuHeader();
+				IPadMenuBackButton iPadMenuBackButton = new IPadMenuBackButton();
+				iPadMenuBackButton.setText("back");
+				ipadMenuHeader.getContent().add(iPadMenuBackButton);
+				ipadMenuHeader.getContent().add(new IpadMenuTitle("Header"));
+				menu.getBody().add(ipadMenuHeader);
+
+				IpadMenuContentPanel ipadMenuContentPanel = new IpadMenuContentPanel();
+				ipadMenuContentPanel.add(new HTML("asdf"));
+				menu.getBody().add(ipadMenuContentPanel);
+
+				OverlayPanel panel = new OverlayPanel();
+				panel.add(menu);
+
+				panel.show();
+
+			}
+		});
 
 	}
 
