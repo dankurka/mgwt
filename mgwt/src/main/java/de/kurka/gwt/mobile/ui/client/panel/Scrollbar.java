@@ -59,6 +59,10 @@ public class Scrollbar extends Widget {
 	 * 
 	 */
 	public Scrollbar(Orientation orientation, boolean has3d, int scrollAreaSize, int wholeSize) {
+		//TODO remove this
+		if (wholeSize == 0) {
+			wholeSize = 300;
+		}
 		this.has3d = has3d;
 		this.orientation = orientation;
 		uuid = ++global_uuid;
@@ -157,8 +161,8 @@ public class Scrollbar extends Widget {
 	}
 
 	private native void applyStyle(Element el, String styleText)/*-{
-		el.style.cssText = styleText;
-	}-*/;
+																el.style.cssText = styleText;
+																}-*/;
 
 	public void setPosition(int pos) {
 		show();
@@ -193,8 +197,8 @@ public class Scrollbar extends Widget {
 	}
 
 	private native void setTransform(Element el, String transform)/*-{
-		el.style.webkitTransform = transform;
-	}-*/;
+																	el.style.webkitTransform = transform;
+																	}-*/;
 
 	public void hide() {
 		if (FeatureDetection.has3d()) {
