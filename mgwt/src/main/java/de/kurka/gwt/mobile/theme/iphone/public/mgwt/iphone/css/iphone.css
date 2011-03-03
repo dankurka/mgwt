@@ -710,10 +710,10 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	position: absolute;
 	font-size: 13px;
 	padding: 0;
-	top: 3px;
+	top: -10px;
 	left: 25px;
 	right: 40px;
-	bottom: 0px;
+	bottom: -5px;
 	-webkit-user-select: text;
 }
 
