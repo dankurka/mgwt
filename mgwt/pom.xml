@@ -5,6 +5,7 @@
 
 
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>de.kurka.mobile</groupId>
 	<artifactId>mgwt</artifactId>
 	<version>0.5-SNAPSHOT</version>
