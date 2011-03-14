@@ -1,4 +1,5 @@
 /*
+
  * Copyright 2010 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -26,6 +27,7 @@ public class FeatureDetection {
 
 	public static boolean has3d() {
 		if (!testedFor3d) {
+
 			has3d = _has3d();
 			testedFor3d = true;
 		}
@@ -41,6 +43,17 @@ public class FeatureDetection {
 
 	private static boolean testedForIPhone;
 	private static boolean isiPhone;
+
+	public static boolean isTablet() {
+		return (isPad() || isDesktop());
+	}
+
+	/**
+	 * @return
+	 */
+	private static boolean isDesktop() {
+		return !(isiOs() || isAndroid());
+	}
 
 	public static boolean isPad() {
 		if (!testedForIpad) {
@@ -62,11 +75,11 @@ public class FeatureDetection {
 	 * @return
 	 */
 	private static native boolean _isiPad() /*-{
-		return $wnd.navigator.userAgent.toUpperCase().indexOf("IPAD")!=-1
+		return $wnd.navigator.userAgent.toUpperCase().indexOf("IPAD") != -1
 	}-*/;
 
 	private static native boolean _isiPhone() /*-{
-		return $wnd.navigator.userAgent.toUpperCase().indexOf("IPHONE")!=-1
+		return $wnd.navigator.userAgent.toUpperCase().indexOf("IPHONE") != -1
 	}-*/;
 
 	/**
@@ -91,6 +104,6 @@ public class FeatureDetection {
 	}
 
 	private static native boolean _isAndroid() /*-{
-		return $wnd.navigator.userAgent.toUpperCase().indexOf("ANDROID")!=-1
+		return $wnd.navigator.userAgent.toUpperCase().indexOf("ANDROID") != -1
 	}-*/;
 }
