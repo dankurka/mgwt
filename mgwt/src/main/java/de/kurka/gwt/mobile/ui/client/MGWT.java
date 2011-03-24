@@ -16,6 +16,7 @@
 package de.kurka.gwt.mobile.ui.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.BodyElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -33,12 +34,13 @@ import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class MGWT implements HasOrientationChangeHandler {
 
 	private final HandlerManager manager = new HandlerManager(this);
 	private FlowPanel flowPanel;
+	private JavaScriptObject setupOrientation;
 
 	private Element getHead() {
 		NodeList<Element> elementsByTagName = Document.get().getElementsByTagName("head");
@@ -96,29 +98,29 @@ public class MGWT implements HasOrientationChangeHandler {
 				head.appendChild(statusBarMetaTag);
 
 			}
-			//Window.alert("" + getWindowInnerHeight());
-			//RootPanel.get().setHeight((getWindowInnerHeight() + 200) + "px");
+			// Window.alert("" + getWindowInnerHeight());
+			// RootPanel.get().setHeight((getWindowInnerHeight() + 200) + "px");
 
-			//			flowPanel = new FlowPanel();
-			//			//flowPanel.getElement().getStyle().setPosition(Position.ABSOLUTE);
-			//			flowPanel.setSize((600 + 1) + "px", (600 + 1) + "px");
-			//			RootPanel.get().add(flowPanel);
+			// flowPanel = new FlowPanel();
+			// //flowPanel.getElement().getStyle().setPosition(Position.ABSOLUTE);
+			// flowPanel.setSize((600 + 1) + "px", (600 + 1) + "px");
+			// RootPanel.get().add(flowPanel);
 			//
-			//			new Timer() {
+			// new Timer() {
 			//
-			//				@Override
-			//				public void run() {
+			// @Override
+			// public void run() {
 			//
-			//					//make sure we have more height / width than client area
+			// //make sure we have more height / width than client area
 			//
-			//					//hide nav bar
+			// //hide nav bar
 			//
-			//					Window.scrollTo(0, 1);
+			// Window.scrollTo(0, 1);
 			//
-			//					Window.alert("" + getWindowInnerHeight());
+			// Window.alert("" + getWindowInnerHeight());
 			//
-			//				}
-			//			}.schedule(1000);
+			// }
+			// }.schedule(1000);
 
 		}
 
@@ -128,7 +130,7 @@ public class MGWT implements HasOrientationChangeHandler {
 		}
 
 		if (settings.isOrientationSupport()) {
-			setupOrientation();
+			setupOrientation = setupOrientation();
 			onorientationChange(getOrientation());
 		}
 
@@ -138,7 +140,7 @@ public class MGWT implements HasOrientationChangeHandler {
 			Document.get().getBody().addClassName("normalscreen");
 		}
 
-		//kombinierter 
+		// kombinierter
 		if (isFullScreen()) {
 			if (getOrientation() == 0 || getOrientation() == 180) {
 				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-portrait");
@@ -157,23 +159,23 @@ public class MGWT implements HasOrientationChangeHandler {
 	}
 
 	private native void setUpPreventScrolling(Element el)/*-{
-		var func = function(event){
-		event.preventDefault();
-		//event.stopPropagation();
-		return false;
-		};
+															var func = function(event){
+															event.preventDefault();
+															//event.stopPropagation();
+															return false;
+															};
 
-		el.ontouchmove = func;
-		el.ontouchstart = func;
-		el.ontouchend = func;
-	}-*/;
+															el.ontouchmove = func;
+															el.ontouchstart = func;
+															el.ontouchend = func;
+															}-*/;
 
 	private native int getOrientation()/*-{
-		if(typeof($wnd.orientation) == 'undefined')
-		{return 0;}
+										if(typeof($wnd.orientation) == 'undefined')
+										{return 0;}
 
-		return $wnd.orientation;
-	}-*/;
+										return $wnd.orientation;
+										}-*/;
 
 	private void onorientationChange(int orientation) {
 
@@ -216,18 +218,17 @@ public class MGWT implements HasOrientationChangeHandler {
 
 	}
 
-	private native void setupOrientation()/*-{
-		var instance = this;
-		var func = function(){
+	private native JavaScriptObject setupOrientation()/*-{
+														var instance = this;
+														var func = function(){
 
-		instance.@de.kurka.gwt.mobile.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
-		};
-		$doc.body.onorientationchange = func;
-	}-*/;
-
-	private native void clearOrientation(BodyElement elem)/*-{
-		$doc.body.onorientationchange = null;
-	}-*/;
+														instance.@de.kurka.gwt.mobile.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
+														};
+														
+														document.addEventListener("orientationChanged", func);
+														
+														return func;
+														}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler#addOrientationChangeHandler(de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler)
@@ -239,18 +240,18 @@ public class MGWT implements HasOrientationChangeHandler {
 	}
 
 	public native int getWindowInnerHeight()/*-{
-		return $wnd.innerHeight;
-	}-*/;
+											return $wnd.innerHeight;
+											}-*/;
 
 	public native int getWindowInnerWidth()/*-{
-		return $wnd.innerWidth;
-	}-*/;
+											return $wnd.innerWidth;
+											}-*/;
 
 	public native boolean isFullScreen()/*-{
-		if($wnd.navigator.standalone)
-		{return true;}
-		return false;
-	}-*/;
+										if($wnd.navigator.standalone)
+										{return true;}
+										return false;
+										}-*/;
 
 	/**
 	 * 
