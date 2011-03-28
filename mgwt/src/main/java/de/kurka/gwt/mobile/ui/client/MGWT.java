@@ -224,6 +224,7 @@ public class MGWT implements HasOrientationChangeHandler {
 			instance.@de.kurka.gwt.mobile.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
 		};
 		$doc.body.onorientationchange = func;
+		$doc.addEventListener("orientationChanged", func);
 	}-*/;
 
 	/* (non-Javadoc)
