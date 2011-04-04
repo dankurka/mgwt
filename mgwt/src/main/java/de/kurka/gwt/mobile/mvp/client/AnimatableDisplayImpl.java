@@ -17,9 +17,11 @@ package de.kurka.gwt.mobile.mvp.client;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Display;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
@@ -29,29 +31,39 @@ import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	private FlowPanel main;
 
-	private FlowPanel first;
+	private SimplePanel first;
 
-	private FlowPanel second;
+	private SimplePanel second;
 
 	private boolean lastDir;
+
+	private EventBus eventBus;
+
+	public EventBus getEventBus() {
+		return eventBus;
+	}
+
+	public void setEventBus(EventBus eventBus) {
+		this.eventBus = eventBus;
+	}
 
 	public AnimatableDisplayImpl() {
 		main = new FlowPanel();
 
 		main.setStylePrimaryName("mgwt-AnimatableDisplay");
 
-		first = new FlowPanel();
+		first = new SimplePanel();
 		first.addStyleName("mgwt-AnimatableDisplay-container");
 		first.addStyleName("threedstuff");
 
 		main.add(first);
-		second = new FlowPanel();
+		second = new SimplePanel();
 		second.addStyleName("mgwt-AnimatableDisplay-container");
 		second.addStyleName("threedstuff");
 
@@ -73,16 +85,14 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	@Override
 	public void setFirstWidget(IsWidget w) {
-		first.clear();
-
-		first.add(w);
+		first.setWidget(w);
 
 	}
 
 	@Override
 	public void setSecondWidget(IsWidget w) {
-		second.clear();
-		second.add(w);
+
+		second.setWidget(w);
 
 	}
 
@@ -115,6 +125,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	}
 
 	private void onAnimationEnd() {
+
 		if (FeatureDetection.isAndroid()) {
 			Document.get().getBody().setAttribute("style", "");
 			first.getElement().setAttribute("style", "");
@@ -151,6 +162,10 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			animationEnd = null;
 		}
 
+		if (eventBus != null) {
+			eventBus.fireEvent(new MGWTAnimationEndEvent());
+		}
+
 	}
 
 	private boolean showFirst;
@@ -179,7 +194,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		second.addStyleName(type);
 
 		lastDir = animation.isDirection();
-		//backwards
+		// backwards
 		if (animation.isDirection()) {
 			first.addStyleName("reverse");
 			second.addStyleName("reverse");
@@ -212,6 +227,10 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		first.getElement().getStyle().setDisplay(Display.BLOCK);
 		second.getElement().getStyle().setDisplay(Display.BLOCK);
 
+		if (eventBus != null) {
+			eventBus.fireEvent(new MGWTAnimationStartEvent());
+		}
+
 	}
 
 	/**
@@ -220,12 +239,10 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	private native void blurBeforeAnimation() /*-{
 		var node = $doc.querySelector(":focus");
 
-
-		if(node != null)
-		{
-		if(typeof(node.blur) == "function"){
-		node.blur();
-		}
+		if (node != null) {
+			if (typeof (node.blur) == "function") {
+				node.blur();
+			}
 
 		}
 	}-*/;
