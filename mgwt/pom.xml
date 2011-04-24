@@ -5,7 +5,7 @@
 
 
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<groupId>de.kurka.mobile</groupId>
 	<artifactId>mgwt</artifactId>
 	<version>0.5-SNAPSHOT</version>
@@ -25,6 +25,7 @@
 
 
 	<build>
+		
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -51,6 +52,7 @@
 					<include>**/client/**</include>
 					<include>**/shared/**</include>
 					<include>**/*.gwt.xml</include>
+					<include>**/public/**</include>
 				</includes>
 			</resource>
 		</resources>
