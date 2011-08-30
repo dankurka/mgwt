@@ -382,7 +382,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	border-top-left-radius: 8px 8px;
 	border-top-right-radius: 8px 8px;
 }
-
+/* should be obsolete */
 .mgwt-List li:first-child {
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
@@ -734,7 +734,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	background-image: url('../images/UITextFieldClearButtonPressed.png');
 }
 
-.mgwt-TextBox, .mgwt-PasswordTextBox, .mgwt-TextArea, .mgwt-ListBox {
+.mgwt-TextBox input, .mgwt-PasswordTextBox input, .mgwt-TextArea input, .mgwt-ListBox {
  
     color: #777;
     background: transparent url(../.png);
@@ -744,9 +744,21 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
     display: inline-block;
     margin-left: 0px;
     width: 100%;
+    height: 100%;
     -webkit-appearance: textarea;
     -webkit-user-select: text;
+    
 
+}
+
+.mgwt-TextBox, .mgwt-PasswordTextBox, .mgwt-TextArea{
+    position: relative;
+}
+
+.mgwt-TextBox .cover, .mgwt-PasswordTextBox .cover, .mgwt-TextArea .cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .mgwt-ListBox{

@@ -44,6 +44,8 @@ import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
  *
  */
 public class CellList<T> extends Composite implements HasCellSelectedHandler {
+	private static final String CSS_SELECTED = "selected";
+
 	interface Template extends SafeHtmlTemplates {
 		@SafeHtmlTemplates.Template("<li __idx=\"{0}\" class=\"{1}\">{2}</li>")
 		SafeHtml li(int idx, String classes, SafeHtml cellContents);
@@ -68,6 +70,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		private Element node;
 		private int x;
 		private int y;
+		private boolean started;
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
@@ -87,15 +90,17 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		public void onTouchEnd(TouchEndEvent event) {
 			if (node != null)
 				node.removeClassName("active");
-			if (!moved && index != -1) {
+			if (started && !moved && index != -1) {
 				fireSelectionAtIndex(index);
 			}
 			node = null;
+			started = false;
 
 		}
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
+			started = true;
 
 			x = event.touches().get(0).getPageX();
 			y = event.touches().get(0).getPageY();
@@ -245,5 +250,16 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 			}
 		}.schedule(100);
+	}
+	
+	public void setSelectedIndex(int index, boolean selected){
+		Node node = getElement().getChild(index);
+		Element li = Element.as(node);
+		if(selected)
+		{
+			li.addClassName(CSS_SELECTED);
+		}else{
+			li.removeClassName(CSS_SELECTED);
+		}
 	}
 }

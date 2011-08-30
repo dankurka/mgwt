@@ -15,15 +15,77 @@
  */
 package de.kurka.gwt.mobile.ui.client.widget.base;
 
+import com.google.gwt.dom.client.Style.Display;
+import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.BlurEvent;
+import com.google.gwt.event.dom.client.BlurHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.FocusEvent;
+import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.TextBox;
+
+import de.kurka.gwt.mobile.ui.client.widget.TouchPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class MTextBox extends TextBox {
+public class MTextBox extends Composite implements HasValue<String>{
+
+	private TouchPanel main;
+	private TextBox textBox;
+	private FlowPanel cover;
 
 	public MTextBox() {
+		main = new TouchPanel();
+		initWidget(main);
+		
+		cover = new FlowPanel();
+		cover.addStyleName("cover");
+		
+		
+		main.add(cover);
+		
+		textBox = new TextBox();
+		main.add(textBox);
+		
+		
+		
+		cover.addDomHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				cover.getElement().getStyle().setDisplay(Display.NONE);
+				textBox.setFocus(true);
+				
+			}
+		}, ClickEvent.getType());
+		
+		textBox.addBlurHandler(new BlurHandler() {
+			
+			@Override
+			public void onBlur(BlurEvent event) {
+				cover.getElement().getStyle().setDisplay(Display.BLOCK);
+				
+			}
+		});
+		
+		textBox.addFocusHandler(new FocusHandler() {
+			
+			@Override
+			public void onFocus(FocusEvent event) {
+				cover.getElement().getStyle().setDisplay(Display.NONE);
+				textBox.setFocus(true);
+				
+			}
+		});
 		setStylePrimaryName("mgwt-TextBox");
 	}
 
@@ -34,4 +96,28 @@ public class MTextBox extends TextBox {
 	public String getPlaceHolder() {
 		return getElement().getAttribute("placeholder");
 	}
+
+	@Override
+	public HandlerRegistration addValueChangeHandler(
+			ValueChangeHandler<String> handler) {
+		return textBox.addValueChangeHandler(handler);
+	}
+
+	@Override
+	public String getValue() {
+		return textBox.getValue();
+	}
+
+	@Override
+	public void setValue(String value) {
+		textBox.setValue(value);
+		
+	}
+
+	@Override
+	public void setValue(String value, boolean fireEvents) {
+		textBox.setValue(value, fireEvents);
+		
+	}
+
 }

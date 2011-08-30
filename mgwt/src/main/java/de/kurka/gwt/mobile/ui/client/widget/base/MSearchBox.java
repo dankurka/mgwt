@@ -48,6 +48,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	private HandlerRegistration clearButtonHandler;
 	private HandlerRegistration boxHandler;
 	private FlowPanel roundDiv;
+	
 
 	public MSearchBox() {
 		TouchPanel main = new TouchPanel();
@@ -55,6 +56,8 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		main.addStyleName("mgwt-SearchBox");
 
 		initWidget(main);
+		
+		
 
 		roundDiv = new FlowPanel();
 		roundDiv.addStyleName("round");

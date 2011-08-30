@@ -135,6 +135,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		if (showFirst) {
 
 			second.getElement().getStyle().setDisplay(Display.NONE);
+			second.clear();
 			if (FeatureDetection.isPad()) {
 				if (!lastDir) {
 					second.getElement().getStyle().setZIndex(1);
@@ -145,6 +146,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		} else {
 
 			first.getElement().getStyle().setDisplay(Display.NONE);
+			first.clear();
 			if (FeatureDetection.isPad()) {
 				if (!lastDir) {
 					first.getElement().getStyle().setZIndex(1);
