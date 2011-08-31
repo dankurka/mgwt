@@ -2,6 +2,7 @@ mgwt-showcase/.classpath
 mgwt-showcase/.project
 mgwt-showcase/.settings/
 mgwt-showcase/war/WEB-INF/
+mgwt-showcase/target/
 mgwt/.classpath
 mgwt/.settings/
 mgwt/.project
