@@ -40,7 +40,7 @@ public class HomeActivity extends MGWTAbstractActivity {
 
 	public HomeActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
-
+		
 	}
 
 	@Override

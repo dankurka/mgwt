@@ -17,7 +17,10 @@ package de.kurka.mobile.showcase.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import de.kurka.gwt.mobile.mvp.client.AnimatableDisplay;
@@ -33,9 +36,8 @@ import de.kurka.mobile.showcase.client.activities.home.HomePlace;
  */
 public class ShowCaseEntryPoint implements EntryPoint {
 
-	@Override
-	public void onModuleLoad() {
-
+	
+	private void start(){
 		MGWTSettings settings = new MGWTSettings();
 		settings.setAddGlosToIcon(true);
 		settings.setFixViewPort(true);
@@ -49,7 +51,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		ClientFactory clientFactory = new ClientFactoryImpl();
 
-		AnimatableDisplay display = new AnimatableDisplayImpl();
+		AnimatableDisplayImpl display = new AnimatableDisplayImpl();
 
 		AppActivityMapper appActivityMapper = new AppActivityMapper(clientFactory);
 
@@ -58,6 +60,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		AnimatingActivityManager activityManager = new AnimatingActivityManager(appActivityMapper, appAnimationMapper, clientFactory.getEventBus());
 
 		activityManager.setDisplay(display);
+		
 
 		RootPanel.get().add(display);
 
@@ -67,6 +70,31 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 
 		historyHandler.handleCurrentHistory();
+	}
+	
+	@Override
+	public void onModuleLoad() {
+		
+		
+		GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+			
+			@Override
+			public void onUncaughtException(Throwable e) {
+				Window.alert("uncaught: " + e.getMessage());
+				
+				
+			}
+		});
+		
+		new Timer(){
+			@Override
+			public void run() {
+				start();
+				
+			}
+		}.schedule(1);
+
+		
 
 		//alertSomeStuff();
 

@@ -40,8 +40,7 @@
 	    {
 	    	return "iphone";
 	    }
-	    
-	    
+	
 	    return "desktop";
   	}
 ]]></property-provider>

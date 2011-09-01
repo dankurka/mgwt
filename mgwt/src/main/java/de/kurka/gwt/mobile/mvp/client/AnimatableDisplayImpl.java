@@ -17,7 +17,6 @@ package de.kurka.gwt.mobile.mvp.client;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Display;
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -26,9 +25,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
-import de.kurka.gwt.mobile.dom.client.event.animation.HasAnimationEndEvent;
 import de.kurka.gwt.mobile.ui.client.MGWT;
-
 
 /**
  * @author Daniel Kurka
@@ -44,16 +41,6 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	private boolean lastDir;
 
-	private EventBus eventBus;
-
-	public EventBus getEventBus() {
-		return eventBus;
-	}
-
-	public void setEventBus(EventBus eventBus) {
-		this.eventBus = eventBus;
-	}
-
 	public AnimatableDisplayImpl() {
 		main = new FlowPanel();
 
@@ -63,12 +50,13 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		first.addStyleName("mgwt-AnimatableDisplay-container");
 		first.addStyleName("threedstuff");
 
-		main.add(first);
+		if (!MGWT.getFeatureDetection().isAndroid())
+			main.add(first);
 		second = new SimplePanel();
 		second.addStyleName("mgwt-AnimatableDisplay-container");
 		second.addStyleName("threedstuff");
-
-		main.add(second);
+		if (!MGWT.getFeatureDetection().isAndroid())
+			main.add(second);
 
 		listener = new AnimationEndListener();
 
@@ -86,6 +74,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	@Override
 	public void setFirstWidget(IsWidget w) {
+
 		first.setWidget(w);
 
 	}
@@ -165,8 +154,9 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			animationEnd = null;
 		}
 
-		if (eventBus != null) {
-			eventBus.fireEvent(new MGWTAnimationEndEvent());
+		if (lastCallback != null) {
+			lastCallback.onAnimationEnd();
+			lastCallback = null;
 		}
 
 	}
@@ -175,8 +165,11 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	private HandlerRegistration animationEnd;
 	private AnimationEndListener listener;
 
+	private AnimationEndCallback lastCallback;
+
 	@Override
-	public void animate(Animation animation, boolean currentIsFirst) {
+	public void animate(Animation animation, boolean currentIsFirst, AnimationEndCallback callback) {
+		lastCallback = callback;
 		blurBeforeAnimation();
 
 		String type = animation.getType();
@@ -189,18 +182,20 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 		animationEnd = first.addDomHandler(listener, AnimationEndEvent.getType());
 		if (MGWT.getFeatureDetection().isAndroid()) {
-			if(showFirst){
-				second.clear();
-			}else{
-				first.clear();
+
+			if (showFirst) {
+				second.removeFromParent();
+				main.add(first);
+
+			} else {
+				first.removeFromParent();
+				main.add(second);
 			}
-			if (eventBus != null) {
-				eventBus.fireEvent(new MGWTAnimationEndEvent());
-			}
+			callback.onAnimationEnd();
 			return;
-//			Document.get().getBody().setAttribute("style", "-webkit-perspective: 800; -webkit-transform-style: preserve-3d;");
-//			first.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
-//			second.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
+			//			Document.get().getBody().setAttribute("style", "-webkit-perspective: 800; -webkit-transform-style: preserve-3d;");
+			//			first.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
+			//			second.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
 		}
 		first.addStyleName(type);
 		second.addStyleName(type);
@@ -239,25 +234,21 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		first.getElement().getStyle().setDisplay(Display.BLOCK);
 		second.getElement().getStyle().setDisplay(Display.BLOCK);
 
-		if (eventBus != null) {
-			eventBus.fireEvent(new MGWTAnimationStartEvent());
-		}
-
 	}
 
 	/**
 	 * 
 	 */
 	private native void blurBeforeAnimation() /*-{
-		var node = $doc.querySelector(":focus");
+												var node = $doc.querySelector(":focus");
 
-		if (node != null) {
-			if (typeof (node.blur) == "function") {
-				node.blur();
-			}
+												if (node != null) {
+												if (typeof (node.blur) == "function") {
+												node.blur();
+												}
 
-		}
-	}-*/;
+												}
+												}-*/;
 
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.IsWidget#asWidget()
@@ -265,23 +256,6 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	@Override
 	public Widget asWidget() {
 		return main;
-	}
-
-	/* (non-Javadoc)
-	 * @see de.kurka.gwt.mobile.mvp.client.AnimatableDisplay#getAnimationHandler()
-	 */
-	@Override
-	public HasAnimationEndEvent getAnimationHandler() {
-		return new AnimationEndWrapper();
-	}
-
-	private class AnimationEndWrapper implements HasAnimationEndEvent {
-
-		@Override
-		public HandlerRegistration addAnimationEndHandler(AnimationEndHandler handler) {
-			return main.addDomHandler(handler, AnimationEndEvent.getType());
-		}
-
 	}
 
 }

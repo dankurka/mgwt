@@ -309,7 +309,7 @@ public class AppAnimationMapper implements AnimationMapper {
 			return animation;
 		}
 
-		return null;
+		return new Animation();
 	}
 
 }

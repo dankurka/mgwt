@@ -31,18 +31,15 @@ import com.google.gwt.place.shared.PlaceChangeRequestEvent;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 
-import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
-import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class AnimatingActivityManager implements PlaceChangeEvent.Handler, PlaceChangeRequestEvent.Handler {
 
 	/**
-	 * Wraps our real display to prevent an Activity from taking it over if it is
-	 * not the currentActivity.
+	 * Wraps our real display to prevent an Activity from taking it over if it
+	 * is not the currentActivity.
 	 */
 	private class ProtectedDisplay implements AcceptsOneWidget {
 		private final Activity activity;
@@ -91,11 +88,13 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	/**
 	 * Create an ActivityManager. Next call {@link #setDisplay}.
-	 *
-	 * @param mapper finds the {@link Activity} for a given
-	 *          {@link com.google.gwt.place.shared.Place}
-	 * @param eventBus source of {@link PlaceChangeEvent} and
-	 *          {@link PlaceChangeRequestEvent} events.
+	 * 
+	 * @param mapper
+	 *            finds the {@link Activity} for a given
+	 *            {@link com.google.gwt.place.shared.Place}
+	 * @param eventBus
+	 *            source of {@link PlaceChangeEvent} and
+	 *            {@link PlaceChangeRequestEvent} events.
 	 */
 	public AnimatingActivityManager(ActivityMapper mapper, AnimationMapper animationMapper, EventBus eventBus) {
 		this.mapper = mapper;
@@ -105,8 +104,8 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	}
 
 	/**
-	 * Deactivate the current activity, find the next one from our ActivityMapper,
-	 * and start it.
+	 * Deactivate the current activity, find the next one from our
+	 * ActivityMapper, and start it.
 	 * <p>
 	 * The current activity's widget will be hidden immediately, which can cause
 	 * flicker if the next activity provides its widget asynchronously. That can
@@ -135,7 +134,8 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 		}
 
 		if (startingNext) {
-			// The place changed again before the new current activity showed its
+			// The place changed again before the new current activity showed
+			// its
 			// widget
 			currentActivity.onCancel();
 			currentActivity = NULL_ACTIVITY;
@@ -143,8 +143,8 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 		} else {
 
 			/*
-			 * Kill off the activity's handlers, so it doesn't have to worry about
-			 * them accidentally firing as a side effect of its tear down
+			 * Kill off the activity's handlers, so it doesn't have to worry
+			 * about them accidentally firing as a side effect of its tear down
 			 */
 			stopperedEventBus.removeHandlers();
 
@@ -154,8 +154,8 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 				caughtOnStop = t;
 			} finally {
 				/*
-				 * And kill them off again in case it was naughty and added new ones
-				 * during onstop
+				 * And kill them off again in case it was naughty and added new
+				 * ones during onstop
 				 */
 				stopperedEventBus.removeHandlers();
 			}
@@ -172,8 +172,8 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 		/*
 		 * Now start the thing. Wrap the actual display with a per-call instance
-		 * that protects the display from canceled or stopped activities, and which
-		 * maintains our startingNext state.
+		 * that protects the display from canceled or stopped activities, and
+		 * which maintains our startingNext state.
 		 */
 		try {
 			currentActivity.start(new ProtectedDisplay(currentActivity), stopperedEventBus);
@@ -194,7 +194,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 		}
 
 		if (animation != null) {
-			//animate
+			// animate
 			animate(animation);
 
 		}
@@ -212,13 +212,22 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	}
 
 	/**
-	 * @param animation 
+	 * @param animation
 	 * 
 	 */
 	private void animate(Animation animation) {
+
 		listeningForAnimationEnd = true;
 		ignorePlaceChange = true;
-		display.animate(animation, currentIsFirst);
+
+		display.animate(animation, currentIsFirst, new AnimationEndCallback() {
+
+			@Override
+			public void onAnimationEnd() {
+				AnimatingActivityManager.this.onAnimationEnd();
+
+			}
+		});
 
 	}
 
@@ -247,15 +256,17 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	 * stopping its monitoring the event bus for place change events.
 	 * <p>
 	 * If you are disposing of an ActivityManager, it is important to call
-	 * setDisplay(null) to get it to deregister from the event bus, so that it can
-	 * be garbage collected.
+	 * setDisplay(null) to get it to deregister from the event bus, so that it
+	 * can be garbage collected.
 	 * 
-	 * @param display an instance of AcceptsOneWidget
+	 * @param display
+	 *            an instance of AcceptsOneWidget
 	 */
 	public void setDisplay(AnimatableDisplay display) {
 		boolean wasActive = (null != this.display);
 		boolean willBeActive = (null != display);
 		this.display = display;
+
 		if (wasActive != willBeActive) {
 			updateHandlers(willBeActive);
 		}
@@ -265,9 +276,9 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	private Activity getNextActivity(PlaceChangeEvent event) {
 		if (display == null) {
 			/*
-			 * Display may have been nulled during PlaceChangeEvent dispatch. Don't
-			 * bother the mapper, just return a null to ensure we shut down the
-			 * current activity
+			 * Display may have been nulled during PlaceChangeEvent dispatch.
+			 * Don't bother the mapper, just return a null to ensure we shut
+			 * down the current activity
 			 */
 			return null;
 		}
@@ -297,14 +308,6 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 				}
 			};
 
-			this.display.getAnimationHandler().addAnimationEndHandler(new AnimationEndHandler() {
-
-				@Override
-				public void onAnimationEnd(AnimationEndEvent event) {
-					AnimatingActivityManager.this.onAnimationEnd();
-
-				}
-			});
 		} else {
 			if (handlerRegistration != null) {
 				handlerRegistration.removeHandler();
