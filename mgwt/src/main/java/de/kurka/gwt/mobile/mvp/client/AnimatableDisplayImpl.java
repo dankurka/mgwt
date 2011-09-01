@@ -27,7 +27,8 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
 import de.kurka.gwt.mobile.dom.client.event.animation.HasAnimationEndEvent;
-import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
+import de.kurka.gwt.mobile.ui.client.MGWT;
+
 
 /**
  * @author Daniel Kurka
@@ -126,7 +127,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	private void onAnimationEnd() {
 
-		if (FeatureDetection.isAndroid()) {
+		if (MGWT.getFeatureDetection().isAndroid()) {
 			Document.get().getBody().setAttribute("style", "");
 			first.getElement().setAttribute("style", "");
 			second.getElement().setAttribute("style", "");
@@ -136,7 +137,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 			second.getElement().getStyle().setDisplay(Display.NONE);
 			second.clear();
-			if (FeatureDetection.isPad()) {
+			if (MGWT.getFeatureDetection().isIPad()) {
 				if (!lastDir) {
 					second.getElement().getStyle().setZIndex(1);
 				} else {
@@ -147,7 +148,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 			first.getElement().getStyle().setDisplay(Display.NONE);
 			first.clear();
-			if (FeatureDetection.isPad()) {
+			if (MGWT.getFeatureDetection().isIPad()) {
 				if (!lastDir) {
 					first.getElement().getStyle().setZIndex(1);
 				} else {
@@ -187,7 +188,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		}
 
 		animationEnd = first.addDomHandler(listener, AnimationEndEvent.getType());
-		if (FeatureDetection.isAndroid()) {
+		if (MGWT.getFeatureDetection().isAndroid()) {
 			if(showFirst){
 				second.clear();
 			}else{
@@ -214,7 +215,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		if (currentIsFirst) {
 			first.addStyleName("in");
 			second.addStyleName("out");
-			if (FeatureDetection.isPad()) {
+			if (MGWT.getFeatureDetection().isIPad()) {
 				if (!lastDir) {
 					second.getElement().getStyle().setZIndex(-1);
 				} else {
@@ -226,7 +227,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 		} else {
 			first.addStyleName("out");
 			second.addStyleName("in");
-			if (FeatureDetection.isPad()) {
+			if (MGWT.getFeatureDetection().isIPad()) {
 				if (!lastDir) {
 					first.getElement().getStyle().setZIndex(-1);
 				} else {
