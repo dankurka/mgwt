@@ -15,83 +15,77 @@ import com.google.gwt.core.ext.typeinfo.TypeOracle;
 import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
 import com.google.gwt.user.rebind.SourceWriter;
 
-public class FeatureDetectionGenerator extends Generator{
+public class FeatureDetectionGenerator extends Generator {
 
 	@Override
 	public String generate(TreeLogger logger, GeneratorContext context,
 			String typeName) throws UnableToCompleteException {
-		
-		TypeOracle typeOracle = context.getTypeOracle();
-		
+
 		PropertyOracle propertyOracle = context.getPropertyOracle();
 		SelectionProperty property = null;
 		try {
-			 property = propertyOracle.getSelectionProperty(logger, "mgwt.os");
+			property = propertyOracle.getSelectionProperty(logger, "mgwt.os");
 		} catch (BadPropertyValueException e) {
 			logger.log(TreeLogger.ERROR, "can not resolve mgwt.os variable", e);
 			throw new UnableToCompleteException();
 		}
-		
-		System.out.println(property.getCurrentValue());
-		
-        System.out.println("classType " + typeOracle.findType(typeName));
-        
-        JClassType classType = null;
-        
-        try {
-			 classType = context.getTypeOracle().getType(typeName);
+
+		JClassType classType = null;
+
+		try {
+			classType = context.getTypeOracle().getType(typeName);
 		} catch (NotFoundException e) {
-			logger.log(TreeLogger.ERROR, "can not find type: '" + typeName + "'", e);
+			logger.log(TreeLogger.ERROR, "can not find type: '" + typeName
+					+ "'", e);
 			throw new UnableToCompleteException();
 		}
-        
-        String mgwtProperty = property.getCurrentValue();
-        String packageName = classType.getPackage().getName();
-        String simpleName = classType.getSimpleSourceName() + "_" + property.getCurrentValue();
-        String fullName = packageName +"."  + simpleName;
-        
-        ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(packageName, simpleName);
-        composer.addImplementedInterface(typeName);
-        composer.addImport(typeName);
-      
-        
-        PrintWriter printWriter = context.tryCreate(logger, packageName, simpleName);
-        
-        if(printWriter == null)
-        {
-        	return fullName;
-        }
-        	
-        
-        SourceWriter writer = composer.createSourceWriter(context, printWriter);
-        
-        writer.println("public boolean isAndroid() {");
-        writer.println("return " + mgwtProperty.equals("android") + ";");
-        writer.println("}");
-        
-        writer.println("public boolean isIPhone() {");
-        writer.println("return " + mgwtProperty.equals("iphone") + ";");
-        writer.println("}");
-        
-        writer.println("public boolean isIPad() {");
-        writer.println("return " + mgwtProperty.equals("ipad") + ";");
-        writer.println("}");
-        
-        writer.println("public boolean isIOs() {");
-        writer.println("return " + (mgwtProperty.equals("iphone") || mgwtProperty.equals("ipad")) + ";");
-        writer.println("}");
-        
-        writer.println("public boolean isDesktop() {");
-        writer.println("return " + mgwtProperty.equals("desktop") + ";");
-        writer.println("}");
-        
-        writer.commit(logger);
 
-        return fullName;
-        
-		
+		String mgwtProperty = property.getCurrentValue();
+		String packageName = classType.getPackage().getName();
+		String simpleName = classType.getSimpleSourceName() + "_"
+				+ property.getCurrentValue();
+		String fullName = packageName + "." + simpleName;
+
+		ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(
+				packageName, simpleName);
+		composer.addImplementedInterface(typeName);
+		composer.addImport(typeName);
+
+		PrintWriter printWriter = context.tryCreate(logger, packageName,
+				simpleName);
+
+		if (printWriter == null) {
+			return fullName;
+		}
+
+		SourceWriter writer = composer.createSourceWriter(context, printWriter);
+
+		writer.println("public boolean isAndroid() {");
+		writer.println("return " + mgwtProperty.equals("android") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isIPhone() {");
+		writer.println("return " + mgwtProperty.equals("iphone") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isIPad() {");
+		writer.println("return " + mgwtProperty.equals("ipad") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isIOs() {");
+		writer.println("return "
+				+ (mgwtProperty.equals("iphone") || mgwtProperty.equals("ipad"))
+				+ ";");
+		writer.println("}");
+
+		writer.println("public boolean isDesktop() {");
+		writer.println("return " + mgwtProperty.equals("desktop") + ";");
+		writer.println("}");
+
+		writer.commit(logger);
+
+		return fullName;
+
 	}
-	
-	
 
 }
