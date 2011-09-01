@@ -17,7 +17,7 @@ package com.google.gwt.user.client.impl;
 
 import com.google.gwt.user.client.Element;
 
-public class DOMImplMobileSafari extends DOMImplSafari {
+public class DOMImplMobileSafari extends DOMImplWebkit {
 
 	public DOMImplMobileSafari() {
 

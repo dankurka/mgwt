@@ -21,7 +21,7 @@ import com.google.gwt.user.client.Element;
  * @author Daniel Kurka
  *
  */
-public class DOMImplSafariWithTransistion extends DOMImplSafari {
+public class DOMImplSafariWithTransistion extends DOMImplWebkit {
 
 	/**
 	 * 
