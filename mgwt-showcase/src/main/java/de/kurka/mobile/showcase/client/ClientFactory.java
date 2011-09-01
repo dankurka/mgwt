@@ -15,8 +15,8 @@
  */
 package de.kurka.mobile.showcase.client;
 
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
+import com.google.web.bindery.event.shared.EventBus;
 
 import de.kurka.mobile.showcase.client.activities.about.AboutView;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationView;
@@ -35,7 +35,7 @@ import de.kurka.mobile.showcase.client.activities.ui.UIView;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public interface ClientFactory {
 	public HomeView getHomeView();

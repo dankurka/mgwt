@@ -21,8 +21,6 @@ import java.util.Set;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
-import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.ResettableEventBus;
 import com.google.gwt.event.shared.UmbrellaException;
 import com.google.gwt.place.shared.Place;
@@ -30,6 +28,8 @@ import com.google.gwt.place.shared.PlaceChangeEvent;
 import com.google.gwt.place.shared.PlaceChangeRequestEvent;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
  * @author Daniel Kurka
@@ -62,8 +62,10 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	}
 
 	private static final Activity NULL_ACTIVITY = new AbstractActivity() {
-		public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		@Override
+		public void start(AcceptsOneWidget panel, com.google.gwt.event.shared.EventBus eventBus) {
 			panel.setWidget(null);
+
 		}
 	};
 

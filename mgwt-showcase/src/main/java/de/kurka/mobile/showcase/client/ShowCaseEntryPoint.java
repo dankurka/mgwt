@@ -23,7 +23,6 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 
-import de.kurka.gwt.mobile.mvp.client.AnimatableDisplay;
 import de.kurka.gwt.mobile.mvp.client.AnimatableDisplayImpl;
 import de.kurka.gwt.mobile.mvp.client.AnimatingActivityManager;
 import de.kurka.gwt.mobile.ui.client.MGWT;
@@ -32,12 +31,11 @@ import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ShowCaseEntryPoint implements EntryPoint {
 
-	
-	private void start(){
+	private void start() {
 		MGWTSettings settings = new MGWTSettings();
 		settings.setAddGlosToIcon(true);
 		settings.setFixViewPort(true);
@@ -60,7 +58,6 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		AnimatingActivityManager activityManager = new AnimatingActivityManager(appActivityMapper, appAnimationMapper, clientFactory.getEventBus());
 
 		activityManager.setDisplay(display);
-		
 
 		RootPanel.get().add(display);
 
@@ -71,32 +68,28 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		historyHandler.handleCurrentHistory();
 	}
-	
+
 	@Override
 	public void onModuleLoad() {
-		
-		
+
 		GWT.setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
-			
+
 			@Override
 			public void onUncaughtException(Throwable e) {
 				Window.alert("uncaught: " + e.getMessage());
-				
-				
+
 			}
 		});
-		
-		new Timer(){
+
+		new Timer() {
 			@Override
 			public void run() {
 				start();
-				
+
 			}
 		}.schedule(1);
 
-		
-
-		//alertSomeStuff();
+		// alertSomeStuff();
 
 	}
 

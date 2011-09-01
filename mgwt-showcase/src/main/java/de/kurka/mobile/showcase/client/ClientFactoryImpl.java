@@ -15,9 +15,9 @@
  */
 package de.kurka.mobile.showcase.client;
 
-import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.place.shared.PlaceController;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.SimpleEventBus;
 
 import de.kurka.mobile.showcase.client.activities.about.AboutView;
 import de.kurka.mobile.showcase.client.activities.about.AboutViewGwtImpl;
@@ -50,7 +50,7 @@ import de.kurka.mobile.showcase.client.activities.ui.UIViewImpl;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ClientFactoryImpl implements ClientFactory {
 
