@@ -29,16 +29,22 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeEvent;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler;
-import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
+
 
 /**
  * @author Daniel Kurka
  * 
  */
 public class MGWT implements HasOrientationChangeHandler {
+	
+	private final static  FeatureDetection FEATURE_DETECTION = GWT.create(FeatureDetection.class);
 
 	private final HandlerManager manager = new HandlerManager(this);
 	private FlowPanel flowPanel;
+	
+	public static final FeatureDetection getFeatureDetection(){
+		return FEATURE_DETECTION;
+	}
 
 	private Element getHead() {
 		NodeList<Element> elementsByTagName = Document.get().getElementsByTagName("head");
@@ -122,7 +128,7 @@ public class MGWT implements HasOrientationChangeHandler {
 
 		}
 
-		if (settings.isPreventScrolling() && FeatureDetection.isiOs()) {
+		if (settings.isPreventScrolling() && FEATURE_DETECTION.isIOs()) {
 			BodyElement body = Document.get().getBody();
 			setUpPreventScrolling(body);
 		}
@@ -257,11 +263,11 @@ public class MGWT implements HasOrientationChangeHandler {
 	public void loadStyle() {
 		String cssUrl = GWT.getModuleName() + "/mgwt/iphone/css/iphone.css";
 
-		if (FeatureDetection.isPad()) {
+		if (FEATURE_DETECTION.isIPad()) {
 			cssUrl = GWT.getModuleName() + "/mgwt/ipad/css/ipad.css";
 
 		} else {
-			if (FeatureDetection.isAndroid()) {
+			if (FEATURE_DETECTION.isAndroid()) {
 				cssUrl = GWT.getModuleName() + "/mgwt/android/css/android.css";
 			}
 		}

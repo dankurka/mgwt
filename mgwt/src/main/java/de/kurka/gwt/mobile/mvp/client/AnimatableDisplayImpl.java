@@ -188,9 +188,18 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 		animationEnd = first.addDomHandler(listener, AnimationEndEvent.getType());
 		if (FeatureDetection.isAndroid()) {
-			Document.get().getBody().setAttribute("style", "-webkit-perspective: 800; -webkit-transform-style: preserve-3d;");
-			first.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
-			second.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
+			if(showFirst){
+				second.clear();
+			}else{
+				first.clear();
+			}
+			if (eventBus != null) {
+				eventBus.fireEvent(new MGWTAnimationEndEvent());
+			}
+			return;
+//			Document.get().getBody().setAttribute("style", "-webkit-perspective: 800; -webkit-transform-style: preserve-3d;");
+//			first.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
+//			second.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
 		}
 		first.addStyleName(type);
 		second.addStyleName(type);

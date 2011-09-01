@@ -3,6 +3,8 @@ mgwt-showcase/.project
 mgwt-showcase/.settings/
 mgwt-showcase/war/WEB-INF/
 mgwt-showcase/target/
+mgwt-showcase/gwt-unitCache/
+mgwt-showcase/war/showcase/
 mgwt/.classpath
 mgwt/.settings/
 mgwt/.project
