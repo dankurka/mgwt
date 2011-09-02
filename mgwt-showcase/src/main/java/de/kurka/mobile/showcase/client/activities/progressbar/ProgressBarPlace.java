@@ -16,11 +16,24 @@
 package de.kurka.mobile.showcase.client.activities.progressbar;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class ProgressBarPlace extends Place {
+	public static class ProgressBarPlaceTokenizer implements PlaceTokenizer<ProgressBarPlace> {
 
+		@Override
+		public ProgressBarPlace getPlace(String token) {
+			return new ProgressBarPlace();
+		}
+
+		@Override
+		public String getToken(ProgressBarPlace place) {
+			return null;
+		}
+
+	}
 }

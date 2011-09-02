@@ -240,15 +240,15 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	 * 
 	 */
 	private native void blurBeforeAnimation() /*-{
-												var node = $doc.querySelector(":focus");
+		var node = $doc.querySelector(":focus");
 
-												if (node != null) {
-												if (typeof (node.blur) == "function") {
-												node.blur();
-												}
+		if (node != null) {
+			if (typeof (node.blur) == "function") {
+				node.blur();
+			}
 
-												}
-												}-*/;
+		}
+	}-*/;
 
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.IsWidget#asWidget()

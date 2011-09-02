@@ -16,11 +16,24 @@
 package de.kurka.mobile.showcase.client.activities.popup;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class PopupPlace extends Place {
+	public static class PopupPlaceTokenizer implements PlaceTokenizer<PopupPlace> {
 
+		@Override
+		public PopupPlace getPlace(String token) {
+			return new PopupPlace();
+		}
+
+		@Override
+		public String getToken(PopupPlace place) {
+			return null;
+		}
+
+	}
 }

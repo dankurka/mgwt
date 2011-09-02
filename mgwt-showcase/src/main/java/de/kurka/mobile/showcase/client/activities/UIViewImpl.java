@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.ui;
+package de.kurka.mobile.showcase.client.activities;
 
 import java.util.List;
 
@@ -27,7 +27,6 @@ import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;
-import de.kurka.mobile.showcase.client.activities.Item;
 
 /**
  * @author Daniel Kurka
@@ -104,6 +103,12 @@ public class UIViewImpl implements UIView {
 	@Override
 	public void renderItems(List<Item> items) {
 		cellListWithHeader.getCellList().render(items);
+
+	}
+
+	@Override
+	public void setSelectedIndex(int index, boolean selected) {
+		cellListWithHeader.getCellList().setSelectedIndex(index, selected);
 
 	}
 

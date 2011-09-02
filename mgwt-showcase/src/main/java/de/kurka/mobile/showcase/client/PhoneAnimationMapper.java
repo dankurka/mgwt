@@ -19,7 +19,8 @@ import com.google.gwt.place.shared.Place;
 
 import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.mvp.client.AnimationMapper;
-import de.kurka.mobile.showcase.client.activities.about.AboutPlace;
+import de.kurka.mobile.showcase.client.activities.AboutPlace;
+import de.kurka.mobile.showcase.client.activities.UIPlace;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationPlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDissolvePlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationFadePlace;
@@ -31,20 +32,19 @@ import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSwapPla
 import de.kurka.mobile.showcase.client.activities.button.ButtonPlace;
 import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.activities.elements.ElementsPlace;
-import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 import de.kurka.mobile.showcase.client.activities.popup.PopupPlace;
 import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarPlace;
 import de.kurka.mobile.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import de.kurka.mobile.showcase.client.activities.searchbox.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.activities.slider.SliderPlace;
 import de.kurka.mobile.showcase.client.activities.tabbar.TabBarPlace;
-import de.kurka.mobile.showcase.client.activities.ui.UIPlace;
+import de.kurka.mobile.showcase.client.places.HomePlace;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class AppAnimationMapper implements AnimationMapper {
+public class PhoneAnimationMapper implements AnimationMapper {
 
 	@Override
 	public Animation getAnimation(Place oldPlace, Place newPlace) {

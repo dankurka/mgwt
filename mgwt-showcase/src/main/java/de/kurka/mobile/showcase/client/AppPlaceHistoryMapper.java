@@ -16,10 +16,36 @@
 package de.kurka.mobile.showcase.client;
 
 import com.google.gwt.place.shared.PlaceHistoryMapper;
+import com.google.gwt.place.shared.WithTokenizers;
+
+import de.kurka.mobile.showcase.client.activities.AboutPlace.AboutPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.UIPlace.UIPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.animation.AnimationPlace.AnimationPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDissolvePlace.AnimationDissolvePlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationFadePlace.AnimationFadePlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationFlipPlace.AnimationFlipPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationPopPlace.AnimationPopPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSlidePlace.AnimationSlidePlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSlideUpPlace.AnimationSlideUpPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSwapPlace.AnimationSwapPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.button.ButtonPlace.ButtonPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarPlace.ButtonBarPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.elements.ElementsPlace.ElementsPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.popup.PopupPlace.PopupPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarPlace.ProgressBarPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.scrollwidget.ScrollWidgetPlace.ScrollWidgetPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.searchbox.SearchBoxPlace.SearchBoxPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.slider.SliderPlace.SliderPlaceTokenizer;
+import de.kurka.mobile.showcase.client.activities.tabbar.TabBarPlace.TabBarPlaceTokenizer;
+import de.kurka.mobile.showcase.client.places.HomePlace.HomePlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
+@WithTokenizers({ HomePlaceTokenizer.class, UIPlaceTokenizer.class, ScrollWidgetPlaceTokenizer.class, AboutPlaceTokenizer.class, ButtonPlaceTokenizer.class, AnimationDissolvePlaceTokenizer.class,
+		AnimationFadePlaceTokenizer.class, AnimationFlipPlaceTokenizer.class, AnimationPlaceTokenizer.class, AnimationPopPlaceTokenizer.class, AnimationSlidePlaceTokenizer.class,
+		AnimationSlideUpPlaceTokenizer.class, AnimationSwapPlaceTokenizer.class, ButtonBarPlaceTokenizer.class, ElementsPlaceTokenizer.class, PopupPlaceTokenizer.class,
+		ProgressBarPlaceTokenizer.class, SearchBoxPlaceTokenizer.class, SliderPlaceTokenizer.class, TabBarPlaceTokenizer.class })
 public interface AppPlaceHistoryMapper extends PlaceHistoryMapper {
 }

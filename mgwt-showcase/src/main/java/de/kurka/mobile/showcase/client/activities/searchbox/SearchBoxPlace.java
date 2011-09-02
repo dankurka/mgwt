@@ -16,11 +16,25 @@
 package de.kurka.mobile.showcase.client.activities.searchbox;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class SearchBoxPlace extends Place {
+	public static class SearchBoxPlaceTokenizer implements PlaceTokenizer<SearchBoxPlace> {
 
+		@Override
+		public SearchBoxPlace getPlace(String token) {
+			return new SearchBoxPlace();
+		}
+
+		@Override
+		public String getToken(SearchBoxPlace place) {
+
+			return null;
+		}
+
+	}
 }

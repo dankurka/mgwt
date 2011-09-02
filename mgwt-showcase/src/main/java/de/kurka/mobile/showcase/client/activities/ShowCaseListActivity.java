@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.home;
+package de.kurka.mobile.showcase.client.activities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,26 +26,25 @@ import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
-import de.kurka.mobile.showcase.client.activities.about.AboutPlace;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationPlace;
-import de.kurka.mobile.showcase.client.activities.ui.UIPlace;
+import de.kurka.mobile.showcase.client.activities.home.Topic;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class HomeActivity extends MGWTAbstractActivity {
+public class ShowCaseListActivity extends MGWTAbstractActivity {
 
 	private final ClientFactory clientFactory;
 
-	public HomeActivity(ClientFactory clientFactory) {
+	public ShowCaseListActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
-		
+
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		HomeView view = clientFactory.getHomeView();
+		ShowCaseListView view = clientFactory.getHomeView();
 
 		view.setTitle("mgwt");
 		view.setRightButtonText("about");
@@ -60,6 +59,7 @@ public class HomeActivity extends MGWTAbstractActivity {
 			public void onCellSelected(CellSelectedEvent event) {
 				int index = event.getIndex();
 				if (index == 0) {
+
 					clientFactory.getPlaceController().goTo(new UIPlace());
 					return;
 				}

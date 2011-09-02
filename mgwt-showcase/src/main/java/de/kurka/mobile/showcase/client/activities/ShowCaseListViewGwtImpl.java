@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.home;
+package de.kurka.mobile.showcase.client.activities;
 
 import java.util.List;
 
@@ -27,19 +27,20 @@ import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;
+import de.kurka.mobile.showcase.client.activities.home.Topic;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class HomeViewGwtImpl implements HomeView {
+public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 
 	private FlowPanel main;
 	private HeaderRoundButton forwardButton;
 	private HeaderPanel headerPanel;
 	private CellListWithHeader<Topic> cellList;
 
-	public HomeViewGwtImpl() {
+	public ShowCaseListViewGwtImpl() {
 		main = new FlowPanel();
 
 		headerPanel = new HeaderPanel();

@@ -16,11 +16,24 @@
 package de.kurka.mobile.showcase.client.activities.elements;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class ElementsPlace extends Place {
+	public static class ElementsPlaceTokenizer implements PlaceTokenizer<ElementsPlace> {
 
+		@Override
+		public ElementsPlace getPlace(String token) {
+			return new ElementsPlace();
+		}
+
+		@Override
+		public String getToken(ElementsPlace place) {
+			return null;
+		}
+
+	}
 }

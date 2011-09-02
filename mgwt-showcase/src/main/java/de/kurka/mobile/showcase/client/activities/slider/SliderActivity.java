@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.mobile.showcase.client.ClientFactory;
-import de.kurka.mobile.showcase.client.activities.ui.UIPlace;
+import de.kurka.mobile.showcase.client.activities.UIPlace;
 
 /**
  * @author Daniel Kurka

@@ -16,11 +16,25 @@
 package de.kurka.mobile.showcase.client.activities.scrollwidget;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class ScrollWidgetPlace extends Place {
+	public static class ScrollWidgetPlaceTokenizer implements PlaceTokenizer<ScrollWidgetPlace> {
 
+		@Override
+		public ScrollWidgetPlace getPlace(String token) {
+			return new ScrollWidgetPlace();
+		}
+
+		@Override
+		public String getToken(ScrollWidgetPlace place) {
+
+			return null;
+		}
+
+	}
 }

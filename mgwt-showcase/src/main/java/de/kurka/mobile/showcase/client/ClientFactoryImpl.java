@@ -19,8 +19,12 @@ import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 
-import de.kurka.mobile.showcase.client.activities.about.AboutView;
-import de.kurka.mobile.showcase.client.activities.about.AboutViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.AboutView;
+import de.kurka.mobile.showcase.client.activities.AboutViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.ShowCaseListView;
+import de.kurka.mobile.showcase.client.activities.ShowCaseListViewGwtImpl;
+import de.kurka.mobile.showcase.client.activities.UIView;
+import de.kurka.mobile.showcase.client.activities.UIViewImpl;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationView;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDoneView;
@@ -31,8 +35,6 @@ import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarView;
 import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.elements.ElementsView;
 import de.kurka.mobile.showcase.client.activities.elements.ElementsViewImpl;
-import de.kurka.mobile.showcase.client.activities.home.HomeView;
-import de.kurka.mobile.showcase.client.activities.home.HomeViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.popup.PopupView;
 import de.kurka.mobile.showcase.client.activities.popup.PopupViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarView;
@@ -45,8 +47,6 @@ import de.kurka.mobile.showcase.client.activities.slider.SliderView;
 import de.kurka.mobile.showcase.client.activities.slider.SliderViewGwtImpl;
 import de.kurka.mobile.showcase.client.activities.tabbar.TabBarView;
 import de.kurka.mobile.showcase.client.activities.tabbar.TabBarViewGwtImpl;
-import de.kurka.mobile.showcase.client.activities.ui.UIView;
-import de.kurka.mobile.showcase.client.activities.ui.UIViewImpl;
 
 /**
  * @author Daniel Kurka
@@ -56,7 +56,7 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	private EventBus eventBus;
 	private PlaceController placeController;
-	private HomeView homeViewImpl;
+	private ShowCaseListView homeViewImpl;
 	private UIView uiView;
 	private AboutView aboutView;
 	private AnimationView animationView;
@@ -77,13 +77,13 @@ public class ClientFactoryImpl implements ClientFactory {
 
 		placeController = new PlaceController(eventBus);
 
-		homeViewImpl = new HomeViewGwtImpl();
+		homeViewImpl = new ShowCaseListViewGwtImpl();
 	}
 
 	@Override
-	public HomeView getHomeView() {
+	public ShowCaseListView getHomeView() {
 		if (homeViewImpl == null) {
-			homeViewImpl = new HomeViewGwtImpl();
+			homeViewImpl = new ShowCaseListViewGwtImpl();
 		}
 		return homeViewImpl;
 	}

@@ -13,28 +13,33 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.ui;
+package de.kurka.mobile.showcase.client.activities;
 
 import java.util.List;
 
+import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
-import de.kurka.mobile.showcase.client.activities.Item;
+import de.kurka.mobile.showcase.client.activities.home.Topic;
 
 /**
  * @author Daniel Kurka
  *
  */
-public interface UIView extends IsWidget {
-	public void setBackButtonText(String text);
+public interface ShowCaseListView extends IsWidget {
 
-	public HasSimpleTouchHandler getBackButton();
+	public void setTitle(String text);
 
-	public void setTitle(String title);
+	public void setRightButtonText(String text);
 
-	public HasCellSelectedHandler getList();
+	public HasSimpleTouchHandler getAboutButton();
 
-	public void renderItems(List<Item> items);
+	public HasCellSelectedHandler getCellSelectedHandler();
+
+	public void setTopics(List<Topic> createTopicsList);
+
+	public HasText getFirstHeader();
+
 }

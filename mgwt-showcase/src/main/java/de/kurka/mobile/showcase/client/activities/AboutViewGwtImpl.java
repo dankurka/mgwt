@@ -13,13 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.about;
+package de.kurka.mobile.showcase.client.activities;
 
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
+import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
 
 /**
@@ -28,23 +31,36 @@ import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
  */
 public class AboutViewGwtImpl implements AboutView {
 
-	private RoundPanel main;
+	private FlowPanel main;
+	private RoundPanel round;
 	private Button backbutton;
 
 	public AboutViewGwtImpl() {
-		main = new RoundPanel();
+		main = new FlowPanel();
+		HeaderPanel panel = new HeaderPanel();
 
-		main.add(new HTML("mgwt"));
-		main.add(new HTML("Version 0.5a"));
-		main.add(new HTML("Built by Daniel Kurka, @dankurka on Twitter"));
+		panel.getTitleWidget().setText("About");
 
-		main.add(new HTML("Using GWT to build mobile apps"));
+		main.add(panel);
 
-		main.add(new HTML("<br/><br/><a href='http://www.m-gwt.com'>www.m-gwt.com</a><br/><br/>"));
+		round = new RoundPanel();
+
+		round.add(new HTML("mgwt"));
+		round.add(new HTML("Version 1.0a"));
+		round.add(new HTML("Built by Daniel Kurka, @dankurka on Twitter"));
+
+		round.add(new HTML("Using GWT to build mobile apps"));
+
+		round.add(new HTML("<br/><br/><a target='_blank' href='http://www.m-gwt.com'>www.m-gwt.com</a><br/><br/>"));
+
+		main.add(round);
 
 		backbutton = new Button();
 
-		main.add(backbutton);
+		if (!MGWTUtil.getFeatureDetection().isTablet()) {
+
+			main.add(backbutton);
+		}
 
 	}
 

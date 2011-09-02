@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.slider;
+package de.kurka.mobile.showcase.client.activities;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
@@ -22,17 +22,16 @@ import com.google.gwt.place.shared.PlaceTokenizer;
  * @author Daniel Kurka
  *
  */
-public class SliderPlace extends Place {
-	public static class SliderPlaceTokenizer implements PlaceTokenizer<SliderPlace> {
+public class AboutPlace extends Place {
+	public static class AboutPlaceTokenizer implements PlaceTokenizer<AboutPlace> {
 
 		@Override
-		public SliderPlace getPlace(String token) {
-			return new SliderPlace();
+		public AboutPlace getPlace(String token) {
+			return new AboutPlace();
 		}
 
 		@Override
-		public String getToken(SliderPlace place) {
-
+		public String getToken(AboutPlace place) {
 			return null;
 		}
 

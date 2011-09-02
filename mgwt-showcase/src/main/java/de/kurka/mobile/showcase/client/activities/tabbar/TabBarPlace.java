@@ -16,11 +16,25 @@
 package de.kurka.mobile.showcase.client.activities.tabbar;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class TabBarPlace extends Place {
+	public static class TabBarPlaceTokenizer implements PlaceTokenizer<TabBarPlace> {
 
+		@Override
+		public TabBarPlace getPlace(String token) {
+			return new TabBarPlace();
+		}
+
+		@Override
+		public String getToken(TabBarPlace place) {
+
+			return null;
+		}
+
+	}
 }

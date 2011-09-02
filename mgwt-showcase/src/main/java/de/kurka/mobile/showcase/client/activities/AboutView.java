@@ -13,14 +13,19 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.home;
+package de.kurka.mobile.showcase.client.activities;
 
-import com.google.gwt.place.shared.Place;
+import com.google.gwt.user.client.ui.IsWidget;
+
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class HomePlace extends Place {
+public interface AboutView extends IsWidget {
+	public void setBackButtonText(String text);
+
+	public HasSimpleTouchHandler getBackButton();
 
 }

@@ -30,19 +30,18 @@ import de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHand
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeEvent;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler;
 
-
 /**
  * @author Daniel Kurka
  * 
  */
 public class MGWT implements HasOrientationChangeHandler {
-	
-	private final static  FeatureDetection FEATURE_DETECTION = GWT.create(FeatureDetection.class);
+
+	private final static FeatureDetection FEATURE_DETECTION = GWT.create(FeatureDetection.class);
 
 	private final HandlerManager manager = new HandlerManager(this);
 	private FlowPanel flowPanel;
-	
-	public static final FeatureDetection getFeatureDetection(){
+
+	public static final FeatureDetection getFeatureDetection() {
 		return FEATURE_DETECTION;
 	}
 

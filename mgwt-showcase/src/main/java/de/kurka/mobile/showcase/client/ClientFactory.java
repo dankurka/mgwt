@@ -18,27 +18,27 @@ package de.kurka.mobile.showcase.client;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.web.bindery.event.shared.EventBus;
 
-import de.kurka.mobile.showcase.client.activities.about.AboutView;
+import de.kurka.mobile.showcase.client.activities.AboutView;
+import de.kurka.mobile.showcase.client.activities.ShowCaseListView;
+import de.kurka.mobile.showcase.client.activities.UIView;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationView;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDoneView;
 import de.kurka.mobile.showcase.client.activities.button.ButtonView;
 import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarView;
 import de.kurka.mobile.showcase.client.activities.elements.ElementsView;
-import de.kurka.mobile.showcase.client.activities.home.HomeView;
 import de.kurka.mobile.showcase.client.activities.popup.PopupView;
 import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarView;
 import de.kurka.mobile.showcase.client.activities.scrollwidget.ScrollWidgetView;
 import de.kurka.mobile.showcase.client.activities.searchbox.SearchBoxView;
 import de.kurka.mobile.showcase.client.activities.slider.SliderView;
 import de.kurka.mobile.showcase.client.activities.tabbar.TabBarView;
-import de.kurka.mobile.showcase.client.activities.ui.UIView;
 
 /**
  * @author Daniel Kurka
  * 
  */
 public interface ClientFactory {
-	public HomeView getHomeView();
+	public ShowCaseListView getHomeView();
 
 	public EventBus getEventBus();
 

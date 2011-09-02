@@ -33,7 +33,7 @@ import de.kurka.mobile.showcase.client.activities.animationdone.AnimationPopPlac
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSlidePlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSlideUpPlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSwapPlace;
-import de.kurka.mobile.showcase.client.activities.home.HomePlace;
+import de.kurka.mobile.showcase.client.places.HomePlace;
 
 /**
  * @author Daniel Kurka

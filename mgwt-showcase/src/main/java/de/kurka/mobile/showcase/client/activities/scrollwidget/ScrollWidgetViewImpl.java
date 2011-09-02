@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.MGWT;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
@@ -43,7 +44,9 @@ public class ScrollWidgetViewImpl implements ScrollWidgetView {
 
 		headerBackButton = new HeaderBackButton();
 		headerBackButton.setText("UI");
-		headerPanel.setLeftWidget(headerBackButton);
+		if (!MGWT.getFeatureDetection().isTablet()) {
+			headerPanel.setLeftWidget(headerBackButton);
+		}
 
 		main.add(headerPanel);
 

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.ui;
+package de.kurka.mobile.showcase.client.activities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +26,16 @@ import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
 import de.kurka.mobile.showcase.client.ClientFactory;
-import de.kurka.mobile.showcase.client.activities.Item;
 import de.kurka.mobile.showcase.client.activities.button.ButtonPlace;
 import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarPlace;
 import de.kurka.mobile.showcase.client.activities.elements.ElementsPlace;
-import de.kurka.mobile.showcase.client.activities.home.HomePlace;
 import de.kurka.mobile.showcase.client.activities.popup.PopupPlace;
 import de.kurka.mobile.showcase.client.activities.progressbar.ProgressBarPlace;
 import de.kurka.mobile.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import de.kurka.mobile.showcase.client.activities.searchbox.SearchBoxPlace;
 import de.kurka.mobile.showcase.client.activities.slider.SliderPlace;
 import de.kurka.mobile.showcase.client.activities.tabbar.TabBarPlace;
+import de.kurka.mobile.showcase.client.places.HomePlace;
 
 /**
  * @author Daniel Kurka
@@ -46,6 +45,8 @@ public class UIActivity extends MGWTAbstractActivity {
 
 	private final ClientFactory clientFactory;
 
+	private int oldIndex;
+
 	public UIActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
 
@@ -53,7 +54,7 @@ public class UIActivity extends MGWTAbstractActivity {
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		UIView view = clientFactory.getUIView();
+		final UIView view = clientFactory.getUIView();
 
 		view.setBackButtonText("Home");
 		view.setTitle("UI");
@@ -123,6 +124,9 @@ public class UIActivity extends MGWTAbstractActivity {
 				default:
 					break;
 				}
+				view.setSelectedIndex(oldIndex, false);
+				view.setSelectedIndex(index, true);
+				oldIndex = index;
 
 			}
 		}));

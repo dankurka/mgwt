@@ -17,8 +17,7 @@ import com.google.gwt.user.rebind.SourceWriter;
 public class FeatureDetectionGenerator extends Generator {
 
 	@Override
-	public String generate(TreeLogger logger, GeneratorContext context,
-			String typeName) throws UnableToCompleteException {
+	public String generate(TreeLogger logger, GeneratorContext context, String typeName) throws UnableToCompleteException {
 
 		PropertyOracle propertyOracle = context.getPropertyOracle();
 		SelectionProperty property = null;
@@ -34,24 +33,20 @@ public class FeatureDetectionGenerator extends Generator {
 		try {
 			classType = context.getTypeOracle().getType(typeName);
 		} catch (NotFoundException e) {
-			logger.log(TreeLogger.ERROR, "can not find type: '" + typeName
-					+ "'", e);
+			logger.log(TreeLogger.ERROR, "can not find type: '" + typeName + "'", e);
 			throw new UnableToCompleteException();
 		}
 
 		String mgwtProperty = property.getCurrentValue();
 		String packageName = classType.getPackage().getName();
-		String simpleName = classType.getSimpleSourceName() + "_"
-				+ property.getCurrentValue();
+		String simpleName = classType.getSimpleSourceName() + "_" + property.getCurrentValue();
 		String fullName = packageName + "." + simpleName;
 
-		ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(
-				packageName, simpleName);
+		ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(packageName, simpleName);
 		composer.addImplementedInterface(typeName);
 		composer.addImport(typeName);
 
-		PrintWriter printWriter = context.tryCreate(logger, packageName,
-				simpleName);
+		PrintWriter printWriter = context.tryCreate(logger, packageName, simpleName);
 
 		if (printWriter == null) {
 			return fullName;
@@ -72,13 +67,15 @@ public class FeatureDetectionGenerator extends Generator {
 		writer.println("}");
 
 		writer.println("public boolean isIOs() {");
-		writer.println("return "
-				+ (mgwtProperty.equals("iphone") || mgwtProperty.equals("ipad"))
-				+ ";");
+		writer.println("return " + (mgwtProperty.equals("iphone") || mgwtProperty.equals("ipad")) + ";");
 		writer.println("}");
 
 		writer.println("public boolean isDesktop() {");
 		writer.println("return " + mgwtProperty.equals("desktop") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isTablet() {");
+		writer.println("return isDesktop() || isIPad();");
 		writer.println("}");
 
 		writer.commit(logger);

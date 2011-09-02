@@ -16,11 +16,24 @@
 package de.kurka.mobile.showcase.client.activities.button;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class ButtonPlace extends Place {
+	public static class ButtonPlaceTokenizer implements PlaceTokenizer<ButtonPlace> {
 
+		@Override
+		public ButtonPlace getPlace(String token) {
+			return new ButtonPlace();
+		}
+
+		@Override
+		public String getToken(ButtonPlace place) {
+			return null;
+		}
+
+	}
 }

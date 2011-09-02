@@ -13,14 +13,27 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.mobile.showcase.client.activities.ui;
+package de.kurka.mobile.showcase.client.activities;
 
 import com.google.gwt.place.shared.Place;
+import com.google.gwt.place.shared.PlaceTokenizer;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class UIPlace extends Place {
+	public static class UIPlaceTokenizer implements PlaceTokenizer<UIPlace> {
 
+		@Override
+		public UIPlace getPlace(String token) {
+			return new UIPlace();
+		}
+
+		@Override
+		public String getToken(UIPlace place) {
+			return null;
+		}
+
+	}
 }
