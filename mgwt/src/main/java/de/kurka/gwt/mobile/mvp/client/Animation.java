@@ -15,18 +15,20 @@
  */
 package de.kurka.gwt.mobile.mvp.client;
 
+import de.kurka.gwt.mobile.theme.base.client.MGWTClientBundle;
+
 /**
  * @author Daniel Kurka
  *
  */
 public class Animation {
-	public static final String ANIMATION_SLIDE = "slide";
-	public static final String ANIMATION_SLIDE_UP = "slideup";
-	public static final String ANIMATION_DISSOLVE = "dissolve";
-	public static final String ANIMATION_FADE = "fade";
-	public static final String ANIMATION_FLIP = "flip";
-	public static final String ANIMATION_POP = "pop";
-	public static final String ANIMATION_SWAP = "swap";
+	public static final String ANIMATION_SLIDE = MGWTClientBundle.INSTANCE.animationCss().slide();
+	public static final String ANIMATION_SLIDE_UP = MGWTClientBundle.INSTANCE.animationCss().slideup();
+	public static final String ANIMATION_DISSOLVE = MGWTClientBundle.INSTANCE.animationCss().dissolve();
+	public static final String ANIMATION_FADE = MGWTClientBundle.INSTANCE.animationCss().fade();
+	public static final String ANIMATION_FLIP = MGWTClientBundle.INSTANCE.animationCss().flip();
+	public static final String ANIMATION_POP = MGWTClientBundle.INSTANCE.animationCss().pop();
+	public static final String ANIMATION_SWAP = MGWTClientBundle.INSTANCE.animationCss().swap();
 
 	private String type = ANIMATION_SLIDE;
 	private boolean direction;

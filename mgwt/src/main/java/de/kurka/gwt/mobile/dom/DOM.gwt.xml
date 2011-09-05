@@ -52,7 +52,32 @@
             <when-property-is name="mobile.user.agent" value="not_mobile"/>
         </all>
     </replace-with>
-    
+
+
+    <define-property name="mgwt.os" values="iphone, ipad, android, desktop" />
+	<property-provider name="mgwt.os"><![CDATA[
+  	{
+	    var ua = window.navigator.userAgent.toLowerCase();
+	    
+	    if(ua.indexOf('android') != -1)
+	    {
+	    	return "android";
+	    }
+	    
+	    if(ua.indexOf('ipad') != -1)
+	    {
+	    	return "ipad";
+	    }
+	    
+	    if(ua.indexOf('iphone') != -1)
+	    {
+	    	return "iphone";
+	    }
+	
+	    return "desktop";
+  	}
+]]></property-provider>
+
     
 <source path="client"/>
     

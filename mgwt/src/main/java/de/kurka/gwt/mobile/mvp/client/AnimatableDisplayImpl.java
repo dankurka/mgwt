@@ -25,6 +25,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
+import de.kurka.gwt.mobile.theme.base.client.MGWTClientBundle;
 import de.kurka.gwt.mobile.ui.client.MGWT;
 
 /**
@@ -42,19 +43,21 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	private boolean lastDir;
 
 	public AnimatableDisplayImpl() {
+
+		MGWTClientBundle.INSTANCE.animationCss().ensureInjected();
+
 		main = new FlowPanel();
 
-		main.setStylePrimaryName("mgwt-AnimatableDisplay");
+		main.setStylePrimaryName(MGWTClientBundle.INSTANCE.animationCss().display());
 
 		first = new SimplePanel();
-		first.addStyleName("mgwt-AnimatableDisplay-container");
-		first.addStyleName("threedstuff");
+		first.addStyleName(MGWTClientBundle.INSTANCE.animationCss().displayContainer());
 
 		if (!MGWT.getFeatureDetection().isAndroid())
 			main.add(first);
 		second = new SimplePanel();
-		second.addStyleName("mgwt-AnimatableDisplay-container");
-		second.addStyleName("threedstuff");
+		second.addStyleName(MGWTClientBundle.INSTANCE.animationCss().displayContainer());
+
 		if (!MGWT.getFeatureDetection().isAndroid())
 			main.add(second);
 
@@ -88,29 +91,29 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	private void removeAllStyles() {
 
-		first.removeStyleName("in");
-		first.removeStyleName("out");
-		first.removeStyleName("reverse");
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().in());
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().out());
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().reverse());
 
-		first.removeStyleName(Animation.ANIMATION_DISSOLVE);
-		first.removeStyleName(Animation.ANIMATION_FADE);
-		first.removeStyleName(Animation.ANIMATION_FLIP);
-		first.removeStyleName(Animation.ANIMATION_POP);
-		first.removeStyleName(Animation.ANIMATION_SLIDE);
-		first.removeStyleName(Animation.ANIMATION_SLIDE_UP);
-		first.removeStyleName(Animation.ANIMATION_SWAP);
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().dissolve());
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().fade());
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().flip());
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().pop());
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().slide());
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().slideup());
+		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().swap());
 
-		second.removeStyleName("in");
-		second.removeStyleName("out");
-		second.removeStyleName("reverse");
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().in());
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().out());
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().reverse());
 
-		second.removeStyleName(Animation.ANIMATION_DISSOLVE);
-		second.removeStyleName(Animation.ANIMATION_FADE);
-		second.removeStyleName(Animation.ANIMATION_FLIP);
-		second.removeStyleName(Animation.ANIMATION_POP);
-		second.removeStyleName(Animation.ANIMATION_SLIDE);
-		second.removeStyleName(Animation.ANIMATION_SLIDE_UP);
-		second.removeStyleName(Animation.ANIMATION_SWAP);
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().dissolve());
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().fade());
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().flip());
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().pop());
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().slide());
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().slideup());
+		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().swap());
 
 	}
 
@@ -199,19 +202,20 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			//			first.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
 			//			second.getElement().setAttribute("style", "-webkit-backface-visibility: hidden;");
 		}
+
 		first.addStyleName(type);
 		second.addStyleName(type);
 
 		lastDir = animation.isDirection();
 		// backwards
 		if (animation.isDirection()) {
-			first.addStyleName("reverse");
-			second.addStyleName("reverse");
+			first.addStyleName(MGWTClientBundle.INSTANCE.animationCss().reverse());
+			second.addStyleName(MGWTClientBundle.INSTANCE.animationCss().reverse());
 
 		}
 		if (currentIsFirst) {
-			first.addStyleName("in");
-			second.addStyleName("out");
+			first.addStyleName(MGWTClientBundle.INSTANCE.animationCss().in());
+			second.addStyleName(MGWTClientBundle.INSTANCE.animationCss().out());
 			if (MGWT.getFeatureDetection().isIPad()) {
 				if (!lastDir) {
 					second.getElement().getStyle().setZIndex(-1);
@@ -222,8 +226,8 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 			}
 
 		} else {
-			first.addStyleName("out");
-			second.addStyleName("in");
+			first.addStyleName(MGWTClientBundle.INSTANCE.animationCss().out());
+			second.addStyleName(MGWTClientBundle.INSTANCE.animationCss().in());
 			if (MGWT.getFeatureDetection().isIPad()) {
 				if (!lastDir) {
 					first.getElement().getStyle().setZIndex(-1);
