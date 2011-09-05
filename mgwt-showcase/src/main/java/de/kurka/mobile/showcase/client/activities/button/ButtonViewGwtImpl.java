@@ -19,6 +19,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
@@ -44,7 +45,9 @@ public class ButtonViewGwtImpl implements ButtonView {
 
 		backButton.setText("UI");
 
-		headerPanel.setLeftWidget(backButton);
+		if (MGWTUtil.getFeatureDetection().isPhone()) {
+			headerPanel.setLeftWidget(backButton);
+		}
 
 		main.add(headerPanel);
 

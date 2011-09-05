@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.ProgressBar;
@@ -42,7 +43,9 @@ public class ProgressBarViewImpl implements ProgressBarView {
 
 		headerBackButton = new HeaderBackButton();
 		headerBackButton.setText("UI");
-		headerPanel.setLeftWidget(headerBackButton);
+		if (MGWTUtil.getFeatureDetection().isPhone()) {
+			headerPanel.setLeftWidget(headerBackButton);
+		}
 
 		main.add(headerPanel);
 

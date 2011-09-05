@@ -21,6 +21,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel;
@@ -62,7 +63,9 @@ public class PopupViewGwtImpl implements PopupView {
 
 		backButton.setText("UI");
 
-		headerPanel.setLeftWidget(backButton);
+		if (MGWTUtil.getFeatureDetection().isPhone()) {
+			headerPanel.setLeftWidget(backButton);
+		}
 
 		main.add(headerPanel);
 

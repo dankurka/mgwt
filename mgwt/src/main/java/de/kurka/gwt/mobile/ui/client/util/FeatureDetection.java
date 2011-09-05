@@ -16,6 +16,8 @@
  */
 package de.kurka.gwt.mobile.ui.client.util;
 
+import com.google.gwt.user.client.Window;
+
 /**
  * @author Daniel Kurka
  *
@@ -30,6 +32,7 @@ public class FeatureDetection {
 
 			has3d = _has3d();
 			testedFor3d = true;
+			Window.alert("has3d: " + has3d);
 		}
 		return has3d;
 	}

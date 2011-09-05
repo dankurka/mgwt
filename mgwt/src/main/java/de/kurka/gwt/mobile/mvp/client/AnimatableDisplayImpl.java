@@ -115,6 +115,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	}
 
 	private void onAnimationEnd() {
+		System.out.println("animation end");
 
 		if (MGWT.getFeatureDetection().isAndroid()) {
 			Document.get().getBody().setAttribute("style", "");
@@ -169,6 +170,7 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 
 	@Override
 	public void animate(Animation animation, boolean currentIsFirst, AnimationEndCallback callback) {
+		System.out.println("animation start");
 		lastCallback = callback;
 		blurBeforeAnimation();
 
@@ -240,15 +242,15 @@ public class AnimatableDisplayImpl implements AnimatableDisplay {
 	 * 
 	 */
 	private native void blurBeforeAnimation() /*-{
-		var node = $doc.querySelector(":focus");
+												var node = $doc.querySelector(":focus");
 
-		if (node != null) {
-			if (typeof (node.blur) == "function") {
-				node.blur();
-			}
+												if (node != null) {
+												if (typeof (node.blur) == "function") {
+												node.blur();
+												}
 
-		}
-	}-*/;
+												}
+												}-*/;
 
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.IsWidget#asWidget()

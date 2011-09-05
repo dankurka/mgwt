@@ -1149,7 +1149,7 @@ key frame for doing nothing
 
 .pop.in.reverse {
 	z-index: 0;
-	-webkit-animation-name: donothing;
+	-webkit-animation-name: popout;
 }
 
 @-webkit-keyframes popin {

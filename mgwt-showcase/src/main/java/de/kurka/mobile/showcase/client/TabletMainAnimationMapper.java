@@ -32,7 +32,7 @@ public class TabletMainAnimationMapper implements AnimationMapper {
 			return animation;
 		}
 
-		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationSlideUpPlace) {
+		if (newPlace instanceof AnimationSlideUpPlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_SLIDE_UP);
 			animation.setDirection(false);
@@ -46,7 +46,7 @@ public class TabletMainAnimationMapper implements AnimationMapper {
 			return animation;
 		}
 
-		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationDissolvePlace) {
+		if (newPlace instanceof AnimationDissolvePlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_DISSOLVE);
 			animation.setDirection(false);
@@ -60,7 +60,7 @@ public class TabletMainAnimationMapper implements AnimationMapper {
 			return animation;
 		}
 
-		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationFadePlace) {
+		if (newPlace instanceof AnimationFadePlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_FADE);
 			animation.setDirection(false);
@@ -73,7 +73,7 @@ public class TabletMainAnimationMapper implements AnimationMapper {
 			animation.setDirection(true);
 			return animation;
 		}
-		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationFlipPlace) {
+		if (newPlace instanceof AnimationFlipPlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_FLIP);
 			animation.setDirection(false);
@@ -87,7 +87,7 @@ public class TabletMainAnimationMapper implements AnimationMapper {
 			return animation;
 		}
 
-		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationPopPlace) {
+		if (newPlace instanceof AnimationPopPlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_POP);
 			animation.setDirection(false);
@@ -101,7 +101,7 @@ public class TabletMainAnimationMapper implements AnimationMapper {
 			return animation;
 		}
 
-		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationSwapPlace) {
+		if (newPlace instanceof AnimationSwapPlace) {
 			Animation animation = new Animation();
 			animation.setType(Animation.ANIMATION_SWAP);
 			animation.setDirection(false);

@@ -78,6 +78,11 @@ public class FeatureDetectionGenerator extends Generator {
 		writer.println("return isDesktop() || isIPad();");
 		writer.println("}");
 
+		writer.println("public boolean isPhone() {");
+		//TODO all android devices are considered phones right now!
+		writer.println("return isIPhone() || isAndroid();");
+		writer.println("}");
+
 		writer.commit(logger);
 
 		return fullName;

@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.FormPanel.SubmitHandler;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.base.MSearchBox;
@@ -45,9 +46,9 @@ public class SearchBoxViewGwtImpl implements SearchBoxView {
 		backButton = new HeaderBackButton();
 
 		backButton.setText("UI");
-
-		headerPanel.setLeftWidget(backButton);
-
+		if (MGWTUtil.getFeatureDetection().isPhone()) {
+			headerPanel.setLeftWidget(backButton);
+		}
 		main.add(headerPanel);
 		FormPanel formPanel = new FormPanel("");
 		formPanel.addSubmitHandler(new SubmitHandler() {
