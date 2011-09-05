@@ -25,8 +25,8 @@ import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
 import de.kurka.gwt.mobile.mvp.client.AnimatableDisplay;
 import de.kurka.gwt.mobile.mvp.client.AnimationEndCallback;
+import de.kurka.gwt.mobile.theme.base.client.AnimationCss;
 import de.kurka.gwt.mobile.theme.base.client.MGWTClientBundle;
-import de.kurka.gwt.mobile.ui.client.MGWT;
 
 /**
  * @author Daniel Kurka
@@ -42,24 +42,26 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 
 	protected boolean lastDir;
 
-	public AnimatableDisplayBaseImpl() {
+	protected final AnimationCss css;
 
-		MGWTClientBundle.INSTANCE.animationCss().ensureInjected();
+	public AnimatableDisplayBaseImpl() {
+		this(MGWTClientBundle.INSTANCE.animationCss());
+	}
+
+	public AnimatableDisplayBaseImpl(AnimationCss css) {
+
+		this.css = css;
+		css.ensureInjected();
 
 		main = new FlowPanel();
 
-		main.setStylePrimaryName(MGWTClientBundle.INSTANCE.animationCss().display());
+		main.setStylePrimaryName(this.css.display());
 
 		first = new SimplePanel();
-		first.addStyleName(MGWTClientBundle.INSTANCE.animationCss().displayContainer());
+		first.addStyleName(this.css.displayContainer());
 
-		if (!MGWT.getFeatureDetection().isAndroid())
-			main.add(first);
 		second = new SimplePanel();
-		second.addStyleName(MGWTClientBundle.INSTANCE.animationCss().displayContainer());
-
-		if (!MGWT.getFeatureDetection().isAndroid())
-			main.add(second);
+		second.addStyleName(this.css.displayContainer());
 
 		listener = new AnimationEndListener();
 
@@ -87,29 +89,29 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 
 	protected void removeAllStyles() {
 
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().in());
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().out());
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().reverse());
+		first.removeStyleName(this.css.in());
+		first.removeStyleName(this.css.out());
+		first.removeStyleName(this.css.reverse());
 
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().dissolve());
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().fade());
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().flip());
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().pop());
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().slide());
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().slideup());
-		first.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().swap());
+		first.removeStyleName(this.css.dissolve());
+		first.removeStyleName(this.css.fade());
+		first.removeStyleName(this.css.flip());
+		first.removeStyleName(this.css.pop());
+		first.removeStyleName(this.css.slide());
+		first.removeStyleName(this.css.slideup());
+		first.removeStyleName(this.css.swap());
 
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().in());
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().out());
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().reverse());
+		second.removeStyleName(this.css.in());
+		second.removeStyleName(this.css.out());
+		second.removeStyleName(this.css.reverse());
 
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().dissolve());
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().fade());
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().flip());
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().pop());
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().slide());
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().slideup());
-		second.removeStyleName(MGWTClientBundle.INSTANCE.animationCss().swap());
+		second.removeStyleName(this.css.dissolve());
+		second.removeStyleName(this.css.fade());
+		second.removeStyleName(this.css.flip());
+		second.removeStyleName(this.css.pop());
+		second.removeStyleName(this.css.slide());
+		second.removeStyleName(this.css.slideup());
+		second.removeStyleName(this.css.swap());
 
 	}
 

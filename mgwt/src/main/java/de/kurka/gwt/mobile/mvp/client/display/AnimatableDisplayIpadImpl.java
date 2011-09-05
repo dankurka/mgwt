@@ -5,7 +5,6 @@ import com.google.gwt.dom.client.Style.Display;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
 import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.mvp.client.AnimationEndCallback;
-import de.kurka.gwt.mobile.theme.base.client.MGWTClientBundle;
 
 public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 	public AnimatableDisplayIpadImpl() {
@@ -74,13 +73,13 @@ public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 		lastDir = animation.isDirection();
 		// backwards
 		if (animation.isDirection()) {
-			first.addStyleName(MGWTClientBundle.INSTANCE.animationCss().reverse());
-			second.addStyleName(MGWTClientBundle.INSTANCE.animationCss().reverse());
+			first.addStyleName(this.css.reverse());
+			second.addStyleName(this.css.reverse());
 
 		}
 		if (currentIsFirst) {
-			first.addStyleName(MGWTClientBundle.INSTANCE.animationCss().in());
-			second.addStyleName(MGWTClientBundle.INSTANCE.animationCss().out());
+			first.addStyleName(this.css.in());
+			second.addStyleName(this.css.out());
 
 			if (!lastDir) {
 				second.getElement().getStyle().setZIndex(-1);
@@ -89,8 +88,8 @@ public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 			}
 
 		} else {
-			first.addStyleName(MGWTClientBundle.INSTANCE.animationCss().out());
-			second.addStyleName(MGWTClientBundle.INSTANCE.animationCss().in());
+			first.addStyleName(this.css.out());
+			second.addStyleName(this.css.in());
 
 			if (!lastDir) {
 				first.getElement().getStyle().setZIndex(-1);
