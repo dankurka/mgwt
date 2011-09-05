@@ -79,6 +79,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 			createTabletDisplay(clientFactory);
 		} else {
 			createPhoneDisplay(clientFactory);
+			historyHandler.handleCurrentHistory();
 		}
 
 	}

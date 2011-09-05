@@ -6,6 +6,15 @@ import com.google.gwt.place.shared.Place;
 
 import de.kurka.mobile.showcase.client.activities.AboutActivity;
 import de.kurka.mobile.showcase.client.activities.UIPlace;
+import de.kurka.mobile.showcase.client.activities.animation.AnimationPlace;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDissolvePlace;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDoneActivity;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationFadePlace;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationFlipPlace;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationPopPlace;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSlidePlace;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSlideUpPlace;
+import de.kurka.mobile.showcase.client.activities.animationdone.AnimationSwapPlace;
 import de.kurka.mobile.showcase.client.activities.button.ButtonActivity;
 import de.kurka.mobile.showcase.client.activities.button.ButtonPlace;
 import de.kurka.mobile.showcase.client.activities.buttonbar.ButtonBarActivity;
@@ -99,6 +108,16 @@ public class TabletMainActivityMapper implements ActivityMapper {
 		if (newPlace instanceof SliderPlace) {
 			return new SliderActivity(clientFactory);
 		}
+
+		if (newPlace instanceof AnimationPlace) {
+			return new AboutActivity(clientFactory);
+		}
+
+		if (newPlace instanceof AnimationSlidePlace || newPlace instanceof AnimationSlideUpPlace || newPlace instanceof AnimationDissolvePlace || newPlace instanceof AnimationFadePlace
+				|| newPlace instanceof AnimationFlipPlace || newPlace instanceof AnimationPopPlace || newPlace instanceof AnimationSwapPlace) {
+			return new AnimationDoneActivity(clientFactory);
+		}
+
 		return null;
 	}
 

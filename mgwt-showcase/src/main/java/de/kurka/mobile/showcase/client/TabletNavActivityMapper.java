@@ -11,7 +11,6 @@ import de.kurka.mobile.showcase.client.activities.UIPlace;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationActivity;
 import de.kurka.mobile.showcase.client.activities.animation.AnimationPlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDissolvePlace;
-import de.kurka.mobile.showcase.client.activities.animationdone.AnimationDoneActivity;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationFadePlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationFlipPlace;
 import de.kurka.mobile.showcase.client.activities.animationdone.AnimationPopPlace;
@@ -39,6 +38,7 @@ public class TabletNavActivityMapper implements ActivityMapper {
 
 	private UIActivity uiActivity;
 	private ShowCaseListActivity showCaseListActivity;
+	private AnimationActivity animationActivity;
 
 	private Activity getUIActivity() {
 		if (uiActivity == null) {
@@ -54,6 +54,13 @@ public class TabletNavActivityMapper implements ActivityMapper {
 		return showCaseListActivity;
 	}
 
+	private Activity getAnimationActicity() {
+		if (animationActivity == null) {
+			animationActivity = new AnimationActivity(clientFactory);
+		}
+		return animationActivity;
+	}
+
 	@Override
 	public Activity getActivity(Place place) {
 		if (place instanceof HomePlace || place instanceof AboutPlace) {
@@ -66,12 +73,12 @@ public class TabletNavActivityMapper implements ActivityMapper {
 		}
 
 		if (place instanceof AnimationPlace) {
-			return new AnimationActivity(clientFactory);
+			return getAnimationActicity();
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace
 				|| place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace || place instanceof AnimationSwapPlace) {
-			return new AnimationDoneActivity(clientFactory);
+			return getAnimationActicity();
 		}
 		return new ShowCaseListActivity(clientFactory);
 	}
