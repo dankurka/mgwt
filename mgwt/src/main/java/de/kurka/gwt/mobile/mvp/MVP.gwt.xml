@@ -19,5 +19,35 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='de.kurka.gwt.mobile.dom.DOM'/>
     <inherits name='de.kurka.gwt.mobile.theme.base.BaseTheme'/>
+    
+    
+    <replace-with class="de.kurka.gwt.mobile.mvp.client.display.AnimatableDisplayIphoneImpl">
+        <when-type-is class="de.kurka.gwt.mobile.mvp.client.AnimatableDisplay"/>
+        <all>
+            <when-property-is name="mgwt.os" value="iphone"/>
+        </all>
+    </replace-with>
+    
+    <replace-with class="de.kurka.gwt.mobile.mvp.client.display.AnimatableDisplayIpadImpl">
+        <when-type-is class="de.kurka.gwt.mobile.mvp.client.AnimatableDisplay"/>
+        <all>
+            <when-property-is name="mgwt.os" value="ipad"/>
+        </all>
+    </replace-with>
+    
+    <replace-with class="de.kurka.gwt.mobile.mvp.client.display.AnimatableDisplayAndroidImplWithoutAnimation">
+        <when-type-is class="de.kurka.gwt.mobile.mvp.client.AnimatableDisplay"/>
+        <all>
+            <when-property-is name="mgwt.os" value="android"/>
+        </all>
+    </replace-with>
+    
+    <replace-with class="de.kurka.gwt.mobile.mvp.client.display.AnimatableDisplayIphoneImpl">
+        <when-type-is class="de.kurka.gwt.mobile.mvp.client.AnimatableDisplay"/>
+        <all>
+            <when-property-is name="mgwt.os" value="desktop"/>
+        </all>
+    </replace-with>
+    
   	<source path="client"/>
 </module>

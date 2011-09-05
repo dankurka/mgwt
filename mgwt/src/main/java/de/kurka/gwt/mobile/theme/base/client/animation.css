@@ -289,24 +289,17 @@ key frame for doing nothing
 /****************************
 *	Pop in animation
 *****************************/
-.pop {
-	-webkit-transform-origin: 50% 50%;
-}
+
 
 .pop.in {
 	-webkit-animation-name: popin;
-	z-index: 10;
 }
 
-.pop.out.reverse {
+.pop.out {
 	-webkit-animation-name: popout;
-	z-index: 10;
 }
 
-.pop.in.reverse {
-	z-index: 0;
-	-webkit-animation-name: donothing;
-}
+
 
 @-webkit-keyframes popin {
     from {

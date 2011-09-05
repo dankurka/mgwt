@@ -26,9 +26,10 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
-import de.kurka.gwt.mobile.mvp.client.AnimatableDisplayImpl;
+import de.kurka.gwt.mobile.mvp.client.AnimatableDisplay;
 import de.kurka.gwt.mobile.mvp.client.AnimatingActivityManager;
 import de.kurka.gwt.mobile.mvp.client.AnimationMapper;
+import de.kurka.gwt.mobile.mvp.client.display.AnimatableDisplayBaseImpl;
 import de.kurka.gwt.mobile.ui.client.MGWT;
 import de.kurka.gwt.mobile.ui.client.MGWTSettings;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
@@ -85,7 +86,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 	}
 
 	private void createPhoneDisplay(ClientFactory clientFactory) {
-		AnimatableDisplayImpl display = new AnimatableDisplayImpl();
+		AnimatableDisplayBaseImpl display = GWT.create(AnimatableDisplay.class);
 
 		PhoneActivityMapper appActivityMapper = new PhoneActivityMapper(clientFactory);
 
@@ -103,7 +104,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		SimplePanel navContainer = new SimplePanel();
 		navContainer.getElement().setId("nav");
 		navContainer.getElement().addClassName("landscapeonly");
-		AnimatableDisplayImpl navDisplay = new AnimatableDisplayImpl();
+		AnimatableDisplayBaseImpl navDisplay = GWT.create(AnimatableDisplay.class);
 
 		ActivityMapper navActivityMapper = new TabletNavActivityMapper(clientFactory);
 
@@ -118,7 +119,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		SimplePanel mainContainer = new SimplePanel();
 		mainContainer.getElement().setId("main");
-		AnimatableDisplayImpl mainDisplay = new AnimatableDisplayImpl();
+		AnimatableDisplayBaseImpl mainDisplay = GWT.create(AnimatableDisplay.class);
 
 		TabletMainActivityMapper tabletMainActivityMapper = new TabletMainActivityMapper(clientFactory);
 
