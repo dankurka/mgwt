@@ -16,8 +16,6 @@
  */
 package de.kurka.gwt.mobile.ui.client.util;
 
-import com.google.gwt.user.client.Window;
-
 /**
  * @author Daniel Kurka
  *
@@ -32,19 +30,12 @@ public class FeatureDetection {
 
 			has3d = _has3d();
 			testedFor3d = true;
-			Window.alert("has3d: " + has3d);
 		}
 		return has3d;
 	}
 
 	private static native boolean _has3d()/*-{
-		return ('WebKitCSSMatrix' in $wnd && 'm11' in new WebKitCSSMatrix())
-	}-*/;
-
-	private static boolean isPad;
-	private static boolean testedForIpad;
-
-	private static boolean testedForIPhone;
-	private static boolean isiPhone;
+											return ('WebKitCSSMatrix' in $wnd && 'm11' in new WebKitCSSMatrix())
+											}-*/;
 
 }
