@@ -57,7 +57,7 @@ public class ProgressBar extends Widget {
 
 		this.resources.css().ensureInjected();
 		setStylePrimaryName(this.resources.css().progressBar());
-		//TODO put this back in!
+		//TODO what about internal styling?
 		//addStyleName("mgwt-ProgressBar");
 
 	}
