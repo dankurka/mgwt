@@ -25,7 +25,6 @@ import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel;
-import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel;
 import de.kurka.gwt.mobile.ui.client.panel.PopupPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IPadMenuBackButton;
@@ -33,6 +32,7 @@ import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenu;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuContentPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuHeader;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuTitle;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 
 /**
  * @author Daniel Kurka
@@ -58,7 +58,7 @@ public class PopupViewGwtImpl implements PopupView {
 
 		headerPanel = new HeaderPanel();
 
-		headerPanel.getTitleWidget().setText("Popups");
+		headerPanel.setCenter("Popups");
 		backButton = new HeaderBackButton();
 
 		backButton.setText("UI");

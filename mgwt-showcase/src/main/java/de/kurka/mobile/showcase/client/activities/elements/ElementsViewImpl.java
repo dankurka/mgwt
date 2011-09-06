@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
-import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.base.MCheckBox;
 import de.kurka.gwt.mobile.ui.client.widget.base.MListBox;
 import de.kurka.gwt.mobile.ui.client.widget.base.MPasswordTextBox;
@@ -63,7 +63,7 @@ public class ElementsViewImpl implements ElementsView {
 			headerPanel.setLeftWidget(headerBackButton);
 		}
 
-		headerPanel.getTitleWidget().setText("Elements");
+		headerPanel.setCenter("Elements");
 
 		main.add(headerPanel);
 

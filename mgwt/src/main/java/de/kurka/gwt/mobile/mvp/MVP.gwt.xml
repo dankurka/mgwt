@@ -18,7 +18,6 @@
 <module>
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='de.kurka.gwt.mobile.dom.DOM'/>
-    <inherits name='de.kurka.gwt.mobile.theme.base.BaseTheme'/>
     
     
     <replace-with class="de.kurka.gwt.mobile.mvp.client.display.AnimatableDisplayIphoneImpl">

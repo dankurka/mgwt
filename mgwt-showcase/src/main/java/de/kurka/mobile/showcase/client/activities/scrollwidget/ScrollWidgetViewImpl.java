@@ -22,9 +22,9 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWT;
 import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
-import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 
 /**
  * @author Daniel Kurka
@@ -40,7 +40,7 @@ public class ScrollWidgetViewImpl implements ScrollWidgetView {
 		main = new FlowPanel();
 
 		HeaderPanel headerPanel = new HeaderPanel();
-		headerPanel.getTitleWidget().setText("Scroll Widget");
+		headerPanel.setCenter("Scroll Widget");
 
 		headerBackButton = new HeaderBackButton();
 		headerBackButton.setText("UI");

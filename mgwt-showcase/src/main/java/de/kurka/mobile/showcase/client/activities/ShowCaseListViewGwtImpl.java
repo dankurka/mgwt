@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.button.HeaderRoundButton;
-import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;
@@ -72,7 +72,7 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 
 	@Override
 	public void setTitle(String text) {
-		headerPanel.getTitleWidget().setText(text);
+		headerPanel.setCenter(text);
 
 	}
 

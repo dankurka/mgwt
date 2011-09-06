@@ -1,4 +1,4 @@
-package de.kurka.gwt.mobile.theme.base.client;
+package de.kurka.gwt.mobile.mvp.client.resources;
 
 import com.google.gwt.resources.client.CssResource;
 

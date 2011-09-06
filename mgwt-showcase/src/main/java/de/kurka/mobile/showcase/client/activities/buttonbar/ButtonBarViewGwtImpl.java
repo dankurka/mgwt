@@ -48,7 +48,7 @@ import de.kurka.gwt.mobile.ui.client.menu.bar.RewindButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.SearchButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.StopButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.TrashButton;
-import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 
 /**
  * @author Daniel Kurka
@@ -69,7 +69,7 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 
 		headerPanel = new HeaderPanel();
 
-		headerPanel.getTitleWidget().setText("ButtonBar");
+		headerPanel.setCenter("ButtonBar");
 		backButton = new HeaderBackButton();
 
 		backButton.setText("UI");

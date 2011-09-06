@@ -15,20 +15,20 @@
  */
 package de.kurka.gwt.mobile.mvp.client;
 
-import de.kurka.gwt.mobile.theme.base.client.MGWTClientBundle;
+import de.kurka.gwt.mobile.mvp.client.resources.MVPClientBundle;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class Animation {
-	public static final String ANIMATION_SLIDE = MGWTClientBundle.INSTANCE.animationCss().slide();
-	public static final String ANIMATION_SLIDE_UP = MGWTClientBundle.INSTANCE.animationCss().slideup();
-	public static final String ANIMATION_DISSOLVE = MGWTClientBundle.INSTANCE.animationCss().dissolve();
-	public static final String ANIMATION_FADE = MGWTClientBundle.INSTANCE.animationCss().fade();
-	public static final String ANIMATION_FLIP = MGWTClientBundle.INSTANCE.animationCss().flip();
-	public static final String ANIMATION_POP = MGWTClientBundle.INSTANCE.animationCss().pop();
-	public static final String ANIMATION_SWAP = MGWTClientBundle.INSTANCE.animationCss().swap();
+	public static final String ANIMATION_SLIDE = MVPClientBundle.INSTANCE.animationCss().slide();
+	public static final String ANIMATION_SLIDE_UP = MVPClientBundle.INSTANCE.animationCss().slideup();
+	public static final String ANIMATION_DISSOLVE = MVPClientBundle.INSTANCE.animationCss().dissolve();
+	public static final String ANIMATION_FADE = MVPClientBundle.INSTANCE.animationCss().fade();
+	public static final String ANIMATION_FLIP = MVPClientBundle.INSTANCE.animationCss().flip();
+	public static final String ANIMATION_POP = MVPClientBundle.INSTANCE.animationCss().pop();
+	public static final String ANIMATION_SWAP = MVPClientBundle.INSTANCE.animationCss().swap();
 
 	private String type = ANIMATION_SLIDE;
 	private boolean direction;

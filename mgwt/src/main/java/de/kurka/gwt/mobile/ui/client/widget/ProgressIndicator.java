@@ -18,18 +18,29 @@ package de.kurka.gwt.mobile.ui.client.widget;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.ProgressIndicatorCss;
+
 /**
  * @author Daniel Kurka
  *
  */
 public class ProgressIndicator extends Widget {
 
-	/**
-	 * 
-	 */
+	private final ProgressIndicatorCss css;
+
 	public ProgressIndicator() {
+		this(MGWTStyle.getDefaultClientBundle().getProgressIndicatorCss());
+	}
+
+	public ProgressIndicator(ProgressIndicatorCss css) {
+		this.css = css;
+
 		setElement(DOM.createDiv());
 
-		setStylePrimaryName("mgwt-ProgressIndicator");
+		this.css.ensureInjected();
+		setStylePrimaryName(this.css.progressIndicator());
+		//TODO maybe move back in
+		//addStyleName("mgwt-ProgressIndicator");
 	}
 }

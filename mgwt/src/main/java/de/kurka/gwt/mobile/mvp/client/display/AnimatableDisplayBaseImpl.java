@@ -25,8 +25,8 @@ import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
 import de.kurka.gwt.mobile.mvp.client.AnimatableDisplay;
 import de.kurka.gwt.mobile.mvp.client.AnimationEndCallback;
-import de.kurka.gwt.mobile.theme.base.client.AnimationCss;
-import de.kurka.gwt.mobile.theme.base.client.MGWTClientBundle;
+import de.kurka.gwt.mobile.mvp.client.resources.AnimationCss;
+import de.kurka.gwt.mobile.mvp.client.resources.MVPClientBundle;
 
 /**
  * @author Daniel Kurka
@@ -45,7 +45,7 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	protected final AnimationCss css;
 
 	public AnimatableDisplayBaseImpl() {
-		this(MGWTClientBundle.INSTANCE.animationCss());
+		this(MVPClientBundle.INSTANCE.animationCss());
 	}
 
 	public AnimatableDisplayBaseImpl(AnimationCss css) {

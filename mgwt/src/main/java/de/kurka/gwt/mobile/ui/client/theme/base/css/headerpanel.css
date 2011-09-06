@@ -1,0 +1,45 @@
+.mgwt-HeaderPanel {
+	position: relative;
+	height: 40px;
+	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
+	border-bottom: 1px solid rgb(45, 54, 66);
+	
+}
+
+@if mgwt.os android {
+	.mgwt-HeaderPanel {
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(100, 100, 100, 1)), to(rgba(50, 50, 50, 1)))');
+	}
+}
+
+.mgwt-HeaderPanel .left {
+	position: absolute;
+	top: 0px;
+	left: 6px;
+}
+
+.mgwt-HeaderPanel .right {
+	position: absolute;
+	top: 0px;
+	right: 6px;
+}
+
+.mgwt-HeaderPanel .center {
+	position: absolute;
+	left: 50%;
+	opacity: 1;
+	width: 310px;
+	text-align: center;
+	height: 31px;
+	margin-top: 6px;
+	margin-left: -150px;
+	margin-right: 5px;
+	z-index: 0;
+	font-size: 16pt;
+	font-weight: bold;
+	color: white;
+	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
-import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 
 /**
  * @author Daniel Kurka
@@ -39,7 +39,7 @@ public class AboutViewGwtImpl implements AboutView {
 		main = new FlowPanel();
 		HeaderPanel panel = new HeaderPanel();
 
-		panel.getTitleWidget().setText("About");
+		panel.setCenter("About");
 
 		main.add(panel);
 

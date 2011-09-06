@@ -15,11 +15,11 @@
  */
 package de.kurka.gwt.mobile.ui.client.widget;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
+
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.ProgressBarCss;
 
 /**
  * @author Daniel Kurka
@@ -27,36 +27,18 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class ProgressBar extends Widget {
 
-	public interface ProgressBarCss extends CssResource {
-		@ClassName("mgwt-ProgressBar")
-		String progressBar();
-	}
-
-	public interface ProgressBarResources extends ClientBundle {
-		@Source("css/progressbar.css")
-		ProgressBarCss css();
-	}
-
-	private static ProgressBarResources defaultResources;
-	private final ProgressBarResources resources;
-
-	public static ProgressBarResources getDefaultResources() {
-		if (defaultResources == null) {
-			defaultResources = GWT.create(ProgressBarResources.class);
-		}
-		return defaultResources;
-	}
+	protected final ProgressBarCss css;
 
 	public ProgressBar() {
-		this(getDefaultResources());
+		this(MGWTStyle.getDefaultClientBundle().getProgressBarCss());
 	}
 
-	public ProgressBar(ProgressBarResources resources) {
-		this.resources = resources;
+	public ProgressBar(ProgressBarCss css) {
+		this.css = css;
 		setElement(DOM.createDiv());
 
-		this.resources.css().ensureInjected();
-		setStylePrimaryName(this.resources.css().progressBar());
+		this.css.ensureInjected();
+		setStylePrimaryName(this.css.progressBar());
 		//TODO what about internal styling?
 		//addStyleName("mgwt-ProgressBar");
 

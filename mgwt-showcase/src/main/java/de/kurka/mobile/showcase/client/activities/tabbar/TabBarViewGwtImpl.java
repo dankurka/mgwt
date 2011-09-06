@@ -33,7 +33,7 @@ import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMostRecentButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMostViewedButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarSearchButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabPanel;
-import de.kurka.gwt.mobile.ui.client.panel.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 
 /**
  * @author Daniel Kurka
@@ -50,7 +50,7 @@ public class TabBarViewGwtImpl implements TabBarView {
 
 		headerPanel = new HeaderPanel();
 
-		headerPanel.getTitleWidget().setText("TabBar");
+		headerPanel.setCenter("TabBar");
 		backButton = new HeaderBackButton();
 
 		backButton.setText("UI");

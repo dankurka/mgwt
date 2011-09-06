@@ -131,25 +131,7 @@ fullscreen with header and tab
 
 
 
-.mgwt-HeaderPanel {
-	position: relative;
-	height: 40px;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)));
-	border-bottom: 1px solid rgb(45, 54, 66);
-	
-}
 
-.mgwt-HeaderPanel .left {
-	position: absolute;
-	top: 0px;
-	left: 6px;
-}
-
-.mgwt-HeaderPanel .right {
-	position: absolute;
-	top: 0px;
-	right: 6px;
-}
 
 .mgwt-HeaderButton {
 	
@@ -248,25 +230,7 @@ background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
 	border-top: 1px solid rgb(45, 54, 66);
 }
 
-.mgwt-HeaderPanel .title {
-	position: absolute;
-	left: 50%;
-	opacity: 1;
-	width: 310px;
-	text-align: center;
-	height: 31px;
-	margin-top: 6px;
-	margin-left: -150px;
-	margin-right: 5px;
-	z-index: 0;
-	font-size: 16pt;
-	font-weight: bold;
-	color: white;
-	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
+
 
 .list {
 	position: relative;
@@ -1224,24 +1188,7 @@ Checkbox
 	
 }
 
-.mgwt-ProgressIndicator{
-	width: 37px;
-	height: 37px;
-	background-image: url("data:image/png;base64,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");
-	-webkit-animation-duration: 1s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-name: progressIndicatorAnimation;
-	
-}
 
-@-webkit-keyframes progressIndicatorAnimation {
-
-    0% { -webkit-transform: rotate(0deg); }
-
-    100% { -webkit-transform: rotate(360deg); }
-
-}
 
 /*popups*/
 .mgwt-PopupPanel {
