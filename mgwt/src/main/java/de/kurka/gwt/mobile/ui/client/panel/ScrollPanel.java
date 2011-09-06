@@ -36,7 +36,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.ui.client.panel.Scrollbar.Orientation;
 import de.kurka.gwt.mobile.ui.client.util.CssUtil;
 import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
-import de.kurka.gwt.mobile.ui.client.widget.TouchPanel;
+import de.kurka.gwt.mobile.ui.client.widget.touch.TouchPanel;
 
 /**
  * @author Daniel Kurka

@@ -15,6 +15,9 @@
  */
 package de.kurka.gwt.mobile.ui.client.widget;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -24,9 +27,38 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class ProgressBar extends Widget {
 
+	public interface ProgressBarCss extends CssResource {
+		@ClassName("mgwt-ProgressBar")
+		String progressBar();
+	}
+
+	public interface ProgressBarResources extends ClientBundle {
+		@Source("css/progressbar.css")
+		ProgressBarCss css();
+	}
+
+	private static ProgressBarResources defaultResources;
+	private final ProgressBarResources resources;
+
+	public static ProgressBarResources getDefaultResources() {
+		if (defaultResources == null) {
+			defaultResources = GWT.create(ProgressBarResources.class);
+		}
+		return defaultResources;
+	}
+
 	public ProgressBar() {
+		this(getDefaultResources());
+	}
+
+	public ProgressBar(ProgressBarResources resources) {
+		this.resources = resources;
 		setElement(DOM.createDiv());
 
-		setStylePrimaryName("mgwt-ProgressBar");
+		this.resources.css().ensureInjected();
+		setStylePrimaryName(this.resources.css().progressBar());
+		//TODO put this back in!
+		//addStyleName("mgwt-ProgressBar");
+
 	}
 }

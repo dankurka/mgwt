@@ -36,7 +36,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
-import de.kurka.gwt.mobile.ui.client.widget.TouchWidget;
+import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
 /**
  * @author Daniel Kurka
