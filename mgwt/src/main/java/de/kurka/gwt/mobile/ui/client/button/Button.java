@@ -15,6 +15,8 @@
  */
 package de.kurka.gwt.mobile.ui.client.button;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+
 /**
  * @author Daniel Kurka
  *
@@ -25,6 +27,8 @@ public class Button extends ButtonBase {
 	private boolean small;
 
 	public Button() {
+		//TODO this is not correct
+		super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
 		setStylePrimaryName("mgwt-Button");
 
 	}

@@ -26,7 +26,7 @@
 		<when-type-is
 			class="de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidgetImpl" />
 		<all>
-			<when-property-is name="mgwt.os" value="desktop" />
+			<when-property-is name="mobile.user.agent" value="not_mobile" />
 		</all>
 	</replace-with>
 	<replace-with
@@ -34,26 +34,10 @@
 		<when-type-is
 			class="de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidgetImpl" />
 		<all>
-			<when-property-is name="mgwt.os" value="iphone" />
+			<when-property-is name="mobile.user.agent" value="mobilesafari" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidgetMobileImpl">
-		<when-type-is
-			class="de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidgetImpl" />
-		<all>
-			<when-property-is name="mgwt.os" value="ipad" />
-		</all>
-	</replace-with>
-
-	<replace-with
-		class="de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidgetMobileImpl">
-		<when-type-is
-			class="de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidgetImpl" />
-		<all>
-			<when-property-is name="mgwt.os" value="android" />
-		</all>
-	</replace-with>
+	
 
 
 

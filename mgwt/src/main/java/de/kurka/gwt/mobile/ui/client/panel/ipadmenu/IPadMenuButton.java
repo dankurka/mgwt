@@ -15,6 +15,7 @@
  */
 package de.kurka.gwt.mobile.ui.client.panel.ipadmenu;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
 
 /**
@@ -24,6 +25,8 @@ import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
 public class IPadMenuButton extends ButtonBase {
 
 	public IPadMenuButton() {
+		//TODO this is not correct
+		super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
 		setStylePrimaryName("mgwt-DropDownMenu-button");
 	}
 }

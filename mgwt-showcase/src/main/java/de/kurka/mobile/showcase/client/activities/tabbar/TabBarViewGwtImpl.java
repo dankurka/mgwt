@@ -21,7 +21,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
-import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarBookmarkButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarContactsButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarDownloadsButton;
@@ -33,6 +32,7 @@ import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMostRecentButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMostViewedButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarSearchButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabPanel;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 
 /**

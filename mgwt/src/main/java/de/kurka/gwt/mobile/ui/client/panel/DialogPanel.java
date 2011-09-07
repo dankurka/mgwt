@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
 
 /**
@@ -89,7 +90,8 @@ public class DialogPanel extends Composite {
 	private class CancelButton extends ButtonBase {
 
 		public CancelButton(String text) {
-
+			//TODO this is not correct
+			super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
 			setText(text);
 			addStyleName("mgwt-DialogPanel-button");
 			addStyleName("mgwt-DialogPanel-cancelbutton");
@@ -100,7 +102,8 @@ public class DialogPanel extends Composite {
 	private class OkButton extends ButtonBase {
 
 		public OkButton(String text) {
-
+			//TODO this is not correct
+			super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
 			setText(text);
 			addStyleName("mgwt-DialogPanel-button");
 			addStyleName("mgwt-DialogPanel-okbutton");

@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import de.kurka.gwt.mobile.ui.client.button.HeaderRoundButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderRoundButton;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;

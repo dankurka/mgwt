@@ -15,6 +15,7 @@
  */
 package de.kurka.mobile.showcase.client.activities.slider;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHTML;
@@ -23,7 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
-import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.base.MSlider;
 
@@ -54,6 +55,8 @@ public class SliderViewGwtImpl implements SliderView {
 		mSlider = new MSlider();
 		main.add(mSlider);
 		mSlider.setMax(250);
+
+		mSlider.getElement().getStyle().setMargin(20, Unit.PX);
 
 		valueField = new HTML("0");
 		main.add(valueField);

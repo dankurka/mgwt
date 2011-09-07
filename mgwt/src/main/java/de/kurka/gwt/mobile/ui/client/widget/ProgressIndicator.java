@@ -40,7 +40,5 @@ public class ProgressIndicator extends Widget {
 
 		this.css.ensureInjected();
 		setStylePrimaryName(this.css.progressIndicator());
-		//TODO maybe move back in
-		//addStyleName("mgwt-ProgressIndicator");
 	}
 }

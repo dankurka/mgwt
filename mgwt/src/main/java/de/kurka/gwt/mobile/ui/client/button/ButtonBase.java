@@ -15,6 +15,7 @@
  */
 package de.kurka.gwt.mobile.ui.client.button;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
@@ -26,6 +27,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.theme.base.ButtonBaseCss;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
 /**
@@ -34,20 +36,28 @@ import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
  */
 public abstract class ButtonBase extends TouchWidget implements HasText, HasSimpleTouchHandler {
 
-	public ButtonBase() {
-		setElement(DOM.createDiv());
+	public ButtonBase(ButtonBaseCss css) {
+		this(DOM.createDiv(), css);
+	}
+
+	private final String active;
+
+	public ButtonBase(Element element, ButtonBaseCss css) {
+		setElement(element);
+		css.ensureInjected();
+		this.active = css.active();
 
 		addTouchHandler(new TouchHandler() {
 
 			@Override
 			public void onTouchCanceled(TouchCancelEvent event) {
-				removeStyleDependentName("active");
+				removeStyleName(active);
 
 			}
 
 			@Override
 			public void onTouchEnd(TouchEndEvent event) {
-				removeStyleDependentName("active");
+				removeStyleName(active);
 
 			}
 
@@ -58,11 +68,10 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasSimp
 
 			@Override
 			public void onTouchStart(TouchStartEvent event) {
-				addStyleDependentName("active");
+				addStyleName(active);
 
 			}
 		});
-
 	}
 
 	@Override

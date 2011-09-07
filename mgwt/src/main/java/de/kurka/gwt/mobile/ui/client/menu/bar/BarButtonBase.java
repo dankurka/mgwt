@@ -15,6 +15,7 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.bar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
 
 /**
@@ -23,6 +24,8 @@ import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
  */
 public class BarButtonBase extends ButtonBase {
 	public BarButtonBase() {
+		//TODO this is not correct
+		super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
 		setStylePrimaryName("mgwt-BarButton");
 	}
 }

@@ -23,7 +23,6 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
-import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel;
 import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel;
 import de.kurka.gwt.mobile.ui.client.panel.PopupPanel;
@@ -32,6 +31,7 @@ import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenu;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuContentPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuHeader;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuTitle;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 
 /**

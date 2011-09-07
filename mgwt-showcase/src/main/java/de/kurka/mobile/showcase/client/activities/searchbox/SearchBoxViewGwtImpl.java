@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
-import de.kurka.gwt.mobile.ui.client.button.HeaderBackButton;
+import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.base.MSearchBox;
 

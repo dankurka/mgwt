@@ -13,4 +13,10 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/headerpanel.css")
 	HeaderPanelCss getHeaderPanelCss();
 
+	@Source("css/headerbutton.css")
+	HeaderButtonCss getHeaderButtonCss();
+
+	@Source("css/slider.css")
+	SliderCss getSliderCss();
+
 }

@@ -28,7 +28,8 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
-import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.SliderCss;
 import de.kurka.gwt.mobile.ui.client.util.CssUtil;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
@@ -41,12 +42,18 @@ public class MSlider extends Composite implements HasValue<Integer> {
 	private static class SliderWidget extends TouchWidget {
 
 		private Element slider;
+		private Element bar;
 
-		public SliderWidget() {
+		public SliderWidget(SliderCss css) {
 			setElement(DOM.createDiv());
+			bar = DOM.createDiv();
+			bar.setClassName(css.bar());
+
 			slider = DOM.createDiv();
-			slider.setClassName("pointer");
-			getElement().appendChild(slider);
+			slider.setClassName(css.pointer());
+			bar.appendChild(slider);
+
+			getElement().appendChild(bar);
 
 		}
 
@@ -57,61 +64,27 @@ public class MSlider extends Composite implements HasValue<Integer> {
 
 	private SliderWidget sliderWidget;
 
-	private static final int POINTER_WIDTH = 10;
-
 	private class SliderTouchHandler implements TouchHandler {
-
-		private boolean moving;
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
-			moving = false;
-			//is the touch in the area of the slider part
-			int x = event.touches().get(0).getPageX() - POINTER_WIDTH;
-
-			if (Math.abs(x - sliderPos) < SimpleTouch.TOUCH_RADIUS) {
-				//yes we are
-				moving = true;
-			}
+			setValueContrained(event.touches().get(0).getPageX());
 
 		}
 
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
-			if (!moving)
-				return;
 
-			int x = event.touches().get(0).getPageX() - POINTER_WIDTH;
-			System.out.println("" + x);
-			if (x < 0) {
-				x = 0;
-			}
-
-			int width = sliderWidget.getOffsetWidth() - 2 * POINTER_WIDTH;
-
-			if (x > width) {
-				x = width;
-			}
-
-			//scale it to max
-			x = x * max / width;
-			System.out.println("" + x);
-			setValue(x, true);
+			setValueContrained(event.touches().get(0).getPageX());
 		}
 
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
-			if (!moving) {
-				return;
-			}
-
-			moving = false;
 
 		}
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
-			moving = false;
 
 		}
 
@@ -120,9 +93,14 @@ public class MSlider extends Composite implements HasValue<Integer> {
 	private int sliderPos;
 
 	public MSlider() {
-		sliderWidget = new SliderWidget();
+		this(MGWTStyle.getDefaultClientBundle().getSliderCss());
+	}
+
+	public MSlider(SliderCss css) {
+		css.ensureInjected();
+		sliderWidget = new SliderWidget(css);
 		initWidget(sliderWidget);
-		setStylePrimaryName("mgwt-Slider");
+		setStylePrimaryName(css.slider());
 
 		sliderWidget.addTouchHandler(new SliderTouchHandler());
 
@@ -150,9 +128,26 @@ public class MSlider extends Composite implements HasValue<Integer> {
 		return max;
 	}
 
+	private void setValueContrained(int x) {
+		x = x - MSlider.this.getAbsoluteLeft();
+		int width = sliderWidget.getOffsetWidth();
+
+		if (x < 0) {
+			x = 0;
+		}
+
+		if (x > width) {
+			x = width;
+		}
+
+		//scale it to max
+		x = x * max / width;
+		setValue(x, true);
+	}
+
 	@Override
 	public Integer getValue() {
-		return sliderPos * max / (sliderWidget.getOffsetWidth() - 2 * POINTER_WIDTH);
+		return sliderPos * max / (sliderWidget.getOffsetWidth());
 	}
 
 	@Override
@@ -166,7 +161,7 @@ public class MSlider extends Composite implements HasValue<Integer> {
 		if (value == null) {
 			throw new IllegalArgumentException("value can not be null");
 		}
-		int width = sliderWidget.getOffsetWidth() - 2 * POINTER_WIDTH;
+		int width = sliderWidget.getOffsetWidth();
 
 		int oldValue = sliderPos * max / width;
 

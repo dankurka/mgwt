@@ -12,19 +12,19 @@
 	}
 }
 
-.mgwt-HeaderPanel .left {
+.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
 	position: absolute;
 	top: 0px;
 	left: 6px;
 }
 
-.mgwt-HeaderPanel .right {
+.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
 	position: absolute;
 	top: 0px;
 	right: 6px;
 }
 
-.mgwt-HeaderPanel .center {
+.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
 	position: absolute;
 	left: 50%;
 	opacity: 1;

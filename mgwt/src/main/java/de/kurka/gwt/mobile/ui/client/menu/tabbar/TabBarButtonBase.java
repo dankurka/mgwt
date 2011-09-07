@@ -15,6 +15,7 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
 
 /**
@@ -24,7 +25,8 @@ import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
 public class TabBarButtonBase extends ButtonBase {
 
 	public TabBarButtonBase() {
-
+		//TODO this is not correct
+		super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
 	}
 
 	public void setSelected(boolean selected) {

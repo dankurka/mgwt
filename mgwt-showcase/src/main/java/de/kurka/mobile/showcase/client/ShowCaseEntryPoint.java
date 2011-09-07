@@ -142,6 +142,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 			@Override
 			public void onUncaughtException(Throwable e) {
 				Window.alert("uncaught: " + e.getMessage());
+				e.printStackTrace();
 
 			}
 		});

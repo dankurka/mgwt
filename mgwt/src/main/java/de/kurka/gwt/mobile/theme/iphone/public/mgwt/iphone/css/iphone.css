@@ -133,90 +133,7 @@ fullscreen with header and tab
 
 
 
-.mgwt-HeaderButton {
-	
-	min-width: 40px;
-	max-width: 60px;
-	
-	
-	white-space: nowrap;
-	
-	text-overflow: ellipsis;
-	
-	z-index: 1;
-	font-size: 12px;
-	font-weight: bold;
-	text-align: center;
-	color: white;
-	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
-	
-	
-	margin: 6px 0 0 12px;
-	height: 26px;
-	
-	border: 1px solid rgba(0, 0, 0, 0.4);
-	-webkit-border-radius: 5px;
-	background: -webkit-gradient(linear, left top, left bottom, from(#9fb3cc),
-		to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
-	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 1px
-		rgba(0, 0, 0, 0.2);
-}
 
-.mgwt-HeaderButton p { 
-    position: relative; 
-    z-index: 2; 
-    
-    margin: 0; 
-    padding: 5px; 
-    font-size: 12px; 
-    font-weight: bold; 
-    color: #fff; 
-    text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
-    text-align: center;
-}
-
-
-
-.mgwt-HeaderButton:active {
-background: -webkit-gradient(linear, left top, left bottom, from(#7582a4),
-		to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
-}
-
-
-
-.mgwt-HeaderButton-back div {
-	position: absolute;
-	z-index: 1;
-	top: 4px;
-	left: -7px;
-	-webkit-transform: rotate(51deg);
-}
-
-.mgwt-HeaderButton-back span { 
-    -webkit-transform: skew(15deg);
-    display: block; 
-    width: 15px; 
-    height: 16px; 
-    background: -webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa));   
-    -webkit-border-radius: 1px; 
-    border: 1px solid rgba(0,0,0, 0.4); 
-    border-right: 0; 
-    border-top: 0;
-    -webkit-box-shadow: 0 1px 0 rgba(255,255,255, 0.25);
-}
-
-.mgwt-HeaderButton:active span{
-background: -webkit-gradient(linear, left top, right bottom, from(#7582a4),
-		to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) );
-}
-
-.mgwt-HeaderButton-forward div {
-	position: absolute;
-	z-index: 1;
-	top: 4px;
-	right: -7px;
-	-webkit-transform: rotate(51deg);
-}
 
 
 
@@ -1148,45 +1065,7 @@ Checkbox
 
 
 
-.mgwt-Slider {
-	display: inline-block;
-	height: 9px;
-	width: 277px;
-	margin-top: 10px;
-	maring-bottom: 10px;
-	-webkit-box-sizing: border-box;
-	-webkit-box-shadow: 2px 2px 4px #666666;
-	-webkit-border-radius: 4px;
-	background-repeat: no-repeat, repeat-x;
-	background-image:
-		-webkit-gradient(linear, left top ,left bottom,
-		   from(#0a3b87),
-		   color-stop(.5, #4c8de7),
-		   color-stop(.95, #6babf5),
-		   to(#0a3b87)),
-		-webkit-gradient(linear, left top ,left bottom,
-			from(#929292),
-			color-stop(.5, #f0f0f0),
-			color-stop(.5, #fff),
-			color-stop(.95, #fff),
-			to(#929292));
-}
-.mgwt-Slider .pointer {
-	position:relative;
-	height:20px;
-	width:20px;
-	left: 0px;
-	top: -6px;
-	-webkit-tap-highlight-color: transparent;
-	-webkit-box-shadow: 2px 2px 3px #666666;
-	-webkit-border-radius: 10px;
-	background-image:
-	   -webkit-gradient(linear, left top, left bottom,
-		   from(#aaaaaa),
-		   color-stop(.5, #eeeeee),
-		   to(#cccccc));
-	
-}
+
 
 
 

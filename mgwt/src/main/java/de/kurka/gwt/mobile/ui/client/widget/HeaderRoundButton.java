@@ -13,19 +13,23 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.button;
+package de.kurka.gwt.mobile.ui.client.widget;
+
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.button.HeaderButton;
+import de.kurka.gwt.mobile.ui.client.theme.base.HeaderButtonCss;
 
 /**
  * @author Daniel Kurka
  *
  */
-public class HeaderBackButton extends HeaderButton {
-
-	/**
-	 * 
-	 */
-	public HeaderBackButton() {
-		addStyleDependentName("back");
+public class HeaderRoundButton extends HeaderButton {
+	public HeaderRoundButton() {
+		this(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
 	}
 
+	public HeaderRoundButton(HeaderButtonCss css) {
+		super(css);
+		addStyleName(css.round());
+	}
 }

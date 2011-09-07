@@ -1,0 +1,120 @@
+.mgwt-HeaderButton {
+	min-width: 40px;
+	max-width: 60px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	z-index: 1;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+
+	margin: 6px 0 0 12px;
+	height: 26px;
+	
+	\-webkit-border-radius: 4px;
+	
+}
+
+
+
+@if mgwt.os android {
+	.mgwt-HeaderButton {
+		border: 1.5px solid rgba(50, 50, 50, 1);
+		background-color: black;
+		background: literal('-webkit-gradient(linear, left top, left bottom, from(#AAAAAA), to(#333333))');
+		
+		\-webkit-background-clip: padding-box;
+		/*
+		-webkit-box-shadow: none;*/
+	}
+}@else {
+	.mgwt-HeaderButton {
+		border: 1px solid rgba(0, 0, 0, 0.4);
+		background: literal('-webkit-gradient(linear, left top, left bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+		\-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 1px 1px rgba(0, 0, 0, 0.2);
+	}
+}
+
+
+.mgwt-HeaderButton p { 
+    position: relative; 
+    z-index: 2; 
+    
+    margin: 0; 
+    padding: 5px; 
+    font-size: 12px; 
+    font-weight: bold; 
+    color: #fff; 
+    text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
+    text-align: center;
+}
+
+
+
+
+.mgwt-HeaderButton.active {
+background: literal('-webkit-gradient(linear, left top, left bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+}
+
+@if mgwt.os android {
+	.mgwt-HeaderButton.active {
+		background: literal('-webkit-gradient(linear, left top, left bottom, from(#74b143), to(#43830e) )');
+	}
+}
+
+
+
+
+.mgwt-HeaderButton.back div {
+	position: absolute;
+	z-index: 1;
+	top: 4px;
+	left: -7px;
+	\-webkit-transform: rotate(51deg);
+}
+.mgwt-HeaderButton.back span { 
+    \-webkit-transform: skew(15deg);
+    display: block; 
+    width: 15px; 
+    height: 16px; 
+    background: literal('-webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa))');   
+    \-webkit-border-radius: 1px; 
+    border: 1px solid rgba(0,0,0, 0.4); 
+    border-right: 0; 
+    border-top: 0;
+    \-webkit-box-shadow: 0 1px 0 rgba(255,255,255, 0.25);
+}
+
+
+@if mgwt.os android {
+	.mgwt-HeaderButton.back span { 
+	    
+	    background: literal('-webkit-gradient(linear, left top, right bottom, from(#AAAAAA), to(#333333))');   
+	    border-left: 1px solid rgba(0, 0, 0, 1);
+	    border-bottom: 1px solid rgba(0, 0, 0, 1);
+	    \-webkit-box-shadow: none;
+	}
+}
+
+
+.mgwt-HeaderButton.active span{
+background: literal('-webkit-gradient(linear, left top, right bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+}
+@if mgwt.os android {
+	.mgwt-HeaderButton.active span{
+		background: literal('-webkit-gradient(linear, left top, left bottom, from(#74b143), to(#43830e) )');
+	}
+}
+
+.mgwt-HeaderButton.forward div {
+	position: absolute;
+	z-index: 1;
+	top: 4px;
+	right: -7px;
+	\-webkit-transform: rotate(51deg);
+}
+
+.mgwt-HeaderButton.round{
+}

@@ -20,17 +20,20 @@ import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 
+import de.kurka.gwt.mobile.ui.client.theme.base.HeaderButtonCss;
+
 /**
  * @author Daniel Kurka
  *
  */
-public class HeaderButton extends ButtonBase {
+public abstract class HeaderButton extends ButtonBase {
 
 	private ParagraphElement pElement;
 
-	public HeaderButton() {
+	public HeaderButton(HeaderButtonCss css) {
+		super(css);
 
-		setStylePrimaryName("mgwt-HeaderButton");
+		addStyleName(css.headerButton());
 
 		Element pointDiv = DOM.createDiv();
 		Element pointSpan = DOM.createSpan();
