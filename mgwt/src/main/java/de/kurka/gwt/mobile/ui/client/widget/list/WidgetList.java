@@ -26,6 +26,9 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.ListCss;
+
 /**
  * @author Daniel Kurka
  *
@@ -46,19 +49,26 @@ public class WidgetList extends Composite implements HasWidgets {
 
 	private Panel container;
 	private Map<Widget, Widget> map;
+	protected final ListCss css;
 
 	public WidgetList() {
+		this(MGWTStyle.getDefaultClientBundle().getListCss());
+	}
+
+	public WidgetList(ListCss css) {
+		this.css = css;
+		css.ensureInjected();
 		container = new ULFlowPanel();
 		initWidget(container);
 
-		setStylePrimaryName("mgwt-List");
+		setStylePrimaryName(css.listCss());
 
 		map = new HashMap<Widget, Widget>();
 	}
 
 	@Override
 	public void add(Widget w) {
-		WidgetListEntry widgetListEntry = new WidgetListEntry();
+		WidgetListEntry widgetListEntry = new WidgetListEntry(css);
 		widgetListEntry.add(w);
 		map.put(w, widgetListEntry);
 		container.add(widgetListEntry);

@@ -1,0 +1,70 @@
+.mgwt-List {
+	position: relative;
+	/*border: #878787 solid 1px;*/
+	margin: 3px 9px 17px;
+	list-style: none;
+	padding: 5px;
+	border-bottom-left-radius: 8px 8px;
+	border-bottom-right-radius: 8px 8px;
+	border-top-left-radius: 8px 8px;
+	border-top-right-radius: 8px 8px;
+}
+/* should be obsolete */
+.mgwt-List li:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+}
+
+.mgwt-List li {
+	background-color: white;
+	position: relative;
+	list-style-type: none;
+	display: block;
+	height: 43px;
+	overflow: hidden;
+	border: 1px solid rgb(171, 173, 176);
+	width: auto;
+	border-bottom-width: 0px;
+	background-origin: padding-box;
+}
+
+.mgwt-List li:last-child {
+	-webkit-border-bottom-left-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	border-bottom-width: 1px;
+}
+
+.mgwt-List li {
+	padding-top: 12px;
+	padding-left: 12px;
+}
+
+.mgwt-List .selected {
+	
+}
+
+.mgwt-List .group {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sBBBEYHxTYpEAAAADkSURBVCjPldI9qoRAEATg0sVARNRosvFCXkBEBU+y7yCCCGKmpzHXRAz8AQcRnKA30mj3udvQUFB8QUNj2zakaUpt2xIR4Zt9cM6p73s0TQPO+dO27T/cjLrvOwBASomiKNB1Hd2iJEngOM5PUCEiCCEoyzLM8wwA0DQNQRDAdV3lIwIAIQTleY5xHG+hegbTNBXP865CSom6rt/fdIZpmqiqqqswDAO+739G0zRRnudY1/UCYRiCMfb2JnVZlp8AADwYY88T6LqOKIr+BQCgWpZ1gTiObwEA4DgOlGVJwzB8/XsvXxGt5s8PP64AAAAASUVORK5CYII=');
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+
+.mgwt-List .group.selected {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sBBBEYHxTYpEAAAADkSURBVCjPldI9qoRAEATg0sVARNRosvFCXkBEBU+y7yCCCGKmpzHXRAz8AQcRnKA30mj3udvQUFB8QUNj2zakaUpt2xIR4Zt9cM6p73s0TQPO+dO27T/cjLrvOwBASomiKNB1Hd2iJEngOM5PUCEiCCEoyzLM8wwA0DQNQRDAdV3lIwIAIQTleY5xHG+hegbTNBXP865CSom6rt/fdIZpmqiqqqswDAO+739G0zRRnudY1/UCYRiCMfb2JnVZlp8AADwYY88T6LqOKIr+BQCgWpZ1gTiObwEA4DgOlGVJwzB8/XsvXxGt5s8PP64AAAAASUVORK5CYII='), literal('-webkit-gradient(linear, 0% 0, 0% 100%, from(#CCCCCC), to(#EEEEEE) )');
+	background-repeat: no-repeat, repeat;
+	background-position: 100% 50%, 0 0;
+	color: white;
+}
+
+/*
+.mgwt-List-Cell {
+	padding: 12px;
+	text-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px;
+}*/
+
+.mgwt-List-Header {
+	color: black;
+	font: normal normal bold 18px/normal Helvetica;
+	margin: 10px 20px 5px;
+	text-shadow: rgba(255, 255, 255, 0.19);
+}

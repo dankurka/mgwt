@@ -20,6 +20,9 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasText;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.ListCss;
+
 /**
  * @author Daniel Kurka
  *
@@ -30,12 +33,17 @@ public class CellListWithHeader<T> extends Composite {
 	private HTML header;
 
 	public CellListWithHeader(Cell<T> cell) {
+		this(cell, MGWTStyle.getDefaultClientBundle().getListCss());
+	}
+
+	public CellListWithHeader(Cell<T> cell, ListCss css) {
+		css.ensureInjected();
 		main = new FlowPanel();
 
 		initWidget(main);
 
 		header = new HTML();
-		header.setStylePrimaryName("mgwt-List-Header");
+		header.setStylePrimaryName(css.listHeader());
 		main.add(header);
 
 		cellList = new CellList<T>(cell);

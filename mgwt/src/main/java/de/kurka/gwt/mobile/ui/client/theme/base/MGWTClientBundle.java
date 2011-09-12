@@ -19,4 +19,7 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/slider.css")
 	SliderCss getSliderCss();
 
+	@Source("css/list.css")
+	ListCss getListCss();
+
 }

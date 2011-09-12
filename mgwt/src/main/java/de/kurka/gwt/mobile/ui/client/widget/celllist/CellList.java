@@ -37,6 +37,8 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.ListCss;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
 /**
@@ -44,7 +46,6 @@ import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
  *
  */
 public class CellList<T> extends Composite implements HasCellSelectedHandler {
-	private static final String CSS_SELECTED = "selected";
 
 	interface Template extends SafeHtmlTemplates {
 		@SafeHtmlTemplates.Template("<li __idx=\"{0}\" class=\"{1}\">{2}</li>")
@@ -106,7 +107,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			y = event.touches().get(0).getPageY();
 
 			if (node != null) {
-				node.removeClassName("active");
+				node.removeClassName(css.selected());
 			}
 			moved = false;
 			index = -1;
@@ -144,7 +145,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 				try {
 					index = Integer.parseInt(idxString);
 					node = target;
-					node.addClassName("active");
+					node.addClassName(css.selected());
 				} catch (Exception e) {
 
 				}
@@ -158,18 +159,24 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 	private InternalTouchHandler internalTouchHandler;
 
 	private LinkedList<HandlerRegistration> handlers = new LinkedList<HandlerRegistration>();
-	private final Cell<T> cell;
+	protected final Cell<T> cell;
+	protected final ListCss css;
 
 	public CellList(Cell<T> cell) {
+		this(cell, MGWTStyle.getDefaultClientBundle().getListCss());
+	}
 
+	public CellList(Cell<T> cell, ListCss css) {
+		css.ensureInjected();
 		this.cell = cell;
+		this.css = css;
 		main = new UlTouchWidget();
 
 		initWidget(main);
 
 		internalTouchHandler = new InternalTouchHandler();
 
-		setStylePrimaryName("mgwt-List");
+		setStylePrimaryName(css.listCss());
 	}
 
 	private void fireSelectionAtIndex(int index) {
@@ -215,7 +222,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 			String clazz = "";
 			if (cell.canBeSelected(model)) {
-				clazz = "group ";
+				clazz = css.group() + " ";
 			}
 
 			cell.render(cellBuilder, model);
@@ -251,15 +258,14 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			}
 		}.schedule(100);
 	}
-	
-	public void setSelectedIndex(int index, boolean selected){
+
+	public void setSelectedIndex(int index, boolean selected) {
 		Node node = getElement().getChild(index);
 		Element li = Element.as(node);
-		if(selected)
-		{
-			li.addClassName(CSS_SELECTED);
-		}else{
-			li.removeClassName(CSS_SELECTED);
+		if (selected) {
+			li.addClassName(css.selected());
+		} else {
+			li.removeClassName(css.selected());
 		}
 	}
 }

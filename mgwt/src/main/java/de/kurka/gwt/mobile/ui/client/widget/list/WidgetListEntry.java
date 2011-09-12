@@ -24,6 +24,9 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.ListCss;
+
 /**
  * @author Daniel Kurka
  *
@@ -48,9 +51,13 @@ public class WidgetListEntry extends Composite implements HasWidgets {
 	 * 
 	 */
 	public WidgetListEntry() {
+		this(MGWTStyle.getDefaultClientBundle().getListCss());
+	}
+
+	public WidgetListEntry(ListCss css) {
 		container = new LIFlowPanel();
 		initWidget(container);
-		setStylePrimaryName("mgwt-List-Cell");
+
 	}
 
 	@Override

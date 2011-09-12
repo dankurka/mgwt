@@ -39,7 +39,7 @@ public abstract class BasicCell<T> implements Cell<T> {
 
 	@Override
 	public void render(SafeHtmlBuilder safeHtmlBuilder, final T model) {
-		safeHtmlBuilder.append(TEMPLATE.content("mgwt-List-Cell", SafeHtmlUtils.htmlEscape(getDisplayString(model))));
+		safeHtmlBuilder.append(TEMPLATE.content("", SafeHtmlUtils.htmlEscape(getDisplayString(model))));
 
 	}
 
