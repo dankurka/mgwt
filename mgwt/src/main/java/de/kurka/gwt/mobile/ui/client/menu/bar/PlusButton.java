@@ -25,7 +25,7 @@ public class PlusButton extends BarButtonBase {
 	 * 
 	 */
 	public PlusButton() {
-		addStyleDependentName("plus");
+		addStyleName(css.plus());
 	}
 
 }

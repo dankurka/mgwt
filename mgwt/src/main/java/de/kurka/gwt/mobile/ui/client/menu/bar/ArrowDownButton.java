@@ -22,6 +22,6 @@ package de.kurka.gwt.mobile.ui.client.menu.bar;
 public class ArrowDownButton extends BarButtonBase {
 
 	public ArrowDownButton() {
-		addStyleDependentName("arrowdown");
+		addStyleName(css.arrowDown());
 	}
 }

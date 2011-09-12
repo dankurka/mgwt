@@ -24,6 +24,6 @@ public class FastForwardButton extends BarButtonBase {
 	 * 
 	 */
 	public FastForwardButton() {
-		addStyleDependentName("fastforward");
+		addStyleName(css.fastForward());
 	}
 }

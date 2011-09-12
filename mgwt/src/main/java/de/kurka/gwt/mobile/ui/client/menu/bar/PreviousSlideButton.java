@@ -25,7 +25,7 @@ public class PreviousSlideButton extends BarButtonBase {
 	 * 
 	 */
 	public PreviousSlideButton() {
-		addStyleDependentName("previousslide");
+		addStyleName(css.previousSlide());
 	}
 
 }

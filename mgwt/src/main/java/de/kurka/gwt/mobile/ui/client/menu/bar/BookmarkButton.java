@@ -22,7 +22,7 @@ package de.kurka.gwt.mobile.ui.client.menu.bar;
 public class BookmarkButton extends BarButtonBase {
 
 	public BookmarkButton() {
-		addStyleDependentName("bookmark");
+		addStyleName(css.bookmark());
 	}
 
 }

@@ -24,6 +24,6 @@ public class ComposeButton extends BarButtonBase {
 	 * 
 	 */
 	public ComposeButton() {
-		addStyleDependentName("compose");
+		addStyleName(css.compose());
 	}
 }

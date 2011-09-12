@@ -15,7 +15,6 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.bar;
 
-
 /**
  * @author Daniel Kurka
  *
@@ -25,6 +24,6 @@ public class ActionButton extends BarButtonBase {
 	 * 
 	 */
 	public ActionButton() {
-		addStyleDependentName("action");
+		addStyleName(css.action());
 	}
 }

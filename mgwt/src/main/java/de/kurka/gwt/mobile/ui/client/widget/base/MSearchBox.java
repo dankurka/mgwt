@@ -16,7 +16,10 @@
 package de.kurka.gwt.mobile.ui.client.widget.base;
 
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.HasAllKeyHandlers;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
+import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -29,11 +32,15 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.TextBox;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.MSearchBoxCss;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchPanel;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
@@ -42,29 +49,33 @@ import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
  *  Date: 30.05.2010
  *
  */
-public class MSearchBox extends Composite implements HasChangeHandlers, HasText, HasName, HasValue<String>, HasPlaceHolder {
+public class MSearchBox extends Composite implements HasChangeHandlers, HasText, HasName, HasValue<String>, HasPlaceHolder, HasAllKeyHandlers {
 	private TextBox box;
 	private TouchWidget clearButton;
 	private HandlerRegistration clearButtonHandler;
 	private HandlerRegistration boxHandler;
 	private FlowPanel roundDiv;
-	
+	protected final MSearchBoxCss css;
 
 	public MSearchBox() {
+		this(MGWTStyle.getDefaultClientBundle().getSearchBoxCss());
+	}
+
+	public MSearchBox(MSearchBoxCss css) {
+		this.css = css;
+		this.css.ensureInjected();
 		TouchPanel main = new TouchPanel();
 
-		main.addStyleName("mgwt-SearchBox");
+		main.addStyleName(css.searchBox());
 
 		initWidget(main);
-		
-		
 
 		roundDiv = new FlowPanel();
-		roundDiv.addStyleName("round");
+		roundDiv.addStyleName(css.round());
 		main.add(roundDiv);
 
 		box = new TextBox();
-		box.addStyleName("input");
+		box.addStyleName(css.input());
 
 		//TODO 
 		box.getElement().setAttribute("autocapitalize", "off");
@@ -75,7 +86,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 
 		clearButton = new ClearButton();
 
-		clearButton.addStyleName("clear");
+		clearButton.addStyleName(css.clear());
 
 		setPlaceHolder("Search");
 
@@ -115,11 +126,20 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	private class ClearButtonTouchHandler implements TouchHandler {
 
 		private boolean moved;
+		private int x;
+		private int y;
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
-			clearButton.addStyleDependentName("active");
+			clearButton.addStyleName(css.clearActive());
 			moved = false;
+
+			Touch touch = event.touches().get(0);
+			x = touch.getPageX();
+			y = touch.getPageY();
+
+			event.preventDefault();
+			event.stopPropagation();
 
 		}
 
@@ -128,8 +148,14 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		 */
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
-			clearButton.removeStyleDependentName("active");
-			moved = true;
+			Touch touch = event.touches().get(0);
+
+			if (Math.abs(touch.getPageX() - x) > SimpleTouch.TOUCH_RADIUS || Math.abs(touch.getPageY() - y) > SimpleTouch.TOUCH_RADIUS) {
+				moved = true;
+				clearButton.removeStyleName(css.clearActive());
+			}
+			event.preventDefault();
+			event.stopPropagation();
 
 		}
 
@@ -138,11 +164,14 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		 */
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
-			clearButton.removeStyleDependentName("active");
+			clearButton.removeStyleName(css.clearActive());
 
 			if (!moved) {
 				clearSearchField();
 			}
+
+			event.preventDefault();
+			event.stopPropagation();
 
 		}
 
@@ -151,7 +180,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		 */
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
-			clearButton.removeStyleDependentName("active");
+			clearButton.removeStyleName(css.clearActive());
 
 		}
 	}
@@ -214,6 +243,21 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 
 	public void setValue(String value, boolean fireEvents) {
 		box.setValue(value, fireEvents);
+	}
+
+	@Override
+	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
+		return box.addKeyUpHandler(handler);
+	}
+
+	@Override
+	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
+		return box.addKeyDownHandler(handler);
+	}
+
+	@Override
+	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
+		return box.addKeyPressHandler(handler);
 	}
 
 }

@@ -24,6 +24,6 @@ public class TrashButton extends BarButtonBase {
 	 * 
 	 */
 	public TrashButton() {
-		addStyleDependentName("trash");
+		addStyleName(css.trash());
 	}
 }

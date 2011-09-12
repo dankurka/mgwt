@@ -25,7 +25,7 @@ public class PlayButton extends BarButtonBase {
 	 * 
 	 */
 	public PlayButton() {
-		addStyleDependentName("play");
+		addStyleName(css.play());
 	}
 
 }

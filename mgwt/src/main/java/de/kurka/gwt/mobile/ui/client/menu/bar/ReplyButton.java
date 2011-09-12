@@ -25,7 +25,7 @@ public class ReplyButton extends BarButtonBase {
 	 * 
 	 */
 	public ReplyButton() {
-		addStyleDependentName("reply");
+		addStyleName(css.reply());
 	}
 
 }

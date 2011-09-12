@@ -24,6 +24,6 @@ public class ArrowLeftButton extends BarButtonBase {
 	 * 
 	 */
 	public ArrowLeftButton() {
-		addStyleDependentName("arrowleft");
+		addStyleName(css.arrowLeft());
 	}
 }

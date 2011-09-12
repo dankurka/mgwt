@@ -24,6 +24,6 @@ public class PauseButton extends BarButtonBase {
 	 * 
 	 */
 	public PauseButton() {
-		addStyleDependentName("pause");
+		addStyleName(css.pause());
 	}
 }

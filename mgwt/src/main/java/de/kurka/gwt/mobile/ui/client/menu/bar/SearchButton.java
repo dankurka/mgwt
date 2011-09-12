@@ -25,7 +25,7 @@ public class SearchButton extends BarButtonBase {
 	 * 
 	 */
 	public SearchButton() {
-		addStyleDependentName("search");
+		addStyleName(css.search());
 	}
 
 }

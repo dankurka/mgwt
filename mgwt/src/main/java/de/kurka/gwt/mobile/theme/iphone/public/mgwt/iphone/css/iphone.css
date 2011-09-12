@@ -138,14 +138,7 @@ fullscreen with header and tab
 
 
 
-.mgwt-ButtonBar {
-	position: absolute;
-	bottom: 0px;
-	height: 40px;
-	width: 100%;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)));
-	border-top: 1px solid rgb(45, 54, 66);
-}
+
 
 
 /*
@@ -260,30 +253,9 @@ fullscreen with header and tab
 
 
 
-.mgwt-BarButton {
-	position: relative;
-	display: inline-block;
-	background-repeat: no-repeat;
-	background-position: center;
-	width: 40px;
-	height: 40px;
-}
 
-.mgwt-BarButton-refresh {
-	background-image: url('../images/buttons/UIButtonBarRefresh.png');
-}
 
-.mgwt-BarButton-active.mgwt-BarButton-refresh {
-	background-image: url('../images/buttons/UIButtonBarRefresh.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
-}
 
-.mgwt-BarButton-action {
-	background-image: url('../images/buttons/UIButtonBarAction.png');
-}
-
-.mgwt-BarButton-active.mgwt-BarButton-action {
-	background-image: url('../images/buttons/UIButtonBarAction.png'), url('../images/buttons/UIButtonBarPressedIndicator.png');
-}
 
 .mgwt-BarButton-arrowdown {
 	background-image: url('../images/buttons/UIButtonBarArrowDown.png');
@@ -478,69 +450,7 @@ fullscreen with header and tab
 }
 
 
-/**
-  Search Box
-*/
-.mgwt-SearchBox {
-	height: 44px;
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1f3f4), color-stop(3%, #e0e4e7), color-stop(50%, #c7cfd4), color-stop(51%, #bec7cd), color-stop(97%, #b4bec6), to(#8999a5) );
-	background-size: 100% 44px;
-	background-repeat: repeat;
-	background-position: 0px 0px;
-	padding-left: 5px;
-	padding-right: 5px;
-}
 
-.mgwt-SearchBox .round {
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box;
-	background-image: url('../images/UITableViewIndexSearchGlyph.png');
-	background-repeat: no-repeat;
-	background-position: 10px 50%;
-	border-bottom-left-radius: 16px 16px;
-	border-bottom-right-radius: 16px 16px;
-	border-top-left-radius: 16px 16px;
-	border-top-right-radius: 16px 16px;
-	width: 100%;
-	height: 24px;
-	background-color: white;
-	display: block;
-	position: relative;
-	top: 10px;
-	margin: 0px;
-	padding: 0px;
-}
-
-.mgwt-SearchBox .input {
-	border: 0;
-	-webkit-appearance: none;
-	height: 18px;
-	position: absolute;
-	font-size: 13px;
-	padding: 0;
-	top: -10px;
-	left: 25px;
-	right: 40px;
-	bottom: -5px;
-	-webkit-user-select: text;
-}
-
-.mgwt-SearchBox .clear {
-	position: absolute;
-	top: 1px;
-	right: 20px;
-	width: 20px;
-	height: 20px;
-	font-size: 13px;
-	padding: 0;
-	background-image: url('../images/UITextFieldClearButton.png');
-	background-repeat: no-repeat;
-	background-position: 0px 50%;
-}
-
-.mgwt-SearchBox .clear-active {
-	background-image: url('../images/UITextFieldClearButtonPressed.png');
-}
 /*
 .mgwt-TextBox input, .mgwt-PasswordTextBox input, .mgwt-TextArea input, .mgwt-ListBox {
  

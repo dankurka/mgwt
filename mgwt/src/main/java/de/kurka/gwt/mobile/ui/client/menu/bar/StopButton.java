@@ -25,7 +25,7 @@ public class StopButton extends BarButtonBase {
 	 * 
 	 */
 	public StopButton() {
-		addStyleDependentName("stop");
+		addStyleName(css.stop());
 	}
 
 }

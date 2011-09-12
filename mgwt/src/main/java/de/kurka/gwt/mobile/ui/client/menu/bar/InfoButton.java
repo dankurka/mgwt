@@ -24,6 +24,6 @@ public class InfoButton extends BarButtonBase {
 	 * 
 	 */
 	public InfoButton() {
-		addStyleDependentName("info");
+		addStyleName(css.info());
 	}
 }

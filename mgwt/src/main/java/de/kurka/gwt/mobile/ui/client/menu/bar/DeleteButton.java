@@ -24,6 +24,6 @@ public class DeleteButton extends BarButtonBase {
 	 * 
 	 */
 	public DeleteButton() {
-		addStyleDependentName("delete");
+		addStyleName(css.delete());
 	}
 }

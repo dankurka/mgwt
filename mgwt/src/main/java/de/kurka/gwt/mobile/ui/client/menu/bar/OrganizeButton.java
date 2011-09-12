@@ -25,7 +25,7 @@ public class OrganizeButton extends BarButtonBase {
 	 * 
 	 */
 	public OrganizeButton() {
-		addStyleDependentName("organize");
+		addStyleName(css.organize());
 	}
 
 }

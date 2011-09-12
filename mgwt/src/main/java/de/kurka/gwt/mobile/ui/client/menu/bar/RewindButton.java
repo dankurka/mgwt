@@ -25,7 +25,7 @@ public class RewindButton extends BarButtonBase {
 	 * 
 	 */
 	public RewindButton() {
-		addStyleDependentName("rewind");
+		addStyleName(css.rewind());
 	}
 
 }

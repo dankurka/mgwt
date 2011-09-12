@@ -24,6 +24,6 @@ public class RefreshButton extends BarButtonBase {
 	 * 
 	 */
 	public RefreshButton() {
-		addStyleDependentName("refresh");
+		addStyleName(css.refresh());
 	}
 }

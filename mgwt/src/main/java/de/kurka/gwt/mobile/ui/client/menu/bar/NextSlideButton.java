@@ -24,6 +24,6 @@ public class NextSlideButton extends BarButtonBase {
 	 * 
 	 */
 	public NextSlideButton() {
-		addStyleDependentName("nextslide");
+		addStyleName(css.nextSlide());
 	}
 }

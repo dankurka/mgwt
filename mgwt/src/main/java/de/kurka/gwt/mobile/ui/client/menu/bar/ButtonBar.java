@@ -22,6 +22,9 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.ButtonBarCss;
+
 /**
  * @author Daniel Kurka
  *
@@ -29,12 +32,19 @@ import com.google.gwt.user.client.ui.Widget;
 public class ButtonBar extends Composite implements HasWidgets {
 
 	private FlowPanel main;
+	protected final ButtonBarCss css;
 
 	public ButtonBar() {
+		this(MGWTStyle.getDefaultClientBundle().getButtonBarCss());
+	}
+
+	public ButtonBar(ButtonBarCss css) {
+		this.css = css;
+		css.ensureInjected();
 		main = new FlowPanel();
 		initWidget(main);
 
-		setStylePrimaryName("mgwt-ButtonBar");
+		setStylePrimaryName(this.css.buttonBar());
 	}
 
 	/* (non-Javadoc)

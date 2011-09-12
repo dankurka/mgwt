@@ -24,6 +24,6 @@ public class LocateButton extends BarButtonBase {
 	 * 
 	 */
 	public LocateButton() {
-		addStyleDependentName("locate");
+		addStyleName(css.locate());
 	}
 }

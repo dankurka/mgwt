@@ -24,6 +24,6 @@ public class ContactAddButton extends BarButtonBase {
 	 * 
 	 */
 	public ContactAddButton() {
-		addStyleDependentName("contactadd");
+		addStyleName(css.contactAdd());
 	}
 }

@@ -22,6 +22,6 @@ package de.kurka.gwt.mobile.ui.client.menu.bar;
 public class ArrowUpButton extends BarButtonBase {
 
 	public ArrowUpButton() {
-		addStyleDependentName("arrowup");
+		addStyleName(css.arrowUp());
 	}
 }

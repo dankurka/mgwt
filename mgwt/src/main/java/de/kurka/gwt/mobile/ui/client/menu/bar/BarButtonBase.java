@@ -17,15 +17,25 @@ package de.kurka.gwt.mobile.ui.client.menu.bar;
 
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
+import de.kurka.gwt.mobile.ui.client.theme.base.ButtonBarCss;
 
 /**
  * @author Daniel Kurka
  *
  */
 public class BarButtonBase extends ButtonBase {
+	protected final ButtonBarCss css;
+
 	public BarButtonBase() {
-		//TODO this is not correct
-		super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
-		setStylePrimaryName("mgwt-BarButton");
+		this(MGWTStyle.getDefaultClientBundle().getButtonBarCss());
+	}
+
+	public BarButtonBase(ButtonBarCss css) {
+		super(css);
+		this.css = css;
+		this.css.ensureInjected();
+
+		addStyleName(css.barButton());
+
 	}
 }

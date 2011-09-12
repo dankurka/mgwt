@@ -24,6 +24,6 @@ public class NewButton extends BarButtonBase {
 	 * 
 	 */
 	public NewButton() {
-		addStyleDependentName("new");
+		addStyleName(css.newIcon());
 	}
 }

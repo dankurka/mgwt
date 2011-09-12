@@ -22,6 +22,6 @@ package de.kurka.gwt.mobile.ui.client.menu.bar;
 public class CameraButton extends BarButtonBase {
 
 	public CameraButton() {
-		addStyleDependentName("camera");
+		addStyleName(css.camera());
 	}
 }
