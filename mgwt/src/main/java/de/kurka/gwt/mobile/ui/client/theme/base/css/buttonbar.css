@@ -36,6 +36,15 @@
 	border-top: 1px solid rgb(45, 54, 66);
 }
 
+@if mgwt.os android {
+	.mgwt-ButtonBar {
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(100, 100, 100, 1)), to(rgba(50, 50, 50, 1)))');
+	}
+
+}
+
+
+
 .mgwt-BarButton {
 	position: relative;
 	display: inline-block;
