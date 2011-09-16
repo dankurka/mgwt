@@ -29,6 +29,9 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/checkbox.css")
 	CheckBoxCss getCheckBoxCss();
 
+	@Source("css/buttons.css")
+	ButtonCss getButtonCss();
+
 	@Source("css/buttonbar.css")
 	ButtonBarCss getButtonBarCss();
 

@@ -16,20 +16,21 @@
 package de.kurka.gwt.mobile.ui.client.button;
 
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.ButtonCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class Button extends ButtonBase {
 
 	private boolean round;
 	private boolean small;
+	protected final ButtonCss css;
 
 	public Button() {
-		//TODO this is not correct
-		super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
-		setStylePrimaryName("mgwt-Button");
+
+		this(MGWTStyle.getDefaultClientBundle().getButtonCss());
 
 	}
 
@@ -37,7 +38,19 @@ public class Button extends ButtonBase {
 	 * @param text
 	 */
 	public Button(String text) {
-		this();
+		this(MGWTStyle.getDefaultClientBundle().getButtonCss(), text);
+
+	}
+
+	public Button(ButtonCss css) {
+		this(css, "");
+	}
+
+	public Button(ButtonCss css, String text) {
+		super(css);
+		this.css = css;
+		css.ensureInjected();
+		addStyleName(css.button());
 		setText(text);
 	}
 
@@ -47,18 +60,18 @@ public class Button extends ButtonBase {
 
 	public void setRound(boolean round) {
 		if (round) {
-			addStyleDependentName("round");
+			addStyleName(css.round());
 		} else {
-			removeStyleDependentName("round");
+			removeStyleName(css.round());
 		}
 		this.round = round;
 	}
 
 	public void setSmall(boolean small) {
 		if (small) {
-			addStyleDependentName("small");
+			addStyleName(css.small());
 		} else {
-			removeStyleDependentName("small");
+			removeStyleName(css.small());
 		}
 		this.small = small;
 	}
@@ -80,13 +93,14 @@ public class Button extends ButtonBase {
 	}
 
 	/**
-	 * @param important the important to set
+	 * @param important
+	 *            the important to set
 	 */
 	public void setImportant(boolean important) {
 		if (important) {
-			addStyleDependentName("important");
+			addStyleName(css.important());
 		} else {
-			removeStyleDependentName("important");
+			removeStyleName(css.important());
 		}
 		this.important = important;
 	}
@@ -101,13 +115,14 @@ public class Button extends ButtonBase {
 	}
 
 	/**
-	 * @param confirm the confirm to set
+	 * @param confirm
+	 *            the confirm to set
 	 */
 	public void setConfirm(boolean confirm) {
 		if (confirm) {
-			addStyleDependentName("confirm");
+			addStyleName(css.confirm());
 		} else {
-			removeStyleDependentName("confirm");
+			removeStyleName(css.confirm());
 		}
 		this.confirm = confirm;
 	}
