@@ -26,6 +26,14 @@
 @url stopImage buttonBarStopImage;
 @url trashImage buttonBarTrashImage;
 
+@if mgwt.css pretty {
+	@external mgwt-ButtonBar, mgwt-BarButton, active;
+	@external  action ,arrowDown ,arrowUp ,arrowLeft ,arrowRight ,bookmark ,camera ,compose ,contactAdd ,delete ,fastForward ,info ,locate ,new ,nextSlide ,organize , pause, play ,plus ,pressed ,previousSlide ,refresh ,reply ,rewind ,search ,stop ,trash;
+	
+	
+
+}
+
 
 
 .mgwt-ButtonBar {
@@ -55,127 +63,127 @@
 	height: 40px;
 }
 
-.action{
+.mgwt-BarButton.action{
 	background-image: actionImage;
 }
 
-.action.active{
+.mgwt-BarButton.action.active{
 	background-image: pressedImage, actionImage;
 }
 
-.arrowDown{
+.mgwt-BarButton.arrowDown{
 	background-image: arrowDownImage;
 }
 
-.arrowDown.active{
+.mgwt-BarButton.arrowDown.active{
 	background-image: pressedImage, arrowDownImage;
 }
 
-.arrowLeft{
+.mgwt-BarButton.arrowLeft{
 	background-image: arrowLeftImage;
 }
 
-.arrowLeft.active{
+.mgwt-BarButton.arrowLeft.active{
 	background-image: pressedImage, arrowLeftImage;
 }
 
-.arrowRight{
+.mgwt-BarButton.arrowRight{
 	background-image: arrowRightImage;
 }
 
-.arrowRight.active{
+.mgwt-BarButton.arrowRight.active{
 	background-image: pressedImage, arrowRightImage;
 }
 
-.arrowUp{
+.mgwt-BarButton.arrowUp{
 	background-image: arrowUpImage;
 }
 
-.arrowUp.active{
+.mgwt-BarButton.arrowUp.active{
 	background-image: pressedImage, arrowUpImage;
 }
 
-.bookmark {
+.mgwt-BarButton.bookmark {
 	background-image: bookmarksImage;
 }
 
-.bookmark.active {
+.mgwt-BarButton.bookmark.active {
 	background-image: pressedImage, bookmarksImage;
 }
 
-.camera {
+.mgwt-BarButton.camera {
 	background-image: cameraImage;
 }
 
-.camera.active {
+.mgwt-BarButton.camera.active {
 	background-image: pressedImage, cameraImage;
 }
 
-.compose {
+.mgwt-BarButton.compose {
 	background-image: composeImage;
 }
 
-.compose.active {
+.mgwt-BarButton.compose.active {
 	background-image: pressedImage, composeImage;
 }
 
-.contactAdd {
+.mgwt-BarButton.contactAdd {
 	background-image: contactAddImage;
 }
 
-.contactAdd.active {
+.mgwt-BarButton.contactAdd.active {
 	background-image: pressedImage, contactAddImage;
 }
 
-.delete {
+.mgwt-BarButton.delete {
 	background-image: deleteImage;
 }
 
-.delete.active {
+.mgwt-BarButton.delete.active {
 	background-image: pressedImage, deleteImage;
 }
 
-.fastForward {
+.mgwt-BarButton.fastForward {
 	background-image: fastForwardImage;
 }
 
-.fastForward.active {
+.mgwt-BarButton.fastForward.active {
 	background-image: pressedImage, fastForwardImage;
 }
 
-.info {
+.mgwt-BarButton.info {
 	background-image: infoImage;
 }
 
-.info.active {
+.mgwt-BarButton.info.active {
 	background-image: pressedImage, infoImage;
 }
 
-.locate {
+.mgwt-BarButton.locate {
 	background-image: locateImage;
 }
 
-.locate.active {
+.mgwt-BarButton.locate.active {
 	background-image: pressedImage, locateImage;
 }
 
-.new {
+.mgwt-BarButton.new {
 	background-image: newImage;
 }
 
-.new.active {
+.mgwt-BarButton.new.active {
 	background-image: pressedImage, newImage;
 }
 
-.nextSlide {
+.mgwt-BarButton.nextSlide {
 	background-image: nextSlideImage;
 }
 
-.nextSlide.active {
+.mgwt-BarButton.nextSlide.active {
 	background-image: pressedImage, nextSlideImage  ;
 }
 
-.organize {
+.mgwt-BarButton.organize {
 	background-image: organizeImage;
 }
 
@@ -215,51 +223,51 @@
 	background-image: pressedImage, previousSlideImage ;
 }
 
-.refresh {
+.mgwt-BarButton.refresh {
 	background-image: refreshImage;
 }
 
-.refresh.active {
+.mgwt-BarButton.refresh.active {
 	background-image: pressedImage, refreshImage;
 }
 
-.reply {
+.mgwt-BarButton.reply {
 	background-image: replyImage;
 }
 
-.reply.active {
+.mgwt-BarButton.reply.active {
 	background-image: pressedImage, replyImage;
 }
 
-.rewind {
+.mgwt-BarButton.rewind {
 	background-image: rewindImage;
 }
 
-.rewind.active {
+.mgwt-BarButton.rewind.active {
 	background-image:  pressedImage, rewindImage;
 }
 
-.search {
+.mgwt-BarButton.search {
 	background-image: searchImage;
 }
 
-.search.active {
+.mgwt-BarButton.search.active {
 	background-image: pressedImage, searchImage ;
 }
 
-.stop {
+.mgwt-BarButton.stop {
 	background-image: stopImage;
 }
 
-.stop.active {
+.mgwt-BarButton.stop.active {
 	background-image:  pressedImage, stopImage;
 }
 
-.trash {
+.mgwt-BarButton.trash {
 	background-image: trashImage;
 }
 
-.trash.active {
+.mgwt-BarButton.trash.active {
 	background-image: pressedImage, trashImage  ;
 }
 

@@ -19,7 +19,7 @@ under * the License.
 
 
 	<define-configuration-property name="mgwt.css" is-multi-valued="false" />
-	<set-configuration-property name="mgwt.css" value="obf" />
+	<set-configuration-property name="mgwt.css" value="pretty" />
 
 
 	<generate-with
