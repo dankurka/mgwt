@@ -15,30 +15,46 @@
  */
 package de.kurka.gwt.mobile.ui.client.panel;
 
-import com.google.gwt.dom.client.Style.Position;
-import com.google.gwt.dom.client.Style.Unit;
+import java.util.Iterator;
+
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.animation.AnimationEndHandler;
+import de.kurka.gwt.mobile.mvp.client.AnimatableDisplay;
 import de.kurka.gwt.mobile.mvp.client.Animation;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class OverlayPanel extends FlowPanel {
+public class OverlayPanel extends Composite implements HasWidgets {
+
+	private AnimatableDisplay display;
 
 	public OverlayPanel() {
-		//TODO into css!
-		getElement().getStyle().setPosition(Position.ABSOLUTE);
-		getElement().getStyle().setWidth(100, Unit.PCT);
-		getElement().getStyle().setHeight(100, Unit.PCT);
+
+		display = GWT.create(AnimatableDisplay.class);
+
+		initWidget(display.asWidget());
+
+		main = new FlowPanel();
+		display.setFirstWidget(main);
+
+		// TODO into css!
+		// getElement().getStyle().setPosition(Position.ABSOLUTE);
+		// getElement().getStyle().setWidth(100, Unit.PCT);
+		// getElement().getStyle().setHeight(100, Unit.PCT);
 
 	}
 
+	private FlowPanel main;
 	private FlowPanel container;
 	private FlowPanel shadowContainer;
 
@@ -153,5 +169,28 @@ public class OverlayPanel extends FlowPanel {
 	 */
 	public boolean isShow() {
 		return show;
+	}
+
+	@Override
+	public void add(Widget w) {
+
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Iterator<Widget> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean remove(Widget w) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -38,6 +38,9 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/buttonbar.css")
 	ButtonBarCss getButtonBarCss();
 
+	@Source("css/dialog.css")
+	DialogCss getDialogCss();
+
 	@Source("resources/buttons/UIButtonBarAction.png")
 	DataResource buttonBarActionImage();
 

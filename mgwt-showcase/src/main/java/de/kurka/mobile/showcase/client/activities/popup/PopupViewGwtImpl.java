@@ -23,8 +23,9 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
-import de.kurka.gwt.mobile.ui.client.panel.DialogPanel;
+import de.kurka.gwt.mobile.ui.client.panel.DialogPanel1;
 import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel;
+import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel1;
 import de.kurka.gwt.mobile.ui.client.panel.PopupPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IPadMenuBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenu;
@@ -36,7 +37,7 @@ import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class PopupViewGwtImpl implements PopupView {
 
@@ -47,8 +48,8 @@ public class PopupViewGwtImpl implements PopupView {
 	private Button alertButton;
 	private PopupPanel popupPanel;
 	private Button popupPanelCloseButton;
-	private DialogPanel dialogPanel;
-	private OverlayPanel overlayPanel;
+	private DialogPanel1 dialogPanel;
+	private OverlayPanel1 overlayPanel;
 
 	/**
 	 * 
@@ -87,8 +88,8 @@ public class PopupViewGwtImpl implements PopupView {
 
 		popupPanel.add(popupPanelCloseButton);
 
-		overlayPanel = new OverlayPanel();
-		dialogPanel = new DialogPanel();
+		overlayPanel = new OverlayPanel1();
+		dialogPanel = new DialogPanel1();
 
 		dialogPanel.getContent().add(new HTML("test test test test"));
 		dialogPanel.getDialogTitle().setText("Titleasdf");
@@ -151,7 +152,7 @@ public class PopupViewGwtImpl implements PopupView {
 
 	@Override
 	public void showPopUpPanel() {
-		popupPanel.show();
+		overlayPanel.show();
 
 	}
 

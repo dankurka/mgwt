@@ -24,64 +24,59 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
+import de.kurka.gwt.mobile.ui.client.theme.base.DialogCss;
 
-/**
- * @author Daniel Kurka
- * 
- */
-public class DialogPanel extends Composite {
+public class DialogPanel1 extends Composite {
 
 	private FlowPanel main;
 	private FlowPanel container;
-
-	private FlowPanel wrapper;
-	private FlowPanel cell;
-
+	private HTML title;
 	private FlowPanel content;
+	private FlowPanel buttonContainer;
 	private OkButton okButton;
 	private CancelButton cancelButton;
-	private FlowPanel buttonContainer;
-	private HTML title;
+	private final DialogCss css;
 
-	public DialogPanel() {
+	public DialogPanel1() {
+		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
+	}
 
-		wrapper = new FlowPanel();
-		initWidget(wrapper);
-
-		wrapper.setStylePrimaryName("mgwt-DialogPanel");
-
-		cell = new FlowPanel();
-		cell.setStylePrimaryName("mgwt-DialogPanel-cell");
-
-		wrapper.add(cell);
-
+	public DialogPanel1(DialogCss css) {
+		this.css = css;
+		css.ensureInjected();
 		main = new FlowPanel();
-		cell.add(main);
+		initWidget(main);
 
-		main.setStylePrimaryName("mgwt-DialogPanel-main");
+		// main.getElement().getStyle().setWidth(100, Unit.PX);
+
+		/*main.getElement().getStyle().setProperty("WebkitBoxOrient", "horizontal");
+		main.getElement().getStyle().setProperty("WebkitBoxPack", "-webkit-box");
+		main.getElement().getStyle().setProperty("WebkitBoxSizing", "border-box");*/
+
+		main.addStyleName(css.getDialogPanel());
 
 		container = new FlowPanel();
-		container.addStyleName("mgwt-DialogPanel-container");
+		container.addStyleName(css.container());
 
 		main.add(container);
 
 		title = new HTML();
-		title.addStyleName("mgwt-DialogPanel-title");
+		title.addStyleName(css.title());
 		container.add(title);
 
 		content = new FlowPanel();
-		content.addStyleName("mgwt-DialogPanel-content");
+		content.addStyleName(css.content());
 		container.add(content);
 
 		buttonContainer = new FlowPanel();
-		buttonContainer.addStyleName("mgwt-DialogPanel-footer");
+		buttonContainer.addStyleName(css.footer());
 		container.add(buttonContainer);
 
-		okButton = new OkButton("Ok");
+		okButton = new OkButton(css, "Ok");
 
 		buttonContainer.add(okButton);
 
-		cancelButton = new CancelButton("Cancel");
+		cancelButton = new CancelButton(css, "Cancel");
 
 		buttonContainer.add(cancelButton);
 
@@ -89,24 +84,23 @@ public class DialogPanel extends Composite {
 
 	private class CancelButton extends ButtonBase {
 
-		public CancelButton(String text) {
-			// TODO this is not correct
-			super(MGWTStyle.getDefaultClientBundle().getButtonCss());
+		public CancelButton(DialogCss css, String text) {
+			super(css);
 			setText(text);
-			addStyleName("mgwt-DialogPanel-button");
-			addStyleName("mgwt-DialogPanel-cancelbutton");
+			addStyleName(css.cancelbutton());
+
 		}
 
 	}
 
 	private class OkButton extends ButtonBase {
 
-		public OkButton(String text) {
-			// TODO this is not correct
-			super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
+		public OkButton(DialogCss css, String text) {
+
+			super(css);
 			setText(text);
-			addStyleName("mgwt-DialogPanel-button");
-			addStyleName("mgwt-DialogPanel-okbutton");
+			addStyleName(css.okbutton());
+
 		}
 
 	}

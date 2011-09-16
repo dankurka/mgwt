@@ -25,7 +25,7 @@ import de.kurka.mobile.showcase.client.activities.UIPlace;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class PopupActivity extends MGWTAbstractActivity {
 
@@ -77,6 +77,7 @@ public class PopupActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTouch() {
+				System.out.println("ok alert");
 				view.hideAlertPanel();
 			}
 		}));
@@ -85,6 +86,7 @@ public class PopupActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTouch() {
+				System.out.println("cancel alert");
 				view.hideAlertPanel();
 			}
 		}));
