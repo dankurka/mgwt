@@ -17,23 +17,32 @@ package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarButtonBase extends ButtonBase {
 
+	protected final TabBarCss css;
+
 	public TabBarButtonBase() {
-		//TODO this is not correct
-		super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarButtonBase(TabBarCss css) {
+		super(css);
+		this.css = css;
+		css.ensureInjected();
+
 	}
 
 	public void setSelected(boolean selected) {
 		if (selected) {
-			addStyleDependentName("selected");
+			addStyleName(css.selected());
 		} else {
-			removeStyleDependentName("selected");
+			removeStyleName(css.selected());
 		}
 	}
 

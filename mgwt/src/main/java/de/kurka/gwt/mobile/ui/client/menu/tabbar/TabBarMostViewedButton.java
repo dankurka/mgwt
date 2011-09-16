@@ -15,13 +15,21 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarMostViewedButton extends TabBarButtonBase {
+
 	public TabBarMostViewedButton() {
-		setStylePrimaryName("mgwt-TabBarMostViewedButton");
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarMostViewedButton(TabBarCss css) {
+		addStyleName(css.mostViewedButton());
 
 		setText("Most Viewed");
 	}

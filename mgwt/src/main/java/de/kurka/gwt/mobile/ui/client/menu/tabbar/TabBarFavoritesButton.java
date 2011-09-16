@@ -15,13 +15,21 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarFavoritesButton extends TabBarButtonBase {
+
 	public TabBarFavoritesButton() {
-		setStylePrimaryName("mgwt-TabBarFavoritesButton");
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarFavoritesButton(TabBarCss css) {
+		addStyleName(css.favoritesButton());
 
 		setText("Favorites");
 	}

@@ -1,0 +1,148 @@
+@url backgroundImage tabBarBackgroundImage;
+@url bookmarkImage tabBarBookMarkImage;
+@url bookmarkSelectedImage tabBarBookMarkSelectedImage;
+@url contactsImage tabBarContactsImage;
+@url contactsSelectedImage tabBarContactsSelectedImage;
+@url downloadsImage tabBarDownloadsImage;
+@url downloadsSelectedImage tabBarDownloadsSelectedImage;
+@url favoritesImage tabBarFavoritesImage;
+@url favoritesSelectedImage tabBarFavoritesSelectedImage;
+@url featuredImage tabBarFeaturedImage;
+@url featuredSelectedImage tabBarFeaturedSelectedImage;
+@url historyImage tabBarHistoryImage;
+@url historySelectedImage tabBarHistorySelectedImage;
+@url moreImage tabBarMoreImage;
+@url moreSelectedImage tabBarMoreSelectedImage;
+@url mostRecentImage tabBarMostRecentImage;
+@url mostRecentSelectedImage tabBarMostRecentSelectedImage;
+@url mostViewedImage tabBarMostViewedImage;
+@url mostViewedSelectedImage tabBarMostViewedSelectedImage;
+@url searchImage tabBarSearchImage;
+@url searchSelectedImage tabBarSearchSelectedImage;
+
+
+
+@if mgwt.css pretty {
+	@external mgwt-TabBar, selected, bottom, bookmarkButton,  contactsButton,  downloadsButton,  favoritesButton,  featuredButton,  historyButton,  moreButton,  mostRecentButton,  mostViewedButton,  searchButton;
+}
+
+.mgwt-TabBar{
+	width: 100%;
+	height: 49px;
+	/*background: literal('-webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(1%,#3d3d3d), color-stop(2%,#212121), color-stop(100%,#0e0e0e))'); 
+	*/
+	background-image: backgroundImage;
+	background-repeat: repeat-x;
+}
+
+.mgwt-TabBar .active{
+}
+
+.mgwt-TabBar.bottom{
+	position: absolute;
+	display: inline-block;
+	bottom: 0px;
+}
+
+.mgwt-TabBar .bookmarkButton, .mgwt-TabBar .contactsButton, .mgwt-TabBar .downloadsButton, .mgwt-TabBar .favoritesButton, .mgwt-TabBar .featuredButton, .mgwt-TabBar .historyButton, .mgwt-TabBar .moreButton, .mgwt-TabBar .mostRecentButton, .mgwt-TabBar .mostViewedButton, .mgwt-TabBar .searchButton{
+	display: inline-block;
+	position: relative;
+	min-width: 60px;
+	font-size: 9px;
+	color: #999995;
+	padding-top: 33px;
+	margin-top: 3px;
+	text-align: center;
+	background-position: 50% 0px;
+	background-repeat: no-repeat;
+	
+}
+
+.mgwt-TabBar .bookmarkButton{
+	background-image: bookmarkImage;
+}
+
+.mgwt-TabBar .bookmarkButton.selected{
+	background-image: bookmarkSelectedImage;
+	color: white;
+}
+
+.mgwt-TabBar .contactsButton{
+	background-image: contactsImage;
+}
+
+.mgwt-TabBar .contactsButton.selected{
+	background-image: contactsSelectedImage;
+	color: white;
+}
+
+.mgwt-TabBar .downloadsButton{
+	background-image: downloadsImage;
+}
+
+.mgwt-TabBar .downloadsButton.selected{
+	background-image: downloadsSelectedImage;
+	color: white;
+}
+.mgwt-TabBar .favoritesButton{
+	background-image: favoritesImage;
+}
+
+.mgwt-TabBar .favoritesButton.selected{
+	background-image: favoritesSelectedImage;
+	color: white;
+}
+
+.mgwt-TabBar .featuredButton{
+	background-image: featuredImage;
+}
+
+.mgwt-TabBar .featuredButton.selected{
+	background-image: featuredSelectedImage;
+	color: white;
+}
+
+.mgwt-TabBar .historyButton{
+	background-image: historyImage;
+}
+
+.mgwt-TabBar .historyButton.selected{
+	background-image: historySelectedImage;
+	color: white;
+}
+
+.mgwt-TabBar .moreButton{
+	background-image: moreImage;
+}
+
+.mgwt-TabBar .moreButton.selected{
+	background-image: moreSelectedImage;
+	color: white;
+}
+
+.mgwt-TabBar .mostRecentButton{
+	background-image: mostRecentImage;
+}
+
+.mgwt-TabBar .mostRecentButton.selected{
+	background-image: mostRecentSelectedImage;
+	color: white;
+}
+
+.mgwt-TabBar .mostViewedButton{
+	background-image: mostViewedImage;
+}
+
+.mgwt-TabBar .mostViewedButton.selected{
+	background-image: mostViewedSelectedImage;
+	color: white;
+}
+
+.mgwt-TabBar .searchButton{
+	background-image: searchImage;
+}
+
+.mgwt-TabBar .searchButton.selected{
+	background-image: searchSelectedImage;
+	color: white;
+}

@@ -110,4 +110,70 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("resources/buttons/UIButtonBarTrash.png")
 	DataResource buttonBarTrashImage();
 
+	@Source("css/tabbar.css")
+	TabBarCss getTabBarCss();
+
+	@Source("resources/tabbar/UITabBarBackgroundBlack.png")
+	DataResource tabBarBackgroundImage();
+
+	@Source("resources/tabbar/UITabBarBookmarks.png")
+	DataResource tabBarBookMarkImage();
+
+	@Source("resources/tabbar/UITabBarBookmarksSelected.png")
+	DataResource tabBarBookMarkSelectedImage();
+
+	@Source("resources/tabbar/UITabBarContacts.png")
+	DataResource tabBarContactsImage();
+
+	@Source("resources/tabbar/UITabBarContactsSelected.png")
+	DataResource tabBarContactsSelectedImage();
+
+	@Source("resources/tabbar/UITabBarDownloads.png")
+	DataResource tabBarDownloadsImage();
+
+	@Source("resources/tabbar/UITabBarDownloadsSelected.png")
+	DataResource tabBarDownloadsSelectedImage();
+
+	@Source("resources/tabbar/UITabBarFavorites.png")
+	DataResource tabBarFavoritesImage();
+
+	@Source("resources/tabbar/UITabBarFavoritesSelected.png")
+	DataResource tabBarFavoritesSelectedImage();
+
+	@Source("resources/tabbar/UITabBarFeatured.png")
+	DataResource tabBarFeaturedImage();
+
+	@Source("resources/tabbar/UITabBarFeaturedSelected.png")
+	DataResource tabBarFeaturedSelectedImage();
+
+	@Source("resources/tabbar/UITabBarHistory.png")
+	DataResource tabBarHistoryImage();
+
+	@Source("resources/tabbar/UITabBarHistorySelected.png")
+	DataResource tabBarHistorySelectedImage();
+
+	@Source("resources/tabbar/UITabBarMore.png")
+	DataResource tabBarMoreImage();
+
+	@Source("resources/tabbar/UITabBarMoreSelected.png")
+	DataResource tabBarMoreSelectedImage();
+
+	@Source("resources/tabbar/UITabBarMostRecent.png")
+	DataResource tabBarMostRecentImage();
+
+	@Source("resources/tabbar/UITabBarMostRecentSelected.png")
+	DataResource tabBarMostRecentSelectedImage();
+
+	@Source("resources/tabbar/UITabBarMostViewed.png")
+	DataResource tabBarMostViewedImage();
+
+	@Source("resources/tabbar/UITabBarMostViewedSelected.png")
+	DataResource tabBarMostViewedSelectedImage();
+
+	@Source("resources/tabbar/UITabBarSearch.png")
+	DataResource tabBarSearchImage();
+
+	@Source("resources/tabbar/UITabBarSearchSelected.png")
+	DataResource tabBarSearchSelectedImage();
+
 }

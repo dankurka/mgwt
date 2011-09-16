@@ -25,21 +25,30 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
 	private FlowPanel container;
 	private LinkedList<TabBarButtonBase> children;
 	private LinkedList<HandlerRegistration> handlers = new LinkedList<HandlerRegistration>();
+	protected final TabBarCss css;
 
 	public TabBar() {
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBar(TabBarCss css) {
+		this.css = css;
+		css.ensureInjected();
 		children = new LinkedList<TabBarButtonBase>();
 		container = new FlowPanel();
-		container.setStylePrimaryName("mgwt-TabBar");
+		container.setStylePrimaryName(css.tabbar());
 		initWidget(container);
 	}
 
@@ -119,9 +128,9 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
 	public void setBottom(boolean bottom) {
 		if (bottom) {
-			addStyleDependentName("bottom");
+			addStyleName(css.bottom());
 		} else {
-			removeStyleDependentName("bottom");
+			removeStyleDependentName(css.bottom());
 		}
 	}
 

@@ -15,13 +15,20 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarHistoryButton extends TabBarButtonBase {
 	public TabBarHistoryButton() {
-		setStylePrimaryName("mgwt-TabBarHistoryButton");
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarHistoryButton(TabBarCss css) {
+		addStyleName(css.historyButton());
 
 		setText("History");
 	}

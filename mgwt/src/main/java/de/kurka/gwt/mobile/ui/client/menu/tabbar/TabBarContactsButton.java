@@ -15,13 +15,21 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarContactsButton extends TabBarButtonBase {
+
 	public TabBarContactsButton() {
-		setStylePrimaryName("mgwt-TabBarContactsButton");
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarContactsButton(TabBarCss css) {
+		addStyleName(css.contactsButton());
 
 		setText("Contacts");
 	}

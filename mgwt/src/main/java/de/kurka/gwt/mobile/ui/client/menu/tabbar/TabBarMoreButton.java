@@ -15,13 +15,21 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarMoreButton extends TabBarButtonBase {
+
 	public TabBarMoreButton() {
-		setStylePrimaryName("mgwt-TabBarMoreButton");
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarMoreButton(TabBarCss css) {
+		addStyleName(css.moreButton());
 
 		setText("More");
 	}

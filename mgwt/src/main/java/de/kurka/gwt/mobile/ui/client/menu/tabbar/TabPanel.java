@@ -21,9 +21,12 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabPanel extends Composite {
 
@@ -32,12 +35,16 @@ public class TabPanel extends Composite {
 	private TabBar tabBar;
 
 	public TabPanel() {
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabPanel(TabBarCss css) {
 		container = new FlowPanel();
 		initWidget(container);
 
 		tabContainer = new TabContainer();
 		container.add(tabContainer);
-		tabBar = new TabBar();
+		tabBar = new TabBar(css);
 		tabBar.setBottom(true);
 		container.add(tabBar);
 

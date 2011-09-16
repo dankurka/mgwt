@@ -15,13 +15,21 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarMostRecentButton extends TabBarButtonBase {
+
 	public TabBarMostRecentButton() {
-		setStylePrimaryName("mgwt-TabBarMostRecentButton");
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarMostRecentButton(TabBarCss css) {
+		addStyleName(css.mostRecentButton());
 
 		setText("Most Recent");
 	}

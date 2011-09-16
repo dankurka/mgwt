@@ -15,14 +15,21 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarBookmarkButton extends TabBarButtonBase {
 
 	public TabBarBookmarkButton() {
-		setStylePrimaryName("mgwt-TabBarBookmarkButton");
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarBookmarkButton(TabBarCss css) {
+		addStyleName(css.bookmarkButton());
 
 		setText("Bookmark");
 	}

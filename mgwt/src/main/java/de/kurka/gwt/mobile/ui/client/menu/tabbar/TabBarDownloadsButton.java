@@ -15,13 +15,21 @@
  */
 package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarDownloadsButton extends TabBarButtonBase {
+
 	public TabBarDownloadsButton() {
-		setStylePrimaryName("mgwt-TabBarDownloadsButton");
+		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+	}
+
+	public TabBarDownloadsButton(TabBarCss css) {
+		addStyleName(css.downloadsButton());
 
 		setText("Downloads");
 	}
