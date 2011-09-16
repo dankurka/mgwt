@@ -78,3 +78,15 @@
 {
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#70747f), color-stop(0.5, #424857), color-stop(0.5, #171e30), to(#222839) )');
 }
+
+
+.mgwt-BottomPanel {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.9);
+	background-image: literal('-webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(50, 74, 103, 0.9)), color-stop(0.02, rgba(20, 25, 35, 0.9) ), to(rgba(0, 0, 0, 0.0) ) )');
+	border-top: 1px solid #030506;
+	padding: 10px;
+}

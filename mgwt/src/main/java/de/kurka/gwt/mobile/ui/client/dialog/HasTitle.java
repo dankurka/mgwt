@@ -13,28 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.theme.base;
+package de.kurka.gwt.mobile.ui.client.dialog;
 
-public interface DialogCss extends ButtonBaseCss {
+public interface HasTitle {
+	public void setTitleText(String text);
 
-	@ClassName("mgwt-DialogPanel")
-	String getDialogPanel();
-
-	@ClassName("mgwt-BottomPanel")
-	String getBottomPanel();
-
-	public String container();
-
-	public String title();
-
-	public String content();
-
-	public String footer();
-
-	public String okbutton();
-
-	public String cancelbutton();
-
-	public String active();
-
+	public String getTitleText();
 }

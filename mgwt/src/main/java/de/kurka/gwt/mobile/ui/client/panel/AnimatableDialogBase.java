@@ -31,7 +31,7 @@ import de.kurka.gwt.mobile.mvp.client.AnimationEndCallback;
 
 public abstract class AnimatableDialogBase implements HasWidgets {
 	private AnimatableDisplay display;
-	private FlowPanel container;
+	protected FlowPanel container;
 
 	private boolean centerContent;
 
@@ -53,10 +53,27 @@ public abstract class AnimatableDialogBase implements HasWidgets {
 		show();
 	}
 
+	public void setCenterContent(boolean centerContent) {
+		this.centerContent = centerContent;
+	}
+
+	protected HasWidgets panelToOverlay;
+
+	public void setPanelToOverlay(HasWidgets panel) {
+		this.panelToOverlay = panel;
+	}
+
+	public HasWidgets getPanelToOverlay() {
+		if (panelToOverlay == null) {
+			panelToOverlay = RootPanel.get();
+		}
+		return panelToOverlay;
+	}
+
 	public void show() {
 		// add overlay to DOM
-		RootPanel panel = RootPanel.get();
-		panel.add(display);
+		HasWidgets panel = getPanelToOverlay();
+		panel.add(display.asWidget());
 
 		if (centerContent) {
 			container.getElement().setAttribute("style", "");
@@ -95,8 +112,7 @@ public abstract class AnimatableDialogBase implements HasWidgets {
 		display.setFirstWidget(container);
 
 		// and animiate
-		Animation animation = getAnimation();
-		animation.setDirection(false);
+		Animation animation = getShowAnimation();
 
 		display.animate(animation, true, new AnimationEndCallback() {
 
@@ -108,19 +124,16 @@ public abstract class AnimatableDialogBase implements HasWidgets {
 
 	}
 
-	protected abstract Animation getAnimation();
-
 	public void hide() {
 
-		Animation animation = getAnimation();
-		animation.setDirection(false);
+		Animation animation = getHideAnimation();
 
 		display.animate(animation, false, new AnimationEndCallback() {
 
 			@Override
 			public void onAnimationEnd() {
-				RootPanel panel = RootPanel.get();
-				panel.remove(display);
+				HasWidgets panel = getPanelToOverlay();
+				panel.remove(display.asWidget());
 
 			}
 		});
@@ -147,4 +160,8 @@ public abstract class AnimatableDialogBase implements HasWidgets {
 	public boolean remove(Widget w) {
 		return container.remove(w);
 	}
+
+	protected abstract Animation getShowAnimation();
+
+	protected abstract Animation getHideAnimation();
 }

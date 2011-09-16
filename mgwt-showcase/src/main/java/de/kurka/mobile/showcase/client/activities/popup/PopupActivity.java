@@ -69,7 +69,7 @@ public class PopupActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTouch() {
-				view.showAlertPanel();
+				view.alertSomeStuff("Hi", "How are you doing?");
 			}
 		}));
 

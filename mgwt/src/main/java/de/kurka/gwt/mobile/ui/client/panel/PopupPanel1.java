@@ -15,20 +15,38 @@
  */
 package de.kurka.gwt.mobile.ui.client.panel;
 
+import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.theme.base.DialogCss;
 
-public class PopupPanel1 {
+public class PopupPanel1 extends AnimatableDialogBase {
 
 	private final DialogCss dialogCss;
 
 	public PopupPanel1() {
 		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
+
 	}
 
 	public PopupPanel1(DialogCss dialogCss) {
 		this.dialogCss = dialogCss;
+		setCenterContent(false);
+		container.addStyleName(dialogCss.getBottomPanel());
+	}
 
+	@Override
+	protected Animation getShowAnimation() {
+		Animation animation = new Animation();
+		animation.setType(Animation.ANIMATION_SLIDE_UP);
+		return animation;
+	}
+
+	@Override
+	protected Animation getHideAnimation() {
+		Animation animation = new Animation();
+		animation.setType(Animation.ANIMATION_SLIDE_UP);
+		animation.setDirection(true);
+		return animation;
 	}
 
 }

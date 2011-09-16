@@ -21,7 +21,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public interface PopupView extends IsWidget {
 	public HasSimpleTouchHandler getBackButton();
@@ -43,4 +43,6 @@ public interface PopupView extends IsWidget {
 	public HasSimpleTouchHandler getAlertOkButton();
 
 	public HasSimpleTouchHandler getAlertCancelButton();
+
+	public void alertSomeStuff(String title, String text);
 }

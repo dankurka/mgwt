@@ -207,39 +207,3 @@ fullscreen with header and tab
 
 
 
-
-
-/*popups*/
-.mgwt-PopupPanel {
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-	background-color: rgba(0, 0, 0, 0.9);
-	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(rgba(50, 74, 103, 0.9)
-		), color-stop(0.02, rgba(20, 25, 35, 0.9) ),
-		to(rgba(0, 0, 0, 0.0) ) );
-	border-top: 1px solid #030506;
-	padding: 10px;
-}
-
-.mgwt-PopupContainer {
-	z-index: 100;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	margin: 0px;
-	padding: 0px;
-}
-
-.mgwt-PopupContainer-shadow {
-	z-index: 99;
-	background-color: rgba(0, 0, 0, 0.4);
-}
-
-
-
-
-
