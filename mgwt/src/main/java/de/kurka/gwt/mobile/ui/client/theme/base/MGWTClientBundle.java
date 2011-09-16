@@ -32,6 +32,9 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/buttons.css")
 	ButtonCss getButtonCss();
 
+	@Source("css/scrollpanel.css")
+	ScrollPanelCss getScrollPanelCss();
+
 	@Source("css/buttonbar.css")
 	ButtonBarCss getButtonBarCss();
 

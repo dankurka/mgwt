@@ -33,7 +33,9 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.panel.Scrollbar.Orientation;
+import de.kurka.gwt.mobile.ui.client.theme.base.ScrollPanelCss;
 import de.kurka.gwt.mobile.ui.client.util.CssUtil;
 import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchPanel;
@@ -88,9 +90,17 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	private HandlerRegistration transEndHandler;
 
+	protected final ScrollPanelCss css;
+
 	public ScrollPanel() {
+		this(MGWTStyle.getDefaultClientBundle().getScrollPanelCss());
+	}
+
+	public ScrollPanel(ScrollPanelCss css) {
+		this.css = css;
+		css.ensureInjected();
 		main = new TouchPanel();
-		main.setStylePrimaryName("mgwt-ScrollPanel");
+		main.addStyleName(css.scrollPanel());
 
 		initWidget(main);
 
@@ -188,12 +198,12 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 			@Override
 			public void execute() {
 				if (scrollingEnabledX && widgetToScroll.getOffsetWidth() > 0) {
-					hScrollbar = new Scrollbar(Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), widgetToScroll.getOffsetWidth());
+					hScrollbar = new Scrollbar(css, Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), widgetToScroll.getOffsetWidth());
 					main.add(hScrollbar);
 				}
 
 				if (scrollingEnabledY && widgetToScroll.getOffsetHeight() > 0) {
-					vScrollbar = new Scrollbar(Orientation.VERTICAL, has3d, main.getOffsetHeight(), widgetToScroll.getOffsetHeight());
+					vScrollbar = new Scrollbar(css, Orientation.VERTICAL, has3d, main.getOffsetHeight(), widgetToScroll.getOffsetHeight());
 					main.add(vScrollbar);
 				}
 

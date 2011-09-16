@@ -20,12 +20,13 @@ import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.ui.client.canvas.CssCanvas;
+import de.kurka.gwt.mobile.ui.client.theme.base.ScrollPanelCss;
 import de.kurka.gwt.mobile.ui.client.util.CssUtil;
 import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class Scrollbar extends Widget {
 
@@ -51,6 +52,8 @@ public class Scrollbar extends Widget {
 
 	private double wrapperProp;
 
+	protected final ScrollPanelCss css;
+
 	public static enum Orientation {
 		HORIZONTAL, VERTICAL
 	}
@@ -58,7 +61,8 @@ public class Scrollbar extends Widget {
 	/**
 	 * 
 	 */
-	public Scrollbar(Orientation orientation, boolean has3d, int scrollAreaSize, int wholeSize) {
+	public Scrollbar(ScrollPanelCss css, Orientation orientation, boolean has3d, int scrollAreaSize, int wholeSize) {
+		this.css = css;
 		//TODO remove this
 		if (wholeSize == 0) {
 			wholeSize = 300;
@@ -81,14 +85,14 @@ public class Scrollbar extends Widget {
 
 		setElement(DOM.createDiv());
 
-		setStylePrimaryName("mgwt-Scrollbar");
+		addStyleName(css.scrollBar());
 
 		switch (orientation) {
 		case HORIZONTAL:
-			addStyleDependentName("horizontal");
+			addStyleName(css.horizontal());
 			break;
 		case VERTICAL:
-			addStyleDependentName("vertical");
+			addStyleName(css.vertical());
 
 		}
 
@@ -96,18 +100,18 @@ public class Scrollbar extends Widget {
 
 		bar = DOM.createDiv();
 
-		bar.addClassName("mgwt-Scrollbar-Bar");
+		bar.addClassName(css.scrollBarBar());
 
 		String cssText = "";
 		switch (orientation) {
 		case HORIZONTAL:
 
-			bar.addClassName("mgwt-Scrollbar-Bar-horizontal");
+			bar.addClassName(css.horizontal());
 			break;
 
 		case VERTICAL:
 
-			bar.addClassName("mgwt-Scrollbar-Bar-vertical");
+			bar.addClassName(css.vertical());
 			break;
 
 		}
