@@ -1,3 +1,9 @@
+@if mgwt.css pretty {
+	@external mgwt-HeaderPanel, mgwt-HeaderPanel-left, mgwt-HeaderPanel-right, mgwt-HeaderPanel-center;
+	
+}
+
+
 .mgwt-HeaderPanel {
 	position: relative;
 	height: 40px;

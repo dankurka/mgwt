@@ -1,3 +1,8 @@
+@if mgwt.css pretty {
+	@external mgwt-SearchBox, round, input, clear, clear-active;
+	
+}
+
 /**
   Search Box
 */

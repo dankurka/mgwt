@@ -1,3 +1,8 @@
+@if mgwt.css pretty {
+	@external mgwt-Slider, mgwt-Slider-bar, mgwt-Slider-pointer;
+	
+}
+
 .mgwt-Slider {
 	display: inline-block;
 	width: 277px;

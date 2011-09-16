@@ -1,3 +1,9 @@
+
+@if mgwt.css pretty {
+	@external mgwt-HeaderButton, active, back, forward, round;
+	
+}
+
 .mgwt-HeaderButton {
 	min-width: 40px;
 	max-width: 60px;

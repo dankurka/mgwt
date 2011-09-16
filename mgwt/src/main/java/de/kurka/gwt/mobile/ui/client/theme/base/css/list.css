@@ -1,3 +1,8 @@
+@if mgwt.css pretty {
+	@external mgwt-List, selected, group, mgwt-List-Header;
+	
+}
+
 .mgwt-List {
 	position: relative;
 	/*border: #878787 solid 1px;*/
