@@ -28,18 +28,20 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.CheckBoxCss;
 import de.kurka.gwt.mobile.ui.client.util.CssUtil;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class MCheckBox extends TouchWidget implements HasValue<Boolean> {
 
 	/**
 	 * @author Daniel Kurka
-	 *
+	 * 
 	 */
 	private final class TouchHandlerImplementation implements TouchHandler {
 		private int x_start;
@@ -122,37 +124,34 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean> {
 	private Element middleDiv;
 	private Element offDiv;
 
-	private static final String CSS_PRIMARY_NAME = "mgwt-CheckBox";
-	private static final String CSS_DEPENDENTNAME_CHECKED = "checked";
-	private static final String CSS_DEPENDENTNAME_NOTCHECKED = "notchecked";
-	private static final String CSS_DEPENDENTNAME_CONTAINER_ON = "on";
-	private static final String CSS_DEPENDENTNAME_CONTAINER_OFF = "off";
-	private static final String CSS_DEPENDENTNAME_CONTAINER_MIDDLE = "middle";
-	private static final String CSS_DEPENDENTNAME_CONTAINER_MIDDLE_CONTENT = "middle-content";
-
-	private static final String CSS_DEPENDENTNAME_IMPORTANT = "important";
-
 	private static final int CONTAINER_WIDTH = 54;
 	private static final int DRAG_DEADZONE = 8;
+	protected final CheckBoxCss css;
 
 	public MCheckBox() {
+		this(MGWTStyle.getDefaultClientBundle().getCheckBoxCss());
+	}
+
+	public MCheckBox(CheckBoxCss css) {
+		this.css = css;
+		css.ensureInjected();
 		setElement(DOM.createDiv());
-		setStylePrimaryName(CSS_PRIMARY_NAME);
+		addStyleName(css.checkBox());
 
 		onDiv = DOM.createDiv();
-		onDiv.setClassName(CSS_PRIMARY_NAME + "-" + CSS_DEPENDENTNAME_CONTAINER_ON);
+		onDiv.setClassName(css.on());
 		onDiv.setInnerText("I");
 		getElement().appendChild(onDiv);
 
 		middleDiv = DOM.createDiv();
-		middleDiv.setClassName(CSS_PRIMARY_NAME + "-" + CSS_DEPENDENTNAME_CONTAINER_MIDDLE);
+		middleDiv.setClassName(css.middle());
 		Element middleContent = DOM.createDiv();
-		middleContent.setClassName(CSS_PRIMARY_NAME + "-" + CSS_DEPENDENTNAME_CONTAINER_MIDDLE_CONTENT);
+		middleContent.setClassName(css.content());
 		middleDiv.appendChild(middleContent);
 		getElement().appendChild(middleDiv);
 
 		offDiv = DOM.createDiv();
-		offDiv.setClassName(CSS_PRIMARY_NAME + "-" + CSS_DEPENDENTNAME_CONTAINER_OFF);
+		offDiv.setClassName(css.off());
 		offDiv.setInnerText("O");
 		getElement().appendChild(offDiv);
 
@@ -188,12 +187,12 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean> {
 
 		clearStyles();
 		if (value) {
-			addStyleDependentName(CSS_DEPENDENTNAME_CHECKED);
-			removeStyleDependentName(CSS_DEPENDENTNAME_NOTCHECKED);
+			addStyleName(css.checked());
+			removeStyleName(css.notChecked());
 
 		} else {
-			addStyleDependentName(CSS_DEPENDENTNAME_NOTCHECKED);
-			removeStyleDependentName(CSS_DEPENDENTNAME_CHECKED);
+			addStyleName(css.notChecked());
+			removeStyleName(css.checked());
 
 		}
 
@@ -204,9 +203,9 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean> {
 
 	public void setImportant(boolean important) {
 		if (important) {
-			addStyleDependentName(CSS_DEPENDENTNAME_IMPORTANT);
+			addStyleName(css.important());
 		} else {
-			removeStyleDependentName(CSS_DEPENDENTNAME_IMPORTANT);
+			removeStyleName(css.important());
 		}
 	}
 
