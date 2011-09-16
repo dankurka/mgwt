@@ -22,11 +22,12 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class PopupPanel extends FlowPanel {
 
 	public PopupPanel() {
+
 		setStylePrimaryName("mgwt-PopupPanel");
 	}
 
@@ -66,21 +67,21 @@ public class PopupPanel extends FlowPanel {
 	}
 
 	private native JavaScriptObject addAnimationEndEvent(Element element)/*-{
-		var instance = this;
+																			var instance = this;
 
-		var func = function(event){
+																			var func = function(event){
 
-		instance.@de.kurka.gwt.mobile.ui.client.panel.PopupPanel::onAnimationEnd()();
-		};
+																			instance.@de.kurka.gwt.mobile.ui.client.panel.PopupPanel::onAnimationEnd()();
+																			};
 
-		element.addEventListener('webkitAnimationEnd', func, false);
+																			element.addEventListener('webkitAnimationEnd', func, false);
 
-		return func;
-	}-*/;
+																			return func;
+																			}-*/;
 
 	private native JavaScriptObject removeAnimationEndEvent(Element element, JavaScriptObject func)/*-{
-		element.removeEventListener('webkitAnimationEnd', func, false);
-	}-*/;
+																									element.removeEventListener('webkitAnimationEnd', func, false);
+																									}-*/;
 
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Widget#onAttach()

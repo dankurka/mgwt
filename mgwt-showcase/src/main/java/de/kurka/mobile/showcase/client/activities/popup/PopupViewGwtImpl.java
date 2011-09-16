@@ -25,8 +25,8 @@ import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel1;
 import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel;
-import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel1;
-import de.kurka.gwt.mobile.ui.client.panel.PopupPanel;
+import de.kurka.gwt.mobile.ui.client.panel.PopinDialog;
+import de.kurka.gwt.mobile.ui.client.panel.PopinPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IPadMenuBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenu;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuContentPanel;
@@ -46,10 +46,10 @@ public class PopupViewGwtImpl implements PopupView {
 	private HeaderBackButton backButton;
 	private Button slideUpButton;
 	private Button alertButton;
-	private PopupPanel popupPanel;
+	private PopinDialog popupPanel;
 	private Button popupPanelCloseButton;
 	private DialogPanel1 dialogPanel;
-	private OverlayPanel1 overlayPanel;
+	private PopinPanel overlayPanel;
 
 	/**
 	 * 
@@ -73,7 +73,7 @@ public class PopupViewGwtImpl implements PopupView {
 		slideUpButton = new Button("Popup");
 		main.add(slideUpButton);
 
-		popupPanel = new PopupPanel();
+		popupPanel = new PopinDialog();
 
 		final Button redButton = new Button("Important");
 		redButton.setImportant(true);
@@ -88,7 +88,7 @@ public class PopupViewGwtImpl implements PopupView {
 
 		popupPanel.add(popupPanelCloseButton);
 
-		overlayPanel = new OverlayPanel1();
+		overlayPanel = new PopinPanel();
 		dialogPanel = new DialogPanel1();
 
 		dialogPanel.getContent().add(new HTML("test test test test"));
@@ -152,7 +152,7 @@ public class PopupViewGwtImpl implements PopupView {
 
 	@Override
 	public void showPopUpPanel() {
-		overlayPanel.show();
+		popupPanel.show();
 
 	}
 

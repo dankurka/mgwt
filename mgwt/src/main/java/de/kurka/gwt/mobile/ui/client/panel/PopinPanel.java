@@ -30,11 +30,11 @@ import de.kurka.gwt.mobile.mvp.client.AnimatableDisplay;
 import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.mvp.client.AnimationEndCallback;
 
-public class OverlayPanel1 extends Composite implements HasWidgets {
+public class PopinPanel extends Composite implements HasWidgets {
 	private AnimatableDisplay display;
 	private FlowPanel container;
 
-	public OverlayPanel1() {
+	public PopinPanel() {
 		display = GWT.create(AnimatableDisplay.class);
 		initWidget(display.asWidget());
 
@@ -65,7 +65,7 @@ public class OverlayPanel1 extends Composite implements HasWidgets {
 
 		// overlay as well
 		RootPanel panel = RootPanel.get();
-		panel.add(OverlayPanel1.this);
+		panel.add(PopinPanel.this);
 
 		// measure
 		int parentHeight = display.asWidget().getOffsetHeight();
@@ -101,7 +101,7 @@ public class OverlayPanel1 extends Composite implements HasWidgets {
 	public void hide() {
 
 		Animation animation = new Animation();
-		animation.setType(Animation.ANIMATION_FADE);
+		animation.setType(Animation.ANIMATION_POP);
 		animation.setDirection(false);
 
 		display.animate(animation, false, new AnimationEndCallback() {
@@ -110,7 +110,7 @@ public class OverlayPanel1 extends Composite implements HasWidgets {
 			public void onAnimationEnd() {
 				RootPanel panel = RootPanel.get();
 
-				panel.remove(OverlayPanel1.this);
+				panel.remove(PopinPanel.this);
 
 			}
 		});
