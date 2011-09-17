@@ -31,7 +31,7 @@ import de.kurka.mobile.showcase.client.activities.home.Topic;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 

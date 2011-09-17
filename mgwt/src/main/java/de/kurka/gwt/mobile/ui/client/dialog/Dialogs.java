@@ -17,6 +17,7 @@ package de.kurka.gwt.mobile.ui.client.dialog;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 
 public class Dialogs {
 
@@ -39,5 +40,11 @@ public class Dialogs {
 		});
 
 		alertDialog.show();
+	}
+
+	public static void confirm(String title, String text, final ConfirmCallback callback) {
+		ConfirmDialog confirmDialog = new ConfirmDialog(title, text, callback);
+
+		confirmDialog.show();
 	}
 }

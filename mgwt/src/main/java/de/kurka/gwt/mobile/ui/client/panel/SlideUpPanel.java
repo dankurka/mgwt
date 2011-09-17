@@ -19,16 +19,16 @@ import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.theme.base.DialogCss;
 
-public class PopupPanel1 extends AnimatableDialogBase {
+public class SlideUpPanel extends AnimatableDialogBase {
 
 	private final DialogCss dialogCss;
 
-	public PopupPanel1() {
+	public SlideUpPanel() {
 		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
 
 	}
 
-	public PopupPanel1(DialogCss dialogCss) {
+	public SlideUpPanel(DialogCss dialogCss) {
 		this.dialogCss = dialogCss;
 		setCenterContent(false);
 		container.addStyleName(dialogCss.getBottomPanel());

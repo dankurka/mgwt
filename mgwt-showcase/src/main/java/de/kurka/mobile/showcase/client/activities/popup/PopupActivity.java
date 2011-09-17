@@ -53,15 +53,7 @@ public class PopupActivity extends MGWTAbstractActivity {
 
 			@Override
 			public void onTouch() {
-				view.showPopUpPanel();
-			}
-		}));
-
-		addHandlerRegistration(view.getPopupCloseButton().addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch() {
-				view.hidePopUpPanel();
+				// TODO
 			}
 		}));
 
@@ -70,24 +62,6 @@ public class PopupActivity extends MGWTAbstractActivity {
 			@Override
 			public void onTouch() {
 				view.alertSomeStuff("Hi", "How are you doing?");
-			}
-		}));
-
-		addHandlerRegistration(view.getAlertOkButton().addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch() {
-				System.out.println("ok alert");
-				view.hideAlertPanel();
-			}
-		}));
-
-		addHandlerRegistration(view.getAlertCancelButton().addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch() {
-				System.out.println("cancel alert");
-				view.hideAlertPanel();
 			}
 		}));
 

@@ -18,6 +18,7 @@ package de.kurka.mobile.showcase.client.activities.popup;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 
 /**
  * @author Daniel Kurka
@@ -30,19 +31,7 @@ public interface PopupView extends IsWidget {
 
 	public HasSimpleTouchHandler getAlertButton();
 
-	public void showPopUpPanel();
-
-	public void hidePopUpPanel();
-
-	public HasSimpleTouchHandler getPopupCloseButton();
-
-	public void hideAlertPanel();
-
-	public void showAlertPanel();
-
-	public HasSimpleTouchHandler getAlertOkButton();
-
-	public HasSimpleTouchHandler getAlertCancelButton();
-
 	public void alertSomeStuff(String title, String text);
+
+	public void confirmSomeStuff(String title, String text, ConfirmCallback callback);
 }

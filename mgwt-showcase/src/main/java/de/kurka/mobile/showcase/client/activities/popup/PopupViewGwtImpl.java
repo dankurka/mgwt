@@ -25,11 +25,12 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
+import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import de.kurka.gwt.mobile.ui.client.dialog.Dialogs;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel1;
 import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel;
 import de.kurka.gwt.mobile.ui.client.panel.PopinPanel;
-import de.kurka.gwt.mobile.ui.client.panel.PopupPanel1;
+import de.kurka.gwt.mobile.ui.client.panel.SlideUpPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IPadMenuBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenu;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuContentPanel;
@@ -49,7 +50,7 @@ public class PopupViewGwtImpl implements PopupView {
 	private HeaderBackButton backButton;
 	private Button slideUpButton;
 	private Button alertButton;
-	private PopupPanel1 popupPanel;
+	private SlideUpPanel popupPanel;
 	private Button popupPanelCloseButton;
 	private DialogPanel1 dialogPanel;
 	private PopinPanel overlayPanel;
@@ -81,7 +82,7 @@ public class PopupViewGwtImpl implements PopupView {
 		slideUpButton = new Button("Popup");
 		main.add(slideUpButton);
 
-		popupPanel = new PopupPanel1();
+		popupPanel = new SlideUpPanel();
 
 		final Button redButton = new Button("Important");
 		redButton.setImportant(true);
@@ -160,47 +161,14 @@ public class PopupViewGwtImpl implements PopupView {
 	}
 
 	@Override
-	public void showPopUpPanel() {
-		popupPanel.show();
-
-	}
-
-	@Override
-	public void hidePopUpPanel() {
-		popupPanel.hide();
-
-	}
-
-	@Override
-	public HasSimpleTouchHandler getPopupCloseButton() {
-		return popupPanelCloseButton;
-	}
-
-	@Override
-	public void hideAlertPanel() {
-		overlayPanel.hide();
-
-	}
-
-	@Override
-	public void showAlertPanel() {
-		overlayPanel.show();
-
-	}
-
-	@Override
-	public HasSimpleTouchHandler getAlertOkButton() {
-		return dialogPanel.getCancelButton();
-	}
-
-	@Override
-	public HasSimpleTouchHandler getAlertCancelButton() {
-		return dialogPanel.getOkButton();
-	}
-
-	@Override
 	public void alertSomeStuff(String title, String text) {
 		Dialogs.alert(title, text, null);
+
+	}
+
+	@Override
+	public void confirmSomeStuff(String title, String text, ConfirmCallback callback) {
+		Dialogs.confirm(title, text, callback);
 
 	}
 
