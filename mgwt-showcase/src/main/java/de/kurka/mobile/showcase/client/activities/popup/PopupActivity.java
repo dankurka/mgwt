@@ -15,11 +15,18 @@
  */
 package de.kurka.mobile.showcase.client.activities.popup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
+import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
+import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.ButtonType;
+import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionCallback;
+import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionsDialogOption;
 import de.kurka.mobile.showcase.client.ClientFactory;
 import de.kurka.mobile.showcase.client.activities.UIPlace;
 
@@ -49,11 +56,42 @@ public class PopupActivity extends MGWTAbstractActivity {
 			}
 		}));
 
+		addHandlerRegistration(view.getConfirmButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+
+			@Override
+			public void onTouch() {
+				view.confirmSomeStuff("Confirm this", "Confirm some more stuff", new ConfirmCallback() {
+
+					@Override
+					public void onOk() {
+
+					}
+
+					@Override
+					public void onCancel() {
+
+					}
+				});
+
+			}
+		}));
+
 		addHandlerRegistration(view.getSlideUpButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch() {
-				// TODO
+				List<OptionsDialogOption> list = new ArrayList<OptionsDialogOption>();
+				list.add(new OptionsDialogOption("Confirm", ButtonType.CONFIRM));
+				list.add(new OptionsDialogOption("Cancel", ButtonType.NORMAL));
+				list.add(new OptionsDialogOption("Delete", ButtonType.IMPORTANT));
+
+				view.showSomeOptions(list, new OptionCallback() {
+
+					@Override
+					public void onOptionSelected(int index) {
+
+					}
+				});
 			}
 		}));
 
@@ -67,5 +105,4 @@ public class PopupActivity extends MGWTAbstractActivity {
 
 		panel.setWidget(view);
 	}
-
 }

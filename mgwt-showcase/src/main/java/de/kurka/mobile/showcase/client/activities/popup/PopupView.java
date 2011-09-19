@@ -15,10 +15,14 @@
  */
 package de.kurka.mobile.showcase.client.activities.popup;
 
+import java.util.List;
+
 import com.google.gwt.user.client.ui.IsWidget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
+import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionCallback;
+import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionsDialogOption;
 
 /**
  * @author Daniel Kurka
@@ -31,7 +35,11 @@ public interface PopupView extends IsWidget {
 
 	public HasSimpleTouchHandler getAlertButton();
 
+	public HasSimpleTouchHandler getConfirmButton();
+
 	public void alertSomeStuff(String title, String text);
 
 	public void confirmSomeStuff(String title, String text, ConfirmCallback callback);
+
+	public void showSomeOptions(List<OptionsDialogOption> optionText, OptionCallback callback);
 }

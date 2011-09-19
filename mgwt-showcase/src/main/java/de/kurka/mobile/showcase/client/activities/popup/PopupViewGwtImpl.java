@@ -15,9 +15,8 @@
  */
 package de.kurka.mobile.showcase.client.activities.popup;
 
-import com.google.gwt.dom.client.Style.Position;
-import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.user.client.ui.FlowPanel;
+import java.util.List;
+
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -27,10 +26,9 @@ import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import de.kurka.gwt.mobile.ui.client.dialog.Dialogs;
-import de.kurka.gwt.mobile.ui.client.panel.DialogPanel1;
-import de.kurka.gwt.mobile.ui.client.panel.OverlayPanel;
+import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionCallback;
+import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionsDialogOption;
 import de.kurka.gwt.mobile.ui.client.panel.PopinPanel;
-import de.kurka.gwt.mobile.ui.client.panel.SlideUpPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IPadMenuBackButton;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenu;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuContentPanel;
@@ -38,6 +36,7 @@ import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuHeader;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuTitle;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.experimental.LayoutPanel;
 
 /**
  * @author Daniel Kurka
@@ -45,26 +44,18 @@ import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
  */
 public class PopupViewGwtImpl implements PopupView {
 
-	private FlowPanel main;
+	private LayoutPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderBackButton backButton;
 	private Button slideUpButton;
 	private Button alertButton;
-	private SlideUpPanel popupPanel;
-	private Button popupPanelCloseButton;
-	private DialogPanel1 dialogPanel;
-	private PopinPanel overlayPanel;
+	private Button confirmButton;
 
 	/**
 	 * 
 	 */
 	public PopupViewGwtImpl() {
-		main = new FlowPanel();
-		main.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		main.getElement().getStyle().setTop(0, Unit.PX);
-		main.getElement().getStyle().setLeft(0, Unit.PX);
-		main.getElement().getStyle().setBottom(0, Unit.PX);
-		main.getElement().getStyle().setRight(0, Unit.PX);
+		main = new LayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -82,33 +73,12 @@ public class PopupViewGwtImpl implements PopupView {
 		slideUpButton = new Button("Popup");
 		main.add(slideUpButton);
 
-		popupPanel = new SlideUpPanel();
-
-		final Button redButton = new Button("Important");
-		redButton.setImportant(true);
-		popupPanel.add(redButton);
-
-		final Button okButton = new Button("Ok");
-		okButton.setConfirm(true);
-		popupPanel.add(okButton);
-
-		popupPanelCloseButton = new Button("Close");
-		popupPanel.add(popupPanelCloseButton);
-
-		popupPanel.add(popupPanelCloseButton);
-		popupPanel.setPanelToOverlay(main);
-
-		overlayPanel = new PopinPanel();
-		dialogPanel = new DialogPanel1();
-
-		dialogPanel.getContent().add(new HTML("test test test test"));
-		dialogPanel.getDialogTitle().setText("Titleasdf");
-
-		overlayPanel.add(dialogPanel);
-
 		alertButton = new Button("Alert");
 
 		main.add(alertButton);
+
+		confirmButton = new Button("Confirm");
+		main.add(confirmButton);
 
 		Button menuButton = new Button("menu");
 		main.add(menuButton);
@@ -130,7 +100,7 @@ public class PopupViewGwtImpl implements PopupView {
 				ipadMenuContentPanel.add(new HTML("asdf"));
 				menu.getBody().add(ipadMenuContentPanel);
 
-				OverlayPanel panel = new OverlayPanel();
+				PopinPanel panel = new PopinPanel();
 				panel.add(menu);
 
 				panel.show();
@@ -170,6 +140,17 @@ public class PopupViewGwtImpl implements PopupView {
 	public void confirmSomeStuff(String title, String text, ConfirmCallback callback) {
 		Dialogs.confirm(title, text, callback);
 
+	}
+
+	@Override
+	public void showSomeOptions(List<OptionsDialogOption> optionText, OptionCallback callback) {
+		Dialogs.options(optionText, callback, main);
+
+	}
+
+	@Override
+	public HasSimpleTouchHandler getConfirmButton() {
+		return confirmButton;
 	}
 
 }

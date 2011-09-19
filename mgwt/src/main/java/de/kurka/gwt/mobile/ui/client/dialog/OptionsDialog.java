@@ -15,31 +15,84 @@
  */
 package de.kurka.gwt.mobile.ui.client.dialog;
 
-import java.util.List;
+import java.util.Iterator;
 
+import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Widget;
+
+import de.kurka.gwt.mobile.ui.client.panel.SlideUpPanel;
 import de.kurka.gwt.mobile.ui.client.theme.base.DialogCss;
 
-public class OptionsDialog {
+public class OptionsDialog implements HasWidgets {
 
 	public interface OptionCallback {
 		public void onOptionSelected(int index);
 	}
 
-	public OptionsDialog(DialogCss css, List<String> optionText, OptionCallback callback) {
-		// slideUpPanel = new SlideUpPanel();
-		//
-		// final Button redButton = new Button("Important");
-		// redButton.setImportant(true);
-		// slideUpPanel.add(redButton);
-		//
-		// final Button okButton = new Button("Ok");
-		// okButton.setConfirm(true);
-		// slideUpPanel.add(okButton);
-		//
-		// popupPanelCloseButton = new Button("Close");
-		// slideUpPanel.add(popupPanelCloseButton);
-		//
-		// slideUpPanel.add(popupPanelCloseButton);
-		// slideUpPanel.setPanelToOverlay(main);
+	public enum ButtonType {
+		NORMAL, IMPORTANT, CONFIRM
+	};
+
+	public static class OptionsDialogOption {
+		private final String text;
+		private final ButtonType type;
+
+		public OptionsDialogOption(String text, ButtonType type) {
+			this.text = text;
+			this.type = type;
+
+		}
+
+		public String getText() {
+			return text;
+		}
+
+		public ButtonType getType() {
+			return type;
+		}
 	}
+
+	private SlideUpPanel slideUpPanel;
+
+	public OptionsDialog(DialogCss css) {
+		css.ensureInjected();
+		slideUpPanel = new SlideUpPanel();
+
+	}
+
+	public void show() {
+		slideUpPanel.show();
+	}
+
+	public void hide() {
+		slideUpPanel.hide();
+	}
+
+	@Override
+	public void add(Widget w) {
+		slideUpPanel.add(w);
+
+	}
+
+	@Override
+	public void clear() {
+		slideUpPanel.clear();
+
+	}
+
+	@Override
+	public Iterator<Widget> iterator() {
+		return slideUpPanel.iterator();
+	}
+
+	@Override
+	public boolean remove(Widget w) {
+		return slideUpPanel.remove(w);
+	}
+
+	public void setPanelToOverlay(HasWidgets widgetToCover) {
+		slideUpPanel.setPanelToOverlay(widgetToCover);
+
+	}
+
 }
