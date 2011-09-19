@@ -13,8 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.widget.base;
+package de.kurka.gwt.mobile.ui.client.widget;
 
+import com.google.gwt.editor.client.IsEditor;
+import com.google.gwt.editor.client.LeafValueEditor;
+import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -37,7 +40,7 @@ import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
  * @author Daniel Kurka
  * 
  */
-public class MCheckBox extends TouchWidget implements HasValue<Boolean> {
+public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEditor<LeafValueEditor<Boolean>> {
 
 	/**
 	 * @author Daniel Kurka
@@ -127,6 +130,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean> {
 	private static final int CONTAINER_WIDTH = 54;
 	private static final int DRAG_DEADZONE = 8;
 	protected final CheckBoxCss css;
+	private LeafValueEditor<Boolean> editor;
 
 	public MCheckBox() {
 		this(MGWTStyle.getDefaultClientBundle().getCheckBoxCss());
@@ -220,5 +224,13 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean> {
 		onDiv.setAttribute("style", "");
 		offDiv.setAttribute("style", "");
 
+	}
+
+	@Override
+	public LeafValueEditor<Boolean> asEditor() {
+		if (editor == null) {
+			editor = TakesValueEditor.of(this);
+		}
+		return editor;
 	}
 }

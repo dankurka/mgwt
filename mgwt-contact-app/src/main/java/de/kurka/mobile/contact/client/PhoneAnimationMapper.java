@@ -13,27 +13,23 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.widget.base;
+package de.kurka.mobile.contact.client;
 
-import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.place.shared.Place;
+
+import de.kurka.gwt.mobile.mvp.client.Animation;
+import de.kurka.gwt.mobile.mvp.client.AnimationMapper;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class MTextArea extends TextArea {
-	/**
-	 * 
-	 */
-	public MTextArea() {
-		setStylePrimaryName("mgwt-TextArea");
+public class PhoneAnimationMapper implements AnimationMapper {
+
+	@Override
+	public Animation getAnimation(Place oldPlace, Place newPlace) {
+
+		return new Animation();
 	}
 
-	public void setPlaceHolder(String value) {
-		getElement().setAttribute("placeholder", value);
-	}
-
-	public String getPlaceHolder() {
-		return getElement().getAttribute("placeholder");
-	}
 }

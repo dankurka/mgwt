@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.widget.experimental;
+package de.kurka.gwt.mobile.ui.client.widget;
 
 import java.util.Iterator;
 
@@ -25,7 +25,6 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
 
 public class LayoutPanel extends Composite implements HasWidgets {
 	private FlowPanel main;
@@ -39,7 +38,7 @@ public class LayoutPanel extends Composite implements HasWidgets {
 	}
 
 	public interface LayoutPanelBundle extends ClientBundle {
-		@Source("layout.css")
+		@Source("experimental/layout.css")
 		LayoutCss getLayoutCss();
 
 		public static final LayoutPanelBundle INSTANCE = GWT.create(LayoutPanelBundle.class);

@@ -13,13 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.panel;
+package de.kurka.gwt.mobile.ui.client.widget;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -34,6 +35,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.panel.Scrollbar;
 import de.kurka.gwt.mobile.ui.client.panel.Scrollbar.Orientation;
 import de.kurka.gwt.mobile.ui.client.theme.base.ScrollPanelCss;
 import de.kurka.gwt.mobile.ui.client.util.CssUtil;
@@ -225,6 +227,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	}
 
 	@Override
+	@UiChild(limit = 1, tagname = "child")
 	public void setWidget(Widget w) {
 		if (widgetToScroll != null) {
 			if (isAttached()) {

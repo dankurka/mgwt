@@ -7,6 +7,8 @@ public interface ListCss extends CssResource {
 	@ClassName("mgwt-List")
 	public String listCss();
 
+	public String round();
+
 	public String group();
 
 	public String selected();

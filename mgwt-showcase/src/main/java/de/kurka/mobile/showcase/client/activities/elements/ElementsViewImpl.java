@@ -21,15 +21,15 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
-import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
-import de.kurka.gwt.mobile.ui.client.widget.base.MCheckBox;
+import de.kurka.gwt.mobile.ui.client.widget.MCheckBox;
+import de.kurka.gwt.mobile.ui.client.widget.MPasswordTextBox;
+import de.kurka.gwt.mobile.ui.client.widget.MTextArea;
+import de.kurka.gwt.mobile.ui.client.widget.MTextBox;
+import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.base.MListBox;
-import de.kurka.gwt.mobile.ui.client.widget.base.MPasswordTextBox;
 import de.kurka.gwt.mobile.ui.client.widget.base.MRadioButton;
-import de.kurka.gwt.mobile.ui.client.widget.base.MTextArea;
-import de.kurka.gwt.mobile.ui.client.widget.base.MTextBox;
 import de.kurka.gwt.mobile.ui.client.widget.list.WidgetList;
 
 /**

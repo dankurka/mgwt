@@ -16,6 +16,7 @@
 package de.kurka.gwt.mobile.mvp.client.display;
 
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -52,6 +53,8 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 
 		this.css = css;
 		css.ensureInjected();
+
+		Window.alert(css.getText());
 
 		main = new FlowPanel();
 

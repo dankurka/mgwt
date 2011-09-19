@@ -9,3 +9,9 @@ mgwt/.classpath
 mgwt/.settings/
 mgwt/.project
 mgwt/target/
+mgwt-contact-app/.classpath
+mgwt-contact-app/.project
+mgwt-contact-app/.settings/
+mgwt-contact-app/gwt-unitCache/
+mgwt-contact-app/target/
+mgwt-contact-app/war/

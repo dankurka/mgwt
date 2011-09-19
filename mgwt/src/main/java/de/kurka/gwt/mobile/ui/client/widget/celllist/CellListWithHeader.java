@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.HasText;
 
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.theme.base.ListCss;
+import de.kurka.gwt.mobile.ui.client.widget.CellList;
 
 /**
  * @author Daniel Kurka

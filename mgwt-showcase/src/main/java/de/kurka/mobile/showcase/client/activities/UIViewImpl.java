@@ -20,12 +20,12 @@ import java.util.List;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import de.kurka.gwt.mobile.ui.client.panel.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
+import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
-import de.kurka.gwt.mobile.ui.client.widget.experimental.LayoutPanel;
 import de.kurka.mobile.showcase.client.BasicCell;
 
 /**

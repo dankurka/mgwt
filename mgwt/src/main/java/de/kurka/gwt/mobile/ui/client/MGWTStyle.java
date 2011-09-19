@@ -11,6 +11,7 @@ public class MGWTStyle {
 	public static final MGWTClientBundle getDefaultClientBundle() {
 		if (defaultClientBundle == null) {
 			defaultClientBundle = GWT.create(MGWTClientBundle.class);
+			defaultClientBundle.getMainCss().ensureInjected();
 		}
 		return defaultClientBundle;
 	}

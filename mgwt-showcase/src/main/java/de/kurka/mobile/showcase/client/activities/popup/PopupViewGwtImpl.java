@@ -23,7 +23,6 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
-import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import de.kurka.gwt.mobile.ui.client.dialog.Dialogs;
 import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionCallback;
@@ -34,9 +33,10 @@ import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenu;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuContentPanel;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuHeader;
 import de.kurka.gwt.mobile.ui.client.panel.ipadmenu.IpadMenuTitle;
+import de.kurka.gwt.mobile.ui.client.widget.Button;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
-import de.kurka.gwt.mobile.ui.client.widget.experimental.LayoutPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 
 /**
  * @author Daniel Kurka

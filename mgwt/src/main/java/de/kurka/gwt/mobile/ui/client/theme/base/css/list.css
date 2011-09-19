@@ -5,9 +5,12 @@
 
 .mgwt-List {
 	position: relative;
-	/*border: #878787 solid 1px;*/
-	margin: 3px 9px 17px;
 	list-style: none;
+	
+}
+
+.mgwt-List.round {
+	margin: 3px 9px 17px;
 	padding: 5px;
 	border-bottom-left-radius: 8px 8px;
 	border-bottom-right-radius: 8px 8px;
@@ -20,7 +23,7 @@
 
 
 /* should be obsolete */
-.mgwt-List li:first-child {
+.mgwt-List.round li:first-child {
 	\-webkit-border-top-left-radius: 8px;
 	\-webkit-border-top-right-radius: 8px;
 }
@@ -49,7 +52,7 @@
 	
 
 
-.mgwt-List li:last-child {
+.mgwt-List.round li:last-child {
 	\-webkit-border-bottom-left-radius: 8px;
 	\-webkit-border-bottom-right-radius: 8px;
 	border-bottom-width: 1px;

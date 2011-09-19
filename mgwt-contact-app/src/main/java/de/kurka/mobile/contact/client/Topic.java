@@ -13,25 +13,38 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.widget.base;
+package de.kurka.mobile.contact.client;
 
-import com.google.gwt.user.client.ui.PasswordTextBox;
+import java.io.Serializable;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class MPasswordTextBox extends PasswordTextBox {
+public class Topic implements Serializable {
 
-	public MPasswordTextBox() {
-		setStylePrimaryName("mgwt-PasswordTextBox");
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -134211444131752658L;
+
+	private String name;
+
+	public Topic() {
+
 	}
 
-	public void setPlaceHolder(String value) {
-		getElement().setAttribute("placeholder", value);
+	public Topic(String name) {
+		this.name = name;
+
 	}
 
-	public String getPlaceHolder() {
-		return getElement().getAttribute("placeholder");
+	public String getName() {
+		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

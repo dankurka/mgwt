@@ -31,7 +31,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchToNativeTouc
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TouchPanel extends FlowPanel implements HasTouchHandlers {
 

@@ -29,6 +29,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeEvent;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler;
+import de.kurka.gwt.mobile.ui.client.theme.base.MGWTClientBundle;
 
 /**
  * @author Daniel Kurka
@@ -162,24 +163,24 @@ public class MGWT implements HasOrientationChangeHandler {
 	}
 
 	private native void setUpPreventScrolling(Element el)/*-{
-		var func = function(event) {
-			event.preventDefault();
-			//event.stopPropagation();
-			return false;
-		};
+															var func = function(event) {
+															event.preventDefault();
+															//event.stopPropagation();
+															return false;
+															};
 
-		el.ontouchmove = func;
-		el.ontouchstart = func;
-		el.ontouchend = func;
-	}-*/;
+															el.ontouchmove = func;
+															el.ontouchstart = func;
+															el.ontouchend = func;
+															}-*/;
 
 	private native int getOrientation()/*-{
-		if (typeof ($wnd.orientation) == 'undefined') {
-			return 0;
-		}
+										if (typeof ($wnd.orientation) == 'undefined') {
+										return 0;
+										}
 
-		return $wnd.orientation;
-	}-*/;
+										return $wnd.orientation;
+										}-*/;
 
 	private void onorientationChange(int orientation) {
 
@@ -223,14 +224,14 @@ public class MGWT implements HasOrientationChangeHandler {
 	}
 
 	private native void setupOrientation()/*-{
-		var instance = this;
-		var func = function() {
+											var instance = this;
+											var func = function() {
 
-			instance.@de.kurka.gwt.mobile.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
-		};
-		$doc.body.onorientationchange = func;
-		$doc.addEventListener("orientationChanged", func);
-	}-*/;
+											instance.@de.kurka.gwt.mobile.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
+											};
+											$doc.body.onorientationchange = func;
+											$doc.addEventListener("orientationChanged", func);
+											}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler#addOrientationChangeHandler(de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler)
@@ -242,41 +243,28 @@ public class MGWT implements HasOrientationChangeHandler {
 	}
 
 	public native int getWindowInnerHeight()/*-{
-		return $wnd.innerHeight;
-	}-*/;
+											return $wnd.innerHeight;
+											}-*/;
 
 	public native int getWindowInnerWidth()/*-{
-		return $wnd.innerWidth;
-	}-*/;
+											return $wnd.innerWidth;
+											}-*/;
 
 	public native boolean isFullScreen()/*-{
-		if ($wnd.navigator.standalone) {
-			return true;
-		}
-		return false;
-	}-*/;
+										if ($wnd.navigator.standalone) {
+										return true;
+										}
+										return false;
+										}-*/;
 
 	/**
 	 * 
 	 */
+	public void loadStyle(MGWTClientBundle bundle) {
+		bundle.getMainCss().ensureInjected();
+	}
+
 	public void loadStyle() {
-		String cssUrl = GWT.getModuleName() + "/mgwt/iphone/css/iphone.css";
-
-		if (FEATURE_DETECTION.isIPad()) {
-			cssUrl = GWT.getModuleName() + "/mgwt/ipad/css/ipad.css";
-
-		} else {
-			if (FEATURE_DETECTION.isAndroid()) {
-				cssUrl = GWT.getModuleName() + "/mgwt/android/css/android.css";
-			}
-		}
-
-		LinkElement linkElement = Document.get().createLinkElement();
-		linkElement.setHref(cssUrl);
-		linkElement.setRel("stylesheet");
-		linkElement.setType("text/css");
-
-		getHead().appendChild(linkElement);
-
+		loadStyle(MGWTStyle.getDefaultClientBundle());
 	}
 }

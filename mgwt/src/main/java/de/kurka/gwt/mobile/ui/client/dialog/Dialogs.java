@@ -22,10 +22,10 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
-import de.kurka.gwt.mobile.ui.client.button.Button;
 import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionCallback;
 import de.kurka.gwt.mobile.ui.client.dialog.OptionsDialog.OptionsDialogOption;
+import de.kurka.gwt.mobile.ui.client.widget.Button;
 
 public class Dialogs {
 

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.widget.celllist;
+package de.kurka.gwt.mobile.ui.client.widget;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -39,11 +39,15 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.theme.base.ListCss;
+import de.kurka.gwt.mobile.ui.client.widget.celllist.Cell;
+import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
+import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedHandler;
+import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
@@ -90,7 +94,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
 			if (node != null)
-				node.removeClassName("active");
+				node.removeClassName(css.selected());
 			if (started && !moved && index != -1) {
 				fireSelectionAtIndex(index);
 			}
@@ -177,6 +181,14 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		internalTouchHandler = new InternalTouchHandler();
 
 		setStylePrimaryName(css.listCss());
+	}
+
+	public void setRound(boolean round) {
+		if (round) {
+			addStyleName(css.round());
+		} else {
+			removeStyleName(css.round());
+		}
 	}
 
 	private void fireSelectionAtIndex(int index) {
@@ -268,4 +280,5 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			li.removeClassName(css.selected());
 		}
 	}
+
 }
