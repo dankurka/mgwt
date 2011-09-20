@@ -19,10 +19,10 @@ import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.GWT.UncaughtExceptionHandler;
+import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -33,6 +33,7 @@ import de.kurka.gwt.mobile.mvp.client.display.AnimatableDisplayBaseImpl;
 import de.kurka.gwt.mobile.ui.client.MGWT;
 import de.kurka.gwt.mobile.ui.client.MGWTSettings;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
+import de.kurka.mobile.showcase.client.css.AppBundle;
 import de.kurka.mobile.showcase.client.places.HomePlace;
 
 /**
@@ -62,26 +63,15 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 
 		if (MGWTUtil.getFeatureDetection().isIPad() || MGWTUtil.getFeatureDetection().isDesktop()) {
-			MGWTUtil.loadCss("ipad.css", new AsyncCallback<Boolean>() {
-
-				@Override
-				public void onSuccess(Boolean result) {
-					historyHandler.handleCurrentHistory();
-
-				}
-
-				@Override
-				public void onFailure(Throwable caught) {
-					Window.alert("can not load css");
-
-				}
-			});
+			//very nasty workaround because GWT does not corretly support @media
+			StyleInjector.inject(AppBundle.INSTANCE.css().getText());
 
 			createTabletDisplay(clientFactory);
 		} else {
 			createPhoneDisplay(clientFactory);
-			historyHandler.handleCurrentHistory();
+
 		}
+		historyHandler.handleCurrentHistory();
 
 	}
 
