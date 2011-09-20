@@ -12,3 +12,11 @@
 	padding: 10px;
 	font-weight: bold;
 }
+
+@if mgwt.os android {
+	.mgwt-RoundPanel {
+		background-color: #555555;
+		color: white;
+	}
+	
+}

@@ -1,37 +1,5 @@
 
 
-
-
-
-
-
-.mgwt-roundPanel {
-	-webkit-border-radius: 15px;
-	background-color: white;
-	border: 1px solid rgb(171, 173, 176);
-	margin: 10px;
-	padding: 10px;
-	font-weight: bold;
-}
-
-
-
-
-.mgwt-TextBox, .mgwt-PasswordTextBox, .mgwt-TextArea, .mgwt-ListBox {
- 
-    color: #777;
-    background: transparent url(../.png);
-    border: 0;
-    font: normal 17px Helvetica;
-    padding: 0;
-    display: inline-block;
-    margin-left: 0px;
-    width: 100%;
-    -webkit-appearance: textarea;
-    -webkit-user-select: text;
-
-}
-
 .mgwt-ListBox{
 -webkit-user-select: auto;
 }
