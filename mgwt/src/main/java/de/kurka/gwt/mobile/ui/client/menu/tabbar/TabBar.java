@@ -35,7 +35,7 @@ import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
 public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
 	private FlowPanel container;
-	private LinkedList<TabBarButtonBase> children;
+	private LinkedList<TabBarButton> children;
 	private LinkedList<HandlerRegistration> handlers = new LinkedList<HandlerRegistration>();
 	protected final TabBarCss css;
 
@@ -46,7 +46,7 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 	public TabBar(TabBarCss css) {
 		this.css = css;
 		css.ensureInjected();
-		children = new LinkedList<TabBarButtonBase>();
+		children = new LinkedList<TabBarButton>();
 		container = new FlowPanel();
 		container.setStylePrimaryName(css.tabbar());
 		initWidget(container);
@@ -54,9 +54,9 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
 	private class InternalTouchHandler implements SimpleTouchHandler {
 
-		private final TabBarButtonBase button;
+		private final TabBarButton button;
 
-		public InternalTouchHandler(TabBarButtonBase button) {
+		public InternalTouchHandler(TabBarButton button) {
 			this.button = button;
 
 		}
@@ -68,7 +68,7 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
 	}
 
-	public void add(TabBarButtonBase w) {
+	public void add(TabBarButton w) {
 		if (children.size() == 0) {
 			w.setSelected(true);
 		}
@@ -85,11 +85,11 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
 	}
 
-	private int getIndexForWidget(TabBarButtonBase w) {
+	private int getIndexForWidget(TabBarButton w) {
 		return children.indexOf(w);
 	}
 
-	public boolean remove(TabBarButtonBase w) {
+	public boolean remove(TabBarButton w) {
 		children.remove(w);
 		int indexForWidget = getIndexForWidget(w);
 		if (indexForWidget != -1) {
@@ -114,7 +114,7 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 			throw new IllegalArgumentException("invalud index");
 		}
 		int count = 0;
-		for (TabBarButtonBase button : children) {
+		for (TabBarButton button : children) {
 			if (count == index) {
 				button.setSelected(true);
 			} else {
@@ -135,7 +135,7 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 	 * @param index
 	 */
 	public void remove(int index) {
-		TabBarButtonBase w = getWidgetForIndex(index);
+		TabBarButton w = getWidgetForIndex(index);
 		remove(w);
 	}
 
@@ -143,7 +143,7 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 	 * @param index
 	 * @return
 	 */
-	private TabBarButtonBase getWidgetForIndex(int index) {
+	private TabBarButton getWidgetForIndex(int index) {
 		return children.get(index);
 	}
 

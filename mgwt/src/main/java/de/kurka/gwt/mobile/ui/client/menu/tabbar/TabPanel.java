@@ -74,7 +74,7 @@ public class TabPanel extends Composite {
 		tabContainer.setSelectedChild(index);
 	}
 
-	public void add(TabBarButtonBase button, Widget child) {
+	public void add(TabBarButton button, Widget child) {
 		tabContainer.add(child);
 		tabBar.add(button);
 	}

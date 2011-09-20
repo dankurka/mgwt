@@ -20,16 +20,8 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarBookmarkButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarContactsButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarDownloadsButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarFavoritesButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarFeaturedButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarHistoryButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMoreButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMostRecentButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarMostViewedButton;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarSearchButton;
+import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarButton;
+import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarButton.TYPE;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabPanel;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
@@ -64,16 +56,16 @@ public class TabBarViewGwtImpl implements TabBarView {
 		TabPanel tabPanel = new TabPanel();
 		tabPanel.setScrollingEnabledX(false);
 
-		tabPanel.add(new TabBarBookmarkButton(), new Label("Bookmark"));
-		tabPanel.add(new TabBarContactsButton(), new Label("Contacts"));
-		tabPanel.add(new TabBarDownloadsButton(), new Label("Downloads"));
-		tabPanel.add(new TabBarFavoritesButton(), new Label("Favorites"));
-		tabPanel.add(new TabBarFeaturedButton(), new Label("Featured"));
-		tabPanel.add(new TabBarHistoryButton(), new Label("History"));
-		tabPanel.add(new TabBarMoreButton(), new Label("More"));
-		tabPanel.add(new TabBarMostRecentButton(), new Label("Most Recent"));
-		tabPanel.add(new TabBarMostViewedButton(), new Label("Most Viewed"));
-		tabPanel.add(new TabBarSearchButton(), new Label("Search"));
+		tabPanel.add(new TabBarButton(TYPE.BOOKMARK), new Label("Bookmark"));
+		tabPanel.add(new TabBarButton(TYPE.CONTACTS), new Label("Contacts"));
+		tabPanel.add(new TabBarButton(TYPE.DOWNLOAD), new Label("Downloads"));
+		tabPanel.add(new TabBarButton(TYPE.FAVORITES), new Label("Favorites"));
+		tabPanel.add(new TabBarButton(TYPE.FEATURED), new Label("Featured"));
+		tabPanel.add(new TabBarButton(TYPE.HISTORY), new Label("History"));
+		tabPanel.add(new TabBarButton(TYPE.MORE), new Label("More"));
+		tabPanel.add(new TabBarButton(TYPE.MOST_RECENT), new Label("Most Recent"));
+		tabPanel.add(new TabBarButton(TYPE.MOST_VIEWED), new Label("Most Viewed"));
+		tabPanel.add(new TabBarButton(TYPE.SEARCH), new Label("Search"));
 
 		main.add(tabPanel);
 	}
