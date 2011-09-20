@@ -35,8 +35,7 @@
 
 
 .mgwt-ButtonBar {
-	position: absolute;
-	bottom: 0px;
+	position: relative;
 	height: 40px;
 	width: 100%;
 	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');

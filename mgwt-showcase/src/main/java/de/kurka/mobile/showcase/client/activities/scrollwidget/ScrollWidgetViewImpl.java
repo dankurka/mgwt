@@ -15,29 +15,29 @@
  */
 package de.kurka.mobile.showcase.client.activities.scrollwidget;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWT;
-import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
+import de.kurka.gwt.mobile.ui.client.widget.RoundPanel;
 import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ScrollWidgetViewImpl implements ScrollWidgetView {
 
-	private FlowPanel main;
+	private LayoutPanel main;
 	private HeaderBackButton headerBackButton;
 
 	public ScrollWidgetViewImpl() {
 
-		main = new FlowPanel();
+		main = new LayoutPanel();
 
 		HeaderPanel headerPanel = new HeaderPanel();
 		headerPanel.setCenter("Scroll Widget");
@@ -51,8 +51,6 @@ public class ScrollWidgetViewImpl implements ScrollWidgetView {
 		main.add(headerPanel);
 
 		ScrollPanel scrollPanel = new ScrollPanel();
-
-		scrollPanel.setSize("320px", "320px");
 
 		RoundPanel roundPanel = new RoundPanel();
 		roundPanel.setWidth("1000px");

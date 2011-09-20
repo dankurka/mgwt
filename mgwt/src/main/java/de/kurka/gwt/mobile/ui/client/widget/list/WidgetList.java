@@ -31,7 +31,7 @@ import de.kurka.gwt.mobile.ui.client.theme.base.ListCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class WidgetList extends Composite implements HasWidgets {
 
@@ -95,6 +95,14 @@ public class WidgetList extends Composite implements HasWidgets {
 
 		return container.remove(entry);
 
+	}
+
+	public void setRound(boolean round) {
+		if (round) {
+			addStyleName(css.round());
+		} else {
+			removeStyleName(css.round());
+		}
 	}
 
 }

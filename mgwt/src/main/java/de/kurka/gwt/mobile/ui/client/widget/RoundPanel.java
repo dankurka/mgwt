@@ -13,19 +13,24 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.panel;
+package de.kurka.gwt.mobile.ui.client.widget;
 
-import com.google.gwt.user.client.ui.FlowPanel;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.PanelCss;
+import de.kurka.gwt.mobile.ui.client.widget.touch.TouchPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class RoundPanel extends FlowPanel {
-	/**
-	 * 
-	 */
+public class RoundPanel extends TouchPanel {
+
 	public RoundPanel() {
-		setStylePrimaryName("mgwt-roundPanel");
+		this(MGWTStyle.getDefaultClientBundle().getPanelCss());
+	}
+
+	public RoundPanel(PanelCss css) {
+		css.ensureInjected();
+		addStyleName(css.roundPanel());
 	}
 }

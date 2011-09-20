@@ -17,6 +17,7 @@ package de.kurka.mobile.showcase.client.activities.popup;
 
 import java.util.List;
 
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -37,6 +38,7 @@ import de.kurka.gwt.mobile.ui.client.widget.Button;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
+import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 
 /**
  * @author Daniel Kurka
@@ -70,18 +72,26 @@ public class PopupViewGwtImpl implements PopupView {
 
 		main.add(headerPanel);
 
+		ScrollPanel scrollPanel = new ScrollPanel();
+		scrollPanel.setScrollingEnabledX(false);
+
+		FlowPanel container = new FlowPanel();
+		scrollPanel.setWidget(container);
+
 		slideUpButton = new Button("Popup");
-		main.add(slideUpButton);
+		container.add(slideUpButton);
 
 		alertButton = new Button("Alert");
 
-		main.add(alertButton);
+		container.add(alertButton);
 
 		confirmButton = new Button("Confirm");
-		main.add(confirmButton);
+		container.add(confirmButton);
 
 		Button menuButton = new Button("menu");
-		main.add(menuButton);
+		container.add(menuButton);
+
+		main.add(scrollPanel);
 
 		menuButton.addSimpleTouchHandler(new SimpleTouchHandler() {
 

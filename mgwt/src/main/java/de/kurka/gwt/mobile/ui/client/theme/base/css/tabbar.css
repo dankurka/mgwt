@@ -33,16 +33,13 @@
 	*/
 	background-image: backgroundImage;
 	background-repeat: repeat-x;
+	display: inline-block;
 }
 
 .mgwt-TabBar .active{
 }
 
-.mgwt-TabBar.bottom{
-	position: absolute;
-	display: inline-block;
-	bottom: 0px;
-}
+
 
 .mgwt-TabBar .bookmarkButton, .mgwt-TabBar .contactsButton, .mgwt-TabBar .downloadsButton, .mgwt-TabBar .favoritesButton, .mgwt-TabBar .featuredButton, .mgwt-TabBar .historyButton, .mgwt-TabBar .moreButton, .mgwt-TabBar .mostRecentButton, .mgwt-TabBar .mostViewedButton, .mgwt-TabBar .searchButton{
 	display: inline-block;

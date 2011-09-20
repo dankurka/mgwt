@@ -18,21 +18,22 @@ package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 import java.util.LinkedList;
 
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+
+import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabContainer extends Composite {
 
-	private SimplePanel container;
+	private ScrollPanel container;
 	private LinkedList<Widget> children = new LinkedList<Widget>();
 	private Widget activeWidget;
 
 	public TabContainer() {
-		container = new SimplePanel();
+		container = new ScrollPanel();
 		initWidget(container);
 
 	}
@@ -44,9 +45,17 @@ public class TabContainer extends Composite {
 
 	}
 
+	public void setScrollingEnabledX(boolean enabled) {
+		container.setScrollingEnabledX(enabled);
+	}
+
+	public void setScrollingEnabledY(boolean enabled) {
+		container.setScrollingEnabledY(enabled);
+	}
+
 	public void clear() {
 		children.clear();
-		container.clear();
+		container.setWidget(null);
 		activeWidget = null;
 
 	}

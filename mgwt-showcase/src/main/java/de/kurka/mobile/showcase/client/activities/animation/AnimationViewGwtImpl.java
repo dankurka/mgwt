@@ -17,25 +17,26 @@ package de.kurka.mobile.showcase.client.activities.animation;
 
 import java.util.List;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
+import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class AnimationViewGwtImpl implements AnimationView {
 
 	private CellListWithHeader<Animation> list;
-	private FlowPanel main;
+	private LayoutPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderBackButton headerBackButton;
 
@@ -43,7 +44,7 @@ public class AnimationViewGwtImpl implements AnimationView {
 	 * 
 	 */
 	public AnimationViewGwtImpl() {
-		main = new FlowPanel();
+		main = new LayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -51,6 +52,8 @@ public class AnimationViewGwtImpl implements AnimationView {
 		headerPanel.setLeftWidget(headerBackButton);
 
 		main.add(headerPanel);
+
+		ScrollPanel scrollPanel = new ScrollPanel();
 
 		list = new CellListWithHeader<Animation>(new BasicCell<Animation>() {
 
@@ -64,7 +67,13 @@ public class AnimationViewGwtImpl implements AnimationView {
 				return true;
 			}
 		});
-		main.add(list);
+
+		list.getCellList().setRound(true);
+
+		scrollPanel.setWidget(list);
+		scrollPanel.setScrollingEnabledX(false);
+
+		main.add(scrollPanel);
 
 	}
 

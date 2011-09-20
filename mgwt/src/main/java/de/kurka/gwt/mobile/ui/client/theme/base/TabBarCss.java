@@ -26,6 +26,4 @@ public interface TabBarCss extends ButtonBaseCss {
 
 	public String searchButton();
 
-	public String bottom();
-
 }

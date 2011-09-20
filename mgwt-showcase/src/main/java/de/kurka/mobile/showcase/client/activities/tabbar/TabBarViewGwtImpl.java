@@ -15,7 +15,6 @@
  */
 package de.kurka.mobile.showcase.client.activities.tabbar;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -34,19 +33,20 @@ import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBarSearchButton;
 import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabPanel;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class TabBarViewGwtImpl implements TabBarView {
 
-	private FlowPanel main;
+	private LayoutPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderBackButton backButton;
 
 	public TabBarViewGwtImpl() {
-		main = new FlowPanel();
+		main = new LayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -62,6 +62,7 @@ public class TabBarViewGwtImpl implements TabBarView {
 		main.add(headerPanel);
 
 		TabPanel tabPanel = new TabPanel();
+		tabPanel.setScrollingEnabledX(false);
 
 		tabPanel.add(new TabBarBookmarkButton(), new Label("Bookmark"));
 		tabPanel.add(new TabBarContactsButton(), new Label("Contacts"));

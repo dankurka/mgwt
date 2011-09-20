@@ -21,8 +21,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
 import de.kurka.gwt.mobile.ui.client.widget.Button;
+import de.kurka.gwt.mobile.ui.client.widget.RoundPanel;
 
 /**
  * @author Daniel Kurka

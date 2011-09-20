@@ -15,7 +15,6 @@
  */
 package de.kurka.mobile.showcase.client.activities.buttonbar;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
@@ -49,14 +48,16 @@ import de.kurka.gwt.mobile.ui.client.menu.bar.StopButton;
 import de.kurka.gwt.mobile.ui.client.menu.bar.TrashButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
+import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ButtonBarViewGwtImpl implements ButtonBarView {
 
-	private FlowPanel main;
+	private LayoutPanel main;
 	private ButtonBar footerPanel;
 	private HeaderPanel headerPanel;
 	private HeaderBackButton backButton;
@@ -65,7 +66,7 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 	 * 
 	 */
 	public ButtonBarViewGwtImpl() {
-		main = new FlowPanel();
+		main = new LayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -77,6 +78,8 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 			headerPanel.setLeftWidget(backButton);
 		}
 		main.add(headerPanel);
+
+		main.add(new ScrollPanel());
 
 		footerPanel = new ButtonBar();
 

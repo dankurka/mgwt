@@ -126,14 +126,6 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 			SelectionEvent.fire(this, Integer.valueOf(index));
 	}
 
-	public void setBottom(boolean bottom) {
-		if (bottom) {
-			addStyleName(css.bottom());
-		} else {
-			removeStyleDependentName(css.bottom());
-		}
-	}
-
 	@Override
 	public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
 		return addHandler(handler, SelectionEvent.getType());

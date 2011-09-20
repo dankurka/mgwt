@@ -17,13 +17,14 @@ package de.kurka.mobile.showcase.client.activities;
 
 import java.util.List;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderRoundButton;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
+import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellListWithHeader;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.HasCellSelectedHandler;
 import de.kurka.mobile.showcase.client.BasicCell;
@@ -35,13 +36,13 @@ import de.kurka.mobile.showcase.client.activities.home.Topic;
  */
 public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 
-	private FlowPanel main;
+	private LayoutPanel main;
 	private HeaderRoundButton forwardButton;
 	private HeaderPanel headerPanel;
 	private CellListWithHeader<Topic> cellList;
 
 	public ShowCaseListViewGwtImpl() {
-		main = new FlowPanel();
+		main = new LayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -61,7 +62,13 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 				return true;
 			}
 		});
-		main.add(cellList);
+
+		cellList.getCellList().setRound(true);
+
+		ScrollPanel scrollPanel = new ScrollPanel();
+		scrollPanel.setWidget(cellList);
+		scrollPanel.setScrollingEnabledX(false);
+		main.add(scrollPanel);
 
 	}
 

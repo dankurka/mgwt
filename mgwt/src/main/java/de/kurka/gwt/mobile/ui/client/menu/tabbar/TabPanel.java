@@ -18,11 +18,11 @@ package de.kurka.gwt.mobile.ui.client.menu.tabbar;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 
 /**
  * @author Daniel Kurka
@@ -30,7 +30,7 @@ import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
  */
 public class TabPanel extends Composite {
 
-	private FlowPanel container;
+	private LayoutPanel container;
 	private TabContainer tabContainer;
 	private TabBar tabBar;
 
@@ -39,13 +39,15 @@ public class TabPanel extends Composite {
 	}
 
 	public TabPanel(TabBarCss css) {
-		container = new FlowPanel();
+		container = new LayoutPanel();
 		initWidget(container);
+		container.addStyleName(LayoutPanel.LayoutPanelBundle.INSTANCE.getLayoutCss().mainChild());
 
 		tabContainer = new TabContainer();
 		container.add(tabContainer);
+		tabContainer.addStyleName(LayoutPanel.LayoutPanelBundle.INSTANCE.getLayoutCss().mainChild());
 		tabBar = new TabBar(css);
-		tabBar.setBottom(true);
+
 		container.add(tabBar);
 
 		tabBar.addSelectionHandler(new SelectionHandler<Integer>() {
@@ -57,6 +59,14 @@ public class TabPanel extends Composite {
 			}
 		});
 
+	}
+
+	public void setScrollingEnabledX(boolean enabled) {
+		tabContainer.setScrollingEnabledX(enabled);
+	}
+
+	public void setScrollingEnabledY(boolean enabled) {
+		tabContainer.setScrollingEnabledY(enabled);
 	}
 
 	public void setSelectedChild(int index) {

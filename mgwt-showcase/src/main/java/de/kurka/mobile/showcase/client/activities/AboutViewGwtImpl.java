@@ -15,33 +15,34 @@
  */
 package de.kurka.mobile.showcase.client.activities;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
-import de.kurka.gwt.mobile.ui.client.panel.RoundPanel;
 import de.kurka.gwt.mobile.ui.client.widget.Button;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
+import de.kurka.gwt.mobile.ui.client.widget.RoundPanel;
+import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class AboutViewGwtImpl implements AboutView {
 
-	private FlowPanel main;
+	private LayoutPanel main;
 	private RoundPanel round;
 	private Button backbutton;
 
 	public AboutViewGwtImpl() {
-		main = new FlowPanel();
-		HeaderPanel panel = new HeaderPanel();
+		main = new LayoutPanel();
+		HeaderPanel headerPanel = new HeaderPanel();
+		headerPanel.setCenter("About");
+		main.add(headerPanel);
 
-		panel.setCenter("About");
-
-		main.add(panel);
+		ScrollPanel scrollPanel = new ScrollPanel();
 
 		round = new RoundPanel();
 
@@ -53,12 +54,13 @@ public class AboutViewGwtImpl implements AboutView {
 
 		round.add(new HTML("<br/><br/><a target='_blank' href='http://www.m-gwt.com'>www.m-gwt.com</a><br/><br/>"));
 
-		main.add(round);
+		scrollPanel.setWidget(round);
+		scrollPanel.setScrollingEnabledX(false);
+		main.add(scrollPanel);
 
 		backbutton = new Button();
 
 		if (!MGWTUtil.getFeatureDetection().isTablet()) {
-
 			main.add(backbutton);
 		}
 

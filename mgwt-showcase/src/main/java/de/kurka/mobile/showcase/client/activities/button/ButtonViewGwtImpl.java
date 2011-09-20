@@ -23,20 +23,21 @@ import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.widget.Button;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ButtonViewGwtImpl implements ButtonView {
 
-	private FlowPanel main;
+	private LayoutPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderBackButton backButton;
 
 	public ButtonViewGwtImpl() {
-		main = new FlowPanel();
+		main = new LayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -54,8 +55,6 @@ public class ButtonViewGwtImpl implements ButtonView {
 		FlowPanel content = new FlowPanel();
 
 		ScrollPanel scrollPanel = new ScrollPanel();
-		scrollPanel.addStyleName("constrainWidth");
-		scrollPanel.addStyleName("constrainHeight");
 		scrollPanel.setScrollingEnabledX(false);
 
 		Button normalButton = new Button("Normal");

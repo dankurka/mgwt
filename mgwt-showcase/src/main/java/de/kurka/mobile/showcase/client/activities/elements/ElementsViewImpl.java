@@ -15,7 +15,6 @@
  */
 package de.kurka.mobile.showcase.client.activities.elements;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -23,6 +22,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
+import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 import de.kurka.gwt.mobile.ui.client.widget.MCheckBox;
 import de.kurka.gwt.mobile.ui.client.widget.MPasswordTextBox;
 import de.kurka.gwt.mobile.ui.client.widget.MTextArea;
@@ -34,11 +34,11 @@ import de.kurka.gwt.mobile.ui.client.widget.list.WidgetList;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ElementsViewImpl implements ElementsView {
 
-	private FlowPanel main;
+	private LayoutPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderBackButton headerBackButton;
 	private ScrollPanel scrollPanel;
@@ -53,7 +53,7 @@ public class ElementsViewImpl implements ElementsView {
 		scrollPanel.addStyleName("constrainHeight");
 		scrollPanel.setScrollingEnabledX(false);
 
-		main = new FlowPanel();
+		main = new LayoutPanel();
 
 		headerPanel = new HeaderPanel();
 
@@ -68,6 +68,7 @@ public class ElementsViewImpl implements ElementsView {
 		main.add(headerPanel);
 
 		WidgetList widgetList = new WidgetList();
+		widgetList.setRound(true);
 		scrollPanel.setWidget(widgetList);
 
 		FormPanel formPanel = new FormPanel();
