@@ -23,8 +23,23 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/list.css")
 	ListCss getListCss();
 
+	@Source("resources/list/arrow.png")
+	DataResource listArrow();
+
+	@Source("resources/list/arrow_touched.png")
+	DataResource listArrowTouched();
+
 	@Source("css/searchbox.css")
 	MSearchBoxCss getSearchBoxCss();
+
+	@Source("resources/search/search.png")
+	DataResource searchSearchImage();
+
+	@Source("resources/search/clear.png")
+	DataResource searchClearImage();
+
+	@Source("resources/search/clear_touched.png")
+	DataResource searchClearTouchedImage();
 
 	@Source("css/checkbox.css")
 	CheckBoxCss getCheckBoxCss();
