@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.widget.base;
+package de.kurka.gwt.mobile.ui.client.widget;
 
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.InputElement;

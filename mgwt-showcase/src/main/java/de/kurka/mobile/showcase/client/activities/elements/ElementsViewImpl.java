@@ -25,11 +25,11 @@ import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 import de.kurka.gwt.mobile.ui.client.widget.MCheckBox;
 import de.kurka.gwt.mobile.ui.client.widget.MPasswordTextBox;
+import de.kurka.gwt.mobile.ui.client.widget.MRadioButton;
 import de.kurka.gwt.mobile.ui.client.widget.MTextArea;
 import de.kurka.gwt.mobile.ui.client.widget.MTextBox;
 import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.base.MListBox;
-import de.kurka.gwt.mobile.ui.client.widget.base.MRadioButton;
 import de.kurka.gwt.mobile.ui.client.widget.list.WidgetList;
 
 /**

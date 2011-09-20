@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.widget.base;
+package de.kurka.gwt.mobile.ui.client.widget;
 
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.HasAllKeyHandlers;
@@ -41,6 +41,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.theme.base.MSearchBoxCss;
+import de.kurka.gwt.mobile.ui.client.widget.base.HasPlaceHolder;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchPanel;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
