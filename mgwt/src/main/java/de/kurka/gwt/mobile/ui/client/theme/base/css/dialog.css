@@ -1,7 +1,28 @@
 
 @if mgwt.css pretty {
-	@external mgwt-DialogPanel, container, title, content, footer, okbutton, cancelbutton, active, mgwt-BottomPanel;
+	@external mgwt-DialogAnimationContainer-Shadow, mgwt-DialogAnimationContainer, mgwt-DialogAnimationContainer-center;
+	@external mgwt-DialogPanel, container, title, content, footer, okbutton, cancelbutton, active, mgwt-BottomPanel, shadow;
 }
+
+
+.mgwt-DialogAnimationContainer-Shadow {
+	z-index: 100;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.mgwt-DialogAnimationContainer {
+	display: -webkit-box;
+	width: 100%;
+	height: 100%
+    
+}
+
+.mgwt-DialogAnimationContainer-center {
+	\-webkit-box-orient: horizontal;
+    \-webkit-box-pack: center;
+    \-webkit-box-align: center;
+}
+
 
 .mgwt-DialogPanel {
 	
@@ -18,16 +39,17 @@
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0, 15, 70, 0.5) ), to(rgba(0, 0, 70, 0.5) ) )');
 }
 
+
+
+
+
 .mgwt-DialogPanel .container {
 	color: #ffffff;
 	text-shadow: 0px -1px 1px #000000;
 	border: solid 2px #e6e6ee;
 	\-webkit-border-radius: 10px;
 	padding: 10px;
-	background-image: -webkit-gradient(radial, 50% -1180, 150, 50% -280, 1400, color-stop(0,
-		rgba(140, 150, 170, 1) ), color-stop(0.48, rgba(140, 150, 170, 1) ),
-		color-stop(0.499, rgba(75, 90, 120, .9) ),
-		color-stop(0.5, rgba(75, 90, 120, 0) ) );
+	background-image: literal('-webkit-gradient(radial, 50% -1180, 150, 50% -280, 1400, color-stop(0, rgba(140, 150, 170, 1) ), color-stop(0.48, rgba(140, 150, 170, 1) ), color-stop(0.499, rgba(75, 90, 120, .9) ), color-stop(0.5, rgba(75, 90, 120, 0) ) )');
 }
 
 .mgwt-DialogPanel .title {

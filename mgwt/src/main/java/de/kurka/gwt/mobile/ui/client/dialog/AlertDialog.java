@@ -32,7 +32,7 @@ public class AlertDialog implements HasText, HasTitle, HasSimpleTouchHandler {
 	private DialogPanel1 dialogPanel1;
 
 	public AlertDialog(DialogCss css, String title, String text) {
-		popinDialog = new PopinDialog();
+		popinDialog = new PopinDialog(css);
 		dialogPanel1 = new DialogPanel1();
 		dialogPanel1.showCancelButton(false);
 		dialogPanel1.showOkButton(true);

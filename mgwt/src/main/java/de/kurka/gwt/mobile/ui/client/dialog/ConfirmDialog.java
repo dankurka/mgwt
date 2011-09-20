@@ -42,7 +42,7 @@ public class ConfirmDialog implements HasText, HasTitle {
 
 	public ConfirmDialog(DialogCss css, String title, String text, ConfirmCallback callback) {
 		this.callback = callback;
-		popinDialog = new PopinDialog();
+		popinDialog = new PopinDialog(css);
 		dialogPanel1 = new DialogPanel1();
 		dialogPanel1.showCancelButton(true);
 		dialogPanel1.showOkButton(true);

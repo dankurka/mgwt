@@ -32,7 +32,7 @@ public class BottomPanel extends Composite implements HasWidgets {
 		this.css = css;
 
 		main = new FlowPanel();
-
+		main.addStyleName("yoyo");
 		addStyleName(this.css.getBottomPanel());
 
 	}

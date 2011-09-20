@@ -13,6 +13,8 @@
 	<!--  
 	<set-property name="mgwt.os" value="android" />
 	  -->
+	  
+	  <set-configuration-property name="mgwt.css" value="pretty" />
 	 
 
 	<entry-point class="de.kurka.mobile.showcase.client.ShowCaseEntryPoint" />

@@ -16,8 +16,13 @@
 package de.kurka.gwt.mobile.ui.client.panel;
 
 import de.kurka.gwt.mobile.mvp.client.Animation;
+import de.kurka.gwt.mobile.ui.client.theme.base.DialogCss;
 
 public class PopinDialog extends AnimatableDialogBase {
+
+	public PopinDialog(DialogCss css) {
+		super(css);
+	}
 
 	@Override
 	protected Animation getShowAnimation() {

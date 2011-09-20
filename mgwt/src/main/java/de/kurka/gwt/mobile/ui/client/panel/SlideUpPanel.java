@@ -21,17 +21,14 @@ import de.kurka.gwt.mobile.ui.client.theme.base.DialogCss;
 
 public class SlideUpPanel extends AnimatableDialogBase {
 
-	private final DialogCss dialogCss;
-
 	public SlideUpPanel() {
 		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
 
 	}
 
 	public SlideUpPanel(DialogCss dialogCss) {
-		this.dialogCss = dialogCss;
+		super(dialogCss);
 		setCenterContent(false);
-		container.addStyleName(dialogCss.getBottomPanel());
 	}
 
 	@Override

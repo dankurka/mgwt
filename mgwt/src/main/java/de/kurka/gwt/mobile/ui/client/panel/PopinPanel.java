@@ -34,6 +34,7 @@ public class PopinPanel extends Composite implements HasWidgets {
 	private AnimatableDisplay display;
 	private FlowPanel container;
 
+	@Deprecated
 	public PopinPanel() {
 		display = GWT.create(AnimatableDisplay.class);
 		initWidget(display.asWidget());

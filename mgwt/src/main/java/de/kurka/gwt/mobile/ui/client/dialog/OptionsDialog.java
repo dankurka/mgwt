@@ -17,6 +17,7 @@ package de.kurka.gwt.mobile.ui.client.dialog;
 
 import java.util.Iterator;
 
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -53,10 +54,14 @@ public class OptionsDialog implements HasWidgets {
 	}
 
 	private SlideUpPanel slideUpPanel;
+	private FlowPanel container;
 
 	public OptionsDialog(DialogCss css) {
 		css.ensureInjected();
 		slideUpPanel = new SlideUpPanel();
+		container = new FlowPanel();
+		container.addStyleName(css.getBottomPanel());
+		slideUpPanel.add(container);
 
 	}
 
@@ -70,24 +75,24 @@ public class OptionsDialog implements HasWidgets {
 
 	@Override
 	public void add(Widget w) {
-		slideUpPanel.add(w);
+		container.add(w);
 
 	}
 
 	@Override
 	public void clear() {
-		slideUpPanel.clear();
+		container.clear();
 
 	}
 
 	@Override
 	public Iterator<Widget> iterator() {
-		return slideUpPanel.iterator();
+		return container.iterator();
 	}
 
 	@Override
 	public boolean remove(Widget w) {
-		return slideUpPanel.remove(w);
+		return container.remove(w);
 	}
 
 	public void setPanelToOverlay(HasWidgets widgetToCover) {
