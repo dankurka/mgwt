@@ -170,8 +170,7 @@ public class MGWT implements HasOrientationChangeHandler {
 															};
 
 															el.ontouchmove = func;
-															el.ontouchstart = func;
-															el.ontouchend = func;
+															
 															}-*/;
 
 	private native int getOrientation()/*-{

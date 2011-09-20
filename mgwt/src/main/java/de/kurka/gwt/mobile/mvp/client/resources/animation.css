@@ -74,23 +74,23 @@ key frame for doing nothing
 }
 
 @-webkit-keyframes slideinfromright {
-    from { \-webkit-transform: translateX(100%); }
-    to { \-webkit-transform: translateX(0); }
+    from { -webkit-transform: translateX(100%); }
+    to { -webkit-transform: translateX(0); }
 }
 
 @-webkit-keyframes slideinfromleft {
-    from { \-webkit-transform: translateX(-100%); }
-    to { \-webkit-transform: translateX(0); }
+    from { -webkit-transform: translateX(-100%); }
+    to { -webkit-transform: translateX(0); }
 }
 
 @-webkit-keyframes slideouttoleft {
-    from { \-webkit-transform: translateX(0); }
-    to { \-webkit-transform: translateX(-100%); }
+    from { -webkit-transform: translateX(0); }
+    to { -webkit-transform: translateX(-100%); }
 }
 
 @-webkit-keyframes slideouttoright {
-    from { \-webkit-transform: translateX(0); }
-    to { \-webkit-transform: translateX(100%); }
+    from { -webkit-transform: translateX(0); }
+    to { -webkit-transform: translateX(100%); }
 }
 
 
@@ -115,23 +115,23 @@ key frame for doing nothing
 }
 
 @-webkit-keyframes flipinfromright {
-    from { \-webkit-transform: rotateY(-180deg) scale(.8); }
-    to { \-webkit-transform: rotateY(0) scale(1); }
+    from { -webkit-transform: rotateY(-180deg) scale(.8); }
+    to { -webkit-transform: rotateY(0) scale(1); }
 }
 
 @-webkit-keyframes flipinfromleft {
-    from { \-webkit-transform: rotateY(180deg) scale(.8); }
-    to { \-webkit-transform: rotateY(0) scale(1); }
+    from { -webkit-transform: rotateY(180deg) scale(.8); }
+    to { -webkit-transform: rotateY(0) scale(1); }
 }
 
 @-webkit-keyframes flipouttoleft {
-    from { \-webkit-transform: rotateY(0) scale(1); }
-    to { \-webkit-transform: rotateY(-180deg) scale(.8); }
+    from { -webkit-transform: rotateY(0) scale(1); }
+    to { -webkit-transform: rotateY(-180deg) scale(.8); }
 }
 
 @-webkit-keyframes flipouttoright {
-    from { \-webkit-transform: rotateY(0) scale(1); }
-    to { \-webkit-transform: rotateY(180deg) scale(.8); }
+    from { -webkit-transform: rotateY(0) scale(1); }
+    to { -webkit-transform: rotateY(180deg) scale(.8); }
 }
 
 @-webkit-keyframes fadein {
@@ -187,23 +187,23 @@ key frame for doing nothing
 
 
 @-webkit-keyframes slideupfrombottom {
-    from { \-webkit-transform: translateY(100%); }
-    to { \-webkit-transform: translateY(0); }
+    from { -webkit-transform: translateY(100%); }
+    to { -webkit-transform: translateY(0); }
 }
 
 @-webkit-keyframes slidedownfrommiddle {
-    from { \-webkit-transform: translateY(0); }
-    to { \-webkit-transform: translateY(100%); }
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(100%); }
 }
 
 @-webkit-keyframes slideupfrommiddle {
-    from { \-webkit-transform: translateY(0); }
-    to { \-webkit-transform: translateY(-100%); }
+    from { -webkit-transform: translateY(0); }
+    to { -webkit-transform: translateY(-100%); }
 }
 
 @-webkit-keyframes slidedownfromtop {
-    from { \-webkit-transform: translateY(-100%); }
-    to { \-webkit-transform: translateY(0%); }
+    from { -webkit-transform: translateY(-100%); }
+    to { -webkit-transform: translateY(0%); }
 }
 
 
@@ -227,58 +227,58 @@ key frame for doing nothing
 
 @-webkit-keyframes swapouttoright {
     0% {
-        \-webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
-        \-webkit-animation-timing-function: ease-in-out;
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+        -webkit-animation-timing-function: ease-in-out;
     }
     50% {
     
-        \-webkit-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
-        \-webkit-animation-timing-function: ease-in;
+        -webkit-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
+        -webkit-animation-timing-function: ease-in;
     }
     100% {
-        \-webkit-transform:  translate3d(0px, 0px, -800px) rotateY(70deg);
+        -webkit-transform:  translate3d(0px, 0px, -800px) rotateY(70deg);
     }
 }
 
 @-webkit-keyframes swapouttoleft {
     0% {
-        \-webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
-        \-webkit-animation-timing-function: ease-in-out;
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+        -webkit-animation-timing-function: ease-in-out;
     }
     50% {
-        \-webkit-transform:  translate3d(180px, 0px, -400px) rotateY(-20deg);
-        \-webkit-animation-timing-function: ease-in;
+        -webkit-transform:  translate3d(180px, 0px, -400px) rotateY(-20deg);
+        -webkit-animation-timing-function: ease-in;
     }
     100% {
-        \-webkit-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
+        -webkit-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
     }
 }
 
 @-webkit-keyframes swapinfromright {
     0% {
-        \-webkit-transform: translate3d(0px, 0px, -800px) rotateY(70deg);
-        \-webkit-animation-timing-function: ease-out;
+        -webkit-transform: translate3d(0px, 0px, -800px) rotateY(70deg);
+        -webkit-animation-timing-function: ease-out;
     }
     50% {
-        \-webkit-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
-        \-webkit-animation-timing-function: ease-in-out;
+        -webkit-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
+        -webkit-animation-timing-function: ease-in-out;
     }
     100% {
-        \-webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
     }
 }
 
 @-webkit-keyframes swapinfromleft {
     0% {
-        \-webkit-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
-        \-webkit-animation-timing-function: ease-out;
+        -webkit-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
+        -webkit-animation-timing-function: ease-out;
     }
     50% {
-        \-webkit-transform: translate3d(180px, 0px, -400px) rotateY(-20deg);
-        \-webkit-animation-timing-function: ease-in-out;
+        -webkit-transform: translate3d(180px, 0px, -400px) rotateY(-20deg);
+        -webkit-animation-timing-function: ease-in-out;
     }
     100% {
-        \-webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateY(0deg);
     }
 }
 
@@ -303,22 +303,22 @@ key frame for doing nothing
 
 @-webkit-keyframes popin {
     from {
-        \-webkit-transform: scale(.3);
+        -webkit-transform: scale(.3);
         opacity: 0;
     }
     to {
-        \-webkit-transform: scale(1);
+        -webkit-transform: scale(1);
         opacity: 1;
     }
 }
 
 @-webkit-keyframes popout {
     from {
-        \-webkit-transform: scale(1);
+        -webkit-transform: scale(1);
         opacity: 1;
     }
     to {
-        \-webkit-transform: scale(.3);
+        -webkit-transform: scale(.3);
         opacity: 0;
     }
 }

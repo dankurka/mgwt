@@ -2,6 +2,8 @@ package de.kurka.gwt.mobile.ui.client.widget.base;
 
 import java.text.ParseException;
 
+import com.google.gwt.dom.client.Style.BorderStyle;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.ui.client.adapters.ValueBoxEditor;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -38,6 +40,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 
 	public MValueBoxBase(InputCss css, final ValueBoxBase<T> box) {
 		this.box = box;
+		box.getElement().getStyle().setBorderColor("black");
+		box.getElement().getStyle().setBorderStyle(BorderStyle.SOLID);
+		box.getElement().getStyle().setBorderWidth(1, Unit.PX);
+
 		box.addStyleName(css.box());
 		main = new TouchPanel();
 		initWidget(main);
@@ -85,11 +91,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	}
 
 	public void setPlaceHolder(String value) {
-		getElement().setAttribute("placeholder", value);
+		box.getElement().setAttribute("placeholder", value);
 	}
 
 	public String getPlaceHolder() {
-		return getElement().getAttribute("placeholder");
+		return box.getElement().getAttribute("placeholder");
 	}
 
 	public HandlerRegistration addChangeHandler(ChangeHandler handler) {
