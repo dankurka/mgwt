@@ -1,3 +1,8 @@
+@if mgwt.css pretty {
+	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, box, cover;
+	
+}
+
 .mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box{
     color: #777;
     border: 0;

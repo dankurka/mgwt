@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.menu.tabbar;
+package de.kurka.gwt.mobile.ui.client.widget;
 
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -21,8 +21,9 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBar;
+import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabContainer;
 import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
-import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 
 /**
  * @author Daniel Kurka

@@ -27,6 +27,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
+import de.kurka.gwt.mobile.ui.client.widget.TabBarButton;
 
 /**
  * @author Daniel Kurka
