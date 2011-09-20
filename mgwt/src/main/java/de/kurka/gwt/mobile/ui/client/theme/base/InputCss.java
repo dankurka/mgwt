@@ -15,6 +15,11 @@ public interface InputCss extends CssResource {
 	@ClassName("mgwt-PasswordTextBox")
 	String passwordBox();
 
+	@ClassName("mgwt-RadioButton")
+	String radioButton();
+
 	String box();
+
+	String disabled();
 
 }

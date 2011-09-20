@@ -1,5 +1,7 @@
+@url checkImage inputCheckImage;
+
 @if mgwt.css pretty {
-	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, box, cover;
+	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, box, cover, mgwt-RadioButton, disabled;
 	
 }
 
@@ -26,6 +28,42 @@
 .mgwt-TextBox , .mgwt-PasswordTextBox, .mgwt-TextArea {
     position: relative;
    
+}
+
+.mgwt-RadioButton {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+}
+
+.mgwt-RadioButton > label {
+	display: -webkit-box;
+	\-webkit-box-flex: 1;
+}
+
+.mgwt-RadioButton>input {
+	\-webkit-appearance: none;
+	width: 18px;
+	height: 18px;
+	border: none;
+	background-color: transparent;
+	background-image: checkImage;
+	opacity: 0.2;
+}
+
+.mgwt-RadioButton>input:CHECKED {
+	\-webkit-appearance: none;
+	background-image: checkImage;
+	opacity: 1.0;
+	background-color: transparent;
+	
+	
+}
+
+/*todo*/
+.disabled{
 }
 
 

@@ -62,6 +62,9 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/input.css")
 	InputCss getInputCss();
 
+	@Source("resources/input/check.png")
+	DataResource inputCheckImage();
+
 	@Source("css/panel.css")
 	PanelCss getPanelCss();
 

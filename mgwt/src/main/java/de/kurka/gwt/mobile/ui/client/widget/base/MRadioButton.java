@@ -15,10 +15,12 @@
  */
 package de.kurka.gwt.mobile.ui.client.widget.base;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.LabelElement;
+import com.google.gwt.editor.client.IsEditor;
+import com.google.gwt.editor.client.LeafValueEditor;
+import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
@@ -26,8 +28,14 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.EventListener;
+import com.google.gwt.user.client.ui.HasEnabled;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.HasWordWrap;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.Touch;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchCancelEvent;
@@ -36,21 +44,31 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouch;
+import de.kurka.gwt.mobile.ui.client.MGWTStyle;
+import de.kurka.gwt.mobile.ui.client.theme.base.InputCss;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchWidget;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class MRadioButton extends TouchWidget implements HasText, HasValueChangeHandlers<Boolean> {
+public class MRadioButton extends TouchWidget implements HasText, HasEnabled, HasValueChangeHandlers<Boolean>, HasName, HasValue<Boolean>, HasWordWrap, IsEditor<LeafValueEditor<Boolean>> {
 
 	private InputElement inputRadio;
 	private LabelElement labelElement;
+	private LeafValueEditor<Boolean> editor;
+	private final InputCss css;
+
+	public MRadioButton(String name) {
+		this(MGWTStyle.getDefaultClientBundle().getInputCss(), name);
+	}
 
 	/**
 	 * @param name
 	 */
-	public MRadioButton(String name) {
+	public MRadioButton(InputCss css, String name) {
+		this.css = css;
+		css.ensureInjected();
 		setElement(DOM.createSpan());
 
 		sinkEvents(Event.ONCHANGE);
@@ -60,7 +78,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 		inputRadio = InputElement.as(DOM.createInputRadio(name));
 		getElement().appendChild(inputRadio);
 
-		setStylePrimaryName("mgwt-RadioButton");
+		addStyleName(css.radioButton());
 
 		addTouchHandler(new TouchHandler() {
 
@@ -121,8 +139,8 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 
 				EventTarget eventTarget = event.getNativeEvent().getEventTarget();
 				labelOrContainer = true;
-				if (Element.is(eventTarget)) {
-					Element el = Element.as(eventTarget);
+				if (com.google.gwt.dom.client.Element.is(eventTarget)) {
+					com.google.gwt.dom.client.Element el = com.google.gwt.dom.client.Element.as(eventTarget);
 
 					if (inputRadio.isOrHasChild(el)) {
 						labelOrContainer = false;
@@ -167,6 +185,142 @@ public class MRadioButton extends TouchWidget implements HasText, HasValueChange
 	@Override
 	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Boolean> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
+	}
+
+	@Override
+	public LeafValueEditor<Boolean> asEditor() {
+		if (editor == null) {
+			editor = TakesValueEditor.of(this);
+		}
+		return editor;
+	}
+
+	@Override
+	public boolean getWordWrap() {
+		return !getElement().getStyle().getProperty("whiteSpace").equals("nowrap");
+	}
+
+	@Override
+	public void setWordWrap(boolean wrap) {
+		getElement().getStyle().setProperty("whiteSpace", wrap ? "normal" : "nowrap");
+
+	}
+
+	@Override
+	public Boolean getValue() {
+		if (isAttached()) {
+			return inputRadio.isChecked();
+		} else {
+			return inputRadio.isDefaultChecked();
+		}
+	}
+
+	@Override
+	public void setValue(Boolean value) {
+		setValue(value, false);
+
+	}
+
+	@Override
+	public void setValue(Boolean value, boolean fireEvents) {
+		if (value == null) {
+			value = Boolean.FALSE;
+		}
+
+		Boolean oldValue = getValue();
+		inputRadio.setChecked(value);
+		inputRadio.setDefaultChecked(value);
+		if (value.equals(oldValue)) {
+			return;
+		}
+		if (fireEvents) {
+			ValueChangeEvent.fire(this, value);
+		}
+
+	}
+
+	@Override
+	public void setName(String name) {
+		replaceInputElement(DOM.createInputRadio(name));
+
+	}
+
+	private void replaceInputElement(com.google.gwt.user.client.Element elem) {
+		InputElement newInputElem = InputElement.as(elem);
+		// Collect information we need to set
+
+		boolean checked = getValue();
+		boolean enabled = isEnabled();
+		String formValue = getFormValue();
+		String uid = inputRadio.getId();
+		String accessKey = inputRadio.getAccessKey();
+		int sunkEvents = Event.getEventsSunk(inputRadio);
+
+		// Clear out the old input element
+		setEventListener(asOld(inputRadio), null);
+
+		getElement().replaceChild(newInputElem, inputRadio);
+
+		// Sink events on the new element
+		Event.sinkEvents(elem, Event.getEventsSunk(inputRadio));
+		Event.sinkEvents(inputRadio, 0);
+		inputRadio = newInputElem;
+
+		// Setup the new element
+		Event.sinkEvents(inputRadio, sunkEvents);
+		inputRadio.setId(uid);
+		if (!"".equals(accessKey)) {
+			inputRadio.setAccessKey(accessKey);
+		}
+
+		setValue(checked);
+		setEnabled(enabled);
+		setFormValue(formValue);
+
+		// Set the event listener
+		if (isAttached()) {
+			setEventListener(asOld(inputRadio), this);
+		}
+
+	}
+
+	public void setFormValue(String formValue) {
+		inputRadio.setAttribute("value", formValue);
+
+	}
+
+	@Override
+	public String getName() {
+		return inputRadio.getName();
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return !inputRadio.isDisabled();
+	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		inputRadio.setDisabled(!enabled);
+		if (enabled) {
+			removeStyleDependentName(css.disabled());
+		} else {
+			addStyleDependentName(css.disabled());
+		}
+
+	}
+
+	public String getFormValue() {
+		return inputRadio.getValue();
+	}
+
+	private Element asOld(com.google.gwt.dom.client.Element elem) {
+		Element oldSchool = elem.cast();
+		return oldSchool;
+	}
+
+	private void setEventListener(com.google.gwt.dom.client.Element e, EventListener listener) {
+		DOM.setEventListener(asOld(e), listener);
 	}
 
 }
