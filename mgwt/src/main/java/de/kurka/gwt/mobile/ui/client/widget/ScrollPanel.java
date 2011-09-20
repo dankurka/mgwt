@@ -165,16 +165,18 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 			}
 			main.remove(widgetToScroll);
 		}
-		main.add(w);
 		widgetToScroll = w;
+		if (w != null) {
+			main.add(w);
 
-		if (isAttached()) {
-			transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
-			updateScrollBars();
+			if (isAttached()) {
+				transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
+				updateScrollBars();
+			}
+
+			widgetToScroll.getElement().getStyle().setProperty("webkitTransitionProperty", "-webkit-transform");
+			widgetToScroll.getElement().getStyle().setProperty("webkitTransitionTimingFunction", "cubic-bezier(0,0,0.25,1)");
 		}
-
-		widgetToScroll.getElement().getStyle().setProperty("webkitTransitionProperty", "-webkit-transform");
-		widgetToScroll.getElement().getStyle().setProperty("webkitTransitionTimingFunction", "cubic-bezier(0,0,0.25,1)");
 
 	}
 
@@ -229,6 +231,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
+			if (widgetToScroll == null)
+				return;
 
 			EventTarget eventTarget = event.getNativeEvent().getEventTarget();
 			if (eventTarget != null) {
@@ -284,6 +288,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
+			if (widgetToScroll == null)
+				return;
 			if (!currentlyScrolling)
 				return;
 
@@ -348,6 +354,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
+			if (widgetToScroll == null)
+				return;
 			System.out.println("touchend");
 			if (!currentlyScrolling)
 				return;
