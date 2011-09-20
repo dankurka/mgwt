@@ -13,4 +13,10 @@ public interface OverviewDisplay extends IsWidget {
 
 	HasSimpleTouchHandler getPlusButton();
 
+	void setPresenter(OverviewPresenter presenter);
+
+	public interface OverviewPresenter {
+		public void onPlusButton();
+	}
+
 }

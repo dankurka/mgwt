@@ -18,6 +18,7 @@ package de.kurka.gwt.mobile.ui.client.dialog;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel1;
@@ -54,7 +55,7 @@ public class ConfirmDialog implements HasText, HasTitle {
 		dialogPanel1.getOkButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				popinDialog.hide();
 				if (ConfirmDialog.this.callback != null)
 					ConfirmDialog.this.callback.onOk();
@@ -64,7 +65,7 @@ public class ConfirmDialog implements HasText, HasTitle {
 		dialogPanel1.getCancelButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				popinDialog.hide();
 				if (ConfirmDialog.this.callback != null)
 					ConfirmDialog.this.callback.onCancel();

@@ -6,12 +6,12 @@ import java.util.List;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.mobile.contact.client.ClientFactory;
 import de.kurka.mobile.contact.client.Topic;
+import de.kurka.mobile.contact.client.activities.OverviewDisplay.OverviewPresenter;
 
-public class OverviewActivity extends MGWTAbstractActivity {
+public class OverviewActivity extends MGWTAbstractActivity implements OverviewPresenter {
 
 	private final ClientFactory clientFactory;
 
@@ -24,13 +24,7 @@ public class OverviewActivity extends MGWTAbstractActivity {
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		OverviewDisplay display = clientFactory.getOverviewDisplay();
 
-		addHandlerRegistration(display.getPlusButton().addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch() {
-				clientFactory.getPlaceController().goTo(new AddGroupPlace());
-			}
-		}));
+		display.setPresenter(this);
 
 		List<Topic> list = new ArrayList<Topic>();
 
@@ -41,6 +35,12 @@ public class OverviewActivity extends MGWTAbstractActivity {
 		display.renderTopics(list);
 
 		panel.setWidget(display);
+
+	}
+
+	@Override
+	public void onPlusButton() {
+		clientFactory.getPlaceController().goTo(new AddGroupPlace());
 
 	}
 

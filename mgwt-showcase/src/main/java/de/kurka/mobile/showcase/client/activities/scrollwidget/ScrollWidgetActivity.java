@@ -18,6 +18,7 @@ package de.kurka.mobile.showcase.client.activities.scrollwidget;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.mobile.showcase.client.ClientFactory;
@@ -25,7 +26,7 @@ import de.kurka.mobile.showcase.client.activities.UIPlace;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class ScrollWidgetActivity extends MGWTAbstractActivity {
 
@@ -46,7 +47,7 @@ public class ScrollWidgetActivity extends MGWTAbstractActivity {
 		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				clientFactory.getPlaceController().goTo(new UIPlace());
 
 			}

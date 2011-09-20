@@ -5,10 +5,12 @@ import java.util.List;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.ui.client.widget.CellList;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderRoundButton;
 import de.kurka.mobile.contact.client.BasicCell;
@@ -26,6 +28,8 @@ public class OverviewDisplayGwtImpl extends Composite implements OverviewDisplay
 
 	@UiField
 	HeaderRoundButton plusButton;
+
+	private OverviewPresenter presenter;
 
 	public OverviewDisplayGwtImpl() {
 		list = new CellList<Topic>(new BasicCell<Topic>() {
@@ -55,5 +59,18 @@ public class OverviewDisplayGwtImpl extends Composite implements OverviewDisplay
 	@Override
 	public HasSimpleTouchHandler getPlusButton() {
 		return plusButton;
+	}
+
+	@UiHandler("plusButton")
+	public void onSimpleTouch(SimpleTouchEvent event) {
+		if (presenter != null) {
+			presenter.onPlusButton();
+		}
+	}
+
+	@Override
+	public void setPresenter(OverviewPresenter presenter) {
+		this.presenter = presenter;
+
 	}
 }

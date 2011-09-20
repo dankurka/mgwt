@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
@@ -96,7 +97,7 @@ public class PopupViewGwtImpl implements PopupView {
 		menuButton.addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				IpadMenu menu = new IpadMenu();
 
 				IpadMenuHeader ipadMenuHeader = new IpadMenuHeader();

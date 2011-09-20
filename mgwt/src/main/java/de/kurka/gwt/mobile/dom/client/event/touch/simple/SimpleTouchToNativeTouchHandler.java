@@ -27,7 +27,7 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartHandler;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, TouchEndHandler, TouchMoveHandler, TouchStartHandler {
 
@@ -68,7 +68,7 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
 		if (!hasMoved && !touchCanceled)
-			simpleTouchHandler.onTouch();
+			simpleTouchHandler.onTouch(new SimpleTouchEvent());
 
 	}
 

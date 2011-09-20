@@ -15,14 +15,29 @@
  */
 package de.kurka.gwt.mobile.dom.client.event.touch.simple;
 
-import com.google.gwt.event.shared.EventHandler;
+import com.google.gwt.event.shared.GwtEvent;
 
-/**
- * @author Daniel Kurka
- * 
- */
-public interface SimpleTouchHandler extends EventHandler {
+public class SimpleTouchEvent extends GwtEvent<SimpleTouchHandler> {
 
-	public void onTouch(SimpleTouchEvent event);
+	private static final Type<SimpleTouchHandler> TYPE = new Type<SimpleTouchHandler>();
+
+	public SimpleTouchEvent() {
+
+	}
+
+	@Override
+	public com.google.gwt.event.shared.GwtEvent.Type<SimpleTouchHandler> getAssociatedType() {
+		return TYPE;
+	}
+
+	@Override
+	protected void dispatch(SimpleTouchHandler handler) {
+		handler.onTouch(this);
+
+	}
+
+	public static Type<SimpleTouchHandler> getType() {
+		return TYPE;
+	}
 
 }

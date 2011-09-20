@@ -21,6 +21,7 @@ import java.util.List;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
@@ -50,7 +51,7 @@ public class PopupActivity extends MGWTAbstractActivity {
 		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				clientFactory.getPlaceController().goTo(new UIPlace());
 
 			}
@@ -59,7 +60,7 @@ public class PopupActivity extends MGWTAbstractActivity {
 		addHandlerRegistration(view.getConfirmButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				view.confirmSomeStuff("Confirm this", "Confirm some more stuff", new ConfirmCallback() {
 
 					@Override
@@ -79,7 +80,7 @@ public class PopupActivity extends MGWTAbstractActivity {
 		addHandlerRegistration(view.getSlideUpButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				List<OptionsDialogOption> list = new ArrayList<OptionsDialogOption>();
 				list.add(new OptionsDialogOption("Confirm", ButtonType.CONFIRM));
 				list.add(new OptionsDialogOption("Cancel", ButtonType.NORMAL));
@@ -98,7 +99,7 @@ public class PopupActivity extends MGWTAbstractActivity {
 		addHandlerRegistration(view.getAlertButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				view.alertSomeStuff("Hi", "How are you doing?");
 			}
 		}));

@@ -20,6 +20,7 @@ import java.util.List;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.dialog.ConfirmDialog.ConfirmCallback;
@@ -39,7 +40,7 @@ public class Dialogs {
 		alertDialog.addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				if (callback != null) {
 					callback.onButtonPressed();
 				}
@@ -69,7 +70,7 @@ public class Dialogs {
 		}
 
 		@Override
-		public void onTouch() {
+		public void onTouch(SimpleTouchEvent event) {
 			panel.hide();
 			if (callback != null) {
 				callback.onOptionSelected(buttonCount);

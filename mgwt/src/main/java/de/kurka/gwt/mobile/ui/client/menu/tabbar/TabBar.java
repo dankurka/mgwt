@@ -24,6 +24,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
@@ -63,7 +64,7 @@ public class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 		}
 
 		@Override
-		public void onTouch() {
+		public void onTouch(SimpleTouchEvent event) {
 			setSelectedButton(getIndexForWidget(button));
 		}
 

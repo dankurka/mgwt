@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.panel.DialogPanel1;
 import de.kurka.gwt.mobile.ui.client.panel.PopinDialog;
@@ -44,9 +45,10 @@ public class AlertDialog implements HasText, HasTitle, HasSimpleTouchHandler {
 		dialogPanel1.getOkButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				popinDialog.hide();
 			}
+
 		});
 
 		setText(text);

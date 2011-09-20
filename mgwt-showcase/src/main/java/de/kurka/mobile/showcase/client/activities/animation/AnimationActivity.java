@@ -21,6 +21,7 @@ import java.util.List;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
+import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchEvent;
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.SimpleTouchHandler;
 import de.kurka.gwt.mobile.mvp.client.MGWTAbstractActivity;
 import de.kurka.gwt.mobile.ui.client.widget.celllist.CellSelectedEvent;
@@ -37,7 +38,7 @@ import de.kurka.mobile.showcase.client.places.HomePlace;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class AnimationActivity extends MGWTAbstractActivity {
 
@@ -63,7 +64,7 @@ public class AnimationActivity extends MGWTAbstractActivity {
 		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouch() {
+			public void onTouch(SimpleTouchEvent event) {
 				clientFactory.getPlaceController().goTo(new HomePlace());
 
 			}
