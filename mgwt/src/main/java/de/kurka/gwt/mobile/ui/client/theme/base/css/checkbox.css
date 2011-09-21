@@ -36,8 +36,8 @@
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#cecece), to(#fcfcfc) )');
 	border-top: solid 1px #eeeeee;
 	\-webkit-border-radius: 7px;
-	
 }
+
 
 .mgwt-CheckBox-on {
 	position: relative;
@@ -54,6 +54,13 @@
 
 }
 
+@if mgwt.os android {
+	.mgwt-CheckBox-on {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#74b143), to(#43830e) )');
+		border: solid 1px black;
+	}
+}
+
 .mgwt-CheckBox-off {
 	position: relative;
 	color: #666666;
@@ -67,6 +74,13 @@
 	height: 25px;
 	\-webkit-transition: all 0.1s ease-in-out;
 
+}
+
+@if mgwt.os android {
+	.mgwt-CheckBox-off {
+		/*background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#74b143), to(#43830e) )');*/
+		border: solid 1px black;
+	}
 }
 
 
