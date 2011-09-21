@@ -4,7 +4,11 @@ import java.text.ParseException;
 
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.ui.client.adapters.ValueBoxEditor;
+import com.google.gwt.event.dom.client.BlurEvent;
+import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.FocusEvent;
+import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -26,11 +30,12 @@ import de.kurka.gwt.mobile.dom.client.event.touch.TouchEndHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchMoveHandler;
 import de.kurka.gwt.mobile.dom.client.event.touch.TouchStartHandler;
+import de.kurka.gwt.mobile.ui.client.MGWTUtil;
 import de.kurka.gwt.mobile.ui.client.theme.base.InputCss;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchPanel;
 
-public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>, AutoDirectionHandler.Target,
-		IsEditor<ValueBoxEditor<T>> {
+public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>,
+		AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>> {
 
 	private TouchPanel main;
 	protected final ValueBoxBase<T> box;
@@ -53,6 +58,24 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 		//		}
 
 		main.add(box);
+
+		box.addBlurHandler(new BlurHandler() {
+
+			@Override
+			public void onBlur(BlurEvent event) {
+				MGWTUtil.fixIOSScrollIssueBlur();
+
+			}
+		});
+
+		box.addFocusHandler(new FocusHandler() {
+
+			@Override
+			public void onFocus(FocusEvent event) {
+				MGWTUtil.fixIOSScrollIssueFocus();
+
+			}
+		});
 
 		//		if (MGWTUtil.getFeatureDetection().isIOs() && false) {
 		//			cover.addDomHandler(new ClickHandler() {
@@ -230,6 +253,38 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	@Override
 	public HandlerRegistration addTouchHandler(TouchHandler handler) {
 		return main.addTouchHandler(handler);
+	}
+
+	@Override
+	public void setAutoCorrectEnabled(boolean enabled) {
+		if (enabled) {
+			box.getElement().setPropertyString("autocorrect", "on");
+		} else {
+			box.getElement().setPropertyString("autocorrect", "off");
+		}
+
+	}
+
+	@Override
+	public boolean isAutoCorrectEnabled() {
+		String autoCorrent = box.getElement().getPropertyString("autocorrect");
+		return "on".equals(autoCorrent);
+	}
+
+	@Override
+	public void setAutoCapitalize(boolean capitalize) {
+		if (capitalize) {
+			box.getElement().setPropertyString("autocapitalize", "on");
+		} else {
+			box.getElement().setPropertyString("autocapitalize", "off");
+		}
+
+	}
+
+	@Override
+	public boolean isAutoCapitalize() {
+		String auto = box.getElement().getPropertyString("autocapitalize");
+		return "on".equals(auto);
 	}
 
 }

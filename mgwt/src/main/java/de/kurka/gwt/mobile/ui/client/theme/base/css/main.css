@@ -32,6 +32,7 @@ body {
 @if mgwt.os android {
 	body {
 		background-color:#666666;
+		background-image: none;
 	}	
 	
 }

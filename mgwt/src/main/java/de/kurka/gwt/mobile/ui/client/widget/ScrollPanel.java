@@ -19,6 +19,8 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Composite;
@@ -67,6 +69,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private long touchStartTime;
 	private int directionX = 0;
 	private int directionY = 0;
+
+	private boolean experimental = true;
 
 	private TouchObserver touchObserver;
 
@@ -163,6 +167,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 				}
 
 			}
+			widgetToScroll.removeStyleName(css.container());
 			main.remove(widgetToScroll);
 		}
 		widgetToScroll = w;
@@ -173,9 +178,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 				transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
 				updateScrollBars();
 			}
+			widgetToScroll.addStyleName(css.container());
 
-			widgetToScroll.getElement().getStyle().setProperty("webkitTransitionProperty", "-webkit-transform");
-			widgetToScroll.getElement().getStyle().setProperty("webkitTransitionTimingFunction", "cubic-bezier(0,0,0.25,1)");
 		}
 
 	}
@@ -415,7 +419,14 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		position_x = newPosX;
 		position_y = newPosY;
 
-		CssUtil.translate(widgetToScroll.getElement(), newPosX, newPosY);
+		if (experimental) {
+			widgetToScroll.getElement().getStyle().setPosition(Position.ABSOLUTE);
+			widgetToScroll.getElement().getStyle().setTop(newPosY, Unit.PX);
+			widgetToScroll.getElement().getStyle().setLeft(newPosX, Unit.PX);
+			onTransistionEnd();
+		} else {
+			CssUtil.translate(widgetToScroll.getElement(), newPosX, newPosY);
+		}
 
 		if (scrollingEnabledX && hScrollbar != null) {
 			hScrollbar.setPosition(newPosX);
@@ -428,7 +439,9 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	private void setTransistionTime(int milliseconds) {
 		System.out.println("webkit transition duration: " + milliseconds);
-		widgetToScroll.getElement().getStyle().setProperty("webkitTransitionDuration", milliseconds + "ms");
+
+		if (!experimental)
+			widgetToScroll.getElement().getStyle().setProperty("webkitTransitionDuration", milliseconds + "ms");
 		if (scrollingEnabledX && hScrollbar != null) {
 			hScrollbar.setTransitionTime(milliseconds);
 		}

@@ -24,10 +24,14 @@ import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 import de.kurka.gwt.mobile.ui.client.widget.MCheckBox;
+import de.kurka.gwt.mobile.ui.client.widget.MEmailTextBox;
+import de.kurka.gwt.mobile.ui.client.widget.MNumberTextBox;
 import de.kurka.gwt.mobile.ui.client.widget.MPasswordTextBox;
+import de.kurka.gwt.mobile.ui.client.widget.MPhoneNumberTextBox;
 import de.kurka.gwt.mobile.ui.client.widget.MRadioButton;
 import de.kurka.gwt.mobile.ui.client.widget.MTextArea;
 import de.kurka.gwt.mobile.ui.client.widget.MTextBox;
+import de.kurka.gwt.mobile.ui.client.widget.MUrlTextBox;
 import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
 import de.kurka.gwt.mobile.ui.client.widget.base.MListBox;
 import de.kurka.gwt.mobile.ui.client.widget.list.WidgetList;
@@ -83,6 +87,22 @@ public class ElementsViewImpl implements ElementsView {
 		MPasswordTextBox mPasswordTextBox = new MPasswordTextBox();
 		mPasswordTextBox.setPlaceHolder("password box");
 		widgetList.add(mPasswordTextBox);
+
+		MNumberTextBox numberBox = new MNumberTextBox();
+		numberBox.setPlaceHolder("number keyboard");
+		widgetList.add(numberBox);
+
+		MPhoneNumberTextBox phoneBox = new MPhoneNumberTextBox();
+		mPasswordTextBox.setPlaceHolder("phonebox");
+		widgetList.add(phoneBox);
+
+		MUrlTextBox urlBox = new MUrlTextBox();
+		urlBox.setPlaceHolder("url keyboard");
+		widgetList.add(urlBox);
+
+		MEmailTextBox emailBox = new MEmailTextBox();
+		emailBox.setPlaceHolder("email keyboard");
+		widgetList.add(emailBox);
 
 		MTextArea mTextArea = new MTextArea();
 		mTextArea.setPlaceHolder("text area");

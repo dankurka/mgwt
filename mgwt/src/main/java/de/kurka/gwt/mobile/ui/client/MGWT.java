@@ -133,9 +133,11 @@ public class MGWT implements HasOrientationChangeHandler {
 
 		}
 
+		MGWTUtil.setScrollingDisabled(settings.isPreventScrolling());
 		if (settings.isPreventScrolling() && FEATURE_DETECTION.isIOs()) {
 			BodyElement body = Document.get().getBody();
 			setUpPreventScrolling(body);
+
 		}
 
 		if (settings.isOrientationSupport()) {

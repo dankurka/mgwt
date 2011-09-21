@@ -6,6 +6,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.LinkElement;
 import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public class MGWTUtil {
@@ -54,17 +55,58 @@ public class MGWTUtil {
 	}
 
 	private static native boolean hasLoaded(Element cssStylesheet)/*-{
-		try {
-			if (cssStylesheet.sheet && cssStylesheet.sheet.cssRules.length > 0)
-				return true;
-			else if (cssStylesheet.styleSheet
-					&& cssStylesheet.styleSheet.cssText.length > 0)
-				return true;
-			else if (cssStylesheet.innerHTML
-					&& cssStylesheet.innerHTML.length > 0)
-				return true;
-		} catch (ex) {
+																	try {
+																	if (cssStylesheet.sheet && cssStylesheet.sheet.cssRules.length > 0)
+																	return true;
+																	else if (cssStylesheet.styleSheet
+																	&& cssStylesheet.styleSheet.cssText.length > 0)
+																	return true;
+																	else if (cssStylesheet.innerHTML
+																	&& cssStylesheet.innerHTML.length > 0)
+																	return true;
+																	} catch (ex) {
+																	}
+																	return false;
+																	}-*/;
+
+	private static Timer timer;
+
+	private static boolean scrollingDisabled;
+
+	public static void setScrollingDisabled(boolean disabled) {
+		scrollingDisabled = disabled;
+	}
+
+	public static void fixIOSScrollIssueBlur() {
+		if (!scrollingDisabled) {
+			return;
 		}
-		return false;
-	}-*/;
+		if (timer != null) {
+			timer.cancel();
+
+		}
+
+		timer = new Timer() {
+
+			@Override
+			public void run() {
+				Window.scrollTo(0, 0);
+
+			}
+
+		};
+
+		timer.schedule(100);
+	}
+
+	public static void fixIOSScrollIssueFocus() {
+		if (!scrollingDisabled) {
+			return;
+		}
+		if (timer != null) {
+			timer.cancel();
+
+		}
+		timer = null;
+	}
 }
