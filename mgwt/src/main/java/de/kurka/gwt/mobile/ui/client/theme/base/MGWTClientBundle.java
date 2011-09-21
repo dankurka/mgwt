@@ -2,11 +2,20 @@ package de.kurka.gwt.mobile.ui.client.theme.base;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.TextResource;
 
 public interface MGWTClientBundle extends ClientBundle {
 
 	@Source("css/progressbar.css")
 	ProgressBarCss getProgressBarCss();
+
+	//This is a very nasty workaround because GWT CssResource does not support @media correctly!
+	@Source("css/util_fake.css")
+	UtilCss getUtilCss();
+
+	//This is a very nasty workaround because GWT CssResource does not support @media correctly!
+	@Source("css/util.css")
+	TextResource utilTextResource();
 
 	@Source("css/progressindicator.css")
 	ProgressIndicatorCss getProgressIndicatorCss();

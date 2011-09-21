@@ -20,14 +20,10 @@
 	
 }
 
-.landscapeonly {
-	display: block;
-}
+
 
 @media only screen and (orientation:portrait) {
-	.landscapeonly {
-		display: none;
-	}
+	
 	#main {
 		left: 0px;
 		top: 0px;

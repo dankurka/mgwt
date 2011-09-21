@@ -22,6 +22,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.LinkElement;
 import com.google.gwt.dom.client.MetaElement;
 import com.google.gwt.dom.client.NodeList;
+import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -30,6 +31,7 @@ import de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHand
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeEvent;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler;
 import de.kurka.gwt.mobile.ui.client.theme.base.MGWTClientBundle;
+import de.kurka.gwt.mobile.ui.client.theme.base.UtilCss;
 
 /**
  * @author Daniel Kurka
@@ -57,6 +59,9 @@ public class MGWT implements HasOrientationChangeHandler {
 	}
 
 	public void applySettings(MGWTSettings settings) {
+
+		//This is a very nasty workaround because GWT CssResource does not support @media correctly!
+		StyleInjector.inject(MGWTStyle.getDefaultClientBundle().utilTextResource().getText());
 
 		Element head = getHead();
 
@@ -138,28 +143,6 @@ public class MGWT implements HasOrientationChangeHandler {
 			onorientationChange(getOrientation());
 		}
 
-		if (isFullScreen()) {
-			Document.get().getBody().addClassName("fullscreen");
-		} else {
-			Document.get().getBody().addClassName("normalscreen");
-		}
-
-		// kombinierter
-		if (isFullScreen()) {
-			if (getOrientation() == 0 || getOrientation() == 180) {
-				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-portrait");
-			} else {
-				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-landscape");
-			}
-
-		} else {
-			if (getOrientation() == 0 || getOrientation() == 180) {
-				Document.get().getBody().addClassName("mgwt-ViewPort-normalscreen-portrait");
-			} else {
-				Document.get().getBody().addClassName("mgwt-ViewPort-normalscreen-landscape");
-			}
-		}
-
 	}
 
 	private native void setUpPreventScrolling(Element el)/*-{
@@ -182,36 +165,20 @@ public class MGWT implements HasOrientationChangeHandler {
 										}-*/;
 
 	private void onorientationChange(int orientation) {
-
-		Document.get().getBody().removeClassName("mgwt-ViewPort-normalscreen-landscape");
-		Document.get().getBody().removeClassName("mgwt-ViewPort-normalscreen-portrait");
-		Document.get().getBody().removeClassName("mgwt-ViewPort-fullscreen-portrait");
-		Document.get().getBody().removeClassName("mgwt-ViewPort-fullscreen-landscape");
-
+		UtilCss utilCss = MGWTStyle.getDefaultClientBundle().getUtilCss();
 		switch (orientation) {
 		case 0:
 		case 180:
-			Document.get().getBody().addClassName("portrait");
-			Document.get().getBody().removeClassName("landscape");
-
-			if (isFullScreen()) {
-				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-portrait");
-			} else {
-				Document.get().getBody().addClassName("mgwt-ViewPort-normalscreen-portrait");
-			}
+			Document.get().getBody().addClassName(utilCss.portrait());
+			Document.get().getBody().removeClassName(utilCss.landscape());
 
 			break;
 
 		case 90:
 		case -90:
-			Document.get().getBody().addClassName("landscape");
-			Document.get().getBody().removeClassName("portrait");
+			Document.get().getBody().addClassName(utilCss.landscape());
+			Document.get().getBody().removeClassName(utilCss.portrait());
 
-			if (isFullScreen()) {
-				Document.get().getBody().addClassName("mgwt-ViewPort-fullscreen-landscape");
-			} else {
-				Document.get().getBody().addClassName("mgwt-ViewPort-normalscreen-landscape");
-			}
 			break;
 
 		default:

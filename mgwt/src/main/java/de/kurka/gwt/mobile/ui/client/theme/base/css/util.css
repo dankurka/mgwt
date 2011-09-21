@@ -1,0 +1,19 @@
+.landscapeonly {
+	
+}
+
+.portraitonly {
+	
+}
+
+@media only screen and (orientation:portrait) {
+	.landscapeonly {
+		display: none;
+	}
+}
+
+@media only screen and (orientation:landscape) {
+	.portraitonly {
+		display: none;
+	}
+}
