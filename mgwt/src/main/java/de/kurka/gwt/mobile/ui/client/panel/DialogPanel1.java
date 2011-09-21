@@ -43,7 +43,7 @@ public class DialogPanel1 extends Composite {
 
 	public DialogPanel1(DialogCss css) {
 		this.css = css;
-		css.ensureInjected();
+		this.css.ensureInjected();
 		main = new FlowPanel();
 		initWidget(main);
 

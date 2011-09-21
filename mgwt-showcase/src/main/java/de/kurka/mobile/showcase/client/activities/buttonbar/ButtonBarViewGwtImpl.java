@@ -19,37 +19,13 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import de.kurka.gwt.mobile.ui.client.MGWTUtil;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ActionButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowDownButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowLeftButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowRightButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ArrowUpButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.BookmarkButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ButtonBar;
-import de.kurka.gwt.mobile.ui.client.menu.bar.CameraButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ComposeButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ContactAddButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.DeleteButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.FastForwardButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.InfoButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.LocateButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.NewButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.NextSlideButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.OrganizeButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.PauseButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.PlayButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.PlusButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.PreviousSlideButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.RefreshButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.ReplyButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.RewindButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.SearchButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.StopButton;
-import de.kurka.gwt.mobile.ui.client.menu.bar.TrashButton;
+import de.kurka.gwt.mobile.ui.client.widget.BarButton;
+import de.kurka.gwt.mobile.ui.client.widget.ButtonBar;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderBackButton;
 import de.kurka.gwt.mobile.ui.client.widget.HeaderPanel;
 import de.kurka.gwt.mobile.ui.client.widget.LayoutPanel;
 import de.kurka.gwt.mobile.ui.client.widget.ScrollPanel;
+import de.kurka.gwt.mobile.ui.client.widget.BarButton.TYPE;
 
 /**
  * @author Daniel Kurka
@@ -83,33 +59,32 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 
 		footerPanel = new ButtonBar();
 
-		footerPanel.add(new RefreshButton());
-		footerPanel.add(new ActionButton());
-		footerPanel.add(new ArrowDownButton());
-		footerPanel.add(new ArrowUpButton());
-		footerPanel.add(new ArrowLeftButton());
-		footerPanel.add(new ArrowRightButton());
-		footerPanel.add(new BookmarkButton());
-		footerPanel.add(new CameraButton());
-		footerPanel.add(new ComposeButton());
-		footerPanel.add(new ContactAddButton());
-		footerPanel.add(new FastForwardButton());
-		footerPanel.add(new DeleteButton());
-		footerPanel.add(new InfoButton());
-
-		footerPanel.add(new LocateButton());
-		footerPanel.add(new NewButton());
-		footerPanel.add(new NextSlideButton());
-		footerPanel.add(new OrganizeButton());
-		footerPanel.add(new PauseButton());
-		footerPanel.add(new PlayButton());
-		footerPanel.add(new PlusButton());
-		footerPanel.add(new PreviousSlideButton());
-		footerPanel.add(new ReplyButton());
-		footerPanel.add(new RewindButton());
-		footerPanel.add(new SearchButton());
-		footerPanel.add(new StopButton());
-		footerPanel.add(new TrashButton());
+		footerPanel.add(new BarButton(TYPE.refresh));
+		footerPanel.add(new BarButton(TYPE.action));
+		footerPanel.add(new BarButton(TYPE.arrow_down));
+		footerPanel.add(new BarButton(TYPE.arrow_up));
+		footerPanel.add(new BarButton(TYPE.arrow_left));
+		footerPanel.add(new BarButton(TYPE.arrow_right));
+		footerPanel.add(new BarButton(TYPE.bookmark));
+		footerPanel.add(new BarButton(TYPE.camera));
+		footerPanel.add(new BarButton(TYPE.compose));
+		footerPanel.add(new BarButton(TYPE.contact_add));
+		footerPanel.add(new BarButton(TYPE.fast_forward));
+		footerPanel.add(new BarButton(TYPE.delete));
+		footerPanel.add(new BarButton(TYPE.info));
+		footerPanel.add(new BarButton(TYPE.locate));
+		footerPanel.add(new BarButton(TYPE.new_icon));
+		footerPanel.add(new BarButton(TYPE.next_slide));
+		footerPanel.add(new BarButton(TYPE.organize));
+		footerPanel.add(new BarButton(TYPE.pause));
+		footerPanel.add(new BarButton(TYPE.play));
+		footerPanel.add(new BarButton(TYPE.plus));
+		footerPanel.add(new BarButton(TYPE.previous_slide));
+		footerPanel.add(new BarButton(TYPE.reply));
+		footerPanel.add(new BarButton(TYPE.rewind));
+		footerPanel.add(new BarButton(TYPE.search));
+		footerPanel.add(new BarButton(TYPE.stop));
+		footerPanel.add(new BarButton(TYPE.trash));
 
 		main.add(footerPanel);
 	}

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.mobile.ui.client.menu.bar;
+package de.kurka.gwt.mobile.ui.client.widget;
 
 import java.util.Iterator;
 

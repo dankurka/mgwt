@@ -1,6 +1,6 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:mgwt="urn:import:de.kurka.gwt.mobile.ui.client.widget">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:mgwt="urn:import:de.kurka.gwt.mobile.ui.client.widget" xmlns:mgwt1="urn:import:de.kurka.gwt.mobile.ui.client.menu.bar">
 	
 	<mgwt:LayoutPanel>
 		<mgwt:HeaderPanel>
@@ -22,7 +22,14 @@
 					<g:HTML>
 						<input type="text"></input>
 					</g:HTML>
+				
+				
+				<mgwt:ButtonBar>
+				<mgwt:BarButton type="action"></mgwt:BarButton>
+				<mgwt:BarButton type="arrow_down"></mgwt:BarButton>
+				</mgwt:ButtonBar>
 				</g:FlowPanel>
+				
 			
 		
 	

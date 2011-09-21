@@ -30,11 +30,11 @@ import de.kurka.gwt.mobile.mvp.client.AnimatableDisplay;
 import de.kurka.gwt.mobile.mvp.client.Animation;
 import de.kurka.gwt.mobile.mvp.client.AnimationEndCallback;
 
+@Deprecated
 public class PopinPanel extends Composite implements HasWidgets {
 	private AnimatableDisplay display;
 	private FlowPanel container;
 
-	@Deprecated
 	public PopinPanel() {
 		display = GWT.create(AnimatableDisplay.class);
 		initWidget(display.asWidget());
