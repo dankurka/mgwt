@@ -52,8 +52,6 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		MGWT mgwt = new MGWT();
 		mgwt.applySettings(settings);
 
-		mgwt.loadStyle();
-
 		final ClientFactory clientFactory = new ClientFactoryImpl();
 
 		// Start PlaceHistoryHandler with our PlaceHistoryMapper

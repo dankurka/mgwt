@@ -15,7 +15,6 @@
  */
 package de.kurka.mobile.showcase.client.activities.elements;
 
-import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.dom.client.event.touch.simple.HasSimpleTouchHandler;
@@ -48,19 +47,13 @@ public class ElementsViewImpl implements ElementsView {
 	private ScrollPanel scrollPanel;
 
 	public ElementsViewImpl() {
+		main = new LayoutPanel();
 
 		scrollPanel = new ScrollPanel();
 
-		//scrollPanel.setSize("320px", "320px");
-
-		scrollPanel.addStyleName("constrainWidth");
-		scrollPanel.addStyleName("constrainHeight");
 		scrollPanel.setScrollingEnabledX(false);
 
-		main = new LayoutPanel();
-
 		headerPanel = new HeaderPanel();
-
 		headerBackButton = new HeaderBackButton();
 		headerBackButton.setText("UI");
 		if (MGWTUtil.getFeatureDetection().isPhone()) {
@@ -68,17 +61,13 @@ public class ElementsViewImpl implements ElementsView {
 		}
 
 		headerPanel.setCenter("Elements");
-
 		main.add(headerPanel);
 
 		WidgetList widgetList = new WidgetList();
 		widgetList.setRound(true);
 		scrollPanel.setWidget(widgetList);
-
-		FormPanel formPanel = new FormPanel();
-		formPanel.setWidget(scrollPanel);
-
-		main.add(formPanel);
+		//workaround for android formfields jumping around when using -webkit-transform
+		scrollPanel.setUsePos(MGWTUtil.getFeatureDetection().isAndroid());
 
 		MTextBox mTextBox = new MTextBox();
 		mTextBox.setPlaceHolder("textbox");
@@ -130,6 +119,8 @@ public class ElementsViewImpl implements ElementsView {
 		MRadioButton iOSRadioButton = new MRadioButton("os");
 		iOSRadioButton.setText("iOS");
 		widgetList.add(iOSRadioButton);
+
+		main.add(scrollPanel);
 	}
 
 	@Override

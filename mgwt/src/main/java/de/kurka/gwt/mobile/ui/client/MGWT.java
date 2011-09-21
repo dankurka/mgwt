@@ -30,7 +30,6 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import de.kurka.gwt.mobile.dom.client.event.orientation.HasOrientationChangeHandler;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeEvent;
 import de.kurka.gwt.mobile.dom.client.event.orientation.OrientationChangeHandler;
-import de.kurka.gwt.mobile.ui.client.theme.base.MGWTClientBundle;
 import de.kurka.gwt.mobile.ui.client.theme.base.UtilCss;
 
 /**
@@ -225,14 +224,4 @@ public class MGWT implements HasOrientationChangeHandler {
 										return false;
 										}-*/;
 
-	/**
-	 * 
-	 */
-	public void loadStyle(MGWTClientBundle bundle) {
-		bundle.getMainCss().ensureInjected();
-	}
-
-	public void loadStyle() {
-		loadStyle(MGWTStyle.getDefaultClientBundle());
-	}
 }

@@ -23,6 +23,7 @@ import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -70,7 +71,9 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private int directionX = 0;
 	private int directionY = 0;
 
-	private boolean experimental = true;
+	//private boolean experimental = true;
+
+	private boolean usePos = false;
 
 	private TouchObserver touchObserver;
 
@@ -419,11 +422,20 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 		position_x = newPosX;
 		position_y = newPosY;
 
-		if (experimental) {
-			widgetToScroll.getElement().getStyle().setPosition(Position.ABSOLUTE);
+		if (usePos) {
+			widgetToScroll.getElement().getStyle().setPosition(Position.RELATIVE);
 			widgetToScroll.getElement().getStyle().setTop(newPosY, Unit.PX);
 			widgetToScroll.getElement().getStyle().setLeft(newPosX, Unit.PX);
-			onTransistionEnd();
+
+			new Timer() {
+
+				@Override
+				public void run() {
+					onTransistionEnd();
+
+				}
+			}.schedule(1);
+
 		} else {
 			CssUtil.translate(widgetToScroll.getElement(), newPosX, newPosY);
 		}
@@ -440,7 +452,7 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 	private void setTransistionTime(int milliseconds) {
 		System.out.println("webkit transition duration: " + milliseconds);
 
-		if (!experimental)
+		if (!usePos)
 			widgetToScroll.getElement().getStyle().setProperty("webkitTransitionDuration", milliseconds + "ms");
 		if (scrollingEnabledX && hScrollbar != null) {
 			hScrollbar.setTransitionTime(milliseconds);
@@ -449,6 +461,10 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 			vScrollbar.setTransitionTime(milliseconds);
 		}
 
+	}
+
+	public void setUsePos(boolean pos) {
+		this.usePos = pos;
 	}
 
 	/**
