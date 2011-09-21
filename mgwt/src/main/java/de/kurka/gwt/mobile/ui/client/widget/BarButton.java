@@ -15,8 +15,6 @@
  */
 package de.kurka.gwt.mobile.ui.client.widget;
 
-import com.google.gwt.uibinder.client.UiConstructor;
-
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
 import de.kurka.gwt.mobile.ui.client.button.ButtonBase;
 import de.kurka.gwt.mobile.ui.client.theme.base.ButtonBarCss;
@@ -239,7 +237,6 @@ public class BarButton extends ButtonBase {
 		this(css, TYPE.none);
 	}
 
-	@UiConstructor
 	public BarButton(TYPE type) {
 		this(MGWTStyle.getDefaultClientBundle().getButtonBarCss(), type);
 	}
@@ -255,6 +252,7 @@ public class BarButton extends ButtonBase {
 	}
 
 	public void setType(TYPE type) {
-		addStyleName(type.cssClass());
+		if (type != TYPE.none)
+			addStyleName(type.cssClass());
 	}
 }
