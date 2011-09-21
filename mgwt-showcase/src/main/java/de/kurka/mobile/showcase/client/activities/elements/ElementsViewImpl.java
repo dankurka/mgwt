@@ -82,7 +82,7 @@ public class ElementsViewImpl implements ElementsView {
 		widgetList.add(numberBox);
 
 		MPhoneNumberTextBox phoneBox = new MPhoneNumberTextBox();
-		mPasswordTextBox.setPlaceHolder("phonebox");
+		phoneBox.setPlaceHolder("phonebox");
 		widgetList.add(phoneBox);
 
 		MUrlTextBox urlBox = new MUrlTextBox();
