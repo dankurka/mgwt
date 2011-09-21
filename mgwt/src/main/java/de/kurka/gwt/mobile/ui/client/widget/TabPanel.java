@@ -21,8 +21,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.gwt.mobile.ui.client.MGWTStyle;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabBar;
-import de.kurka.gwt.mobile.ui.client.menu.tabbar.TabContainer;
+import de.kurka.gwt.mobile.ui.client.tabbar.TabBar;
+import de.kurka.gwt.mobile.ui.client.tabbar.TabContainer;
 import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
 
 /**
