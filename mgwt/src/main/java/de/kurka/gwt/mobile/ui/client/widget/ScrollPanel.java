@@ -43,13 +43,16 @@ import de.kurka.gwt.mobile.ui.client.panel.Scrollbar.Orientation;
 import de.kurka.gwt.mobile.ui.client.theme.base.ScrollPanelCss;
 import de.kurka.gwt.mobile.ui.client.util.CssUtil;
 import de.kurka.gwt.mobile.ui.client.util.FeatureDetection;
+import de.kurka.gwt.mobile.ui.client.widget.scroll.HasScrollHandlers;
+import de.kurka.gwt.mobile.ui.client.widget.scroll.ScrollEvent;
+import de.kurka.gwt.mobile.ui.client.widget.scroll.ScrollHandler;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchPanel;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ScrollPanel extends Composite implements HasOneWidget {
+public class ScrollPanel extends Composite implements HasOneWidget, HasScrollHandlers {
 
 	private Widget widgetToScroll;
 
@@ -339,7 +342,8 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 						leftDelta = 0;
 					}
 				}
-
+				//fire scroll event to world
+				fireEvent(new ScrollEvent(newPosX, newPosY));
 				setPosition(newPosX, newPosY);
 				moved = true;
 
@@ -616,6 +620,11 @@ public class ScrollPanel extends Composite implements HasOneWidget {
 
 	public void setScrollingEnabledY(boolean scrollingEnabledY) {
 		this.scrollingEnabledY = scrollingEnabledY;
+	}
+
+	@Override
+	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler) {
+		return addHandler(scrollHandler, ScrollEvent.getType());
 	}
 
 }
