@@ -9,7 +9,10 @@ import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.event.dom.client.HasAllKeyHandlers;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
+import com.google.gwt.event.dom.client.KeyDownHandler;
+import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -35,7 +38,7 @@ import de.kurka.gwt.mobile.ui.client.theme.base.InputCss;
 import de.kurka.gwt.mobile.ui.client.widget.touch.TouchPanel;
 
 public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>,
-		AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>> {
+		AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers {
 
 	private TouchPanel main;
 	protected final ValueBoxBase<T> box;
@@ -285,6 +288,16 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	public boolean isAutoCapitalize() {
 		String auto = box.getElement().getPropertyString("autocapitalize");
 		return "on".equals(auto);
+	}
+
+	@Override
+	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
+		return box.addKeyDownHandler(handler);
+	}
+
+	@Override
+	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
+		return box.addKeyPressHandler(handler);
 	}
 
 }
