@@ -14,7 +14,9 @@ public class MIntegerBox extends MValueBoxBase<Integer> {
 
 	public MIntegerBox(InputCss css) {
 		super(css, new IntegerBox());
+
 		addStyleName(css.textBox());
+
 	}
 
 }
