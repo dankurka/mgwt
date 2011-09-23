@@ -40,9 +40,11 @@ public class TabContainer extends Composite {
 	}
 
 	public void add(Widget w) {
+		if (children.size() == 0) {
+			container.setWidget(w);
+			activeWidget = w;
+		}
 		children.add(w);
-		container.setWidget(w);
-		activeWidget = w;
 
 	}
 
