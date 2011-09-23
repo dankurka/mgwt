@@ -15,8 +15,10 @@
  */
 package de.kurka.gwt.mobile.ui.client.widget;
 
+import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -29,7 +31,7 @@ import de.kurka.gwt.mobile.ui.client.theme.base.TabBarCss;
  * @author Daniel Kurka
  * 
  */
-public class TabPanel extends Composite {
+public class TabPanel extends Composite implements HasSelectionHandlers<Integer> {
 
 	private LayoutPanel container;
 	private TabContainer tabContainer;
@@ -89,5 +91,10 @@ public class TabPanel extends Composite {
 		int childIndex = tabContainer.getChildIndex(w);
 		tabContainer.remove(childIndex);
 		tabBar.remove(childIndex);
+	}
+
+	@Override
+	public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
+		return tabBar.addSelectionHandler(handler);
 	}
 }
