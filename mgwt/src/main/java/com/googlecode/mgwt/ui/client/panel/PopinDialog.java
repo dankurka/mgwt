@@ -16,13 +16,17 @@
 package com.googlecode.mgwt.ui.client.panel;
 
 import com.googlecode.mgwt.mvp.client.Animation;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
-
 
 public class PopinDialog extends AnimatableDialogBase {
 
 	public PopinDialog(DialogCss css) {
 		super(css);
+	}
+
+	public PopinDialog() {
+		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
 	}
 
 	@Override

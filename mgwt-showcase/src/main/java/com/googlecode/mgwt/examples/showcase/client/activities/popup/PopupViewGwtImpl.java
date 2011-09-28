@@ -24,11 +24,11 @@ import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.dialog.Dialogs;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
-import com.googlecode.mgwt.ui.client.panel.PopinPanel;
+import com.googlecode.mgwt.ui.client.panel.PopinDialog;
 import com.googlecode.mgwt.ui.client.panel.ipadmenu.IPadMenuBackButton;
 import com.googlecode.mgwt.ui.client.panel.ipadmenu.IpadMenu;
 import com.googlecode.mgwt.ui.client.panel.ipadmenu.IpadMenuContentPanel;
@@ -39,7 +39,6 @@ import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
-
 
 /**
  * @author Daniel Kurka
@@ -98,6 +97,8 @@ public class PopupViewGwtImpl implements PopupView {
 
 			@Override
 			public void onTouch(SimpleTouchEvent event) {
+
+				PopinDialog popinDialog = new PopinDialog();
 				IpadMenu menu = new IpadMenu();
 
 				IpadMenuHeader ipadMenuHeader = new IpadMenuHeader();
@@ -111,10 +112,9 @@ public class PopupViewGwtImpl implements PopupView {
 				ipadMenuContentPanel.add(new HTML("asdf"));
 				menu.getBody().add(ipadMenuContentPanel);
 
-				PopinPanel panel = new PopinPanel();
-				panel.add(menu);
+				popinDialog.add(menu);
 
-				panel.show();
+				popinDialog.show();
 
 			}
 		});
