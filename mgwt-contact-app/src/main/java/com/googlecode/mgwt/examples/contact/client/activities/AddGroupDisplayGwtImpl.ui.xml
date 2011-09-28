@@ -1,0 +1,38 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:mgwt="urn:import:com.googlecode.mgwt.ui.client.widget" >
+	
+	<mgwt:LayoutPanel>
+		<mgwt:HeaderPanel>
+		<mgwt:left><mgwt:HeaderBackButton text="back" ui:field="backButton"></mgwt:HeaderBackButton></mgwt:left>
+			<mgwt:center><g:HTML>Add Group</g:HTML></mgwt:center>
+		</mgwt:HeaderPanel>
+		
+		
+				<g:FlowPanel>
+				
+					<g:HorizontalPanel>
+						<g:HTML>Group name: </g:HTML>
+						<mgwt:MTextBox></mgwt:MTextBox>
+					</g:HorizontalPanel>
+				
+					<mgwt:Button text="Add" ui:field="addButton"></mgwt:Button>
+					<g:TextBox></g:TextBox>
+					
+					<g:HTML>
+						<input type="text"></input>
+					</g:HTML>
+				
+				
+				<mgwt:ButtonBar>
+				<mgwt:BarButton type="action"></mgwt:BarButton>
+				<mgwt:BarButton type="arrow_down"></mgwt:BarButton>
+				</mgwt:ButtonBar>
+				</g:FlowPanel>
+				
+			 
+		
+	
+	</mgwt:LayoutPanel>
+	
+</ui:UiBinder> 

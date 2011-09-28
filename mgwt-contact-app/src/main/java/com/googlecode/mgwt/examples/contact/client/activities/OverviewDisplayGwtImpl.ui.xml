@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:mgwt="urn:import:com.googlecode.mgwt.ui.client.widget">
+	
+	<mgwt:LayoutPanel>
+		<mgwt:HeaderPanel>
+		
+			<mgwt:center><g:HTML>Groups</g:HTML></mgwt:center>
+			<mgwt:right><mgwt:HeaderRoundButton text="+" ui:field="plusButton"></mgwt:HeaderRoundButton></mgwt:right>
+		</mgwt:HeaderPanel>
+		<mgwt:ScrollPanel>
+			<mgwt:child>
+				<mgwt:CellList ui:field="list"/>
+			</mgwt:child>
+		</mgwt:ScrollPanel>
+	</mgwt:LayoutPanel>
+</ui:UiBinder> 
