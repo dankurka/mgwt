@@ -19,7 +19,7 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.googlecode.mgwt.ui.client.theme.base.HeaderButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 
 /**
@@ -30,7 +30,7 @@ public abstract class HeaderButton extends ButtonBase {
 
 	private ParagraphElement pElement;
 
-	public HeaderButton(HeaderButtonCss css) {
+	public HeaderButton(HeaderCss css) {
 		super(css);
 
 		addStyleName(css.headerButton());

@@ -20,13 +20,13 @@ import com.googlecode.mgwt.ui.client.button.ButtonBase;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class IPadMenuButton extends ButtonBase {
 
 	public IPadMenuButton() {
 		//TODO this is not correct
-		super(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
+		super(MGWTStyle.getDefaultClientBundle().getHeaderCss());
 		setStylePrimaryName("mgwt-DropDownMenu-button");
 	}
 }

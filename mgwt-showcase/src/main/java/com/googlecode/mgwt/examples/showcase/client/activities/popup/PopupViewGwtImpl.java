@@ -18,7 +18,6 @@ package com.googlecode.mgwt.examples.showcase.client.activities.popup;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
@@ -29,11 +28,7 @@ import com.googlecode.mgwt.ui.client.dialog.Dialogs;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
 import com.googlecode.mgwt.ui.client.panel.PopinDialog;
-import com.googlecode.mgwt.ui.client.panel.ipadmenu.IPadMenuBackButton;
 import com.googlecode.mgwt.ui.client.panel.ipadmenu.IpadMenu;
-import com.googlecode.mgwt.ui.client.panel.ipadmenu.IpadMenuContentPanel;
-import com.googlecode.mgwt.ui.client.panel.ipadmenu.IpadMenuHeader;
-import com.googlecode.mgwt.ui.client.panel.ipadmenu.IpadMenuTitle;
 import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
@@ -101,16 +96,24 @@ public class PopupViewGwtImpl implements PopupView {
 				PopinDialog popinDialog = new PopinDialog();
 				IpadMenu menu = new IpadMenu();
 
-				IpadMenuHeader ipadMenuHeader = new IpadMenuHeader();
-				IPadMenuBackButton iPadMenuBackButton = new IPadMenuBackButton();
-				iPadMenuBackButton.setText("back");
-				ipadMenuHeader.getContent().add(iPadMenuBackButton);
-				ipadMenuHeader.getContent().add(new IpadMenuTitle("Header"));
-				menu.getBody().add(ipadMenuHeader);
+				//				IpadMenuHeader ipadMenuHeader = new IpadMenuHeader();
+				//				IPadMenuBackButton iPadMenuBackButton = new IPadMenuBackButton();
+				//				iPadMenuBackButton.setText("back");
+				//				ipadMenuHeader.getContent().add(iPadMenuBackButton);
+				//				ipadMenuHeader.getContent().add(new IpadMenuTitle("Header"));
+				//				menu.getBody().add(ipadMenuHeader);
 
-				IpadMenuContentPanel ipadMenuContentPanel = new IpadMenuContentPanel();
-				ipadMenuContentPanel.add(new HTML("asdf"));
-				menu.getBody().add(ipadMenuContentPanel);
+				HeaderPanel headerPanel2 = new HeaderPanel();
+				HeaderBackButton headerBackButton = new HeaderBackButton();
+				headerBackButton.setText("back");
+				headerPanel2.setLeftWidget(headerBackButton);
+
+				headerPanel2.setCenter("jo");
+				menu.getBody().add(headerPanel2);
+
+				//				IpadMenuContentPanel ipadMenuContentPanel = new IpadMenuContentPanel();
+				//				ipadMenuContentPanel.add(new HTML("asdf"));
+				//				menu.getBody().add(ipadMenuContentPanel);
 
 				popinDialog.add(menu);
 

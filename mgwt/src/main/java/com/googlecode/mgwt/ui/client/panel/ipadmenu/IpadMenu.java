@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class IpadMenu extends Composite {
 
@@ -42,6 +42,7 @@ public class IpadMenu extends Composite {
 		main.add(menuArrow);
 
 		content = new FlowPanel();
+		content.addStyleName("mgwt-DropDownMenu-content");
 		main.add(content);
 
 	}

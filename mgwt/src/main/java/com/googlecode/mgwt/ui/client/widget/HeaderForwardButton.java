@@ -17,19 +17,19 @@ package com.googlecode.mgwt.ui.client.widget;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.button.HeaderButton;
-import com.googlecode.mgwt.ui.client.theme.base.HeaderButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class HeaderForwardButton extends HeaderButton {
 
 	public HeaderForwardButton() {
-		this(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
+		this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
 	}
 
-	public HeaderForwardButton(HeaderButtonCss css) {
+	public HeaderForwardButton(HeaderCss css) {
 		super(css);
 		addStyleName(css.forward());
 	}

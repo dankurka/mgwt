@@ -17,18 +17,18 @@ package com.googlecode.mgwt.ui.client.widget;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.button.HeaderButton;
-import com.googlecode.mgwt.ui.client.theme.base.HeaderButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class HeaderRoundButton extends HeaderButton {
 	public HeaderRoundButton() {
-		this(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
+		this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
 	}
 
-	public HeaderRoundButton(HeaderButtonCss css) {
+	public HeaderRoundButton(HeaderCss css) {
 		super(css);
 		addStyleName(css.round());
 	}

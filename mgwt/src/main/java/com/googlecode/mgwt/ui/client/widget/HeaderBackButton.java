@@ -17,19 +17,19 @@ package com.googlecode.mgwt.ui.client.widget;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.button.HeaderButton;
-import com.googlecode.mgwt.ui.client.theme.base.HeaderButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class HeaderBackButton extends HeaderButton {
 
 	public HeaderBackButton() {
-		this(MGWTStyle.getDefaultClientBundle().getHeaderButtonCss());
+		this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
 	}
 
-	public HeaderBackButton(HeaderButtonCss css) {
+	public HeaderBackButton(HeaderCss css) {
 		super(css);
 		addStyleName(css.back());
 

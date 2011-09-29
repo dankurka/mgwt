@@ -21,12 +21,11 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.HeaderPanelCss;
-
+import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class HeaderPanel extends Composite {
 
@@ -35,13 +34,13 @@ public class HeaderPanel extends Composite {
 	private Widget title;
 
 	private FlowPanel container;
-	private final HeaderPanelCss css;
+	private final HeaderCss css;
 
 	public HeaderPanel() {
-		this(MGWTStyle.getDefaultClientBundle().getHeaderPanelCss());
+		this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
 	}
 
-	public HeaderPanel(HeaderPanelCss css) {
+	public HeaderPanel(HeaderCss css) {
 		this.css = css;
 		this.css.ensureInjected();
 		container = new FlowPanel();

@@ -20,11 +20,8 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/progressindicator.css")
 	ProgressIndicatorCss getProgressIndicatorCss();
 
-	@Source("css/headerpanel.css")
-	HeaderPanelCss getHeaderPanelCss();
-
-	@Source("css/headerbutton.css")
-	HeaderButtonCss getHeaderButtonCss();
+	@Source("css/header.css")
+	HeaderCss getHeaderCss();
 
 	@Source("css/slider.css")
 	SliderCss getSliderCss();

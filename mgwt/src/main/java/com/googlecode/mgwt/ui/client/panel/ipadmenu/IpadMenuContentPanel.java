@@ -19,13 +19,13 @@ import com.google.gwt.user.client.ui.FlowPanel;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class IpadMenuContentPanel extends FlowPanel {
 	/**
 	 * 
 	 */
 	public IpadMenuContentPanel() {
-		setStylePrimaryName("mgwt-DropDownMenu-content");
+		setStylePrimaryName("mgwt-DropDownMenu-content-panel");
 	}
 }
