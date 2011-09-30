@@ -18,6 +18,8 @@ package com.googlecode.mgwt.ui.client.panel.ipadmenu;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.theme.base.PopoverCss;
 
 /**
  * @author Daniel Kurka
@@ -32,18 +34,23 @@ public class IpadMenu extends Composite {
 	private FlowPanel content;
 
 	public IpadMenu() {
+		this(MGWTStyle.getDefaultClientBundle().getPopoverCss());
+	}
+
+	public IpadMenu(PopoverCss css) {
 		main = new FlowPanel();
+		css.ensureInjected();
 		initWidget(main);
 
-		setStylePrimaryName("mgwt-DropDownMenu");
+		setStylePrimaryName(css.main());
 
 		//arrow
 		menuArrow = new FlowPanel();
-		menuArrow.setStylePrimaryName("mgwt-DropDownMenu-arrow");
+		menuArrow.setStylePrimaryName(css.arrow());
 		main.add(menuArrow);
 
 		content = new FlowPanel();
-		content.addStyleName("mgwt-DropDownMenu-content");
+		content.addStyleName(css.content());
 		content.getElement().getStyle().setOverflow(Overflow.HIDDEN);
 		main.add(content);
 

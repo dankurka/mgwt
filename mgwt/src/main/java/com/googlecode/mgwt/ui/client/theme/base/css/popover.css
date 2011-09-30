@@ -1,9 +1,10 @@
 @if mgwt.css pretty {
-	@external mgwt-DropDownMenu, mgwt-DropDownMenu-content, mgwt-DropDownMenu-content-panel, mgwt-DropDownMenu-arrow;
+	@external mgwt-DropDownMenu, mgwt-DropDownMenu-content,  mgwt-DropDownMenu-arrow;
 	
 }
 
 .mgwt-DropDownMenu {
+	
 	width: 300px;
 	\-webkit-padding-start: 0px;
 	\-webkit-border-radius: 10px;
@@ -11,29 +12,29 @@
 	background-color: #131b2f;
 	border: solid 2px #4f4f4f;
 	margin: 0px;
-	position: relative;
-	opacity: 0px;
+
+	
 	top: 50px;
 	left: 10px;
 	bottom: 20px;
-	position: absolute;
+	position: absolute;*/
 }
 
+
+
 .mgwt-DropDownMenu-content {
+	
 	display: -webkit-box;
 	\-webkit-box-orient: vertical;
 	width: 100%;
 	height: 100%;
+
 }
 
-.mgwt-DropDownMenu-content-panel {
-	\-webkit-border-radius: 5px;
-	background-color: #ffffff;
-	margin: 0px 5px 5px 5px !important;
-	\-webkit-box-flex: 1;
-}
+
 
 .mgwt-DropDownMenu-arrow {
+	
 	background-color: #ffffff;
 	margin: 0px 5px 5px 5px !important;
 	\-webkit-border-radius: 5px;
@@ -48,4 +49,6 @@
 	background-color: #7d828c !important;
 	\-webkit-transform: rotate(45deg);
 	\-webkit-mask-image: literal('-webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.5, #000000), color-stop(0.5, transparent), to(transparent) )');
+
+
 }
