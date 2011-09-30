@@ -2,6 +2,8 @@ package com.googlecode.mgwt.ui.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
@@ -17,12 +19,25 @@ public class MGWTUtil {
 
 	private final static EventBus manager = new SimpleEventBus();
 
+	private static ORIENTATION currentOrientation;
+
 	public static FeatureDetection getFeatureDetection() {
 		return FEATURE_DETECTION;
 	}
 
 	static {
 		setupOrientation();
+		Window.addResizeHandler(new ResizeHandler() {
+
+			@Override
+			public void onResize(ResizeEvent event) {
+				ORIENTATION orientation = getOrientation();
+				if (orientation != currentOrientation) {
+					currentOrientation = orientation;
+					manager.fireEvent(new OrientationChangeEvent(orientation));
+				}
+			}
+		});
 	}
 
 	private static Timer timer;
@@ -67,29 +82,43 @@ public class MGWTUtil {
 	}
 
 	public static ORIENTATION getOrientation() {
-		int orientation = getOrientation0();
 
-		ORIENTATION o;
-		switch (orientation) {
-		case 0:
-		case 180:
+		if (FEATURE_DETECTION.isDesktop()) {
+			int height = Window.getClientHeight();
+			int width = Window.getClientWidth();
 
-			o = ORIENTATION.PORTRAIT;
-			break;
+			if (width > height) {
+				return ORIENTATION.LANDSCAPE;
+			} else {
+				return ORIENTATION.PORTRAIT;
+			}
 
-		case 90:
-		case -90:
-			o = ORIENTATION.LANDSCAPE;
+		} else {
+			int orientation = getOrientation0();
 
-			break;
+			ORIENTATION o;
+			switch (orientation) {
+			case 0:
+			case 180:
 
-		default:
-			//TODO is default a good idea?
-			o = ORIENTATION.PORTRAIT;
-			break;
+				o = ORIENTATION.PORTRAIT;
+				break;
+
+			case 90:
+			case -90:
+				o = ORIENTATION.LANDSCAPE;
+
+				break;
+
+			default:
+				//TODO is default a good idea?
+				o = ORIENTATION.PORTRAIT;
+				break;
+			}
+
+			return o;
 		}
 
-		return o;
 	}
 
 	private static native int getOrientation0()/*-{
@@ -124,12 +153,16 @@ public class MGWTUtil {
 			o = ORIENTATION.PORTRAIT;
 			break;
 		}
-
+		currentOrientation = o;
 		manager.fireEvent(new OrientationChangeEvent(o));
 
 	}
 
-	private static native void setupOrientation()/*-{
+	private static void setupOrientation() {
+
+	}
+
+	private static native void setupOrientation0()/*-{
 
 		var func = $entry(function() {
 			@com.googlecode.mgwt.ui.client.MGWTUtil::onorientationChange(I)($wnd.orientation);

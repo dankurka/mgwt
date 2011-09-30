@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.panel.ipadmenu;
 
+import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 
@@ -43,6 +44,7 @@ public class IpadMenu extends Composite {
 
 		content = new FlowPanel();
 		content.addStyleName("mgwt-DropDownMenu-content");
+		content.getElement().getStyle().setOverflow(Overflow.HIDDEN);
 		main.add(content);
 
 	}
