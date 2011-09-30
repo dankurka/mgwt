@@ -27,17 +27,7 @@ public class MGWTUtil {
 
 	static {
 		setupOrientation();
-		Window.addResizeHandler(new ResizeHandler() {
 
-			@Override
-			public void onResize(ResizeEvent event) {
-				ORIENTATION orientation = getOrientation();
-				if (orientation != currentOrientation) {
-					currentOrientation = orientation;
-					manager.fireEvent(new OrientationChangeEvent(orientation));
-				}
-			}
-		});
 	}
 
 	private static Timer timer;
@@ -159,6 +149,21 @@ public class MGWTUtil {
 	}
 
 	private static void setupOrientation() {
+		if (FEATURE_DETECTION.isDesktop()) {
+			Window.addResizeHandler(new ResizeHandler() {
+
+				@Override
+				public void onResize(ResizeEvent event) {
+					ORIENTATION orientation = getOrientation();
+					if (orientation != currentOrientation) {
+						currentOrientation = orientation;
+						manager.fireEvent(new OrientationChangeEvent(orientation));
+					}
+				}
+			});
+		} else {
+			setupOrientation0();
+		}
 
 	}
 

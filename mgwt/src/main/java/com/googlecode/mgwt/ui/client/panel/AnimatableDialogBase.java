@@ -53,6 +53,8 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	protected final DialogCss css;
 	private boolean hideOnBackgroundClick;
 
+	private boolean isVisible;
+
 	public AnimatableDialogBase(DialogCss css) {
 		this.css = css;
 		css.ensureInjected();
@@ -151,6 +153,11 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	}
 
 	public void show() {
+		if (isVisible) {
+			return;
+		}
+		isVisible = true;
+
 		// add overlay to DOM
 		HasWidgets panel = getPanelToOverlay();
 		panel.add(display.asWidget());
@@ -176,7 +183,9 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	}
 
 	public void hide() {
-
+		if (!isVisible)
+			return;
+		isVisible = false;
 		Animation animation = getHideAnimation();
 
 		display.animate(animation, false, new AnimationEndCallback() {

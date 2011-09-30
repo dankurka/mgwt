@@ -6,28 +6,21 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.O
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 
-public class CompoundDisplay {
+public class OrientationRegionHandler {
 	private final HasOneWidget landscapeDisplay;
 	private final HasOneWidget portraitDisplay;
 	private final AnimatableDisplay display;
 
-	public CompoundDisplay(HasOneWidget landscapeDisplay, HasOneWidget portraitDisplay, AnimatableDisplay display) {
+	public OrientationRegionHandler(HasOneWidget landscapeDisplay, HasOneWidget portraitDisplay, AnimatableDisplay display) {
 		this.landscapeDisplay = landscapeDisplay;
 		this.portraitDisplay = portraitDisplay;
 		this.display = display;
-		MGWTUtil.addOrientationChangeHandler(new OrientationChangeHandler() {
-
-			@Override
-			public void onOrientationChanged(OrientationChangeEvent event) {
-				changeDisplay(event.getOrientation());
-
-			}
-		});
-
+		MGWTUtil.addOrientationChangeHandler(new InternalOrientationChangeHandler());
 		changeDisplay(MGWTUtil.getOrientation());
 	}
 
 	private void changeDisplay(ORIENTATION o) {
+
 		switch (o) {
 		case LANDSCAPE:
 			landscapeDisplay.setWidget(display);
@@ -38,6 +31,14 @@ public class CompoundDisplay {
 
 		default:
 			break;
+		}
+	}
+
+	private class InternalOrientationChangeHandler implements OrientationChangeHandler {
+		@Override
+		public void onOrientationChanged(OrientationChangeEvent event) {
+			changeDisplay(event.getOrientation());
+
 		}
 	}
 

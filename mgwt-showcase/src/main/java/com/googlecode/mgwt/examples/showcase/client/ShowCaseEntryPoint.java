@@ -33,7 +33,7 @@ import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 import com.googlecode.mgwt.mvp.client.display.AnimatableDisplayBaseImpl;
-import com.googlecode.mgwt.ui.client.CompoundDisplay;
+import com.googlecode.mgwt.ui.client.OrientationRegionHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
@@ -99,7 +99,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
 
-		CompoundDisplay compoundDisplay = new CompoundDisplay(navContainer, tabletPortraitOverlay, navDisplay);
+		OrientationRegionHandler compoundDisplay = new OrientationRegionHandler(navContainer, tabletPortraitOverlay, navDisplay);
 		clientFactory.getEventBus().addHandler(ShowNavOverlayEvent.getType(), new ShowNavOverlayHandler() {
 
 			@Override
