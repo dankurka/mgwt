@@ -5,7 +5,6 @@ import com.googlecode.mgwt.dom.client.event.animation.AnimationEndEvent;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 
-
 public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 	public AnimatableDisplayIpadImpl() {
 		main.add(first);
@@ -57,8 +56,20 @@ public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 		lastCallback = callback;
 		blurBeforeAnimation();
 
-		String type = animation.getType();
 		showFirst = currentIsFirst;
+
+		if (animation == null) {
+			if (showFirst) {
+				first.getElement().getStyle().setDisplay(Display.BLOCK);
+
+			} else {
+				second.getElement().getStyle().setDisplay(Display.BLOCK);
+			}
+			onAnimationEnd();
+			return;
+		}
+
+		String type = animation.getType();
 
 		if (animationEnd != null) {
 			animationEnd.removeHandler();

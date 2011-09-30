@@ -43,6 +43,8 @@ public interface DialogCss extends ButtonBaseCss {
 	@ClassName("mgwt-DialogAnimationContainer-Shadow")
 	String animationContainerShadow();
 
+	String z_index();
+
 	@ClassName("mgwt-DialogAnimationContainer-center")
 	String animationContainerCenter();
 

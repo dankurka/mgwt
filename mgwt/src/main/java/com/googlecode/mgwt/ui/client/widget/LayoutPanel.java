@@ -23,10 +23,10 @@ import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-
-public class LayoutPanel extends Composite implements HasWidgets {
+public class LayoutPanel extends Composite implements HasWidgets, InsertPanel {
 	private FlowPanel main;
 	private LayoutCss css;
 
@@ -77,5 +77,31 @@ public class LayoutPanel extends Composite implements HasWidgets {
 	@Override
 	public boolean remove(Widget w) {
 		return main.remove(w);
+	}
+
+	@Override
+	public Widget getWidget(int index) {
+		return main.getWidget(index);
+	}
+
+	@Override
+	public int getWidgetCount() {
+		return main.getWidgetCount();
+	}
+
+	@Override
+	public int getWidgetIndex(Widget child) {
+		return main.getWidgetIndex(child);
+	}
+
+	@Override
+	public boolean remove(int index) {
+		return main.remove(index);
+	}
+
+	@Override
+	public void insert(Widget w, int beforeIndex) {
+		main.insert(w, beforeIndex);
+
 	}
 }

@@ -23,24 +23,16 @@ import com.google.gwt.dom.client.LinkElement;
 import com.google.gwt.dom.client.MetaElement;
 import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.dom.client.StyleInjector;
-import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.googlecode.mgwt.dom.client.event.orientation.HasOrientationChangeHandler;
-import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
-import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
-import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class MGWT implements HasOrientationChangeHandler {
+public class MGWT {
 
 	private final static FeatureDetection FEATURE_DETECTION = GWT.create(FeatureDetection.class);
 
-	private final HandlerManager manager = new HandlerManager(this);
 	private FlowPanel flowPanel;
 
 	public static final FeatureDetection getFeatureDetection() {
@@ -139,89 +131,32 @@ public class MGWT implements HasOrientationChangeHandler {
 
 		}
 
-		if (settings.isOrientationSupport()) {
-			setupOrientation();
-			onorientationChange(getOrientation());
-		}
-
 	}
 
 	private native void setUpPreventScrolling(Element el)/*-{
-															var func = function(event) {
-															event.preventDefault();
-															//event.stopPropagation();
-															return false;
-															};
+		var func = function(event) {
+			event.preventDefault();
+			//event.stopPropagation();
+			return false;
+		};
 
-															el.ontouchmove = func;
-															
-															}-*/;
+		el.ontouchmove = func;
 
-	private native int getOrientation()/*-{
-										if (typeof ($wnd.orientation) == 'undefined') {
-										return 0;
-										}
-
-										return $wnd.orientation;
-										}-*/;
-
-	private void onorientationChange(int orientation) {
-		UtilCss utilCss = MGWTStyle.getDefaultClientBundle().getUtilCss();
-		switch (orientation) {
-		case 0:
-		case 180:
-			Document.get().getBody().addClassName(utilCss.portrait());
-			Document.get().getBody().removeClassName(utilCss.landscape());
-
-			break;
-
-		case 90:
-		case -90:
-			Document.get().getBody().addClassName(utilCss.landscape());
-			Document.get().getBody().removeClassName(utilCss.portrait());
-
-			break;
-
-		default:
-			break;
-		}
-
-		manager.fireEvent(new OrientationChangeEvent(orientation));
-
-	}
-
-	private native void setupOrientation()/*-{
-											var instance = this;
-											var func = function() {
-
-											instance.@com.googlecode.mgwt.ui.client.MGWT::onorientationChange(I)($wnd.orientation);
-											};
-											$doc.body.onorientationchange = func;
-											$doc.addEventListener("orientationChanged", func);
-											}-*/;
-
-	/* (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.orientation.HasOrientationChangeHandler#addOrientationChangeHandler(com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler)
-	 */
-	@Override
-	public HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
-		return manager.addHandler(OrientationChangeEvent.getType(), handler);
-
-	}
+	}-*/;
 
 	public native int getWindowInnerHeight()/*-{
-											return $wnd.innerHeight;
-											}-*/;
+		return $wnd.innerHeight;
+	}-*/;
 
 	public native int getWindowInnerWidth()/*-{
-											return $wnd.innerWidth;
-											}-*/;
+		return $wnd.innerWidth;
+	}-*/;
 
 	public native boolean isFullScreen()/*-{
-										if ($wnd.navigator.standalone) {
-										return true;
-										}
-										return false;
-										}-*/;
+		if ($wnd.navigator.standalone) {
+			return true;
+		}
+		return false;
+	}-*/;
 
 }

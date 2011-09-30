@@ -20,9 +20,9 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.event.ShowNavOverlayEvent;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-
 
 /**
  * @author Daniel Kurka
@@ -48,6 +48,15 @@ public class AboutActivity extends MGWTAbstractActivity {
 			@Override
 			public void onTouch(SimpleTouchEvent event) {
 				clientFactory.getPlaceController().goTo(new HomePlace());
+
+			}
+		}));
+
+		addHandlerRegistration(aboutView.getNavButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+
+			@Override
+			public void onTouch(SimpleTouchEvent event) {
+				clientFactory.getEventBus().fireEvent(new ShowNavOverlayEvent());
 
 			}
 		}));

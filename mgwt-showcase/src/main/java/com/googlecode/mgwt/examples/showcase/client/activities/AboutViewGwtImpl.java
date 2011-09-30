@@ -18,13 +18,14 @@ package com.googlecode.mgwt.examples.showcase.client.activities;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
+import com.googlecode.mgwt.ui.client.widget.HeaderRoundButton;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
-
 
 /**
  * @author Daniel Kurka
@@ -35,6 +36,7 @@ public class AboutViewGwtImpl implements AboutView {
 	private LayoutPanel main;
 	private RoundPanel round;
 	private Button backbutton;
+	private HeaderRoundButton tabletButton;
 
 	public AboutViewGwtImpl() {
 		main = new LayoutPanel();
@@ -60,8 +62,13 @@ public class AboutViewGwtImpl implements AboutView {
 
 		backbutton = new Button();
 
+		tabletButton = new HeaderRoundButton();
+		tabletButton.setText("nav");
 		if (!MGWTUtil.getFeatureDetection().isTablet()) {
 			main.add(backbutton);
+		} else {
+			headerPanel.setLeftWidget(tabletButton);
+			tabletButton.addStyleName(MGWTStyle.getDefaultClientBundle().getUtilCss().portraitonly());
 		}
 
 	}
@@ -80,6 +87,11 @@ public class AboutViewGwtImpl implements AboutView {
 	@Override
 	public HasSimpleTouchHandler getBackButton() {
 		return backbutton;
+	}
+
+	@Override
+	public HasSimpleTouchHandler getNavButton() {
+		return tabletButton;
 	}
 
 }

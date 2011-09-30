@@ -17,7 +17,7 @@ package com.googlecode.mgwt.ui.client;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class MGWTSettings {
 
@@ -34,22 +34,6 @@ public class MGWTSettings {
 	private String statusBar;
 
 	private boolean preventScrolling;
-
-	private boolean orientationSupport = true;
-
-	/**
-	 * @return the orientationSupport
-	 */
-	public boolean isOrientationSupport() {
-		return orientationSupport;
-	}
-
-	/**
-	 * @param orientationSupport the orientationSupport to set
-	 */
-	public void setOrientationSupport(boolean orientationSupport) {
-		this.orientationSupport = orientationSupport;
-	}
 
 	public boolean isAddGlosToIcon() {
 		return addGlosToIcon;
@@ -107,7 +91,8 @@ public class MGWTSettings {
 	}
 
 	/**
-	 * @param preventScrolling the preventScrolling to set
+	 * @param preventScrolling
+	 *            the preventScrolling to set
 	 */
 	public void setPreventScrolling(boolean preventScrolling) {
 		this.preventScrolling = preventScrolling;

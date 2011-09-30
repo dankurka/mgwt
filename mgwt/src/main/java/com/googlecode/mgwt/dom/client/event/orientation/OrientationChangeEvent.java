@@ -19,14 +19,18 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class OrientationChangeEvent extends GwtEvent<OrientationChangeHandler> {
 
 	private static final GwtEvent.Type<OrientationChangeHandler> TYPE = new Type<OrientationChangeHandler>();
-	private final int orientation;
+	private final ORIENTATION orientation;
 
-	public OrientationChangeEvent(int orientation) {
+	public enum ORIENTATION {
+		PORTRAIT, LANDSCAPE
+	}
+
+	public OrientationChangeEvent(ORIENTATION orientation) {
 		this.orientation = orientation;
 
 	}
@@ -45,10 +49,7 @@ public class OrientationChangeEvent extends GwtEvent<OrientationChangeHandler> {
 
 	}
 
-	/**
-	 * @return the orientation
-	 */
-	public int getOrientation() {
+	public ORIENTATION getOrientation() {
 		return orientation;
 	}
 

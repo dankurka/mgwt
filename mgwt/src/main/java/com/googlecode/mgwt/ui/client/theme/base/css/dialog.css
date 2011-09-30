@@ -1,9 +1,12 @@
 
 @if mgwt.css pretty {
 	@external mgwt-DialogAnimationContainer-Shadow, mgwt-DialogAnimationContainer, mgwt-DialogAnimationContainer-center;
-	@external mgwt-DialogPanel, container, title, content, footer, okbutton, cancelbutton, active, mgwt-BottomPanel, shadow;
+	@external mgwt-DialogPanel, container, title, content, footer, okbutton, cancelbutton, active, mgwt-BottomPanel, shadow, z_index;
 }
 
+.z_index{
+	z-index: 100;
+}
 
 .mgwt-DialogAnimationContainer-Shadow {
 	z-index: 100;
@@ -13,7 +16,8 @@
 .mgwt-DialogAnimationContainer {
 	display: -webkit-box;
 	width: 100%;
-	height: 100%
+	height: 100%;
+	overflow: hidden;
     
 }
 

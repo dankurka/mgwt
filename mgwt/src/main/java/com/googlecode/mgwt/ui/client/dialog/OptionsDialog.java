@@ -23,7 +23,6 @@ import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.panel.SlideUpPanel;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
-
 public class OptionsDialog implements HasWidgets {
 
 	public interface OptionCallback {

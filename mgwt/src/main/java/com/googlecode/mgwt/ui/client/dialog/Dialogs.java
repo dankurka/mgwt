@@ -27,7 +27,6 @@ import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
 import com.googlecode.mgwt.ui.client.widget.Button;
 
-
 public class Dialogs {
 
 	public interface AlertCallback {
