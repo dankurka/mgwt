@@ -1,5 +1,8 @@
 package com.googlecode.mgwt.ui.client.panel;
 
+import com.google.gwt.dom.client.Style.Overflow;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
@@ -9,11 +12,47 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.panel.ipadmenu.IpadMenu;
+import com.googlecode.mgwt.ui.client.theme.base.PopoverCss;
 
 public class TabletPortraitOverlay implements HasOneWidget {
 	private AnimatableDialogBase popinDialog;
 	private IpadMenu ipadMenu;
+
+	public class IpadMenu extends Composite {
+
+		private FlowPanel main;
+
+		private FlowPanel menuArrow;
+
+		private FlowPanel content;
+
+		public IpadMenu() {
+			this(MGWTStyle.getDefaultClientBundle().getPopoverCss());
+		}
+
+		public IpadMenu(PopoverCss css) {
+			main = new FlowPanel();
+			css.ensureInjected();
+			initWidget(main);
+
+			setStylePrimaryName(css.main());
+
+			//arrow
+			menuArrow = new FlowPanel();
+			menuArrow.setStylePrimaryName(css.arrow());
+			main.add(menuArrow);
+
+			content = new FlowPanel();
+			content.addStyleName(css.content());
+			content.getElement().getStyle().setOverflow(Overflow.HIDDEN);
+			main.add(content);
+
+		}
+
+		public FlowPanel getBody() {
+			return content;
+		}
+	}
 
 	public TabletPortraitOverlay() {
 		popinDialog = new AnimatableDialogBase(MGWTStyle.getDefaultClientBundle().getDialogCss()) {
