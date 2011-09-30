@@ -14,7 +14,7 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.PopoverCss;
 
-public class TabletPortraitOverlay implements HasOneWidget {
+public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 	private AnimatableDialogBase popinDialog;
 	private IpadMenu ipadMenu;
 
@@ -112,6 +112,7 @@ public class TabletPortraitOverlay implements HasOneWidget {
 
 	}
 
+	@Override
 	public void show() {
 		popinDialog.show();
 	}

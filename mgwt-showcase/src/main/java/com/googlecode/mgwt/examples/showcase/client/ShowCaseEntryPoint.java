@@ -26,17 +26,16 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.googlecode.mgwt.examples.showcase.client.css.AppBundle;
-import com.googlecode.mgwt.examples.showcase.client.event.ShowNavOverlayEvent;
-import com.googlecode.mgwt.examples.showcase.client.event.ShowNavOverlayHandler;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 import com.googlecode.mgwt.mvp.client.display.AnimatableDisplayBaseImpl;
-import com.googlecode.mgwt.ui.client.OrientationRegionHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
+import com.googlecode.mgwt.ui.client.MasterRegionHandler;
+import com.googlecode.mgwt.ui.client.OrientationRegionHandler;
 import com.googlecode.mgwt.ui.client.panel.TabletPortraitOverlay;
 
 /**
@@ -99,15 +98,8 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
 
-		OrientationRegionHandler compoundDisplay = new OrientationRegionHandler(navContainer, tabletPortraitOverlay, navDisplay);
-		clientFactory.getEventBus().addHandler(ShowNavOverlayEvent.getType(), new ShowNavOverlayHandler() {
-
-			@Override
-			public void onShowNavOverlay(ShowNavOverlayEvent showNavOverlayEvent) {
-				tabletPortraitOverlay.show();
-
-			}
-		});
+		new OrientationRegionHandler(navContainer, tabletPortraitOverlay, navDisplay);
+		new MasterRegionHandler(clientFactory.getEventBus(), "nav", tabletPortraitOverlay);
 
 		ActivityMapper navActivityMapper = new TabletNavActivityMapper(clientFactory);
 

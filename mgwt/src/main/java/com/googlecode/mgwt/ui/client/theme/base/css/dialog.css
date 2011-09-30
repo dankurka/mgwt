@@ -1,7 +1,11 @@
 
 @if mgwt.css pretty {
 	@external mgwt-DialogAnimationContainer-Shadow, mgwt-DialogAnimationContainer, mgwt-DialogAnimationContainer-center;
-	@external mgwt-DialogPanel, container, title, content, footer, okbutton, cancelbutton, active, mgwt-BottomPanel, shadow, z_index;
+	@external mgwt-DialogPanel, mgwt-Dialog, container, title, content, footer, okbutton, cancelbutton, active, mgwt-BottomPanel, shadow, z_index;
+}
+
+.mgwt-Dialog{
+
 }
 
 .z_index{
