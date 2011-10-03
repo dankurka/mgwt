@@ -15,16 +15,12 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-
+import com.googlecode.mgwt.examples.showcase.client.DetailView;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public interface ElementsView extends IsWidget {
-
-	public HasSimpleTouchHandler getBackButton();
+public interface ElementsView extends DetailView {
 
 }

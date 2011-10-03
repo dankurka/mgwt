@@ -16,35 +16,18 @@
 package com.googlecode.mgwt.examples.showcase.client.activities;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.widget.Button;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.HeaderRoundButton;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class AboutViewGwtImpl implements AboutView {
+public class AboutViewGwtImpl extends DetailViewGwtImpl implements AboutView {
 
-	private LayoutPanel main;
 	private RoundPanel round;
-	private Button backbutton;
-	private HeaderRoundButton tabletButton;
 
 	public AboutViewGwtImpl() {
-		main = new LayoutPanel();
-		HeaderPanel headerPanel = new HeaderPanel();
-		headerPanel.setCenter("About");
-		main.add(headerPanel);
-
-		ScrollPanel scrollPanel = new ScrollPanel();
 
 		round = new RoundPanel();
 
@@ -58,40 +41,7 @@ public class AboutViewGwtImpl implements AboutView {
 
 		scrollPanel.setWidget(round);
 		scrollPanel.setScrollingEnabledX(false);
-		main.add(scrollPanel);
 
-		backbutton = new Button();
-
-		tabletButton = new HeaderRoundButton();
-		tabletButton.setText("nav");
-		if (!MGWTUtil.getFeatureDetection().isTablet()) {
-			main.add(backbutton);
-		} else {
-			headerPanel.setLeftWidget(tabletButton);
-			tabletButton.addStyleName(MGWTStyle.getDefaultClientBundle().getUtilCss().portraitonly());
-		}
-
-	}
-
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public void setBackButtonText(String text) {
-		backbutton.setText(text);
-
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return backbutton;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getNavButton() {
-		return tabletButton;
 	}
 
 }

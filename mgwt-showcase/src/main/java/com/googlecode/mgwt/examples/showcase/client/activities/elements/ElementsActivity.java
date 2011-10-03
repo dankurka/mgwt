@@ -20,28 +20,32 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
-import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ElementsActivity extends MGWTAbstractActivity {
+public class ElementsActivity extends DetailActivity {
 
 	private final ClientFactory clientFactory;
 
 	public ElementsActivity(ClientFactory clientFactory) {
+		super(clientFactory.getElementsView(), "nav");
 		this.clientFactory = clientFactory;
 
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		super.start(panel, eventBus);
 		ElementsView view = clientFactory.getElementsView();
+		view.getMainButtonText().setText("Nav");
+		view.getBackbuttonText().setText("UI");
+		view.getHeader().setText("Elements");
 
-		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch(SimpleTouchEvent event) {

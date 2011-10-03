@@ -15,14 +15,12 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget;
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-
+import com.googlecode.mgwt.examples.showcase.client.DetailView;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public interface ScrollWidgetView extends IsWidget {
-	public HasSimpleTouchHandler getBackButton();
+public interface ScrollWidgetView extends DetailView {
+
 }

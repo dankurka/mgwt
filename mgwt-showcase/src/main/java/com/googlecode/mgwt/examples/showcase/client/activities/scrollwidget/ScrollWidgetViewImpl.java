@@ -16,41 +16,16 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget;
 
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ScrollWidgetViewImpl implements ScrollWidgetView {
-
-	private LayoutPanel main;
-	private HeaderBackButton headerBackButton;
+public class ScrollWidgetViewImpl extends DetailViewGwtImpl implements ScrollWidgetView {
 
 	public ScrollWidgetViewImpl() {
-
-		main = new LayoutPanel();
-
-		HeaderPanel headerPanel = new HeaderPanel();
-		headerPanel.setCenter("Scroll Widget");
-
-		headerBackButton = new HeaderBackButton();
-		headerBackButton.setText("UI");
-		if (!MGWT.getFeatureDetection().isTablet()) {
-			headerPanel.setLeftWidget(headerBackButton);
-		}
-
-		main.add(headerPanel);
-
-		ScrollPanel scrollPanel = new ScrollPanel();
 
 		RoundPanel roundPanel = new RoundPanel();
 		roundPanel.setWidth("1000px");
@@ -62,18 +37,6 @@ public class ScrollWidgetViewImpl implements ScrollWidgetView {
 
 		scrollPanel.setWidget(roundPanel);
 
-		main.add(scrollPanel);
-
-	}
-
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return headerBackButton;
 	}
 
 }

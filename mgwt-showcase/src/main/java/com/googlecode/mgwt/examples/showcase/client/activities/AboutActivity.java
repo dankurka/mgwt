@@ -20,30 +20,35 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
-import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-import com.googlecode.mgwt.ui.client.event.ShowMasterEvent;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class AboutActivity extends MGWTAbstractActivity {
+public class AboutActivity extends DetailActivity {
 
 	private final ClientFactory clientFactory;
 
 	public AboutActivity(ClientFactory clientFactory) {
+		super(clientFactory.getAboutView(), "nav");
 		this.clientFactory = clientFactory;
 
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		super.start(panel, eventBus);
 		AboutView aboutView = clientFactory.getAboutView();
 
-		aboutView.setBackButtonText("Home");
+		aboutView.getBackbuttonText().setText("Home");
 
-		addHandlerRegistration(aboutView.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		aboutView.getHeader().setText("About");
+
+		aboutView.getMainButtonText().setText("Nav");
+
+		addHandlerRegistration(aboutView.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch(SimpleTouchEvent event) {
@@ -52,16 +57,8 @@ public class AboutActivity extends MGWTAbstractActivity {
 			}
 		}));
 
-		addHandlerRegistration(aboutView.getNavButton().addSimpleTouchHandler(new SimpleTouchHandler() {
-
-			@Override
-			public void onTouch(SimpleTouchEvent event) {
-				clientFactory.getEventBus().fireEvent(new ShowMasterEvent("nav"));
-
-			}
-		}));
-
 		panel.setWidget(aboutView);
+
 	}
 
 }

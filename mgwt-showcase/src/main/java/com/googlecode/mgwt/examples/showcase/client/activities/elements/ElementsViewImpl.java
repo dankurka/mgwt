@@ -15,12 +15,8 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.MCheckBox;
 import com.googlecode.mgwt.ui.client.widget.MEmailTextBox;
 import com.googlecode.mgwt.ui.client.widget.MNumberTextBox;
@@ -30,43 +26,24 @@ import com.googlecode.mgwt.ui.client.widget.MRadioButton;
 import com.googlecode.mgwt.ui.client.widget.MTextArea;
 import com.googlecode.mgwt.ui.client.widget.MTextBox;
 import com.googlecode.mgwt.ui.client.widget.MUrlTextBox;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.base.MListBox;
 import com.googlecode.mgwt.ui.client.widget.list.WidgetList;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ElementsViewImpl implements ElementsView {
-
-	private LayoutPanel main;
-	private HeaderPanel headerPanel;
-	private HeaderBackButton headerBackButton;
-	private ScrollPanel scrollPanel;
+public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView {
 
 	public ElementsViewImpl() {
-		main = new LayoutPanel();
-
-		scrollPanel = new ScrollPanel();
 
 		scrollPanel.setScrollingEnabledX(false);
-
-		headerPanel = new HeaderPanel();
-		headerBackButton = new HeaderBackButton();
-		headerBackButton.setText("UI");
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
-			headerPanel.setLeftWidget(headerBackButton);
-		}
-
-		headerPanel.setCenter("Elements");
-		main.add(headerPanel);
 
 		WidgetList widgetList = new WidgetList();
 		widgetList.setRound(true);
 		scrollPanel.setWidget(widgetList);
-		//workaround for android formfields jumping around when using -webkit-transform
+		// workaround for android formfields jumping around when using
+		// -webkit-transform
 		scrollPanel.setUsePos(MGWTUtil.getFeatureDetection().isAndroid());
 
 		MTextBox mTextBox = new MTextBox();
@@ -104,11 +81,11 @@ public class ElementsViewImpl implements ElementsView {
 		widgetList.add(mListBox);
 
 		MCheckBox mCheckBox = new MCheckBox();
-		//mCheckBox.setText("smeeee");
+		// mCheckBox.setText("smeeee");
 		widgetList.add(mCheckBox);
 
 		MCheckBox mCheckBox1 = new MCheckBox();
-		//mCheckBox1.setText("again");
+		// mCheckBox1.setText("again");
 		mCheckBox1.setImportant(true);
 		widgetList.add(mCheckBox1);
 
@@ -121,16 +98,6 @@ public class ElementsViewImpl implements ElementsView {
 		widgetList.add(iOSRadioButton);
 
 		main.add(scrollPanel);
-	}
-
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return headerBackButton;
 	}
 
 }

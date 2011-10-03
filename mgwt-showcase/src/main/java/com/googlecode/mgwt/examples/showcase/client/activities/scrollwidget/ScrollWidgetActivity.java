@@ -20,15 +20,14 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
-import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ScrollWidgetActivity extends MGWTAbstractActivity {
+public class ScrollWidgetActivity extends DetailActivity {
 
 	private final ClientFactory clientFactory;
 
@@ -36,15 +35,21 @@ public class ScrollWidgetActivity extends MGWTAbstractActivity {
 	 * 
 	 */
 	public ScrollWidgetActivity(ClientFactory clientFactory) {
+		super(clientFactory.getScrollWidgetView(), "nav");
 		this.clientFactory = clientFactory;
 
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		super.start(panel, eventBus);
 		ScrollWidgetView view = clientFactory.getScrollWidgetView();
 
-		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		view.getMainButtonText().setText("Nav");
+		view.getBackbuttonText().setText("UI");
+		view.getHeader().setText("Scroll Widget");
+
+		addHandlerRegistration(view.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch(SimpleTouchEvent event) {

@@ -15,47 +15,23 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.buttonbar;
 
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.BarButton;
-import com.googlecode.mgwt.ui.client.widget.ButtonBar;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.BarButton.TYPE;
-
+import com.googlecode.mgwt.ui.client.widget.ButtonBar;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ButtonBarViewGwtImpl implements ButtonBarView {
+public class ButtonBarViewGwtImpl extends DetailViewGwtImpl implements ButtonBarView {
 
-	private LayoutPanel main;
 	private ButtonBar footerPanel;
-	private HeaderPanel headerPanel;
-	private HeaderBackButton backButton;
 
 	/**
 	 * 
 	 */
 	public ButtonBarViewGwtImpl() {
-		main = new LayoutPanel();
-
-		headerPanel = new HeaderPanel();
-
-		headerPanel.setCenter("ButtonBar");
-		backButton = new HeaderBackButton();
-
-		backButton.setText("UI");
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
-			headerPanel.setLeftWidget(backButton);
-		}
-		main.add(headerPanel);
-
-		main.add(new ScrollPanel());
 
 		footerPanel = new ButtonBar();
 
@@ -87,16 +63,6 @@ public class ButtonBarViewGwtImpl implements ButtonBarView {
 		footerPanel.add(new BarButton(TYPE.trash));
 
 		main.add(footerPanel);
-	}
-
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return backButton;
 	}
 
 }
