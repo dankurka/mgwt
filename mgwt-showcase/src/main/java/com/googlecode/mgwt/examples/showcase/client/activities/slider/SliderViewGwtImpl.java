@@ -46,6 +46,8 @@ public class SliderViewGwtImpl extends DetailViewGwtImpl implements SliderView {
 		content.add(valueField);
 
 		scrollPanel.setWidget(content);
+		scrollPanel.setScrollingEnabledX(false);
+		scrollPanel.setScrollingEnabledY(false);
 
 	}
 
