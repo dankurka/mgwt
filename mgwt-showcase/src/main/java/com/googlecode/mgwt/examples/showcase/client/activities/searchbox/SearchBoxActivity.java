@@ -20,28 +20,34 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
-import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class SearchBoxActivity extends MGWTAbstractActivity {
+public class SearchBoxActivity extends DetailActivity {
 
 	private final ClientFactory clientFactory;
 
 	public SearchBoxActivity(ClientFactory clientFactory) {
+		super(clientFactory.getSearchBoxView(), "nav");
 		this.clientFactory = clientFactory;
 
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		super.start(panel, eventBus);
+
 		SearchBoxView view = clientFactory.getSearchBoxView();
 
-		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		view.getHeader().setText("Search Box");
+		view.getBackbuttonText().setText("UI");
+		view.getMainButtonText().setText("Nav");
+
+		addHandlerRegistration(view.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch(SimpleTouchEvent event) {

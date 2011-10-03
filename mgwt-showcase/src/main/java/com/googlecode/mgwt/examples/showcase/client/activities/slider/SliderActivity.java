@@ -22,28 +22,33 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
-import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class SliderActivity extends MGWTAbstractActivity {
+public class SliderActivity extends DetailActivity {
 
 	private final ClientFactory clientFactory;
 
 	public SliderActivity(ClientFactory clientFactory) {
+		super(clientFactory.getSliderView(), "nav");
 		this.clientFactory = clientFactory;
 
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		super.start(panel, eventBus);
 		final SliderView view = clientFactory.getSliderView();
 
-		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		view.getBackbuttonText().setText("UI");
+		view.getMainButtonText().setText("Nav");
+		view.getHeader().setText("Slider");
+
+		addHandlerRegistration(view.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch(SimpleTouchEvent event) {

@@ -15,41 +15,20 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.searchbox;
 
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
 import com.google.gwt.user.client.ui.FormPanel.SubmitHandler;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.MSearchBox;
-
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class SearchBoxViewGwtImpl implements SearchBoxView {
-
-	private FlowPanel main;
-	private HeaderPanel headerPanel;
-	private HeaderBackButton backButton;
+public class SearchBoxViewGwtImpl extends DetailViewGwtImpl implements SearchBoxView {
 
 	public SearchBoxViewGwtImpl() {
-		main = new FlowPanel();
 
-		headerPanel = new HeaderPanel();
-
-		headerPanel.setCenter("SearchBox");
-		backButton = new HeaderBackButton();
-
-		backButton.setText("UI");
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
-			headerPanel.setLeftWidget(backButton);
-		}
-		main.add(headerPanel);
 		FormPanel formPanel = new FormPanel("");
 		formPanel.addSubmitHandler(new SubmitHandler() {
 
@@ -61,20 +40,7 @@ public class SearchBoxViewGwtImpl implements SearchBoxView {
 		});
 		MSearchBox searchBox = new MSearchBox();
 		formPanel.setWidget(searchBox);
-		main.add(formPanel);
-	}
-
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.googlecode.mgwt.examples.showcase.client.activities.SearchBoxView#getBackButton()
-	 */
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return backButton;
+		scrollPanel.setWidget(formPanel);
 	}
 
 }

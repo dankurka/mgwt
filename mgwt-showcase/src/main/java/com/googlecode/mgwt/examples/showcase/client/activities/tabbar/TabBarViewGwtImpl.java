@@ -16,42 +16,18 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.tabbar;
 
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.TabBarButton;
-import com.googlecode.mgwt.ui.client.widget.TabPanel;
 import com.googlecode.mgwt.ui.client.widget.TabBarButton.TYPE;
-
+import com.googlecode.mgwt.ui.client.widget.TabPanel;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class TabBarViewGwtImpl implements TabBarView {
-
-	private LayoutPanel main;
-	private HeaderPanel headerPanel;
-	private HeaderBackButton backButton;
+public class TabBarViewGwtImpl extends DetailViewGwtImpl implements TabBarView {
 
 	public TabBarViewGwtImpl() {
-		main = new LayoutPanel();
-
-		headerPanel = new HeaderPanel();
-
-		headerPanel.setCenter("TabBar");
-		backButton = new HeaderBackButton();
-
-		backButton.setText("UI");
-
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
-			headerPanel.setLeftWidget(backButton);
-		}
-
-		main.add(headerPanel);
 
 		TabPanel tabPanel = new TabPanel();
 		tabPanel.setScrollingEnabledX(false);
@@ -68,16 +44,6 @@ public class TabBarViewGwtImpl implements TabBarView {
 		tabPanel.add(new TabBarButton(TYPE.SEARCH), new Label("Search"));
 
 		main.add(tabPanel);
-	}
-
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return backButton;
 	}
 
 }

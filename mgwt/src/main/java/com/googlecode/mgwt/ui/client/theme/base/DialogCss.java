@@ -17,7 +17,7 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 public interface DialogCss extends ButtonBaseCss {
 
-	@ClassName("mgwt-Dialog")
+	@ClassName("mgwt-DialogPanel")
 	String getDialogPanel();
 
 	@ClassName("mgwt-BottomPanel")

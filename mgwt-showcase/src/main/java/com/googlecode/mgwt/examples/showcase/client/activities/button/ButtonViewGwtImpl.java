@@ -16,45 +16,19 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.button;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.Button;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class ButtonViewGwtImpl implements ButtonView {
-
-	private LayoutPanel main;
-	private HeaderPanel headerPanel;
-	private HeaderBackButton backButton;
+public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 
 	public ButtonViewGwtImpl() {
-		main = new LayoutPanel();
-
-		headerPanel = new HeaderPanel();
-
-		headerPanel.setCenter("Buttons");
-		backButton = new HeaderBackButton();
-
-		backButton.setText("UI");
-
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
-			headerPanel.setLeftWidget(backButton);
-		}
-
-		main.add(headerPanel);
 
 		FlowPanel content = new FlowPanel();
 
-		ScrollPanel scrollPanel = new ScrollPanel();
 		scrollPanel.setScrollingEnabledX(false);
 
 		Button normalButton = new Button("Normal");
@@ -100,18 +74,6 @@ public class ButtonViewGwtImpl implements ButtonView {
 
 		scrollPanel.setWidget(content);
 
-		main.add(scrollPanel);
-
-	}
-
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return backButton;
 	}
 
 }

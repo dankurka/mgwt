@@ -15,19 +15,12 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.progressbar;
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-
+import com.googlecode.mgwt.examples.showcase.client.DetailView;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public interface ProgressBarView extends IsWidget {
-
-	/**
-	 * @return
-	 */
-	HasSimpleTouchHandler getBackButton();
+public interface ProgressBarView extends DetailView {
 
 }

@@ -15,14 +15,12 @@
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.searchbox;
 
-import com.google.gwt.user.client.ui.IsWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-
+import com.googlecode.mgwt.examples.showcase.client.DetailView;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public interface SearchBoxView extends IsWidget {
-	public HasSimpleTouchHandler getBackButton();
+public interface SearchBoxView extends DetailView {
+
 }

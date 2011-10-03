@@ -17,52 +17,27 @@ package com.googlecode.mgwt.examples.showcase.client.activities.progressbar;
 
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.ProgressBar;
 import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
 
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class ProgressBarViewImpl implements ProgressBarView {
-	private FlowPanel main;
-	private HeaderBackButton headerBackButton;
+public class ProgressBarViewImpl extends DetailViewGwtImpl implements ProgressBarView {
 
 	public ProgressBarViewImpl() {
 
-		main = new FlowPanel();
+		FlowPanel content = new FlowPanel();
 
-		HeaderPanel headerPanel = new HeaderPanel();
-		headerPanel.setCenter("ProgressBar");
-
-		headerBackButton = new HeaderBackButton();
-		headerBackButton.setText("UI");
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
-			headerPanel.setLeftWidget(headerBackButton);
-		}
-
-		main.add(headerPanel);
-
-		main.add(new ProgressBar());
+		content.add(new ProgressBar());
 		ProgressIndicator progressIndicator = new ProgressIndicator();
 		progressIndicator.getElement().getStyle().setMarginLeft(100, Unit.PX);
-		main.add(progressIndicator);
+		content.add(progressIndicator);
+
+		scrollPanel.setWidget(content);
 
 	}
 
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return headerBackButton;
-	}
 }

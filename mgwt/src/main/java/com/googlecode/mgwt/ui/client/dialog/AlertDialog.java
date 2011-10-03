@@ -25,7 +25,6 @@ import com.googlecode.mgwt.ui.client.panel.DialogPanel1;
 import com.googlecode.mgwt.ui.client.panel.PopinDialog;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
-
 public class AlertDialog implements HasText, HasTitle, HasSimpleTouchHandler {
 
 	private Label textLabel;
@@ -33,6 +32,7 @@ public class AlertDialog implements HasText, HasTitle, HasSimpleTouchHandler {
 	private DialogPanel1 dialogPanel1;
 
 	public AlertDialog(DialogCss css, String title, String text) {
+		css.ensureInjected();
 		popinDialog = new PopinDialog(css);
 		dialogPanel1 = new DialogPanel1();
 		dialogPanel1.showCancelButton(false);

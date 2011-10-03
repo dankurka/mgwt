@@ -17,19 +17,17 @@ package com.googlecode.mgwt.examples.showcase.client.activities.popup;
 
 import java.util.List;
 
-import com.google.gwt.user.client.ui.IsWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.examples.showcase.client.DetailView;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
-
 
 /**
  * @author Daniel Kurka
  * 
  */
-public interface PopupView extends IsWidget {
-	public HasSimpleTouchHandler getBackButton();
+public interface PopupView extends DetailView {
 
 	public HasSimpleTouchHandler getSlideUpButton();
 

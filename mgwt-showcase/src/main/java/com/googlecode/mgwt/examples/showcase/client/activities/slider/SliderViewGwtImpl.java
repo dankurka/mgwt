@@ -20,57 +20,33 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasValue;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.widget.MSlider;
-
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class SliderViewGwtImpl implements SliderView {
+public class SliderViewGwtImpl extends DetailViewGwtImpl implements SliderView {
 
-	private FlowPanel main;
-	private HeaderBackButton headerBackButton;
 	private MSlider mSlider;
 	private HTML valueField;
 
 	public SliderViewGwtImpl() {
-		main = new FlowPanel();
 
-		HeaderPanel headerPanel = new HeaderPanel();
-		main.add(headerPanel);
-		headerPanel.setCenter("Slider");
-
-		headerBackButton = new HeaderBackButton();
-		headerBackButton.setText("UI");
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
-			headerPanel.setLeftWidget(headerBackButton);
-		}
+		FlowPanel content = new FlowPanel();
 
 		mSlider = new MSlider();
-		main.add(mSlider);
+		content.add(mSlider);
 		mSlider.setMax(250);
 
 		mSlider.getElement().getStyle().setMargin(20, Unit.PX);
 
 		valueField = new HTML("0");
-		main.add(valueField);
+		content.add(valueField);
 
-	}
+		scrollPanel.setWidget(content);
 
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return headerBackButton;
 	}
 
 	@Override

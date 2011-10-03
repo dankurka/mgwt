@@ -17,16 +17,13 @@ package com.googlecode.mgwt.examples.showcase.client.activities.slider;
 
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasValue;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-
+import com.googlecode.mgwt.examples.showcase.client.DetailView;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public interface SliderView extends IsWidget {
-	public HasSimpleTouchHandler getBackButton();
+public interface SliderView extends DetailView {
 
 	public HasValue<Integer> getSliderValue();
 

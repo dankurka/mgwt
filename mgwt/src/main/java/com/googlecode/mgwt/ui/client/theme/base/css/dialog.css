@@ -4,9 +4,7 @@
 	@external mgwt-DialogPanel, mgwt-Dialog, container, title, content, footer, okbutton, cancelbutton, active, mgwt-BottomPanel, shadow, z_index;
 }
 
-.mgwt-Dialog{
 
-}
 
 .z_index{
 	z-index: 100;

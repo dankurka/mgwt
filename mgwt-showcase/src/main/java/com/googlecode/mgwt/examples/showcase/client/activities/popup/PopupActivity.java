@@ -23,32 +23,37 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
-import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.ButtonType;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
 
-
 /**
  * @author Daniel Kurka
  * 
  */
-public class PopupActivity extends MGWTAbstractActivity {
+public class PopupActivity extends DetailActivity {
 
 	private final ClientFactory clientFactory;
 
 	public PopupActivity(ClientFactory clientFactory) {
+		super(clientFactory.getPopupView(), "nav");
 		this.clientFactory = clientFactory;
 
 	}
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		super.start(panel, eventBus);
 		final PopupView view = clientFactory.getPopupView();
 
-		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		view.getBackbuttonText().setText("UI");
+		view.getHeader().setText("Popups");
+		view.getMainButtonText().setText("Nav");
+
+		addHandlerRegistration(view.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
 			public void onTouch(SimpleTouchEvent event) {

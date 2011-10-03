@@ -18,28 +18,20 @@ package com.googlecode.mgwt.examples.showcase.client.activities.popup;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
+import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
 import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
 import com.googlecode.mgwt.ui.client.widget.Button;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
-import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 
 /**
  * @author Daniel Kurka
  * 
  */
-public class PopupViewGwtImpl implements PopupView {
+public class PopupViewGwtImpl extends DetailViewGwtImpl implements PopupView {
 
-	private LayoutPanel main;
-	private HeaderPanel headerPanel;
-	private HeaderBackButton backButton;
 	private Button slideUpButton;
 	private Button alertButton;
 	private Button confirmButton;
@@ -48,22 +40,7 @@ public class PopupViewGwtImpl implements PopupView {
 	 * 
 	 */
 	public PopupViewGwtImpl() {
-		main = new LayoutPanel();
 
-		headerPanel = new HeaderPanel();
-
-		headerPanel.setCenter("Popups");
-		backButton = new HeaderBackButton();
-
-		backButton.setText("UI");
-
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
-			headerPanel.setLeftWidget(backButton);
-		}
-
-		main.add(headerPanel);
-
-		ScrollPanel scrollPanel = new ScrollPanel();
 		scrollPanel.setScrollingEnabledX(false);
 
 		FlowPanel container = new FlowPanel();
@@ -79,18 +56,6 @@ public class PopupViewGwtImpl implements PopupView {
 		confirmButton = new Button("Confirm");
 		container.add(confirmButton);
 
-		main.add(scrollPanel);
-
-	}
-
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
-
-	@Override
-	public HasSimpleTouchHandler getBackButton() {
-		return backButton;
 	}
 
 	@Override
