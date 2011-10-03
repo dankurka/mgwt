@@ -46,6 +46,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 	private void start() {
 		MGWTSettings settings = new MGWTSettings();
+		settings.setIconUrl("logo.png");
 		settings.setAddGlosToIcon(true);
 		settings.setFixViewPort(true);
 		settings.setFullscreen(true);
@@ -63,7 +64,8 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 
 		if (MGWTUtil.getFeatureDetection().isIPad() || MGWTUtil.getFeatureDetection().isDesktop()) {
-			//very nasty workaround because GWT does not corretly support @media
+			// very nasty workaround because GWT does not corretly support
+			// @media
 			StyleInjector.inject(AppBundle.INSTANCE.css().getText());
 
 			createTabletDisplay(clientFactory);
