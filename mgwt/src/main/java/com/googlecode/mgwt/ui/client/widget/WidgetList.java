@@ -13,9 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget.list;
+package com.googlecode.mgwt.ui.client.widget;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.ComplexPanel;
@@ -29,14 +31,14 @@ import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class WidgetListEntry extends Composite implements HasWidgets {
-	private static class LIFlowPanel extends ComplexPanel {
+public class WidgetList extends Composite implements HasWidgets {
 
-		public LIFlowPanel() {
-			setElement(Document.get().createLIElement());
+	private static class ULFlowPanel extends ComplexPanel {
 
+		public ULFlowPanel() {
+			setElement(Document.get().createULElement());
 		}
 
 		@Override
@@ -46,39 +48,61 @@ public class WidgetListEntry extends Composite implements HasWidgets {
 	}
 
 	private Panel container;
+	private Map<Widget, Widget> map;
+	protected final ListCss css;
 
-	/**
-	 * 
-	 */
-	public WidgetListEntry() {
+	public WidgetList() {
 		this(MGWTStyle.getDefaultClientBundle().getListCss());
 	}
 
-	public WidgetListEntry(ListCss css) {
-		container = new LIFlowPanel();
+	public WidgetList(ListCss css) {
+		this.css = css;
+		css.ensureInjected();
+		container = new ULFlowPanel();
 		initWidget(container);
 
+		setStylePrimaryName(css.listCss());
+
+		map = new HashMap<Widget, Widget>();
 	}
 
 	@Override
 	public void add(Widget w) {
-		container.add(w);
+		WidgetListEntry widgetListEntry = new WidgetListEntry(css);
+		widgetListEntry.add(w);
+		map.put(w, widgetListEntry);
+		container.add(widgetListEntry);
 
 	}
 
 	@Override
 	public void clear() {
 		container.clear();
+		map.clear();
 
 	}
 
 	@Override
 	public Iterator<Widget> iterator() {
-		return container.iterator();
+		return map.values().iterator();
 	}
 
 	@Override
 	public boolean remove(Widget w) {
-		return container.remove(w);
+		Widget entry = map.remove(w);
+		if (entry == null)
+			return false;
+
+		return container.remove(entry);
+
 	}
+
+	public void setRound(boolean round) {
+		if (round) {
+			addStyleName(css.round());
+		} else {
+			removeStyleName(css.round());
+		}
+	}
+
 }

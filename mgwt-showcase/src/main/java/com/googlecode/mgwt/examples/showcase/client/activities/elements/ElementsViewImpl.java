@@ -26,8 +26,8 @@ import com.googlecode.mgwt.ui.client.widget.MRadioButton;
 import com.googlecode.mgwt.ui.client.widget.MTextArea;
 import com.googlecode.mgwt.ui.client.widget.MTextBox;
 import com.googlecode.mgwt.ui.client.widget.MUrlTextBox;
+import com.googlecode.mgwt.ui.client.widget.WidgetList;
 import com.googlecode.mgwt.ui.client.widget.base.MListBox;
-import com.googlecode.mgwt.ui.client.widget.list.WidgetList;
 
 /**
  * @author Daniel Kurka

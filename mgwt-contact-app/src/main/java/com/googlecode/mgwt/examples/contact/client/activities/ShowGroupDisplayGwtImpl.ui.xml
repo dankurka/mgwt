@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:mgwt="urn:import:com.googlecode.mgwt.ui.client.widget">
+
+	<mgwt:LayoutPanel>
+
+		<mgwt:ScrollPanel>
+			<g:FlowPanel>
+				<mgwt:HeaderPanel>
+				<mgwt:center>
+				<g:HTML ui:field="center"></g:HTML>
+				</mgwt:center>
+				</mgwt:HeaderPanel>
+				
+				<mgwt:RoundPanel>
+				<mgwt:MTextBox ui:field="name"></mgwt:MTextBox>
+				</mgwt:RoundPanel>
+				<mgwt:Button ui:field="editButton" text="edit"></mgwt:Button>
+				
+			</g:FlowPanel>
+
+		</mgwt:ScrollPanel>
+
+	</mgwt:LayoutPanel>
+
+</ui:UiBinder> 

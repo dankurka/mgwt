@@ -10,49 +10,35 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.examples.contact.client.BasicCell;
-import com.googlecode.mgwt.examples.contact.client.Topic;
+import com.googlecode.mgwt.examples.contact.client.GroupCell;
+import com.googlecode.mgwt.examples.contact.client.module.Group;
 import com.googlecode.mgwt.ui.client.widget.CellList;
 import com.googlecode.mgwt.ui.client.widget.HeaderRoundButton;
+import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 
+public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverViewDisplay {
 
-public class OverviewDisplayGwtImpl extends Composite implements OverviewDisplay {
+	private static GroupOverViewDisplayGwtImplUiBinder uiBinder = GWT.create(GroupOverViewDisplayGwtImplUiBinder.class);
 
-	private static OverviewDisplayGwtImplUiBinder uiBinder = GWT.create(OverviewDisplayGwtImplUiBinder.class);
-
-	interface OverviewDisplayGwtImplUiBinder extends UiBinder<Widget, OverviewDisplayGwtImpl> {
+	interface GroupOverViewDisplayGwtImplUiBinder extends UiBinder<Widget, GroupOverViewDisplayGwtImpl> {
 	}
 
 	@UiField(provided = true)
-	CellList<Topic> list;
+	CellList<Group> list;
 
 	@UiField
 	HeaderRoundButton plusButton;
 
-	private OverviewPresenter presenter;
+	private GroupOverViewPresenter presenter;
 
-	public OverviewDisplayGwtImpl() {
-		list = new CellList<Topic>(new BasicCell<Topic>() {
-
-			@Override
-			public String getDisplayString(Topic model) {
-				return model.getName();
-			}
-
-			@Override
-			public boolean canBeSelected(Topic model) {
-				return true;
-			}
-		}
-
-		);
-
+	public GroupOverViewDisplayGwtImpl() {
+		list = new CellList<Group>(new GroupCell());
 		initWidget(uiBinder.createAndBindUi(this));
 
 	}
 
 	@Override
-	public void renderTopics(List<Topic> topicList) {
+	public void renderTopics(List<Group> topicList) {
 		list.render(topicList);
 	}
 
@@ -68,8 +54,16 @@ public class OverviewDisplayGwtImpl extends Composite implements OverviewDisplay
 		}
 	}
 
+	@UiHandler("list")
+	public void onCellSelected(CellSelectedEvent event) {
+		int index = event.getIndex();
+		if (presenter != null) {
+			presenter.onListItemSelected(index);
+		}
+	}
+
 	@Override
-	public void setPresenter(OverviewPresenter presenter) {
+	public void setPresenter(GroupOverViewPresenter presenter) {
 		this.presenter = presenter;
 
 	}

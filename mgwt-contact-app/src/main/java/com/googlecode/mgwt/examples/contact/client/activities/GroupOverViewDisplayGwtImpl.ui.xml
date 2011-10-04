@@ -7,10 +7,10 @@
 			<mgwt:center><g:HTML>Groups</g:HTML></mgwt:center>
 			<mgwt:right><mgwt:HeaderRoundButton text="+" ui:field="plusButton"></mgwt:HeaderRoundButton></mgwt:right>
 		</mgwt:HeaderPanel>
-		<mgwt:ScrollPanel>
-			<mgwt:child>
+		<mgwt:ScrollPanel scrollingEnabledX="false">
+			
 				<mgwt:CellList ui:field="list"/>
-			</mgwt:child>
+			
 		</mgwt:ScrollPanel>
 	</mgwt:LayoutPanel>
 </ui:UiBinder> 

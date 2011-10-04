@@ -16,7 +16,6 @@
 package com.googlecode.mgwt.ui.client.widget;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.button.HeaderButton;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 /**

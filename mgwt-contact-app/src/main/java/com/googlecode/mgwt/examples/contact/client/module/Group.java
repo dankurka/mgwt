@@ -1,7 +1,10 @@
 package com.googlecode.mgwt.examples.contact.client.module;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
@@ -14,7 +17,10 @@ public class Group {
 
 	private List<String> members;
 
-	public Group() {
+	private final String id;
+
+	public Group(String id) {
+		this.id = id;
 
 	}
 
@@ -40,39 +46,48 @@ public class Group {
 		this.members = members;
 	}
 
-	public static List<Group> fromJSON(String json) throws ParseException {
+	public static Map<String, Group> fromJSON(String json) throws ParseException {
+		if (json == null)
+			return new HashMap<String, Group>();
 		JSONValue jsonParse = JSONParser.parseStrict(json);
 
-		JSONArray grouparray = jsonParse.isArray();
+		JSONObject groupObject = jsonParse.isObject();
+		Set<String> keySet = groupObject.keySet();
 
-		LinkedList<Group> list = new LinkedList<Group>();
+		Map<String, Group> map = new HashMap<String, Group>();
 
-		for (int i = 0; i < grouparray.size(); i++) {
-			JSONObject jsonGroup = grouparray.get(i).isObject();
+		for (String key : keySet) {
+			JSONObject jsonGroup = groupObject.get(key).isObject();
 
-			Group group = new Group();
+			String groupId = jsonGroup.get("id").isString().stringValue();
+
+			Group group = new Group(groupId);
 
 			JSONString jsonName = jsonGroup.get("name").isString();
 			String name = jsonName != null ? jsonName.stringValue() : "";
 			group.setName(name);
 
-			JSONArray array = jsonGroup.get("members").isArray();
-			if (array != null) {
-				for (int j = 0; j < array.size(); j++) {
-					JSONString jsonString = array.get(j).isString();
-					if (jsonString != null) {
-						String id = jsonString.stringValue();
-						if (id != null) {
-							group.getMembers().add(id);
+			JSONValue memberValue = jsonGroup.get("members");
+			if (memberValue != null) {
+				JSONArray array = memberValue.isArray();
+				if (array != null) {
+					for (int j = 0; j < array.size(); j++) {
+						JSONString jsonString = array.get(j).isString();
+						if (jsonString != null) {
+							String id = jsonString.stringValue();
+							if (id != null) {
+								group.getMembers().add(id);
+							}
 						}
-					}
 
+					}
 				}
 			}
-			list.add(group);
+
+			map.put(group.getId(), group);
 		}
 
-		return list;
+		return map;
 	}
 
 	public String toJSON() {
@@ -90,5 +105,9 @@ public class Group {
 		object.put("members", array);
 
 		return object.toString();
+	}
+
+	public String getId() {
+		return id;
 	}
 }

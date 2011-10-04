@@ -13,26 +13,32 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.button;
+package com.googlecode.mgwt.ui.client.widget;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.button.ButtonBase;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
-
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public abstract class HeaderButton extends ButtonBase {
+public class HeaderButton extends ButtonBase {
 
 	private ParagraphElement pElement;
+	protected final HeaderCss headerCss;
+
+	public HeaderButton() {
+		this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
+	}
 
 	public HeaderButton(HeaderCss css) {
 		super(css);
-
+		this.headerCss = css;
 		addStyleName(css.headerButton());
 
 		Element pointDiv = DOM.createDiv();
@@ -54,5 +60,32 @@ public abstract class HeaderButton extends ButtonBase {
 	public String getText() {
 
 		return pElement.getInnerText();
+	}
+
+	public void setBackButton(boolean back) {
+		removeStyles();
+		if (back) {
+			addStyleName(headerCss.back());
+		}
+	}
+
+	public void setForwardButon(boolean forward) {
+		removeStyles();
+		if (forward) {
+			addStyleName(headerCss.forward());
+		}
+	}
+
+	public void setRoundButton(boolean round) {
+		removeStyles();
+		if (round) {
+			addStyleName(headerCss.round());
+		}
+	}
+
+	protected void removeStyles() {
+		removeStyleName(headerCss.back());
+		removeStyleName(headerCss.round());
+		removeStyleName(headerCss.forward());
 	}
 }

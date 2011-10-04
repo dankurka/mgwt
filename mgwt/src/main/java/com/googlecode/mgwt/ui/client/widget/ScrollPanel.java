@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import java.util.Iterator;
+
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
@@ -22,10 +24,10 @@ import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasOneWidget;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
@@ -47,12 +49,11 @@ import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEvent;
 import com.googlecode.mgwt.ui.client.widget.scroll.ScrollHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
-
 /**
  * @author Daniel Kurka
  * 
  */
-public class ScrollPanel extends Composite implements HasOneWidget, HasScrollHandlers {
+public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, HasScrollHandlers {
 
 	private Widget widgetToScroll;
 
@@ -150,6 +151,19 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasScrollHan
 
 	}
 
+	/**
+	 * for uibinder...
+	 * 
+	 * @param w
+	 */
+	@Override
+	public void add(Widget w) {
+		if (widgetToScroll != null) {
+			throw new IllegalStateException("scrollpanel can only have one child");
+		}
+		setWidget(w);
+	}
+
 	@Override
 	public void setWidget(IsWidget child) {
 
@@ -163,7 +177,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasScrollHan
 	}
 
 	@Override
-	@UiChild(limit = 1, tagname = "child")
 	public void setWidget(Widget w) {
 		if (widgetToScroll != null) {
 			if (isAttached()) {
@@ -625,6 +638,27 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasScrollHan
 	@Override
 	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler) {
 		return addHandler(scrollHandler, ScrollEvent.getType());
+	}
+
+	@Override
+	public void clear() {
+		widgetToScroll = null;
+		main.clear();
+
+	}
+
+	@Override
+	public Iterator<Widget> iterator() {
+		return main.iterator();
+	}
+
+	@Override
+	public boolean remove(Widget w) {
+		if (w == widgetToScroll) {
+			widgetToScroll = null;
+			return main.remove(w);
+		}
+		return false;
 	}
 
 }

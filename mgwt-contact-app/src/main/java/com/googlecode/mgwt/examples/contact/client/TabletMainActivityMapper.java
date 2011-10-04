@@ -5,7 +5,8 @@ import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.googlecode.mgwt.examples.contact.client.activities.AddGroupActivity;
 import com.googlecode.mgwt.examples.contact.client.activities.AddGroupPlace;
-
+import com.googlecode.mgwt.examples.contact.client.activities.ShowGroupActivity;
+import com.googlecode.mgwt.examples.contact.client.activities.ShowGroupPlace;
 
 public class TabletMainActivityMapper implements ActivityMapper {
 
@@ -29,6 +30,10 @@ public class TabletMainActivityMapper implements ActivityMapper {
 	private Activity getActivity(Place lastPlace, Place newPlace) {
 		if (newPlace instanceof AddGroupPlace) {
 			return new AddGroupActivity(clientFactory);
+		}
+
+		if (newPlace instanceof ShowGroupPlace) {
+			return new ShowGroupActivity(clientFactory);
 		}
 		return null;
 	}

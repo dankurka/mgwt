@@ -21,7 +21,7 @@ import com.google.gwt.place.shared.Place;
 import com.googlecode.mgwt.examples.contact.client.activities.AddGroupActivity;
 import com.googlecode.mgwt.examples.contact.client.activities.AddGroupPlace;
 import com.googlecode.mgwt.examples.contact.client.activities.HomePlace;
-import com.googlecode.mgwt.examples.contact.client.activities.OverviewActivity;
+import com.googlecode.mgwt.examples.contact.client.activities.GroupOverViewActivity;
 
 
 /**
@@ -39,7 +39,7 @@ public class PhoneActivityMapper implements ActivityMapper {
 	@Override
 	public Activity getActivity(Place place) {
 		if (place instanceof HomePlace) {
-			return new OverviewActivity(clientFactory);
+			return new GroupOverViewActivity(clientFactory);
 		}
 
 		if (place instanceof AddGroupPlace) {
