@@ -54,6 +54,7 @@ public class ShowGroupActivity extends MGWTAbstractActivity implements ShowGroup
 		try {
 			clientFactory.getStorage().updateGroup(group);
 
+			clientFactory.getEventBus().fireEvent(new GroupUpdatedEvent(group.getId()));
 			clientFactory.getPlaceController().goTo(new ShowGroupPlace(group.getId()));
 
 		} catch (StoreException e) {

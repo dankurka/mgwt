@@ -67,4 +67,17 @@ public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverV
 		this.presenter = presenter;
 
 	}
+
+	@Override
+	public void setSelected(int index) {
+
+		list.setSelectedIndex(index, true);
+
+	}
+
+	@Override
+	public void setSelected(int oldIndex, boolean b) {
+		list.setSelectedIndex(oldIndex, b);
+
+	}
 }

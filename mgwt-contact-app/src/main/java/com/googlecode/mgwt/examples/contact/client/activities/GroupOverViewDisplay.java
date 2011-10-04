@@ -20,4 +20,8 @@ public interface GroupOverViewDisplay extends IsWidget {
 		public void onListItemSelected(int index);
 	}
 
+	void setSelected(int index);
+
+	void setSelected(int oldIndex, boolean b);
+
 }

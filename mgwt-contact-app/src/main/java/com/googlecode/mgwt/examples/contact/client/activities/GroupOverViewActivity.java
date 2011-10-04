@@ -13,6 +13,7 @@ import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 public class GroupOverViewActivity extends MGWTAbstractActivity implements GroupOverViewPresenter {
 
 	private final ClientFactory clientFactory;
+	private GroupOverViewDisplay display;
 
 	public GroupOverViewActivity(ClientFactory clientFactory) {
 		this.clientFactory = clientFactory;
@@ -21,17 +22,27 @@ public class GroupOverViewActivity extends MGWTAbstractActivity implements Group
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		final GroupOverViewDisplay display = clientFactory.getOverviewDisplay();
+		display = clientFactory.getOverviewDisplay();
 
 		display.setPresenter(this);
 
-		loadGroups(display);
+		loadGroups(null);
 
 		eventBus.addHandler(GroupAddedEvent.getType(), new GroupAddedHandler() {
 
 			@Override
 			public void onGroupAdded(GroupAddedEvent event) {
-				loadGroups(display);
+				loadGroups(event.getGroup().getId());
+
+			}
+		});
+
+		eventBus.addHandler(GroupUpdatedEvent.getType(), new GroupUpdatedHandler() {
+
+			@Override
+			public void onGroupUpdated(GroupUpdatedEvent event) {
+
+				loadGroups(event.getGroupId());
 
 			}
 		});
@@ -47,11 +58,31 @@ public class GroupOverViewActivity extends MGWTAbstractActivity implements Group
 	}
 
 	private List<Group> currentList;
+	private int oldIndex;
 
-	private void loadGroups(GroupOverViewDisplay display) {
+	private int getIndexForId(String id) {
+		if (id == null)
+			return -1;
+		int count = 0;
+		for (Group group : currentList) {
+			if (group.getId().equals(id)) {
+				return count;
+			}
+			count++;
+		}
+		return -1;
+	}
+
+	private void loadGroups(String id) {
 		try {
 			currentList = clientFactory.getStorage().getGroups();
 			display.renderTopics(currentList);
+			int index = getIndexForId(id);
+			oldIndex = -1;
+			if (index != -1) {
+				display.setSelected(index);
+
+			}
 		} catch (StoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,6 +98,11 @@ public class GroupOverViewActivity extends MGWTAbstractActivity implements Group
 	@Override
 	public void onListItemSelected(int index) {
 		Group group = currentList.get(index);
+		if (oldIndex != -1) {
+			display.setSelected(oldIndex, false);
+		}
+		display.setSelected(index);
+		oldIndex = index;
 
 		clientFactory.getEventBus().fireEvent(new GroupSelectedEvent(group.getId()));
 		clientFactory.getPlaceController().goTo(new ShowGroupPlace(group.getId()));
