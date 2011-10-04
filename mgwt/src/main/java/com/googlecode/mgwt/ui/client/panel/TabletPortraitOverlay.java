@@ -1,6 +1,5 @@
 package com.googlecode.mgwt.ui.client.panel;
 
-import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasOneWidget;
@@ -44,7 +43,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
 			content = new FlowPanel();
 			content.addStyleName(css.content());
-			content.getElement().getStyle().setOverflow(Overflow.HIDDEN);
+
 			main.add(content);
 
 		}
