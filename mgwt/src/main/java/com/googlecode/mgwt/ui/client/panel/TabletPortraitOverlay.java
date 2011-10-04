@@ -59,13 +59,11 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
 			@Override
 			protected Animation getShowAnimation() {
-				// TODO Auto-generated method stub
 				return null;
 			}
 
 			@Override
 			protected Animation getHideAnimation() {
-				// TODO Auto-generated method stub
 				return null;
 			}
 		};

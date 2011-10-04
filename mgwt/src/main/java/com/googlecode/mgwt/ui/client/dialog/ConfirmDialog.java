@@ -20,14 +20,14 @@ import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.panel.DialogPanel1;
+import com.googlecode.mgwt.ui.client.panel.DialogPanel;
 import com.googlecode.mgwt.ui.client.panel.PopinDialog;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 
 public class ConfirmDialog implements HasText, HasTitle {
 	private PopinDialog popinDialog;
-	private DialogPanel1 dialogPanel1;
+	private DialogPanel dialogPanel1;
 	private Label textLabel;
 	private ConfirmCallback callback;
 
@@ -44,7 +44,7 @@ public class ConfirmDialog implements HasText, HasTitle {
 	public ConfirmDialog(DialogCss css, String title, String text, ConfirmCallback callback) {
 		this.callback = callback;
 		popinDialog = new PopinDialog(css);
-		dialogPanel1 = new DialogPanel1();
+		dialogPanel1 = new DialogPanel();
 		dialogPanel1.showCancelButton(true);
 		dialogPanel1.showOkButton(true);
 

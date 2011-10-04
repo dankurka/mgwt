@@ -25,8 +25,7 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.button.ButtonBase;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
-
-public class DialogPanel1 extends Composite {
+public class DialogPanel extends Composite {
 
 	private FlowPanel main;
 	private FlowPanel container;
@@ -37,21 +36,15 @@ public class DialogPanel1 extends Composite {
 	private CancelButton cancelButton;
 	private final DialogCss css;
 
-	public DialogPanel1() {
+	public DialogPanel() {
 		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
 	}
 
-	public DialogPanel1(DialogCss css) {
+	public DialogPanel(DialogCss css) {
 		this.css = css;
 		this.css.ensureInjected();
 		main = new FlowPanel();
 		initWidget(main);
-
-		// main.getElement().getStyle().setWidth(100, Unit.PX);
-
-		/*main.getElement().getStyle().setProperty("WebkitBoxOrient", "horizontal");
-		main.getElement().getStyle().setProperty("WebkitBoxPack", "-webkit-box");
-		main.getElement().getStyle().setProperty("WebkitBoxSizing", "border-box");*/
 
 		main.addStyleName(css.getDialogPanel());
 
