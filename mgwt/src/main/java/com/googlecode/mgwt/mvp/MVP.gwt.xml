@@ -18,6 +18,7 @@
 <module>
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.googlecode.mgwt.dom.DOM'/>
+	<inherits name="com.google.gwt.activity.Activity" />
     
     
     <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIphoneImpl">

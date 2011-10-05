@@ -5,7 +5,6 @@
   
 
 	<inherits name="com.google.gwt.user.User" />
-	<inherits name="com.google.gwt.activity.Activity" />
 	<inherits name="com.googlecode.mgwt.MGWT"/>
 	
 	

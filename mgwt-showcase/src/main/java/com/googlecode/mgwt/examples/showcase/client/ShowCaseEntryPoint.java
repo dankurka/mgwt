@@ -96,7 +96,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		SimplePanel navContainer = new SimplePanel();
 		navContainer.getElement().setId("nav");
 		navContainer.getElement().addClassName("landscapeonly");
-		AnimatableDisplayBaseImpl navDisplay = GWT.create(AnimatableDisplay.class);
+		AnimatableDisplay navDisplay = GWT.create(AnimatableDisplay.class);
 
 		final TabletPortraitOverlay tabletPortraitOverlay = new TabletPortraitOverlay();
 
