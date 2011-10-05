@@ -74,13 +74,17 @@ public class FeatureDetectionGenerator extends Generator {
 		writer.println("return " + mgwtProperty.equals("desktop") + ";");
 		writer.println("}");
 
+		writer.println("public boolean isBlackBerry() {");
+		writer.println("return " + mgwtProperty.equals("blackberry") + ";");
+		writer.println("}");
+
 		writer.println("public boolean isTablet() {");
 		writer.println("return isDesktop() || isIPad();");
 		writer.println("}");
 
 		writer.println("public boolean isPhone() {");
 		//TODO all android devices are considered phones right now!
-		writer.println("return isIPhone() || isAndroid();");
+		writer.println("return isIPhone() || isAndroid() || isBlackBerry();");
 		writer.println("}");
 
 		writer.commit(logger);

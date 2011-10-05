@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.examples.contact.client.activities;
+package com.googlecode.mgwt.examples.contact.client.events;
 
 import com.google.gwt.event.shared.EventHandler;
 

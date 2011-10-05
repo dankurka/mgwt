@@ -7,7 +7,13 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.examples.contact.client.ClientFactory;
 import com.googlecode.mgwt.examples.contact.client.StoreException;
 import com.googlecode.mgwt.examples.contact.client.activities.GroupOverViewDisplay.GroupOverViewPresenter;
+import com.googlecode.mgwt.examples.contact.client.events.GroupAddedEvent;
+import com.googlecode.mgwt.examples.contact.client.events.GroupAddedHandler;
+import com.googlecode.mgwt.examples.contact.client.events.GroupSelectedEvent;
+import com.googlecode.mgwt.examples.contact.client.events.GroupUpdatedEvent;
+import com.googlecode.mgwt.examples.contact.client.events.GroupUpdatedHandler;
 import com.googlecode.mgwt.examples.contact.client.module.Group;
+import com.googlecode.mgwt.examples.contact.client.places.AddGroupPlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 
 public class GroupOverViewActivity extends MGWTAbstractActivity implements GroupOverViewPresenter {
@@ -25,6 +31,7 @@ public class GroupOverViewActivity extends MGWTAbstractActivity implements Group
 		display = clientFactory.getOverviewDisplay();
 
 		display.setPresenter(this);
+		display.setEdit(false);
 
 		loadGroups(null);
 
@@ -66,10 +73,12 @@ public class GroupOverViewActivity extends MGWTAbstractActivity implements Group
 		int count = 0;
 		for (Group group : currentList) {
 			if (group.getId().equals(id)) {
+
 				return count;
 			}
 			count++;
 		}
+
 		return -1;
 	}
 
@@ -81,7 +90,7 @@ public class GroupOverViewActivity extends MGWTAbstractActivity implements Group
 			oldIndex = -1;
 			if (index != -1) {
 				display.setSelected(index);
-
+				oldIndex = index;
 			}
 		} catch (StoreException e) {
 			// TODO Auto-generated catch block
@@ -89,10 +98,14 @@ public class GroupOverViewActivity extends MGWTAbstractActivity implements Group
 		}
 	}
 
+	private boolean edit = false;
+
 	@Override
 	public void onPlusButton() {
 		clientFactory.getPlaceController().goTo(new AddGroupPlace());
-
+		if (oldIndex != -1) {
+			display.setSelected(oldIndex, false);
+		}
 	}
 
 	@Override
@@ -106,6 +119,14 @@ public class GroupOverViewActivity extends MGWTAbstractActivity implements Group
 
 		clientFactory.getEventBus().fireEvent(new GroupSelectedEvent(group.getId()));
 		clientFactory.getPlaceController().goTo(new ShowGroupPlace(group.getId()));
+
+	}
+
+	@Override
+	public void onEditButton() {
+		edit = !edit;
+		display.setEdit(edit);
+		display.renderTopics(currentList);
 
 	}
 

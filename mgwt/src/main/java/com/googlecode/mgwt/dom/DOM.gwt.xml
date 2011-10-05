@@ -25,6 +25,7 @@
     if (ua.indexOf('android') != -1) { return 'mobilesafari'; }
     if (ua.indexOf('iphone') != -1) { return 'mobilesafari'; }
      if (ua.indexOf('ipad') != -1) { return 'mobilesafari'; }
+     if (ua.indexOf('blackberry') != -1) { return 'not_mobile'; }
     return 'not_mobile';
   }
 ]]></property-provider>
@@ -54,7 +55,7 @@
     </replace-with>
 
 
-    <define-property name="mgwt.os" values="iphone, ipad, android, desktop" />
+    <define-property name="mgwt.os" values="iphone, ipad, android, blackberry, desktop" />
 	<property-provider name="mgwt.os"><![CDATA[
   	{
 	    var ua = window.navigator.userAgent.toLowerCase();
@@ -72,6 +73,11 @@
 	    if(ua.indexOf('iphone') != -1)
 	    {
 	    	return "iphone";
+	    }
+	    
+	     if(ua.indexOf('blackberry') != -1)
+	    {
+	    	return "blackberry";
 	    }
 	
 	    return "desktop";

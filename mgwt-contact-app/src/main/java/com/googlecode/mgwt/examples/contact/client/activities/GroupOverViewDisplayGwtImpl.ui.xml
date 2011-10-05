@@ -5,12 +5,17 @@
 		<mgwt:HeaderPanel>
 		
 			<mgwt:center><g:HTML>Groups</g:HTML></mgwt:center>
-			<mgwt:right><mgwt:HeaderRoundButton text="+" ui:field="plusButton"></mgwt:HeaderRoundButton></mgwt:right>
+			
 		</mgwt:HeaderPanel>
 		<mgwt:ScrollPanel scrollingEnabledX="false">
 			
 				<mgwt:CellList ui:field="list"/>
 			
 		</mgwt:ScrollPanel>
+		
+		<mgwt:ButtonBar>
+			<mgwt:BarButton ui:field="plusButton" type="plus"></mgwt:BarButton>
+			<mgwt:BarButton ui:field="editButton" type="organize"></mgwt:BarButton>
+		</mgwt:ButtonBar>
 	</mgwt:LayoutPanel>
 </ui:UiBinder> 

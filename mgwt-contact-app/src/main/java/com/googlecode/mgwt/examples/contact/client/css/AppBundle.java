@@ -16,13 +16,21 @@
 package com.googlecode.mgwt.examples.contact.client.css;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.TextResource;
+import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle;
 
-public interface AppBundle extends ClientBundle {
+public interface AppBundle extends MGWTClientBundle {
 	// nasty workaround
-	@Source("app.css")
+	@Source("media.css")
 	public TextResource css();
 
+	@Source({ "com/googlecode/mgwt/ui/client/theme/base/css/list.css", "app.css" })
+	public AppCss getAppCss();
+
+	@Source("delete.png")
+	public DataResource deleteImage();
+
 	public static final AppBundle INSTANCE = GWT.create(AppBundle.class);
+
 }

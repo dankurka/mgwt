@@ -6,6 +6,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.examples.contact.client.ClientFactory;
 import com.googlecode.mgwt.examples.contact.client.StoreException;
+import com.googlecode.mgwt.examples.contact.client.events.GroupUpdatedEvent;
 import com.googlecode.mgwt.examples.contact.client.module.Group;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 

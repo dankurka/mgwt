@@ -151,12 +151,14 @@ public class ShowCaseEntryPoint implements EntryPoint {
 			}
 		}.schedule(1);
 
-		// alertSomeStuff();
+		alertSomeStuff();
 
 	}
 
 	private native void alertSomeStuff()/*-{
 		alert($wnd.navigator.userAgent);
+		alert(wnd.clientHeight);
+		alert($wnd.clientWidth);
 	}-*/;
 
 }

@@ -12,8 +12,8 @@ import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.examples.contact.client.GroupCell;
 import com.googlecode.mgwt.examples.contact.client.module.Group;
+import com.googlecode.mgwt.ui.client.button.ButtonBase;
 import com.googlecode.mgwt.ui.client.widget.CellList;
-import com.googlecode.mgwt.ui.client.widget.HeaderRoundButton;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 
 public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverViewDisplay {
@@ -27,12 +27,18 @@ public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverV
 	CellList<Group> list;
 
 	@UiField
-	HeaderRoundButton plusButton;
+	ButtonBase plusButton;
+
+	@UiField
+	ButtonBase editButton;
 
 	private GroupOverViewPresenter presenter;
 
+	private GroupCell groupCell;
+
 	public GroupOverViewDisplayGwtImpl() {
-		list = new CellList<Group>(new GroupCell());
+		groupCell = new GroupCell();
+		list = new CellList<Group>(groupCell);
 		initWidget(uiBinder.createAndBindUi(this));
 
 	}
@@ -51,6 +57,13 @@ public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverV
 	public void onSimpleTouch(SimpleTouchEvent event) {
 		if (presenter != null) {
 			presenter.onPlusButton();
+		}
+	}
+
+	@UiHandler("editButton")
+	public void onEditButton(SimpleTouchEvent event) {
+		if (presenter != null) {
+			presenter.onEditButton();
 		}
 	}
 
@@ -78,6 +91,12 @@ public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverV
 	@Override
 	public void setSelected(int oldIndex, boolean b) {
 		list.setSelectedIndex(oldIndex, b);
+
+	}
+
+	@Override
+	public void setEdit(boolean edit) {
+		groupCell.setEdit(edit);
 
 	}
 }

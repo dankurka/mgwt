@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.examples.contact.client.activities;
+package com.googlecode.mgwt.examples.contact.client.places;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;

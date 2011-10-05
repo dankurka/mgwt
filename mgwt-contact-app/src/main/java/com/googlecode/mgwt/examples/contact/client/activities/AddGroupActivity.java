@@ -4,6 +4,7 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.examples.contact.client.ClientFactory;
 import com.googlecode.mgwt.examples.contact.client.StoreException;
+import com.googlecode.mgwt.examples.contact.client.events.GroupAddedEvent;
 import com.googlecode.mgwt.examples.contact.client.module.Group;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
@@ -50,6 +51,7 @@ public class AddGroupActivity extends MGWTAbstractActivity implements AddGroupDi
 			Group group = clientFactory.getStorage().addGroup(groupName);
 			clientFactory.getEventBus().fireEvent(new GroupAddedEvent(group));
 			clientFactory.getPlaceController().goTo(new ShowGroupPlace(group.getId()));
+			view.getGroupName().setText("");
 		} catch (StoreException e) {
 			e.printStackTrace();
 			view.showError("Can not create group");

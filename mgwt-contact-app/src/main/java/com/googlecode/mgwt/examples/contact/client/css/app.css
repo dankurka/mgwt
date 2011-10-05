@@ -1,34 +1,19 @@
-#main {
-	position: absolute;
-	left: 300px;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	overflow: hidden;
-	border-left: 1px solid black;
+@url delete deleteImage;
+
+
+.selected .editCell{
+	background-color: black;
+	color: white;
 }
 
-#nav {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 300px;
-	bottom: 0px;
-	overflow: hidden;
-	border-right: 1px solid black;
-	
-	
-}
+.editCell{
 
-@media only screen and (orientation:portrait) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 20px;
+	padding-left: 25px;
+	background-image: delete;
+	background-repeat: no-repeat;
 	
-	#main {
-		left: 0px;
-		top: 0px;
-		right: 0px;
-		bottom: 0px;
-	}
-	#nav {
-		display:none;
-	}
+	
 }

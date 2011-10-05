@@ -19,9 +19,9 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.googlecode.mgwt.examples.contact.client.activities.AddGroupActivity;
-import com.googlecode.mgwt.examples.contact.client.activities.AddGroupPlace;
-import com.googlecode.mgwt.examples.contact.client.activities.HomePlace;
 import com.googlecode.mgwt.examples.contact.client.activities.GroupOverViewActivity;
+import com.googlecode.mgwt.examples.contact.client.places.AddGroupPlace;
+import com.googlecode.mgwt.examples.contact.client.places.HomePlace;
 
 
 /**

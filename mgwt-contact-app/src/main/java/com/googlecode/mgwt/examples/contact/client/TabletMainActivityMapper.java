@@ -4,9 +4,9 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.googlecode.mgwt.examples.contact.client.activities.AddGroupActivity;
-import com.googlecode.mgwt.examples.contact.client.activities.AddGroupPlace;
 import com.googlecode.mgwt.examples.contact.client.activities.ShowGroupActivity;
 import com.googlecode.mgwt.examples.contact.client.activities.ShowGroupPlace;
+import com.googlecode.mgwt.examples.contact.client.places.AddGroupPlace;
 
 public class TabletMainActivityMapper implements ActivityMapper {
 

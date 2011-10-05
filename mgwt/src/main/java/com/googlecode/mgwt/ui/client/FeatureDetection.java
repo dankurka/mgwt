@@ -14,4 +14,6 @@ public interface FeatureDetection {
 	public boolean isTablet();
 
 	public boolean isPhone();
+
+	public boolean isBlackBerry();
 }
