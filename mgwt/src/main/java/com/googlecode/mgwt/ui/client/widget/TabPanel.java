@@ -19,6 +19,7 @@ import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
@@ -26,10 +27,30 @@ import com.googlecode.mgwt.ui.client.tabbar.TabBar;
 import com.googlecode.mgwt.ui.client.tabbar.TabContainer;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
-
 /**
- * @author Daniel Kurka
  * 
+ * 
+ * At the moment theres no support for custom parsers:
+ * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461
+ * 
+ * So if you want to use TabPanel in UIBinder its a bit choppy:
+ * 
+ * <pre>
+ * &lt;mgwt:TabPanel>
+ * 	&lt;mgwt:tabs>
+ * 		&lt;mgwt:Tab>
+ * 			&lt;mgwt:button>
+ * 				&lt;mgwt:TabBarButton type="download">&lt;/mgwt:TabBarButton>
+ * 			&lt;/mgwt:button>
+ * 			&lt;mgwt:widget>
+ * 				<!-- content for that tab -->
+ * 			&lt;/mgwt:widget>
+ * 		&lt;/mgwt:Tab>
+ * 	&lt;/mgwt:tabs>
+ * &lt;/mgwt:TabPanel>
+ * </pre>
+ * 
+ * @author Daniel Kurka
  */
 public class TabPanel extends Composite implements HasSelectionHandlers<Integer> {
 
@@ -80,6 +101,32 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	public void add(TabBarButton button, Widget child) {
 		tabContainer.add(child);
 		tabBar.add(button);
+	}
+
+	/**
+	 * at the moment theres no support for custom parsers:
+	 * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461 this is
+	 * a workaround to allow use with UIBinder
+	 * 
+	 * @use {@link TabPanel#add(TabBarButton, Widget)} if your are writing java
+	 *      code
+	 * 
+	 * 
+	 * @param b
+	 */
+	@UiChild(tagname = "tabs")
+	public void addTab(Tab b) {
+		Widget w = b.getWidget();
+		TabBarButton button = b.getButton();
+
+		if (button == null) {
+			throw new IllegalArgumentException("button can not be null");
+		}
+
+		if (w == null) {
+			throw new IllegalArgumentException("widget can not be null");
+		}
+		add(button, w);
 	}
 
 	public void remove(int index) {

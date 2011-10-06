@@ -28,7 +28,7 @@ public class TabBarButton extends ButtonBase {
 	protected final TabBarCss css;
 
 	public enum TYPE {
-		BOOKMARK, CONTACTS, DOWNLOAD, FAVORITES, FEATURED, HISTORY, MORE, MOST_RECENT, MOST_VIEWED, SEARCH, CUSTOM
+		bookmark, contacts, download, favorites, featured, history, more, most_recent, most_viewed, search, custom
 	};
 
 	public TabBarButton() {
@@ -36,7 +36,7 @@ public class TabBarButton extends ButtonBase {
 	}
 
 	public TabBarButton(TabBarCss css) {
-		this(TYPE.CUSTOM, css);
+		this(TYPE.custom, css);
 	}
 
 	public TabBarButton(TYPE type) {
@@ -53,47 +53,47 @@ public class TabBarButton extends ButtonBase {
 
 	public void setType(TYPE type) {
 		switch (type) {
-		case BOOKMARK:
+		case bookmark:
 			addStyleName(css.bookmarkButton());
 			setText("Bookmark");
 			break;
-		case CONTACTS:
+		case contacts:
 			addStyleName(css.contactsButton());
 			setText("Contacts");
 			break;
-		case DOWNLOAD:
+		case download:
 			addStyleName(css.downloadsButton());
 			setText("Downloads");
 			break;
-		case FAVORITES:
+		case favorites:
 			addStyleName(css.favoritesButton());
 			setText("Favorites");
 			break;
-		case FEATURED:
+		case featured:
 			addStyleName(css.featuredButton());
 			setText("Featured");
 			break;
-		case HISTORY:
+		case history:
 			addStyleName(css.historyButton());
 			setText("History");
 			break;
-		case MORE:
+		case more:
 			addStyleName(css.moreButton());
 			setText("More");
 			break;
-		case MOST_RECENT:
+		case most_recent:
 			addStyleName(css.mostRecentButton());
 			setText("Most Recent");
 			break;
-		case MOST_VIEWED:
+		case most_viewed:
 			addStyleName(css.mostViewedButton());
 			setText("Most Viewed");
 			break;
-		case SEARCH:
+		case search:
 			addStyleName(css.searchButton());
 			setText("Search");
 			break;
-		case CUSTOM:
+		case custom:
 			break;
 		default:
 

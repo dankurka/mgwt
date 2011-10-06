@@ -32,16 +32,16 @@ public class TabBarViewGwtImpl extends DetailViewGwtImpl implements TabBarView {
 		TabPanel tabPanel = new TabPanel();
 		tabPanel.setScrollingEnabledX(false);
 
-		tabPanel.add(new TabBarButton(TYPE.BOOKMARK), new Label("Bookmark"));
-		tabPanel.add(new TabBarButton(TYPE.CONTACTS), new Label("Contacts"));
-		tabPanel.add(new TabBarButton(TYPE.DOWNLOAD), new Label("Downloads"));
-		tabPanel.add(new TabBarButton(TYPE.FAVORITES), new Label("Favorites"));
-		tabPanel.add(new TabBarButton(TYPE.FEATURED), new Label("Featured"));
-		tabPanel.add(new TabBarButton(TYPE.HISTORY), new Label("History"));
-		tabPanel.add(new TabBarButton(TYPE.MORE), new Label("More"));
-		tabPanel.add(new TabBarButton(TYPE.MOST_RECENT), new Label("Most Recent"));
-		tabPanel.add(new TabBarButton(TYPE.MOST_VIEWED), new Label("Most Viewed"));
-		tabPanel.add(new TabBarButton(TYPE.SEARCH), new Label("Search"));
+		tabPanel.add(new TabBarButton(TYPE.bookmark), new Label("Bookmark"));
+		tabPanel.add(new TabBarButton(TYPE.contacts), new Label("Contacts"));
+		tabPanel.add(new TabBarButton(TYPE.download), new Label("Downloads"));
+		tabPanel.add(new TabBarButton(TYPE.favorites), new Label("Favorites"));
+		tabPanel.add(new TabBarButton(TYPE.featured), new Label("Featured"));
+		tabPanel.add(new TabBarButton(TYPE.history), new Label("History"));
+		tabPanel.add(new TabBarButton(TYPE.more), new Label("More"));
+		tabPanel.add(new TabBarButton(TYPE.most_recent), new Label("Most Recent"));
+		tabPanel.add(new TabBarButton(TYPE.most_viewed), new Label("Most Viewed"));
+		tabPanel.add(new TabBarButton(TYPE.search), new Label("Search"));
 
 		main.add(tabPanel);
 	}

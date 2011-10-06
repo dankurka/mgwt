@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -32,12 +33,11 @@ import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class MSlider extends Composite implements HasValue<Integer> {
+public class MSlider extends Composite implements HasValue<Integer>, LeafValueEditor<Integer> {
 
 	private static class SliderWidget extends TouchWidget {
 
@@ -140,7 +140,7 @@ public class MSlider extends Composite implements HasValue<Integer> {
 			x = width;
 		}
 
-		//scale it to max
+		// scale it to max
 		x = x * max / width;
 		setValue(x, true);
 	}
