@@ -204,14 +204,9 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	}
 
 	private void onTransistionEnd() {
-		System.out.println("trans end");
-
 		if (listenForTransitionEnd) {
-			System.out.println("listenering");
 			listenForTransitionEnd = false;
 			resetPosition();
-		} else {
-			System.out.println("not listening!");
 		}
 
 	}
@@ -305,8 +300,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 			directionX = 0;
 			directionY = 0;
 
-			System.out.println("touchstartX : " + touchStartX + " touchstartY: " + touchStartY);
-
 		}
 
 		@Override
@@ -380,7 +373,7 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 		public void onTouchEnd(TouchEndEvent event) {
 			if (widgetToScroll == null)
 				return;
-			System.out.println("touchend");
+
 			if (!currentlyScrolling)
 				return;
 
@@ -394,8 +387,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 				return;
 			}
 
-			System.out.println("touchsendX : " + position_x + " touchendY: " + position_y);
-
 			long scrollTime = System.currentTimeMillis() - touchStartTime;
 
 			int newPosX = position_x;
@@ -405,17 +396,14 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 
 			if (momentum) {
 				if (scrollingEnabledX) {
-
 					Momentum m = calculateMomentum(position_x - scrollStartX, scrollTime, -position_x, position_x + widgetToScroll.getOffsetWidth() - main.getOffsetWidth());
 					newDuration = Math.max(m.getTime(), newDuration);
 					newPosX = position_x + m.getDist();
-					System.out.println("newDur: " + newDuration);
 				}
 
 				if (scrollingEnabledY) {
 					Momentum m = calculateMomentum(position_y - scrollStartY, scrollTime, -position_y, position_y + widgetToScroll.getOffsetHeight() - main.getOffsetHeight());
 					newDuration = Math.max(m.getTime(), newDuration);
-					System.out.println("newDur: " + newDuration);
 					newPosY = position_y + m.getDist();
 
 				}
@@ -467,7 +455,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	}
 
 	private void setTransistionTime(int milliseconds) {
-		System.out.println("webkit transition duration: " + milliseconds);
 
 		if (!usePos)
 			widgetToScroll.getElement().getStyle().setProperty("webkitTransitionDuration", milliseconds + "ms");
@@ -490,10 +477,8 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	 * @param newDuration
 	 */
 	public void scrollTo(int destX, int destY, int newDuration) {
-		System.out.println("destX: " + destX + " destY: " + destY + " dur: " + newDuration);
 		if (position_x == destX && position_y == destY) {
 			resetPosition();
-			System.out.println("returning");
 			return;
 		}
 
@@ -503,11 +488,9 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 		setPosition(destX, destY);
 
 		if (newDuration == 0) {
-			System.out.println("no duration");
 			resetPosition();
 
 		} else {
-			System.out.println("transistend needs to be listened to!!!");
 			listenForTransitionEnd = true;
 
 		}
@@ -523,7 +506,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 			resetX = 0;
 		} else {
 			int maxScrollX = getMaxScrollX();
-			System.out.println("maxScroll: " + maxScrollX);
 			if (position_x < maxScrollX) {
 				resetX = maxScrollX;
 			}
@@ -537,7 +519,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 		}
 
 		if (resetX != position_x || resetY != position_y) {
-			System.out.println("need to scroll");
 			scrollTo(resetX, resetY, 300);
 		} else {
 			if (scrollingEnabledX && hScrollbar != null) {
@@ -596,8 +577,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 		double deceleration = 1.2;
 		double speed = (Math.abs(dist) / time) * 1000;
 
-		System.out.println("calculate Momentum: dist: " + dist + " time: " + time + " upper: " + maxDistUpper + " lower: " + maxDistLower);
-
 		double calcNewDist = ((speed * speed) / friction) / 1000;
 
 		if (dist > 0 && calcNewDist > maxDistUpper) {
@@ -613,8 +592,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 
 		int newTime = (int) Math.round(speed / deceleration);
 		int newDist = (int) Math.round(calcNewDist);
-
-		System.out.println("momentum: " + newDist + " time: " + newTime);
 
 		return new Momentum(newDist, newTime);
 	}
