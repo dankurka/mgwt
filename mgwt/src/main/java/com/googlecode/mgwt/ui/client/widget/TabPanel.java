@@ -15,16 +15,19 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import java.util.LinkedList;
+
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
+import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.tabbar.TabBar;
-import com.googlecode.mgwt.ui.client.tabbar.TabContainer;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
@@ -143,5 +146,202 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	@Override
 	public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
 		return tabBar.addSelectionHandler(handler);
+	}
+
+	public static class TabBar extends Composite implements HasSelectionHandlers<Integer> {
+
+		private FlowPanel container;
+		private LinkedList<TabBarButton> children;
+		private LinkedList<HandlerRegistration> handlers = new LinkedList<HandlerRegistration>();
+		protected final TabBarCss css;
+
+		public TabBar() {
+			this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+		}
+
+		public TabBar(TabBarCss css) {
+			this.css = css;
+			css.ensureInjected();
+			children = new LinkedList<TabBarButton>();
+			container = new FlowPanel();
+			container.setStylePrimaryName(css.tabbar());
+			initWidget(container);
+		}
+
+		private class InternalTouchHandler implements SimpleTouchHandler {
+
+			private final TabBarButton button;
+
+			public InternalTouchHandler(TabBarButton button) {
+				this.button = button;
+
+			}
+
+			@Override
+			public void onTouch(SimpleTouchEvent event) {
+				setSelectedButton(getIndexForWidget(button));
+			}
+
+		}
+
+		public void add(TabBarButton w) {
+			if (children.size() == 0) {
+				w.setSelected(true);
+			}
+			container.add(w);
+			children.add(w);
+			handlers.add(w.addSimpleTouchHandler(new InternalTouchHandler(w)));
+
+		}
+
+		public void clear() {
+			container.clear();
+			children.clear();
+			handlers.clear();
+
+		}
+
+		private int getIndexForWidget(TabBarButton w) {
+			return children.indexOf(w);
+		}
+
+		public boolean remove(TabBarButton w) {
+			children.remove(w);
+			int indexForWidget = getIndexForWidget(w);
+			if (indexForWidget != -1) {
+				handlers.get(indexForWidget).removeHandler();
+				handlers.remove(indexForWidget);
+			}
+
+			return container.remove(w);
+
+		}
+
+		public void setSelectedButton(int index) {
+			setSelectedButton(index, false);
+		}
+
+		public void setSelectedButton(int index, boolean suppressEvent) {
+			if (index < 0) {
+				throw new IllegalArgumentException("invalud index");
+			}
+
+			if (index >= children.size()) {
+				throw new IllegalArgumentException("invalud index");
+			}
+			int count = 0;
+			for (TabBarButton button : children) {
+				if (count == index) {
+					button.setSelected(true);
+				} else {
+					button.setSelected(false);
+				}
+				count++;
+			}
+			if (!suppressEvent)
+				SelectionEvent.fire(this, Integer.valueOf(index));
+		}
+
+		@Override
+		public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
+			return addHandler(handler, SelectionEvent.getType());
+		}
+
+		/**
+		 * @param index
+		 */
+		public void remove(int index) {
+			TabBarButton w = getWidgetForIndex(index);
+			remove(w);
+		}
+
+		/**
+		 * @param index
+		 * @return
+		 */
+		private TabBarButton getWidgetForIndex(int index) {
+			return children.get(index);
+		}
+
+	}
+
+	public static class TabContainer extends Composite {
+
+		private ScrollPanel container;
+		private LinkedList<Widget> children = new LinkedList<Widget>();
+		private Widget activeWidget;
+
+		public TabContainer() {
+			container = new ScrollPanel();
+			initWidget(container);
+
+		}
+
+		public void add(Widget w) {
+			if (children.size() == 0) {
+				container.setWidget(w);
+				activeWidget = w;
+			}
+			children.add(w);
+
+		}
+
+		public void setScrollingEnabledX(boolean enabled) {
+			container.setScrollingEnabledX(enabled);
+		}
+
+		public void setScrollingEnabledY(boolean enabled) {
+			container.setScrollingEnabledY(enabled);
+		}
+
+		public void clear() {
+			children.clear();
+			container.setWidget(null);
+			activeWidget = null;
+
+		}
+
+		public void setSelectedChild(int index) {
+			activeWidget = children.get(index);
+			container.setWidget(activeWidget);
+		}
+
+		public boolean remove(Widget w) {
+			int index = getChildIndex(w);
+			boolean remove = children.remove(w);
+			if (w == activeWidget) {
+				activeWidget = null;
+				if (index - 1 >= 0) {
+					setSelectedChild(index);
+				}
+			}
+
+			return remove;
+		}
+
+		/**
+		 * @param w
+		 */
+		public int getChildIndex(Widget w) {
+
+			return children.indexOf(w);
+
+		}
+
+		/**
+		 * @param childIndex
+		 */
+		public void remove(int childIndex) {
+			Widget w = getWidgetForIndex(childIndex);
+			remove(w);
+		}
+
+		/**
+		 * @param childIndex
+		 * @return
+		 */
+		private Widget getWidgetForIndex(int childIndex) {
+			return children.get(childIndex);
+		}
 	}
 }
