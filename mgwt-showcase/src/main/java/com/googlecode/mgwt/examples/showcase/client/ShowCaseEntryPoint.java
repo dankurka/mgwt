@@ -156,9 +156,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 	}
 
 	private native void alertSomeStuff()/*-{
-		alert($wnd.navigator.userAgent);
-		alert(wnd.clientHeight);
-		alert($wnd.clientWidth);
+		
 	}-*/;
 
 }

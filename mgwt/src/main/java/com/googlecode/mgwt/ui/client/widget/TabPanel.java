@@ -68,11 +68,11 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	public TabPanel(TabBarCss css) {
 		container = new LayoutPanel();
 		initWidget(container);
-		container.addStyleName(LayoutPanel.LayoutPanelBundle.INSTANCE.getLayoutCss().mainChild());
+		container.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
 
 		tabContainer = new TabContainer();
 		container.add(tabContainer);
-		tabContainer.addStyleName(LayoutPanel.LayoutPanelBundle.INSTANCE.getLayoutCss().mainChild());
+		tabContainer.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
 		tabBar = new TabBar(css);
 
 		container.add(tabBar);
