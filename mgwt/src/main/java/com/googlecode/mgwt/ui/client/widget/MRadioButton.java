@@ -27,6 +27,7 @@ import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
@@ -47,7 +48,6 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
-
 /**
  * @author Daniel Kurka
  * 
@@ -59,6 +59,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	private LeafValueEditor<Boolean> editor;
 	private final InputCss css;
 
+	@UiConstructor
 	public MRadioButton(String name) {
 		this(MGWTStyle.getDefaultClientBundle().getInputCss(), name);
 	}
@@ -66,6 +67,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	/**
 	 * @param name
 	 */
+
 	public MRadioButton(InputCss css, String name) {
 		this.css = css;
 		css.ensureInjected();
@@ -94,7 +96,6 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 			public void onTouchCanceled(TouchCancelEvent event) {
 				if (ignore)
 					return;
-				System.out.println("cancel" + inputRadio.isChecked());
 
 			}
 
@@ -119,7 +120,6 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 				Touch touch = event.touches().get(0);
 				last_x = touch.getPageX();
 				last_y = touch.getPageY();
-				System.out.println("move" + inputRadio.isChecked());
 
 			}
 
@@ -147,19 +147,8 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 					}
 				}
 
-				System.out.println("start" + inputRadio.isChecked());
-
 			}
 		});
-
-		addHandler(new ValueChangeHandler<Boolean>() {
-
-			@Override
-			public void onValueChange(ValueChangeEvent<Boolean> event) {
-				System.out.println("value change " + inputRadio.isChecked());
-
-			}
-		}, ValueChangeEvent.getType());
 
 		addHandler(new ChangeHandler() {
 

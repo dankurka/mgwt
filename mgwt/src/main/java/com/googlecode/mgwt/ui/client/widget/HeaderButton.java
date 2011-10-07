@@ -69,7 +69,7 @@ public class HeaderButton extends ButtonBase {
 		}
 	}
 
-	public void setForwardButon(boolean forward) {
+	public void setForwardButton(boolean forward) {
 		removeStyles();
 		if (forward) {
 			addStyleName(headerCss.forward());

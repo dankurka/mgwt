@@ -21,13 +21,12 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
+import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
 import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
-
 
 /**
  * @author Daniel Kurka
@@ -38,7 +37,7 @@ public class AnimationViewGwtImpl implements AnimationView {
 	private CellListWithHeader<Animation> list;
 	private LayoutPanel main;
 	private HeaderPanel headerPanel;
-	private HeaderBackButton headerBackButton;
+	private HeaderButton headerBackButton;
 
 	/**
 	 * 
@@ -48,8 +47,10 @@ public class AnimationViewGwtImpl implements AnimationView {
 
 		headerPanel = new HeaderPanel();
 
-		headerBackButton = new HeaderBackButton();
+		headerBackButton = new HeaderButton();
+
 		headerPanel.setLeftWidget(headerBackButton);
+		headerBackButton.setBackButton(true);
 
 		main.add(headerPanel);
 

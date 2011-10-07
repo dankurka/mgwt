@@ -59,7 +59,7 @@ public class AnimatableDisplayIphoneImpl extends AnimatableDisplayBaseImpl {
 			return;
 		}
 
-		String type = animation.getType();
+		String type = animation.getCssName();
 
 		if (animationEnd != null) {
 			animationEnd.removeHandler();
@@ -71,9 +71,9 @@ public class AnimatableDisplayIphoneImpl extends AnimatableDisplayBaseImpl {
 		first.addStyleName(type);
 		second.addStyleName(type);
 
-		lastDir = animation.isDirection();
+		lastDir = animation.isInverse();
 		// backwards
-		if (animation.isDirection()) {
+		if (animation.isInverse()) {
 			first.addStyleName(this.css.reverse());
 			second.addStyleName(this.css.reverse());
 

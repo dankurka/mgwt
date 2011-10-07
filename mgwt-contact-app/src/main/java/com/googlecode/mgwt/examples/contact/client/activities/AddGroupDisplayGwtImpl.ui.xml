@@ -4,7 +4,7 @@
 
 	<mgwt:LayoutPanel>
 		<mgwt:HeaderPanel>
-			<mgwt:left>
+			<mgwt:left> 
 				<mgwt:HeaderButton text="back" ui:field="leftButton" backButton="true"></mgwt:HeaderButton>
 			</mgwt:left>
 			<mgwt:center>

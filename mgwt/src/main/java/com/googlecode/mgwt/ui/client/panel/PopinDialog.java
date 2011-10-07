@@ -31,18 +31,12 @@ public class PopinDialog extends AnimatableDialogBase {
 
 	@Override
 	protected Animation getShowAnimation() {
-		Animation animation = new Animation();
-		animation.setType(Animation.ANIMATION_POP);
-		animation.setDirection(false);
-		return animation;
+		return Animation.POP;
 	}
 
 	@Override
 	protected Animation getHideAnimation() {
-		Animation animation = new Animation();
-		animation.setType(Animation.ANIMATION_POP);
-		animation.setDirection(true);
-		return animation;
+		return Animation.POP_REVERSE;
 	}
 
 }

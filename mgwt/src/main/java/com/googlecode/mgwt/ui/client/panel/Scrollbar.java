@@ -23,7 +23,6 @@ import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.FeatureDetection;
 
-
 /**
  * @author Daniel Kurka
  * 
@@ -75,13 +74,6 @@ public class Scrollbar extends Widget {
 		maxScroll = maxSize - size;
 		wrapperSize = ((double) scrollAreaSize) / (wholeSize);
 		wrapperProp = ((double) maxScroll / (scrollAreaSize - wholeSize));
-
-		System.out.println("whole: " + wholeSize);
-		System.out.println("scrollarea: " + scrollAreaSize);
-
-		System.out.println("size: " + size);
-		System.out.println("maxscroll: " + maxScroll);
-		System.out.println("wrapperSize: " + wrapperSize);
 
 		setElement(DOM.createDiv());
 
@@ -171,8 +163,6 @@ public class Scrollbar extends Widget {
 	public void setPosition(int pos) {
 		show();
 		pos = (int) Math.round(wrapperProp * pos);
-
-		System.out.println("scroll pos: " + pos);
 
 		if (pos < 0) {
 			pos = shrink ? pos + pos * 3 : 0;

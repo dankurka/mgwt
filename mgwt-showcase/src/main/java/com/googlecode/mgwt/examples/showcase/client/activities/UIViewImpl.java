@@ -20,13 +20,12 @@ import java.util.List;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
+import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
 import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
-
 
 /**
  * @author Daniel Kurka
@@ -36,7 +35,7 @@ public class UIViewImpl implements UIView {
 
 	private LayoutPanel main;
 	private HeaderPanel headerPanel;
-	private HeaderBackButton headerBackButton;
+	private HeaderButton headerBackButton;
 	private CellListWithHeader<Item> cellListWithHeader;
 
 	public UIViewImpl() {
@@ -47,7 +46,8 @@ public class UIViewImpl implements UIView {
 		headerPanel = new HeaderPanel();
 		main.add(headerPanel);
 
-		headerBackButton = new HeaderBackButton();
+		headerBackButton = new HeaderButton();
+		headerBackButton.setBackButton(true);
 		headerPanel.setLeftWidget(headerBackButton);
 
 		ScrollPanel scrollPanel = new ScrollPanel();

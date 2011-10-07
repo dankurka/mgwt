@@ -6,9 +6,8 @@ import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.widget.HeaderBackButton;
+import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.HeaderRoundButton;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 
@@ -17,8 +16,8 @@ public abstract class DetailViewGwtImpl implements DetailView {
 	protected LayoutPanel main;
 	protected ScrollPanel scrollPanel;
 	protected HeaderPanel headerPanel;
-	protected HeaderBackButton headerBackButton;
-	protected HeaderRoundButton headerMainButton;
+	protected HeaderButton headerBackButton;
+	protected HeaderButton headerMainButton;
 	protected HTML title;
 
 	public DetailViewGwtImpl() {
@@ -29,9 +28,11 @@ public abstract class DetailViewGwtImpl implements DetailView {
 		headerPanel = new HeaderPanel();
 		title = new HTML();
 		headerPanel.setCenterWidget(title);
-		headerBackButton = new HeaderBackButton();
+		headerBackButton = new HeaderButton();
+		headerBackButton.setBackButton(true);
 
-		headerMainButton = new HeaderRoundButton();
+		headerMainButton = new HeaderButton();
+		headerMainButton.setRoundButton(true);
 
 		if (MGWTUtil.getFeatureDetection().isPhone()) {
 			headerPanel.setLeftWidget(headerBackButton);

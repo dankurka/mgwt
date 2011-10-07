@@ -12,110 +12,68 @@ import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.Ani
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 
-
 public class TabletMainAnimationMapper implements AnimationMapper {
 
 	@Override
 	public Animation getAnimation(Place oldPlace, Place newPlace) {
 		if (oldPlace == null) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FADE);
-			return animation;
+			return Animation.FADE;
 		}
 
 		// animation
 
 		if (oldPlace instanceof AnimationSlidePlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (newPlace instanceof AnimationSlideUpPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE_UP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE_UP;
 		}
 
 		if (oldPlace instanceof AnimationSlideUpPlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE_UP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_UP_REVERSE;
 		}
 
 		if (newPlace instanceof AnimationDissolvePlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_DISSOLVE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.DISSOLVE;
 		}
 
 		if (oldPlace instanceof AnimationDissolvePlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_DISSOLVE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.DISSOLVE_REVERSE;
 		}
 
 		if (newPlace instanceof AnimationFadePlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FADE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.FADE;
 		}
 
 		if (oldPlace instanceof AnimationFadePlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FADE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.FADE_REVERSE;
 		}
 		if (newPlace instanceof AnimationFlipPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FLIP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.FLIP;
 		}
 
 		if (oldPlace instanceof AnimationFlipPlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FLIP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.FLIP_REVERSE;
 		}
 
 		if (newPlace instanceof AnimationPopPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_POP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.POP;
 		}
 
 		if (oldPlace instanceof AnimationPopPlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_POP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.POP_REVERSE;
 		}
 
 		if (newPlace instanceof AnimationSwapPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SWAP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SWAP;
 		}
 
 		if (oldPlace instanceof AnimationSwapPlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SWAP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SWAP_REVERSE;
 		}
 
-		return new Animation();
+		return Animation.SLIDE;
 	}
 
 }

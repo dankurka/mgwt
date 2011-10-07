@@ -39,10 +39,9 @@ import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class PhoneAnimationMapper implements AnimationMapper {
 
@@ -50,266 +49,155 @@ public class PhoneAnimationMapper implements AnimationMapper {
 	public Animation getAnimation(Place oldPlace, Place newPlace) {
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof HomePlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof AboutPlace && newPlace instanceof HomePlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE_UP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_UP_REVERSE;
 		}
 
 		if (oldPlace instanceof HomePlace && newPlace instanceof AboutPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE_UP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE_UP;
 		}
 
 		if (oldPlace instanceof HomePlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof HomePlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof HomePlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof ScrollWidgetPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof ScrollWidgetPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof ElementsPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof ElementsPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof ButtonBarPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof ButtonBarPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof SearchBoxPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof SearchBoxPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof TabBarPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof TabBarPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof ButtonPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof ButtonPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof PopupPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof PopupPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof ProgressBarPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof ProgressBarPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof UIPlace && newPlace instanceof SliderPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE;
 		}
 
 		if (oldPlace instanceof SliderPlace && newPlace instanceof UIPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		//animation
 
 		if (oldPlace instanceof AnimationSlidePlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_REVERSE;
 		}
 
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationSlideUpPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE_UP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SLIDE_UP;
 		}
 
 		if (oldPlace instanceof AnimationSlideUpPlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SLIDE_UP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SLIDE_UP_REVERSE;
 		}
 
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationDissolvePlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_DISSOLVE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.DISSOLVE;
 		}
 
 		if (oldPlace instanceof AnimationDissolvePlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_DISSOLVE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.DISSOLVE_REVERSE;
 		}
 
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationFadePlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FADE);
-			animation.setDirection(false);
-			return animation;
+			return Animation.FADE;
 		}
 
 		if (oldPlace instanceof AnimationFadePlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FADE);
-			animation.setDirection(true);
-			return animation;
+			return Animation.FADE_REVERSE;
 		}
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationFlipPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FLIP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.FLIP;
 		}
 
 		if (oldPlace instanceof AnimationFlipPlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_FLIP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.FLIP_REVERSE;
 		}
 
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationPopPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_POP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.POP;
 		}
 
 		if (oldPlace instanceof AnimationPopPlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_POP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.POP_REVERSE;
 		}
 
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationSwapPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SWAP);
-			animation.setDirection(false);
-			return animation;
+			return Animation.SWAP;
 		}
 
 		if (oldPlace instanceof AnimationSwapPlace && newPlace instanceof AnimationPlace) {
-			Animation animation = new Animation();
-			animation.setType(Animation.ANIMATION_SWAP);
-			animation.setDirection(true);
-			return animation;
+			return Animation.SWAP_REVERSE;
 		}
 
-		return new Animation();
-	}
+		return Animation.SLIDE;
 
+	}
 }

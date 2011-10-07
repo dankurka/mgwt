@@ -19,7 +19,6 @@ import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
-
 public class SlideUpPanel extends AnimatableDialogBase {
 
 	public SlideUpPanel() {
@@ -34,17 +33,12 @@ public class SlideUpPanel extends AnimatableDialogBase {
 
 	@Override
 	protected Animation getShowAnimation() {
-		Animation animation = new Animation();
-		animation.setType(Animation.ANIMATION_SLIDE_UP);
-		return animation;
+		return Animation.SLIDE_UP;
 	}
 
 	@Override
 	protected Animation getHideAnimation() {
-		Animation animation = new Animation();
-		animation.setType(Animation.ANIMATION_SLIDE_UP);
-		animation.setDirection(true);
-		return animation;
+		return Animation.SLIDE_UP_REVERSE;
 	}
 
 }

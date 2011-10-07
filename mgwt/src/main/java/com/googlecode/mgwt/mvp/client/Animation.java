@@ -19,46 +19,43 @@ import com.googlecode.mgwt.mvp.client.resources.MVPClientBundle;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
-public class Animation {
-	public static final String ANIMATION_SLIDE = MVPClientBundle.INSTANCE.animationCss().slide();
-	public static final String ANIMATION_SLIDE_UP = MVPClientBundle.INSTANCE.animationCss().slideup();
-	public static final String ANIMATION_DISSOLVE = MVPClientBundle.INSTANCE.animationCss().dissolve();
-	public static final String ANIMATION_FADE = MVPClientBundle.INSTANCE.animationCss().fade();
-	public static final String ANIMATION_FLIP = MVPClientBundle.INSTANCE.animationCss().flip();
-	public static final String ANIMATION_POP = MVPClientBundle.INSTANCE.animationCss().pop();
-	public static final String ANIMATION_SWAP = MVPClientBundle.INSTANCE.animationCss().swap();
 
-	private String type = ANIMATION_SLIDE;
-	private boolean direction;
+public enum Animation {
+	SLIDE(MVPClientBundle.INSTANCE.animationCss().slide()), SLIDE_REVERSE(MVPClientBundle.INSTANCE.animationCss().slide(), true), SLIDE_UP(MVPClientBundle.INSTANCE.animationCss().slideup()), SLIDE_UP_REVERSE(
+			MVPClientBundle.INSTANCE.animationCss().slideup(), true), DISSOLVE(MVPClientBundle.INSTANCE.animationCss().dissolve()), DISSOLVE_REVERSE(
+			MVPClientBundle.INSTANCE.animationCss().dissolve(), true), FADE(MVPClientBundle.INSTANCE.animationCss().fade()), FADE_REVERSE(MVPClientBundle.INSTANCE.animationCss().fade(), true), FLIP(
+			MVPClientBundle.INSTANCE.animationCss().flip()), FLIP_REVERSE(MVPClientBundle.INSTANCE.animationCss().flip(), true), POP(MVPClientBundle.INSTANCE.animationCss().pop()), POP_REVERSE(
+			MVPClientBundle.INSTANCE.animationCss().pop(), true), SWAP(MVPClientBundle.INSTANCE.animationCss().swap()), SWAP_REVERSE(MVPClientBundle.INSTANCE.animationCss().swap(), true), CUSTOM("");
 
-	/**
-	 * 
-	 */
-	public String getType() {
-		return type;
+	private String cssName;
+	private boolean inverse;
+
+	Animation(String cssName) {
+		this.cssName = cssName;
+		inverse = false;
 	}
 
-	/**
-	 * @param animationSlide
-	 */
-	public void setType(String type) {
-		this.type = type;
-
+	Animation(String cssName, boolean inverse) {
+		this.cssName = cssName;
+		this.inverse = inverse;
 	}
 
-	/**
-	 * @return the direction - true for backwards
-	 */
-	public boolean isDirection() {
-		return direction;
+	public void setCssName(String cssName) {
+		this.cssName = cssName;
 	}
 
-	/**
-	 * @param direction the direction to set
-	 */
-	public void setDirection(boolean direction) {
-		this.direction = direction;
+	public void setInverse(boolean inverse) {
+		this.inverse = inverse;
 	}
+
+	public String getCssName() {
+		return cssName;
+	}
+
+	public boolean isInverse() {
+		return inverse;
+	}
+
 }

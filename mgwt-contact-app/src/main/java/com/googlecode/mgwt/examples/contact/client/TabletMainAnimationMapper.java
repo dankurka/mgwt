@@ -9,10 +9,7 @@ public class TabletMainAnimationMapper implements AnimationMapper {
 	@Override
 	public Animation getAnimation(Place oldPlace, Place newPlace) {
 
-		Animation animation = new Animation();
-		animation.setType(Animation.ANIMATION_FADE);
-
-		return animation;
+		return Animation.FADE;
 	}
 
 }

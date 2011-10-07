@@ -22,13 +22,12 @@ import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
+import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
-import com.googlecode.mgwt.ui.client.widget.HeaderRoundButton;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
 import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
-
 
 /**
  * @author Daniel Kurka
@@ -37,7 +36,7 @@ import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
 public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 
 	private LayoutPanel main;
-	private HeaderRoundButton forwardButton;
+	private HeaderButton forwardButton;
 	private HeaderPanel headerPanel;
 	private CellListWithHeader<Topic> cellList;
 
@@ -46,7 +45,8 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 
 		headerPanel = new HeaderPanel();
 
-		forwardButton = new HeaderRoundButton();
+		forwardButton = new HeaderButton();
+		forwardButton.setForwardButton(true);
 		headerPanel.setRightWidget(forwardButton);
 		main.add(headerPanel);
 
