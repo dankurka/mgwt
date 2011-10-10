@@ -138,12 +138,14 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 			public void execute() {
 				if (scrollingEnabledX && widgetToScroll.getOffsetWidth() > 0) {
 					hScrollbar = new Scrollbar(css, Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), widgetToScroll.getOffsetWidth());
-					main.add(hScrollbar);
+					if (main.getOffsetWidth() < widgetToScroll.getOffsetWidth())
+						main.add(hScrollbar);
 				}
 
 				if (scrollingEnabledY && widgetToScroll.getOffsetHeight() > 0) {
 					vScrollbar = new Scrollbar(css, Orientation.VERTICAL, has3d, main.getOffsetHeight(), widgetToScroll.getOffsetHeight());
-					main.add(vScrollbar);
+					if (main.getOffsetHeight() < widgetToScroll.getOffsetHeight())
+						main.add(vScrollbar);
 				}
 
 			}
@@ -394,7 +396,9 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 
 			int newDuration = 1;
 
-			if (momentum) {
+			long touchTime = touchStartTime - System.currentTimeMillis();
+
+			if (touchTime < 300 && momentum) {
 				if (scrollingEnabledX) {
 					Momentum m = calculateMomentum(position_x - scrollStartX, scrollTime, -position_x, position_x + widgetToScroll.getOffsetWidth() - main.getOffsetWidth());
 					newDuration = Math.max(m.getTime(), newDuration);
