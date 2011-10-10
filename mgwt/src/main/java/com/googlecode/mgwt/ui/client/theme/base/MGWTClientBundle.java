@@ -80,6 +80,9 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/layout.css")
 	LayoutCss getLayoutCss();
 
+	@Source("css/pulltorefresh.css")
+	PullToRefreshCss getPullToRefreshCss();
+
 	@Source("resources/buttons/UIButtonBarAction.png")
 	DataResource buttonBarActionImage();
 

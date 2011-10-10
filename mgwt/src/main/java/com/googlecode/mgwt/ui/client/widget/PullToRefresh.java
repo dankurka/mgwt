@@ -3,13 +3,14 @@ package com.googlecode.mgwt.ui.client.widget;
 import java.util.Iterator;
 
 import com.google.gwt.dom.client.Style.Position;
-import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEndHandler;
 import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEvent;
@@ -27,8 +28,15 @@ public class PullToRefresh extends Composite implements HasWidgets {
 	private ScrollPanel scroll;
 	private FlowPanel container;
 	private RefreshWidget refreshWidget;
+	private final PullToRefreshCss css;
 
 	public PullToRefresh() {
+		this(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss());
+	}
+
+	public PullToRefresh(PullToRefreshCss css) {
+		this.css = css;
+		this.css.ensureInjected();
 		scroll = new ScrollPanel();
 
 		initWidget(scroll);
@@ -40,13 +48,8 @@ public class PullToRefresh extends Composite implements HasWidgets {
 
 		main.getElement().getStyle().setPosition(Position.RELATIVE);
 
-		refreshWidget = new RefreshWidget();
+		refreshWidget = new RefreshWidget(css);
 		main.add(refreshWidget);
-		refreshWidget.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		refreshWidget.getElement().getStyle().setBottom(0, Unit.PX);
-		refreshWidget.getElement().getStyle().setLeft(0, Unit.PX);
-		refreshWidget.getElement().getStyle().setWidth(100, Unit.PCT);
-		refreshWidget.getElement().getStyle().setHeight(40, Unit.PX);
 
 		scroll.addScrollhandler(refreshWidget);
 		scroll.addScrollEndHandler(refreshWidget);
@@ -77,15 +80,31 @@ public class PullToRefresh extends Composite implements HasWidgets {
 		return container.remove(w);
 	}
 
-	private class RefreshWidget extends FlowPanel implements ScrollHandler, ScrollEndHandler, ScrollStartHandler {
-		private HTML html;
+	private class RefreshWidget extends Widget implements ScrollHandler, ScrollEndHandler, ScrollStartHandler {
+
+		private Element main;
 
 		private boolean startReload;
 
-		public RefreshWidget() {
-			html = new HTML("asdf");
+		private Element arrow;
 
-			add(html);
+		private Element text;
+
+		public RefreshWidget(PullToRefreshCss css) {
+
+			main = DOM.createDiv();
+			main.addClassName(css.pullToRefresh());
+			setElement(main);
+
+			arrow = DOM.createDiv();
+			arrow.addClassName(css.arrow());
+			arrow.addClassName(css.arrowDown());
+			main.appendChild(arrow);
+
+			text = DOM.createDiv();
+			text.addClassName(css.text());
+			main.appendChild(text);
+
 		}
 
 		@Override
@@ -94,17 +113,19 @@ public class PullToRefresh extends Composite implements HasWidgets {
 				startLoading();
 				startReload = false;
 			}
-			html.setText("end: " + event.getX() + " " + event.getY());
+			text.setInnerText("end: " + event.getX() + " " + event.getY());
 
 		}
 
 		@Override
 		public void onScroll(ScrollEvent event) {
 			if (event.getY() > 50) {
-				html.setText("release to reload: " + event.getX() + " " + event.getY());
+				text.setInnerText("release to reload: " + event.getX() + " " + event.getY());
 				startReload = true;
+				int degree = 90 - event.getY() - 50;
+				arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
 			} else {
-				html.setText("scrolling: " + event.getX() + " " + event.getY());
+				text.setInnerText("scrolling: " + event.getX() + " " + event.getY());
 				startReload = false;
 			}
 
