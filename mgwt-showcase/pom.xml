@@ -5,7 +5,7 @@
 
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.kurka.mobile</groupId>
+	<groupId>com.googlecode.mgwt</groupId>
 	<artifactId>mgwt-showcase</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -84,7 +84,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>de.kurka.mobile</groupId>
+			<groupId>com.googlecode.mgwt</groupId>
 			<artifactId>mgwt</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 
