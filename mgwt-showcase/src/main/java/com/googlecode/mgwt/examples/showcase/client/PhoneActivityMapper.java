@@ -43,6 +43,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupActivi
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxActivity;
@@ -53,10 +55,9 @@ import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarActi
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlace;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class PhoneActivityMapper implements ActivityMapper {
 
@@ -118,6 +119,9 @@ public class PhoneActivityMapper implements ActivityMapper {
 
 		if (place instanceof SliderPlace) {
 			return new SliderActivity(clientFactory);
+		}
+		if (place instanceof PullToRefreshPlace) {
+			return new PullToRefreshActivity(clientFactory);
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace

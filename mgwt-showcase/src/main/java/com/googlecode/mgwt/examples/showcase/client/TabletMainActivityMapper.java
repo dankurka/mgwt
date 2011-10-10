@@ -24,6 +24,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupActivi
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxActivity;
@@ -33,7 +35,6 @@ import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderPlac
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlace;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
-
 
 public class TabletMainActivityMapper implements ActivityMapper {
 
@@ -111,6 +112,10 @@ public class TabletMainActivityMapper implements ActivityMapper {
 
 		if (newPlace instanceof AnimationPlace) {
 			return new AboutActivity(clientFactory);
+		}
+
+		if (newPlace instanceof PullToRefreshPlace) {
+			return new PullToRefreshActivity(clientFactory);
 		}
 
 		if (newPlace instanceof AnimationSlidePlace || newPlace instanceof AnimationSlideUpPlace || newPlace instanceof AnimationDissolvePlace || newPlace instanceof AnimationFadePlace

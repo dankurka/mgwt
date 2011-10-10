@@ -21,12 +21,12 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarPlace;
 import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
-
 
 public class TabletNavActivityMapper implements ActivityMapper {
 
@@ -67,8 +67,9 @@ public class TabletNavActivityMapper implements ActivityMapper {
 			return getShowCaseListActivity();
 		}
 
-		if (place instanceof UIPlace || place instanceof ScrollWidgetPlace || place instanceof ElementsPlace || place instanceof ButtonBarPlace || place instanceof SearchBoxPlace
-				|| place instanceof TabBarPlace || place instanceof ButtonPlace || place instanceof PopupPlace || place instanceof ProgressBarPlace || place instanceof SliderPlace) {
+		if (place instanceof PullToRefreshPlace || place instanceof UIPlace || place instanceof ScrollWidgetPlace || place instanceof ElementsPlace || place instanceof ButtonBarPlace
+				|| place instanceof SearchBoxPlace || place instanceof TabBarPlace || place instanceof ButtonPlace || place instanceof PopupPlace || place instanceof ProgressBarPlace
+				|| place instanceof SliderPlace) {
 			return getUIActivity();
 		}
 

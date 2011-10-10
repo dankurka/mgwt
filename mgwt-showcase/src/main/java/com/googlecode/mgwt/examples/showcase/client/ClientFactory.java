@@ -27,11 +27,11 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupView;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarView;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshDisplay;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetView;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxView;
 import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderView;
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarView;
-
 
 /**
  * @author Daniel Kurka
@@ -75,5 +75,7 @@ public interface ClientFactory {
 	public ProgressBarView getProgressBarView();
 
 	public SliderView getSliderView();
+
+	public PullToRefreshDisplay getPullToRefreshDisplay();
 
 }

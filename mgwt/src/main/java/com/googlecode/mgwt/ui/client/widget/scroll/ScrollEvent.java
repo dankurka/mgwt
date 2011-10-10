@@ -29,11 +29,11 @@ public class ScrollEvent extends GwtEvent<ScrollHandler> {
 		return TYPE;
 	}
 
-	public int getPosX() {
+	public int getX() {
 		return posX;
 	}
 
-	public int getPosY() {
+	public int getY() {
 		return posY;
 	}
 

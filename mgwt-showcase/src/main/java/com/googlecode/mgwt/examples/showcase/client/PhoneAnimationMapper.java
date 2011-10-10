@@ -31,6 +31,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderPlace;
@@ -141,6 +142,14 @@ public class PhoneAnimationMapper implements AnimationMapper {
 		}
 
 		if (oldPlace instanceof SliderPlace && newPlace instanceof UIPlace) {
+			return Animation.SLIDE_REVERSE;
+		}
+
+		if (oldPlace instanceof UIPlace && newPlace instanceof PullToRefreshPlace) {
+			return Animation.SLIDE;
+		}
+
+		if (oldPlace instanceof PullToRefreshPlace && newPlace instanceof UIPlace) {
 			return Animation.SLIDE_REVERSE;
 		}
 

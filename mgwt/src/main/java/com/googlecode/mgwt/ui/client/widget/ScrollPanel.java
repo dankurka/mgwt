@@ -45,8 +45,12 @@ import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.FeatureDetection;
 import com.googlecode.mgwt.ui.client.widget.scroll.HasScrollHandlers;
+import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEndHandler;
 import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEvent;
 import com.googlecode.mgwt.ui.client.widget.scroll.ScrollHandler;
+import com.googlecode.mgwt.ui.client.widget.scroll.ScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.scroll.ScrollStartHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 /**
@@ -413,6 +417,8 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 				}
 			}
 
+			fireEvent(new ScrollEndEvent(newPosX, newPosY));
+
 			scrollTo(newPosX, newPosY, newDuration);
 		}
 
@@ -640,6 +646,16 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 			return main.remove(w);
 		}
 		return false;
+	}
+
+	@Override
+	public HandlerRegistration addScrollEndHandler(ScrollEndHandler handler) {
+		return addHandler(handler, ScrollEndEvent.getType());
+	}
+
+	@Override
+	public HandlerRegistration addScrollStartHandler(ScrollStartHandler handler) {
+		return addHandler(handler, ScrollStartEvent.getType());
 	}
 
 }

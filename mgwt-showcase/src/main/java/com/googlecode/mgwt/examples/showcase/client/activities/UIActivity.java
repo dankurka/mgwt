@@ -28,6 +28,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonB
 import com.googlecode.mgwt.examples.showcase.client.activities.elements.ElementsPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderPlace;
@@ -36,7 +37,6 @@ import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
-
 
 /**
  * @author Daniel Kurka
@@ -122,6 +122,11 @@ public class UIActivity extends MGWTAbstractActivity {
 					clientFactory.getPlaceController().goTo(new SliderPlace());
 					break;
 
+				case 9:
+
+					clientFactory.getPlaceController().goTo(new PullToRefreshPlace());
+					break;
+
 				default:
 					break;
 				}
@@ -151,6 +156,7 @@ public class UIActivity extends MGWTAbstractActivity {
 		list.add(new Item("Popups"));
 		list.add(new Item("ProgressBar"));
 		list.add(new Item("Slider"));
+		list.add(new Item("PullToRefresh"));
 
 		return list;
 	}

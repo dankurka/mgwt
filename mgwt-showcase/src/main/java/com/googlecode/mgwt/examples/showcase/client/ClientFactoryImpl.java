@@ -38,6 +38,8 @@ import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupView;
 import com.googlecode.mgwt.examples.showcase.client.activities.popup.PopupViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarView;
 import com.googlecode.mgwt.examples.showcase.client.activities.progressbar.ProgressBarViewImpl;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshDisplay;
+import com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh.PullToRefreshDisplayGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetView;
 import com.googlecode.mgwt.examples.showcase.client.activities.scrollwidget.ScrollWidgetViewImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.searchbox.SearchBoxView;
@@ -46,7 +48,6 @@ import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderView
 import com.googlecode.mgwt.examples.showcase.client.activities.slider.SliderViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarView;
 import com.googlecode.mgwt.examples.showcase.client.activities.tabbar.TabBarViewGwtImpl;
-
 
 /**
  * @author Daniel Kurka
@@ -71,6 +72,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private ProgressBarView progressBarView;
 
 	private SliderView sliderView;
+	private PullToRefreshDisplayGwtImpl pullToRefreshView;
 
 	public ClientFactoryImpl() {
 		eventBus = new SimpleEventBus();
@@ -201,6 +203,14 @@ public class ClientFactoryImpl implements ClientFactory {
 			sliderView = new SliderViewGwtImpl();
 		}
 		return sliderView;
+	}
+
+	@Override
+	public PullToRefreshDisplay getPullToRefreshDisplay() {
+		if (pullToRefreshView == null) {
+			pullToRefreshView = new PullToRefreshDisplayGwtImpl();
+		}
+		return pullToRefreshView;
 	}
 
 }
