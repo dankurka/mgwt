@@ -6,8 +6,11 @@ import java.util.List;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
+import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.event.ReloadEvent;
 import com.googlecode.mgwt.ui.client.widget.event.ReloadHandler;
@@ -83,6 +86,15 @@ public class PullToRefreshActivity extends DetailActivity {
 				default:
 					break;
 				}
+
+			}
+		}));
+
+		addHandlerRegistration(display.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
+
+			@Override
+			public void onTouch(SimpleTouchEvent event) {
+				clientFactory.getPlaceController().goTo(new UIPlace());
 
 			}
 		}));

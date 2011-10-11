@@ -15,3 +15,5 @@ mgwt-contact-app/.settings/
 mgwt-contact-app/gwt-unitCache/
 mgwt-contact-app/target/
 mgwt-contact-app/war/
+mgwt-contact-app/extras/
+mgwt-showcase/extras/
