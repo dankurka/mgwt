@@ -7,9 +7,11 @@ public interface PullToRefreshCss extends CssResource {
 
 	public String arrow();
 
-	public String arrowUp();
-
-	public String arrowDown();
-
 	public String text();
+
+	public String spinner();
+
+	public String textContainer();
+
+	public String textHeader();
 }

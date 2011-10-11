@@ -1,4 +1,5 @@
 @url nextSlideImage buttonBarNextSlideImage;
+@url spinner spinnerImage;
 
 @if mgwt.css pretty {
 	@external pullToRefresh, arrow, mgwt-arrowUp, arrowDown;
@@ -7,7 +8,7 @@
 
 
 .pullToRefresh{
-	position: absolute;
+	position: relative;
 	bottom: 0px;
 	left: 0px;
 	width: 100%;
@@ -15,7 +16,7 @@
 }
 
 
-.arrow {
+.pullToRefresh .arrow {
 	position: absolute;
 	
 	margin-left: 50px;
@@ -25,20 +26,50 @@
 	background-image: nextSlideImage;
 	background-repeat: no-repeat;
 	
-	
-	\-webkit-transition: all 0.3s ease-in-out;
-}
-
-.arrowUp{
-	\-webkit-transform: rotate(-90deg);
-}
-
-.arrowDown{
 	\-webkit-transform: rotate(90deg);
+	\-webkit-transform-origin: 12px 9px;
 }
 
-.text{
+.pullToRefresh .spinner{
+	position: absolute;
+	margin-left: 50px;
+	width: 40px;
+	height: 40px;
+	background-image: spinner;
+	background-repeat: no-repeat;
+	\-webkit-animation-duration: 1s;
+    \-webkit-animation-iteration-count: infinite;
+    \-webkit-animation-timing-function: linear;
+    \-webkit-animation-name: progressIndicatorAnimation;
+	
+}
+
+@-webkit-keyframes progressIndicatorAnimation {
+
+    0% { -webkit-transform: rotate(0deg); }
+
+    100% { -webkit-transform: rotate(360deg); }
+
+}
+
+
+
+.pullToRefresh .textContainer{
 	position: absolute;
 	top: 0px;
-	left: 70px;
+	left: 100px;
+	display: inline-block;
 }
+
+.pullToRefresh .textHeader{
+	
+}
+
+.pullToRefresh .text{
+	
+}
+
+
+
+
+

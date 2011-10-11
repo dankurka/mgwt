@@ -44,13 +44,13 @@ import com.googlecode.mgwt.ui.client.panel.Scrollbar.Orientation;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.FeatureDetection;
-import com.googlecode.mgwt.ui.client.widget.scroll.HasScrollHandlers;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEndEvent;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEndHandler;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEvent;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollHandler;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollStartEvent;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollStartHandler;
+import com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollEvent;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 /**
@@ -108,6 +108,10 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	private HandlerRegistration transEndHandler;
 
 	protected final ScrollPanelCss css;
+
+	private int offsetY;
+
+	private int offsetX;
 
 	public ScrollPanel() {
 		this(MGWTStyle.getDefaultClientBundle().getScrollPanelCss());
@@ -180,6 +184,10 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	@Override
 	public Widget getWidget() {
 		return widgetToScroll;
+	}
+
+	public void refresh() {
+		updateScrollBars();
 	}
 
 	@Override
@@ -306,6 +314,10 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 			directionX = 0;
 			directionY = 0;
 
+			//TODO...
+			System.out.println("start");
+			fireEvent(new ScrollStartEvent(0, 0));
+
 		}
 
 		@Override
@@ -354,9 +366,10 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 						leftDelta = 0;
 					}
 				}
+
+				setPosition(newPosX, newPosY);
 				//fire scroll event to world
 				fireEvent(new ScrollEvent(newPosX, newPosY));
-				setPosition(newPosX, newPosY);
 				moved = true;
 
 				if (leftDelta > 0) {
@@ -417,9 +430,11 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 				}
 			}
 
-			fireEvent(new ScrollEndEvent(newPosX, newPosY));
-
-			scrollTo(newPosX, newPosY, newDuration);
+			ScrollEndEvent scrollEndEvent = new ScrollEndEvent(newPosX, newPosY, newDuration, position_x, position_y);
+			fireEvent(scrollEndEvent);
+			if (!scrollEndEvent.isPreventDefault()) {
+				scrollTo(newPosX, newPosY, newDuration);
+			}
 		}
 
 		@Override
@@ -487,8 +502,10 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	 * @param newDuration
 	 */
 	public void scrollTo(int destX, int destY, int newDuration) {
+		System.out.println("scrollTo: " + destX + " " + destY + " " + newDuration);
 		if (position_x == destX && position_y == destY) {
 			resetPosition();
+			System.out.println("return");
 			return;
 		}
 
@@ -522,8 +539,8 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 		}
 
 		int maxScrollY = getMaxScrollY();
-		if (position_y >= 0 || maxScrollY > 0) {
-			resetY = 0;
+		if (position_y >= offsetY || maxScrollY > offsetY) {
+			resetY = offsetY;
 		} else if (position_y < maxScrollY) {
 			resetY = maxScrollY;
 		}
@@ -546,7 +563,7 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	 * 
 	 */
 	private int getMaxScrollY() {
-		return main.getOffsetHeight() - widgetToScroll.getOffsetHeight();
+		return main.getOffsetHeight() - widgetToScroll.getOffsetHeight() + offsetY;
 
 	}
 
@@ -555,7 +572,7 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	 */
 	private int getMaxScrollX() {
 
-		return main.getOffsetWidth() - widgetToScroll.getOffsetWidth();
+		return main.getOffsetWidth() - widgetToScroll.getOffsetWidth() - offsetX;
 
 	}
 
@@ -656,6 +673,14 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	@Override
 	public HandlerRegistration addScrollStartHandler(ScrollStartHandler handler) {
 		return addHandler(handler, ScrollStartEvent.getType());
+	}
+
+	public void setOffset(int offsetX, int offsetY) {
+		this.offsetY = offsetY;
+		this.offsetX = offsetX;
+
+		scrollTo(position_x, position_y, 200);
+
 	}
 
 }

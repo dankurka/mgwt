@@ -3,20 +3,29 @@ package com.googlecode.mgwt.ui.client.widget;
 import java.util.Iterator;
 
 import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEndEvent;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEndHandler;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollEvent;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollHandler;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollStartEvent;
-import com.googlecode.mgwt.ui.client.widget.scroll.ScrollStartHandler;
+import com.googlecode.mgwt.ui.client.widget.event.HasReloadHandlers;
+import com.googlecode.mgwt.ui.client.widget.event.HasReloadStateChangeHandlers;
+import com.googlecode.mgwt.ui.client.widget.event.ReloadEvent;
+import com.googlecode.mgwt.ui.client.widget.event.ReloadHandler;
+import com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedEvent;
+import com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedEvent.State;
+import com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedHandler;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollEvent;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 
 /**
  * Experimental don`t use right now
@@ -24,7 +33,7 @@ import com.googlecode.mgwt.ui.client.widget.scroll.ScrollStartHandler;
  * @author Daniel Kurka
  * 
  */
-public class PullToRefresh extends Composite implements HasWidgets {
+public class PullToRefresh extends Composite implements HasWidgets, HasReloadHandlers, HasReloadStateChangeHandlers {
 	private ScrollPanel scroll;
 	private FlowPanel container;
 	private RefreshWidget refreshWidget;
@@ -45,6 +54,8 @@ public class PullToRefresh extends Composite implements HasWidgets {
 
 		FlowPanel main = new FlowPanel();
 		scroll.setWidget(main);
+		scroll.setOffset(0, -40);
+		scroll.setScrollingEnabledX(false);
 
 		main.getElement().getStyle().setPosition(Position.RELATIVE);
 
@@ -53,9 +64,11 @@ public class PullToRefresh extends Composite implements HasWidgets {
 
 		scroll.addScrollhandler(refreshWidget);
 		scroll.addScrollEndHandler(refreshWidget);
+		scroll.addScrollStartHandler(refreshWidget);
 
 		container = new FlowPanel();
 		main.add(container);
+
 	}
 
 	@Override
@@ -70,6 +83,16 @@ public class PullToRefresh extends Composite implements HasWidgets {
 
 	}
 
+	public void setLoading(boolean loading) {
+		System.out.println("loading: " + loading);
+		if (loading) {
+			//			scroll.scrollTo(0, 40, 1);
+		} else {
+			scroll.setOffset(0, -40);
+			//scroll.scrollTo(0, 0, 1);
+		}
+	}
+
 	@Override
 	public Iterator<Widget> iterator() {
 		return container.iterator();
@@ -80,17 +103,30 @@ public class PullToRefresh extends Composite implements HasWidgets {
 		return container.remove(w);
 	}
 
+	public void refresh() {
+		scroll.refresh();
+	}
+
 	private class RefreshWidget extends Widget implements ScrollHandler, ScrollEndHandler, ScrollStartHandler {
 
 		private Element main;
 
-		private boolean startReload;
-
 		private Element arrow;
+
+		private Element textContainer;
+
+		private int lastX;
+		private int lastY;
+
+		private Element header;
 
 		private Element text;
 
+		private State state;
+
 		public RefreshWidget(PullToRefreshCss css) {
+
+			state = State.NO_RELOAD;
 
 			main = DOM.createDiv();
 			main.addClassName(css.pullToRefresh());
@@ -98,48 +134,149 @@ public class PullToRefresh extends Composite implements HasWidgets {
 
 			arrow = DOM.createDiv();
 			arrow.addClassName(css.arrow());
-			arrow.addClassName(css.arrowDown());
 			main.appendChild(arrow);
+
+			textContainer = DOM.createDiv();
+			textContainer.addClassName(css.textContainer());
+			main.appendChild(textContainer);
+
+			header = DOM.createDiv();
+			header.addClassName(css.textHeader());
+			textContainer.appendChild(header);
 
 			text = DOM.createDiv();
 			text.addClassName(css.text());
-			main.appendChild(text);
+			textContainer.appendChild(text);
 
 		}
 
 		@Override
 		public void onScrollEnd(ScrollEndEvent event) {
-			if (startReload) {
+			if (state == State.RELOAD) {
+				state = State.NO_RELOAD;
+				arrow.removeClassName(css.arrow());
+				arrow.addClassName(css.spinner());
+				event.preventDefault();
+				scroll.setOffset(0, 0);
 				startLoading();
-				startReload = false;
+
+			} else {
+				event.preventDefault();
+				scroll.setOffset(0, -40);
+				int degree = getRotation(event.getY());
+				arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg); -webkit-transition: all " + event.getDuration() + "ms linear;");
+				textContainer.setInnerText("end: " + event.getX() + " " + event.getY());
+
 			}
-			text.setInnerText("end: " + event.getX() + " " + event.getY());
+
+		}
+
+		protected int getRotation(int y) {
+			int degree = (y - 30) * -10;
+			if (degree < -90)
+				degree = -90;
+			if (degree > 90) {
+				degree = 90;
+			}
+			return degree;
 
 		}
 
 		@Override
 		public void onScroll(ScrollEvent event) {
-			if (event.getY() > 50) {
-				text.setInnerText("release to reload: " + event.getX() + " " + event.getY());
-				startReload = true;
-				int degree = 90 - event.getY() - 50;
-				arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
+			lastX = event.getX();
+			lastY = event.getY();
+
+			int degree = getRotation(lastY);
+			arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
+
+			if (event.getY() > 40) {
+				textContainer.setInnerText("release to reload: " + event.getX() + " " + event.getY());
+
+				if (state != State.RELOAD) {
+					state = State.RELOAD;
+					fireStateChangedEvent(state);
+				}
 			} else {
-				text.setInnerText("scrolling: " + event.getX() + " " + event.getY());
-				startReload = false;
+				if (state != State.NO_RELOAD) {
+					state = State.NO_RELOAD;
+					fireStateChangedEvent(state);
+				}
+
+				textContainer.setInnerText("scrolling: " + event.getX() + " " + event.getY());
+
 			}
 
 		}
 
 		@Override
 		public void onStartScroll(ScrollStartEvent event) {
-			startReload = false;
-
+			arrow.removeClassName(css.spinner());
+			arrow.addClassName(css.arrow());
+			if (state != State.NO_RELOAD) {
+				state = State.NO_RELOAD;
+				fireStateChangedEvent(state);
+			}
 		}
 	}
 
-	public void startLoading() {
-		System.out.println("reload und so ");
+	private void fireStateChangedEvent(State state) {
+		fireEvent(new ReloadStateChangedEvent(state));
+	}
+
+	private void startLoading() {
+		fireEvent(new ReloadEvent());
 
 	}
+
+	@Override
+	public HandlerRegistration addReloadHandler(ReloadHandler handler) {
+		return addHandler(handler, ReloadEvent.getType());
+	}
+
+	public HasHTML getHeader() {
+		return new HasHtmlWrapper(refreshWidget.header);
+	}
+
+	public HasHTML getText() {
+		return new HasHtmlWrapper(refreshWidget.text);
+	}
+
+	private class HasHtmlWrapper implements HasHTML {
+
+		private final Element element;
+
+		public HasHtmlWrapper(Element element) {
+			this.element = element;
+		}
+
+		@Override
+		public String getText() {
+			return element.getInnerText();
+		}
+
+		@Override
+		public void setText(String text) {
+			element.setInnerText(text);
+
+		}
+
+		@Override
+		public String getHTML() {
+			return element.getInnerHTML();
+		}
+
+		@Override
+		public void setHTML(String html) {
+			element.setInnerHTML(html);
+
+		}
+
+	}
+
+	@Override
+	public HandlerRegistration addReloadStateChangeHandler(ReloadStateChangedHandler handler) {
+		return addHandler(handler, ReloadStateChangedEvent.getType());
+	}
+
 }

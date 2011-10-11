@@ -230,4 +230,7 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("resources/tabbar/UITabBarSearchSelected.png")
 	DataResource tabBarSearchSelectedImage();
 
+	@Source("resources/spinner.png")
+	DataResource spinnerImage();
+
 }

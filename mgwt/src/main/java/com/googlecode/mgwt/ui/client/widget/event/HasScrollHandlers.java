@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.ui.client.widget.scroll;
+package com.googlecode.mgwt.ui.client.widget.event;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 

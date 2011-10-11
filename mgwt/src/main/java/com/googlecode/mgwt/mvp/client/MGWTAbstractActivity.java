@@ -18,11 +18,11 @@ package com.googlecode.mgwt.mvp.client;
 import java.util.LinkedList;
 
 import com.google.gwt.activity.shared.AbstractActivity;
-import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public abstract class MGWTAbstractActivity extends AbstractActivity {
 
