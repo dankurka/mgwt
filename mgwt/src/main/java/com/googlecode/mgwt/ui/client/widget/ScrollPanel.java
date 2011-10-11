@@ -315,7 +315,6 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 			directionY = 0;
 
 			//TODO...
-			System.out.println("start");
 			fireEvent(new ScrollStartEvent(0, 0));
 
 		}
@@ -502,10 +501,9 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 	 * @param newDuration
 	 */
 	public void scrollTo(int destX, int destY, int newDuration) {
-		System.out.println("scrollTo: " + destX + " " + destY + " " + newDuration);
+
 		if (position_x == destX && position_y == destY) {
 			resetPosition();
-			System.out.println("return");
 			return;
 		}
 
