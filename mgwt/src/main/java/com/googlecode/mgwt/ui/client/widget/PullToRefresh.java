@@ -164,7 +164,7 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 				event.preventDefault();
 				scroll.setOffset(0, -40);
 				int degree = getRotation(event.getY());
-				arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg); -webkit-transition: all " + event.getDuration() + "ms linear;");
+				arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);-webkit-transition: all " + event.getDuration() + "ms linear;");
 				textContainer.setInnerText("end: " + event.getX() + " " + event.getY());
 
 			}
@@ -188,7 +188,7 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 			lastY = event.getY();
 
 			int degree = getRotation(lastY);
-			arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
+			arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
 
 			if (event.getY() > 40) {
 				textContainer.setInnerText("release to reload: " + event.getX() + " " + event.getY());

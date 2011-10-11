@@ -26,7 +26,7 @@
 	background-image: nextSlideImage;
 	background-repeat: no-repeat;
 	
-	\-webkit-transform: rotate(90deg);
+	\-webkit-transform: rotate(90deg) translateZ(0);
 	\-webkit-transform-origin: 12px 9px;
 }
 
