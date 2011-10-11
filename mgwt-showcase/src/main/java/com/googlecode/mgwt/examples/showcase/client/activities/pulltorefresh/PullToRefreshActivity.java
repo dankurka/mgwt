@@ -1,10 +1,14 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
+import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.event.ReloadEvent;
 import com.googlecode.mgwt.ui.client.widget.event.ReloadHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedEvent;
@@ -15,9 +19,18 @@ public class PullToRefreshActivity extends DetailActivity {
 
 	private final ClientFactory clientFactory;
 
+	private int counter;
+	private List<Topic> list = new LinkedList<Topic>();
+
 	public PullToRefreshActivity(ClientFactory clientFactory) {
 		super(clientFactory.getPullToRefreshDisplay(), "nav");
 		this.clientFactory = clientFactory;
+
+		list = new LinkedList<Topic>();
+		while (counter < 5) {
+			list.add(new Topic("Topic " + (counter +1), counter));
+			counter++;
+		}
 
 	}
 
@@ -29,19 +42,29 @@ public class PullToRefreshActivity extends DetailActivity {
 
 		display.getHeader().setText("Pulldown to Refresh");
 
+		display.getMainButtonText().setText("Nav");
+		display.getBackbuttonText().setText("UI");
+		display.getHeader().setText("PullToRefresh");
+
 		addHandlerRegistration(display.getReload().addReloadHandler(new ReloadHandler() {
 
 			@Override
 			public void onReload(ReloadEvent event) {
-				display.setLoading(true);
+
 				new Timer() {
 
 					@Override
 					public void run() {
-						display.setLoading(false);
+						display.moveBack();
+						for (int i = 0; i < 5; i++) {
+							list.add(new Topic("Topic " + (counter + 1), counter));
+							counter++;
+						}
+						display.render(list);
+						display.reload();
 
 					}
-				}.schedule(5000);
+				}.schedule(1000);
 
 			}
 		}));
@@ -53,16 +76,18 @@ public class PullToRefreshActivity extends DetailActivity {
 				State state = event.getState();
 				switch (state) {
 				case RELOAD:
-					System.out.println("reload");
+					display.getTextHeader().setText("reload");
 					break;
 				case NO_RELOAD:
-					System.out.println("no reload");
+					display.getTextHeader().setText("no reload");
 				default:
 					break;
 				}
 
 			}
 		}));
+
+		display.render(list);
 
 		panel.setWidget(display);
 	}

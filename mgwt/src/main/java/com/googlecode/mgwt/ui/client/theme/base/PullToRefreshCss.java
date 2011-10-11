@@ -11,7 +11,4 @@ public interface PullToRefreshCss extends CssResource {
 
 	public String spinner();
 
-	public String textContainer();
-
-	public String textHeader();
 }

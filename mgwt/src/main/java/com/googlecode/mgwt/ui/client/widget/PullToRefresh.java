@@ -83,13 +83,18 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 
 	}
 
-	public void setLoading(boolean loading) {
-		System.out.println("loading: " + loading);
-		if (loading) {
-			//			scroll.scrollTo(0, 40, 1);
+	public void moveBack() {
+		scroll.setOffset(0, -40);
+	}
+
+	public void showArrow(boolean arrow) {
+		if (arrow) {
+			refreshWidget.arrow.addClassName(css.spinner());
+			refreshWidget.arrow.removeClassName(css.arrow());
+
 		} else {
-			scroll.setOffset(0, -40);
-			//scroll.scrollTo(0, 0, 1);
+			refreshWidget.arrow.removeClassName(css.spinner());
+			refreshWidget.arrow.addClassName(css.arrow());
 		}
 	}
 
@@ -118,10 +123,6 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 		private int lastX;
 		private int lastY;
 
-		private Element header;
-
-		private Element text;
-
 		private State state;
 
 		public RefreshWidget(PullToRefreshCss css) {
@@ -137,25 +138,15 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 			main.appendChild(arrow);
 
 			textContainer = DOM.createDiv();
-			textContainer.addClassName(css.textContainer());
+			textContainer.addClassName(css.text());
 			main.appendChild(textContainer);
-
-			header = DOM.createDiv();
-			header.addClassName(css.textHeader());
-			textContainer.appendChild(header);
-
-			text = DOM.createDiv();
-			text.addClassName(css.text());
-			textContainer.appendChild(text);
 
 		}
 
 		@Override
 		public void onScrollEnd(ScrollEndEvent event) {
 			if (state == State.RELOAD) {
-				state = State.NO_RELOAD;
-				arrow.removeClassName(css.arrow());
-				arrow.addClassName(css.spinner());
+				showArrow(true);
 				event.preventDefault();
 				scroll.setOffset(0, 0);
 				startLoading();
@@ -165,7 +156,6 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 				scroll.setOffset(0, -40);
 				int degree = getRotation(event.getY());
 				arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);-webkit-transition: all " + event.getDuration() + "ms linear;");
-				textContainer.setInnerText("end: " + event.getX() + " " + event.getY());
 
 			}
 
@@ -191,7 +181,6 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 			arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
 
 			if (event.getY() > 40) {
-				textContainer.setInnerText("release to reload: " + event.getX() + " " + event.getY());
 
 				if (state != State.RELOAD) {
 					state = State.RELOAD;
@@ -202,8 +191,6 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 					state = State.NO_RELOAD;
 					fireStateChangedEvent(state);
 				}
-
-				textContainer.setInnerText("scrolling: " + event.getX() + " " + event.getY());
 
 			}
 
@@ -235,11 +222,7 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 	}
 
 	public HasHTML getHeader() {
-		return new HasHtmlWrapper(refreshWidget.header);
-	}
-
-	public HasHTML getText() {
-		return new HasHtmlWrapper(refreshWidget.text);
+		return new HasHtmlWrapper(refreshWidget.textContainer);
 	}
 
 	private class HasHtmlWrapper implements HasHTML {

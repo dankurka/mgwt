@@ -54,20 +54,14 @@
 
 
 
-.pullToRefresh .textContainer{
+.pullToRefresh .text{
 	position: absolute;
 	top: 0px;
 	left: 100px;
 	display: inline-block;
 }
 
-.pullToRefresh .textHeader{
-	
-}
 
-.pullToRefresh .text{
-	
-}
 
 
 
