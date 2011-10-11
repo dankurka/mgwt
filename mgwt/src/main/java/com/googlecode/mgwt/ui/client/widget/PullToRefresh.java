@@ -83,10 +83,6 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 
 	}
 
-	public void moveBack() {
-		scroll.setOffset(0, -40);
-	}
-
 	public void showArrow(boolean arrow) {
 		if (arrow) {
 			refreshWidget.arrow.addClassName(css.spinner());
@@ -110,6 +106,9 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 
 	public void refresh() {
 		scroll.refresh();
+
+		scroll.setOffset(0, -40);
+
 	}
 
 	private class RefreshWidget extends Widget implements ScrollHandler, ScrollEndHandler, ScrollStartHandler {
@@ -120,7 +119,6 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 
 		private Element textContainer;
 
-		private int lastX;
 		private int lastY;
 
 		private State state;
@@ -174,7 +172,7 @@ public class PullToRefresh extends Composite implements HasWidgets, HasReloadHan
 
 		@Override
 		public void onScroll(ScrollEvent event) {
-			lastX = event.getX();
+
 			lastY = event.getY();
 
 			int degree = getRotation(lastY);

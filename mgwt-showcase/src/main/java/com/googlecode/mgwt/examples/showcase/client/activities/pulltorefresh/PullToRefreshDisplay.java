@@ -21,5 +21,4 @@ public interface PullToRefreshDisplay extends DetailView {
 
 	public HasHTML getTextHeader();
 
-	public void moveBack();
 }

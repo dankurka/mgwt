@@ -28,7 +28,7 @@ public class PullToRefreshActivity extends DetailActivity {
 
 		list = new LinkedList<Topic>();
 		while (counter < 5) {
-			list.add(new Topic("Topic " + (counter +1), counter));
+			list.add(new Topic("Topic " + (counter + 1), counter));
 			counter++;
 		}
 
@@ -55,7 +55,7 @@ public class PullToRefreshActivity extends DetailActivity {
 
 					@Override
 					public void run() {
-						display.moveBack();
+
 						for (int i = 0; i < 5; i++) {
 							list.add(new Topic("Topic " + (counter + 1), counter));
 							counter++;
@@ -76,10 +76,10 @@ public class PullToRefreshActivity extends DetailActivity {
 				State state = event.getState();
 				switch (state) {
 				case RELOAD:
-					display.getTextHeader().setText("reload");
+					display.getTextHeader().setHTML("<div style=''>Release to reload</div>");
 					break;
 				case NO_RELOAD:
-					display.getTextHeader().setText("no reload");
+					display.getTextHeader().setText("<div style=''>No Reload</div>");
 				default:
 					break;
 				}

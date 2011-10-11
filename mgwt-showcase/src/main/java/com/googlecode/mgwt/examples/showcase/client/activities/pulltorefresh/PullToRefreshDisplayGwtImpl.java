@@ -68,9 +68,4 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 
 	}
 
-	@Override
-	public void moveBack() {
-		pullToRefresh.moveBack();
-
-	}
 }
