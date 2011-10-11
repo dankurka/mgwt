@@ -82,7 +82,7 @@ public class PullToRefreshActivity extends DetailActivity {
 					display.getTextHeader().setHTML("<div style=''>Release to reload</div>");
 					break;
 				case NO_RELOAD:
-					display.getTextHeader().setText("<div style=''>No Reload</div>");
+					display.getTextHeader().setHTML("<div style=''>Pullme down..</div>");
 				default:
 					break;
 				}
