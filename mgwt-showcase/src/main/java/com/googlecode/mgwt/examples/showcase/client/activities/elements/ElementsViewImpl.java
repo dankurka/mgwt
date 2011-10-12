@@ -19,6 +19,7 @@ import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.widget.MCheckBox;
 import com.googlecode.mgwt.ui.client.widget.MEmailTextBox;
+import com.googlecode.mgwt.ui.client.widget.MListBox;
 import com.googlecode.mgwt.ui.client.widget.MNumberTextBox;
 import com.googlecode.mgwt.ui.client.widget.MPasswordTextBox;
 import com.googlecode.mgwt.ui.client.widget.MPhoneNumberTextBox;
@@ -27,7 +28,6 @@ import com.googlecode.mgwt.ui.client.widget.MTextArea;
 import com.googlecode.mgwt.ui.client.widget.MTextBox;
 import com.googlecode.mgwt.ui.client.widget.MUrlTextBox;
 import com.googlecode.mgwt.ui.client.widget.WidgetList;
-import com.googlecode.mgwt.ui.client.widget.base.MListBox;
 
 /**
  * @author Daniel Kurka
