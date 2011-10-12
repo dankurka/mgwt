@@ -35,7 +35,6 @@ import com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
-
 /**
  * @author Daniel Kurka
  * 
@@ -186,7 +185,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		if (value == null) {
 			throw new IllegalArgumentException("value can not be null");
 		}
-		boolean oldValue = value;
+		boolean oldValue = this.value;
 		this.value = value;
 
 		clearStyles();
