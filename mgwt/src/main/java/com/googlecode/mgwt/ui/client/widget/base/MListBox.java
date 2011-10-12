@@ -16,16 +16,26 @@
 package com.googlecode.mgwt.ui.client.widget.base;
 
 import com.google.gwt.user.client.ui.ListBox;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public class MListBox extends ListBox {
 
-	public MListBox() {
+	private final InputCss css;
 
-		setStylePrimaryName("mgwt-ListBox");
+	public MListBox() {
+		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+	}
+
+	public MListBox(InputCss css) {
+
+		this.css = css;
+		this.css.ensureInjected();
+		setStylePrimaryName(css.listBox());
 
 	}
 

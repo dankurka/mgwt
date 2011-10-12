@@ -22,4 +22,7 @@ public interface InputCss extends CssResource {
 
 	String disabled();
 
+	@ClassName("mgwt-ListBox")
+	String listBox();
+
 }
