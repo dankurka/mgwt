@@ -12,11 +12,8 @@ import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
-import com.googlecode.mgwt.ui.client.widget.event.ReloadEvent;
-import com.googlecode.mgwt.ui.client.widget.event.ReloadHandler;
-import com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedEvent;
-import com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedEvent.State;
-import com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedHandler;
+import com.googlecode.mgwt.ui.client.widget.event.PullReleasedEvent;
+import com.googlecode.mgwt.ui.client.widget.event.PullReleasedHandler;
 
 public class PullToRefreshActivity extends DetailActivity {
 
@@ -49,10 +46,10 @@ public class PullToRefreshActivity extends DetailActivity {
 		display.getBackbuttonText().setText("UI");
 		display.getHeader().setText("PullToRefresh");
 
-		addHandlerRegistration(display.getReload().addReloadHandler(new ReloadHandler() {
+		addHandlerRegistration(display.getReload().addPullReleasedHandler(new PullReleasedHandler() {
 
 			@Override
-			public void onReload(ReloadEvent event) {
+			public void onPullReleased(PullReleasedEvent event) {
 
 				new Timer() {
 
@@ -68,24 +65,6 @@ public class PullToRefreshActivity extends DetailActivity {
 
 					}
 				}.schedule(1000);
-
-			}
-		}));
-
-		addHandlerRegistration(display.getReloadState().addReloadStateChangeHandler(new ReloadStateChangedHandler() {
-
-			@Override
-			public void onReloadStateChanged(ReloadStateChangedEvent event) {
-				State state = event.getState();
-				switch (state) {
-				case RELOAD:
-					display.getTextHeader().setHTML("<div style=''>Release to reload</div>");
-					break;
-				case NO_RELOAD:
-					display.getTextHeader().setHTML("<div style=''>Pullme down..</div>");
-				default:
-					break;
-				}
 
 			}
 		}));

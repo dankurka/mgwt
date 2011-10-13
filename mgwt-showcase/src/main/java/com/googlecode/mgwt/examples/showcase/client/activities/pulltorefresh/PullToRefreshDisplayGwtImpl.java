@@ -2,14 +2,12 @@ package com.googlecode.mgwt.examples.showcase.client.activities.pulltorefresh;
 
 import java.util.List;
 
-import com.google.gwt.user.client.ui.HasHTML;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.CellList;
 import com.googlecode.mgwt.ui.client.widget.PullToRefresh;
-import com.googlecode.mgwt.ui.client.widget.event.HasReloadHandlers;
-import com.googlecode.mgwt.ui.client.widget.event.HasReloadStateChangeHandlers;
+import com.googlecode.mgwt.ui.client.widget.event.HasPullHandlers;
 
 public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements PullToRefreshDisplay {
 
@@ -36,17 +34,7 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 	}
 
 	@Override
-	public HasReloadHandlers getReload() {
-		return pullToRefresh;
-	}
-
-	@Override
-	public HasHTML getTextHeader() {
-		return pullToRefresh.getHeader();
-	}
-
-	@Override
-	public HasReloadStateChangeHandlers getReloadState() {
+	public HasPullHandlers getReload() {
 		return pullToRefresh;
 	}
 
