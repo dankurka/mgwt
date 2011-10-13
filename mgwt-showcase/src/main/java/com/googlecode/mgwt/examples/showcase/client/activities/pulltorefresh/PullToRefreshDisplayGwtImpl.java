@@ -39,11 +39,6 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 	}
 
 	@Override
-	public void setLoading(boolean b) {
-
-	}
-
-	@Override
 	public void reload() {
 		pullToRefresh.refresh();
 

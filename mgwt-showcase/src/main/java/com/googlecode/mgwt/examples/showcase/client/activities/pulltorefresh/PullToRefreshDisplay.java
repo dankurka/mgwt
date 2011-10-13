@@ -9,8 +9,6 @@ import com.googlecode.mgwt.ui.client.widget.event.HasPullHandlers;
 public interface PullToRefreshDisplay extends DetailView {
 	public HasPullHandlers getReload();
 
-	public void setLoading(boolean b);
-
 	public void reload();
 
 	public void render(List<Topic> topics);
