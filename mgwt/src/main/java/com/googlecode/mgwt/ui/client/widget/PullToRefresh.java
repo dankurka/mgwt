@@ -2,6 +2,8 @@ package com.googlecode.mgwt.ui.client.widget;
 
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.widget.base.PullArrowHeader;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel;
 import com.googlecode.mgwt.ui.client.widget.event.PullReleasedEvent;
 import com.googlecode.mgwt.ui.client.widget.event.PullReleasedHandler;
@@ -20,6 +22,7 @@ public class PullToRefresh extends PullPanel {
 	private SafeHtml reloadHTML;
 
 	public PullToRefresh() {
+		super(new PullArrowHeader(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss()));
 		InternalPullListener listener = new InternalPullListener();
 
 		addPullReleasedHandler(listener);
@@ -58,10 +61,10 @@ public class PullToRefresh extends PullPanel {
 	private void updateText() {
 		switch (getState()) {
 		case NO_ACTION:
-			getHeader().setHTML(noReloadHTML.asString());
+			header.setHTML(noReloadHTML.asString());
 			break;
 		case PULL_RELEASE:
-			getHeader().setHTML(reloadHTML.asString());
+			header.setHTML(reloadHTML.asString());
 			break;
 		}
 	}

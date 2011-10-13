@@ -40,7 +40,6 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 
 	@Override
 	public void setLoading(boolean b) {
-		pullToRefresh.showArrow(b);
 
 	}
 

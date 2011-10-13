@@ -3,12 +3,10 @@ package com.googlecode.mgwt.ui.client.widget.base;
 import java.util.Iterator;
 
 import com.google.gwt.dom.client.Style.Position;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
@@ -29,16 +27,21 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 public class PullPanel extends Composite implements HasWidgets, HasPullHandlers {
 	private ScrollPanel scroll;
 	private FlowPanel container;
-	private RefreshWidget refreshWidget;
+	private ScrollListener scrollListener;
 	private final PullToRefreshCss css;
 
-	public PullPanel() {
-		this(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss());
+	private State state;
+	protected final PullHeader header;
+
+	public PullPanel(PullHeader pullHeader) {
+		this(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss(), pullHeader);
 	}
 
-	public PullPanel(PullToRefreshCss css) {
+	public PullPanel(PullToRefreshCss css, PullHeader header) {
 		this.css = css;
+		this.header = header;
 		this.css.ensureInjected();
+		state = State.NO_ACTION;
 		scroll = new ScrollPanel();
 
 		initWidget(scroll);
@@ -47,17 +50,16 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 		FlowPanel main = new FlowPanel();
 		scroll.setWidget(main);
-		scroll.setOffset(0, -40);
+		scroll.setOffset(0, -header.getHeight());
 		scroll.setScrollingEnabledX(false);
-
 		main.getElement().getStyle().setPosition(Position.RELATIVE);
 
-		refreshWidget = new RefreshWidget(css);
-		main.add(refreshWidget);
+		scrollListener = new ScrollListener();
+		scroll.addScrollhandler(scrollListener);
+		scroll.addScrollEndHandler(scrollListener);
+		scroll.addScrollStartHandler(scrollListener);
 
-		scroll.addScrollhandler(refreshWidget);
-		scroll.addScrollEndHandler(refreshWidget);
-		scroll.addScrollStartHandler(refreshWidget);
+		main.add(header);
 
 		container = new FlowPanel();
 		main.add(container);
@@ -76,17 +78,6 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	}
 
-	public void showArrow(boolean arrow) {
-		if (arrow) {
-			refreshWidget.arrow.addClassName(css.spinner());
-			refreshWidget.arrow.removeClassName(css.arrow());
-
-		} else {
-			refreshWidget.arrow.removeClassName(css.spinner());
-			refreshWidget.arrow.addClassName(css.arrow());
-		}
-	}
-
 	@Override
 	public Iterator<Widget> iterator() {
 		return container.iterator();
@@ -99,107 +90,61 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	public void refresh() {
 		scroll.refresh();
-
-		scroll.setOffset(0, -40);
-
+		scroll.setOffset(0, -header.getHeight());
 	}
 
 	public State getState() {
-		return refreshWidget.state;
+		return state;
 	}
 
-	private class RefreshWidget extends Widget implements ScrollHandler, ScrollEndHandler, ScrollStartHandler {
+	private class ScrollListener implements ScrollHandler, ScrollEndHandler, ScrollStartHandler {
 
-		private Element main;
-
-		private Element arrow;
-
-		private Element textContainer;
-
-		private int lastY;
-
-		private State state;
-
-		public RefreshWidget(PullToRefreshCss css) {
-
-			state = State.NO_ACTION;
-
-			main = DOM.createDiv();
-			main.addClassName(css.pullToRefresh());
-			setElement(main);
-
-			arrow = DOM.createDiv();
-			arrow.addClassName(css.arrow());
-			main.appendChild(arrow);
-
-			textContainer = DOM.createDiv();
-			textContainer.addClassName(css.text());
-			main.appendChild(textContainer);
+		public ScrollListener() {
 
 		}
 
 		@Override
 		public void onScrollEnd(ScrollEndEvent event) {
-			if (state == State.PULL_RELEASE) {
-				showArrow(true);
-				event.preventDefault();
+			event.preventDefault();
+			header.onScrollEnd(getState(), event.getCurrentY(), event.getDuration());
+			if (getState() == State.PULL_RELEASE) {
 				scroll.setOffset(0, 0);
 				startLoading();
 
 			} else {
-				event.preventDefault();
-				scroll.setOffset(0, -40);
-				int degree = getRotation(event.getY());
-				arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);-webkit-transition: all " + event.getDuration() + "ms linear;");
+				scroll.setOffset(0, -header.getHeight());
 
 			}
-
-		}
-
-		protected int getRotation(int y) {
-			int degree = (y - 30) * -10;
-			if (degree < -90)
-				degree = -90;
-			if (degree > 90) {
-				degree = 90;
-			}
-			return degree;
 
 		}
 
 		@Override
 		public void onScroll(ScrollEvent event) {
-
-			lastY = event.getY();
-
-			int degree = getRotation(lastY);
-			arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
-
-			if (event.getY() > 40) {
-
-				if (state != State.PULL_RELEASE) {
-					state = State.PULL_RELEASE;
-					fireStateChangedEvent(state);
-				}
+			if (event.getY() > header.getStateSwitchPosition()) {
+				setState(State.PULL_RELEASE);
 			} else {
-				if (state != State.NO_ACTION) {
-					state = State.NO_ACTION;
-					fireStateChangedEvent(state);
-				}
+				setState(State.NO_ACTION);
 
 			}
+			header.onScroll(getState(), event.getY());
 
 		}
 
 		@Override
 		public void onStartScroll(ScrollStartEvent event) {
-			arrow.removeClassName(css.spinner());
-			arrow.addClassName(css.arrow());
-			if (state != State.NO_ACTION) {
-				state = State.NO_ACTION;
-				fireStateChangedEvent(state);
-			}
+			setState(State.NO_ACTION);
+			header.scrollStart(getState());
 		}
+	}
+
+	protected void setState(State state) {
+		State lastState = this.state;
+		this.state = state;
+
+		if (lastState != this.state) {
+			fireStateChangedEvent(this.state);
+		}
+
 	}
 
 	private void fireStateChangedEvent(State state) {
@@ -211,40 +156,18 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	}
 
-	public HasHTML getHeader() {
-		return new HasHtmlWrapper(refreshWidget.textContainer);
-	}
+	public interface PullHeader extends IsWidget {
+		public void scrollStart(State state);
 
-	private class HasHtmlWrapper implements HasHTML {
+		public void onScroll(State state, int positionY);
 
-		private final Element element;
+		void onScrollEnd(State state, int positionY, int duration);
 
-		public HasHtmlWrapper(Element element) {
-			this.element = element;
-		}
+		public int getHeight();
 
-		@Override
-		public String getText() {
-			return element.getInnerText();
-		}
+		public int getStateSwitchPosition();
 
-		@Override
-		public void setText(String text) {
-			element.setInnerText(text);
-
-		}
-
-		@Override
-		public String getHTML() {
-			return element.getInnerHTML();
-		}
-
-		@Override
-		public void setHTML(String html) {
-			element.setInnerHTML(html);
-
-		}
-
+		public void setHTML(String html);
 	}
 
 	@Override
