@@ -3,14 +3,14 @@
 	
 	.display {
 	position: relative;
-	width: 100%;
+	min-width: 100%;
 	
  }
  
  .displayContainer {
  	position: relative;
-	width: 100%;
-	overflow-y:hidden;
+	min-width: 100%;
+	
  }
 	
 } @else {

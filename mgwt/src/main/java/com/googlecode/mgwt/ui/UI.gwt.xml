@@ -39,6 +39,23 @@ under * the License.
 			<when-property-is name="mobile.user.agent" value="mobilesafari" />
 		</all>
 	</replace-with>
+	
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelBlackberryImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl" />
+		<all>
+			<when-property-is name="mgwt.os" value="blackberry" />
+		</all>
+	</replace-with>
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelTouchImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl" />
+		 <none> 
+   			<when-property-is name="mgwt.os" value="blackberry" />
+  		</none>
+		
+	</replace-with>
+	
+	
+	
 
 	<source path="client" />
 </module>

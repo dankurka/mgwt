@@ -156,7 +156,10 @@ public class ShowCaseEntryPoint implements EntryPoint {
 	}
 
 	private native void alertSomeStuff()/*-{
-		
+
+//		$doc.addEventListener("scroll", (function() {
+//			alert('scroll');
+//		}), true);
 	}-*/;
 
 }

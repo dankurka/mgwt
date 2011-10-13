@@ -25,9 +25,6 @@ import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HasOneWidget;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
@@ -44,7 +41,6 @@ import com.googlecode.mgwt.ui.client.panel.Scrollbar.Orientation;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.FeatureDetection;
-import com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollEvent;
@@ -57,7 +53,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
  * @author Daniel Kurka
  * 
  */
-public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, HasScrollHandlers {
+public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 	private Widget widgetToScroll;
 
@@ -113,11 +109,11 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 
 	private int offsetX;
 
-	public ScrollPanel() {
+	public ScrollPanelTouchImpl() {
 		this(MGWTStyle.getDefaultClientBundle().getScrollPanelCss());
 	}
 
-	public ScrollPanel(ScrollPanelCss css) {
+	public ScrollPanelTouchImpl(ScrollPanelCss css) {
 		this.css = css;
 		css.ensureInjected();
 		main = new TouchPanel();
@@ -176,9 +172,7 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 
 	@Override
 	public void setWidget(IsWidget child) {
-
 		setWidget(child.asWidget());
-
 	}
 
 	@Override
@@ -229,7 +223,7 @@ public class ScrollPanel extends Composite implements HasOneWidget, HasWidgets, 
 
 		@Override
 		public void onTransitionEnd(TransitionEndEvent event) {
-			ScrollPanel.this.onTransistionEnd();
+			ScrollPanelTouchImpl.this.onTransistionEnd();
 		}
 	}
 
