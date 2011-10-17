@@ -1,0 +1,108 @@
+@url checkImage inputCheckImage;
+
+@if mgwt.css pretty {
+	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, box, cover, mgwt-RadioButton, disabled;
+	
+}
+
+.mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box{
+    color: #777;
+    border: 0;
+    font: normal 17px Helvetica;
+    padding: 0;
+    display: inline-block;
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    
+    \-webkit-appearance: none;
+    \-webkit-user-select: text;
+}
+
+
+@if mgwt.os android {
+	.mgwt-TextBox .box:focus, .mgwt-PasswordTextBox .box:focus, .mgwt-TextArea .box:focus {
+    	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
+	}
+	
+	.mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box{
+		background-color: transparent;
+		color: white;
+	
+	}
+}
+
+
+.mgwt-TextBox .cover, .mgwt-PasswordTextBox .cover, .mgwt-TextArea .cover{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.mgwt-TextBox , .mgwt-PasswordTextBox, .mgwt-TextArea {
+    position: relative;
+   
+}
+
+.mgwt-RadioButton {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+}
+
+.mgwt-RadioButton > label {
+	display: -webkit-box;
+	\-webkit-box-flex: 1;
+}
+
+.mgwt-RadioButton>input {
+	\-webkit-appearance: none;
+	width: 18px;
+	height: 18px;
+	border: none;
+	background-color: transparent;
+	background-image: checkImage;
+	opacity: 0.2;
+}
+
+.mgwt-RadioButton>input:CHECKED {
+	\-webkit-appearance: none;
+	background-image: checkImage;
+	opacity: 1.0;
+	background-color: transparent;
+	
+	
+}
+
+/*todo*/
+.disabled{
+}
+
+.mgwt-ListBox{
+	 color: #777;
+    border: 0;
+    font: normal 17px Helvetica;
+    padding: 0;
+    display: inline-block;
+    margin-left: 0px;
+    width: 100%;
+    height: 100%;
+    
+    \-webkit-appearance: none;
+    \-webkit-user-select: text;
+}
+
+@if mgwt.os android {
+	.mgwt-ListBox, .mgwt-ListBox:focus  {
+    	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
+	}
+	
+	.mgwt-ListBox{
+		background-color: transparent;
+		color: white;
+	
+	}
+}
+
+

@@ -1,0 +1,22 @@
+/**
+	bad workaround, do not copy :)
+*/
+
+@external landscapeonly, portraitonly;
+@external landscape, portrait;
+
+.landscapeonly {
+	
+}
+
+.portraitonly {
+	
+}
+
+.landscape {
+	
+}
+
+.portrait {
+	
+}

@@ -1,0 +1,273 @@
+@url actionImage buttonBarActionImage;
+@url arrowDownImage buttonBarArrowDownImage;
+@url arrowUpImage buttonBarArrowUpImage;
+@url arrowLeftImage buttonBarArrowLeftImage;
+@url arrowRightImage buttonBarArrowRightImage;
+@url bookmarksImage buttonBarBookmarksImage;
+@url cameraImage buttonBarCameraImage;
+@url composeImage buttonBarComposeImage;
+@url contactAddImage buttonBarContactAddImage;
+@url deleteImage buttonBarDeleteImage;
+@url fastForwardImage buttonBarFastForwardImage;
+@url infoImage buttonBarInfoImage;
+@url locateImage buttonBarLocateImage;
+@url newImage buttonBarNewImage;
+@url nextSlideImage buttonBarNextSlideImage;
+@url organizeImage buttonBarOrganizeImage;
+@url pauseImage buttonBarPauseImage;
+@url playImage buttonBarPlayImage;
+@url plusImage buttonBarPlusImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+@url previousSlideImage buttonBarPreviousSlideImage;
+@url refreshImage buttonBarRefreshImage;
+@url replyImage buttonBarReplyImage;
+@url rewindImage buttonBarRewindImage;
+@url searchImage buttonBarSearchImage;
+@url stopImage buttonBarStopImage;
+@url trashImage buttonBarTrashImage;
+
+@if mgwt.css pretty {
+	@external mgwt-ButtonBar, mgwt-BarButton, active;
+	@external  action ,arrowDown ,arrowUp ,arrowLeft ,arrowRight ,bookmark ,camera ,compose ,contactAdd ,delete ,fastForward ,info ,locate ,new ,nextSlide ,organize , pause, play ,plus ,pressed ,previousSlide ,refresh ,reply ,rewind ,search ,stop ,trash;
+	
+}
+
+
+
+.mgwt-ButtonBar {
+	position: relative;
+	height: 40px;
+	width: 100%;
+	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
+	border-top: 1px solid rgb(45, 54, 66);
+}
+
+@if mgwt.os android {
+	.mgwt-ButtonBar {
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(100, 100, 100, 1)), to(rgba(50, 50, 50, 1)))');
+	}
+
+}
+
+
+
+.mgwt-BarButton {
+	position: relative;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 40px;
+	height: 40px;
+}
+
+.mgwt-BarButton.action{
+	background-image: actionImage;
+}
+
+.mgwt-BarButton.action.active{
+	background-image: pressedImage, actionImage;
+}
+
+.mgwt-BarButton.arrowDown{
+	background-image: arrowDownImage;
+}
+
+.mgwt-BarButton.arrowDown.active{
+	background-image: pressedImage, arrowDownImage;
+}
+
+.mgwt-BarButton.arrowLeft{
+	background-image: arrowLeftImage;
+}
+
+.mgwt-BarButton.arrowLeft.active{
+	background-image: pressedImage, arrowLeftImage;
+}
+
+.mgwt-BarButton.arrowRight{
+	background-image: arrowRightImage;
+}
+
+.mgwt-BarButton.arrowRight.active{
+	background-image: pressedImage, arrowRightImage;
+}
+
+.mgwt-BarButton.arrowUp{
+	background-image: arrowUpImage;
+}
+
+.mgwt-BarButton.arrowUp.active{
+	background-image: pressedImage, arrowUpImage;
+}
+
+.mgwt-BarButton.bookmark {
+	background-image: bookmarksImage;
+}
+
+.mgwt-BarButton.bookmark.active {
+	background-image: pressedImage, bookmarksImage;
+}
+
+.mgwt-BarButton.camera {
+	background-image: cameraImage;
+}
+
+.mgwt-BarButton.camera.active {
+	background-image: pressedImage, cameraImage;
+}
+
+.mgwt-BarButton.compose {
+	background-image: composeImage;
+}
+
+.mgwt-BarButton.compose.active {
+	background-image: pressedImage, composeImage;
+}
+
+.mgwt-BarButton.contactAdd {
+	background-image: contactAddImage;
+}
+
+.mgwt-BarButton.contactAdd.active {
+	background-image: pressedImage, contactAddImage;
+}
+
+.mgwt-BarButton.delete {
+	background-image: deleteImage;
+}
+
+.mgwt-BarButton.delete.active {
+	background-image: pressedImage, deleteImage;
+}
+
+.mgwt-BarButton.fastForward {
+	background-image: fastForwardImage;
+}
+
+.mgwt-BarButton.fastForward.active {
+	background-image: pressedImage, fastForwardImage;
+}
+
+.mgwt-BarButton.info {
+	background-image: infoImage;
+}
+
+.mgwt-BarButton.info.active {
+	background-image: pressedImage, infoImage;
+}
+
+.mgwt-BarButton.locate {
+	background-image: locateImage;
+}
+
+.mgwt-BarButton.locate.active {
+	background-image: pressedImage, locateImage;
+}
+
+.mgwt-BarButton.new {
+	background-image: newImage;
+}
+
+.mgwt-BarButton.new.active {
+	background-image: pressedImage, newImage;
+}
+
+.mgwt-BarButton.nextSlide {
+	background-image: nextSlideImage;
+}
+
+.mgwt-BarButton.nextSlide.active {
+	background-image: pressedImage, nextSlideImage  ;
+}
+
+.mgwt-BarButton.organize {
+	background-image: organizeImage;
+}
+
+.organize.active {
+	background-image: pressedImage, organizeImage;
+}
+
+.pause {
+	background-image: pauseImage;
+}
+
+.pause.active {
+	background-image: pressedImage, pauseImage;
+}
+
+.play {
+	background-image: playImage;
+}
+
+.play.active {
+	background-image: pressedImage, playImage  ;
+}
+
+.plus {
+	background-image: plusImage;
+}
+
+.plus.active {
+	background-image: pressedImage, plusImage;
+}
+
+.previousSlide {
+	background-image: previousSlideImage;
+}
+
+.previousSlide.active {
+	background-image: pressedImage, previousSlideImage ;
+}
+
+.mgwt-BarButton.refresh {
+	background-image: refreshImage;
+}
+
+.mgwt-BarButton.refresh.active {
+	background-image: pressedImage, refreshImage;
+}
+
+.mgwt-BarButton.reply {
+	background-image: replyImage;
+}
+
+.mgwt-BarButton.reply.active {
+	background-image: pressedImage, replyImage;
+}
+
+.mgwt-BarButton.rewind {
+	background-image: rewindImage;
+}
+
+.mgwt-BarButton.rewind.active {
+	background-image:  pressedImage, rewindImage;
+}
+
+.mgwt-BarButton.search {
+	background-image: searchImage;
+}
+
+.mgwt-BarButton.search.active {
+	background-image: pressedImage, searchImage ;
+}
+
+.mgwt-BarButton.stop {
+	background-image: stopImage;
+}
+
+.mgwt-BarButton.stop.active {
+	background-image:  pressedImage, stopImage;
+}
+
+.mgwt-BarButton.trash {
+	background-image: trashImage;
+}
+
+.mgwt-BarButton.trash.active {
+	background-image: pressedImage, trashImage  ;
+}
+
+
+
+

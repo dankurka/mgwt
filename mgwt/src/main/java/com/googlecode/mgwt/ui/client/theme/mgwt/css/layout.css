@@ -1,0 +1,30 @@
+
+@if mgwt.os blackberry {
+	.fillPanel {
+		
+	}
+	
+	.horizontal {
+		
+	}
+	
+	.fillPanel > .fillPanelExpandChild {
+		
+	} 
+} @else {
+	
+	.fillPanel {
+		display: -webkit-box;
+		\-webkit-box-orient: vertical;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.horizontal {
+		\-webkit-box-orient: horizontal;
+	}
+	
+	.fillPanel > .fillPanelExpandChild {
+		\-webkit-box-flex: 1;
+	} 
+}

@@ -1,0 +1,22 @@
+
+@if mgwt.css pretty {
+	@external mgwt-RoundPanel;
+	
+}
+
+.mgwt-RoundPanel {
+	\-webkit-border-radius: 15px;
+	background-color: white;
+	border: 1px solid rgb(171, 173, 176);
+	margin: 10px;
+	padding: 10px;
+	font-weight: bold;
+}
+
+@if mgwt.os android {
+	.mgwt-RoundPanel {
+		background-color: #555555;
+		color: white;
+	}
+	
+}

@@ -16,7 +16,7 @@ public class MGWTStyle {
 	}
 
 	public static final void setDefaultBundle(MGWTClientBundle bundle) {
-		if (defaultClientBundle == null) {
+		if (defaultClientBundle != null) {
 			throw new IllegalStateException("can not change default bundle if theres already an instance...");
 		}
 		defaultClientBundle = bundle;
