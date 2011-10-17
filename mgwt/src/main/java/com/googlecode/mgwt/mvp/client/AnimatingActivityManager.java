@@ -209,7 +209,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	private boolean fireAnimationEvents;
 
-	public void fireAnimationEvents(boolean fireAnimationEvents) {
+	public void setFireAnimationEvents(boolean fireAnimationEvents) {
 		this.fireAnimationEvents = fireAnimationEvents;
 	}
 
