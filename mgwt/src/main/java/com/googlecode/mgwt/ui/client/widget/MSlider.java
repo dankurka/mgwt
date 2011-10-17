@@ -90,7 +90,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	}
 
-	private int sliderPos;
+	private int value;
 
 	public MSlider() {
 		this(MGWTStyle.getDefaultClientBundle().getSliderCss());
@@ -105,6 +105,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		sliderWidget.addTouchHandler(new SliderTouchHandler());
 
 		max = 100;
+		value = 0;
 	}
 
 	@Override
@@ -147,7 +148,8 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	@Override
 	public Integer getValue() {
-		return sliderPos * max / (sliderWidget.getOffsetWidth());
+		return value;
+		//return sliderPos * max / (sliderWidget.getOffsetWidth());
 	}
 
 	@Override
@@ -157,16 +159,24 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	}
 
 	@Override
+	protected void onAttach() {
+		super.onAttach();
+		setSliderPos(value);
+	}
+
+	@Override
 	public void setValue(Integer value, boolean fireEvents) {
 		if (value == null) {
 			throw new IllegalArgumentException("value can not be null");
 		}
-		int width = sliderWidget.getOffsetWidth();
 
-		int oldValue = sliderPos * max / width;
+		if (value > max) {
+			throw new IllegalArgumentException("value > max");
+		}
 
-		sliderPos = value * width / max;
-		sliderWidget.setPos(sliderPos);
+		int oldValue = this.value;
+
+		setSliderPos(value);
 
 		if (fireEvents) {
 			ValueChangeEvent.fireIfNotEqual(this, oldValue, value);
@@ -174,4 +184,15 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	}
 
+	private void setSliderPos(int value) {
+
+		if (!isAttached()) {
+			return;
+		}
+
+		int width = sliderWidget.getOffsetWidth();
+		int sliderPos = value * width / max;
+		sliderWidget.setPos(sliderPos);
+
+	}
 }
