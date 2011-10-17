@@ -18,11 +18,11 @@ package com.googlecode.mgwt.ui.client.widget;
 import java.util.Iterator;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;

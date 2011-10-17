@@ -3,8 +3,8 @@ package com.googlecode.mgwt.ui.client.widget.touch;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseUpEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.mouse.TouchEndToMouseUpHandler;
 import com.googlecode.mgwt.dom.client.event.mouse.TouchMoveToMouseMoveHandler;
@@ -13,7 +13,6 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
-
 
 public class TouchWidgetDesktopImpl implements TouchWidgetImpl {
 

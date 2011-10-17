@@ -20,15 +20,16 @@ import java.util.LinkedList;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
+import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
 
 /**
  * 
@@ -144,8 +145,8 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	@Override
-	public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
-		return tabBar.addSelectionHandler(handler);
+	public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
+		return new HandlerRegistrationConverter(tabBar.addSelectionHandler(handler));
 	}
 
 	public static class TabBar extends Composite implements HasSelectionHandlers<Integer> {
@@ -243,7 +244,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		}
 
 		@Override
-		public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
+		public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
 			return addHandler(handler, SelectionEvent.getType());
 		}
 

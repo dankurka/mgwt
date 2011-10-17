@@ -16,8 +16,8 @@
 package com.googlecode.mgwt.ui.client.widget.touch;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
@@ -28,10 +28,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchToNativeTouchHandler;
 
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public abstract class TouchWidget extends Widget implements HasTouchHandlers {
 

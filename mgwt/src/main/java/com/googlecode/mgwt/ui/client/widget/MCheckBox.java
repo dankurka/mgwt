@@ -20,7 +20,6 @@ import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasValue;
@@ -165,7 +164,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	}
 
 	@Override
-	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Boolean> handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(ValueChangeHandler<Boolean> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
 	}
 

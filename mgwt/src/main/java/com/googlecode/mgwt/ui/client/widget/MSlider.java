@@ -18,7 +18,6 @@ package com.googlecode.mgwt.ui.client.widget;
 import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Composite;
@@ -109,7 +108,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	}
 
 	@Override
-	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Integer> handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(ValueChangeHandler<Integer> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
 	}
 

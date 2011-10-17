@@ -15,7 +15,7 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 
 public interface HasTouchHandlers {
 	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler);

@@ -15,7 +15,7 @@
  */
 package com.googlecode.mgwt.dom.client.event.animation;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 
 public interface HasTransitionEndEvent {
 	public HandlerRegistration addTransitionEndHandler(TransitionEndHandler handler);

@@ -23,7 +23,6 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -31,6 +30,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
@@ -44,11 +44,9 @@ import com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
-
 /**
- * @author Daniel Kurka
- *  Date: 30.05.2010
- *
+ * @author Daniel Kurka Date: 30.05.2010
+ * 
  */
 public class MSearchBox extends Composite implements HasChangeHandlers, HasText, HasName, HasValue<String>, HasPlaceHolder, HasAllKeyHandlers {
 	private TextBox box;
@@ -218,7 +216,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		box.setText(text);
 	}
 
-	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<String> stringValueChangeHandler) {
+	public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(ValueChangeHandler<String> stringValueChangeHandler) {
 		return box.addValueChangeHandler(stringValueChangeHandler);
 	}
 
@@ -230,7 +228,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		return box.getName();
 	}
 
-	public HandlerRegistration addChangeHandler(ChangeHandler handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addChangeHandler(ChangeHandler handler) {
 		return box.addChangeHandler(handler);
 	}
 
@@ -247,17 +245,17 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	}
 
 	@Override
-	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
 		return box.addKeyUpHandler(handler);
 	}
 
 	@Override
-	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
 		return box.addKeyDownHandler(handler);
 	}
 
 	@Override
-	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return box.addKeyPressHandler(handler);
 	}
 

@@ -15,7 +15,6 @@ import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.AutoDirectionHandler;
 import com.google.gwt.i18n.shared.DirectionEstimator;
 import com.google.gwt.i18n.shared.HasDirectionEstimator;
@@ -26,6 +25,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
@@ -35,7 +35,6 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
-
 
 public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>,
 		AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers {
@@ -119,11 +118,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 		return box.getElement().getAttribute("placeholder");
 	}
 
-	public HandlerRegistration addChangeHandler(ChangeHandler handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addChangeHandler(ChangeHandler handler) {
 		return box.addChangeHandler(handler);
 	}
 
-	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<T> handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(ValueChangeHandler<T> handler) {
 		return box.addValueChangeHandler(handler);
 	}
 
@@ -229,7 +228,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	}
 
 	@Override
-	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
 		return box.addKeyUpHandler(handler);
 	}
 
@@ -291,12 +290,12 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	}
 
 	@Override
-	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
 		return box.addKeyDownHandler(handler);
 	}
 
 	@Override
-	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
+	public com.google.gwt.event.shared.HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return box.addKeyPressHandler(handler);
 	}
 

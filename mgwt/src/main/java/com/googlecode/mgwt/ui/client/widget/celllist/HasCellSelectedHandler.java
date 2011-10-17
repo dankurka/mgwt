@@ -15,11 +15,11 @@
  */
 package com.googlecode.mgwt.ui.client.widget.celllist;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public interface HasCellSelectedHandler {
 	public HandlerRegistration addCellSelectedHandler(CellSelectedHandler cellSelectedHandler);

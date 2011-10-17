@@ -15,11 +15,11 @@
  */
 package com.googlecode.mgwt.dom.client.event.animation;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public interface HasAnimationEndEvent {
 	public HandlerRegistration addAnimationEndHandler(AnimationEndHandler handler);

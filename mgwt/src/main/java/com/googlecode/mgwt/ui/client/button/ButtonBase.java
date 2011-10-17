@@ -16,9 +16,9 @@
 package com.googlecode.mgwt.ui.client.button;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
@@ -29,10 +29,9 @@ import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
-
 /**
  * @author Daniel Kurka
- *
+ * 
  */
 public abstract class ButtonBase extends TouchWidget implements HasText, HasSimpleTouchHandler {
 
