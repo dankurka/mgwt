@@ -11,7 +11,7 @@ public class PullArrowHeader extends Widget implements PullHeader {
 
 	private Element main;
 
-	private Element arrow;
+	private Element icon;
 
 	private Element textContainer;
 
@@ -25,9 +25,9 @@ public class PullArrowHeader extends Widget implements PullHeader {
 		main.addClassName(css.pullToRefresh());
 		setElement(main);
 
-		arrow = DOM.createDiv();
-		arrow.addClassName(css.arrow());
-		main.appendChild(arrow);
+		icon = DOM.createDiv();
+		icon.addClassName(css.arrow());
+		main.appendChild(icon);
 
 		textContainer = DOM.createDiv();
 		textContainer.addClassName(css.text());
@@ -41,39 +41,51 @@ public class PullArrowHeader extends Widget implements PullHeader {
 
 	@Override
 	public void scrollStart(State state) {
-		arrow.removeClassName(css.spinner());
-		arrow.addClassName(css.arrow());
+		icon.removeClassName(css.spinner());
+		icon.addClassName(css.arrow());
 
 	}
 
 	@Override
 	public void onScroll(State state, int positionY) {
 		int degree = getRotation(positionY);
-		arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
+		icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
 
 	}
 
 	@Override
 	public void onScrollEnd(State state, int positionY, int duration) {
 		if (state == State.PULL_RELEASE) {
-			showSpinner(true);
+			showSpinner();
 		} else {
 			int degree = getRotation(positionY);
-			arrow.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);-webkit-transition: all " + duration + "ms linear;");
+			icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);-webkit-transition: all " + duration + "ms linear;");
 
 		}
 
 	}
 
-	public void showSpinner(boolean show) {
-		if (show) {
-			arrow.addClassName(css.spinner());
-			arrow.removeClassName(css.arrow());
+	protected void remoteStyles() {
+		icon.removeClassName(css.arrow());
+		icon.removeClassName(css.spinner());
+		icon.removeClassName(css.error());
+	}
 
-		} else {
-			arrow.removeClassName(css.spinner());
-			arrow.addClassName(css.arrow());
-		}
+	public void showArrow() {
+		remoteStyles();
+		icon.addClassName(css.arrow());
+	}
+
+	public void showSpinner() {
+		remoteStyles();
+
+		icon.addClassName(css.spinner());
+
+	}
+
+	public void showError() {
+		remoteStyles();
+		icon.addClassName(css.error());
 	}
 
 	protected int getRotation(int y) {

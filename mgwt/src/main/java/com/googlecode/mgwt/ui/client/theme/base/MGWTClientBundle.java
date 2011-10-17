@@ -233,4 +233,7 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("resources/spinner.png")
 	DataResource spinnerImage();
 
+	@Source("resources/error.png")
+	DataResource errorImage();
+
 }

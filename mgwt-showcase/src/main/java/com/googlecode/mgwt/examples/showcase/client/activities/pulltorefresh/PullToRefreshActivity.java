@@ -34,6 +34,8 @@ public class PullToRefreshActivity extends DetailActivity {
 
 	}
 
+	private boolean failed = false;
+
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
 		super.start(panel, eventBus);
@@ -55,13 +57,17 @@ public class PullToRefreshActivity extends DetailActivity {
 
 					@Override
 					public void run() {
-
-						for (int i = 0; i < 5; i++) {
-							list.add(new Topic("Topic " + (counter + 1), counter));
-							counter++;
+						if (failed) {
+							display.onLoadingFailed();
+						} else {
+							for (int i = 0; i < 5; i++) {
+								list.add(new Topic("Topic " + (counter + 1), counter));
+								counter++;
+							}
+							display.render(list);
+							display.onLoadingSucceeded();
 						}
-						display.render(list);
-						display.reload();
+						failed = !failed;
 
 					}
 				}.schedule(1000);

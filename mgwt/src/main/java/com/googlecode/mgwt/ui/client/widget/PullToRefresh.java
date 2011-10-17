@@ -20,6 +20,9 @@ public class PullToRefresh extends PullPanel {
 
 	private SafeHtml noReloadHTML;
 	private SafeHtml reloadHTML;
+	private SafeHtml loadingHTML;
+
+	private SafeHtml loadingFailedHTML;
 
 	public PullToRefresh() {
 		super(new PullArrowHeader(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss()));
@@ -30,6 +33,9 @@ public class PullToRefresh extends PullPanel {
 
 		setNoReloadHTML(SafeHtmlUtils.fromTrustedString("<div>pull down</div>"));
 		setReloadHTML(SafeHtmlUtils.fromTrustedString("<div>release to reload</div>"));
+
+		setLoadingFailedHTML(SafeHtmlUtils.fromTrustedString("<div>failed to load</div>"));
+		setLoadingHTML(SafeHtmlUtils.fromTrustedString("<div>loading</div>"));
 
 		updateText();
 	}
@@ -58,7 +64,23 @@ public class PullToRefresh extends PullPanel {
 		return reloadHTML;
 	}
 
-	private void updateText() {
+	public SafeHtml getLoadingHTML() {
+		return loadingHTML;
+	}
+
+	public void setLoadingHTML(SafeHtml loadingHTML) {
+		this.loadingHTML = loadingHTML;
+	}
+
+	public SafeHtml getLoadingFailedHTML() {
+		return loadingFailedHTML;
+	}
+
+	public void setLoadingFailedHTML(SafeHtml loadingFailedHTML) {
+		this.loadingFailedHTML = loadingFailedHTML;
+	}
+
+	protected void updateText() {
 		switch (getState()) {
 		case NO_ACTION:
 			header.setHTML(noReloadHTML.asString());
@@ -69,10 +91,22 @@ public class PullToRefresh extends PullPanel {
 		}
 	}
 
+	public void onLoadingSucceeded() {
+		showHeader(false);
+		refresh();
+	}
+
+	public void onLoadingFailed() {
+		showHeader(true);
+		getHeader().showError();
+		header.setHTML(loadingFailedHTML.asString());
+	}
+
 	private class InternalPullListener implements PullStateChangedHandler, PullReleasedHandler {
 
 		@Override
 		public void onPullReleased(PullReleasedEvent event) {
+			header.setHTML(loadingHTML.asString());
 
 		}
 
@@ -81,6 +115,10 @@ public class PullToRefresh extends PullPanel {
 			updateText();
 
 		}
+	}
+
+	protected PullArrowHeader getHeader() {
+		return (PullArrowHeader) header;
 	}
 
 }

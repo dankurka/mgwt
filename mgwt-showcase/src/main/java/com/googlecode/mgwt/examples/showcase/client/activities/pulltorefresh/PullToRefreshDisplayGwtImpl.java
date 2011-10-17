@@ -39,14 +39,20 @@ public class PullToRefreshDisplayGwtImpl extends DetailViewGwtImpl implements Pu
 	}
 
 	@Override
-	public void reload() {
-		pullToRefresh.refresh();
+	public void render(List<Topic> topics) {
+		cellList.render(topics);
 
 	}
 
 	@Override
-	public void render(List<Topic> topics) {
-		cellList.render(topics);
+	public void onLoadingSucceeded() {
+		pullToRefresh.onLoadingSucceeded();
+
+	}
+
+	@Override
+	public void onLoadingFailed() {
+		pullToRefresh.onLoadingFailed();
 
 	}
 

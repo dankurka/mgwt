@@ -90,7 +90,16 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	public void refresh() {
 		scroll.refresh();
-		scroll.setOffset(0, -header.getHeight());
+
+	}
+
+	public void showHeader(boolean show) {
+		if (show) {
+			scroll.setOffset(0, 0);
+		} else {
+			scroll.setOffset(0, -header.getHeight());
+		}
+
 	}
 
 	public State getState() {

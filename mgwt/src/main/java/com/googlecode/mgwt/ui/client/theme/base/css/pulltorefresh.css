@@ -1,5 +1,6 @@
 @url nextSlideImage buttonBarNextSlideImage;
 @url spinner spinnerImage;
+@url error errorImage;
 
 @if mgwt.css pretty {
 	@external pullToRefresh, arrow, mgwt-arrowUp, arrowDown;
@@ -41,6 +42,16 @@
     \-webkit-animation-iteration-count: infinite;
     \-webkit-animation-timing-function: linear;
     \-webkit-animation-name: progressIndicatorAnimation;
+	
+}
+
+.pullToRefresh .error{
+	position: absolute;
+	margin-left: 50px;
+	width: 40px;
+	height: 40px;
+	background-image: error;
+	background-repeat: no-repeat;
 	
 }
 
