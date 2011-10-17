@@ -1,6 +1,5 @@
 package com.googlecode.mgwt.ui.client.theme.mgwt;
 
-import com.google.gwt.resources.client.TextResource;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss;
@@ -20,24 +19,16 @@ import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
-import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
 
 public interface MGWTStandardBundle extends MGWTClientBundle {
-	@Source("css/progressbar.css")
+
+	@Source({ "css/color.css", "css/progressbar.css" })
 	ProgressBarCss getProgressBarCss();
-
-	//This is a very nasty workaround because GWT CssResource does not support @media correctly!
-	@Source("css/util_fake.css")
-	UtilCss getUtilCss();
-
-	//This is a very nasty workaround because GWT CssResource does not support @media correctly!
-	@Source("css/util.css")
-	TextResource utilTextResource();
 
 	@Source("css/progressindicator.css")
 	ProgressIndicatorCss getProgressIndicatorCss();
 
-	@Source("css/header.css")
+	@Source({ "css/color.css", "css/header.css" })
 	HeaderCss getHeaderCss();
 
 	@Source("css/slider.css")

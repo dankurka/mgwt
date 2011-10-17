@@ -8,7 +8,7 @@
 .mgwt-HeaderPanel {
 	position: relative;
 	height: 40px;
-	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
+	background-color: color1;
 	border-bottom: 1px solid rgb(45, 54, 66);
 	
 }

@@ -33,13 +33,10 @@ import com.googlecode.mgwt.mvp.client.AnimationMapper;
 import com.googlecode.mgwt.mvp.client.display.AnimatableDisplayBaseImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTSettings;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.MasterRegionHandler;
 import com.googlecode.mgwt.ui.client.OrientationRegionHandler;
 import com.googlecode.mgwt.ui.client.panel.TabletPortraitOverlay;
-import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle;
-import com.googlecode.mgwt.ui.client.theme.mgwt.MGWTStandardBundle;
 
 /**
  * @author Daniel Kurka
@@ -48,8 +45,8 @@ import com.googlecode.mgwt.ui.client.theme.mgwt.MGWTStandardBundle;
 public class ShowCaseEntryPoint implements EntryPoint {
 
 	private void start() {
-		MGWTStyle.setDefaultBundle((MGWTClientBundle) GWT.create(MGWTStandardBundle.class));
-		MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
+		//		MGWTStyle.setDefaultBundle((MGWTClientBundle) GWT.create(MGWTStandardBundle.class));
+		//		MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
 
 		MGWTSettings settings = new MGWTSettings();
 		settings.setIconUrl("logo.png");
