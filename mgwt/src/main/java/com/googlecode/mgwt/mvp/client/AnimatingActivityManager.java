@@ -207,9 +207,22 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	private boolean ignorePlaceChange = false;
 
+	private boolean fireAnimationStart;
+
+	public void setFireAnimationStart(boolean fireAnimationStart) {
+		this.fireAnimationStart = fireAnimationStart;
+	}
+
+	public boolean isFireAnimationStart() {
+		return fireAnimationStart;
+	}
+
 	private void onAnimationEnd() {
 		if (listeningForAnimationEnd) {
 			ignorePlaceChange = false;
+			if (fireAnimationStart) {
+				eventBus.fireEvent(new MGWTAnimationEndEvent());
+			}
 		}
 	}
 
@@ -221,6 +234,10 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 		listeningForAnimationEnd = true;
 		ignorePlaceChange = true;
+
+		if (fireAnimationStart) {
+			eventBus.fireEvent(new MGWTAnimationStartEvent());
+		}
 
 		display.animate(animation, currentIsFirst, new AnimationEndCallback() {
 
