@@ -149,7 +149,6 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	@Override
 	public Integer getValue() {
 		return value;
-		//return sliderPos * max / (sliderWidget.getOffsetWidth());
 	}
 
 	@Override
