@@ -1,3 +1,8 @@
-@def color1 #FFFFFF;
-@def color2 #000000;
-@def color3 #777777;
+@def baseColor #0D56a6;
+@def fontColor #eeeeff;
+
+
+/*
+@def baseColor red;
+@def fontColor #ffeeee;
+*/

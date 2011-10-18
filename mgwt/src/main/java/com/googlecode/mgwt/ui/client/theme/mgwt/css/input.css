@@ -6,7 +6,7 @@
 }
 
 .mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box{
-    color: #777;
+    color: fontColor;
     border: 0;
     font: normal 17px Helvetica;
     padding: 0;
@@ -14,24 +14,13 @@
     margin-left: 0px;
     width: 100%;
     height: 100%;
+    background-color: baseColor;
+    background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.3)), to(rgba(255,255,255, 0.3)) )');
     
     \-webkit-appearance: none;
     \-webkit-user-select: text;
 }
 
-
-@if mgwt.os android {
-	.mgwt-TextBox .box:focus, .mgwt-PasswordTextBox .box:focus, .mgwt-TextArea .box:focus {
-    	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-    	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
-	}
-	
-	.mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box{
-		background-color: transparent;
-		color: white;
-	
-	}
-}
 
 
 .mgwt-TextBox .cover, .mgwt-PasswordTextBox .cover, .mgwt-TextArea .cover{
@@ -79,7 +68,7 @@
 }
 
 .mgwt-ListBox{
-	 color: #777;
+	 color: fontColor;
     border: 0;
     font: normal 17px Helvetica;
     padding: 0;
@@ -90,19 +79,10 @@
     
     \-webkit-appearance: none;
     \-webkit-user-select: text;
+    background-color: baseColor;
+    background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.3)), to(rgba(255,255,255, 0.3)) )');
 }
 
-@if mgwt.os android {
-	.mgwt-ListBox, .mgwt-ListBox:focus  {
-    	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-    	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
-	}
-	
-	.mgwt-ListBox{
-		background-color: transparent;
-		color: white;
-	
-	}
-}
+
 
 

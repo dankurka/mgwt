@@ -25,7 +25,7 @@ public interface MGWTStandardBundle extends MGWTClientBundle {
 	@Source({ "css/color.css", "css/progressbar.css" })
 	ProgressBarCss getProgressBarCss();
 
-	@Source("css/progressindicator.css")
+	@Source({ "css/color.css", "css/progressindicator.css" })
 	ProgressIndicatorCss getProgressIndicatorCss();
 
 	@Source({ "css/color.css", "css/header.css" })
@@ -37,34 +37,34 @@ public interface MGWTStandardBundle extends MGWTClientBundle {
 	@Source("css/popover.css")
 	PopoverCss getPopoverCss();
 
-	@Source("css/list.css")
+	@Source({ "css/color.css", "css/list.css" })
 	ListCss getListCss();
 
-	@Source("css/searchbox.css")
+	@Source({ "css/color.css", "css/searchbox.css" })
 	MSearchBoxCss getSearchBoxCss();
 
 	@Source("css/checkbox.css")
 	CheckBoxCss getCheckBoxCss();
 
-	@Source("css/buttons.css")
+	@Source({ "css/color.css", "css/buttons.css" })
 	ButtonCss getButtonCss();
 
 	@Source("css/scrollpanel.css")
 	ScrollPanelCss getScrollPanelCss();
 
-	@Source("css/buttonbar.css")
+	@Source({ "css/color.css", "css/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
 	@Source("css/dialog.css")
 	DialogCss getDialogCss();
 
-	@Source("css/main.css")
+	@Source({ "css/color.css", "css/main.css" })
 	MainCss getMainCss();
 
-	@Source("css/input.css")
+	@Source({ "css/color.css", "css/input.css" })
 	InputCss getInputCss();
 
-	@Source("css/panel.css")
+	@Source({ "css/color.css", "css/panel.css" })
 	PanelCss getPanelCss();
 
 	@Source("css/layout.css")
@@ -73,7 +73,7 @@ public interface MGWTStandardBundle extends MGWTClientBundle {
 	@Source("css/pulltorefresh.css")
 	PullToRefreshCss getPullToRefreshCss();
 
-	@Source("css/tabbar.css")
+	@Source({ "css/color.css", "css/tabbar.css" })
 	TabBarCss getTabBarCss();
 
 }
