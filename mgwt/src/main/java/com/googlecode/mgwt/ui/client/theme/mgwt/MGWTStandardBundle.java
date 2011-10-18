@@ -31,7 +31,7 @@ public interface MGWTStandardBundle extends MGWTClientBundle {
 	@Source({ "css/color.css", "css/header.css" })
 	HeaderCss getHeaderCss();
 
-	@Source("css/slider.css")
+	@Source({ "css/color.css", "css/slider.css" })
 	SliderCss getSliderCss();
 
 	@Source("css/popover.css")

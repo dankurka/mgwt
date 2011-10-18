@@ -18,7 +18,8 @@
 	\-webkit-box-shadow: 2px 2px 4px #666666;
 	\-webkit-border-radius: 4px;
 	background-repeat: no-repeat, repeat-x;
-	background-image: literal('-webkit-gradient(linear, left top ,left bottom, from(#0a3b87), color-stop(.5, #4c8de7), color-stop(.95, #6babf5), to(#0a3b87)), -webkit-gradient(linear, left top ,left bottom, from(#929292), color-stop(.5, #f0f0f0), color-stop(.5, #fff), color-stop(.95, #fff), to(#929292))');
+	background-color: baseColor;
+	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255, 255, 0.35)), color-stop(0.5, rgba(255,255, 255, 0.15)),  to(rgba(255,255, 255, 0.35)))'); 
 	
 }
 
@@ -31,6 +32,8 @@
 	\-webkit-tap-highlight-color: transparent;
 	\-webkit-box-shadow: 2px 2px 3px #666666;
 	\-webkit-border-radius: 10px;
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#aaaaaa), color-stop(.5, #eeeeee), to(#cccccc))');
+	background-color: fontColor;
+	border: 1px solid rgba(0,0,0, 0.5);
+	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.15)), color-stop(.5, rgba(0,0,0, 0.05)), to(rgba(0,0,0, 0.1)))');
 	
 }

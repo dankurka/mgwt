@@ -19,6 +19,7 @@ body {
 	height: 100%;
 	position: absolute;
 	background-attachment: fixed;
+	color: fontColor;
 }
 
 
