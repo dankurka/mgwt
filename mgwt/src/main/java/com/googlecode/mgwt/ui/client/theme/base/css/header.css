@@ -58,10 +58,9 @@
 
 
 .mgwt-HeaderButton {
-	min-width: 40px;
-	max-width: 60px;
+	
 	white-space: nowrap;
-	text-overflow: ellipsis;
+	
 	z-index: 1;
 	font-size: 12px;
 	font-weight: bold;
@@ -110,6 +109,10 @@
     color: #fff; 
     text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
     text-align: center;
+    min-width: 40px;
+	max-width: 60px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 
