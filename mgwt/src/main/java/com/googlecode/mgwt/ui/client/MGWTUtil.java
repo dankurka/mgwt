@@ -73,7 +73,7 @@ public class MGWTUtil {
 
 	public static ORIENTATION getOrientation() {
 
-		if (FEATURE_DETECTION.isDesktop()) {
+		if (!orientationSupport()) {
 			int height = Window.getClientHeight();
 			int width = Window.getClientWidth();
 
@@ -148,8 +148,23 @@ public class MGWTUtil {
 
 	}
 
+	private native static boolean orientationSupport()/*-{
+		var ua = window.navigator.userAgent.toLowerCase();
+		if (ua.indexOf('android') != -1) {
+			return true;
+		}
+		if (ua.indexOf('iphone') != -1) {
+			return true;
+		}
+		if (ua.indexOf('ipad') != -1) {
+			return true;
+		}
+
+		return false;
+	}-*/;
+
 	private static void setupOrientation() {
-		if (FEATURE_DETECTION.isDesktop()) {
+		if (!orientationSupport()) {
 			Window.addResizeHandler(new ResizeHandler() {
 
 				@Override

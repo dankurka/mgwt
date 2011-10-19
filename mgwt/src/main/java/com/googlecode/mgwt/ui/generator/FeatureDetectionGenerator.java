@@ -55,7 +55,7 @@ public class FeatureDetectionGenerator extends Generator {
 		SourceWriter writer = composer.createSourceWriter(context, printWriter);
 
 		writer.println("public boolean isAndroid() {");
-		writer.println("return " + mgwtProperty.equals("android") + ";");
+		writer.println("return isAndroidTablet() || isAndroidPhone();");
 		writer.println("}");
 
 		writer.println("public boolean isIPhone() {");
@@ -79,12 +79,19 @@ public class FeatureDetectionGenerator extends Generator {
 		writer.println("}");
 
 		writer.println("public boolean isTablet() {");
-		writer.println("return isDesktop() || isIPad();");
+		writer.println("return isDesktop() || isIPad() || isAndroidTablet();");
 		writer.println("}");
 
 		writer.println("public boolean isPhone() {");
-		//TODO all android devices are considered phones right now!
-		writer.println("return isIPhone() || isAndroid() || isBlackBerry();");
+		writer.println("return isIPhone() || isAndroidPhone() || isBlackBerry();");
+		writer.println("}");
+
+		writer.println("public boolean isAndroidTablet() {");
+		writer.println("return " + mgwtProperty.equals("android_tablet") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isAndroidPhone() {");
+		writer.println("return " + mgwtProperty.equals("android") + ";");
 		writer.println("}");
 
 		writer.commit(logger);
@@ -92,5 +99,4 @@ public class FeatureDetectionGenerator extends Generator {
 		return fullName;
 
 	}
-
 }

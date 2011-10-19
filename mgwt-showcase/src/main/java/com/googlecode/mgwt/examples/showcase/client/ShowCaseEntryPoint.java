@@ -45,6 +45,9 @@ import com.googlecode.mgwt.ui.client.panel.TabletPortraitOverlay;
 public class ShowCaseEntryPoint implements EntryPoint {
 
 	private void start() {
+		//		MGWTColorScheme.setBaseColor("#56a60D");
+		//		MGWTColorScheme.setFontColor("#eee");
+		//
 		//		MGWTStyle.setDefaultBundle((MGWTClientBundle) GWT.create(MGWTStandardBundle.class));
 		//		MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
 
@@ -66,13 +69,15 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 
-		if (MGWTUtil.getFeatureDetection().isIPad() || MGWTUtil.getFeatureDetection().isDesktop()) {
+		if (MGWTUtil.getFeatureDetection().isTablet()) {
+
 			// very nasty workaround because GWT does not corretly support
 			// @media
 			StyleInjector.inject(AppBundle.INSTANCE.css().getText());
 
 			createTabletDisplay(clientFactory);
 		} else {
+
 			createPhoneDisplay(clientFactory);
 
 		}

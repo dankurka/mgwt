@@ -13,6 +13,10 @@ public interface FeatureDetection {
 
 	public boolean isTablet();
 
+	public boolean isAndroidTablet();
+
+	public boolean isAndroidPhone();
+
 	public boolean isPhone();
 
 	public boolean isBlackBerry();

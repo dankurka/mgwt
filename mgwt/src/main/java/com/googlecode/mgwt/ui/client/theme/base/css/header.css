@@ -4,63 +4,195 @@
 }
 
 
-
 .mgwt-HeaderPanel {
-	position: relative;
-	height: 40px;
-	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
-	border-bottom: 1px solid rgb(45, 54, 66);
-	
+	position: relative;	
 }
 
-@if mgwt.os android {
+@if mgwt.os iphone {
 	.mgwt-HeaderPanel {
-		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(100, 100, 100, 1)), to(rgba(50, 50, 50, 1)))');
+		height: 40px;
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
+		border-bottom: 1px solid rgb(45, 54, 66);
 	}
 }
 
+@if mgwt.os ipad desktop {
+	.mgwt-HeaderPanel {
+		height: 40px;
+		background: #B0B4C0;
+		background: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
+		border-bottom: 1px solid #797F90;
+	}
+}
+
+
+@if mgwt.os android android_tablet {
+	.mgwt-HeaderPanel {
+		height: 50px;
+		background-color: black;
+		background-image: none;
+		border-bottom: 2px solid rgb(82, 163, 196);
+	}
+}
+
+@if mgwt.os blackberry {
+	.mgwt-HeaderPanel {
+		height: 40px;
+		background-color: black;
+		background-image: none;
+		border-bottom: 2px solid rgb(82, 163, 196);
+	}
+}
+
+
 .mgwt-HeaderPanel .mgwt-HeaderPanel-left {
 	position: absolute;
-	top: 0px;
-	left: 6px;
 }
 
 .mgwt-HeaderPanel .mgwt-HeaderPanel-right {
 	position: absolute;
-	top: 0px;
-	right: 6px;
 }
 
 .mgwt-HeaderPanel .mgwt-HeaderPanel-center {
 	position: absolute;
 	left: 50%;
-	opacity: 1;
-	width: 310px;
-	text-align: center;
-	height: 31px;
-	margin-top: 6px;
-	margin-left: -150px;
-	margin-right: 5px;
-	z-index: 0;
-	font-size: 16pt;
-	font-weight: bold;
-	color: white;
-	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 
+@if mgwt.os iphone {
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+		top: 0px;
+		left: 6px;
+	}
 
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+		top: 0px;
+		right: 6px;
+	}
 
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+		left: 50%;
+		height: 31px;
+		width: 310px;
+		
+		margin-top: 6px;
+		margin-left: -150px;
+		margin-right: 5px;
+		
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-align: center;
+		
+		font-size: 16pt;
+		font-weight: bold;
+		color: white;
+		text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+		
+	}
+}
 
+@if mgwt.os ipad desktop {
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+		top: 0px;
+		left: 6px;
+	}
 
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+		top: 0px;
+		right: 6px;
+	}
 
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+		left: 50%;
+		height: 31px;
+		width: 310px;
+		
+		margin-top: 6px;
+		margin-left: -150px;
+		margin-right: 5px;
+		
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-align: center;
+		
+		font-size: 16pt;
+		font-weight: bold;
+		color: #75777b;
+		text-shadow: 0px 1px 0px white;
+		
+	}
+}
+
+@if mgwt.os blackberry {
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+		top: 0px;
+		left: 6px;
+	}
+	
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+		top: 0px;
+		right: 6px;
+	}
+	
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+		left: 50%;
+		height: 31px;
+		width: 310px;
+		opacity: 1;
+		
+		
+		margin-top: 6px;
+		margin-left: -150px;
+		margin-right: 5px;
+		
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-align: center;
+		
+		font-size: 16pt;
+		font-weight: bold;
+		color: white;
+		text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+		
+		
+	}
+}
+
+@if mgwt.os android android_tablet {
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+		top: 6px;
+		left: 6px;
+	}
+	
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+		top: 6px;
+		right: 6px;
+	}
+	
+	.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+		left: 50px;
+		height: 31px;
+		width: 310px;
+		opacity: 1;
+		
+		margin-top: 12px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		
+		font-size: 24px;
+		color: white;
+		text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
+		
+		
+	}
+}
+
+/*rgb(46, 54, 60)*/
 
 .mgwt-HeaderButton {
-	
-	
-	
 	z-index: 1;
 	font-size: 12px;
 	font-weight: bold;
@@ -70,19 +202,10 @@
 
 	margin: 6px 0 0 12px;
 	height: 26px;
-	
-	
-	
 }
 
-
-
-
-
-
-
-
 .mgwt-HeaderButton p { 
+	\-webkit-background-origin: border-box;
     position: relative; 
     z-index: 2; 
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -106,7 +229,9 @@
 .mgwt-HeaderButton p {
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#AAAAAA), to(#333333))');
 	
-	border: 1px solid rgba(0, 0, 0, 1);
+	
+	
+	
 }
 }
 
@@ -130,7 +255,7 @@
 	position: absolute;
 	z-index: 1;
 	top: 4.5px;
-	left: -7px;
+	left: -7.5px;
 	\-webkit-transform: rotate(51deg);
 }
 .mgwt-HeaderButton.back span { 
@@ -143,7 +268,7 @@
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-right: none;
     border-top:none;
-    \-webkit-box-shadow: 0 1px 0 rgba(255,255,255, 0.25);
+   
     \-webkit-border-radius: 4px;
 }
 
@@ -189,6 +314,8 @@ background: literal('-webkit-gradient(linear, left top, right bottom, from(#7582
 
 .mgwt-HeaderButton.round{
 }
+	
+	
 
 
 
