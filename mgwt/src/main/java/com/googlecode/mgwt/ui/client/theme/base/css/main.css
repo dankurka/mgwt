@@ -47,4 +47,10 @@ body {
 	
 }
 
+@if mgwt.os blackberry {
+	body {
+		background-color: black;
+	}
+}
+
 
