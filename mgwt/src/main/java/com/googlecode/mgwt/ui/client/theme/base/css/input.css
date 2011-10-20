@@ -20,7 +20,7 @@
 }
 
 
-@if mgwt.os android {
+@if mgwt.os android android_tablet {
 	.mgwt-TextBox .box:focus, .mgwt-PasswordTextBox .box:focus, .mgwt-TextArea .box:focus {
     	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
@@ -29,6 +29,7 @@
 	.mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box{
 		background-color: transparent;
 		color: white;
+		
 	
 	}
 }
@@ -92,7 +93,7 @@
     \-webkit-user-select: text;
 }
 
-@if mgwt.os android {
+@if mgwt.os android android_tablet {
 	.mgwt-ListBox, .mgwt-ListBox:focus  {
     	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 

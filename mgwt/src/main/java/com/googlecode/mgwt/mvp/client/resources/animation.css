@@ -33,19 +33,25 @@
 
  		
  	}
-
- 
-	 .display {
+ 	
+ 	.display {
 		position: absolute;
 		top: 0px;
 		left: 0px;
 		right: 0px;
 		bottom: 0px;
 		overflow:hidden;
-		\-webkit-perspective: 800;
-	    \-webkit-transform-style: preserve-3d;
-	    \-webkit-backface-visibility: hidden;
-	    \-webkit-transform: translate3d(0,0,0) rotate(0) scale(1);
+			
+	}
+ 	
+
+ 	@if mgwt.os iphone ipad desktop {
+		 .display {
+			\-webkit-perspective: 800;
+		    \-webkit-transform-style: preserve-3d;
+		    \-webkit-backface-visibility: hidden;
+		    \-webkit-transform: translate3d(0,0,0) rotate(0) scale(1);
+		}
 	}
 }
  

@@ -15,7 +15,7 @@
 
 @if mgwt.os android android_tablet {
 	.mgwt-RoundPanel {
-		background-color: transparent;
+		background-color: inherit;
 		border: none;
 		color: white;
 	}
