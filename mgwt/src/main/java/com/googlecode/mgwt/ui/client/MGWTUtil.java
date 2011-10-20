@@ -151,7 +151,7 @@ public class MGWTUtil {
 	private native static boolean orientationSupport()/*-{
 		var ua = window.navigator.userAgent.toLowerCase();
 		if (ua.indexOf('android') != -1) {
-			return true;
+			return false;
 		}
 		if (ua.indexOf('iphone') != -1) {
 			return true;

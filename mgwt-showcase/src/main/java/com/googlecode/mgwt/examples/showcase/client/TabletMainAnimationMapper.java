@@ -73,6 +73,15 @@ public class TabletMainAnimationMapper implements AnimationMapper {
 			return Animation.SWAP_REVERSE;
 		}
 
+		//		if (oldPlace instanceof AnimationCubePlace && newPlace instanceof AnimationPlace) {
+		//			return Animation.CUBE_REVERSE;
+		//		}
+		//
+		//		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationCubePlace) {
+		//			System.out.println("asdfasdf");
+		//			return Animation.CUBE;
+		//		}
+
 		return Animation.SLIDE;
 	}
 

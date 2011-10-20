@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
+import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationCubePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDissolvePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFadePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFlipPlace;
@@ -34,7 +35,6 @@ import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler;
-
 
 /**
  * @author Daniel Kurka
@@ -105,6 +105,10 @@ public class AnimationActivity extends MGWTAbstractActivity {
 					clientFactory.getPlaceController().goTo(new AnimationSwapPlace());
 
 					break;
+				case 7:
+					clientFactory.getPlaceController().goTo(new AnimationCubePlace());
+
+					break;
 
 				default:
 					break;
@@ -130,6 +134,7 @@ public class AnimationActivity extends MGWTAbstractActivity {
 		list.add(new Animation("Flip"));
 		list.add(new Animation("Pop"));
 		list.add(new Animation("Swap"));
+		//list.add(new Animation("Cube"));
 
 		return list;
 	}

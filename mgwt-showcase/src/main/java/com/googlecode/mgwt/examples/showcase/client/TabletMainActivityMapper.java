@@ -6,6 +6,7 @@ import com.google.gwt.place.shared.Place;
 import com.googlecode.mgwt.examples.showcase.client.activities.AboutActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationCubePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDissolvePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDoneActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFadePlace;
@@ -119,7 +120,7 @@ public class TabletMainActivityMapper implements ActivityMapper {
 		}
 
 		if (newPlace instanceof AnimationSlidePlace || newPlace instanceof AnimationSlideUpPlace || newPlace instanceof AnimationDissolvePlace || newPlace instanceof AnimationFadePlace
-				|| newPlace instanceof AnimationFlipPlace || newPlace instanceof AnimationPopPlace || newPlace instanceof AnimationSwapPlace) {
+				|| newPlace instanceof AnimationFlipPlace || newPlace instanceof AnimationPopPlace || newPlace instanceof AnimationSwapPlace || newPlace instanceof AnimationCubePlace) {
 			return new AnimationDoneActivity(clientFactory);
 		}
 

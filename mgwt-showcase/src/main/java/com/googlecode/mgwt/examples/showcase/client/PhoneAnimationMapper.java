@@ -159,6 +159,14 @@ public class PhoneAnimationMapper implements AnimationMapper {
 			return Animation.SLIDE_REVERSE;
 		}
 
+		//		if (oldPlace instanceof AnimationCubePlace && newPlace instanceof AnimationPlace) {
+		//			return Animation.CUBE_REVERSE;
+		//		}
+		//
+		//		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationCubePlace) {
+		//			return Animation.CUBE;
+		//		}
+
 		if (oldPlace instanceof AnimationPlace && newPlace instanceof AnimationSlideUpPlace) {
 			return Animation.SLIDE_UP;
 		}

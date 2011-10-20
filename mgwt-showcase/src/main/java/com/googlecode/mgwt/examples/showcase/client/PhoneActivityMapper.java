@@ -125,7 +125,7 @@ public class PhoneActivityMapper implements ActivityMapper {
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace
-				|| place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace || place instanceof AnimationSwapPlace) {
+				|| place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace || place instanceof AnimationSwapPlace || place instanceof AnimationSwapPlace) {
 			return new AnimationDoneActivity(clientFactory);
 		}
 		return new ShowCaseListActivity(clientFactory);

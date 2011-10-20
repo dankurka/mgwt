@@ -9,6 +9,7 @@ import com.googlecode.mgwt.examples.showcase.client.activities.UIActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.animation.AnimationPlace;
+import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationCubePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationDissolvePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFadePlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.animationdone.AnimationFlipPlace;
@@ -78,7 +79,7 @@ public class TabletNavActivityMapper implements ActivityMapper {
 		}
 
 		if (place instanceof AnimationSlidePlace || place instanceof AnimationSlideUpPlace || place instanceof AnimationDissolvePlace || place instanceof AnimationFadePlace
-				|| place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace || place instanceof AnimationSwapPlace) {
+				|| place instanceof AnimationFlipPlace || place instanceof AnimationPopPlace || place instanceof AnimationSwapPlace || place instanceof AnimationCubePlace) {
 			return getAnimationActicity();
 		}
 		return new ShowCaseListActivity(clientFactory);
