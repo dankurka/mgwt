@@ -13,9 +13,10 @@
 	font-weight: bold;
 }
 
-@if mgwt.os android {
+@if mgwt.os android android_tablet {
 	.mgwt-RoundPanel {
-		background-color: #555555;
+		background-color: transparent;
+		border: none;
 		color: white;
 	}
 	

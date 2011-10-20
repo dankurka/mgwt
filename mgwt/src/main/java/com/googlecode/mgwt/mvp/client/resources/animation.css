@@ -72,6 +72,14 @@ key frame for doing nothing
 	\-webkit-animation-fill-mode: both;
 }
 
+.in {
+	z-index:10;
+}
+
+.out{
+	z-index: 0 !important;
+}
+
 .slide.in {
 	\-webkit-animation-name: slideinfromright;
 	
@@ -113,6 +121,7 @@ key frame for doing nothing
 
 .flip {
 	\-webkit-animation-duration: .65s;
+	\-webkit-backface-visibility: hidden;
 }
 
 .flip.in {
