@@ -172,15 +172,16 @@
 	}
 	
 	.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
-		left: 50px;
+		left: 50%;
 		height: 31px;
 		width: 310px;
 		opacity: 1;
-		
+		margin-left: -150px;
 		margin-top: 12px;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		text-align: center;
 		
 		font-size: 24px;
 		color: white;
@@ -194,12 +195,6 @@
 
 .mgwt-HeaderButton {
 	z-index: 1;
-	font-size: 12px;
-	font-weight: bold;
-	text-align: center;
-	color: white;
-	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
-
 	margin: 6px 0 0 12px;
 	height: 26px;
 }
@@ -212,9 +207,6 @@
     margin: 0; 
     padding: 5px; 
     font-size: 12px; 
-    font-weight: bold; 
-    color: #fff; 
-    text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
     text-align: center;
     min-width: 40px;
 	max-width: 60px;
@@ -222,84 +214,128 @@
 	overflow: hidden;
 	white-space: nowrap;
 	\-webkit-border-radius: 4px;
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
 	
 }
-@if mgwt.os android {
-.mgwt-HeaderButton p {
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#AAAAAA), to(#333333))');
+@if mgwt.os iphone {
+	.mgwt-HeaderButton p {
+		color: #fff; 
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+		text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
+		color: white;
+		font-weight: bold; 
+	}
 	
-	
-	
-	
-}
-}
-
-
-
-
-.mgwt-HeaderButton.active p{
-	background: literal('-webkit-gradient(linear, left top, left bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
-}
-
-@if mgwt.os android {
 	.mgwt-HeaderButton.active p{
-		background: literal('-webkit-gradient(linear, left top, left bottom, from(#74b143), to(#43830e) )');
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
 	}
 }
 
-
-
-
-.mgwt-HeaderButton.back div {
-	position: absolute;
-	z-index: 1;
-	top: 4.5px;
-	left: -7.5px;
-	\-webkit-transform: rotate(51deg);
+@if mgwt.os ipad desktop {
+	.mgwt-HeaderButton p {
+		color: #fff; 
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
+		text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
+		color: white;
+		font-weight: bold; 
+	}
+	
+	.mgwt-HeaderButton.active p{
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
+	}
 }
-.mgwt-HeaderButton.back span { 
-    \-webkit-transform: skew(15deg);
-    display: block; 
-    width: 15px; 
-    height: 16px; 
-    background: literal('-webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa))');   
-    \-webkit-border-radius: 1px; 
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-right: none;
-    border-top:none;
-   
-    \-webkit-border-radius: 4px;
+
+@if mgwt.os android android_tablet {
+	.mgwt-HeaderButton p {
+		color: white;
+		border: 2px solid rgb(82, 163, 196);
+	}
+	.mgwt-HeaderButton.active p{
+		background: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(42, 123, 156)), to(rgb(32, 113, 146)) )');
+	}
+}
+
+@if mgwt.os blackberry {
+	.mgwt-HeaderButton p {
+		color: white;
+		border: 2px solid #ccc;
+	}
 }
 
 .mgwt-HeaderButton.back p { 
     border-left: none;
 }
 
+.mgwt-HeaderButton.back div {
+	position: absolute;
+	z-index: 1;
+	top: 4.5px;
+	left: -7.5px;
+	\-webkit-transform: rotate(54deg);
+}
+.mgwt-HeaderButton.back span { 
+    \-webkit-transform: skew(15deg);
+    display: block; 
+    width: 17px; 
+    height: 17px; 
+    \-webkit-border-radius: 1px; 
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-right: none;
+    border-top:none;
+    \-webkit-border-radius: 4px;
+}
 
-
-
-
-
-@if mgwt.os android {
+@if mgwt.os iphone {
 	.mgwt-HeaderButton.back span { 
-	    
-	    background: literal('-webkit-gradient(linear, left top, right bottom, from(#AAAAAA), to(#333333))');   
-	    border-left: 1px solid rgba(0, 0, 0, 1);
-	    border-bottom: 1px solid rgba(0, 0, 0, 1);
-	    \-webkit-box-shadow: none;
+    	background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa))');     
 	}
-}
-
-
-.mgwt-HeaderButton.active span{
-background: literal('-webkit-gradient(linear, left top, right bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
-}
-@if mgwt.os android {
+	
 	.mgwt-HeaderButton.active span{
-		background: literal('-webkit-gradient(linear, left top, left bottom, from(#74b143), to(#43830e) )');
+		background: literal('-webkit-gradient(linear, left top, right bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
 	}
 }
+
+
+
+@if mgwt.os ipad desktop {
+	.mgwt-HeaderButton.back span {
+		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
+		text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
+		color: white;
+		font-weight: bold; 
+	}
+	.mgwt-HeaderButton.active span{
+		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
+	}
+}
+
+@if mgwt.os android android_tablet {
+	.mgwt-HeaderButton.back span {
+		background-image: none;
+		color: white;
+		border: 2px solid rgb(82, 163, 196);
+    	border-right: none;
+    	border-top:none;
+    	 \-webkit-box-shadow: none;	
+	}
+	
+	.mgwt-HeaderButton.active span{
+		background: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(42, 123, 156)), to(rgb(32, 113, 146)) )');
+	}
+}
+
+@if mgwt.os blackberry {
+	.mgwt-HeaderButton.back span { 
+    	/* TODO */
+	}
+	
+	.mgwt-HeaderButton.active span{
+		/* TODO */
+	}
+}
+
+
+
+
 
 
 
