@@ -15,6 +15,10 @@ public interface ListCss extends CssResource {
 
 	public String selected();
 
+	public String first();
+
+	public String last();
+
 	@ClassName("mgwt-List-Header")
 	public String listHeader();
 

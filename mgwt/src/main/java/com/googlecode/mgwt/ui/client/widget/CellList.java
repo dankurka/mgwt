@@ -235,6 +235,13 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			if (cell.canBeSelected(model)) {
 				clazz = css.group() + " ";
 			}
+			if (i == 0) {
+				clazz += css.first() + " ";
+			}
+
+			if (models.size() - 1 == i) {
+				clazz += css.last() + " ";
+			}
 
 			cell.render(cellBuilder, model);
 
