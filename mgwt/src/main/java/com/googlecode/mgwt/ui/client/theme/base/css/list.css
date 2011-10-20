@@ -83,9 +83,19 @@
 	color: white;
 }
 
+@if mgwt.os ipad desktop {
+
+	.mgwt-List .group.selected {
+		font-weight: bold;
+		background-image: arrowTouchedImage, literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)), to(rgb(1, 95, 230)) )');
+	}
+	
+}
+
 @if mgwt.os android {
 
 	.mgwt-List .group.selected {
+		
 		background-image: arrowTouchedImage, literal('-webkit-gradient(linear, left top, left bottom, from(#74b143), to(#43830e) )');
 	}
 	
