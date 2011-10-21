@@ -7,52 +7,150 @@
 	
 }
 
-/**
-  Search Box
-*/
-.mgwt-SearchBox {
-	height: 44px;
-	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1f3f4), color-stop(3%, #e0e4e7), color-stop(50%, #c7cfd4), color-stop(51%, #bec7cd), color-stop(97%, #b4bec6), to(#8999a5) )');
-	background-size: 100% 44px;
-	background-repeat: repeat;
-	background-position: 0px 0px;
-	padding-left: 5px;
-	padding-right: 5px;
+@if mgwt.os iphone {
+	.mgwt-SearchBox {
+		height: 44px;
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1f3f4), color-stop(3%, #e0e4e7), color-stop(50%, #c7cfd4), color-stop(51%, #bec7cd), color-stop(97%, #b4bec6), to(#8999a5) )');
+		background-size: 100% 44px;
+		background-repeat: repeat;
+		background-position: 0px 0px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
 }
 
-.mgwt-SearchBox .round {
-	\-webkit-background-clip: padding-box;
-	background-clip: padding-box;
-	background-image: searchImage;
-	background-repeat: no-repeat;
-	background-position: 10px 50%;
-	border-bottom-left-radius: 16px 16px;
-	border-bottom-right-radius: 16px 16px;
-	border-top-left-radius: 16px 16px;
-	border-top-right-radius: 16px 16px;
-	width: 100%;
-	height: 24px;
-	background-color: white;
-	display: block;
-	position: relative;
-	top: 10px;
-	margin: 0px;
-	padding: 0px;
+@if mgwt.os ipad desktop {
+	.mgwt-SearchBox {
+		height: 44px;
+		background-color: #B0B4C0;
+		background-image: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
+		background-size: 100% 44px;
+		background-repeat: repeat;
+		background-position: 0px 0px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
 }
 
-.mgwt-SearchBox .input {
-	border: 0;
-	\-webkit-appearance: none;
-	position: absolute;
-	font-size: 13px;
-	padding: 0;
-	top: 0px;
-	left: 25px;
-	right: 40px;
-	bottom: 0px;
-	\-webkit-user-select: text;
-	\-webkit-tap-highlight-color: rgba(0,0,0,0);
+@if mgwt.os android android_tablet {
+	.mgwt-SearchBox {
+		height: 44px;
+		background-color: transparent;
+		padding-left: 5px;
+		padding-right: 5px;
+		border-bottom: 2px solid rgb(82, 163, 196);
+	}
 }
+
+
+@if mgwt.os iphone ipad desktop {
+	.mgwt-SearchBox .round {
+		\-webkit-background-clip: padding-box;
+		background-clip: padding-box;
+		background-image: searchImage;
+		background-repeat: no-repeat;
+		background-position: 10px 50%;
+		border-bottom-left-radius: 16px 16px;
+		border-bottom-right-radius: 16px 16px;
+		border-top-left-radius: 16px 16px;
+		border-top-right-radius: 16px 16px;
+		width: 100%;
+		height: 24px;
+		background-color: white;
+		display: block;
+		position: relative;
+		top: 10px;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	.mgwt-SearchBox .input {
+		border: 0;
+		\-webkit-appearance: none;
+		position: absolute;
+		font-size: 13px;
+		padding: 0;
+		top: 0px;
+		left: 25px;
+		right: 40px;
+		bottom: 0px;
+		\-webkit-user-select: text;
+		\-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+}
+
+@if mgwt.os android android_tablet {
+	.mgwt-SearchBox .round {
+		\-webkit-background-clip: padding-box;
+		background-clip: padding-box;
+		background-image: searchImage;
+		background-repeat: no-repeat;
+		background-position: 10px 50%;
+		
+		width: 100%;
+		height: 24px;
+		background-color: transparent;
+		display: block;
+		position: relative;
+		top: 10px;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	.mgwt-SearchBox .input {
+		border: 0;
+		\-webkit-appearance: none;
+		position: absolute;
+		font-size: 13px;
+		padding: 0;
+		top: 0px;
+		left: 25px;
+		right: 40px;
+		bottom: 0px;
+		\-webkit-user-select: text;
+		\-webkit-tap-highlight-color: rgba(0,0,0,0);
+		background-color: transparent;
+		color: white;
+	}
+}
+
+/* TODO */
+@if mgwt.os blackberry {
+	.mgwt-SearchBox .round {
+		\-webkit-background-clip: padding-box;
+		background-clip: padding-box;
+		background-image: searchImage;
+		background-repeat: no-repeat;
+		background-position: 10px 50%;
+		
+		width: 100%;
+		height: 24px;
+		background-color: transparent;
+		display: block;
+		position: relative;
+		top: 10px;
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	.mgwt-SearchBox .input {
+		border: 0;
+		\-webkit-appearance: none;
+		position: absolute;
+		font-size: 13px;
+		padding: 0;
+		top: 0px;
+		left: 25px;
+		right: 40px;
+		bottom: 0px;
+		\-webkit-user-select: text;
+		\-webkit-tap-highlight-color: rgba(0,0,0,0);
+		background-color: transparent;
+		color: white;
+	}
+}
+
+
 
 .mgwt-SearchBox .clear {
 	position: absolute;
