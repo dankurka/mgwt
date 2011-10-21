@@ -3,34 +3,113 @@
 	
 }
 
-.mgwt-ProgressBar {
-	position: relative;
-	width: 250px;
-	height: 15px;
-	\-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
-	border: 1px solid #bebebe;
-	background-color: rgb(57, 137, 214);
-	background-repeat: repeat-x;
-	\-webkit-background-size: 25px 15px;
-	background-image: literal('-webkit-gradient(linear, 19 0, 0 10, color-stop(0.25, rgba(255, 255, 255, 0) ), color-stop(0.3, rgba(255, 255, 255, 0.7) ), color-stop(0.3, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 0.7) ), color-stop(0.8, rgba(255, 255, 255, 0) ) ), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.05, rgba(0, 0, 0, .2) ), color-stop(0.06, rgba(255, 255, 255, .8) ), color-stop(0.4, rgba(255, 255, 255, .05) ), color-stop(0.6, rgba(0, 0, 0, .05) ), color-stop(0.9, rgba(0, 0, 0, .2) ), color-stop(0.98, rgba(0, 0, 0, .5) ) ), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.2, transparent), color-stop(0.2, rgba(255, 255, 255, .5) ), color-stop(0.5, rgba(255, 255, 255, .5) ), color-stop(0.5, transparent))');
-	background-position-x: 0;
-	\-webkit-animation-duration: 9s;
-	\-webkit-animation-name: anmiateProgressBar;
-	\-webkit-animation-iteration-count: infinite;
-	\-webkit-animation-timing-function: linear;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	\-webkit-box-sizing: border-box;
-	\-webkit-border-radius: 6px;
+@if mgwt.os iphone ipad desktop {
+	.mgwt-ProgressBar {
+		position: relative;
+		width: 250px;
+		height: 15px;
+		\-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+		border: 1px solid #bebebe;
+		background-color: rgb(57, 137, 214);
+		background-repeat: repeat-x;
+		\-webkit-background-size: 25px 15px;
+		background-image: literal('-webkit-gradient(linear, 19 0, 0 10, color-stop(0.25, rgba(255, 255, 255, 0) ), color-stop(0.3, rgba(255, 255, 255, 0.7) ), color-stop(0.3, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 0.7) ), color-stop(0.8, rgba(255, 255, 255, 0) ) ), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.05, rgba(0, 0, 0, .2) ), color-stop(0.06, rgba(255, 255, 255, .8) ), color-stop(0.4, rgba(255, 255, 255, .05) ), color-stop(0.6, rgba(0, 0, 0, .05) ), color-stop(0.9, rgba(0, 0, 0, .2) ), color-stop(0.98, rgba(0, 0, 0, .5) ) ), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.2, transparent), color-stop(0.2, rgba(255, 255, 255, .5) ), color-stop(0.5, rgba(255, 255, 255, .5) ), color-stop(0.5, transparent))');
+		background-position-x: 0;
+		\-webkit-animation-duration: 9s;
+		\-webkit-animation-name: anmiateProgressBar;
+		\-webkit-animation-iteration-count: infinite;
+		\-webkit-animation-timing-function: linear;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		\-webkit-box-sizing: border-box;
+		\-webkit-border-radius: 6px;
+		
+	}
 	
+	@-webkit-keyframes anmiateProgressBar {
+	
+	    0% { background-position-x:  0%; }
+	
+	    100% { background-position-x: 100%; }
+	
+	}
 }
 
-@-webkit-keyframes anmiateProgressBar {
+@if mgwt.os android android_tablet {
+	.mgwt-ProgressBar {
+		position: relative;
+		width: 250px;
+		height: 15px;
+		
+		
+		background-color: inherit;
+		background-repeat: repeat-x;
+		\-webkit-background-size: 15px 15px;
+		background-image: literal('-webkit-gradient(linear, 5 5, 10 10, color-stop(0.25, rgba(82, 163, 196, 0) ), color-stop(0.3, rgba(82, 163, 196, 0.7) ), color-stop(0.3, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 0.7) ), color-stop(0.8, rgba(82, 163, 196, 0) ) )');
+		background-position-x: 0;
+		\-webkit-animation-duration: 9s;
+		\-webkit-animation-name: anmiateProgressBar;
+		\-webkit-animation-iteration-count: infinite;
+		\-webkit-animation-timing-function: linear;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		\-webkit-box-sizing: border-box;
+	
+		border: 2px solid rbg(82, 163, 196);
+		
+		
+		
+		
+	}
+	
+	@-webkit-keyframes anmiateProgressBar {
+	
+	    0% { background-position-x:  0%; }
+	
+	    100% { background-position-x: 100%; }
+	
+	}
+}
 
-    0% { background-position-x:  0%; }
 
-    100% { background-position-x: 100%; }
-
+@if mgwt.os blackberry {
+	.mgwt-ProgressBar {
+		position: relative;
+		width: 250px;
+		height: 15px;
+		
+		
+		background-color: inherit;
+		background-repeat: repeat-x;
+		\-webkit-background-size: 15px 15px;
+		background-image: literal('-webkit-gradient(linear, 5 5, 10 10, color-stop(0.25, rgba(255, 255, 255, 0) ), color-stop(0.3, rgba(255, 255, 255, 0.7) ), color-stop(0.3, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 0.7) ), color-stop(0.8, rgba(255, 255, 255, 0) ) )');
+		background-position-x: 0;
+		\-webkit-animation-duration: 9s;
+		\-webkit-animation-name: anmiateProgressBar;
+		\-webkit-animation-iteration-count: infinite;
+		\-webkit-animation-timing-function: linear;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		\-webkit-box-sizing: border-box;
+	
+		border: 2px solid rbg(82, 163, 196);
+		
+		
+		
+		
+	}
+	
+	@-webkit-keyframes anmiateProgressBar {
+	
+	    0% { background-position-x:  0%; }
+	
+	    100% { background-position-x: 100%; }
+	
+	}
 }
