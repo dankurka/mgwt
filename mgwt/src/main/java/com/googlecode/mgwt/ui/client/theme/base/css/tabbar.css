@@ -26,120 +26,384 @@
 	@external mgwt-TabBar, selected, bottom, bookmarkButton,  contactsButton,  downloadsButton,  favoritesButton,  featuredButton,  historyButton,  moreButton,  mostRecentButton,  mostViewedButton,  searchButton;
 }
 
-.mgwt-TabBar{
-	width: 100%;
-	height: 49px;
-	/*background: literal('-webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(1%,#3d3d3d), color-stop(2%,#212121), color-stop(100%,#0e0e0e))'); 
-	*/
-	background-image: backgroundImage;
-	background-repeat: repeat-x;
-	display: inline-block;
-}
+@if mgwt.os ipad iphone desktop {
 
-.mgwt-TabBar .active{
-}
-
-
-
-.mgwt-TabBar .bookmarkButton, .mgwt-TabBar .contactsButton, .mgwt-TabBar .downloadsButton, .mgwt-TabBar .favoritesButton, .mgwt-TabBar .featuredButton, .mgwt-TabBar .historyButton, .mgwt-TabBar .moreButton, .mgwt-TabBar .mostRecentButton, .mgwt-TabBar .mostViewedButton, .mgwt-TabBar .searchButton{
-	display: inline-block;
-	position: relative;
-	min-width: 60px;
-	font-size: 9px;
-	color: #999995;
-	padding-top: 33px;
-	margin-top: 3px;
-	text-align: center;
-	background-position: 50% 0px;
-	background-repeat: no-repeat;
+	.mgwt-TabBar{
+		width: 100%;
+		height: 49px;
+		/*background: literal('-webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(1%,#3d3d3d), color-stop(2%,#212121), color-stop(100%,#0e0e0e))'); 
+		*/
+		background-image: backgroundImage;
+		background-repeat: repeat-x;
+		display: inline-block;
+		overflow: hidden;
+	}
 	
+	.mgwt-TabBar .active{
+	}
+	
+	
+	
+	.mgwt-TabBar .bookmarkButton, .mgwt-TabBar .contactsButton, .mgwt-TabBar .downloadsButton, .mgwt-TabBar .favoritesButton, .mgwt-TabBar .featuredButton, .mgwt-TabBar .historyButton, .mgwt-TabBar .moreButton, .mgwt-TabBar .mostRecentButton, .mgwt-TabBar .mostViewedButton, .mgwt-TabBar .searchButton{
+		display: inline-block;
+		position: relative;
+		min-width: 60px;
+		font-size: 9px;
+		color: #999995;
+		padding-top: 33px;
+		margin-top: 3px;
+		text-align: center;
+		background-position: 50% 0px;
+		background-repeat: no-repeat;
+		
+	}
+	
+	.mgwt-TabBar .bookmarkButton{
+		background-image: bookmarkImage;
+	}
+	
+	.mgwt-TabBar .bookmarkButton.selected{
+		background-image: bookmarkSelectedImage;
+		color: white;
+	}
+	
+	.mgwt-TabBar .contactsButton{
+		background-image: contactsImage;
+	}
+	
+	.mgwt-TabBar .contactsButton.selected{
+		background-image: contactsSelectedImage;
+		color: white;
+	}
+	
+	.mgwt-TabBar .downloadsButton{
+		background-image: downloadsImage;
+	}
+	
+	.mgwt-TabBar .downloadsButton.selected{
+		background-image: downloadsSelectedImage;
+		color: white;
+	}
+	.mgwt-TabBar .favoritesButton{
+		background-image: favoritesImage;
+	}
+	
+	.mgwt-TabBar .favoritesButton.selected{
+		background-image: favoritesSelectedImage;
+		color: white;
+	}
+	
+	.mgwt-TabBar .featuredButton{
+		background-image: featuredImage;
+	}
+	
+	.mgwt-TabBar .featuredButton.selected{
+		background-image: featuredSelectedImage;
+		color: white;
+	}
+	
+	.mgwt-TabBar .historyButton{
+		background-image: historyImage;
+	}
+	
+	.mgwt-TabBar .historyButton.selected{
+		background-image: historySelectedImage;
+		color: white;
+	}
+	
+	.mgwt-TabBar .moreButton{
+		background-image: moreImage;
+	}
+	
+	.mgwt-TabBar .moreButton.selected{
+		background-image: moreSelectedImage;
+		color: white;
+	}
+	
+	.mgwt-TabBar .mostRecentButton{
+		background-image: mostRecentImage;
+	}
+	
+	.mgwt-TabBar .mostRecentButton.selected{
+		background-image: mostRecentSelectedImage;
+		color: white;
+	}
+	
+	.mgwt-TabBar .mostViewedButton{
+		background-image: mostViewedImage;
+	}
+	
+	.mgwt-TabBar .mostViewedButton.selected{
+		background-image: mostViewedSelectedImage;
+		color: white;
+	}
+	
+	.mgwt-TabBar .searchButton{
+		background-image: searchImage;
+	}
+	
+	.mgwt-TabBar .searchButton.selected{
+		background-image: searchSelectedImage;
+		color: white;
+	}
 }
 
-.mgwt-TabBar .bookmarkButton{
-	background-image: bookmarkImage;
+
+
+@if mgwt.os android android_tablet {
+
+	.mgwt-TabBar{
+		width: 100%;
+		height: 40px;
+		background-color: inherit;
+		display: inline-block;
+		overflow: hidden;
+		border-bottom: 2px solid rgb(82, 163, 196);
+	}
+	
+	.mgwt-TabBar .active{
+	}
+	
+	
+	
+	.mgwt-TabBar .bookmarkButton, .mgwt-TabBar .contactsButton, .mgwt-TabBar .downloadsButton, .mgwt-TabBar .favoritesButton, .mgwt-TabBar .featuredButton, .mgwt-TabBar .historyButton, .mgwt-TabBar .moreButton, .mgwt-TabBar .mostRecentButton, .mgwt-TabBar .mostViewedButton, .mgwt-TabBar .searchButton{
+		display: inline-block;
+		position: relative;
+		min-width: 80px;
+		font-size: 14px;
+		color: white;
+		text-align: center;
+		top:10px;
+		height: 30px;
+		
+		margin-left: 10px;
+		
+	}
+	
+	.mgwt-TabBar .bookmarkButton{
+		
+	}
+	
+	.mgwt-TabBar .selected{
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(82, 163, 196, 1)), to(rgba(82, 163, 196, 1)))');
+		
+	}
+	
+	.mgwt-TabBar .bookmarkButton.selected{
+		
+	}
+	
+	.mgwt-TabBar .contactsButton{
+		
+	}
+	
+	.mgwt-TabBar .contactsButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .downloadsButton{
+		
+	}
+	
+	.mgwt-TabBar .downloadsButton.selected{
+		
+		
+	}
+	.mgwt-TabBar .favoritesButton{
+		
+	}
+	
+	.mgwt-TabBar .favoritesButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .featuredButton{
+		
+	}
+	
+	.mgwt-TabBar .featuredButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .historyButton{
+		
+	}
+	
+	.mgwt-TabBar .historyButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .moreButton{
+		
+	}
+	
+	.mgwt-TabBar .moreButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .mostRecentButton{
+		
+	}
+	
+	.mgwt-TabBar .mostRecentButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .mostViewedButton{
+		
+	}
+	
+	.mgwt-TabBar .mostViewedButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .searchButton{
+		
+	}
+	
+	.mgwt-TabBar .searchButton.selected{
+		
+		
+	}
 }
 
-.mgwt-TabBar .bookmarkButton.selected{
-	background-image: bookmarkSelectedImage;
-	color: white;
+
+
+
+
+
+
+
+
+/*TODO blackberry*/
+@if mgwt.os blackberry {
+
+	.mgwt-TabBar{
+		width: 100%;
+		height: 40px;
+		background-color: inherit;
+		display: inline-block;
+		overflow: hidden;
+		border-bottom: 2px solid rgb(82, 163, 196);
+	}
+	
+	.mgwt-TabBar .active{
+	}
+	
+	
+	
+	.mgwt-TabBar .bookmarkButton, .mgwt-TabBar .contactsButton, .mgwt-TabBar .downloadsButton, .mgwt-TabBar .favoritesButton, .mgwt-TabBar .featuredButton, .mgwt-TabBar .historyButton, .mgwt-TabBar .moreButton, .mgwt-TabBar .mostRecentButton, .mgwt-TabBar .mostViewedButton, .mgwt-TabBar .searchButton{
+		display: inline-block;
+		position: relative;
+		min-width: 80px;
+		font-size: 14px;
+		color: white;
+		text-align: center;
+		top:10px;
+		height: 30px;
+		
+		margin-left: 10px;
+		
+	}
+	
+	.mgwt-TabBar .bookmarkButton{
+		
+	}
+	
+	.mgwt-TabBar .selected{
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(82, 163, 196, 1)), to(rgba(82, 163, 196, 1)))');
+		
+	}
+	
+	.mgwt-TabBar .bookmarkButton.selected{
+		
+	}
+	
+	.mgwt-TabBar .contactsButton{
+		
+	}
+	
+	.mgwt-TabBar .contactsButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .downloadsButton{
+		
+	}
+	
+	.mgwt-TabBar .downloadsButton.selected{
+		
+		
+	}
+	.mgwt-TabBar .favoritesButton{
+		
+	}
+	
+	.mgwt-TabBar .favoritesButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .featuredButton{
+		
+	}
+	
+	.mgwt-TabBar .featuredButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .historyButton{
+		
+	}
+	
+	.mgwt-TabBar .historyButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .moreButton{
+		
+	}
+	
+	.mgwt-TabBar .moreButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .mostRecentButton{
+		
+	}
+	
+	.mgwt-TabBar .mostRecentButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .mostViewedButton{
+		
+	}
+	
+	.mgwt-TabBar .mostViewedButton.selected{
+		
+		
+	}
+	
+	.mgwt-TabBar .searchButton{
+		
+	}
+	
+	.mgwt-TabBar .searchButton.selected{
+		
+		
+	}
 }
 
-.mgwt-TabBar .contactsButton{
-	background-image: contactsImage;
-}
-
-.mgwt-TabBar .contactsButton.selected{
-	background-image: contactsSelectedImage;
-	color: white;
-}
-
-.mgwt-TabBar .downloadsButton{
-	background-image: downloadsImage;
-}
-
-.mgwt-TabBar .downloadsButton.selected{
-	background-image: downloadsSelectedImage;
-	color: white;
-}
-.mgwt-TabBar .favoritesButton{
-	background-image: favoritesImage;
-}
-
-.mgwt-TabBar .favoritesButton.selected{
-	background-image: favoritesSelectedImage;
-	color: white;
-}
-
-.mgwt-TabBar .featuredButton{
-	background-image: featuredImage;
-}
-
-.mgwt-TabBar .featuredButton.selected{
-	background-image: featuredSelectedImage;
-	color: white;
-}
-
-.mgwt-TabBar .historyButton{
-	background-image: historyImage;
-}
-
-.mgwt-TabBar .historyButton.selected{
-	background-image: historySelectedImage;
-	color: white;
-}
-
-.mgwt-TabBar .moreButton{
-	background-image: moreImage;
-}
-
-.mgwt-TabBar .moreButton.selected{
-	background-image: moreSelectedImage;
-	color: white;
-}
-
-.mgwt-TabBar .mostRecentButton{
-	background-image: mostRecentImage;
-}
-
-.mgwt-TabBar .mostRecentButton.selected{
-	background-image: mostRecentSelectedImage;
-	color: white;
-}
-
-.mgwt-TabBar .mostViewedButton{
-	background-image: mostViewedImage;
-}
-
-.mgwt-TabBar .mostViewedButton.selected{
-	background-image: mostViewedSelectedImage;
-	color: white;
-}
-
-.mgwt-TabBar .searchButton{
-	background-image: searchImage;
-}
-
-.mgwt-TabBar .searchButton.selected{
-	background-image: searchSelectedImage;
-	color: white;
-}

@@ -41,6 +41,7 @@ body {
 
 @if mgwt.os android android_tablet {
 	body {
+		color:white;
 		background-attachment: fixed;
 		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#000000), to(rgb(46, 54, 60)))');
 	}	

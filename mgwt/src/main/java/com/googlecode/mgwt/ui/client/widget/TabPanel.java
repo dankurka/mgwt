@@ -28,6 +28,7 @@ import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
 
@@ -72,11 +73,9 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		container.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
 
 		tabContainer = new TabContainer();
-		container.add(tabContainer);
+
 		tabContainer.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
 		tabBar = new TabBar(css);
-
-		container.add(tabBar);
 
 		tabBar.addSelectionHandler(new SelectionHandler<Integer>() {
 
@@ -86,6 +85,16 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 			}
 		});
+
+		if (MGWTUtil.getFeatureDetection().isAndroid()) {
+			container.add(tabBar);
+			container.add(tabContainer);
+
+		} else {
+			container.add(tabContainer);
+			container.add(tabBar);
+
+		}
 
 	}
 
