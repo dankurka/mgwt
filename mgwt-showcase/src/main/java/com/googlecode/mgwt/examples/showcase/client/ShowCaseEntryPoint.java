@@ -30,7 +30,6 @@ import com.googlecode.mgwt.examples.showcase.client.places.HomePlace;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
-import com.googlecode.mgwt.mvp.client.display.AnimatableDisplayBaseImpl;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
@@ -86,7 +85,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 	}
 
 	private void createPhoneDisplay(ClientFactory clientFactory) {
-		AnimatableDisplayBaseImpl display = GWT.create(AnimatableDisplay.class);
+		AnimatableDisplay display = GWT.create(AnimatableDisplay.class);
 
 		PhoneActivityMapper appActivityMapper = new PhoneActivityMapper(clientFactory);
 
@@ -123,7 +122,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		SimplePanel mainContainer = new SimplePanel();
 		mainContainer.getElement().setId("main");
-		AnimatableDisplayBaseImpl mainDisplay = GWT.create(AnimatableDisplay.class);
+		AnimatableDisplay mainDisplay = GWT.create(AnimatableDisplay.class);
 
 		TabletMainActivityMapper tabletMainActivityMapper = new TabletMainActivityMapper(clientFactory);
 

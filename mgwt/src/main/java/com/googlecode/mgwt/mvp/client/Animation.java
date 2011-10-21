@@ -15,7 +15,7 @@
  */
 package com.googlecode.mgwt.mvp.client;
 
-import com.googlecode.mgwt.mvp.client.resources.MVPClientBundle;
+import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 /**
  * @author Daniel Kurka
@@ -23,11 +23,10 @@ import com.googlecode.mgwt.mvp.client.resources.MVPClientBundle;
  */
 
 public enum Animation {
-	SLIDE(MVPClientBundle.INSTANCE.animationCss().slide()), SLIDE_REVERSE(MVPClientBundle.INSTANCE.animationCss().slide(), true), SLIDE_UP(MVPClientBundle.INSTANCE.animationCss().slideup()), SLIDE_UP_REVERSE(
-			MVPClientBundle.INSTANCE.animationCss().slideup(), true), DISSOLVE(MVPClientBundle.INSTANCE.animationCss().dissolve()), DISSOLVE_REVERSE(
-			MVPClientBundle.INSTANCE.animationCss().dissolve(), true), FADE(MVPClientBundle.INSTANCE.animationCss().fade()), FADE_REVERSE(MVPClientBundle.INSTANCE.animationCss().fade(), true), FLIP(
-			MVPClientBundle.INSTANCE.animationCss().flip()), FLIP_REVERSE(MVPClientBundle.INSTANCE.animationCss().flip(), true), POP(MVPClientBundle.INSTANCE.animationCss().pop()), POP_REVERSE(
-			MVPClientBundle.INSTANCE.animationCss().pop(), true), SWAP(MVPClientBundle.INSTANCE.animationCss().swap()), SWAP_REVERSE(MVPClientBundle.INSTANCE.animationCss().swap(), true), CUSTOM("");
+	SLIDE(AnimationSelector.getNames().slide()), SLIDE_REVERSE(AnimationSelector.getNames().slide(), true), SLIDE_UP(AnimationSelector.getNames().slideup()), SLIDE_UP_REVERSE(AnimationSelector
+			.getNames().slideup(), true), DISSOLVE(AnimationSelector.getNames().dissolve()), DISSOLVE_REVERSE(AnimationSelector.getNames().dissolve(), true), FADE(AnimationSelector.getNames().fade()), FADE_REVERSE(
+			AnimationSelector.getNames().fade(), true), FLIP(AnimationSelector.getNames().flip()), FLIP_REVERSE(AnimationSelector.getNames().flip(), true), POP(AnimationSelector.getNames().pop()), POP_REVERSE(
+			AnimationSelector.getNames().pop(), true), SWAP(AnimationSelector.getNames().swap()), SWAP_REVERSE(AnimationSelector.getNames().swap(), true), CUSTOM("");
 
 	private String cssName;
 	private boolean inverse;

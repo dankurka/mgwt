@@ -25,7 +25,7 @@ import com.googlecode.mgwt.dom.client.event.animation.AnimationEndHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 import com.googlecode.mgwt.mvp.client.resources.AnimationCss;
-import com.googlecode.mgwt.mvp.client.resources.MVPClientBundle;
+import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 /**
  * @author Daniel Kurka
@@ -44,7 +44,7 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	protected final AnimationCss css;
 
 	public AnimatableDisplayBaseImpl() {
-		this(MVPClientBundle.INSTANCE.animationCss());
+		this(AnimationSelector.getBundle().animationCss());
 	}
 
 	public AnimatableDisplayBaseImpl(AnimationCss css) {
