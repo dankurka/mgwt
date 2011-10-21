@@ -63,7 +63,7 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 
 		Button confirmRoundButton = new Button("Round");
 		confirmRoundButton.setConfirm(true);
-		importantRoundButton.setRound(true);
+		confirmRoundButton.setRound(true);
 		content.add(confirmRoundButton);
 
 		Button confirmSmallButton = new Button("Small");
