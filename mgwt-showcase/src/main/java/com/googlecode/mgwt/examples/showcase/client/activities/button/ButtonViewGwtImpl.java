@@ -28,6 +28,7 @@ public class ButtonViewGwtImpl extends DetailViewGwtImpl implements ButtonView {
 	public ButtonViewGwtImpl() {
 
 		FlowPanel content = new FlowPanel();
+		content.setWidth("150px");
 
 		scrollPanel.setScrollingEnabledX(false);
 
