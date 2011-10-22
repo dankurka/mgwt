@@ -45,12 +45,19 @@
 	}
  	
 
- 	@if mgwt.os iphone ipad desktop {
+ 	@if mgwt.os iphone ipad {
 		 .display {
 			\-webkit-perspective: 800;
 		    \-webkit-transform-style: preserve-3d;
 		    \-webkit-backface-visibility: hidden;
 		    \-webkit-transform: translate3d(0,0,0) rotate(0) scale(1);
+		}
+	}
+	
+	@if mgwt.os desktop {
+		 .display {
+			\-webkit-perspective: 800;
+		    \-webkit-backface-visibility: hidden;
 		}
 	}
 }
