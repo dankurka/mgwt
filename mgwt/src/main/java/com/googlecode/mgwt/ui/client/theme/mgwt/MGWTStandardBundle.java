@@ -12,7 +12,6 @@ import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle;
 import com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss;
 import com.googlecode.mgwt.ui.client.theme.base.MainCss;
 import com.googlecode.mgwt.ui.client.theme.base.PanelCss;
-import com.googlecode.mgwt.ui.client.theme.base.PopoverCss;
 import com.googlecode.mgwt.ui.client.theme.base.ProgressBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
@@ -33,10 +32,6 @@ public interface MGWTStandardBundle extends MGWTClientBundle {
 
 	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/slider.css", "css/slider.css" })
 	SliderCss getSliderCss();
-
-	//TODO
-	@Source("css/popover.css")
-	PopoverCss getPopoverCss();
 
 	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/list.css", "css/list.css" })
 	ListCss getListCss();

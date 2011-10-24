@@ -1,6 +1,5 @@
 package com.googlecode.mgwt.ui.client.theme.base;
 
-
 public interface HeaderCss extends ButtonBaseCss {
 
 	@ClassName("mgwt-HeaderButton")
@@ -26,7 +25,12 @@ public interface HeaderCss extends ButtonBaseCss {
 	@ClassName("mgwt-HeaderPanel-right")
 	String right();
 
-	//TODO remote this
 	@ClassName("mgwt-DropDownMenu")
-	String test();
+	public String main();
+
+	@ClassName("mgwt-DropDownMenu-content")
+	public String content();
+
+	@ClassName("mgwt-DropDownMenu-arrow")
+	public String arrow();
 }

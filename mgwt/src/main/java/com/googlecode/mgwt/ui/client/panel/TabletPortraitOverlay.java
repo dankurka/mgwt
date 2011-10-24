@@ -11,7 +11,7 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.theme.base.PopoverCss;
+import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 	private AnimatableDialogBase popinDialog;
@@ -26,10 +26,10 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 		private FlowPanel content;
 
 		public IpadMenu() {
-			this(MGWTStyle.getDefaultClientBundle().getPopoverCss());
+			this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
 		}
 
-		public IpadMenu(PopoverCss css) {
+		public IpadMenu(HeaderCss css) {
 			main = new FlowPanel();
 			css.ensureInjected();
 			initWidget(main);

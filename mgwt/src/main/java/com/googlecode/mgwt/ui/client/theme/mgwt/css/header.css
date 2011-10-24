@@ -45,4 +45,100 @@
 }
 
 
+/**
+
+	DROP DOWN MENU
+*/
+
+
+.mgwt-DropDownMenu {
+	
+	
+	\-webkit-box-shadow: 2px 2px 10px #000000;
+	background-color: baseColor;
+	border: solid 2px rgba(0,0,0,0.5);
+	
+}
+
+
+
+.mgwt-DropDownMenu-content {
+	
+	display: -webkit-box;
+	\-webkit-box-orient: vertical;
+	width: 100%;
+	height: 100%;
+
+}
+
+
+
+.mgwt-DropDownMenu-arrow {
+	
+	background-color: #ffffff;
+	margin: 0px 5px 5px 5px !important;
+	\-webkit-border-radius: 5px;
+	position: absolute;
+	top: -15px;
+	left: 3px;
+	height: 30px !important;
+	width: 30px;
+	border: solid 2px #4f4f4f;
+	border-bottom: none;
+	border-right: none;
+	background-color: #7d828c !important;
+	\-webkit-transform: rotate(45deg);
+	\-webkit-mask-image: literal('-webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.5, #000000), color-stop(0.5, transparent), to(transparent) )');
+
+
+}
+
+
+
+.mgwt-DropDownMenu .mgwt-HeaderPanel{
+	padding: 0px 10px;
+	height: 40px;
+	\-webkit-border-top-left-radius: 8px;
+	\-webkit-border-top-right-radius: 8px;
+	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#7e838d), color-stop(0.5, #303648), color-stop(0.5, #121b2e), to(#131b2f) )');
+	position: relative;
+	border-bottom: 0;
+	
+}
+
+.mgwt-DropDownMenu .mgwt-HeaderButton.back span { 
+    
+   background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#7d828c),color-stop(0.5, #303749), color-stop(0.5, #121a2e), to(#121a2e))');   
+ 
+}
+
+.mgwt-DropDownMenu .mgwt-HeaderButton
+		{
+			color: #ffffff;
+			text-decoration: none;
+			display: inline-block;
+			/*padding: 4px 10px;*/
+			\-webkit-border-radius: 5px;
+			margin-top: 6px;
+			
+			border: solid 1px rgba(79, 79, 79, 0.75);
+			\-webkit-box-shadow: none;
+			
+		}
+
+.mgwt-DropDownMenu .mgwt-HeaderButton p {
+	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#7d828c),color-stop(0.5, #303749), color-stop(0.5, #121a2e), to(#121a2e))');
+}
+
+.mgwt-DropDownMenu .mgwt-HeaderButton.active p {
+	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#5e636d), color-stop(0.5, #101628), color-stop(0.5, #00000e), to(#00000f) )');
+}
+
+.mgwt-DropDownMenu .mgwt-HeaderButton.active span { 
+    
+   background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#5d626c),color-stop(0.5, #101729), color-stop(0.5, #00000e), to(#00000e))');   
+ 
+}
+
+
 
