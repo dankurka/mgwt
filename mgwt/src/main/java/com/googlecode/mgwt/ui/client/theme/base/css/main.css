@@ -31,11 +31,17 @@ body {
 
 
 
-@if mgwt.os ipad desktop {
+@if mgwt.os ipad  {
 	body {
 		background-color: #E0E1E5;
 		\-webkit-perspective: 800;
    		\-webkit-transform-style: preserve-3d;
+	}
+}
+
+@if mgwt.os  desktop {
+	body {
+		background-color: #E0E1E5;
 	}
 }
 
