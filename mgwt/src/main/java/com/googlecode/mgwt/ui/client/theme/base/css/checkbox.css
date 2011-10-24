@@ -35,7 +35,7 @@
 	width: 38px;
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#cecece), to(#fcfcfc) )');
 	border-top: solid 1px #eeeeee;
-	\-webkit-border-radius: 7px;
+	\-webkit-border-radius: 5px;
 }
 
 
@@ -56,7 +56,7 @@
 
 @if mgwt.os android {
 	.mgwt-CheckBox-on {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#74b143), to(#43830e) )');
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(62, 143, 176)), to(rgb(42, 123, 156)) )');
 		border: solid 1px black;
 	}
 }
