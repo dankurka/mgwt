@@ -22,62 +22,62 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 public interface MGWTStandardBundle extends MGWTClientBundle {
 
-	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/mgwt/css/progressbar.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/progressbar.css", "com/googlecode/mgwt/ui/client/theme/mgwt/css/progressbar.css" })
 	ProgressBarCss getProgressBarCss();
 
-	@Source({ "color.css", "css/progressindicator.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/progressindicator.css" })
 	ProgressIndicatorCss getProgressIndicatorCss();
 
-	@Source({ "color.css", "css/header.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/header.css", "css/header.css" })
 	HeaderCss getHeaderCss();
 
-	@Source({ "color.css", "css/slider.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/slider.css", "css/slider.css" })
 	SliderCss getSliderCss();
 
 	//TODO
 	@Source("css/popover.css")
 	PopoverCss getPopoverCss();
 
-	@Source({ "color.css", "css/list.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/list.css", "css/list.css" })
 	ListCss getListCss();
 
-	@Source({ "color.css", "css/searchbox.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/searchbox.css", "css/searchbox.css" })
 	MSearchBoxCss getSearchBoxCss();
 
 	//TODO
 	@Source("css/checkbox.css")
 	CheckBoxCss getCheckBoxCss();
 
-	@Source({ "color.css", "css/buttons.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/buttons.css", "css/buttons.css" })
 	ButtonCss getButtonCss();
 
-	@Source("css/scrollpanel.css")
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/scrollpanel.css", "css/scrollpanel.css" })
 	ScrollPanelCss getScrollPanelCss();
 
-	@Source({ "color.css", "css/buttonbar.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/buttonbar.css", "css/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
 	//TODO
 	@Source("css/dialog.css")
 	DialogCss getDialogCss();
 
-	@Source({ "color.css", "css/main.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/main.css", "css/main.css" })
 	MainCss getMainCss();
 
-	@Source({ "color.css", "css/input.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/input.css", "css/input.css" })
 	InputCss getInputCss();
 
-	@Source({ "color.css", "css/panel.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/panel.css", "css/panel.css" })
 	PanelCss getPanelCss();
 
-	@Source("css/layout.css")
+	@Source("com/googlecode/mgwt/ui/client/theme/base/css/layout.css")
 	LayoutCss getLayoutCss();
 
 	//TODO
 	@Source("css/pulltorefresh.css")
 	PullToRefreshCss getPullToRefreshCss();
 
-	@Source({ "color.css", "css/tabbar.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/tabbar.css", "css/tabbar.css" })
 	TabBarCss getTabBarCss();
 
 }

@@ -5,12 +5,10 @@
 }
 
 .mgwt-RoundPanel {
-	\-webkit-border-radius: 15px;
+
 	background-color: baseColor;
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.3)), to(rgba(255,255,255, 0.3)) )');
 	border: 1px solid rgba(0, 0, 0, 0.5);
-	margin: 10px;
-	padding: 10px;
-	font-weight: bold;
+
 }
 

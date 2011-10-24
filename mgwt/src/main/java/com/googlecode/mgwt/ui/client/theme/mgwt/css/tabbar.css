@@ -21,37 +21,20 @@
 }
 
 .mgwt-TabBar{
-	width: 100%;
-	height: 49px;
-	/*background: literal('-webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(1%,#3d3d3d), color-stop(2%,#212121), color-stop(100%,#0e0e0e))'); 
-	*/
+	
 	background-color: baseColor;
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.15)), to(rgba(255,255,255, 0.1)), color-stop(0.5, rgba(0,0,0, 0.1)) )');
-	background-repeat: repeat-x;
-	display: \-webkit-box;
-	\-webkit-box-orient: horizontal;
+	
 	color: fontColor;
 }
 
-.mgwt-TabBar .active{
-}
 
 
 
 .mgwt-TabBar .bookmarkButton, .mgwt-TabBar .contactsButton, .mgwt-TabBar .downloadsButton, .mgwt-TabBar .favoritesButton, .mgwt-TabBar .featuredButton, .mgwt-TabBar .historyButton, .mgwt-TabBar .moreButton, .mgwt-TabBar .mostRecentButton, .mgwt-TabBar .mostViewedButton, .mgwt-TabBar .searchButton{
-	\-webkit-box-flex: 0;
-	
-	
-	
-	min-width: 60px;
-	font-size: 9px;
+
 	color: fontColor;
-	padding-top: 33px;
 	
-	text-align: center;
-	background-position: 50% 0px;
-	background-repeat: no-repeat;
-	margin: 2px;
 	border: 1px solid rgba(0,0,0, 0)
 	
 }

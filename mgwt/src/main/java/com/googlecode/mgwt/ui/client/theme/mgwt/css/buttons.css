@@ -5,20 +5,13 @@
 
 .mgwt-Button {
 	border: solid 1px rgba(0,0,0, 0.5);
-	\-webkit-border-radius: 12px;
+	
 
 	background-color: baseColor;
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255, 255, 0.35)), color-stop(0.5, rgba(255,255, 255, 0.15)),  to(rgba(255,255, 255, 0.35)))'); 
 	color: fontColor;
 	
-	padding: 9px 13px;
-	margin: 5px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-size: 19px;
-	font-weight: bold;
-	text-align: center;
+	
 	
 }
 
@@ -26,28 +19,7 @@
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255, 255, 0.20)), color-stop(0.5, rgba(0,0,0,0.10)),  to(rgba(255,255, 255, 0.20)))'); 
 }
 
-.mgwt-Button.small{
-	padding: 5px 7px;
-	margin: 2px;
-	margin-left: 5px;
-	margin-right: 5px;
-	font-size: 12px;
-}
 
-.mgwt-Button.round {
-	border-bottom-left-radius: 16px 16px;
-	border-bottom-right-radius: 16px 16px;
-	border-top-left-radius: 16px 16px;
-	border-top-right-radius: 16px 16px;
-}
 
-.mgwt-Button.important {
-	
-	background-color: #e00013; 
-	
-	
-}
-.mgwt-Button.confirm {
-	background-color: #0bad10; 
-}
+
 

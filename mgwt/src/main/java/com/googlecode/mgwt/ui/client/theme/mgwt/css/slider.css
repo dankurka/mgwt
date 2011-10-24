@@ -3,20 +3,10 @@
 	
 }
 
-.mgwt-Slider {
-	display: inline-block;
-	width: 277px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	
-}
+
 
 .mgwt-Slider .mgwt-Slider-bar{
-	position: relative;
-	height: 9px;
-	\-webkit-box-sizing: padding-box;
-	\-webkit-box-shadow: 2px 2px 4px #666666;
-	\-webkit-border-radius: 4px;
+	
 	background-repeat: no-repeat, repeat-x;
 	background-color: baseColor;
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255, 255, 0.35)), color-stop(0.5, rgba(255,255, 255, 0.15)),  to(rgba(255,255, 255, 0.35)))'); 
@@ -24,14 +14,6 @@
 }
 
 .mgwt-Slider .mgwt-Slider-pointer {
-	position:relative;
-	height:20px;
-	width:20px;
-	left: -10px;
-	top: -6px;
-	\-webkit-tap-highlight-color: transparent;
-	\-webkit-box-shadow: 2px 2px 3px #666666;
-	\-webkit-border-radius: 10px;
 	background-color: fontColor;
 	border: 1px solid rgba(0,0,0, 0.5);
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.15)), color-stop(.5, rgba(0,0,0, 0.05)), to(rgba(0,0,0, 0.1)))');

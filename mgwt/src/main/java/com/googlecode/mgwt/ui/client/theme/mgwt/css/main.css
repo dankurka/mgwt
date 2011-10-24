@@ -2,22 +2,11 @@
 
 @external body, *;
 
-* {
-	\-webkit-user-select: none;
-	\-webkit-text-size-adjust: none;
-	margin: 0px;
-	padding: 0px;
-	font-family: Helvetica;
-	\-webkit-touch-callout: none;
-	\-webkit-text-size-adjust: none;
-}
+
 
 body {
 	background-color:fontColor;
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.1)), to(rgba(0,0,0, 0.1)) )');
-	width: 100%;
-	height: 100%;
-	position: absolute;
 	background-attachment: fixed;
 	color: fontColor;
 }

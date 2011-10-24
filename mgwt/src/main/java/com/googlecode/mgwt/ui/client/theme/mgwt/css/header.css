@@ -6,129 +6,33 @@
 
 
 .mgwt-HeaderPanel {
-	position: relative;
-	height: 40px;
+	
 	background-color: baseColor;
 	border-bottom: 1px solid rgba(0,0,0,0.5);
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.15)), to(rgba(255,255,255, 0.1)), color-stop(0.5, rgba(0,0,0, 0.1)) )');
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
-	position: absolute;
-	top: 0px;
-	left: 6px;
-}
-
-.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
-	position: absolute;
-	top: 0px;
-	right: 6px;
-}
-
 .mgwt-HeaderPanel .mgwt-HeaderPanel-center {
-	position: absolute;
-	left: 50%;
-	opacity: 1;
-	width: 310px;
-	text-align: center;
-	height: 31px;
-	margin-top: 6px;
-	margin-left: -150px;
-	margin-right: 5px;
-	z-index: 0;
-	font-size: 16pt;
-	font-weight: bold;
-	color: fontColor;
-	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-
-
-
-
-
-
-.mgwt-HeaderButton {
-
-	min-width: 40px;
-	max-width: 60px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	z-index: 1;
-	font-size: 12px;
-	font-weight: bold;
-	text-align: center;
-	color: white;
-	text-shadow: rgba(0, 0, 0, .6) 0px -1px 0px;
-
-	margin: 6px 0 0 12px;
-	height: 26px;
-	
-	padding: 0;
-	
-}
-
-
-
-
-
-
-.mgwt-HeaderButton {
-	
-	
-	
+		
+		color: fontColor;
+		
+		
 	}
 
 
-
 .mgwt-HeaderButton p { 
-    position: relative; 
-    z-index: 2; 
-    margin: 0; 
-    padding: 5px; 
-    font-size: 12px; 
-    font-weight: bold; 
     color: fontColor; 
-    text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
-    text-align: center;
+    text-shadow: none;
     background-color: baseColor;
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.5)), to(rgba(0,0,0, 0.5)) )');
-	\-webkit-border-radius: 4px;
 }
 
-
-
-
-.mgwt-HeaderButton.active {
-	
-}
-
-
-
-
-
-.mgwt-HeaderButton.back div {
-	position: absolute;
-	z-index: 1;
-	top: 4px;
-	left: -6px;
-	\-webkit-transform: rotate(51deg);
-}
 .mgwt-HeaderButton.back span { 
-    \-webkit-transform: skew(15deg);
-    display: block; 
-    width: 15px; 
-    height: 16px; 
     background: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.5)), to(rgba(0,0,0, 0.5)) )'); 
     
   
     
 }
-
-
 
 .mgwt-HeaderButton.active p {
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.7)), to(rgba(0,0,0, 0.7)) )');
@@ -140,63 +44,5 @@
 	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.7)), to(rgba(0,0,0, 0.7)) )');
 }
 
-
-
-
-
-.mgwt-HeaderButton.forward div {
-	position: absolute;
-	z-index: 1;
-	top: 4px;
-	right: -7px;
-	\-webkit-transform: rotate(51deg);
-}
-
-.mgwt-HeaderButton.round{
-}
-
-
-
-
-.mgwt-DropDownMenu .mgwt-HeaderPanel{
-	padding: 0px 10px;
-	height: 40px;
-	\-webkit-border-top-left-radius: 8px;
-	\-webkit-border-top-right-radius: 8px;
-	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#7e838d), color-stop(0.5, #303648), color-stop(0.5, #121b2e), to(#131b2f) )');
-	position: relative;
-	border-bottom: 0;
-	
-}
-
-.mgwt-DropDownMenu .mgwt-HeaderButton.back span { 
-    
-   background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#7d828c),color-stop(0.5, #303749), color-stop(0.5, #121a2e), to(#121a2e))');   
- 
-}
-
-.mgwt-DropDownMenu .mgwt-HeaderButton
-		{
-			color: #ffffff;
-			text-decoration: none;
-			display: inline-block;
-			/*padding: 4px 10px;*/
-			\-webkit-border-radius: 5px;
-			margin-top: 6px;
-			background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#7d828c),color-stop(0.5, #303749), color-stop(0.5, #121a2e), to(#121a2e))');
-			border: solid 1px rgba(79, 79, 79, 0.75);
-			\-webkit-box-shadow: none;
-			
-		}
-
-.mgwt-DropDownMenu .mgwt-HeaderButton.active {
-	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#5e636d), color-stop(0.5, #101628), color-stop(0.5, #00000e), to(#00000f) )');
-}
-
-.mgwt-DropDownMenu .mgwt-HeaderButton.active span { 
-    
-   background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#5d626c),color-stop(0.5, #101729), color-stop(0.5, #00000e), to(#00000e))');   
- 
-}
 
 
