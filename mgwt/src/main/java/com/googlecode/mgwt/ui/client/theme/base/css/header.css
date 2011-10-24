@@ -262,7 +262,8 @@
 	}
 	
 	.mgwt-HeaderButton.active p {
-		background-color: rgb(0, 92, 176);
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+		
 		
 	}
 }
@@ -340,7 +341,7 @@
 	
 	
 	.mgwt-HeaderButton.active span{
-		background-color: rgb(0, 92, 176);
+		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
 		
 	}
 }
