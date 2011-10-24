@@ -3,8 +3,8 @@ package com.googlecode.mgwt.mvp.client.display;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 
-public class AnimatableDisplayAndroidImplWithoutAnimation extends AnimatableDisplayBaseImpl {
-	public AnimatableDisplayAndroidImplWithoutAnimation() {
+public class AnimatableDisplayWithoutAnimation extends AnimatableDisplayBaseImpl {
+	public AnimatableDisplayWithoutAnimation() {
 
 	}
 

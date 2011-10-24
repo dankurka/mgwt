@@ -415,7 +415,7 @@
 	border: solid 2px #4f4f4f;
 	border-bottom: none;
 	border-right: none;
-	background-color: #7d828c !important;
+	background-color: #7d828c;
 	\-webkit-transform: rotate(45deg);
 	\-webkit-mask-image: literal('-webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.5, #000000), color-stop(0.5, transparent), to(transparent) )');
 

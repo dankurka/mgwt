@@ -536,7 +536,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		} else if (position_y < maxScrollY) {
 			resetY = maxScrollY;
 		}
-		System.out.println("pos: " + position_y + " maxscroll: " + maxScrollY);
 
 		if (resetX != position_x || resetY != position_y) {
 			scrollTo(resetX, resetY, 300);

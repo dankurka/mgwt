@@ -58,7 +58,6 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 
 		@Override
 		public void onTransitionEnd(TransitionEndEvent event) {
-			System.out.println("trans end");
 			AnimatableDisplayTransistionImpl.this.onAnimationEnd();
 
 		}
@@ -136,7 +135,6 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 	@Override
 	public void animate(Animation animation, boolean currentIsFirst, AnimationEndCallback callback) {
 
-		System.out.println("start trans");
 		lastCallback = callback;
 		blurBeforeAnimation();
 

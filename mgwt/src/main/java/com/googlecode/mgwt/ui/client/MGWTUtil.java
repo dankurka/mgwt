@@ -172,7 +172,7 @@ public class MGWTUtil {
 					ORIENTATION orientation = getOrientation();
 					if (orientation != currentOrientation) {
 						currentOrientation = orientation;
-						manager.fireEvent(new OrientationChangeEvent(orientation));
+						manager.fireEvent(new OrientationChangeEvent(ORIENTATION.PORTRAIT));
 					}
 				}
 			});

@@ -56,7 +56,7 @@
         </all>
     </replace-with>
     
-     <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayAndroidImplWithoutAnimation">
+     <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayWithoutAnimation">
         <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
         <all>
             <when-property-is name="mgwt.os" value="blackberry"/>
