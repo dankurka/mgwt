@@ -36,6 +36,20 @@
 	}
 }
 
+@if mgwt.os blackberry {
+	.mgwt-TextBox .box:focus, .mgwt-PasswordTextBox .box:focus, .mgwt-TextArea .box:focus {
+    	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
+	}
+	
+	.mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box{
+		background-color: transparent;
+		color: white;
+		
+	
+	}
+}
+
 
 .mgwt-TextBox .cover, .mgwt-PasswordTextBox .cover, .mgwt-TextArea .cover{
     position: absolute;
@@ -148,6 +162,19 @@
 }
 
 @if mgwt.os android android_tablet {
+	.mgwt-ListBox, .mgwt-ListBox:focus  {
+    	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
+	}
+	
+	.mgwt-ListBox{
+		background-color: transparent;
+		color: white;
+	
+	}
+}
+
+@if mgwt.os blackberry {
 	.mgwt-ListBox, .mgwt-ListBox:focus  {
     	\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 

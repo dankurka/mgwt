@@ -16,6 +16,10 @@
 package com.googlecode.mgwt.ui.client.button;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.web.bindery.event.shared.HandlerRegistration;
@@ -25,7 +29,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
@@ -46,31 +52,61 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasSimp
 		css.ensureInjected();
 		this.active = css.active();
 
-		addTouchHandler(new TouchHandler() {
+		if (MGWTUtil.getFeatureDetection().isBlackBerry() || MGWTUtil.getFeatureDetection().isDesktop()) {
+			addDomHandler(new MouseOverHandler() {
+
+				@Override
+				public void onMouseOver(MouseOverEvent event) {
+					addStyleName(active);
+
+				}
+			}, MouseOverEvent.getType());
+
+			addDomHandler(new MouseOutHandler() {
+
+				@Override
+				public void onMouseOut(MouseOutEvent event) {
+					removeStyleName(active);
+
+				}
+			}, MouseOutEvent.getType());
+		} else {
+			addTouchHandler(new TouchHandler() {
+
+				@Override
+				public void onTouchCanceled(TouchCancelEvent event) {
+					removeStyleName(active);
+
+				}
+
+				@Override
+				public void onTouchEnd(TouchEndEvent event) {
+					removeStyleName(active);
+
+				}
+
+				@Override
+				public void onTouchMove(TouchMoveEvent event) {
+
+				}
+
+				@Override
+				public void onTouchStart(TouchStartEvent event) {
+					addStyleName(active);
+
+				}
+			});
+		}
+
+		addSimpleTouchHandler(new SimpleTouchHandler() {
 
 			@Override
-			public void onTouchCanceled(TouchCancelEvent event) {
+			public void onTouch(SimpleTouchEvent event) {
 				removeStyleName(active);
-
-			}
-
-			@Override
-			public void onTouchEnd(TouchEndEvent event) {
-				removeStyleName(active);
-
-			}
-
-			@Override
-			public void onTouchMove(TouchMoveEvent event) {
-
-			}
-
-			@Override
-			public void onTouchStart(TouchStartEvent event) {
-				addStyleName(active);
 
 			}
 		});
+
 	}
 
 	@Override

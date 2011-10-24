@@ -282,7 +282,7 @@
 
 
 
-/*TODO blackberry*/
+
 @if mgwt.os blackberry {
 
 	.mgwt-TabBar{
@@ -291,7 +291,7 @@
 		background-color: inherit;
 		display: inline-block;
 		overflow: hidden;
-		border-bottom: 2px solid rgb(82, 163, 196);
+		border-bottom: 2px solid rgb(0, 92, 176);
 	}
 	
 	.mgwt-TabBar .active{
@@ -318,7 +318,7 @@
 	}
 	
 	.mgwt-TabBar .selected{
-		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(82, 163, 196, 1)), to(rgba(82, 163, 196, 1)))');
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(0, 92, 176, 1)), to(rgb(0, 92, 176)))');
 		
 	}
 	

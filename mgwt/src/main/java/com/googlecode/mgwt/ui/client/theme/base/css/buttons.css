@@ -238,7 +238,7 @@
 	
 }
 
-/*TODO*/
+
 @if mgwt.os blackberry {
 
 	.mgwt-Button {
@@ -256,14 +256,14 @@
 		text-overflow: ellipsis;
 		font-size: 19px;
 		text-align: center;
-		border: 2px solid rgb(82, 163, 196);
+		border: 2px solid rgb(0, 92, 176);
 		
 	}
 	
 	.mgwt-Button.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(42, 123, 156)), to(rgb(32, 113, 146)) )');
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
 		color: #fff;
-		text-shadow: #000 0 1px 0;
+		
 		
 	
 	}
@@ -284,7 +284,7 @@
 	}
 	
 	.mgwt-Button.important {
-		\-webkit-box-shadow: 2px 2px 3px #999; 
+		border: none;
 		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)), color-stop(0.5, rgba(233,72,72,0.80)), color-stop(0.5, rgba(184,0,0,0.70)), to(rgba(255,0,0,0.80)))'); 
 		color: #fff;
 		text-shadow: #000 0 1px 0;
@@ -296,7 +296,7 @@
 	}
 	
 	.mgwt-Button.confirm {
-		\-webkit-box-shadow: 2px 2px 3px #999; 
+		border: none;
 		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), color-stop(0.5, rgba(73,171,14,0.60)), color-stop(0.5, rgba(0,113,0,0.70)), to(rgba(0,150,0,0.80)))'); 
 		color: #fff;
 		text-shadow: #000 0 1px 0;
@@ -304,10 +304,10 @@
 	}
 	
 	.mgwt-Button.confirm.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(135,148,203,0.85)), color-stop(0.5, rgba(34,56,159,0.75)), color-stop(0.5, rgba(0,27,145,0.75)), to(rgba(2,59,152,0.65)))'); 
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(85,209,85,0.70)), color-stop(0.5, rgba(43,131,0,0.60)), color-stop(0.5, rgba(0,83,0,0.70)), to(rgba(0,120,0,0.80)))'); 
 		color: #fff;
 		text-shadow: #000 0 1px 0;
-		\-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+		
 		
 		
 	}
