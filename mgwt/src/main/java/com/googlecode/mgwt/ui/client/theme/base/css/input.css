@@ -1,4 +1,6 @@
 @url checkImage inputCheckImage;
+@url androidCheckChecked android_check_checked;
+@url androidCheckNotChecked android_check_not_checked;
 
 @if mgwt.css pretty {
 	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, box, cover, mgwt-RadioButton, disabled;
@@ -56,24 +58,76 @@
 	\-webkit-box-flex: 1;
 }
 
-.mgwt-RadioButton>input {
-	\-webkit-appearance: none;
-	width: 18px;
-	height: 18px;
-	border: none;
-	background-color: transparent;
-	background-image: checkImage;
-	opacity: 0.2;
+@if mgwt.os ipad iphone desktop {
+	.mgwt-RadioButton>input {
+		\-webkit-appearance: none;
+		width: 18px;
+		height: 18px;
+		border: none;
+		background-color: transparent;
+		background-image: checkImage;
+		opacity: 0.2;
+	}
+	
+	.mgwt-RadioButton>input:CHECKED {
+		\-webkit-appearance: none;
+		background-image: checkImage;
+		opacity: 1.0;
+		background-color: transparent;
+		
+		
+	}
 }
 
-.mgwt-RadioButton>input:CHECKED {
-	\-webkit-appearance: none;
-	background-image: checkImage;
-	opacity: 1.0;
-	background-color: transparent;
+
+
+@if mgwt.os android android_tablet {
 	
 	
+	.mgwt-RadioButton>input {
+		\-webkit-appearance: none;
+		width: 32px;
+		height: 32px;
+		border: none;
+		background-color: transparent;
+		background-image: androidCheckNotChecked;
+		
+	}
+	
+	.mgwt-RadioButton>input:CHECKED {
+		\-webkit-appearance: none;
+		background-image: androidCheckChecked;
+		
+		background-color: transparent;
+		
+		
+	}
 }
+
+/*TODO */
+@if mgwt.os blackberry {
+	
+	
+	.mgwt-RadioButton>input {
+		\-webkit-appearance: none;
+		width: 32px;
+		height: 32px;
+		border: none;
+		background-color: transparent;
+		background-image: androidCheckNotChecked;
+		
+	}
+	
+	.mgwt-RadioButton>input:CHECKED {
+		\-webkit-appearance: none;
+		background-image: androidCheckChecked;
+		
+		background-color: transparent;
+		
+		
+	}
+}
+
 
 /*todo*/
 .disabled{

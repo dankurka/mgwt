@@ -236,4 +236,10 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("resources/error.png")
 	DataResource errorImage();
 
+	@Source("resources/input/check_android_checked.png")
+	DataResource android_check_checked();
+
+	@Source("resources/input/check_android_not_checked.png")
+	DataResource android_check_not_checked();
+
 }
