@@ -14,7 +14,7 @@
 <!--  	<set-property name="mgwt.os" value="android" />   -->
 	
 	<!-- -->
-	  <set-configuration-property name="mgwt.css" value="pretty" />
+<!-- 	  <set-configuration-property name="mgwt.css" value="pretty" /> -->
 	 <!--    -->
 
 	<entry-point class="com.googlecode.mgwt.examples.showcase.client.ShowCaseEntryPoint" />

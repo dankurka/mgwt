@@ -20,22 +20,17 @@ public class MGWTUtil {
 	private final static EventBus manager = new SimpleEventBus();
 
 	private static ORIENTATION currentOrientation;
+	private static Timer timer;
 
-	public static FeatureDetection getFeatureDetection() {
-		return FEATURE_DETECTION;
-	}
+	private static boolean scrollingDisabled;
 
 	static {
 		setupOrientation();
 
 	}
 
-	private static Timer timer;
-
-	private static boolean scrollingDisabled;
-
-	public static void setScrollingDisabled(boolean disabled) {
-		scrollingDisabled = disabled;
+	public static HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
+		return manager.addHandler(OrientationChangeEvent.getType(), handler);
 	}
 
 	public static void fixIOSScrollIssueBlur() {
@@ -71,6 +66,10 @@ public class MGWTUtil {
 		timer = null;
 	}
 
+	public static FeatureDetection getFeatureDetection() {
+		return FEATURE_DETECTION;
+	}
+
 	public static ORIENTATION getOrientation() {
 
 		if (!orientationSupport()) {
@@ -90,25 +89,25 @@ public class MGWTUtil {
 			switch (orientation) {
 			case 0:
 			case 180:
-
 				o = ORIENTATION.PORTRAIT;
 				break;
 
 			case 90:
 			case -90:
 				o = ORIENTATION.LANDSCAPE;
-
 				break;
 
 			default:
-				//TODO is default a good idea?
-				o = ORIENTATION.PORTRAIT;
-				break;
+				throw new IllegalStateException("this should not happen!?");
 			}
 
 			return o;
 		}
 
+	}
+
+	public static void setScrollingDisabled(boolean disabled) {
+		scrollingDisabled = disabled;
 	}
 
 	private static native int getOrientation0()/*-{
@@ -139,7 +138,7 @@ public class MGWTUtil {
 			break;
 
 		default:
-			//TODO is default a good idea?
+			// TODO is default a good idea?
 			o = ORIENTATION.PORTRAIT;
 			break;
 		}
@@ -190,8 +189,4 @@ public class MGWTUtil {
 		$doc.body.onorientationchange = func;
 		$doc.addEventListener("orientationChanged", func);
 	}-*/;
-
-	public static HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
-		return manager.addHandler(OrientationChangeEvent.getType(), handler);
-	}
 }

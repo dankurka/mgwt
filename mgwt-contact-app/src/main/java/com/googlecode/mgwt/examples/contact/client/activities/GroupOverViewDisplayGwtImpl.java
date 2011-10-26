@@ -12,8 +12,8 @@ import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.examples.contact.client.GroupCell;
 import com.googlecode.mgwt.examples.contact.client.module.Group;
-import com.googlecode.mgwt.ui.client.button.ButtonBase;
 import com.googlecode.mgwt.ui.client.widget.CellList;
+import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 import com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedEvent;
 
 public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverViewDisplay {
