@@ -17,6 +17,13 @@ package com.googlecode.mgwt.dom.client.event.animation;
 
 import com.google.gwt.event.dom.client.DomEvent;
 
+/**
+ * 
+ * Represent a native transition end event
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class TransitionEndEvent extends DomEvent<TransitionEndHandler> {
 
 	private static final Type<TransitionEndHandler> TYPE = new Type<TransitionEndHandler>("webkitTransitionEnd", new TransitionEndEvent());
@@ -25,6 +32,11 @@ public class TransitionEndEvent extends DomEvent<TransitionEndHandler> {
 		return TYPE;
 	}
 
+	/**
+	 * Gets the event type associated with transition end events.
+	 * 
+	 * @return the handler type
+	 */
 	@Override
 	public com.google.gwt.event.dom.client.DomEvent.Type<TransitionEndHandler> getAssociatedType() {
 		return TYPE;

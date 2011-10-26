@@ -18,9 +18,16 @@ package com.googlecode.mgwt.dom.client.event.animation;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
+ * Handler for {@link AnimationEndEvent} events:
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public interface AnimationEndHandler extends EventHandler {
+	/**
+	 * Called when a animation end event is fired.
+	 * 
+	 * @param event the {@link AnimationEndEvent} that was fired
+	 */
 	public void onAnimationEnd(AnimationEndEvent event);
 }

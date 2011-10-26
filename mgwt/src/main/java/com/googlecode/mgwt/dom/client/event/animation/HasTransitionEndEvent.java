@@ -17,6 +17,19 @@ package com.googlecode.mgwt.dom.client.event.animation;
 
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
+/**
+ * A widget that implements this interface provides registration for
+ * {@link TransitionEndHandler} instances.
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface HasTransitionEndEvent {
+	/**
+	 * Adds a {@link TransitionEndHandler} handler.
+	 * 
+	 * @param handler the transistion end handler
+	 * @return {@link HandlerRegistration} used to remove this handler
+	 */
 	public HandlerRegistration addTransitionEndHandler(TransitionEndHandler handler);
 }

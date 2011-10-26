@@ -18,9 +18,18 @@ package com.googlecode.mgwt.dom.client.event.animation;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
+ * A widget that implements this interface provides registration for
+ * {@link AnimationEndHandler} instances.
+ * 
  * @author Daniel Kurka
  * 
  */
 public interface HasAnimationEndEvent {
+	/**
+	 * Adds a {@link AnimationEndEvent} handler.
+	 * 
+	 * @param handler the animation end handler
+	 * @return {@link HandlerRegistration} used to remove this handler
+	 */
 	public HandlerRegistration addAnimationEndHandler(AnimationEndHandler handler);
 }
