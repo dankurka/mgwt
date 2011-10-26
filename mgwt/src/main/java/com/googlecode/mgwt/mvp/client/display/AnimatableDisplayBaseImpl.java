@@ -28,6 +28,8 @@ import com.googlecode.mgwt.mvp.client.resources.AnimationCss;
 import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 /**
+ * Considered internal
+ * 
  * @author Daniel Kurka
  * 
  */
