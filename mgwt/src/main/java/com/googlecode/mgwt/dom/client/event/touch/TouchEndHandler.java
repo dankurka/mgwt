@@ -17,6 +17,17 @@ package com.googlecode.mgwt.dom.client.event.touch;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * Handler for {@link TouchEndHandler} events:
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface TouchEndHandler extends EventHandler {
+	/**
+	 * Called when a touch end event is fired.
+	 * 
+	 * @param event the {@link TouchEndEvent} that was fired
+	 */
 	public void onTouchEnd(TouchEndEvent event);
 }

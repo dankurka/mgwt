@@ -15,7 +15,12 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
-
+/**
+ * This represents a native touch start Event
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class TouchStartEvent extends TouchEvent<TouchStartHandler> {
 
 	private static final Type<TouchStartHandler> TYPE = new Type<TouchStartHandler>("touchstart", new TouchStartEvent());
@@ -24,6 +29,11 @@ public class TouchStartEvent extends TouchEvent<TouchStartHandler> {
 		return TYPE;
 	}
 
+	/**
+	 * Gets the event type associated with animation end events.
+	 * 
+	 * @return the handler type
+	 */
 	@Override
 	public com.google.gwt.event.dom.client.DomEvent.Type<TouchStartHandler> getAssociatedType() {
 		return TYPE;

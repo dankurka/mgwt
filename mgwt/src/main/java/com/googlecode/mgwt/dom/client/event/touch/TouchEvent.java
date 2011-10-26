@@ -20,6 +20,13 @@ import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * BaseClass for all TouchEvents
+ * 
+ * @author Daniel Kurka
+ * 
+ * @param <H> the event handler to associate with this event
+ */
 public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 
 	public JsArray<Touch> touches() {
@@ -30,6 +37,11 @@ public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 		return nativeEvent.touches;
 	}-*/;
 
+	/**
+	 * get the changed touches
+	 * 
+	 * @return the array of changed touches
+	 */
 	public JsArray<Touch> changedTouches() {
 		return changedTouches(getNativeEvent());
 	}

@@ -17,14 +17,30 @@ package com.googlecode.mgwt.dom.client.event.touch;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+/**
+ * The touch object inside a {@link TouchEvent}
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public final class Touch extends JavaScriptObject {
 	protected Touch() {
 	}
 
+	/**
+	 * The X position of the touch within the current document
+	 * 
+	 * @return the current x position of the touch
+	 */
 	public final native int getPageX() /*-{
 		return this.pageX;
 	}-*/;
 
+	/**
+	 * The Y position of the touch within the current document
+	 * 
+	 * @return the current y position of the touch
+	 */
 	public final native int getPageY() /*-{
 		return this.pageY;
 	}-*/;

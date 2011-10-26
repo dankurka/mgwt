@@ -15,7 +15,12 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
-
+/**
+ * This represents a native touchCanvel Event
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class TouchCancelEvent extends TouchEvent<TouchCancelHandler> {
 
 	private static final Type<TouchCancelHandler> TYPE = new Type<TouchCancelHandler>("touchcancel", new TouchCancelEvent());
@@ -24,6 +29,11 @@ public class TouchCancelEvent extends TouchEvent<TouchCancelHandler> {
 		return TYPE;
 	}
 
+	/**
+	 * Gets the event type associated with animation end events.
+	 * 
+	 * @return the handler type
+	 */
 	@Override
 	public com.google.gwt.event.dom.client.DomEvent.Type<TouchCancelHandler> getAssociatedType() {
 		return TYPE;

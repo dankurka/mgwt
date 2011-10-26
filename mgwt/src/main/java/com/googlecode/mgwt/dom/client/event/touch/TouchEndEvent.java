@@ -15,7 +15,12 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
-
+/**
+ * This represents a native touch end Event
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class TouchEndEvent extends TouchEvent<TouchEndHandler> {
 
 	private static final Type<TouchEndHandler> TYPE = new Type<TouchEndHandler>("touchend", new TouchEndEvent());
@@ -24,6 +29,11 @@ public class TouchEndEvent extends TouchEvent<TouchEndHandler> {
 		return TYPE;
 	}
 
+	/**
+	 * Gets the event type associated with animation end events.
+	 * 
+	 * @return the handler type
+	 */
 	@Override
 	public com.google.gwt.event.dom.client.DomEvent.Type<TouchEndHandler> getAssociatedType() {
 		return TYPE;
