@@ -18,11 +18,17 @@ package com.googlecode.mgwt.dom.client.event.touch.simple;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
+ * Handler for {@link SimpleTouchEvent} events:
+ * 
  * @author Daniel Kurka
  * 
  */
 public interface SimpleTouchHandler extends EventHandler {
-
+	/**
+	 * Called when a simple touch event is fired.
+	 * 
+	 * @param event the {@link SimpleTouchEvent} that was fired
+	 */
 	public void onTouch(SimpleTouchEvent event);
 
 }

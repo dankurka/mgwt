@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch.simple;
 
+import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
@@ -26,6 +27,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 
 /**
+ * Utility class for adding a simple touch handler on a widget that only
+ * supports {@link HasTouchHandlers}
+ * 
  * @author Daniel Kurka
  * 
  */

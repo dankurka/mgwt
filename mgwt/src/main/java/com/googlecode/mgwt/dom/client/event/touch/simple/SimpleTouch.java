@@ -16,9 +16,16 @@
 package com.googlecode.mgwt.dom.client.event.touch.simple;
 
 /**
+ * SimpleTouch is considered for elements that offer something like a normal
+ * "click event". Like a button.
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class SimpleTouch {
+	/**
+	 * The radios that a finger can move before the touch is not considered a
+	 * simple touch anymore
+	 */
 	public static final int TOUCH_RADIUS = 10;
 }

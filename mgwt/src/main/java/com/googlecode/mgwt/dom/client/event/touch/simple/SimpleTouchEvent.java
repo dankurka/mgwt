@@ -17,6 +17,13 @@ package com.googlecode.mgwt.dom.client.event.touch.simple;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * SimpleTouchEvent is considered an activation event something like a normal
+ * "click event". Like a button, but with touch events.
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class SimpleTouchEvent extends GwtEvent<SimpleTouchHandler> {
 
 	private static final Type<SimpleTouchHandler> TYPE = new Type<SimpleTouchHandler>();
@@ -25,6 +32,11 @@ public class SimpleTouchEvent extends GwtEvent<SimpleTouchHandler> {
 
 	}
 
+	/**
+	 * Gets the event type associated with animation end events.
+	 * 
+	 * @return the handler type
+	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<SimpleTouchHandler> getAssociatedType() {
 		return TYPE;

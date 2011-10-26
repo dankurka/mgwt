@@ -18,9 +18,18 @@ package com.googlecode.mgwt.dom.client.event.touch.simple;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
+ * A widget that implements this interface provides registration for
+ * {@link SimpleTouchHandler} instances.
+ * 
  * @author Daniel Kurka
  * 
  */
 public interface HasSimpleTouchHandler {
+	/**
+	 * Adds a {@link SimpleTouchHandler} handler.
+	 * 
+	 * @param handler the simple touch handler
+	 * @return {@link HandlerRegistration} used to remove this handler
+	 */
 	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler);
 }
