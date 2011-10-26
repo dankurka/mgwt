@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.button.ButtonBase;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
+import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 public class DialogPanel extends Composite {
 

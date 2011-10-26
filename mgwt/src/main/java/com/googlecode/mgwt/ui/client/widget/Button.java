@@ -16,8 +16,8 @@
 package com.googlecode.mgwt.ui.client.widget;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.button.ButtonBase;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
+import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
  * @author Daniel Kurka

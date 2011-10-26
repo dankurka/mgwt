@@ -20,8 +20,8 @@ import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.button.ButtonBase;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
+import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
  * @author Daniel Kurka
