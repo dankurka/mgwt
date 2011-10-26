@@ -18,8 +18,10 @@ package com.googlecode.mgwt.ui.client.canvas;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
+ * Considered internal
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class CssCanvas {
 
@@ -42,19 +44,23 @@ public class CssCanvas {
 	}-*/;
 
 	public native void beginPath()/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.beginPath();
+		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context
+				.beginPath();
 	}-*/;
 
 	public native void arc(double x, double y, double radius, double startAngle, double endAngle, boolean antiClockwise)/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.arc(x, y, radius, startAngle, endAngle, antiClockwise);
+		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.arc(x, y,
+				radius, startAngle, endAngle, antiClockwise);
 	}-*/;
 
 	public native void lineTo(double x, double y)/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.lineTo(x, y);
+		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.lineTo(x,
+				y);
 	}-*/;
 
 	public native void closePath()/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.closePath();
+		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context
+				.closePath();
 	}-*/;
 
 	public native void fill()/*-{
