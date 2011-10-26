@@ -17,6 +17,14 @@ package com.googlecode.mgwt.mvp.client;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * This event is fired at the start of an mgwt animation (if
+ * {@link AnimatingActivityManager} is told to fire these events, see
+ * {@link AnimatingActivityManager#setFireAnimationEvents(boolean)})
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class MGWTAnimationStartEvent extends GwtEvent<MGWTAnimationStartHandler> {
 
 	public static final GwtEvent.Type<MGWTAnimationStartHandler> TYPE = new Type<MGWTAnimationStartHandler>();

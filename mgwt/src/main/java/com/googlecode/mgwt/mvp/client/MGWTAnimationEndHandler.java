@@ -17,6 +17,17 @@ package com.googlecode.mgwt.mvp.client;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * Handler for {@link MGWTAnimationStopEvent} events:
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface MGWTAnimationEndHandler extends EventHandler {
+	/**
+	 * Called when a mgwt animation end event is fired.
+	 * 
+	 * @param event the {@link MGWTAnimationEndEvent} that was fired
+	 */
 	public void onAnimationEnd(MGWTAnimationEndEvent event);
 }

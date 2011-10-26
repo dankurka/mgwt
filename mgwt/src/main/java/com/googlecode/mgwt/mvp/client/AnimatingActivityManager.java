@@ -20,6 +20,7 @@ import java.util.Set;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.activity.shared.Activity;
+import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.event.shared.ResettableEventBus;
 import com.google.gwt.event.shared.UmbrellaException;
@@ -32,6 +33,12 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
+ * This is a fork of @link {@link ActivityManager} that has the same features,
+ * but also adds animations to the lifecycle of Activities.
+ * 
+ * It can be used as a replacement for {@link ActivityManager}, but requires an
+ * instance of {@link AnimationMapper} to work properly
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -91,11 +98,9 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	/**
 	 * Create an ActivityManager. Next call {@link #setDisplay}.
 	 * 
-	 * @param mapper
-	 *            finds the {@link Activity} for a given
+	 * @param mapper finds the {@link Activity} for a given
 	 *            {@link com.google.gwt.place.shared.Place}
-	 * @param eventBus
-	 *            source of {@link PlaceChangeEvent} and
+	 * @param eventBus source of {@link PlaceChangeEvent} and
 	 *            {@link PlaceChangeRequestEvent} events.
 	 */
 	public AnimatingActivityManager(ActivityMapper mapper, AnimationMapper animationMapper, EventBus eventBus) {
@@ -278,8 +283,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	 * setDisplay(null) to get it to deregister from the event bus, so that it
 	 * can be garbage collected.
 	 * 
-	 * @param display
-	 *            an instance of AcceptsOneWidget
+	 * @param display an instance of AcceptsOneWidget
 	 */
 	public void setDisplay(AnimatableDisplay display) {
 		boolean wasActive = (null != this.display);

@@ -18,10 +18,27 @@ package com.googlecode.mgwt.mvp.client;
 import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 /**
+ * Java representation of all mgwt Animations
+ * 
+ * References of Animations should be returned by {@link AnimationMapper}
+ * 
+ * Animations that are currently available:
+ * <ul>
+ * <li>Slide</li>
+ * <li>Slide Up</li>
+ * <li>Dissolve</li>
+ * <li>Fade</li>
+ * <li>Flip</li>
+ * <li>Pop</li>
+ * <li>Swap</li>
+ * </ul>
+ * 
+ * All animations can be used in both directions: {@link Animation#SLIDE} <->
+ * {@link Animation#SLIDE_REVERSE}
+ * 
  * @author Daniel Kurka
  * 
  */
-
 public enum Animation {
 	SLIDE(AnimationSelector.getNames().slide()), SLIDE_REVERSE(AnimationSelector.getNames().slide(), true), SLIDE_UP(AnimationSelector.getNames().slideup()), SLIDE_UP_REVERSE(AnimationSelector
 			.getNames().slideup(), true), DISSOLVE(AnimationSelector.getNames().dissolve()), DISSOLVE_REVERSE(AnimationSelector.getNames().dissolve(), true), FADE(AnimationSelector.getNames().fade()), FADE_REVERSE(

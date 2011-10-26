@@ -17,6 +17,14 @@ package com.googlecode.mgwt.mvp.client;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * This event is fired at the end of an mgwt animation (if
+ * {@link AnimatingActivityManager} is told to fire these events, see
+ * {@link AnimatingActivityManager#setFireAnimationEvents(boolean)})
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class MGWTAnimationEndEvent extends GwtEvent<MGWTAnimationEndHandler> {
 
 	public static final GwtEvent.Type<MGWTAnimationEndHandler> TYPE = new Type<MGWTAnimationEndHandler>();

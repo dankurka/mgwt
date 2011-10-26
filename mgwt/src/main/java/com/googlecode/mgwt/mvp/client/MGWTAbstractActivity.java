@@ -21,6 +21,9 @@ import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
+ * A baseclass for Activities which adds the ability to collect all handler
+ * instances and removes them when the activity is stopped.
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -32,10 +35,19 @@ public abstract class MGWTAbstractActivity extends AbstractActivity {
 		handlers = new LinkedList<HandlerRegistration>();
 	}
 
+	/**
+	 * add a {@link HandlerRegistration} to the handler collection
+	 * 
+	 * @param handlerRegistration
+	 */
 	protected void addHandlerRegistration(HandlerRegistration handlerRegistration) {
 		handlers.add(handlerRegistration);
 	}
 
+	/**
+	 * onStop is overriden to automatically clear all
+	 * {@link HandlerRegistration}
+	 */
 	@Override
 	public void onStop() {
 		super.onStop();
@@ -43,6 +55,9 @@ public abstract class MGWTAbstractActivity extends AbstractActivity {
 		cancelAllHandlerRegistrations();
 	}
 
+	/**
+	 * Remove all collected handlers, and remove them from the collection
+	 */
 	protected void cancelAllHandlerRegistrations() {
 		for (HandlerRegistration hr : handlers) {
 			hr.removeHandler();
