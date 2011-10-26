@@ -19,10 +19,12 @@ import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 
-
 /**
+ * Convert TouchStartHandlers to mouse down handlers for non touch devices or
+ * dev mode
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class TouchStartToMouseDownHandler implements MouseDownHandler {
 

@@ -23,10 +23,12 @@ import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 
-
 /**
+ * Convert TouchMoveHandlers to MouseMoveHandlers for non touch devices or dev
+ * mode
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class TouchMoveToMouseMoveHandler implements MouseMoveHandler, MouseDownHandler, MouseUpHandler {
 

@@ -21,10 +21,13 @@ import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 
-
 /**
+ * A simulated TouchMoveEvent is really a mouse move event. This is used mostly
+ * in dev mode and for blackberry devices to handle them equally to real touch
+ * devices
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class SimulatedTouchMoveEvent extends TouchMoveEvent {
 

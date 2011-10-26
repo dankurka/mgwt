@@ -21,16 +21,24 @@ import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 
-
 /**
+ * A simulated TouchEndEvent is really a mouseup event. This is used mostly in
+ * dev mode and for blackberry devices to handle them equally to real touch
+ * devices
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class SimulatedTouchEndEvent extends TouchEndEvent {
 
 	private final int x;
 	private final int y;
 
+	/**
+	 * Construct a simluated TouchEndEvent from a {@link MouseUpEvent}
+	 * 
+	 * @param mouseUpEvent the data for the simulated event;
+	 */
 	public SimulatedTouchEndEvent(MouseUpEvent mouseUpEvent) {
 		x = mouseUpEvent.getClientX();
 		y = mouseUpEvent.getClientY();

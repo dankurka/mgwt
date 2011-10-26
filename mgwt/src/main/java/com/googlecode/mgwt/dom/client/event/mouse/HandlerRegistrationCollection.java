@@ -20,6 +20,9 @@ import java.util.LinkedList;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
+ * A collection of HandlerRegistrations which behaves like a single
+ * registration: On remove all collected Handlers are removed.
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -27,19 +30,31 @@ public class HandlerRegistrationCollection implements HandlerRegistration {
 
 	private LinkedList<HandlerRegistration> collectedHandlers = new LinkedList<HandlerRegistration>();
 
+	/**
+	 * Construct an empty HandlerRegistrationCollection
+	 */
 	public HandlerRegistrationCollection() {
 
 	}
 
+	/**
+	 * Add a {@link HandlerRegistration} to the collection
+	 * 
+	 * @param handlerRegistration the handlerregistration to add
+	 */
 	public void addHandlerRegistration(HandlerRegistration handlerRegistration) {
 		collectedHandlers.add(handlerRegistration);
 	}
 
+	/**
+	 * Remove all handlers: Call remove on each Handler
+	 */
 	@Override
 	public void removeHandler() {
 		for (HandlerRegistration handlerRegistration : collectedHandlers) {
 			handlerRegistration.removeHandler();
 		}
+		collectedHandlers.clear();
 
 	}
 
