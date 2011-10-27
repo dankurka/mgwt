@@ -21,11 +21,11 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
@@ -83,7 +83,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 			public void onTouchEnd(TouchEndEvent event) {
 				EventTarget eventTarget = event.getNativeEvent().getEventTarget();
 				if (eventTarget != null) {
-					//no textnode or element node
+					// no textnode or element node
 					if (Node.is(eventTarget)) {
 						if (Element.is(eventTarget)) {
 							Element endTarget = eventTarget.cast();
@@ -109,7 +109,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 				EventTarget eventTarget = event.getNativeEvent().getEventTarget();
 				if (eventTarget != null) {
-					//no textnode or element node
+					// no textnode or element node
 					if (Node.is(eventTarget)) {
 						if (Element.is(eventTarget)) {
 							startTarget = eventTarget.cast();

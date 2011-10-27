@@ -22,6 +22,7 @@ import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.ResettableEventBus;
 import com.google.gwt.event.shared.UmbrellaException;
 import com.google.gwt.place.shared.Place;
@@ -30,7 +31,6 @@ import com.google.gwt.place.shared.PlaceChangeRequestEvent;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.web.bindery.event.shared.EventBus;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
  * This is a fork of @link {@link ActivityManager} that has the same features,
@@ -321,8 +321,8 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	private void updateHandlers(boolean activate) {
 		if (activate) {
-			final HandlerRegistration placeReg = eventBus.addHandler(PlaceChangeEvent.TYPE, this);
-			final HandlerRegistration placeRequestReg = eventBus.addHandler(PlaceChangeRequestEvent.TYPE, this);
+			final com.google.web.bindery.event.shared.HandlerRegistration placeReg = eventBus.addHandler(PlaceChangeEvent.TYPE, this);
+			final com.google.web.bindery.event.shared.HandlerRegistration placeRequestReg = eventBus.addHandler(PlaceChangeRequestEvent.TYPE, this);
 
 			this.handlerRegistration = new HandlerRegistration() {
 				public void removeHandler() {

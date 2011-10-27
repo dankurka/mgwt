@@ -15,6 +15,7 @@ import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.AutoDirectionHandler;
 import com.google.gwt.i18n.shared.DirectionEstimator;
 import com.google.gwt.i18n.shared.HasDirectionEstimator;
@@ -25,7 +26,6 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
@@ -55,9 +55,9 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 		cover = new FlowPanel();
 		cover.addStyleName(css.cover());
 
-		//		if (MGWTUtil.getFeatureDetection().isIOs() && false) {
-		//			main.add(cover);
-		//		}
+		// if (MGWTUtil.getFeatureDetection().isIOs() && false) {
+		// main.add(cover);
+		// }
 
 		main.add(box);
 
@@ -79,35 +79,35 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 			}
 		});
 
-		//		if (MGWTUtil.getFeatureDetection().isIOs() && false) {
-		//			cover.addDomHandler(new ClickHandler() {
+		// if (MGWTUtil.getFeatureDetection().isIOs() && false) {
+		// cover.addDomHandler(new ClickHandler() {
 		//
-		//				@Override
-		//				public void onClick(ClickEvent event) {
-		//					cover.getElement().getStyle().setDisplay(Display.NONE);
-		//					box.setFocus(true);
+		// @Override
+		// public void onClick(ClickEvent event) {
+		// cover.getElement().getStyle().setDisplay(Display.NONE);
+		// box.setFocus(true);
 		//
-		//				}
-		//			}, ClickEvent.getType());
+		// }
+		// }, ClickEvent.getType());
 		//
-		//			box.addBlurHandler(new BlurHandler() {
+		// box.addBlurHandler(new BlurHandler() {
 		//
-		//				@Override
-		//				public void onBlur(BlurEvent event) {
-		//					cover.getElement().getStyle().setDisplay(Display.BLOCK);
+		// @Override
+		// public void onBlur(BlurEvent event) {
+		// cover.getElement().getStyle().setDisplay(Display.BLOCK);
 		//
-		//				}
-		//			});
+		// }
+		// });
 		//
-		//			box.addFocusHandler(new FocusHandler() {
+		// box.addFocusHandler(new FocusHandler() {
 		//
-		//				@Override
-		//				public void onFocus(FocusEvent event) {
-		//					cover.getElement().getStyle().setDisplay(Display.NONE);
+		// @Override
+		// public void onFocus(FocusEvent event) {
+		// cover.getElement().getStyle().setDisplay(Display.NONE);
 		//
-		//				}
-		//			});
-		//		}
+		// }
+		// });
+		// }
 	}
 
 	public void setPlaceHolder(String value) {

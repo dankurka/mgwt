@@ -18,7 +18,7 @@ package com.googlecode.mgwt.mvp.client;
 import java.util.LinkedList;
 
 import com.google.gwt.activity.shared.AbstractActivity;
-import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
  * A baseclass for Activities which adds the ability to collect all handler

@@ -15,7 +15,7 @@
  */
 package com.googlecode.mgwt.dom.client.event.animation;
 
-import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
  * A widget that implements this interface provides registration for

@@ -15,7 +15,7 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
-import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
  * This is a convenience interface that includes all touch handlers defined by

@@ -17,7 +17,7 @@ package com.googlecode.mgwt.dom.client.event.mouse;
 
 import java.util.LinkedList;
 
-import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
  * A collection of HandlerRegistrations which behaves like a single

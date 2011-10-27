@@ -23,12 +23,12 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
@@ -120,18 +120,18 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 				return;
 			}
 
-			//no textnode or element node
+			// no textnode or element node
 			if (!Node.is(eventTarget) && !Element.is(eventTarget)) {
 				return;
 			}
 
-			//text node use the parent..
+			// text node use the parent..
 			if (Node.is(eventTarget) && !Element.is(eventTarget)) {
 				Node target = Node.as(eventTarget);
 				eventTarget = target.getParentElement().cast();
 			}
 
-			//no element
+			// no element
 			if (!Element.is(eventTarget)) {
 				return;
 			}

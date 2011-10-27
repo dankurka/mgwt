@@ -15,11 +15,11 @@
  */
 package com.googlecode.mgwt.mvp.client.display;
 
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.animation.AnimationEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.AnimationEndHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;

@@ -1,6 +1,6 @@
 package com.googlecode.mgwt.ui.client.widget.event;
 
-import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 public interface HasPullHandlers {
 	public HandlerRegistration addPullReleasedHandler(PullReleasedHandler handler);

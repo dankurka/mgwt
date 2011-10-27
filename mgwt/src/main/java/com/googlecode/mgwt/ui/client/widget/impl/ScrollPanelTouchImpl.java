@@ -23,10 +23,10 @@ import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
@@ -72,10 +72,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	private int scrollStartY;
 
 	private long touchStartTime;
-	//	private int directionX = 0;
-	//	private int directionY = 0;
+	// private int directionX = 0;
+	// private int directionY = 0;
 
-	//private boolean experimental = true;
+	// private boolean experimental = true;
 
 	private boolean usePos = false;
 
@@ -262,7 +262,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			EventTarget eventTarget = event.getNativeEvent().getEventTarget();
 			if (eventTarget != null) {
-				//no textnode or element node
+				// no textnode or element node
 				if (Node.is(eventTarget)) {
 					if (Element.is(eventTarget)) {
 						Element target = eventTarget.cast();
@@ -288,7 +288,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			event.preventDefault();
 			event.stopPropagation();
 			currentlyScrolling = true;
-			//event.stopPropagation();
+			// event.stopPropagation();
 
 			moved = false;
 			distX = 0;
@@ -304,11 +304,11 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			scrollStartY = position_y;
 
 			touchStartTime = System.currentTimeMillis();
-			//TODO
-			//			directionX = 0;
-			//			directionY = 0;
+			// TODO
+			// directionX = 0;
+			// directionY = 0;
 
-			//TODO...
+			// TODO...
 			fireEvent(new ScrollStartEvent(0, 0));
 
 		}
@@ -325,7 +325,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			Touch touch = event.touches().get(0);
 
-			//calculate delta
+			// calculate delta
 			int leftDelta = 0;
 			int topDelta = 0;
 
@@ -340,7 +340,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			int newPosX = position_x + leftDelta;
 			int newPosY = position_y + topDelta;
 
-			//event.stopPropagation();
+			// event.stopPropagation();
 
 			touchStartX = touch.getPageX();
 			touchStartY = touch.getPageY();
@@ -349,7 +349,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 				distX = Math.abs(leftDelta);
 				distY = Math.abs(topDelta);
 			} else {
-				//lock scroll
+				// lock scroll
 				if (distX - SCROLL_LOCK_THRESHOLD > distY) {
 					newPosY = position_y;
 					topDelta = 0;
@@ -361,21 +361,21 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 				}
 
 				setPosition(newPosX, newPosY);
-				//fire scroll event to world
+				// fire scroll event to world
 				fireEvent(new ScrollEvent(newPosX, newPosY));
 				moved = true;
-				//TODO
-				//				if (leftDelta > 0) {
-				//					directionX = -1;
-				//				} else {
-				//					directionX = 1;
-				//				}
+				// TODO
+				// if (leftDelta > 0) {
+				// directionX = -1;
+				// } else {
+				// directionX = 1;
+				// }
 				//
-				//				if (topDelta > 0) {
-				//					directionY = -1;
-				//				} else {
-				//					directionY = 1;
-				//				}
+				// if (topDelta > 0) {
+				// directionY = -1;
+				// } else {
+				// directionY = 1;
+				// }
 
 			}
 

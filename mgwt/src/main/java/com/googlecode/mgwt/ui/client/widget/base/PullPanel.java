@@ -3,6 +3,7 @@ package com.googlecode.mgwt.ui.client.widget.base;
 import java.util.Iterator;
 
 import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -180,12 +181,12 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	}
 
 	@Override
-	public com.google.web.bindery.event.shared.HandlerRegistration addPullReleasedHandler(PullReleasedHandler handler) {
+	public HandlerRegistration addPullReleasedHandler(PullReleasedHandler handler) {
 		return addHandler(handler, PullReleasedEvent.getType());
 	}
 
 	@Override
-	public com.google.web.bindery.event.shared.HandlerRegistration addPullStateChangedHandler(PullStateChangedHandler handler) {
+	public HandlerRegistration addPullStateChangedHandler(PullStateChangedHandler handler) {
 		return addHandler(handler, PullStateChangedEvent.getType());
 	}
 
