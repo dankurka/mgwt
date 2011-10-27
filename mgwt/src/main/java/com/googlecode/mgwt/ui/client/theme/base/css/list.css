@@ -67,62 +67,6 @@
 }
 
 
-@if mgwt.os iphone ipad desktop {
-	
-	.mgwt-List li {
-		background-color: white;
-		position: relative;
-		list-style-type: none;
-		display: block;
-		border: 1px solid rgb(171, 173, 176);
-		border-bottom: none;
-		overflow: hidden;
-		width: auto;
-		padding: 12px;
-	}
-	
-	.mgwt-List.round {
-		margin: 10px;
-	}
-
-	.mgwt-List.round li{
-		
-	}
-	
-	.mgwt-List.round li.first {
-		border-top-left-radius: 8px 8px;
-		border-top-right-radius: 8px 8px;
-	}
-	
-	.mgwt-List.round li.last {
-		border-bottom-left-radius: 8px 8px;
-		border-bottom-right-radius: 8px 8px;
-		border-bottom: 1px solid rgb(171, 173, 176);
-		
-	}
-
-	.mgwt-List .selected {
-		
-	}
-	
-	.mgwt-List .group {
-		background-image: arrowImage;
-		background-repeat: no-repeat;
-		background-position: 100% 50%;
-	}
-	
-	.mgwt-List .group.selected {
-		font-weight: bold;
-		color: white;
-		background-repeat: no-repeat, repeat;
-		background-position: 100% 50%, 0 0;
-		background-image: arrowTouchedImage, literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)), to(rgb(1, 95, 230)) )');
-	}
-}
-
-
-
-
 @if mgwt.os android android_tablet {
 	.mgwt-List li {
 		color: white; 
