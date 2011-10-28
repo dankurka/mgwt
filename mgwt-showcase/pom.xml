@@ -85,7 +85,23 @@
 
 				</configuration>
 			</plugin>
-
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>assemble</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/clientcode.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
 		</plugins>
 		<resources>
 			<resource>
