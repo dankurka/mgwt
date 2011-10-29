@@ -13,9 +13,15 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
+/**
+ * A Tablet overlay class
+ * 
+ * the content of the overlay is only visible in portrait mode
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class TabletPortraitOverlay implements HasOneWidget, Dialog {
-	private AnimatableDialogBase popinDialog;
-	private IpadMenu ipadMenu;
 
 	public class IpadMenu extends Composite {
 
@@ -53,6 +59,12 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 		}
 	}
 
+	private AnimatableDialogBase popinDialog;
+	private IpadMenu ipadMenu;
+
+	/**
+	 * Construct a TabletOverlay
+	 */
 	public TabletPortraitOverlay() {
 		popinDialog = new AnimatableDialogBase(MGWTStyle.getDefaultClientBundle().getDialogCss()) {
 
@@ -87,12 +99,20 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.AcceptsOneWidget#setWidget(com.google.gwt.user.client.ui.IsWidget)
+	 */
 	@Override
 	public void setWidget(IsWidget w) {
 		ipadMenu.getBody().clear();
 		ipadMenu.getBody().add(w);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasOneWidget#getWidget()
+	 */
 	@Override
 	public Widget getWidget() {
 		if (ipadMenu.getBody().getWidgetCount() > 0) {
@@ -102,6 +122,10 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasOneWidget#setWidget(com.google.gwt.user.client.ui.Widget)
+	 */
 	@Override
 	public void setWidget(Widget w) {
 		ipadMenu.getBody().clear();
@@ -109,6 +133,10 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
+	 */
 	@Override
 	public void show() {
 		popinDialog.show();
