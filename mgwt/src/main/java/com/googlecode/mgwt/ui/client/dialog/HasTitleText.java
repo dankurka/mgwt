@@ -15,7 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.dialog;
 
-public interface HasTitle {
+public interface HasTitleText {
 	public void setTitleText(String text);
 
 	public String getTitleText();

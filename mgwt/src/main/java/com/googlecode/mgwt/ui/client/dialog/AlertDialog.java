@@ -21,11 +21,15 @@ import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
-import com.googlecode.mgwt.ui.client.panel.DialogPanel;
-import com.googlecode.mgwt.ui.client.panel.PopinDialog;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
-public class AlertDialog implements HasText, HasTitle, HasSimpleTouchHandler {
+/**
+ * A simple alert dialog with an ok button.
+ * 
+ * @author Daniel Kurka
+ * 
+ */
+public class AlertDialog implements HasText, HasTitleText, HasSimpleTouchHandler, Dialog {
 
 	private Label textLabel;
 	private PopinDialog popinDialog;
@@ -78,6 +82,9 @@ public class AlertDialog implements HasText, HasTitle, HasSimpleTouchHandler {
 		return dialogPanel1.getDialogTitle().getText();
 	}
 
+	/**
+	 * Show the dialog
+	 */
 	public void show() {
 		popinDialog.center();
 	}

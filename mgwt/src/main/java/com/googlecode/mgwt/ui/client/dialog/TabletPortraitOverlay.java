@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.ui.client.panel;
+package com.googlecode.mgwt.ui.client.dialog;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -36,7 +36,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
 			setStylePrimaryName(css.main());
 
-			//arrow
+			// arrow
 			menuArrow = new FlowPanel();
 			menuArrow.setStylePrimaryName(css.arrow());
 			main.add(menuArrow);

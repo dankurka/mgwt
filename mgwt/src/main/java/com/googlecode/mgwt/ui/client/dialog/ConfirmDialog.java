@@ -20,12 +20,9 @@ import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.panel.DialogPanel;
-import com.googlecode.mgwt.ui.client.panel.PopinDialog;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
-
-public class ConfirmDialog implements HasText, HasTitle {
+public class ConfirmDialog implements HasText, HasTitleText, Dialog {
 	private PopinDialog popinDialog;
 	private DialogPanel dialogPanel1;
 	private Label textLabel;

@@ -35,7 +35,7 @@ import com.googlecode.mgwt.ui.client.MGWTSettings;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.MasterRegionHandler;
 import com.googlecode.mgwt.ui.client.OrientationRegionHandler;
-import com.googlecode.mgwt.ui.client.panel.TabletPortraitOverlay;
+import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 
 /**
  * @author Daniel Kurka

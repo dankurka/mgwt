@@ -13,30 +13,32 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.panel;
+package com.googlecode.mgwt.ui.client.dialog;
 
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
-public class PopinDialog extends AnimatableDialogBase {
+public class SlideUpPanel extends AnimatableDialogBase {
 
-	public PopinDialog(DialogCss css) {
-		super(css);
+	public SlideUpPanel() {
+		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
+
 	}
 
-	public PopinDialog() {
-		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
+	public SlideUpPanel(DialogCss dialogCss) {
+		super(dialogCss);
+		setCenterContent(false);
 	}
 
 	@Override
 	protected Animation getShowAnimation() {
-		return Animation.POP;
+		return Animation.SLIDE_UP;
 	}
 
 	@Override
 	protected Animation getHideAnimation() {
-		return Animation.POP_REVERSE;
+		return Animation.SLIDE_UP_REVERSE;
 	}
 
 }

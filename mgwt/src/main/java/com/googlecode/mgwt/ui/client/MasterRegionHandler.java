@@ -1,9 +1,9 @@
 package com.googlecode.mgwt.ui.client;
 
 import com.google.web.bindery.event.shared.EventBus;
+import com.googlecode.mgwt.ui.client.dialog.Dialog;
 import com.googlecode.mgwt.ui.client.event.ShowMasterEvent;
 import com.googlecode.mgwt.ui.client.event.ShowMasterHandler;
-import com.googlecode.mgwt.ui.client.panel.Dialog;
 
 public class MasterRegionHandler {
 
