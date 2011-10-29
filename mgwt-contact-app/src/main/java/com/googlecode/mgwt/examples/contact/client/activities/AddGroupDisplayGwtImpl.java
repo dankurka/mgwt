@@ -7,20 +7,21 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs;
 import com.googlecode.mgwt.ui.client.widget.Button;
-import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.MTextBox;
+import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 public class AddGroupDisplayGwtImpl extends Composite implements AddGroupDisplay {
 
 	private static AddGroupDisplayGwtImplUiBinder uiBinder = GWT.create(AddGroupDisplayGwtImplUiBinder.class);
 
 	@UiField
-	protected HeaderButton leftButton;
+	protected ButtonBase leftButton;
 
 	@UiField
 	protected Button addButton;
@@ -36,15 +37,15 @@ public class AddGroupDisplayGwtImpl extends Composite implements AddGroupDisplay
 	public AddGroupDisplayGwtImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 
-		if (!MGWTUtil.getFeatureDetection().isPhone()) {
+		if (!MGWTUtil.getOsDetection().isPhone()) {
 			leftButton.setText("Nav");
-			leftButton.setRoundButton(true);
+			// leftButton.setRoundButton(true);
 			leftButton.addStyleName(MGWTStyle.getDefaultClientBundle().getUtilCss().portraitonly());
 		}
 	}
 
 	@UiHandler("leftButton")
-	protected void onLeftButtonClicked(SimpleTouchEvent event) {
+	protected void onLeftButtonClicked(TouchStartEvent event) {
 		if (presenter != null) {
 			presenter.onLeftButton();
 		}

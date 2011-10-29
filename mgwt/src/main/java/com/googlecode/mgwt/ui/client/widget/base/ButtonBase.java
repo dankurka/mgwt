@@ -52,7 +52,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasSimp
 		css.ensureInjected();
 		this.active = css.active();
 
-		if (MGWTUtil.getFeatureDetection().isBlackBerry() || MGWTUtil.getFeatureDetection().isDesktop()) {
+		if (MGWTUtil.getOsDetection().isBlackBerry() || MGWTUtil.getOsDetection().isDesktop()) {
 			addDomHandler(new MouseOverHandler() {
 
 				@Override

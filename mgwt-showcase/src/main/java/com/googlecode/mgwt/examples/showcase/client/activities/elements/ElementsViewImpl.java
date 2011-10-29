@@ -44,7 +44,7 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		scrollPanel.setWidget(widgetList);
 		// workaround for android formfields jumping around when using
 		// -webkit-transform
-		scrollPanel.setUsePos(MGWTUtil.getFeatureDetection().isAndroid());
+		scrollPanel.setUsePos(MGWTUtil.getOsDetection().isAndroid());
 
 		MTextBox mTextBox = new MTextBox();
 		mTextBox.setPlaceHolder("textbox");

@@ -41,7 +41,7 @@ public class ContactEntryPoint implements EntryPoint {
 
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 
-		if ((MGWTUtil.getFeatureDetection().isIPad() || MGWTUtil.getFeatureDetection().isDesktop())) {
+		if ((MGWTUtil.getOsDetection().isIPad() || MGWTUtil.getOsDetection().isDesktop())) {
 			// workaround
 			StyleInjector.inject(AppBundle.INSTANCE.css().getText());
 

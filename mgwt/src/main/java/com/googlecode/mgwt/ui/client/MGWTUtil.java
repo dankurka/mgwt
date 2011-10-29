@@ -15,7 +15,7 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler
 import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
 
 public class MGWTUtil {
-	private static final FeatureDetection FEATURE_DETECTION = GWT.create(FeatureDetection.class);
+	private static final OsDetection OS_DETECTION = GWT.create(OsDetection.class);
 
 	private final static EventBus manager = new SimpleEventBus();
 
@@ -66,8 +66,8 @@ public class MGWTUtil {
 		timer = null;
 	}
 
-	public static FeatureDetection getFeatureDetection() {
-		return FEATURE_DETECTION;
+	public static OsDetection getOsDetection() {
+		return OS_DETECTION;
 	}
 
 	public static ORIENTATION getOrientation() {

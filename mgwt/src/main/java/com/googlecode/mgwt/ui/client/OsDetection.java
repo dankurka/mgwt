@@ -1,6 +1,6 @@
 package com.googlecode.mgwt.ui.client;
 
-public interface FeatureDetection {
+public interface OsDetection {
 	public boolean isAndroid();
 
 	public boolean isIPhone();

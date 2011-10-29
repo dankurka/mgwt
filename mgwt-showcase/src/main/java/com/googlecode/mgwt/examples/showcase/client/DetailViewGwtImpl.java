@@ -34,7 +34,7 @@ public abstract class DetailViewGwtImpl implements DetailView {
 		headerMainButton = new HeaderButton();
 		headerMainButton.setRoundButton(true);
 
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
+		if (MGWTUtil.getOsDetection().isPhone()) {
 			headerPanel.setLeftWidget(headerBackButton);
 		} else {
 			headerPanel.setLeftWidget(headerMainButton);

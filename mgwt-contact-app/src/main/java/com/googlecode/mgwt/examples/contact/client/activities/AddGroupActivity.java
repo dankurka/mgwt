@@ -35,7 +35,7 @@ public class AddGroupActivity extends MGWTAbstractActivity implements AddGroupDi
 
 	@Override
 	public void onLeftButton() {
-		if (MGWTUtil.getFeatureDetection().isPhone()) {
+		if (MGWTUtil.getOsDetection().isPhone()) {
 			//clientFactory.getPlaceController().goTo();
 		} else {
 			clientFactory.getEventBus().fireEvent(new ShowMasterEvent("nav"));

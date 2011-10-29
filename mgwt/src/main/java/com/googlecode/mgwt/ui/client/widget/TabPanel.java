@@ -86,7 +86,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			}
 		});
 
-		if (MGWTUtil.getFeatureDetection().isAndroid()) {
+		if (MGWTUtil.getOsDetection().isAndroid()) {
 			container.add(tabBar);
 			container.add(tabContainer);
 

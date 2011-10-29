@@ -30,7 +30,7 @@ public class AnimationSelector {
 	private static final MVPBundle BUNDLE = GWT.create(MVPBundle.class);
 
 	public static AnimationNames getNames() {
-		if (MGWTUtil.getFeatureDetection().isAndroid()) {
+		if (MGWTUtil.getOsDetection().isAndroid()) {
 			return BUNDLE.transitionCss();
 		} else {
 			return BUNDLE.animationCss();

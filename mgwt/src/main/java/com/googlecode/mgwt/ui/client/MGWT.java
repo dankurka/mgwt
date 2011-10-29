@@ -31,11 +31,11 @@ import com.google.gwt.user.client.ui.FlowPanel;
  */
 public class MGWT {
 
-	private final static FeatureDetection FEATURE_DETECTION = GWT.create(FeatureDetection.class);
+	private final static OsDetection FEATURE_DETECTION = GWT.create(OsDetection.class);
 
 	private FlowPanel flowPanel;
 
-	public static final FeatureDetection getFeatureDetection() {
+	public static final OsDetection getFeatureDetection() {
 		return FEATURE_DETECTION;
 	}
 

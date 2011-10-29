@@ -68,7 +68,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 
-		if (MGWTUtil.getFeatureDetection().isTablet()) {
+		if (MGWTUtil.getOsDetection().isTablet()) {
 
 			// very nasty workaround because GWT does not corretly support
 			// @media

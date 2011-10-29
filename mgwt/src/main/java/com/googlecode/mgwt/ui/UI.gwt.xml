@@ -23,8 +23,8 @@ under * the License.
 
 
 	<generate-with
-		class="com.googlecode.mgwt.ui.generator.FeatureDetectionGenerator">
-		<when-type-assignable class="com.googlecode.mgwt.ui.client.FeatureDetection" />
+		class="com.googlecode.mgwt.ui.generator.OsDetectionGenerator">
+		<when-type-assignable class="com.googlecode.mgwt.ui.client.OsDetection" />
 	</generate-with>
 
 	<replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetDesktopImpl">
