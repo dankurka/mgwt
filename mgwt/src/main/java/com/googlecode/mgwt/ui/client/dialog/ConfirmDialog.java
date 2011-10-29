@@ -22,22 +22,55 @@ import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
+/**
+ * A simple confirm dialog with ok and cancel buttons
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class ConfirmDialog implements HasText, HasTitleText, Dialog {
+	/**
+	 * The callback used when buttons are taped
+	 * 
+	 * @author Daniel Kurka
+	 * 
+	 */
+	public interface ConfirmCallback {
+		/**
+		 * Called if ok button is taped
+		 */
+		public void onOk();
+
+		/**
+		 * called if cancel button is taped
+		 */
+		public void onCancel();
+	}
+
 	private PopinDialog popinDialog;
 	private DialogPanel dialogPanel1;
 	private Label textLabel;
 	private ConfirmCallback callback;
 
-	public interface ConfirmCallback {
-		public void onOk();
-
-		public void onCancel();
-	}
-
+	/**
+	 * Construct a Confirmdialg
+	 * 
+	 * @param title - the title of the dialog
+	 * @param text - the text of the dialog
+	 * @param callback - the callback used when a button of the dialog is taped
+	 */
 	public ConfirmDialog(String title, String text, ConfirmCallback callback) {
 		this(MGWTStyle.getDefaultClientBundle().getDialogCss(), title, text, callback);
 	}
 
+	/**
+	 * Construct a Confirmdialg
+	 * 
+	 * @param css . css to use
+	 * @param title - the title of the dialog
+	 * @param text - the text of the dialog
+	 * @param callback - the callback used when a button of the dialog is taped
+	 */
 	public ConfirmDialog(DialogCss css, String title, String text, ConfirmCallback callback) {
 		this.callback = callback;
 		popinDialog = new PopinDialog(css);
@@ -74,28 +107,48 @@ public class ConfirmDialog implements HasText, HasTitleText, Dialog {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.HasTitleText#setTitleText(java.lang.String)
+	 */
 	@Override
 	public void setTitleText(String title) {
 		dialogPanel1.getDialogTitle().setHTML(title);
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasText#setText(java.lang.String)
+	 */
 	@Override
 	public void setText(String text) {
 		textLabel.setText(text);
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.HasTitleText#getTitleText()
+	 */
 	@Override
 	public String getTitleText() {
 		return dialogPanel1.getDialogTitle().getHTML();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasText#getText()
+	 */
 	@Override
 	public String getText() {
 		return textLabel.getText();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
+	 */
 	public void show() {
 		popinDialog.center();
 	}
