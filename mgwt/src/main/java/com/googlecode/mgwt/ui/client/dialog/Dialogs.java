@@ -23,8 +23,6 @@ import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
-import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
-import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
 import com.googlecode.mgwt.ui.client.widget.Button;
 
 /**
@@ -151,5 +149,50 @@ public class Dialogs {
 		}
 		optionsDialog.setPanelToOverlay(widgetToCover);
 		optionsDialog.show();
+	}
+
+	/**
+	 * The option Callback interface
+	 * 
+	 * @author Daniel Kurka
+	 * 
+	 */
+	public interface OptionCallback {
+		public void onOptionSelected(int index);
+	}
+
+	/**
+	 * The type of buttons to add
+	 * 
+	 * @author Daniel Kurka
+	 * 
+	 */
+	public enum ButtonType {
+		NORMAL, IMPORTANT, CONFIRM
+	};
+
+	/**
+	 * Options for Options Dialog
+	 * 
+	 * @author kurt
+	 * 
+	 */
+	public static class OptionsDialogOption {
+		private final String text;
+		private final ButtonType type;
+
+		public OptionsDialogOption(String text, ButtonType type) {
+			this.text = text;
+			this.type = type;
+
+		}
+
+		public String getText() {
+			return text;
+		}
+
+		public ButtonType getType() {
+			return type;
+		}
 	}
 }

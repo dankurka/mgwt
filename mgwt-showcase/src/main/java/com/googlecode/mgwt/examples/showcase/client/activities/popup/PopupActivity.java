@@ -26,9 +26,9 @@ import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
-import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.ButtonType;
-import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
-import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs.ButtonType;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogOption;
 
 /**
  * @author Daniel Kurka

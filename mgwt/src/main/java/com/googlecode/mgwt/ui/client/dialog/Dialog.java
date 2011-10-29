@@ -15,8 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.dialog;
 
+/**
+ * Simple interface implemented by all dialogs
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface Dialog {
 
+	/**
+	 * show the dialog
+	 */
 	public void show();
 
 }

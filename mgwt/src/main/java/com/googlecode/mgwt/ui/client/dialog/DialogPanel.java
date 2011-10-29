@@ -25,7 +25,35 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
+/**
+ * A dialog panel with title, text, ok and cancel button
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class DialogPanel extends Composite {
+	private class CancelButton extends ButtonBase {
+
+		public CancelButton(DialogCss css, String text) {
+			super(css);
+			setText(text);
+			addStyleName(css.cancelbutton());
+
+		}
+
+	}
+
+	private class OkButton extends ButtonBase {
+
+		public OkButton(DialogCss css, String text) {
+
+			super(css);
+			setText(text);
+			addStyleName(css.okbutton());
+
+		}
+
+	}
 
 	private FlowPanel main;
 	private FlowPanel container;
@@ -36,10 +64,18 @@ public class DialogPanel extends Composite {
 	private CancelButton cancelButton;
 	private final DialogCss css;
 
+	/**
+	 * Construct the panel
+	 */
 	public DialogPanel() {
 		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
 	}
 
+	/**
+	 * Construct panel with a special css
+	 * 
+	 * @param css the css to use
+	 */
 	public DialogPanel(DialogCss css) {
 		this.css = css;
 		this.css.ensureInjected();
@@ -75,41 +111,38 @@ public class DialogPanel extends Composite {
 
 	}
 
-	private class CancelButton extends ButtonBase {
-
-		public CancelButton(DialogCss css, String text) {
-			super(css);
-			setText(text);
-			addStyleName(css.cancelbutton());
-
-		}
-
-	}
-
-	private class OkButton extends ButtonBase {
-
-		public OkButton(DialogCss css, String text) {
-
-			super(css);
-			setText(text);
-			addStyleName(css.okbutton());
-
-		}
-
-	}
-
+	/**
+	 * get the container of the panel
+	 * 
+	 * @return the container of the dialog panel
+	 */
 	public HasWidgets getContent() {
 		return content;
 	}
 
+	/**
+	 * get {@link HasSimpleTouchHandler} for the cancel button
+	 * 
+	 * @return the {@link HasSimpleTouchHandler} for cancel button
+	 */
 	public HasSimpleTouchHandler getCancelButton() {
 		return cancelButton;
 	}
 
+	/**
+	 * get {@link HasSimpleTouchHandler} for the ok button
+	 * 
+	 * @return the {@link HasSimpleTouchHandler} for ok button
+	 */
 	public HasSimpleTouchHandler getOkButton() {
 		return okButton;
 	}
 
+	/**
+	 * show the cancel button
+	 * 
+	 * @param show true to show, otherwise hidden
+	 */
 	public void showCancelButton(boolean show) {
 		if (show) {
 			int widgetCount = buttonContainer.getWidgetCount();
@@ -121,6 +154,11 @@ public class DialogPanel extends Composite {
 		}
 	}
 
+	/**
+	 * show the ok button
+	 * 
+	 * @param show true to show, otherwise hidden
+	 */
 	public void showOkButton(boolean show) {
 		if (show) {
 			buttonContainer.insert(okButton, 0);
@@ -129,6 +167,11 @@ public class DialogPanel extends Composite {
 		}
 	}
 
+	/**
+	 * Get the title of the dialog
+	 * 
+	 * @return the title of the dialog
+	 */
 	public HasHTML getDialogTitle() {
 		return title;
 	}

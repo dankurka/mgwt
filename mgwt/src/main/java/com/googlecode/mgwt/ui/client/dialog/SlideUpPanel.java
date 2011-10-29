@@ -19,13 +19,27 @@ import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
+/**
+ * A dialog panel that slides up into view
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class SlideUpPanel extends AnimatableDialogBase {
 
+	/**
+	 * Construct a slide up panel
+	 */
 	public SlideUpPanel() {
 		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
 
 	}
 
+	/**
+	 * Construct a slide up panel with a specific css
+	 * 
+	 * @param dialogCss the css to use
+	 */
 	public SlideUpPanel(DialogCss dialogCss) {
 		super(dialogCss);
 		setCenterContent(false);

@@ -22,38 +22,25 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
-public class OptionsDialog implements HasWidgets {
-
-	public interface OptionCallback {
-		public void onOptionSelected(int index);
-	}
-
-	public enum ButtonType {
-		NORMAL, IMPORTANT, CONFIRM
-	};
-
-	public static class OptionsDialogOption {
-		private final String text;
-		private final ButtonType type;
-
-		public OptionsDialogOption(String text, ButtonType type) {
-			this.text = text;
-			this.type = type;
-
-		}
-
-		public String getText() {
-			return text;
-		}
-
-		public ButtonType getType() {
-			return type;
-		}
-	}
+/**
+ * A simple options dialog
+ * 
+ * This dialog should offer a number of choises, represented by a number of
+ * buttons
+ * 
+ * @author Daniel Kurka
+ * 
+ */
+public class OptionsDialog implements HasWidgets, Dialog {
 
 	private SlideUpPanel slideUpPanel;
 	private FlowPanel container;
 
+	/**
+	 * Construct an OptionDialog with a css class
+	 * 
+	 * @param css the css class to use
+	 */
 	public OptionsDialog(DialogCss css) {
 		css.ensureInjected();
 		slideUpPanel = new SlideUpPanel();
@@ -63,39 +50,67 @@ public class OptionsDialog implements HasWidgets {
 
 	}
 
-	public void show() {
-		slideUpPanel.show();
-	}
-
-	public void hide() {
-		slideUpPanel.hide();
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
+	 */
 	@Override
 	public void add(Widget w) {
 		container.add(w);
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
+	 */
 	@Override
 	public void clear() {
 		container.clear();
 
 	}
 
+	/**
+	 * Hide the options dialog
+	 */
+	public void hide() {
+		slideUpPanel.hide();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
+	 */
 	@Override
 	public Iterator<Widget> iterator() {
 		return container.iterator();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
+	 */
 	@Override
 	public boolean remove(Widget w) {
 		return container.remove(w);
 	}
 
+	/**
+	 * Set the area to cover
+	 * 
+	 * @param widgetToCover the widet to cover
+	 */
 	public void setPanelToOverlay(HasWidgets widgetToCover) {
 		slideUpPanel.setPanelToOverlay(widgetToCover);
 
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
+	 */
+	public void show() {
+		slideUpPanel.show();
 	}
 
 }

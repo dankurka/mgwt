@@ -22,8 +22,8 @@ import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs;
-import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionCallback;
-import com.googlecode.mgwt.ui.client.dialog.OptionsDialog.OptionsDialogOption;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionCallback;
+import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogOption;
 import com.googlecode.mgwt.ui.client.widget.Button;
 
 /**

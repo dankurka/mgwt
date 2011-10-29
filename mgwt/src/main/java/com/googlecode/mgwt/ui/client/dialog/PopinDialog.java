@@ -19,14 +19,28 @@ import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
+/**
+ * A dialog that pops into view
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class PopinDialog extends AnimatableDialogBase {
 
-	public PopinDialog(DialogCss css) {
-		super(css);
-	}
-
+	/**
+	 * Construct a popin dialog
+	 */
 	public PopinDialog() {
 		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
+	}
+
+	/**
+	 * Construct a popin dialog with specific css
+	 * 
+	 * @param css the css to use
+	 */
+	public PopinDialog(DialogCss css) {
+		super(css);
 	}
 
 	@Override
