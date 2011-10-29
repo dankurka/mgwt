@@ -18,7 +18,7 @@ package com.googlecode.mgwt.ui.client.panel;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.ui.client.canvas.CssCanvas;
+import com.googlecode.mgwt.ui.client.internal.CssCanvas;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.FeatureDetection;

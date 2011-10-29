@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.canvas;
+package com.googlecode.mgwt.ui.client.internal;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -40,31 +40,31 @@ public class CssCanvas {
 	}
 
 	public native void setFillStyle(String style)/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.fillStyle = style;
+		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.fillStyle = style;
 	}-*/;
 
 	public native void beginPath()/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context
+		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context
 				.beginPath();
 	}-*/;
 
 	public native void arc(double x, double y, double radius, double startAngle, double endAngle, boolean antiClockwise)/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.arc(x, y,
+		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.arc(x, y,
 				radius, startAngle, endAngle, antiClockwise);
 	}-*/;
 
 	public native void lineTo(double x, double y)/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.lineTo(x,
+		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.lineTo(x,
 				y);
 	}-*/;
 
 	public native void closePath()/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context
+		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context
 				.closePath();
 	}-*/;
 
 	public native void fill()/*-{
-		this.@com.googlecode.mgwt.ui.client.canvas.CssCanvas::context.fill();
+		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.fill();
 	}-*/;
 
 }
