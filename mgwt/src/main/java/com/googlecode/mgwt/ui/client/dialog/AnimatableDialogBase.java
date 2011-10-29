@@ -37,24 +37,94 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchToNativeTouchHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
-import com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl;
+import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
-public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers {
-	private AnimatableDisplay display;
+/**
+ * Baseclass for creating dialogs that are animated
+ * 
+ * @author Daniel Kurka
+ * 
+ */
+public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers, HasSimpleTouchHandler, Dialog {
+
+	private final class InternalTouchHandler implements TouchHandler {
+		private final com.google.gwt.user.client.Element shadow;
+		private Element startTarget;
+
+		private InternalTouchHandler(com.google.gwt.user.client.Element shadow) {
+			this.shadow = shadow;
+		}
+
+		@Override
+		public void onTouchCanceled(TouchCancelEvent event) {
+			startTarget = null;
+
+		}
+
+		@Override
+		public void onTouchEnd(TouchEndEvent event) {
+			EventTarget eventTarget = event.getNativeEvent().getEventTarget();
+			if (eventTarget != null) {
+				// no textnode or element node
+				if (Node.is(eventTarget)) {
+					if (Element.is(eventTarget)) {
+						Element endTarget = eventTarget.cast();
+
+						if (endTarget == shadow && startTarget == shadow) {
+							maybeHide();
+						}
+
+					}
+				}
+			}
+			startTarget = null;
+
+		}
+
+		@Override
+		public void onTouchMove(TouchMoveEvent event) {
+
+		}
+
+		@Override
+		public void onTouchStart(TouchStartEvent event) {
+
+			EventTarget eventTarget = event.getNativeEvent().getEventTarget();
+			if (eventTarget != null) {
+				// no textnode or element node
+				if (Node.is(eventTarget)) {
+					if (Element.is(eventTarget)) {
+						startTarget = eventTarget.cast();
+
+					}
+				}
+			}
+
+		}
+	}
+
 	protected FlowPanel container;
-
-	private boolean centerContent;
+	protected HasWidgets panelToOverlay;
 	protected final DialogCss css;
+
+	private AnimatableDisplay display;
+	private boolean centerContent;
 	private boolean hideOnBackgroundClick;
-
 	private boolean isVisible;
+	private TouchDelegate touchDelegate;
 
+	/**
+	 * Create an instance of an animated dialog
+	 * 
+	 * @param css
+	 */
 	public AnimatableDialogBase(DialogCss css) {
 		this.css = css;
 		css.ensureInjected();
@@ -63,88 +133,121 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 		display.asWidget().addStyleName(css.animationContainerShadow());
 		display.asWidget().addStyleName(css.z_index());
 
+		touchDelegate = new TouchDelegate(display.asWidget());
+
 		container = new FlowPanel();
 
 		container.addStyleName(css.animationContainer());
 
 		final com.google.gwt.user.client.Element shadow = container.getElement();
 
-		addTouchHandler(new TouchHandler() {
-
-			private Element startTarget;
-
-			@Override
-			public void onTouchCanceled(TouchCancelEvent event) {
-				startTarget = null;
-
-			}
-
-			@Override
-			public void onTouchEnd(TouchEndEvent event) {
-				EventTarget eventTarget = event.getNativeEvent().getEventTarget();
-				if (eventTarget != null) {
-					// no textnode or element node
-					if (Node.is(eventTarget)) {
-						if (Element.is(eventTarget)) {
-							Element endTarget = eventTarget.cast();
-
-							if (endTarget == shadow && startTarget == shadow) {
-								maybeHide();
-							}
-
-						}
-					}
-				}
-				startTarget = null;
-
-			}
-
-			@Override
-			public void onTouchMove(TouchMoveEvent event) {
-
-			}
-
-			@Override
-			public void onTouchStart(TouchStartEvent event) {
-
-				EventTarget eventTarget = event.getNativeEvent().getEventTarget();
-				if (eventTarget != null) {
-					// no textnode or element node
-					if (Node.is(eventTarget)) {
-						if (Element.is(eventTarget)) {
-							startTarget = eventTarget.cast();
-
-						}
-					}
-				}
-
-			}
-		});
+		addTouchHandler(new InternalTouchHandler(shadow));
 
 	}
 
-	protected void maybeHide() {
-		if (hideOnBackgroundClick) {
-			hide();
-		}
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
+	 */
+	@Override
+	public void add(Widget w) {
+		container.add(w);
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchStartHandler(com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler)
+	 */
+	@Override
+	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
+		return touchDelegate.addTouchStartHandler(handler);
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchMoveHandler(com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler)
+	 */
+	@Override
+	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
+		return touchDelegate.addTouchMoveHandler(handler);
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchCancelHandler(com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler)
+	 */
+	@Override
+	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
+		return touchDelegate.addTouchCancelHandler(handler);
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchEndHandler(com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler)
+	 */
+	@Override
+	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
+		return touchDelegate.addTouchEndHandler(handler);
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchHandler(com.googlecode.mgwt.dom.client.event.touch.TouchHandler)
+	 */
+	@Override
+	public HandlerRegistration addTouchHandler(TouchHandler handler) {
+		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
+
+		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(handler));
+		handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(handler));
+		handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(handler));
+		handlerRegistrationCollection.addHandlerRegistration(addTouchMoveHandler(handler));
+		return handlerRegistrationCollection;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler#addSimpleTouchHandler(com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler)
+	 */
+	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
+		SimpleTouchToNativeTouchHandler touchHandler = new SimpleTouchToNativeTouchHandler(handler);
+
+		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
+
+		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(touchHandler));
+		handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(touchHandler));
+		handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(touchHandler));
+		handlerRegistrationCollection.addHandlerRegistration(addTouchMoveHandler(touchHandler));
+		return handlerRegistrationCollection;
+	}
+
+	/**
+	 * Show the dialog centered
+	 */
 	public void center() {
 		centerContent = true;
 		show();
 	}
 
-	public void setCenterContent(boolean centerContent) {
-		this.centerContent = centerContent;
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
+	 */
+	@Override
+	public void clear() {
+		container.clear();
 	}
 
-	protected HasWidgets panelToOverlay;
-
-	public void setPanelToOverlay(HasWidgets panel) {
-		this.panelToOverlay = panel;
-	}
-
+	/**
+	 * get the panel that the dialog overlays
+	 * 
+	 * @return the panel that is overlayed by this dialog
+	 */
 	public HasWidgets getPanelToOverlay() {
 		if (panelToOverlay == null) {
 			panelToOverlay = RootPanel.get();
@@ -152,6 +255,101 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 		return panelToOverlay;
 	}
 
+	/**
+	 * hide the dialog if it is visible
+	 */
+	public void hide() {
+		if (!isVisible)
+			return;
+		isVisible = false;
+		Animation animation = getHideAnimation();
+
+		display.animate(animation, false, new AnimationEndCallback() {
+
+			@Override
+			public void onAnimationEnd() {
+				HasWidgets panel = getPanelToOverlay();
+				panel.remove(display.asWidget());
+
+			}
+		});
+
+	}
+
+	/**
+	 * Should the dialog hide itself if there is a tap outside the dialog
+	 * 
+	 * @return true if the dialog automatically hides, otherwise false
+	 */
+	public boolean isHideOnBackgroundClick() {
+		return hideOnBackgroundClick;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
+	 */
+	@Override
+	public Iterator<Widget> iterator() {
+		return container.iterator();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
+	 */
+	@Override
+	public boolean remove(Widget w) {
+		return container.remove(w);
+	}
+
+	/**
+	 * Should the content of the dialog be centered
+	 * 
+	 * @param centerContent true to center content
+	 */
+	public void setCenterContent(boolean centerContent) {
+		this.centerContent = centerContent;
+	}
+
+	/**
+	 * Should the dialog hide itself if there is a tap outside the dialog
+	 * 
+	 * @param hideOnBackgroundClick true if the dialog automatically hides,
+	 *            otherwise false
+	 */
+	public void setHideOnBackgroundClick(boolean hideOnBackgroundClick) {
+		this.hideOnBackgroundClick = hideOnBackgroundClick;
+	}
+
+	/**
+	 * set the panel that should be overlayed by the dialog
+	 * 
+	 * @param panel the area to be overlayed
+	 */
+	public void setPanelToOverlay(HasWidgets panel) {
+		this.panelToOverlay = panel;
+	}
+
+	/**
+	 * should the dialog add a shadow over the area that it covers
+	 * 
+	 * @param shadow true to add a shadow
+	 */
+	public void setShadow(boolean shadow) {
+		if (shadow) {
+			display.asWidget().addStyleName(css.animationContainerShadow());
+		} else {
+			display.asWidget().removeStyleName(css.animationContainerShadow());
+
+		}
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
+	 */
 	public void show() {
 		if (isVisible) {
 			return;
@@ -182,114 +380,14 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	}
 
-	public void hide() {
-		if (!isVisible)
-			return;
-		isVisible = false;
-		Animation animation = getHideAnimation();
-
-		display.animate(animation, false, new AnimationEndCallback() {
-
-			@Override
-			public void onAnimationEnd() {
-				HasWidgets panel = getPanelToOverlay();
-				panel.remove(display.asWidget());
-
-			}
-		});
-
-	}
-
-	@Override
-	public void add(Widget w) {
-		container.add(w);
-
-	}
-
-	@Override
-	public void clear() {
-		container.clear();
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		return container.iterator();
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		return container.remove(w);
-	}
-
 	protected abstract Animation getShowAnimation();
 
 	protected abstract Animation getHideAnimation();
 
-	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
-
-	@Override
-	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
-		return impl.addTouchStartHandler(display.asWidget(), handler);
-
-	}
-
-	@Override
-	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
-		return impl.addTouchMoveHandler(display.asWidget(), handler);
-
-	}
-
-	@Override
-	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
-		return impl.addTouchCancelHandler(display.asWidget(), handler);
-
-	}
-
-	@Override
-	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
-		return impl.addTouchEndHandler(display.asWidget(), handler);
-
-	}
-
-	@Override
-	public HandlerRegistration addTouchHandler(TouchHandler handler) {
-		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
-
-		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(handler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(handler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(handler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchMoveHandler(handler));
-		return handlerRegistrationCollection;
-	}
-
-	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
-		SimpleTouchToNativeTouchHandler touchHandler = new SimpleTouchToNativeTouchHandler(handler);
-
-		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
-
-		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchMoveHandler(touchHandler));
-		return handlerRegistrationCollection;
-	}
-
-	public void setHideOnBackgroundClick(boolean hideOnBackgroundClick) {
-		this.hideOnBackgroundClick = hideOnBackgroundClick;
-	}
-
-	public boolean isHideOnBackgroundClick() {
-		return hideOnBackgroundClick;
-	}
-
-	public void setShadow(boolean shadow) {
-		if (shadow) {
-			display.asWidget().addStyleName(css.animationContainerShadow());
-		} else {
-			display.asWidget().removeStyleName(css.animationContainerShadow());
-
+	protected void maybeHide() {
+		if (hideOnBackgroundClick) {
+			hide();
 		}
-
 	}
 
 }

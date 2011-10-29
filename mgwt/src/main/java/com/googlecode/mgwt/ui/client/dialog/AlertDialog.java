@@ -21,6 +21,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 /**
@@ -35,6 +36,23 @@ public class AlertDialog implements HasText, HasTitleText, HasSimpleTouchHandler
 	private PopinDialog popinDialog;
 	private DialogPanel dialogPanel1;
 
+	/**
+	 * Construct an alert dialog
+	 * 
+	 * @param title - the title of the dialog
+	 * @param text - the text of the dialog
+	 */
+	public AlertDialog(String title, String text) {
+		this(MGWTStyle.getDefaultClientBundle().getDialogCss(), title, text);
+	}
+
+	/**
+	 * Construct an alert dialog
+	 * 
+	 * @param css - the css to use
+	 * @param title - the title of the dialog
+	 * @param text - the text of the dialog
+	 */
 	public AlertDialog(DialogCss css, String title, String text) {
 		css.ensureInjected();
 		popinDialog = new PopinDialog(css);
@@ -60,35 +78,56 @@ public class AlertDialog implements HasText, HasTitleText, HasSimpleTouchHandler
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasText#getText()
+	 */
 	@Override
 	public String getText() {
 		return textLabel.getText();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasText#setText(java.lang.String)
+	 */
 	@Override
 	public void setText(String text) {
 		textLabel.setText(text);
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.HasTitleText#setTitleText(java.lang.String)
+	 */
 	@Override
 	public void setTitleText(String text) {
 		dialogPanel1.getDialogTitle().setText(text);
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.HasTitleText#getTitleText()
+	 */
 	@Override
 	public String getTitleText() {
 		return dialogPanel1.getDialogTitle().getText();
 	}
 
-	/**
-	 * Show the dialog
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
 	 */
 	public void show() {
 		popinDialog.center();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler#addSimpleTouchHandler(com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler)
+	 */
 	@Override
 	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
 		return dialogPanel1.getOkButton().addSimpleTouchHandler(handler);
