@@ -18,8 +18,11 @@ package com.googlecode.mgwt.ui.client.util;
 import com.google.gwt.user.client.Element;
 
 /**
+ * 
+ * Considered internal
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class CssUtil {
 	public static void translate(Element el, int x, int y) {

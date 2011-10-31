@@ -1,5 +1,5 @@
 /*
-
+ * 
  * Copyright 2010 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -17,8 +17,10 @@
 package com.googlecode.mgwt.ui.client.util;
 
 /**
+ * Considered internal
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class FeatureDetection {
 
@@ -35,7 +37,7 @@ public class FeatureDetection {
 	}
 
 	private static native boolean _has3d()/*-{
-											return ('WebKitCSSMatrix' in $wnd && 'm11' in new WebKitCSSMatrix())
-											}-*/;
+		return ('WebKitCSSMatrix' in $wnd && 'm11' in new WebKitCSSMatrix())
+	}-*/;
 
 }
