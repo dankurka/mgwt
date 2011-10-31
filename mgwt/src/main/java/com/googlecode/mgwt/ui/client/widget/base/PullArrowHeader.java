@@ -1,3 +1,18 @@
+/*
+ * Copyright 2011 Daniel Kurka
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.googlecode.mgwt.ui.client.widget.base;
 
 import com.google.gwt.user.client.DOM;
@@ -7,6 +22,12 @@ import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader;
 import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State;
 
+/**
+ * A header for a pull panel that shows an arrow
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class PullArrowHeader extends Widget implements PullHeader {
 
 	private Element main;
@@ -17,6 +38,11 @@ public class PullArrowHeader extends Widget implements PullHeader {
 
 	private final PullToRefreshCss css;
 
+	/**
+	 * Construct a {@link PullArrowHeader} with a given css
+	 * 
+	 * @param css the css to use
+	 */
 	public PullArrowHeader(PullToRefreshCss css) {
 
 		this.css = css;
@@ -34,11 +60,19 @@ public class PullArrowHeader extends Widget implements PullHeader {
 		main.appendChild(textContainer);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.Widget#asWidget()
+	 */
 	@Override
 	public Widget asWidget() {
 		return this;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#scrollStart(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State)
+	 */
 	@Override
 	public void scrollStart(State state) {
 		icon.removeClassName(css.spinner());
@@ -46,6 +80,10 @@ public class PullArrowHeader extends Widget implements PullHeader {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#onScroll(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State, int)
+	 */
 	@Override
 	public void onScroll(State state, int positionY) {
 		int degree = getRotation(positionY);
@@ -53,6 +91,10 @@ public class PullArrowHeader extends Widget implements PullHeader {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#onScrollEnd(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State, int, int)
+	 */
 	@Override
 	public void onScrollEnd(State state, int positionY, int duration) {
 		if (state == State.PULL_RELEASE) {
@@ -65,27 +107,51 @@ public class PullArrowHeader extends Widget implements PullHeader {
 
 	}
 
-	protected void remoteStyles() {
-		icon.removeClassName(css.arrow());
-		icon.removeClassName(css.spinner());
-		icon.removeClassName(css.error());
+	public void showError() {
+		remoteStyles();
+		icon.addClassName(css.error());
 	}
 
-	public void showArrow() {
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#getHeight()
+	 */
+	@Override
+	public int getHeight() {
+		// TODO calculate height to be able to accept different css
+		return 40;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#getStateSwitchPosition()
+	 */
+	@Override
+	public int getStateSwitchPosition() {
+		// TODO calculate height to be able to accept different css
+		return 40;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#setHTML(java.lang.String)
+	 */
+	@Override
+	public void setHTML(String html) {
+		textContainer.setInnerHTML(html);
+
+	}
+
+	protected void showArrow() {
 		remoteStyles();
 		icon.addClassName(css.arrow());
 	}
 
-	public void showSpinner() {
+	protected void showSpinner() {
 		remoteStyles();
 
 		icon.addClassName(css.spinner());
 
-	}
-
-	public void showError() {
-		remoteStyles();
-		icon.addClassName(css.error());
 	}
 
 	protected int getRotation(int y) {
@@ -99,22 +165,10 @@ public class PullArrowHeader extends Widget implements PullHeader {
 
 	}
 
-	@Override
-	public int getHeight() {
-		//TODO calculate height to be able to accept different css
-		return 40;
-	}
-
-	@Override
-	public int getStateSwitchPosition() {
-		//TODO calculate height to be able to accept different css
-		return 40;
-	}
-
-	@Override
-	public void setHTML(String html) {
-		textContainer.setInnerHTML(html);
-
+	protected void remoteStyles() {
+		icon.removeClassName(css.arrow());
+		icon.removeClassName(css.spinner());
+		icon.removeClassName(css.error());
 	}
 
 }
