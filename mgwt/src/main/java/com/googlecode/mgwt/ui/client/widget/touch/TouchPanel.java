@@ -71,7 +71,7 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers {
 		return handlerRegistrationCollection;
 	}
 
-	public HandlerRegistration addSimpleTouchHandler(TapHandler handler) {
+	public HandlerRegistration addTapHandler(TapHandler handler) {
 		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);
 
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();

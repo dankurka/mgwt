@@ -57,7 +57,7 @@ public class TouchDelegate implements HasTouchHandlers {
 		return handlerRegistrationCollection;
 	}
 
-	protected HandlerRegistration addSimpleTouchHandler(TapHandler handler) {
+	protected HandlerRegistration addTapHandler(TapHandler handler) {
 		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);
 
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();

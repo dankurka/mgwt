@@ -126,7 +126,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapEvent, Dialog {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler#addSimpleTouchHandler(com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler)
+	 * @see com.googlecode.mgwt.dom.client.event.tap.HasTapEvent#addTapHandler(com.googlecode.mgwt.dom.client.event.tap.TapHandler)
 	 */
 	@Override
 	public HandlerRegistration addTapHandler(TapHandler handler) {
