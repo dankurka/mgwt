@@ -13,17 +13,32 @@ import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.NotFoundException;
 import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
 import com.google.gwt.user.rebind.SourceWriter;
+import com.googlecode.mgwt.ui.client.OsDetection;
 
+/**
+ * Considered internal
+ * 
+ * {@link OsDetectionGenerator} creates the implementation for
+ * {@link OsDetection} for each platform
+ * 
+ * @author Daniel Kurka
+ * 
+ * 
+ * 
+ */
 public class OsDetectionGenerator extends Generator {
 
 	@Override
 	public String generate(TreeLogger logger, GeneratorContext context, String typeName) throws UnableToCompleteException {
 
+		// get the property oracle
 		PropertyOracle propertyOracle = context.getPropertyOracle();
 		SelectionProperty property = null;
 		try {
+			// get mgwt.os variable
 			property = propertyOracle.getSelectionProperty(logger, "mgwt.os");
 		} catch (BadPropertyValueException e) {
+			// if we can`t find it die
 			logger.log(TreeLogger.ERROR, "can not resolve mgwt.os variable", e);
 			throw new UnableToCompleteException();
 		}
@@ -31,15 +46,21 @@ public class OsDetectionGenerator extends Generator {
 		JClassType classType = null;
 
 		try {
+			// get the type we are looking for
 			classType = context.getTypeOracle().getType(typeName);
 		} catch (NotFoundException e) {
+			// if we can`t get it die
 			logger.log(TreeLogger.ERROR, "can not find type: '" + typeName + "'", e);
 			throw new UnableToCompleteException();
 		}
 
+		// get value of mgwt.os
 		String mgwtProperty = property.getCurrentValue();
+		// get the package name
 		String packageName = classType.getPackage().getName();
+		// build name for implementation class
 		String simpleName = classType.getSimpleSourceName() + "_" + property.getCurrentValue();
+		// combine package name and simple name to full qualified
 		String fullName = packageName + "." + simpleName;
 
 		ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(packageName, simpleName);
@@ -52,6 +73,7 @@ public class OsDetectionGenerator extends Generator {
 			return fullName;
 		}
 
+		// start writing the implementation
 		SourceWriter writer = composer.createSourceWriter(context, printWriter);
 
 		writer.println("public boolean isAndroid() {");
