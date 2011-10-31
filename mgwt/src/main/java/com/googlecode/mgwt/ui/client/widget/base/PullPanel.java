@@ -40,86 +40,64 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollStartEvent;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 
+/**
+ * A panel that has scrollable content with a header, that can be pulled
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class PullPanel extends Composite implements HasWidgets, HasPullHandlers {
-	private ScrollPanel scroll;
-	private FlowPanel container;
-	private ScrollListener scrollListener;
-	private final PullToRefreshCss css;
+	/**
+	 * A header for a pull panel
+	 * 
+	 * @author Daniel Kurka
+	 * 
+	 */
+	public interface PullHeader extends IsWidget {
+		/**
+		 * called when a scroll starts
+		 * 
+		 * @param state the current state of the pull panel
+		 */
+		public void scrollStart(State state);
 
-	private State state;
-	protected final PullHeader header;
+		/**
+		 * continously called when scrolling
+		 * 
+		 * @param state the state of the pull panel
+		 * @param positionY the current scroll position
+		 */
+		public void onScroll(State state, int positionY);
 
-	public PullPanel(PullHeader pullHeader) {
-		this(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss(), pullHeader);
-	}
+		/**
+		 * called when a scroll ends
+		 * 
+		 * @param state the current state of the pull panel
+		 * @param positionY the end scroll position
+		 * @param duration the duration to scroll took
+		 */
+		void onScrollEnd(State state, int positionY, int duration);
 
-	public PullPanel(PullToRefreshCss css, PullHeader header) {
-		this.css = css;
-		this.header = header;
-		this.css.ensureInjected();
-		state = State.NO_ACTION;
-		scroll = new ScrollPanel();
+		/**
+		 * get the height of the pullheader
+		 * 
+		 * @return
+		 */
+		public int getHeight();
 
-		initWidget(scroll);
+		/**
+		 * get the position in px that triggers a state change
+		 * 
+		 * @return the position in px that triggers the state change
+		 */
+		public int getStateSwitchPosition();
 
-		scroll.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
-
-		FlowPanel main = new FlowPanel();
-		scroll.setWidget(main);
-		scroll.setOffset(0, -header.getHeight());
-		scroll.setScrollingEnabledX(false);
-		main.getElement().getStyle().setPosition(Position.RELATIVE);
-
-		scrollListener = new ScrollListener();
-		scroll.addScrollhandler(scrollListener);
-		scroll.addScrollEndHandler(scrollListener);
-		scroll.addScrollStartHandler(scrollListener);
-
-		main.add(header);
-
-		container = new FlowPanel();
-		main.add(container);
-
-	}
-
-	@Override
-	public void add(Widget w) {
-		container.add(w);
-
-	}
-
-	@Override
-	public void clear() {
-		container.clear();
-
-	}
-
-	@Override
-	public Iterator<Widget> iterator() {
-		return container.iterator();
-	}
-
-	@Override
-	public boolean remove(Widget w) {
-		return container.remove(w);
-	}
-
-	public void refresh() {
-		scroll.refresh();
-
-	}
-
-	public void showHeader(boolean show) {
-		if (show) {
-			scroll.setOffset(0, 0);
-		} else {
-			scroll.setOffset(0, -header.getHeight());
-		}
-
-	}
-
-	public State getState() {
-		return state;
+		/**
+		 * set the html of a pull header
+		 * 
+		 * @param html the html as String
+		 */
+		public void setHTML(String html);
 	}
 
 	private class ScrollListener implements ScrollHandler, ScrollEndHandler, ScrollStartHandler {
@@ -162,6 +140,146 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 		}
 	}
 
+	private ScrollPanel scroll;
+	private FlowPanel container;
+	private ScrollListener scrollListener;
+	private final PullToRefreshCss css;
+
+	private State state;
+	protected final PullHeader header;
+
+	/**
+	 * Construct a pull panel with a given header
+	 * 
+	 * @param pullHeader the header to use for this panel
+	 */
+	public PullPanel(PullHeader pullHeader) {
+		this(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss(), pullHeader);
+	}
+
+	/**
+	 * Construct a pull panel with a given header an css.
+	 * 
+	 * @param css the css to use
+	 * @param header the header to use for this panel
+	 */
+	public PullPanel(PullToRefreshCss css, PullHeader header) {
+		this.css = css;
+		this.header = header;
+		this.css.ensureInjected();
+		state = State.NO_ACTION;
+		scroll = new ScrollPanel();
+
+		initWidget(scroll);
+
+		scroll.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
+
+		FlowPanel main = new FlowPanel();
+		scroll.setWidget(main);
+		scroll.setOffset(0, -header.getHeight());
+		scroll.setScrollingEnabledX(false);
+		main.getElement().getStyle().setPosition(Position.RELATIVE);
+
+		scrollListener = new ScrollListener();
+		scroll.addScrollhandler(scrollListener);
+		scroll.addScrollEndHandler(scrollListener);
+		scroll.addScrollStartHandler(scrollListener);
+
+		main.add(header);
+
+		container = new FlowPanel();
+		main.add(container);
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
+	 */
+	@Override
+	public void add(Widget w) {
+		container.add(w);
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.event.HasPullHandlers#addPullReleasedHandler(com.googlecode.mgwt.ui.client.widget.event.PullReleasedHandler)
+	 */
+	@Override
+	public HandlerRegistration addPullReleasedHandler(PullReleasedHandler handler) {
+		return addHandler(handler, PullReleasedEvent.getType());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.event.HasPullHandlers#addPullStateChangedHandler(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedHandler)
+	 */
+	@Override
+	public HandlerRegistration addPullStateChangedHandler(PullStateChangedHandler handler) {
+		return addHandler(handler, PullStateChangedEvent.getType());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
+	 */
+	@Override
+	public void clear() {
+		container.clear();
+
+	}
+
+	/**
+	 * get the state of the pull panel
+	 * 
+	 * @return the state of the panel
+	 */
+	public State getState() {
+		return state;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
+	 */
+	@Override
+	public Iterator<Widget> iterator() {
+		return container.iterator();
+	}
+
+	/**
+	 * refresh the pull panel. Recalculate content size and adjust scrollbars
+	 * (needs to be called after content size has changed)
+	 */
+	public void refresh() {
+		scroll.refresh();
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
+	 */
+	@Override
+	public boolean remove(Widget w) {
+		return container.remove(w);
+	}
+
+	/**
+	 * show the header of the panel
+	 * 
+	 * @param show true to show otherwise hide
+	 */
+	public void showHeader(boolean show) {
+		if (show) {
+			scroll.setOffset(0, 0);
+		} else {
+			scroll.setOffset(0, -header.getHeight());
+		}
+
+	}
+
 	protected void setState(State state) {
 		State lastState = this.state;
 		this.state = state;
@@ -179,30 +297,6 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	private void startLoading() {
 		fireEvent(new PullReleasedEvent());
 
-	}
-
-	public interface PullHeader extends IsWidget {
-		public void scrollStart(State state);
-
-		public void onScroll(State state, int positionY);
-
-		void onScrollEnd(State state, int positionY, int duration);
-
-		public int getHeight();
-
-		public int getStateSwitchPosition();
-
-		public void setHTML(String html);
-	}
-
-	@Override
-	public HandlerRegistration addPullReleasedHandler(PullReleasedHandler handler) {
-		return addHandler(handler, PullReleasedEvent.getType());
-	}
-
-	@Override
-	public HandlerRegistration addPullStateChangedHandler(PullStateChangedHandler handler) {
-		return addHandler(handler, PullStateChangedEvent.getType());
 	}
 
 }
