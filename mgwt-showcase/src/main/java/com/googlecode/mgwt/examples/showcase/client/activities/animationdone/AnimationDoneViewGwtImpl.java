@@ -19,7 +19,7 @@ import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
 import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
 
@@ -57,7 +57,7 @@ public class AnimationDoneViewGwtImpl implements AnimationDoneView {
 	}
 
 	@Override
-	public HasSimpleTouchHandler getBackButton() {
+	public HasTapEvent getBackButton() {
 		return button;
 	}
 

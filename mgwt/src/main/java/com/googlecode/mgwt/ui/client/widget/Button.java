@@ -20,6 +20,8 @@ import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
+ * A simple button class
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -94,8 +96,7 @@ public class Button extends ButtonBase {
 	}
 
 	/**
-	 * @param important
-	 *            the important to set
+	 * @param important the important to set
 	 */
 	public void setImportant(boolean important) {
 		if (important) {
@@ -116,8 +117,7 @@ public class Button extends ButtonBase {
 	}
 
 	/**
-	 * @param confirm
-	 *            the confirm to set
+	 * @param confirm the confirm to set
 	 */
 	public void setConfirm(boolean confirm) {
 		if (confirm) {

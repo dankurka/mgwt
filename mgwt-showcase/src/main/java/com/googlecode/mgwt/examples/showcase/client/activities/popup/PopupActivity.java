@@ -20,8 +20,8 @@ import java.util.List;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
@@ -53,19 +53,19 @@ public class PopupActivity extends DetailActivity {
 		view.getHeader().setText("Popups");
 		view.getMainButtonText().setText("Nav");
 
-		addHandlerRegistration(view.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getBackbutton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				clientFactory.getPlaceController().goTo(new UIPlace());
 
 			}
 		}));
 
-		addHandlerRegistration(view.getConfirmButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getConfirmButton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				view.confirmSomeStuff("Confirm this", "Confirm some more stuff", new ConfirmCallback() {
 
 					@Override
@@ -82,10 +82,10 @@ public class PopupActivity extends DetailActivity {
 			}
 		}));
 
-		addHandlerRegistration(view.getSlideUpButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getSlideUpButton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				List<OptionsDialogOption> list = new ArrayList<OptionsDialogOption>();
 				list.add(new OptionsDialogOption("Confirm", ButtonType.CONFIRM));
 				list.add(new OptionsDialogOption("Cancel", ButtonType.NORMAL));
@@ -101,10 +101,10 @@ public class PopupActivity extends DetailActivity {
 			}
 		}));
 
-		addHandlerRegistration(view.getAlertButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getAlertButton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				view.alertSomeStuff("Hi", "How are you doing?");
 			}
 		}));

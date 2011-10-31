@@ -2,8 +2,8 @@ package com.googlecode.mgwt.examples.showcase.client;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.mvp.client.MGWTAbstractActivity;
 import com.googlecode.mgwt.ui.client.event.ShowMasterEvent;
 
@@ -20,10 +20,10 @@ public class DetailActivity extends MGWTAbstractActivity {
 
 	@Override
 	public void start(AcceptsOneWidget panel, final EventBus eventBus) {
-		addHandlerRegistration(detailView.getMainButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(detailView.getMainButton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				eventBus.fireEvent(new ShowMasterEvent(eventId));
 
 			}

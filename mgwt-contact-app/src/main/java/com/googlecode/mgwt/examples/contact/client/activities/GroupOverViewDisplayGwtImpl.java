@@ -8,8 +8,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.examples.contact.client.GroupCell;
 import com.googlecode.mgwt.examples.contact.client.module.Group;
 import com.googlecode.mgwt.ui.client.widget.CellList;
@@ -49,19 +49,19 @@ public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverV
 	}
 
 	@Override
-	public HasSimpleTouchHandler getPlusButton() {
+	public HasTapEvent getPlusButton() {
 		return plusButton;
 	}
 
 	@UiHandler("plusButton")
-	public void onSimpleTouch(SimpleTouchEvent event) {
+	public void onSimpleTouch(TapEvent event) {
 		if (presenter != null) {
 			presenter.onPlusButton();
 		}
 	}
 
 	@UiHandler("editButton")
-	public void onEditButton(SimpleTouchEvent event) {
+	public void onEditButton(TapEvent event) {
 		if (presenter != null) {
 			presenter.onEditButton();
 		}

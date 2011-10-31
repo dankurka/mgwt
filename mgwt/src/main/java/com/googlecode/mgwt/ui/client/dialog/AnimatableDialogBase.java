@@ -27,6 +27,9 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
+import com.googlecode.mgwt.dom.client.event.tap.TapToNativeTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
@@ -37,9 +40,6 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchToNativeTouchHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
@@ -52,7 +52,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
  * @author Daniel Kurka
  * 
  */
-public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers, HasSimpleTouchHandler, Dialog {
+public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers, HasTapEvent, Dialog {
 
 	private final class InternalTouchHandler implements TouchHandler {
 		private final com.google.gwt.user.client.Element shadow;
@@ -214,8 +214,8 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler#addSimpleTouchHandler(com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler)
 	 */
-	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
-		SimpleTouchToNativeTouchHandler touchHandler = new SimpleTouchToNativeTouchHandler(handler);
+	public HandlerRegistration addTapHandler(TapHandler handler) {
+		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);
 
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
 

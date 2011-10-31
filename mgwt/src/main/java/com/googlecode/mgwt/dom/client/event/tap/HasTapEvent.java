@@ -13,23 +13,23 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.touch.simple;
+package com.googlecode.mgwt.dom.client.event.tap;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
  * A widget that implements this interface provides registration for
- * {@link SimpleTouchHandler} instances.
+ * {@link TapHandler} instances.
  * 
  * @author Daniel Kurka
  * 
  */
-public interface HasSimpleTouchHandler {
+public interface HasTapEvent {
 	/**
-	 * Adds a {@link SimpleTouchHandler} handler.
+	 * Adds a {@link TapHandler} handler.
 	 * 
 	 * @param handler the simple touch handler
 	 * @return {@link HandlerRegistration} used to remove this handler
 	 */
-	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler);
+	public HandlerRegistration addTapHandler(TapHandler handler);
 }

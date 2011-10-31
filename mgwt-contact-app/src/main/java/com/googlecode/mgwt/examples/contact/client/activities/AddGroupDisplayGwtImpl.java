@@ -7,8 +7,8 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs;
@@ -52,7 +52,7 @@ public class AddGroupDisplayGwtImpl extends Composite implements AddGroupDisplay
 	}
 
 	@UiHandler("addButton")
-	protected void onAddButtonClicked(SimpleTouchEvent event) {
+	protected void onAddButtonClicked(TapEvent event) {
 		if (presenter != null) {
 			presenter.onAddButtonPressed();
 		}

@@ -18,9 +18,9 @@ package com.googlecode.mgwt.ui.client.dialog;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
@@ -30,7 +30,7 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
  * @author Daniel Kurka
  * 
  */
-public class AlertDialog implements HasText, HasTitleText, HasSimpleTouchHandler, Dialog {
+public class AlertDialog implements HasText, HasTitleText, HasTapEvent, Dialog {
 
 	private Label textLabel;
 	private PopinDialog popinDialog;
@@ -64,10 +64,10 @@ public class AlertDialog implements HasText, HasTitleText, HasSimpleTouchHandler
 		dialogPanel1.getContent().add(textLabel);
 		popinDialog.add(dialogPanel1);
 
-		dialogPanel1.getOkButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		dialogPanel1.getOkButton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				popinDialog.hide();
 			}
 
@@ -129,8 +129,8 @@ public class AlertDialog implements HasText, HasTitleText, HasSimpleTouchHandler
 	 * @see com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler#addSimpleTouchHandler(com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler)
 	 */
 	@Override
-	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
-		return dialogPanel1.getOkButton().addSimpleTouchHandler(handler);
+	public HandlerRegistration addTapHandler(TapHandler handler) {
+		return dialogPanel1.getOkButton().addTapHandler(handler);
 	}
 
 }

@@ -36,13 +36,13 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HasWordWrap;
+import com.googlecode.mgwt.dom.client.event.tap.Tap;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouch;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
@@ -103,7 +103,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 				if (ignore)
 					return;
 
-				if (Math.abs(last_x - start_x) < SimpleTouch.TOUCH_RADIUS && Math.abs(last_y - start_y) < SimpleTouch.TOUCH_RADIUS) {
+				if (Math.abs(last_x - start_x) < Tap.RADIUS && Math.abs(last_y - start_y) < Tap.RADIUS) {
 					if (labelOrContainer) {
 						inputRadio.setChecked(true);
 						ValueChangeEvent.fire(MRadioButton.this, true);

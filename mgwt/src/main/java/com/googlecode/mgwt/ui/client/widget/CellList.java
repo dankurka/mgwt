@@ -29,13 +29,13 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Composite;
+import com.googlecode.mgwt.dom.client.event.tap.Tap;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouch;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
@@ -84,7 +84,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
 			Touch touch = event.touches().get(0);
-			if (Math.abs(touch.getPageX() - x) > SimpleTouch.TOUCH_RADIUS || Math.abs(touch.getPageY() - y) > SimpleTouch.TOUCH_RADIUS) {
+			if (Math.abs(touch.getPageX() - x) > Tap.RADIUS || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
 				moved = true;
 			}
 

@@ -25,8 +25,8 @@ import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
@@ -178,7 +178,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			initWidget(container);
 		}
 
-		private class InternalTouchHandler implements SimpleTouchHandler {
+		private class InternalTouchHandler implements TapHandler {
 
 			private final TabBarButton button;
 
@@ -188,7 +188,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			}
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				setSelectedButton(getIndexForWidget(button));
 			}
 
@@ -200,7 +200,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			}
 			container.add(w);
 			children.add(w);
-			handlers.add(w.addSimpleTouchHandler(new InternalTouchHandler(w)));
+			handlers.add(w.addTapHandler(new InternalTouchHandler(w)));
 
 		}
 

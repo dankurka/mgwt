@@ -31,13 +31,13 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.TextBox;
+import com.googlecode.mgwt.dom.client.event.tap.Tap;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouch;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss;
 import com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder;
@@ -149,7 +149,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		public void onTouchMove(TouchMoveEvent event) {
 			Touch touch = event.touches().get(0);
 
-			if (Math.abs(touch.getPageX() - x) > SimpleTouch.TOUCH_RADIUS || Math.abs(touch.getPageY() - y) > SimpleTouch.TOUCH_RADIUS) {
+			if (Math.abs(touch.getPageX() - x) > Tap.RADIUS || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
 				moved = true;
 				clearButton.removeStyleName(css.clearActive());
 			}

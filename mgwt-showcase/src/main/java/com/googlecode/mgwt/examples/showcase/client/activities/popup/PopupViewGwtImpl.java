@@ -18,7 +18,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities.popup;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs;
@@ -59,12 +59,12 @@ public class PopupViewGwtImpl extends DetailViewGwtImpl implements PopupView {
 	}
 
 	@Override
-	public HasSimpleTouchHandler getSlideUpButton() {
+	public HasTapEvent getSlideUpButton() {
 		return slideUpButton;
 	}
 
 	@Override
-	public HasSimpleTouchHandler getAlertButton() {
+	public HasTapEvent getAlertButton() {
 		return alertButton;
 	}
 
@@ -87,7 +87,7 @@ public class PopupViewGwtImpl extends DetailViewGwtImpl implements PopupView {
 	}
 
 	@Override
-	public HasSimpleTouchHandler getConfirmButton() {
+	public HasTapEvent getConfirmButton() {
 		return confirmButton;
 	}
 

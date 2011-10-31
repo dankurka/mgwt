@@ -18,7 +18,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.IsWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
 import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
 
 
@@ -29,7 +29,7 @@ import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
 public interface UIView extends IsWidget {
 	public void setBackButtonText(String text);
 
-	public HasSimpleTouchHandler getBackButton();
+	public HasTapEvent getBackButton();
 
 	public void setTitle(String title);
 

@@ -17,8 +17,8 @@ package com.googlecode.mgwt.ui.client.dialog;
 
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
@@ -82,20 +82,20 @@ public class ConfirmDialog implements HasText, HasTitleText, Dialog {
 		dialogPanel1.getContent().add(textLabel);
 		popinDialog.add(dialogPanel1);
 
-		dialogPanel1.getOkButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		dialogPanel1.getOkButton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				popinDialog.hide();
 				if (ConfirmDialog.this.callback != null)
 					ConfirmDialog.this.callback.onOk();
 			}
 		});
 
-		dialogPanel1.getCancelButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		dialogPanel1.getCancelButton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				popinDialog.hide();
 				if (ConfirmDialog.this.callback != null)
 					ConfirmDialog.this.callback.onCancel();

@@ -8,7 +8,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.examples.contact.client.module.Group;
 import com.googlecode.mgwt.ui.client.widget.Button;
 import com.googlecode.mgwt.ui.client.widget.MTextBox;
@@ -55,7 +55,7 @@ public class ShowGroupDisplayGwtImpl extends Composite implements ShowGroupDispl
 	}
 
 	@UiHandler("editButton")
-	protected void onEditButon(SimpleTouchEvent event) {
+	protected void onEditButon(TapEvent event) {
 		if (presenter != null) {
 			Group group = driver.flush();
 			presenter.onEditComplete(group);

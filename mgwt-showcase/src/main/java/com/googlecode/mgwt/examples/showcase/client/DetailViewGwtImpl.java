@@ -3,7 +3,7 @@ package com.googlecode.mgwt.examples.showcase.client;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
@@ -61,7 +61,7 @@ public abstract class DetailViewGwtImpl implements DetailView {
 	}
 
 	@Override
-	public HasSimpleTouchHandler getBackbutton() {
+	public HasTapEvent getBackbutton() {
 		return headerBackButton;
 	}
 
@@ -71,7 +71,7 @@ public abstract class DetailViewGwtImpl implements DetailView {
 	}
 
 	@Override
-	public HasSimpleTouchHandler getMainButton() {
+	public HasTapEvent getMainButton() {
 		return headerMainButton;
 	}
 

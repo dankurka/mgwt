@@ -19,8 +19,8 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.widget.Button;
@@ -57,10 +57,10 @@ public class Dialogs {
 	public static void alert(String title, String text, final AlertCallback callback) {
 		AlertDialog alertDialog = new AlertDialog(MGWTStyle.getDefaultClientBundle().getDialogCss(), title, text);
 
-		alertDialog.addSimpleTouchHandler(new SimpleTouchHandler() {
+		alertDialog.addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				if (callback != null) {
 					callback.onButtonPressed();
 				}
@@ -85,7 +85,7 @@ public class Dialogs {
 		confirmDialog.show();
 	}
 
-	private static class InternalTouchHandler implements SimpleTouchHandler {
+	private static class InternalTouchHandler implements TapHandler {
 		private final int buttonCount;
 		private final OptionCallback callback;
 		private final OptionsDialog panel;
@@ -98,7 +98,7 @@ public class Dialogs {
 		}
 
 		@Override
-		public void onTouch(SimpleTouchEvent event) {
+		public void onTap(TapEvent event) {
 			panel.hide();
 			if (callback != null) {
 				callback.onOptionSelected(buttonCount);
@@ -144,7 +144,7 @@ public class Dialogs {
 				button.setConfirm(true);
 				break;
 			}
-			button.addSimpleTouchHandler(new InternalTouchHandler(count, optionsDialog, callback));
+			button.addTapHandler(new InternalTouchHandler(count, optionsDialog, callback));
 			optionsDialog.add(button);
 		}
 		optionsDialog.setPanelToOverlay(widgetToCover);

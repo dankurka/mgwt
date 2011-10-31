@@ -20,8 +20,8 @@ import java.util.List;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.activities.button.ButtonPlace;
 import com.googlecode.mgwt.examples.showcase.client.activities.buttonbar.ButtonBarPlace;
@@ -60,10 +60,10 @@ public class UIActivity extends MGWTAbstractActivity {
 		view.setBackButtonText("Home");
 		view.setTitle("UI");
 
-		addHandlerRegistration(view.getBackButton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getBackButton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				clientFactory.getPlaceController().goTo(new HomePlace());
 
 			}

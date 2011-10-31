@@ -23,14 +23,14 @@ import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
@@ -39,7 +39,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * @author Daniel Kurka
  * 
  */
-public abstract class ButtonBase extends TouchWidget implements HasText, HasSimpleTouchHandler {
+public abstract class ButtonBase extends TouchWidget implements HasText, HasTapEvent {
 
 	public ButtonBase(ButtonBaseCss css) {
 		this(DOM.createDiv(), css);
@@ -98,10 +98,10 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasSimp
 			});
 		}
 
-		addSimpleTouchHandler(new SimpleTouchHandler() {
+		addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				removeStyleName(active);
 
 			}
@@ -121,8 +121,8 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasSimp
 	}
 
 	@Override
-	public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
-		return super.addSimpleTouchHandler(handler);
+	public HandlerRegistration addTapHandler(TapHandler handler) {
+		return super.addTapHandler(handler);
 	}
 
 }

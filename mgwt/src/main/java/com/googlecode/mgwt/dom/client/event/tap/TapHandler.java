@@ -13,19 +13,22 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.touch.simple;
+package com.googlecode.mgwt.dom.client.event.tap;
+
+import com.google.gwt.event.shared.EventHandler;
 
 /**
- * SimpleTouch is considered for elements that offer something like a normal
- * "click event". Like a button.
+ * Handler for {@link TapEvent} events:
  * 
  * @author Daniel Kurka
  * 
  */
-public class SimpleTouch {
+public interface TapHandler extends EventHandler {
 	/**
-	 * The radios that a finger can move before the touch is not considered a
-	 * simple touch anymore
+	 * Called when a simple touch event is fired.
+	 * 
+	 * @param event the {@link TapEvent} that was fired
 	 */
-	public static final int TOUCH_RADIUS = 10;
+	public void onTap(TapEvent event);
+
 }

@@ -13,22 +13,22 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.touch.simple;
+package com.googlecode.mgwt.dom.client.event.tap;
 
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * SimpleTouchEvent is considered an activation event something like a normal
+ * TapEvent is considered an activation event something like a normal
  * "click event". Like a button, but with touch events.
  * 
  * @author Daniel Kurka
  * 
  */
-public class SimpleTouchEvent extends GwtEvent<SimpleTouchHandler> {
+public class TapEvent extends GwtEvent<TapHandler> {
 
-	private static final Type<SimpleTouchHandler> TYPE = new Type<SimpleTouchHandler>();
+	private static final Type<TapHandler> TYPE = new Type<TapHandler>();
 
-	public SimpleTouchEvent() {
+	public TapEvent() {
 
 	}
 
@@ -38,17 +38,17 @@ public class SimpleTouchEvent extends GwtEvent<SimpleTouchHandler> {
 	 * @return the handler type
 	 */
 	@Override
-	public com.google.gwt.event.shared.GwtEvent.Type<SimpleTouchHandler> getAssociatedType() {
+	public com.google.gwt.event.shared.GwtEvent.Type<TapHandler> getAssociatedType() {
 		return TYPE;
 	}
 
 	@Override
-	protected void dispatch(SimpleTouchHandler handler) {
-		handler.onTouch(this);
+	protected void dispatch(TapHandler handler) {
+		handler.onTap(this);
 
 	}
 
-	public static Type<SimpleTouchHandler> getType() {
+	public static Type<TapHandler> getType() {
 		return TYPE;
 	}
 

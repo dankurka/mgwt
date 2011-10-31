@@ -20,7 +20,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
@@ -121,20 +121,20 @@ public class DialogPanel extends Composite {
 	}
 
 	/**
-	 * get {@link HasSimpleTouchHandler} for the cancel button
+	 * get {@link HasTapEvent} for the cancel button
 	 * 
-	 * @return the {@link HasSimpleTouchHandler} for cancel button
+	 * @return the {@link HasTapEvent} for cancel button
 	 */
-	public HasSimpleTouchHandler getCancelButton() {
+	public HasTapEvent getCancelButton() {
 		return cancelButton;
 	}
 
 	/**
-	 * get {@link HasSimpleTouchHandler} for the ok button
+	 * get {@link HasTapEvent} for the ok button
 	 * 
-	 * @return the {@link HasSimpleTouchHandler} for ok button
+	 * @return the {@link HasTapEvent} for ok button
 	 */
-	public HasSimpleTouchHandler getOkButton() {
+	public HasTapEvent getOkButton() {
 		return okButton;
 	}
 

@@ -17,8 +17,8 @@ package com.googlecode.mgwt.examples.showcase.client.activities.tabbar;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchEvent;
-import com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.examples.showcase.client.ClientFactory;
 import com.googlecode.mgwt.examples.showcase.client.DetailActivity;
 import com.googlecode.mgwt.examples.showcase.client.activities.UIPlace;
@@ -48,10 +48,10 @@ public class TabBarActivity extends DetailActivity {
 		view.getMainButtonText().setText("Nav");
 		view.getHeader().setText("TabBar");
 
-		addHandlerRegistration(view.getBackbutton().addSimpleTouchHandler(new SimpleTouchHandler() {
+		addHandlerRegistration(view.getBackbutton().addTapHandler(new TapHandler() {
 
 			@Override
-			public void onTouch(SimpleTouchEvent event) {
+			public void onTap(TapEvent event) {
 				clientFactory.getPlaceController().goTo(new UIPlace());
 
 			}

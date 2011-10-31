@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.touch.simple;
+package com.googlecode.mgwt.dom.client.event.tap;
 
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
@@ -33,9 +33,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
  * @author Daniel Kurka
  * 
  */
-public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, TouchEndHandler, TouchMoveHandler, TouchStartHandler {
+public class TapToNativeTouchHandler implements TouchCancelHandler, TouchEndHandler, TouchMoveHandler, TouchStartHandler {
 
-	private final SimpleTouchHandler simpleTouchHandler;
+	private final TapHandler tapHandler;
 
 	private boolean touchCanceled = false;
 	private boolean hasMoved = false;
@@ -45,8 +45,8 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 	/**
 	 * 
 	 */
-	public SimpleTouchToNativeTouchHandler(SimpleTouchHandler simpleTouchHandler) {
-		this.simpleTouchHandler = simpleTouchHandler;
+	public TapToNativeTouchHandler(TapHandler tapHandler) {
+		this.tapHandler = tapHandler;
 
 	}
 
@@ -63,7 +63,7 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
 		Touch touch = event.touches().get(0);
-		if (Math.abs(touch.getPageX() - x) > SimpleTouch.TOUCH_RADIUS || Math.abs(touch.getPageY() - y) > SimpleTouch.TOUCH_RADIUS) {
+		if (Math.abs(touch.getPageX() - x) > Tap.RADIUS || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
 			hasMoved = true;
 		}
 
@@ -72,7 +72,7 @@ public class SimpleTouchToNativeTouchHandler implements TouchCancelHandler, Touc
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
 		if (!hasMoved && !touchCanceled)
-			simpleTouchHandler.onTouch(new SimpleTouchEvent());
+			tapHandler.onTap(new TapEvent());
 
 	}
 
