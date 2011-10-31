@@ -18,14 +18,21 @@ package com.googlecode.mgwt.ui.client.widget.celllist;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
+ * This event is fired when a cell {@link Cell} is selected
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class CellSelectedEvent extends GwtEvent<CellSelectedHandler> {
 
 	private static final GwtEvent.Type<CellSelectedHandler> TYPE = new GwtEvent.Type<CellSelectedHandler>();
 	private final int index;
 
+	/**
+	 * Construct a cell selected event
+	 * 
+	 * @param index the index of the cell that was selected
+	 */
 	public CellSelectedEvent(int index) {
 		this.index = index;
 	}
@@ -48,6 +55,11 @@ public class CellSelectedEvent extends GwtEvent<CellSelectedHandler> {
 		return TYPE;
 	}
 
+	/**
+	 * get the index of the selected cell
+	 * 
+	 * @return the index of the selected cell
+	 */
 	public int getIndex() {
 		return index;
 	}

@@ -18,9 +18,17 @@ package com.googlecode.mgwt.ui.client.widget.celllist;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
+ * Objects that implement this interface reveive {@link CellSelectedEvent}
+ * events
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public interface CellSelectedHandler extends EventHandler {
+	/**
+	 * Call when a cell is selected
+	 * 
+	 * @param event the event containing more information about the cell
+	 */
 	public void onCellSelected(CellSelectedEvent event);
 }

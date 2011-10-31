@@ -18,9 +18,19 @@ package com.googlecode.mgwt.ui.client.widget.celllist;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
+ * Classes that implement this interface produce {@link CellSelectedEvent}
+ * events.
+ * 
  * @author Daniel Kurka
  * 
  */
 public interface HasCellSelectedHandler {
+	/**
+	 * Add a handler that receive {@link CellSelectedEvent} events
+	 * 
+	 * @param cellSelectedHandler the handler to receive events
+	 * @return a {@link HandlerRegistration}, that can be used to cancel the
+	 *         registration
+	 */
 	public HandlerRegistration addCellSelectedHandler(CellSelectedHandler cellSelectedHandler);
 }
