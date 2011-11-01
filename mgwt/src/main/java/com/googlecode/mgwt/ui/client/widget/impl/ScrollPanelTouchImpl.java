@@ -50,6 +50,9 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 /**
+ * 
+ * A ScrollPanel implementation based on -webkit-transform and css scrollbars
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -157,10 +160,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 	}
 
-	/**
-	 * for uibinder...
-	 * 
-	 * @param w
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
 	 */
 	@Override
 	public void add(Widget w) {
@@ -170,20 +172,36 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		setWidget(w);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setWidget(com.google.gwt.user.client.ui.IsWidget)
+	 */
 	@Override
 	public void setWidget(IsWidget child) {
 		setWidget(child.asWidget());
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.Composite#getWidget()
+	 */
 	@Override
 	public Widget getWidget() {
 		return widgetToScroll;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#refresh()
+	 */
 	public void refresh() {
 		updateScrollBars();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.Composite#setWidget(com.google.gwt.user.client.ui.Widget)
+	 */
 	@Override
 	public void setWidget(Widget w) {
 		if (widgetToScroll != null) {
@@ -437,9 +455,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 	}
 
-	/**
-	 * @param newPosX
-	 * @param newPosY
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setPosition(int, int)
 	 */
 	public void setPosition(int newPosX, int newPosY) {
 		position_x = newPosX;
@@ -485,14 +503,17 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setUsePos(boolean)
+	 */
 	public void setUsePos(boolean pos) {
 		this.usePos = pos;
 	}
 
-	/**
-	 * @param newPosX
-	 * @param newPosY
-	 * @param newDuration
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#scrollTo(int, int, int)
 	 */
 	public void scrollTo(int destX, int destY, int newDuration) {
 
@@ -615,27 +636,51 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		return new Momentum(newDist, newTime);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#isScrollingEnabledX()
+	 */
 	public boolean isScrollingEnabledX() {
 		return scrollingEnabledX;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setScrollingEnabledX(boolean)
+	 */
 	public void setScrollingEnabledX(boolean scrollingEnabledX) {
 		this.scrollingEnabledX = scrollingEnabledX;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#isScrollingEnabledY()
+	 */
 	public boolean isScrollingEnabledY() {
 		return scrollingEnabledY;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setScrollingEnabledY(boolean)
+	 */
 	public void setScrollingEnabledY(boolean scrollingEnabledY) {
 		this.scrollingEnabledY = scrollingEnabledY;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollhandler(com.googlecode.mgwt.ui.client.widget.event.ScrollHandler)
+	 */
 	@Override
 	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler) {
 		return addHandler(scrollHandler, ScrollEvent.getType());
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
+	 */
 	@Override
 	public void clear() {
 		widgetToScroll = null;
@@ -643,11 +688,19 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
+	 */
 	@Override
 	public Iterator<Widget> iterator() {
 		return main.iterator();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
+	 */
 	@Override
 	public boolean remove(Widget w) {
 		if (w == widgetToScroll) {
@@ -657,16 +710,28 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		return false;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollEndHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler)
+	 */
 	@Override
 	public HandlerRegistration addScrollEndHandler(ScrollEndHandler handler) {
 		return addHandler(handler, ScrollEndEvent.getType());
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollStartHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler)
+	 */
 	@Override
 	public HandlerRegistration addScrollStartHandler(ScrollStartHandler handler) {
 		return addHandler(handler, ScrollStartEvent.getType());
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setOffset(int, int)
+	 */
 	public void setOffset(int offsetX, int offsetY) {
 		this.offsetY = offsetY;
 		this.offsetX = offsetX;

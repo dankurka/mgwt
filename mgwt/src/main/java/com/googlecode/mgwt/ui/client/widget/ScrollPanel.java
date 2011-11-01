@@ -60,6 +60,10 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 		return impl.addScrollEndHandler(handler);
 	}
 
+	/**
+	 * Methods only exists to make scroll panel work with UiBinder @use
+	 * {@link #setWidget(IsWidget)}
+	 */
 	@Override
 	public void add(Widget w) {
 		impl.add(w);
