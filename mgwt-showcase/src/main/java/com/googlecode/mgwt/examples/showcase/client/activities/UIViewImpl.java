@@ -18,7 +18,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
@@ -84,7 +84,7 @@ public class UIViewImpl implements UIView {
 	}
 
 	@Override
-	public HasTapEvent getBackButton() {
+	public HasTapHandlers getBackButton() {
 		return headerBackButton;
 	}
 

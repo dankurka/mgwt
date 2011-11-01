@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.dom.client.event.tap.TapToNativeTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
@@ -52,7 +52,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
  * @author Daniel Kurka
  * 
  */
-public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers, HasTapEvent, Dialog {
+public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers, HasTapHandlers, Dialog {
 
 	private final class InternalTouchHandler implements TouchHandler {
 		private final com.google.gwt.user.client.Element shadow;

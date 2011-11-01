@@ -8,7 +8,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.examples.contact.client.GroupCell;
 import com.googlecode.mgwt.examples.contact.client.module.Group;
@@ -49,7 +49,7 @@ public class GroupOverViewDisplayGwtImpl extends Composite implements GroupOverV
 	}
 
 	@Override
-	public HasTapEvent getPlusButton() {
+	public HasTapHandlers getPlusButton() {
 		return plusButton;
 	}
 

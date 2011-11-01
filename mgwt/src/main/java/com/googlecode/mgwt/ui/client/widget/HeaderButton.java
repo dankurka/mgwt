@@ -20,7 +20,7 @@ import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
@@ -30,7 +30,7 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
  * @author Daniel Kurka
  * 
  */
-public class HeaderButton extends ButtonBase implements HasTapEvent {
+public class HeaderButton extends ButtonBase implements HasTapHandlers {
 
 	private ParagraphElement pElement;
 	protected final HeaderCss headerCss;

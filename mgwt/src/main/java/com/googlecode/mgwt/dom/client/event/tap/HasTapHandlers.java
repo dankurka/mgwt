@@ -13,29 +13,23 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.examples.showcase.client.activities;
+package com.googlecode.mgwt.dom.client.event.tap;
 
-import java.util.List;
-
-import com.google.gwt.user.client.ui.IsWidget;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
-import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
-
+import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
+ * A widget that implements this interface provides registration for
+ * {@link TapHandler} instances.
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
-public interface UIView extends IsWidget {
-	public void setBackButtonText(String text);
-
-	public HasTapHandlers getBackButton();
-
-	public void setTitle(String title);
-
-	public HasCellSelectedHandler getList();
-
-	public void renderItems(List<Item> items);
-
-	public void setSelectedIndex(int index, boolean selected);
+public interface HasTapHandlers {
+	/**
+	 * Adds a {@link TapHandler} handler.
+	 * 
+	 * @param handler the simple touch handler
+	 * @return {@link HandlerRegistration} used to remove this handler
+	 */
+	public HandlerRegistration addTapHandler(TapHandler handler);
 }

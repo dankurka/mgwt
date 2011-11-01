@@ -18,7 +18,7 @@ package com.googlecode.mgwt.ui.client.dialog;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Label;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
@@ -30,7 +30,7 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
  * @author Daniel Kurka
  * 
  */
-public class AlertDialog implements HasText, HasTitleText, HasTapEvent, Dialog {
+public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialog {
 
 	private Label textLabel;
 	private PopinDialog popinDialog;

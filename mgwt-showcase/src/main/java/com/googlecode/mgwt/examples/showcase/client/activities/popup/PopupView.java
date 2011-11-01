@@ -17,7 +17,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities.popup;
 
 import java.util.List;
 
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.DetailView;
 import com.googlecode.mgwt.ui.client.dialog.ConfirmDialog.ConfirmCallback;
 import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogOption;
@@ -28,11 +28,11 @@ import com.googlecode.mgwt.ui.client.dialog.Dialogs.OptionsDialogOption;
  */
 public interface PopupView extends DetailView {
 
-	public HasTapEvent getSlideUpButton();
+	public HasTapHandlers getSlideUpButton();
 
-	public HasTapEvent getAlertButton();
+	public HasTapHandlers getAlertButton();
 
-	public HasTapEvent getConfirmButton();
+	public HasTapHandlers getConfirmButton();
 
 	public void alertSomeStuff(String title, String text);
 

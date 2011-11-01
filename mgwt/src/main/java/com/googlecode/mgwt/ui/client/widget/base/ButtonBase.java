@@ -23,7 +23,7 @@ import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
@@ -41,7 +41,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * @author Daniel Kurka
  * 
  */
-public abstract class ButtonBase extends TouchWidget implements HasText, HasTapEvent {
+public abstract class ButtonBase extends TouchWidget implements HasText, HasTapHandlers {
 
 	/**
 	 * Construct a base button with a given css

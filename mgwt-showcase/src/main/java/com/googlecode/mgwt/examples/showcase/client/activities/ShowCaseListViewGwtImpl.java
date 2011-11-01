@@ -19,7 +19,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
@@ -90,7 +90,7 @@ public class ShowCaseListViewGwtImpl implements ShowCaseListView {
 	}
 
 	@Override
-	public HasTapEvent getAboutButton() {
+	public HasTapHandlers getAboutButton() {
 		return forwardButton;
 	}
 

@@ -19,7 +19,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.IsWidget;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapEvent;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.activities.home.Topic;
 import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
 
@@ -34,7 +34,7 @@ public interface ShowCaseListView extends IsWidget {
 
 	public void setRightButtonText(String text);
 
-	public HasTapEvent getAboutButton();
+	public HasTapHandlers getAboutButton();
 
 	public HasCellSelectedHandler getCellSelectedHandler();
 
