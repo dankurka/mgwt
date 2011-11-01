@@ -31,13 +31,57 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 
 /**
+ * A list that can contain widgets
+ * 
  * @author Daniel Kurka
  * 
  */
 public class WidgetList extends Composite implements HasWidgets {
 
-	private int childCount;
-	private List<WidgetListEntry> children = new ArrayList<WidgetListEntry>();
+	private static class WidgetListEntry extends Composite implements HasWidgets {
+		private static class LIFlowPanel extends ComplexPanel {
+
+			public LIFlowPanel() {
+				setElement(Document.get().createLIElement());
+
+			}
+
+			@Override
+			public void add(Widget w) {
+				add(w, getElement());
+			}
+		}
+
+		private Panel container;
+
+		public WidgetListEntry(ListCss css) {
+			container = new LIFlowPanel();
+			initWidget(container);
+
+		}
+
+		@Override
+		public void add(Widget w) {
+			container.add(w);
+
+		}
+
+		@Override
+		public void clear() {
+			container.clear();
+
+		}
+
+		@Override
+		public Iterator<Widget> iterator() {
+			return container.iterator();
+		}
+
+		@Override
+		public boolean remove(Widget w) {
+			return container.remove(w);
+		}
+	}
 
 	private static class ULFlowPanel extends ComplexPanel {
 
@@ -51,14 +95,25 @@ public class WidgetList extends Composite implements HasWidgets {
 		}
 	}
 
+	private int childCount;
+	private List<WidgetListEntry> children = new ArrayList<WidgetListEntry>();
+
 	private Panel container;
 	private Map<Widget, WidgetListEntry> map;
 	protected final ListCss css;
 
+	/**
+	 * Construct a widget list using the default css
+	 */
 	public WidgetList() {
 		this(MGWTStyle.getDefaultClientBundle().getListCss());
 	}
 
+	/**
+	 * Construct a widget list using a specific css
+	 * 
+	 * @param css the css to use
+	 */
 	public WidgetList(ListCss css) {
 		this.css = css;
 		css.ensureInjected();
@@ -70,6 +125,10 @@ public class WidgetList extends Composite implements HasWidgets {
 		map = new HashMap<Widget, WidgetListEntry>();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
+	 */
 	@Override
 	public void add(Widget w) {
 
@@ -91,6 +150,10 @@ public class WidgetList extends Composite implements HasWidgets {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
+	 */
 	@Override
 	public void clear() {
 		container.clear();
@@ -100,25 +163,33 @@ public class WidgetList extends Composite implements HasWidgets {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
+	 */
 	@Override
 	public Iterator<Widget> iterator() {
 		return map.keySet().iterator();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
+	 */
 	@Override
 	public boolean remove(Widget w) {
 		WidgetListEntry entry = map.remove(w);
 		if (entry == null)
 			return false;
-		//did we remove the last child?
+		// did we remove the last child?
 		if (children.get(childCount - 1) == entry) {
-			//are there others in the list?
+			// are there others in the list?
 			if (childCount - 2 >= 0) {
 				children.get(childCount - 2).addStyleName(css.last());
 			}
 		}
 
-		//did we remove the first child
+		// did we remove the first child
 		if (children.get(0) == entry) {
 			if (children.size() > 1) {
 				children.get(1).addStyleName(css.first());
@@ -130,6 +201,11 @@ public class WidgetList extends Composite implements HasWidgets {
 
 	}
 
+	/**
+	 * Should the list be displayed with rounded corners
+	 * 
+	 * @param round true to display with rounded corners
+	 */
 	public void setRound(boolean round) {
 		if (round) {
 			addStyleName(css.round());
