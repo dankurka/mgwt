@@ -20,19 +20,28 @@ import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ProgressBarCss;
 
-
 /**
+ * A progress bar widget
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class ProgressBar extends Widget {
 
 	protected final ProgressBarCss css;
 
+	/**
+	 * Construct a progress bar widget
+	 */
 	public ProgressBar() {
 		this(MGWTStyle.getDefaultClientBundle().getProgressBarCss());
 	}
 
+	/**
+	 * Construct a progress bar widget with a given css
+	 * 
+	 * @param css the css to use
+	 */
 	public ProgressBar(ProgressBarCss css) {
 		this.css = css;
 		setElement(DOM.createDiv());

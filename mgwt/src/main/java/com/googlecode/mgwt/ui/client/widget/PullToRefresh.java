@@ -13,9 +13,12 @@ import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedHandler;
 /**
  * Experimental don`t use right now
  * 
+ * May change in future releases
+ * 
  * @author Daniel Kurka
  * 
  */
+
 public class PullToRefresh extends PullPanel {
 
 	private SafeHtml noReloadHTML;

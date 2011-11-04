@@ -45,6 +45,9 @@ import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
+ * 
+ * A widget that renders its children as a list
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -165,10 +168,21 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 	protected final Cell<T> cell;
 	protected final ListCss css;
 
+	/**
+	 * Construct a CellList
+	 * 
+	 * @param cell the cell to use
+	 */
 	public CellList(Cell<T> cell) {
 		this(cell, MGWTStyle.getDefaultClientBundle().getListCss());
 	}
 
+	/**
+	 * Construct a celllist with a given cell and css
+	 * 
+	 * @param cell the cell to use
+	 * @param css the css to use
+	 */
 	public CellList(Cell<T> cell, ListCss css) {
 		css.ensureInjected();
 		this.cell = cell;
@@ -182,6 +196,11 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		setStylePrimaryName(css.listCss());
 	}
 
+	/**
+	 * Should the CellList be rendered with rounded corners
+	 * 
+	 * @param round true to render with rounded corners, otherwise false
+	 */
 	public void setRound(boolean round) {
 		if (round) {
 			addStyleName(css.round());
@@ -190,14 +209,18 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		}
 	}
 
-	private void fireSelectionAtIndex(int index) {
-		fireEvent(new CellSelectedEvent(index));
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler#addCellSelectedHandler(com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler)
+	 */
 	public HandlerRegistration addCellSelectedHandler(CellSelectedHandler cellSelectedHandler) {
 		return addHandler(cellSelectedHandler, CellSelectedEvent.getType());
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.Composite#onAttach()
+	 */
 	@Override
 	protected void onAttach() {
 
@@ -210,6 +233,10 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.Composite#onDetach()
+	 */
 	@Override
 	protected void onDetach() {
 
@@ -221,6 +248,11 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		handlers.clear();
 	}
 
+	/**
+	 * Render a List of models in this cell list
+	 * 
+	 * @param models the list of models to render
+	 */
 	public void render(List<T> models) {
 
 		SafeHtmlBuilder sb = new SafeHtmlBuilder();
@@ -261,6 +293,22 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	}
 
+	/**
+	 * Set a selected element in the celllist
+	 * 
+	 * @param index the index of the element
+	 * @param selected true to select the element, false to deselect
+	 */
+	public void setSelectedIndex(int index, boolean selected) {
+		Node node = getElement().getChild(index);
+		Element li = Element.as(node);
+		if (selected) {
+			li.addClassName(css.selected());
+		} else {
+			li.removeClassName(css.selected());
+		}
+	}
+
 	private void fixBug(final String html) {
 		new Timer() {
 
@@ -277,14 +325,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		}.schedule(100);
 	}
 
-	public void setSelectedIndex(int index, boolean selected) {
-		Node node = getElement().getChild(index);
-		Element li = Element.as(node);
-		if (selected) {
-			li.addClassName(css.selected());
-		} else {
-			li.removeClassName(css.selected());
-		}
+	private void fireSelectionAtIndex(int index) {
+		fireEvent(new CellSelectedEvent(index));
 	}
 
 }

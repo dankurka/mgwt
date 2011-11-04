@@ -21,40 +21,76 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
 
-
 /**
+ * A simple text box
+ * 
  * @author Daniel Kurka
  * 
  */
 public class MTextBox extends MTextBoxBase {
 
+	/**
+	 * Construct a text box
+	 */
 	public MTextBox() {
 		this(MGWTStyle.getDefaultClientBundle().getInputCss());
 
 	}
 
+	/**
+	 * Construct a text box with a given css
+	 * 
+	 * @param css the css to use
+	 */
 	public MTextBox(InputCss css) {
 		this(css, new TextBox());
 
 	}
 
+	/**
+	 * Construct a text box with a given css and a {@link TextBox} to delegate
+	 * to
+	 * 
+	 * @param css the css to use
+	 * @param textBox the text box to use
+	 */
 	public MTextBox(InputCss css, TextBox textBox) {
 		super(css, textBox);
 		addStyleName(css.textBox());
 	}
 
+	/**
+	 * get the number of characters for this input element
+	 * 
+	 * @return
+	 */
 	public int getMaxLength() {
 		return getInputElement().getMaxLength();
 	}
 
+	/**
+	 * get the number of visible characters
+	 * 
+	 * @return
+	 */
 	public int getVisibleLength() {
 		return getInputElement().getSize();
 	}
 
+	/**
+	 * set the maximum number of characters
+	 * 
+	 * @param length the maximum number of characters
+	 */
 	public void setMaxLength(int length) {
 		getInputElement().setMaxLength(length);
 	}
 
+	/**
+	 * set the number of visible characters
+	 * 
+	 * @param length the number of visible characters
+	 */
 	public void setVisibleLength(int length) {
 		getInputElement().setSize(length);
 	}

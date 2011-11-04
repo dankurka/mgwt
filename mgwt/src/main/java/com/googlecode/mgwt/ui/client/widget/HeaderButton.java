@@ -27,6 +27,8 @@ import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
+ * A Button that can be used inside a {@link HeaderPanel}
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -35,10 +37,18 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 	private ParagraphElement pElement;
 	protected final HeaderCss headerCss;
 
+	/**
+	 * Construct a HeaderButton
+	 */
 	public HeaderButton() {
 		this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
 	}
 
+	/**
+	 * Construct a HeaderButton with a given css
+	 * 
+	 * @param css the css to use
+	 */
 	public HeaderButton(HeaderCss css) {
 		super(css);
 		this.headerCss = css;
@@ -54,17 +64,38 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.ButtonBase#addTapHandler(com.googlecode.mgwt.dom.client.event.tap.TapHandler)
+	 */
+	@Override
+	public HandlerRegistration addTapHandler(TapHandler handler) {
+		return super.addTapHandler(handler);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.ButtonBase#setText(java.lang.String)
+	 */
 	@Override
 	public void setText(String text) {
 		pElement.setInnerText(text);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.base.ButtonBase#getText()
+	 */
 	@Override
 	public String getText() {
-
 		return pElement.getInnerText();
 	}
 
+	/**
+	 * Should the button be rendered as a back button
+	 * 
+	 * @param back true to render as a back button
+	 */
 	public void setBackButton(boolean back) {
 		removeStyles();
 		if (back) {
@@ -72,6 +103,11 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 		}
 	}
 
+	/**
+	 * Should the button be rendered as a forward button
+	 * 
+	 * @param forward true to render as a forward button
+	 */
 	public void setForwardButton(boolean forward) {
 		removeStyles();
 		if (forward) {
@@ -79,6 +115,11 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 		}
 	}
 
+	/**
+	 * Should the button be rendered with rounded corners
+	 * 
+	 * @param round true to render as a round button
+	 */
 	public void setRoundButton(boolean round) {
 		removeStyles();
 		if (round) {
@@ -90,11 +131,6 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 		removeStyleName(headerCss.back());
 		removeStyleName(headerCss.round());
 		removeStyleName(headerCss.forward());
-	}
-
-	@Override
-	public HandlerRegistration addTapHandler(TapHandler handler) {
-		return super.addTapHandler(handler);
 	}
 
 }

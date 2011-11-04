@@ -20,19 +20,28 @@ import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
 
-
 /**
+ * A simple progress indicator
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class ProgressIndicator extends Widget {
 
 	private final ProgressIndicatorCss css;
 
+	/**
+	 * Construct a progress indicator
+	 */
 	public ProgressIndicator() {
 		this(MGWTStyle.getDefaultClientBundle().getProgressIndicatorCss());
 	}
 
+	/**
+	 * Construct a progress indicator with a given css
+	 * 
+	 * @param css the css to use
+	 */
 	public ProgressIndicator(ProgressIndicatorCss css) {
 		this.css = css;
 

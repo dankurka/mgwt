@@ -20,6 +20,8 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
+ * A list box
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -27,10 +29,18 @@ public class MListBox extends ListBox {
 
 	private final InputCss css;
 
+	/**
+	 * Construct a list box
+	 */
 	public MListBox() {
 		this(MGWTStyle.getDefaultClientBundle().getInputCss());
 	}
 
+	/**
+	 * Construct a list box with a given css
+	 * 
+	 * @param css the css to use
+	 */
 	public MListBox(InputCss css) {
 
 		this.css = css;

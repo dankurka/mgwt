@@ -19,17 +19,26 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
-
 /**
+ * An input element that can handle passwords
+ * 
  * @author Daniel Kurka
  * 
  */
 public class MPasswordTextBox extends MTextBox {
 
+	/**
+	 * Construct a password text box
+	 */
 	public MPasswordTextBox() {
 		this(MGWTStyle.getDefaultClientBundle().getInputCss());
 	}
 
+	/**
+	 * Construct a password text box with a given css
+	 * 
+	 * @param css the css to use
+	 */
 	public MPasswordTextBox(InputCss css) {
 		super(css, new PasswordTextBox());
 		addStyleName(css.passwordBox());

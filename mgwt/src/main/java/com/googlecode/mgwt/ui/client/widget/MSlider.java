@@ -18,6 +18,7 @@ package com.googlecode.mgwt.ui.client.widget;
 import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Composite;
@@ -33,6 +34,8 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
+ * A slider widget
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -61,8 +64,6 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		}
 	}
 
-	private SliderWidget sliderWidget;
-
 	private class SliderTouchHandler implements TouchHandler {
 
 		@Override
@@ -90,11 +91,21 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	}
 
 	private int value;
+	private SliderWidget sliderWidget;
+	private int max;
 
+	/**
+	 * Construct a slider
+	 */
 	public MSlider() {
 		this(MGWTStyle.getDefaultClientBundle().getSliderCss());
 	}
 
+	/**
+	 * Construct a slider with a given css
+	 * 
+	 * @param css the css to use
+	 */
 	public MSlider(SliderCss css) {
 		css.ensureInjected();
 		sliderWidget = new SliderWidget(css);
@@ -107,13 +118,20 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		value = 0;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.logical.shared.HasValueChangeHandlers#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)
+	 */
 	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(ValueChangeHandler<Integer> handler) {
+	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Integer> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
 	}
 
-	private int max;
-
+	/**
+	 * Set the maximum of the slider
+	 * 
+	 * @param max the maximum to use
+	 */
 	public void setMax(int max) {
 		if (max <= 0) {
 			throw new IllegalArgumentException("max > 0");
@@ -122,46 +140,47 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	}
 
 	/**
-	 * @return the max
+	 * get the maximum of the slider
+	 * 
+	 * @return the maximum of the slider
 	 */
 	public int getMax() {
 		return max;
 	}
 
-	private void setValueContrained(int x) {
-		x = x - MSlider.this.getAbsoluteLeft();
-		int width = sliderWidget.getOffsetWidth();
-
-		if (x < 0) {
-			x = 0;
-		}
-
-		if (x > width) {
-			x = width;
-		}
-
-		// scale it to max
-		x = x * max / width;
-		setValue(x, true);
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasValue#getValue()
+	 */
 	@Override
 	public Integer getValue() {
 		return value;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
+	 */
 	@Override
 	public void setValue(Integer value) {
 		setValue(value, true);
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.Composite#onAttach()
+	 */
 	@Override
 	protected void onAttach() {
 		super.onAttach();
 		setSliderPos(value);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object, boolean)
+	 */
 	@Override
 	public void setValue(Integer value, boolean fireEvents) {
 		if (value == null) {
@@ -193,4 +212,22 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		sliderWidget.setPos(sliderPos);
 
 	}
+
+	private void setValueContrained(int x) {
+		x = x - MSlider.this.getAbsoluteLeft();
+		int width = sliderWidget.getOffsetWidth();
+
+		if (x < 0) {
+			x = 0;
+		}
+
+		if (x > width) {
+			x = width;
+		}
+
+		// scale it to max
+		x = x * max / width;
+		setValue(x, true);
+	}
+
 }

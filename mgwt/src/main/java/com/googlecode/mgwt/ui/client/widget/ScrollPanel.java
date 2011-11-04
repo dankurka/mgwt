@@ -30,6 +30,8 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 import com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl;
 
 /**
+ * A scroll pannel that can handle touch input and has momentum
+ * 
  * @author Daniel Kurka
  * 
  */
@@ -37,24 +39,54 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	protected final ScrollPanelImpl impl = GWT.create(ScrollPanelImpl.class);
 
+	/**
+	 * Construct a ScrollPanel
+	 */
 	public ScrollPanel() {
 		initWidget(impl);
 	}
 
+	/**
+	 * set the widget that needs scrolling
+	 * 
+	 * @param w the widget to scroll
+	 */
+	@Override
+	public void setWidget(Widget w) {
+		impl.setWidget(w);
+	}
+
+	/**
+	 * set the widget that needs scrolling
+	 * 
+	 * @param w the widget to scroll
+	 */
 	public void setWidget(IsWidget w) {
 		impl.setWidget(w);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollStartHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler)
+	 */
 	@Override
 	public HandlerRegistration addScrollStartHandler(ScrollStartHandler handler) {
 		return impl.addScrollStartHandler(handler);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollhandler(com.googlecode.mgwt.ui.client.widget.event.ScrollHandler)
+	 */
 	@Override
 	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler) {
 		return impl.addScrollhandler(scrollHandler);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollEndHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler)
+	 */
 	@Override
 	public HandlerRegistration addScrollEndHandler(ScrollEndHandler handler) {
 		return impl.addScrollEndHandler(handler);
@@ -70,42 +102,89 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
+	 */
 	@Override
 	public void clear() {
 		impl.clear();
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
+	 */
 	@Override
 	public Iterator<Widget> iterator() {
 		return impl.iterator();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
+	 */
 	@Override
 	public boolean remove(Widget w) {
 		return impl.remove(w);
 	}
 
+	/**
+	 * Set the offset that the scroll panel should use
+	 * 
+	 * This is useful for hiding parts of the child widget
+	 * 
+	 * @param x the offset in x-axis
+	 * @param y the offset in y-axis
+	 */
 	public void setOffset(int x, int y) {
 		impl.setOffset(x, y);
 
 	}
 
+	/**
+	 * Should scrolling in x-axis be enabled
+	 * 
+	 * @param enabled true to enable
+	 */
 	public void setScrollingEnabledX(boolean enabled) {
 		impl.setScrollingEnabledX(enabled);
 
 	}
 
+	/**
+	 * Refresh the scroll panel
+	 * 
+	 * This method needs to be called if the content of the child widget has
+	 * changed without calling {@link #setWidget(IsWidget)}
+	 * 
+	 * ScrollPanel needs to recalculate sizes.
+	 */
 	public void refresh() {
 		impl.refresh();
 
 	}
 
+	/**
+	 * Should scrolling in y-axis be enabled
+	 * 
+	 * @param enabled true to enable
+	 */
 	public void setScrollingEnabledY(boolean enabled) {
 		impl.setScrollingEnabledY(enabled);
 
 	}
 
+	/**
+	 * Use position absolute instead of -webkit-translate
+	 * 
+	 * This is required on android if the scrolling area contains input elements
+	 * 
+	 * default: false
+	 * 
+	 * @param android
+	 */
 	public void setUsePos(boolean android) {
 		impl.setUsePos(android);
 
