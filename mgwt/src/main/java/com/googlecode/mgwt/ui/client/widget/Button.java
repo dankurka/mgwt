@@ -29,26 +29,41 @@ public class Button extends ButtonBase {
 
 	private boolean round;
 	private boolean small;
+	private boolean confirm;
 	protected final ButtonCss css;
 
+	/**
+	 * Construct a button
+	 */
 	public Button() {
-
 		this(MGWTStyle.getDefaultClientBundle().getButtonCss());
-
 	}
 
 	/**
-	 * @param text
+	 * Construct a button with a given text
+	 * 
+	 * @param text the text to use in the button
 	 */
 	public Button(String text) {
 		this(MGWTStyle.getDefaultClientBundle().getButtonCss(), text);
 
 	}
 
+	/**
+	 * Construct a button with a given css
+	 * 
+	 * @param css the css to use for this button
+	 */
 	public Button(ButtonCss css) {
 		this(css, "");
 	}
 
+	/**
+	 * Construct a button with a given css and text
+	 * 
+	 * @param css the css to use
+	 * @param text the text to use
+	 */
 	public Button(ButtonCss css, String text) {
 		super(css);
 		this.css = css;
@@ -57,10 +72,21 @@ public class Button extends ButtonBase {
 		setText(text);
 	}
 
+	/**
+	 * Should the button have rounded corners
+	 * 
+	 * @return true if the button has rounded corners, otherwise false
+	 */
 	public boolean isRound() {
 		return round;
 	}
 
+	/**
+	 * Should the button have rounded corners
+	 * 
+	 * @param round true if the button should have rounded corners, otherwise
+	 *            false
+	 */
 	public void setRound(boolean round) {
 		if (round) {
 			addStyleName(css.round());
@@ -70,6 +96,11 @@ public class Button extends ButtonBase {
 		this.round = round;
 	}
 
+	/**
+	 * Should the button be rendered small
+	 * 
+	 * @param small true if the button should be rendered small, otherwise false
+	 */
 	public void setSmall(boolean small) {
 		if (small) {
 			addStyleName(css.small());
@@ -80,7 +111,9 @@ public class Button extends ButtonBase {
 	}
 
 	/**
-	 * @return the small
+	 * Should the button be rendered small
+	 * 
+	 * @return true if the button should be rendered small, otherwise false
 	 */
 	public boolean isSmall() {
 		return small;
@@ -89,14 +122,20 @@ public class Button extends ButtonBase {
 	private boolean important;
 
 	/**
-	 * @return the important
+	 * Should the button be rendered as important
+	 * 
+	 * @return true if the button should be rendered as important, otherwise
+	 *         false
 	 */
 	public boolean isImportant() {
 		return important;
 	}
 
 	/**
-	 * @param important the important to set
+	 * Should the button be rendered as important
+	 * 
+	 * @param important true if the button should be rendered as important,
+	 *            otherwise false
 	 */
 	public void setImportant(boolean important) {
 		if (important) {
@@ -107,17 +146,21 @@ public class Button extends ButtonBase {
 		this.important = important;
 	}
 
-	private boolean confirm;
-
 	/**
-	 * @return the confirm
+	 * Should the button be rendered as a confirm button
+	 * 
+	 * @param important true if the button should be rendered as a confirm
+	 *            button, otherwise false
 	 */
 	public boolean isConfirm() {
 		return confirm;
 	}
 
 	/**
-	 * @param confirm the confirm to set
+	 * Should the button be rendered as a confirm button
+	 * 
+	 * @param confirm true if the button should be rendered as a confirm button,
+	 *            otherwise false
 	 */
 	public void setConfirm(boolean confirm) {
 		if (confirm) {
