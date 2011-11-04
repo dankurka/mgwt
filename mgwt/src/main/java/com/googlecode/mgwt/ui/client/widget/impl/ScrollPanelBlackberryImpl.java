@@ -27,12 +27,12 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 
 /**
  * The blackberry implementation of scrollpanel lacks any scrolling capabilities
- * because blackberry phones don«t offer any input method to handle scrolling on
+ * because blackberry phones don't offer any input method to handle scrolling on
  * anything else than the web page itself.
- *
+ * 
  * Therefore content is just placed in a div so that we can use the scrolling of
  * the whole web page
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -52,7 +52,9 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	private boolean scrollingEnabledY;
 
 	/**
-	 * <p>Constructor for ScrollPanelBlackberryImpl.</p>
+	 * <p>
+	 * Constructor for ScrollPanelBlackberryImpl.
+	 * </p>
 	 */
 	public ScrollPanelBlackberryImpl() {
 		main = new SimplePanel();
