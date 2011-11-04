@@ -1,3 +1,18 @@
+/*
+ * Copyright 2011 Daniel Kurka
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.ClientBundle;
@@ -29,6 +44,16 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RewindButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.SearchButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.BookmarkTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.ContactsTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.DownloadsTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.FavoritesTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.FeaturedTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.HistoryTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.MoreTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostRecentTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostViewedTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss;
 
 public interface MGWTClientBundle extends ClientBundle {
 
@@ -187,8 +212,39 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("resources/buttons/UIButtonBarTrash.png")
 	DataResource buttonBarTrashImage();
 
+	//tabbar
 	@Source("css/tabbar.css")
 	TabBarCss getTabBarCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/bookmark_button.css" })
+	BookmarkTabBarButtonCss getBookmarkTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/contact_button.css" })
+	ContactsTabBarButtonCss getContactsTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/download_button.css" })
+	DownloadsTabBarButtonCss getDownloadsTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/favorites_button.css" })
+	FavoritesTabBarButtonCss getFavoritesTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/featured_button.css" })
+	FeaturedTabBarButtonCss getFeaturedTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/history_button.css" })
+	HistoryTabBarButtonCss getHistoryTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/more_button.css" })
+	MoreTabBarButtonCss getMoreTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/most_recent_button.css" })
+	MostRecentTabBarButtonCss getMostRecentTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/most_viewed_button.css" })
+	MostViewedTabBarButtonCss getMostViewedTabBarButtonCss();
+
+	@Source({ "tabbar/css/button_base.css", "tabbar/css/search_button.css" })
+	SearchTabBarButtonCss getSearchTabBarButtonCss();
 
 	@Source("resources/tabbar/UITabBarBackgroundBlack.png")
 	DataResource tabBarBackgroundImage();

@@ -1,0 +1,20 @@
+.mgwt-TabBar-Button.favorites{
+	
+}
+.mgwt-TabBar-Button.favorites.selected{
+		
+}
+
+
+
+@if mgwt.os ipad iphone desktop {
+	@url favoritesImage tabBarFavoritesImage;
+	@url favoritesSelectedImage tabBarFavoritesSelectedImage;
+		
+	.mgwt-TabBar-Button.favorites{
+		background-image: favoritesImage;
+	}
+	.mgwt-TabBar-Button.favorites.selected{
+		background-image: favoritesSelectedImage;
+	}
+}

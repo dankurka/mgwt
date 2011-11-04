@@ -1,0 +1,22 @@
+
+.mgwt-TabBar-Button.history{
+		
+}
+	
+.mgwt-TabBar-Button.history.selected{
+	
+}
+
+
+@if mgwt.os ipad iphone desktop {
+	@url historyImage tabBarHistoryImage;
+	@url historySelectedImage tabBarHistorySelectedImage;		
+	
+	.mgwt-TabBar-Button.history{
+		background-image: historyImage;
+	}
+	
+	.mgwt-TabBar-Button.history.selected{
+		background-image: historySelectedImage;
+	}
+}

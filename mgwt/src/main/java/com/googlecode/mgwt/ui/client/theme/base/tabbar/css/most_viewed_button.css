@@ -1,0 +1,22 @@
+.mgwt-TabBar-Button.mostViewed{
+		
+}
+	
+.mgwt-TabBar-Button.mostViewed.selected{
+	
+}
+
+
+
+@if mgwt.os ipad iphone desktop {
+	@url mostViewedImage tabBarMostViewedImage;
+	@url mostViewedSelectedImage tabBarMostViewedSelectedImage;
+	
+	.mgwt-TabBar-Button.mostViewed{
+		background-image: mostViewedImage;
+	}
+	
+	.mgwt-TabBar-Button.mostViewed.selected{
+		background-image: mostViewedSelectedImage;
+	}
+}

@@ -1,0 +1,20 @@
+
+.mgwt-TabBar-Button.downloads{
+
+}
+.mgwt-TabBar-Button.downloads.selected{
+
+}
+
+
+@if mgwt.os ipad iphone desktop {
+	@url downloadsImage tabBarDownloadsImage;
+	@url downloadsSelectedImage tabBarDownloadsSelectedImage;
+		
+	.mgwt-TabBar-Button.downloads{
+		background-image: downloadsImage;
+	}
+	.mgwt-TabBar-Button.downloads.selected{
+		background-image: downloadsSelectedImage;
+	}
+}

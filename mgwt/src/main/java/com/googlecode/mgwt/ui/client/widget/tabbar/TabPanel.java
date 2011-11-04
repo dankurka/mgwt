@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget;
+package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import java.util.LinkedList;
 
@@ -31,6 +31,8 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
+import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
+import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 
 /**
  * 
@@ -45,7 +47,7 @@ import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
  * 	&lt;mgwt:tabs>
  * 		&lt;mgwt:Tab>
  * 			&lt;mgwt:button>
- * 				&lt;mgwt:TabBarButton type="download">&lt;/mgwt:TabBarButton>
+ * 				&lt;mgwt:TabBarButtonBase type="download">&lt;/mgwt:TabBarButtonBase>
  * 			&lt;/mgwt:button>
  * 			&lt;mgwt:widget>
  * 				<!-- content for that tab -->
@@ -111,7 +113,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		tabContainer.setSelectedChild(index);
 	}
 
-	public void add(TabBarButton button, Widget child) {
+	public void add(TabBarButtonBase button, Widget child) {
 		tabContainer.add(child);
 		tabBar.add(button);
 	}
@@ -121,7 +123,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	 * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461 this is
 	 * a workaround to allow use with UIBinder
 	 * 
-	 * @use {@link TabPanel#add(TabBarButton, Widget)} if your are writing java
+	 * @use {@link TabPanel#add(TabBarButtonBase, Widget)} if your are writing java
 	 *      code
 	 * 
 	 * 
@@ -130,7 +132,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	@UiChild(tagname = "tabs")
 	public void addTab(Tab b) {
 		Widget w = b.getWidget();
-		TabBarButton button = b.getButton();
+		TabBarButtonBase button = b.getButton();
 
 		if (button == null) {
 			throw new IllegalArgumentException("button can not be null");
@@ -161,7 +163,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	public static class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
 		private FlowPanel container;
-		private LinkedList<TabBarButton> children;
+		private LinkedList<TabBarButtonBase> children;
 		private LinkedList<HandlerRegistration> handlers = new LinkedList<HandlerRegistration>();
 		protected final TabBarCss css;
 
@@ -172,7 +174,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		public TabBar(TabBarCss css) {
 			this.css = css;
 			css.ensureInjected();
-			children = new LinkedList<TabBarButton>();
+			children = new LinkedList<TabBarButtonBase>();
 			container = new FlowPanel();
 			container.setStylePrimaryName(css.tabbar());
 			initWidget(container);
@@ -180,9 +182,9 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 		private class InternalTouchHandler implements TapHandler {
 
-			private final TabBarButton button;
+			private final TabBarButtonBase button;
 
-			public InternalTouchHandler(TabBarButton button) {
+			public InternalTouchHandler(TabBarButtonBase button) {
 				this.button = button;
 
 			}
@@ -194,7 +196,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 		}
 
-		public void add(TabBarButton w) {
+		public void add(TabBarButtonBase w) {
 			if (children.size() == 0) {
 				w.setSelected(true);
 			}
@@ -211,11 +213,11 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 		}
 
-		private int getIndexForWidget(TabBarButton w) {
+		private int getIndexForWidget(TabBarButtonBase w) {
 			return children.indexOf(w);
 		}
 
-		public boolean remove(TabBarButton w) {
+		public boolean remove(TabBarButtonBase w) {
 			children.remove(w);
 			int indexForWidget = getIndexForWidget(w);
 			if (indexForWidget != -1) {
@@ -240,7 +242,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 				throw new IllegalArgumentException("invalud index");
 			}
 			int count = 0;
-			for (TabBarButton button : children) {
+			for (TabBarButtonBase button : children) {
 				if (count == index) {
 					button.setSelected(true);
 				} else {
@@ -261,7 +263,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		 * @param index
 		 */
 		public void remove(int index) {
-			TabBarButton w = getWidgetForIndex(index);
+			TabBarButtonBase w = getWidgetForIndex(index);
 			remove(w);
 		}
 
@@ -269,7 +271,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		 * @param index
 		 * @return
 		 */
-		private TabBarButton getWidgetForIndex(int index) {
+		private TabBarButtonBase getWidgetForIndex(int index) {
 			return children.get(index);
 		}
 

@@ -1,0 +1,22 @@
+
+.mgwt-TabBar-Button.featured{
+		
+}
+		
+.mgwt-TabBar-Button.featured.selected{
+		
+}
+
+
+@if mgwt.os ipad iphone desktop {
+	@url featuredSelectedImage tabBarFeaturedSelectedImage;
+	@url featuredImage tabBarFeaturedImage;
+	
+	.mgwt-TabBar-Button.featured{
+		background-image: featuredImage;
+	}
+		
+	.mgwt-TabBar-Button.featured.selected{
+		background-image: featuredSelectedImage;
+	}
+}

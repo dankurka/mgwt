@@ -1,0 +1,22 @@
+.mgwt-TabBar-Button.more{
+	
+}
+	
+.mgwt-TabBar-Button.more.selected{
+	
+}
+
+
+
+@if mgwt.os ipad iphone desktop {
+	@url moreImage tabBarMoreImage;
+	@url moreSelectedImage tabBarMoreSelectedImage;
+	
+	.mgwt-TabBar-Button.more{
+		background-image: moreImage;
+	}
+	
+	.mgwt-TabBar-Button.more.selected{
+		background-image: moreSelectedImage;
+	}
+}

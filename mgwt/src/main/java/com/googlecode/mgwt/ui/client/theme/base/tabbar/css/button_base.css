@@ -1,0 +1,64 @@
+
+.active{
+}
+
+@if mgwt.os ipad iphone desktop {
+
+	.mgwt-TabBar-Button{
+		display: inline-block;
+			position: relative;
+			min-width: 60px;
+			font-size: 9px;
+			color: #999995;
+			padding-top: 33px;
+			margin-top: 3px;
+			text-align: center;
+			background-position: 50% 0px;
+			background-repeat: no-repeat;
+	}
+	
+	.mgwt-TabBar-Button.selected{
+		color: white;
+	}
+}
+
+@if mgwt.os android android_tablet {
+
+	.mgwt-TabBar-Button{
+		display: inline-block;
+		position: relative;
+		min-width: 80px;
+		font-size: 14px;
+		color: white;
+		text-align: center;
+		top:10px;
+		height: 30px;
+		
+		margin-left: 10px;
+	}
+	.mgwt-TabBar-Button.selected{
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(82, 163, 196, 1)), to(rgba(82, 163, 196, 1)))');
+	}
+	
+}
+
+@if mgwt.os blackberry {
+	
+	.mgwt-TabBar-Button { 
+		display: inline-block;
+		position: relative;
+		min-width: 80px;
+		font-size: 14px;
+		color: white;
+		text-align: center;
+		top:10px;
+		height: 30px;
+		margin-left: 10px;
+	}
+	.mgwt-TabBar-Button.selected{
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(0, 92, 176, 1)), to(rgb(0, 92, 176)))');
+	}
+		
+}
+
+	

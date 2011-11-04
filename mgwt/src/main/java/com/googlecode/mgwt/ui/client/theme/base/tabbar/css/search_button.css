@@ -1,0 +1,20 @@
+.mgwt-TabBar-Button.search{
+	
+}
+.mgwt-TabBar-Button.search.selected{
+		
+}
+
+
+
+@if mgwt.os ipad iphone desktop {
+	@url searchImage tabBarSearchImage;
+	@url searchSelectedImage tabBarSearchSelectedImage;
+	
+	.mgwt-TabBar-Button.search{
+		background-image: searchImage;
+	}
+	.mgwt-TabBar-Button.search.selected{
+		background-image: searchSelectedImage;
+	}
+}

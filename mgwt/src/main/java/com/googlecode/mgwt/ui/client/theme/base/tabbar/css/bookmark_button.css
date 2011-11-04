@@ -1,0 +1,21 @@
+
+
+.mgwt-TabBar-Button.bookmark{
+	
+}
+.mgwt-TabBar-Button.bookmark.selected{
+		
+}
+
+@if mgwt.os ipad iphone desktop {
+	@url bookmarkImage tabBarBookMarkImage;
+	@url bookmarkSelectedImage tabBarBookMarkSelectedImage;
+		
+	.mgwt-TabBar-Button.bookmark{
+		background-image: bookmarkImage;
+	}
+		
+	.mgwt-TabBar-Button.bookmark.selected{
+		background-image: bookmarkSelectedImage;
+	}
+}

@@ -1,0 +1,22 @@
+.mgwt-TabBar-Button.mostRecent{
+		
+}
+	
+.mgwt-TabBar-Button.mostRecent.selected{
+		
+}
+
+
+
+@if mgwt.os ipad iphone desktop {
+	@url mostRecentImage tabBarMostRecentImage;
+	@url mostRecentSelectedImage tabBarMostRecentSelectedImage;
+	
+	.mgwt-TabBar-Button.mostRecent{
+		background-image: mostRecentImage;
+	}
+	
+	.mgwt-TabBar-Button.mostRecent.selected{
+		background-image: mostRecentSelectedImage;
+	}
+}

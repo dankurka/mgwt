@@ -1,0 +1,20 @@
+
+.mgwt-TabBar-Button.contacts{
+		
+}	
+.mgwt-TabBar-Button.contacts.selected{
+		
+}
+
+
+@if mgwt.os ipad iphone desktop {
+	@url contactsImage tabBarContactsImage;
+	@url contactsSelectedImage tabBarContactsSelectedImage;
+		
+	.mgwt-TabBar-Button.contacts{
+		background-image: contactsImage;
+	}	
+	.mgwt-TabBar-Button.contacts.selected{
+		background-image: contactsSelectedImage;
+	}
+}
