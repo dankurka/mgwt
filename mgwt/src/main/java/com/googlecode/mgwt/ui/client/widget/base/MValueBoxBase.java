@@ -53,11 +53,10 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 /**
  * Base class for all input boxes
- *
+ * 
  * This is a clone of {@link com.google.gwt.user.client.ui.ValueBoxBase}
- *
+ * 
  * @author Daniel Kurka
- * @param <T> the type of the input
  * @version $Id: $
  */
 public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>,
@@ -68,11 +67,13 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	private FlowPanel cover;
 
 	/**
-	 * <p>Constructor for MValueBoxBase.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.InputCss} object.
+	 * <p>
+	 * Constructor for MValueBoxBase.
+	 * </p>
+	 * 
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.InputCss}
+	 *            object.
 	 * @param box a {@link com.google.gwt.user.client.ui.ValueBoxBase} object.
-	 * @param <T> a T object.
 	 */
 	public MValueBoxBase(InputCss css, final ValueBoxBase<T> box) {
 		this.box = box;
@@ -155,8 +156,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder#getPlaceHolder()
 	 */
 	/**
-	 * <p>getPlaceHolder</p>
-	 *
+	 * <p>
+	 * getPlaceHolder
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getPlaceHolder() {
@@ -186,24 +189,31 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.editor.client.IsEditor#asEditor()
 	 */
 	/**
-	 * <p>asEditor</p>
-	 *
-	 * @return a {@link com.google.gwt.editor.ui.client.adapters.ValueBoxEditor} object.
+	 * <p>
+	 * asEditor
+	 * </p>
+	 * 
+	 * @return a {@link com.google.gwt.editor.ui.client.adapters.ValueBoxEditor}
+	 *         object.
 	 */
 	public ValueBoxEditor<T> asEditor() {
 		return box.asEditor();
 	}
 
 	/**
-	 * <p>cancelKey</p>
+	 * <p>
+	 * cancelKey
+	 * </p>
 	 */
 	public void cancelKey() {
 		box.cancelKey();
 	}
 
 	/**
-	 * <p>getCursorPos</p>
-	 *
+	 * <p>
+	 * getCursorPos
+	 * </p>
+	 * 
 	 * @return a int.
 	 */
 	public int getCursorPos() {
@@ -215,8 +225,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.i18n.client.HasDirection#getDirection()
 	 */
 	/**
-	 * <p>getDirection</p>
-	 *
+	 * <p>
+	 * getDirection
+	 * </p>
+	 * 
 	 * @return a Direction object.
 	 */
 	public Direction getDirection() {
@@ -228,8 +240,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.i18n.shared.HasDirectionEstimator#getDirectionEstimator()
 	 */
 	/**
-	 * <p>getDirectionEstimator</p>
-	 *
+	 * <p>
+	 * getDirectionEstimator
+	 * </p>
+	 * 
 	 * @return a {@link com.google.gwt.i18n.shared.DirectionEstimator} object.
 	 */
 	public DirectionEstimator getDirectionEstimator() {
@@ -241,8 +255,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.user.client.ui.HasName#getName()
 	 */
 	/**
-	 * <p>getName</p>
-	 *
+	 * <p>
+	 * getName
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -250,8 +266,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	}
 
 	/**
-	 * <p>getSelectedText</p>
-	 *
+	 * <p>
+	 * getSelectedText
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getSelectedText() {
@@ -259,8 +277,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	}
 
 	/**
-	 * <p>getSelectionLength</p>
-	 *
+	 * <p>
+	 * getSelectionLength
+	 * </p>
+	 * 
 	 * @return a int.
 	 */
 	public int getSelectionLength() {
@@ -272,8 +292,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.user.client.ui.HasText#getText()
 	 */
 	/**
-	 * <p>getText</p>
-	 *
+	 * <p>
+	 * getText
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getText() {
@@ -285,8 +307,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.user.client.ui.HasValue#getValue()
 	 */
 	/**
-	 * <p>getValue</p>
-	 *
+	 * <p>
+	 * getValue
+	 * </p>
+	 * 
 	 * @return a T object.
 	 */
 	public T getValue() {
@@ -294,8 +318,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	}
 
 	/**
-	 * <p>getValueOrThrow</p>
-	 *
+	 * <p>
+	 * getValueOrThrow
+	 * </p>
+	 * 
 	 * @return a T object.
 	 * @throws java.text.ParseException if any.
 	 */
@@ -304,8 +330,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	}
 
 	/**
-	 * <p>isReadOnly</p>
-	 *
+	 * <p>
+	 * isReadOnly
+	 * </p>
+	 * 
 	 * @return a boolean.
 	 */
 	public boolean isReadOnly() {
@@ -323,24 +351,32 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	}
 
 	/**
-	 * <p>selectAll</p>
+	 * <p>
+	 * selectAll
+	 * </p>
 	 */
 	public void selectAll() {
 		box.selectAll();
 	}
 
 	/**
-	 * <p>setAlignment</p>
-	 *
-	 * @param align a {@link com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment} object.
+	 * <p>
+	 * setAlignment
+	 * </p>
+	 * 
+	 * @param align a
+	 *            {@link com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment}
+	 *            object.
 	 */
 	public void setAlignment(TextAlignment align) {
 		box.setAlignment(align);
 	}
 
 	/**
-	 * <p>setCursorPos</p>
-	 *
+	 * <p>
+	 * setCursorPos
+	 * </p>
+	 * 
 	 * @param pos a int.
 	 */
 	public void setCursorPos(int pos) {
@@ -352,8 +388,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.i18n.client.HasDirection#setDirection(com.google.gwt.i18n.client.HasDirection.Direction)
 	 */
 	/**
-	 * <p>setDirection</p>
-	 *
+	 * <p>
+	 * setDirection
+	 * </p>
+	 * 
 	 * @param direction a Direction object.
 	 */
 	public void setDirection(Direction direction) {
@@ -374,9 +412,12 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.i18n.shared.HasDirectionEstimator#setDirectionEstimator(com.google.gwt.i18n.shared.DirectionEstimator)
 	 */
 	/**
-	 * <p>setDirectionEstimator</p>
-	 *
-	 * @param directionEstimator a {@link com.google.gwt.i18n.shared.DirectionEstimator} object.
+	 * <p>
+	 * setDirectionEstimator
+	 * </p>
+	 * 
+	 * @param directionEstimator a
+	 *            {@link com.google.gwt.i18n.shared.DirectionEstimator} object.
 	 */
 	public void setDirectionEstimator(DirectionEstimator directionEstimator) {
 		box.setDirectionEstimator(directionEstimator);
@@ -393,7 +434,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 
 	/**
 	 * set readonly
-	 *
+	 * 
 	 * @param readOnly a boolean.
 	 */
 	public void setReadOnly(boolean readOnly) {
@@ -402,7 +443,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 
 	/**
 	 * {@link com.google.gwt.user.client.ui.ValueBoxBase#setSelectionRange(int,int)}
-	 *
+	 * 
 	 * @param pos a int.
 	 * @param length a int.
 	 */
@@ -424,8 +465,10 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
 	 */
 	/**
-	 * <p>setValue</p>
-	 *
+	 * <p>
+	 * setValue
+	 * </p>
+	 * 
 	 * @param value a T object.
 	 */
 	public void setValue(T value) {

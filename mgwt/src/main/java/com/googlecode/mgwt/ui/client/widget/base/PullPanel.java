@@ -42,7 +42,7 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 
 /**
  * A panel that has scrollable content with a header, that can be pulled
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -57,37 +57,31 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 		/**
 		 * called when a scroll starts
 		 * 
-		 * @param state
-		 *            the current state of the pull panel
+		 * @param state the current state of the pull panel
 		 */
 		public void scrollStart(State state);
 
 		/**
 		 * continously called when scrolling
 		 * 
-		 * @param state
-		 *            the state of the pull panel
-		 * @param positionY
-		 *            the current scroll position
+		 * @param state the state of the pull panel
+		 * @param positionY the current scroll position
 		 */
 		public void onScroll(State state, int positionY);
 
 		/**
 		 * called when a scroll ends
 		 * 
-		 * @param state
-		 *            the current state of the pull panel
-		 * @param positionY
-		 *            the end scroll position
-		 * @param duration
-		 *            the duration to scroll took
+		 * @param state the current state of the pull panel
+		 * @param positionY the end scroll position
+		 * @param duration the duration to scroll took
 		 */
 		void onScrollEnd(State state, int positionY, int duration);
 
 		/**
 		 * get the height of the pullheader
 		 * 
-		 * @return
+		 * @return the height of the pull header
 		 */
 		public int getHeight();
 
@@ -101,8 +95,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 		/**
 		 * set the html of a pull header
 		 * 
-		 * @param html
-		 *            the html as String
+		 * @param html the html as String
 		 */
 		public void setHTML(String html);
 	}
@@ -157,9 +150,8 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	/**
 	 * Construct a pull panel with a given header
-	 *
-	 * @param pullHeader
-	 *            the header to use for this panel
+	 * 
+	 * @param pullHeader the header to use for this panel
 	 */
 	public PullPanel(PullHeader pullHeader) {
 		this(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss(), pullHeader);
@@ -167,11 +159,9 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	/**
 	 * Construct a pull panel with a given header an css.
-	 *
-	 * @param css
-	 *            the css to use
-	 * @param header
-	 *            the header to use for this panel
+	 * 
+	 * @param css the css to use
+	 * @param header the header to use for this panel
 	 */
 	public PullPanel(PullToRefreshCss css, PullHeader header) {
 		this.css = css;
@@ -253,7 +243,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	/**
 	 * get the state of the pull panel
-	 *
+	 * 
 	 * @return the state of the panel
 	 */
 	public State getState() {
@@ -291,9 +281,8 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	/**
 	 * show the header of the panel
-	 *
-	 * @param show
-	 *            true to show otherwise hide
+	 * 
+	 * @param show true to show otherwise hide
 	 */
 	public void showHeader(boolean show) {
 		if (show) {
@@ -305,9 +294,13 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	}
 
 	/**
-	 * <p>Setter for the field <code>state</code>.</p>
-	 *
-	 * @param state a {@link com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State} object.
+	 * <p>
+	 * Setter for the field <code>state</code>.
+	 * </p>
+	 * 
+	 * @param state a
+	 *            {@link com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State}
+	 *            object.
 	 */
 	protected void setState(State state) {
 		State lastState = this.state;

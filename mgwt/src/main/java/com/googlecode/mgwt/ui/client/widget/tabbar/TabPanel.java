@@ -35,13 +35,13 @@ import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 
 /**
- *
- *
+ * 
+ * 
  * At the moment theres no support for custom parsers:
  * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461
- *
+ * 
  * So if you want to use TabPanel in UIBinder its a bit choppy:
- *
+ * 
  * <pre>
  * &lt;mgwt:TabPanel>
  * 	&lt;mgwt:tabs>
@@ -56,7 +56,7 @@ import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
  * 	&lt;/mgwt:tabs>
  * &lt;/mgwt:TabPanel>
  * </pre>
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -67,16 +67,21 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	private TabBar tabBar;
 
 	/**
-	 * <p>Constructor for TabPanel.</p>
+	 * <p>
+	 * Constructor for TabPanel.
+	 * </p>
 	 */
 	public TabPanel() {
 		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
 	}
 
 	/**
-	 * <p>Constructor for TabPanel.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.TabBarCss} object.
+	 * <p>
+	 * Constructor for TabPanel.
+	 * </p>
+	 * 
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.TabBarCss}
+	 *            object.
 	 */
 	public TabPanel(TabBarCss css) {
 		container = new LayoutPanel();
@@ -110,8 +115,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	/**
-	 * <p>setScrollingEnabledX</p>
-	 *
+	 * <p>
+	 * setScrollingEnabledX
+	 * </p>
+	 * 
 	 * @param enabled a boolean.
 	 */
 	public void setScrollingEnabledX(boolean enabled) {
@@ -119,8 +126,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	/**
-	 * <p>setScrollingEnabledY</p>
-	 *
+	 * <p>
+	 * setScrollingEnabledY
+	 * </p>
+	 * 
 	 * @param enabled a boolean.
 	 */
 	public void setScrollingEnabledY(boolean enabled) {
@@ -128,8 +137,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	/**
-	 * <p>setSelectedChild</p>
-	 *
+	 * <p>
+	 * setSelectedChild
+	 * </p>
+	 * 
 	 * @param index a int.
 	 */
 	public void setSelectedChild(int index) {
@@ -138,9 +149,13 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	/**
-	 * <p>add</p>
-	 *
-	 * @param button a {@link com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase} object.
+	 * <p>
+	 * add
+	 * </p>
+	 * 
+	 * @param button a
+	 *            {@link com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase}
+	 *            object.
 	 * @param child a {@link com.google.gwt.user.client.ui.Widget} object.
 	 */
 	public void add(TabBarButtonBase button, Widget child) {
@@ -149,13 +164,14 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	/**
-	 * at the moment theres no support for custom parsers:
+	 * at the moment there is no support for custom parsers:
 	 * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461 this is
 	 * a workaround to allow use with UIBinder
-	 *
-	 * @use {@link TabPanel#add(TabBarButtonBase, Widget)} if your are writing java
-	 *      code
-	 * @param b a {@link com.googlecode.mgwt.ui.client.widget.tabbar.Tab} object.
+	 * 
+	 * {@link TabPanel#add(TabBarButtonBase, Widget)} if you are writing java
+	 * code
+	 * 
+	 * @param b the tab to add
 	 */
 	@UiChild(tagname = "tabs")
 	public void addTab(Tab b) {
@@ -173,8 +189,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	/**
-	 * <p>remove</p>
-	 *
+	 * <p>
+	 * remove
+	 * </p>
+	 * 
 	 * @param index a int.
 	 */
 	public void remove(int index) {
@@ -183,8 +201,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	/**
-	 * <p>remove</p>
-	 *
+	 * <p>
+	 * remove
+	 * </p>
+	 * 
 	 * @param w a {@link com.google.gwt.user.client.ui.Widget} object.
 	 */
 	public void remove(Widget w) {

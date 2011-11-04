@@ -22,7 +22,7 @@ import com.google.gwt.event.shared.EventHandler;
 
 /**
  * BaseClass for all TouchEvents
- *
+ * 
  * @author Daniel Kurka
  * @param <H> the event handler to associate with this event
  * @version $Id: $
@@ -30,9 +30,10 @@ import com.google.gwt.event.shared.EventHandler;
 public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 
 	/**
-	 * <p>touches</p>
-	 *
-	 * @param <H> a H object.
+	 * <p>
+	 * touches
+	 * </p>
+	 * 
 	 * @return a {@link com.google.gwt.core.client.JsArray} object.
 	 */
 	public JsArray<Touch> touches() {
@@ -40,9 +41,12 @@ public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 	}
 
 	/**
-	 * <p>touches</p>
-	 *
-	 * @param nativeEvent a {@link com.google.gwt.dom.client.NativeEvent} object.
+	 * <p>
+	 * touches
+	 * </p>
+	 * 
+	 * @param nativeEvent a {@link com.google.gwt.dom.client.NativeEvent}
+	 *            object.
 	 * @return a {@link com.google.gwt.core.client.JsArray} object.
 	 */
 	protected native JsArray<Touch> touches(NativeEvent nativeEvent) /*-{
@@ -51,7 +55,7 @@ public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 
 	/**
 	 * get the changed touches
-	 *
+	 * 
 	 * @return the array of changed touches
 	 */
 	public JsArray<Touch> changedTouches() {
@@ -59,9 +63,12 @@ public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 	}
 
 	/**
-	 * <p>changedTouches</p>
-	 *
-	 * @param nativeEvent a {@link com.google.gwt.dom.client.NativeEvent} object.
+	 * <p>
+	 * changedTouches
+	 * </p>
+	 * 
+	 * @param nativeEvent a {@link com.google.gwt.dom.client.NativeEvent}
+	 *            object.
 	 * @return a {@link com.google.gwt.core.client.JsArray} object.
 	 */
 	protected native JsArray<Touch> changedTouches(NativeEvent nativeEvent) /*-{

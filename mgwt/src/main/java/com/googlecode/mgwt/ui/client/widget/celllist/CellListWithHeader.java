@@ -23,10 +23,11 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.CellList;
 
-
 /**
- * <p>CellListWithHeader class.</p>
- *
+ * <p>
+ * CellListWithHeader class.
+ * </p>
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -36,20 +37,26 @@ public class CellListWithHeader<T> extends Composite {
 	private HTML header;
 
 	/**
-	 * <p>Constructor for CellListWithHeader.</p>
-	 *
-	 * @param cell a {@link com.googlecode.mgwt.ui.client.widget.celllist.Cell} object.
-	 * @param <T> a T object.
+	 * <p>
+	 * Constructor for CellListWithHeader.
+	 * </p>
+	 * 
+	 * @param cell a {@link com.googlecode.mgwt.ui.client.widget.celllist.Cell}
+	 *            object.
 	 */
 	public CellListWithHeader(Cell<T> cell) {
 		this(cell, MGWTStyle.getDefaultClientBundle().getListCss());
 	}
 
 	/**
-	 * <p>Constructor for CellListWithHeader.</p>
-	 *
-	 * @param cell a {@link com.googlecode.mgwt.ui.client.widget.celllist.Cell} object.
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ListCss} object.
+	 * <p>
+	 * Constructor for CellListWithHeader.
+	 * </p>
+	 * 
+	 * @param cell a {@link com.googlecode.mgwt.ui.client.widget.celllist.Cell}
+	 *            object.
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ListCss}
+	 *            object.
 	 */
 	public CellListWithHeader(Cell<T> cell, ListCss css) {
 		css.ensureInjected();
@@ -66,8 +73,10 @@ public class CellListWithHeader<T> extends Composite {
 	}
 
 	/**
-	 * <p>Getter for the field <code>header</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>header</code>.
+	 * </p>
+	 * 
 	 * @return a {@link com.google.gwt.user.client.ui.HasText} object.
 	 */
 	public HasText getHeader() {
@@ -75,8 +84,10 @@ public class CellListWithHeader<T> extends Composite {
 	}
 
 	/**
-	 * <p>Getter for the field <code>cellList</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>cellList</code>.
+	 * </p>
+	 * 
 	 * @return the cellList
 	 */
 	public CellList<T> getCellList() {
