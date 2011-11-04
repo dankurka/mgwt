@@ -25,18 +25,32 @@ import com.googlecode.mgwt.ui.client.widget.CellList;
 
 
 /**
- * @author Daniel Kurka
+ * <p>CellListWithHeader class.</p>
  *
+ * @author Daniel Kurka
+ * @version $Id: $
  */
 public class CellListWithHeader<T> extends Composite {
 	private FlowPanel main;
 	private CellList<T> cellList;
 	private HTML header;
 
+	/**
+	 * <p>Constructor for CellListWithHeader.</p>
+	 *
+	 * @param cell a {@link com.googlecode.mgwt.ui.client.widget.celllist.Cell} object.
+	 * @param <T> a T object.
+	 */
 	public CellListWithHeader(Cell<T> cell) {
 		this(cell, MGWTStyle.getDefaultClientBundle().getListCss());
 	}
 
+	/**
+	 * <p>Constructor for CellListWithHeader.</p>
+	 *
+	 * @param cell a {@link com.googlecode.mgwt.ui.client.widget.celllist.Cell} object.
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ListCss} object.
+	 */
 	public CellListWithHeader(Cell<T> cell, ListCss css) {
 		css.ensureInjected();
 		main = new FlowPanel();
@@ -51,11 +65,18 @@ public class CellListWithHeader<T> extends Composite {
 		main.add(cellList);
 	}
 
+	/**
+	 * <p>Getter for the field <code>header</code>.</p>
+	 *
+	 * @return a {@link com.google.gwt.user.client.ui.HasText} object.
+	 */
 	public HasText getHeader() {
 		return header;
 	}
 
 	/**
+	 * <p>Getter for the field <code>cellList</code>.</p>
+	 *
 	 * @return the cellList
 	 */
 	public CellList<T> getCellList() {

@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>BookmarkTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface BookmarkTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>bookmark</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String bookmark();
 }

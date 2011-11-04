@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>DownloadsTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface DownloadsTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>downloads</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String downloads();
 }

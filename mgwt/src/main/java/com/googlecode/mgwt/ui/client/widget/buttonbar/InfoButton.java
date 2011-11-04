@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.InfoButtonCss;
 
+/**
+ * <p>InfoButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class InfoButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for InfoButton.</p>
+	 */
 	public InfoButton() {
 		this(MGWTStyle.getDefaultClientBundle().getInfoButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for InfoButton.</p>
+	 *
+	 * @param infoButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.InfoButtonCss} object.
+	 */
 	public InfoButton(InfoButtonCss infoButtonCss) {
 		super(infoButtonCss);
 		addStyleName(infoButtonCss.info());

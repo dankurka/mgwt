@@ -17,9 +17,9 @@ package com.googlecode.mgwt.dom.client.event.touch;
 
 /**
  * Handler for all touch events
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface TouchHandler extends TouchStartHandler, TouchMoveHandler, TouchEndHandler, TouchCancelHandler {
 

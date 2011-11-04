@@ -20,15 +20,48 @@ import com.google.gwt.event.shared.HandlerRegistration;
 /**
  * This is a convenience interface that includes all touch handlers defined by
  * mgwt.
+ *
+ * @author kurt
+ * @version $Id: $
  */
 public interface HasTouchHandlers {
+	/**
+	 * <p>addTouchStartHandler</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler} object.
+	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 */
 	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler);
 
+	/**
+	 * <p>addTouchMoveHandler</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler} object.
+	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 */
 	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler);
 
+	/**
+	 * <p>addTouchCancelHandler</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler} object.
+	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 */
 	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler);
 
+	/**
+	 * <p>addTouchEndHandler</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler} object.
+	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 */
 	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler);
 
+	/**
+	 * <p>addTouchHandler</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchHandler} object.
+	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 */
 	public HandlerRegistration addTouchHandler(TouchHandler handler);
 }

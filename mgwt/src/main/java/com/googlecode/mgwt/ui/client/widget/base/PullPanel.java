@@ -42,9 +42,9 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 
 /**
  * A panel that has scrollable content with a header, that can be pulled
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class PullPanel extends Composite implements HasWidgets, HasPullHandlers {
 	/**
@@ -157,7 +157,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	/**
 	 * Construct a pull panel with a given header
-	 * 
+	 *
 	 * @param pullHeader
 	 *            the header to use for this panel
 	 */
@@ -167,7 +167,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	/**
 	 * Construct a pull panel with a given header an css.
-	 * 
+	 *
 	 * @param css
 	 *            the css to use
 	 * @param header
@@ -202,6 +202,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void onAttach() {
 		super.onAttach();
@@ -212,6 +213,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void add(Widget w) {
 		container.add(w);
@@ -222,6 +224,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.event.HasPullHandlers#addPullReleasedHandler(com.googlecode.mgwt.ui.client.widget.event.PullReleasedHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addPullReleasedHandler(PullReleasedHandler handler) {
 		return addHandler(handler, PullReleasedEvent.getType());
@@ -231,6 +234,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.event.HasPullHandlers#addPullStateChangedHandler(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addPullStateChangedHandler(PullStateChangedHandler handler) {
 		return addHandler(handler, PullStateChangedEvent.getType());
@@ -240,6 +244,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void clear() {
 		container.clear();
@@ -248,7 +253,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	/**
 	 * get the state of the pull panel
-	 * 
+	 *
 	 * @return the state of the panel
 	 */
 	public State getState() {
@@ -259,6 +264,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Iterator<Widget> iterator() {
 		return container.iterator();
@@ -277,6 +283,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean remove(Widget w) {
 		return container.remove(w);
@@ -284,7 +291,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	/**
 	 * show the header of the panel
-	 * 
+	 *
 	 * @param show
 	 *            true to show otherwise hide
 	 */
@@ -297,6 +304,11 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	}
 
+	/**
+	 * <p>Setter for the field <code>state</code>.</p>
+	 *
+	 * @param state a {@link com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State} object.
+	 */
 	protected void setState(State state) {
 		State lastState = this.state;
 		this.state = state;

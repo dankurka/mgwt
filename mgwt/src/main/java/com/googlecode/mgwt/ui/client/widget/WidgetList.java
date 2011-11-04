@@ -32,9 +32,9 @@ import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 
 /**
  * A list that can contain widgets
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class WidgetList extends Composite implements HasWidgets {
 
@@ -111,7 +111,7 @@ public class WidgetList extends Composite implements HasWidgets {
 
 	/**
 	 * Construct a widget list using a specific css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public WidgetList(ListCss css) {
@@ -129,6 +129,7 @@ public class WidgetList extends Composite implements HasWidgets {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void add(Widget w) {
 
@@ -154,6 +155,7 @@ public class WidgetList extends Composite implements HasWidgets {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void clear() {
 		container.clear();
@@ -167,6 +169,7 @@ public class WidgetList extends Composite implements HasWidgets {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Iterator<Widget> iterator() {
 		return map.keySet().iterator();
@@ -176,6 +179,7 @@ public class WidgetList extends Composite implements HasWidgets {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean remove(Widget w) {
 		WidgetListEntry entry = map.remove(w);
@@ -203,7 +207,7 @@ public class WidgetList extends Composite implements HasWidgets {
 
 	/**
 	 * Should the list be displayed with rounded corners
-	 * 
+	 *
 	 * @param round true to display with rounded corners
 	 */
 	public void setRound(boolean round) {

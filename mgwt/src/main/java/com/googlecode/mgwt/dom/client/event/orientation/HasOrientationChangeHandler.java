@@ -18,9 +18,17 @@ package com.googlecode.mgwt.dom.client.event.orientation;
 import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
+ * <p>HasOrientationChangeHandler interface.</p>
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface HasOrientationChangeHandler {
+	/**
+	 * <p>addOrientationChangeHandler</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler} object.
+	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 */
 	public HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler);
 }

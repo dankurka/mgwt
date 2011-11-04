@@ -19,17 +19,20 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * The touch object inside a {@link TouchEvent}
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public final class Touch extends JavaScriptObject {
+	/**
+	 * <p>Constructor for Touch.</p>
+	 */
 	protected Touch() {
 	}
 
 	/**
 	 * The X position of the touch within the current document
-	 * 
+	 *
 	 * @return the current x position of the touch
 	 */
 	public final native int getPageX() /*-{
@@ -38,7 +41,7 @@ public final class Touch extends JavaScriptObject {
 
 	/**
 	 * The Y position of the touch within the current document
-	 * 
+	 *
 	 * @return the current y position of the touch
 	 */
 	public final native int getPageY() /*-{

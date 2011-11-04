@@ -17,21 +17,21 @@ package com.googlecode.mgwt.ui.client.widget.base;
 
 /**
  * Widgets that implement this interface can autocorrect every word on input
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface HasAutoCorrect {
 	/**
 	 * Should the widget autocorrect its input?
-	 * 
+	 *
 	 * @param enabled true to autocorrect
 	 */
 	public void setAutoCorrectEnabled(boolean enabled);
 
 	/**
 	 * Should the widget autocorrect its input?
-	 * 
+	 *
 	 * @return true to autocorrect, otherwise false
 	 */
 	public boolean isAutoCorrectEnabled();

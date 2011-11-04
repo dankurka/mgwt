@@ -18,15 +18,20 @@ package com.googlecode.mgwt.ui.client.util;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class FeatureDetection {
 
 	private static boolean has3d;
 	private static boolean testedFor3d;
 
+	/**
+	 * <p>has3d</p>
+	 *
+	 * @return a boolean.
+	 */
 	public static boolean has3d() {
 		if (!testedFor3d) {
 

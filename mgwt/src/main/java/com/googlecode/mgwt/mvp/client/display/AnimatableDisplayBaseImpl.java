@@ -29,9 +29,9 @@ import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 
@@ -45,10 +45,18 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 
 	protected final AnimationCss css;
 
+	/**
+	 * <p>Constructor for AnimatableDisplayBaseImpl.</p>
+	 */
 	public AnimatableDisplayBaseImpl() {
 		this(AnimationSelector.getBundle().animationCss());
 	}
 
+	/**
+	 * <p>Constructor for AnimatableDisplayBaseImpl.</p>
+	 *
+	 * @param css a {@link com.googlecode.mgwt.mvp.client.resources.AnimationCss} object.
+	 */
 	public AnimatableDisplayBaseImpl(AnimationCss css) {
 
 		this.css = css;
@@ -78,16 +86,21 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setFirstWidget(IsWidget w) {
 		first.setWidget(w);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setSecondWidget(IsWidget w) {
 		second.setWidget(w);
 	}
 
+	/**
+	 * <p>removeAllStyles</p>
+	 */
 	protected void removeAllStyles() {
 
 		first.removeStyleName(this.css.in());
@@ -116,6 +129,9 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 
 	}
 
+	/**
+	 * <p>onAnimationEnd</p>
+	 */
 	protected abstract void onAnimationEnd();
 
 	protected boolean showFirst;
@@ -126,7 +142,7 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	protected AnimationEndCallback lastCallback;
 
 	/**
-	 * 
+	 * <p>blurBeforeAnimation</p>
 	 */
 	protected native void blurBeforeAnimation() /*-{
 		var node = $doc.querySelector(":focus");
@@ -142,6 +158,7 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.IsWidget#asWidget()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Widget asWidget() {
 		return main;

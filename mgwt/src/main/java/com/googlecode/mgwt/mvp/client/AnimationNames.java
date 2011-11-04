@@ -17,22 +17,57 @@ package com.googlecode.mgwt.mvp.client;
 
 /**
  * Css Representation for all animations. This is considered internal atm.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface AnimationNames {
+	/**
+	 * <p>fade</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String fade();
 
+	/**
+	 * <p>pop</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String pop();
 
+	/**
+	 * <p>swap</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String swap();
 
+	/**
+	 * <p>slide</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String slide();
 
+	/**
+	 * <p>slideup</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String slideup();
 
+	/**
+	 * <p>flip</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String flip();
 
+	/**
+	 * <p>dissolve</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String dissolve();
 }

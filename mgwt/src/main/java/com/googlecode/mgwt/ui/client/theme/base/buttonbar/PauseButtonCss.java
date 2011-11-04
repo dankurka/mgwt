@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>PauseButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface PauseButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>pause</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String pause();
 }

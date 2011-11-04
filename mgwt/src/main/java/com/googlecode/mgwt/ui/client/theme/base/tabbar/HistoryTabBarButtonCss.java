@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>HistoryTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface HistoryTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>history</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String history();
 }

@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PreviousSlideButtonCss;
 
+/**
+ * <p>PreviousSlideButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class PreviousSlideButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for PreviousSlideButton.</p>
+	 */
 	public PreviousSlideButton() {
 		this(MGWTStyle.getDefaultClientBundle().getPreviousSlideButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for PreviousSlideButton.</p>
+	 *
+	 * @param previousSlideButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.PreviousSlideButtonCss} object.
+	 */
 	public PreviousSlideButton(PreviousSlideButtonCss previousSlideButtonCss) {
 		super(previousSlideButtonCss);
 		addStyleName(previousSlideButtonCss.previousSlide());

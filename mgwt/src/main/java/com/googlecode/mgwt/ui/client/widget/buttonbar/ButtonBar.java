@@ -26,18 +26,28 @@ import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
 
 
 /**
- * @author Daniel Kurka
+ * <p>ButtonBar class.</p>
  *
+ * @author Daniel Kurka
+ * @version $Id: $
  */
 public class ButtonBar extends Composite implements HasWidgets {
 
 	private FlowPanel main;
 	protected final ButtonBarCss css;
 
+	/**
+	 * <p>Constructor for ButtonBar.</p>
+	 */
 	public ButtonBar() {
 		this(MGWTStyle.getDefaultClientBundle().getButtonBarCss());
 	}
 
+	/**
+	 * <p>Constructor for ButtonBar.</p>
+	 *
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss} object.
+	 */
 	public ButtonBar(ButtonBarCss css) {
 		this.css = css;
 		css.ensureInjected();
@@ -50,6 +60,7 @@ public class ButtonBar extends Composite implements HasWidgets {
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void add(Widget w) {
 		main.add(w);
@@ -59,6 +70,7 @@ public class ButtonBar extends Composite implements HasWidgets {
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void clear() {
 		main.clear();
@@ -68,6 +80,7 @@ public class ButtonBar extends Composite implements HasWidgets {
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Iterator<Widget> iterator() {
 		return main.iterator();
@@ -76,6 +89,7 @@ public class ButtonBar extends Composite implements HasWidgets {
 	/* (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean remove(Widget w) {
 		return main.remove(w);

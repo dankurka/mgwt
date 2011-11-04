@@ -18,9 +18,16 @@ package com.googlecode.mgwt.dom.client.event.orientation;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
- * @author Daniel Kurka
+ * <p>OrientationChangeHandler interface.</p>
  *
+ * @author Daniel Kurka
+ * @version $Id: $
  */
 public interface OrientationChangeHandler extends EventHandler {
+	/**
+	 * <p>onOrientationChanged</p>
+	 *
+	 * @param event a {@link com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent} object.
+	 */
 	public void onOrientationChanged(OrientationChangeEvent event);
 }

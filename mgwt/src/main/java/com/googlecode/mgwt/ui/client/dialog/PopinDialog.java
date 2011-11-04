@@ -21,9 +21,9 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 /**
  * A dialog that pops into view
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class PopinDialog extends AnimatableDialogBase {
 
@@ -36,18 +36,20 @@ public class PopinDialog extends AnimatableDialogBase {
 
 	/**
 	 * Construct a popin dialog with specific css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public PopinDialog(DialogCss css) {
 		super(css);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected Animation getShowAnimation() {
 		return Animation.POP;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected Animation getHideAnimation() {
 		return Animation.POP_REVERSE;

@@ -17,8 +17,19 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>ButtonBarCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ButtonBarCss extends CssResource {
 
+	/**
+	 * <p>buttonBar</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-ButtonBar")
 	public String buttonBar();
 

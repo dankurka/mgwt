@@ -21,9 +21,9 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 /**
  * A dialog panel that slides up into view
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class SlideUpPanel extends AnimatableDialogBase {
 
@@ -37,7 +37,7 @@ public class SlideUpPanel extends AnimatableDialogBase {
 
 	/**
 	 * Construct a slide up panel with a specific css
-	 * 
+	 *
 	 * @param dialogCss the css to use
 	 */
 	public SlideUpPanel(DialogCss dialogCss) {
@@ -45,11 +45,13 @@ public class SlideUpPanel extends AnimatableDialogBase {
 		setCenterContent(false);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected Animation getShowAnimation() {
 		return Animation.SLIDE_UP;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected Animation getHideAnimation() {
 		return Animation.SLIDE_UP_REVERSE;

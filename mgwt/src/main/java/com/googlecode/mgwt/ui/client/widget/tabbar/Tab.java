@@ -21,37 +21,60 @@ import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Experimental to get TabPanel work with UIBinder
- * 
+ *
  * at the moment theres no support for custom parsers:
  * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class Tab extends Widget {
 	private Widget widget;
 	private TabBarButtonBase button;
 
+	/**
+	 * <p>Constructor for Tab.</p>
+	 */
 	public Tab() {
 		setElement(DOM.createDiv());
 	}
 
+	/**
+	 * <p>Setter for the field <code>button</code>.</p>
+	 *
+	 * @param button a {@link com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase} object.
+	 */
 	@UiChild(limit = 1, tagname = "button")
 	public void setButton(TabBarButtonBase button) {
 		this.button = button;
 
 	}
 
+	/**
+	 * <p>Setter for the field <code>widget</code>.</p>
+	 *
+	 * @param w a {@link com.google.gwt.user.client.ui.Widget} object.
+	 */
 	@UiChild(limit = 1, tagname = "widget")
 	public void setWidget(Widget w) {
 		this.widget = w;
 
 	}
 
+	/**
+	 * <p>Getter for the field <code>widget</code>.</p>
+	 *
+	 * @return a {@link com.google.gwt.user.client.ui.Widget} object.
+	 */
 	public Widget getWidget() {
 		return widget;
 	}
 
+	/**
+	 * <p>Getter for the field <code>button</code>.</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase} object.
+	 */
 	public TabBarButtonBase getButton() {
 		return button;
 	}

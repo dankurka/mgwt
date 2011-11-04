@@ -18,8 +18,10 @@ package com.googlecode.mgwt.dom.client.event.orientation;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
+ * <p>OrientationChangeEvent class.</p>
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class OrientationChangeEvent extends GwtEvent<OrientationChangeHandler> {
 
@@ -30,11 +32,17 @@ public class OrientationChangeEvent extends GwtEvent<OrientationChangeHandler> {
 		PORTRAIT, LANDSCAPE
 	}
 
+	/**
+	 * <p>Constructor for OrientationChangeEvent.</p>
+	 *
+	 * @param orientation a {@link com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION} object.
+	 */
 	public OrientationChangeEvent(ORIENTATION orientation) {
 		this.orientation = orientation;
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<OrientationChangeHandler> getAssociatedType() {
 		return TYPE;
@@ -43,18 +51,26 @@ public class OrientationChangeEvent extends GwtEvent<OrientationChangeHandler> {
 	/* (non-Javadoc)
 	 * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(OrientationChangeHandler handler) {
 		handler.onOrientationChanged(this);
 
 	}
 
+	/**
+	 * <p>Getter for the field <code>orientation</code>.</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION} object.
+	 */
 	public ORIENTATION getOrientation() {
 		return orientation;
 	}
 
 	/**
-	 * @return
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
 	 */
 	public static Type<OrientationChangeHandler> getType() {
 		return TYPE;

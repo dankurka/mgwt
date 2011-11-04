@@ -19,21 +19,62 @@ import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.CssResource.Shared;
 
 @Shared
+/**
+ * <p>ListCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ListCss extends CssResource {
 
+	/**
+	 * <p>listCss</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-List")
 	public String listCss();
 
+	/**
+	 * <p>round</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String round();
 
+	/**
+	 * <p>group</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String group();
 
+	/**
+	 * <p>selected</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String selected();
 
+	/**
+	 * <p>first</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String first();
 
+	/**
+	 * <p>last</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String last();
 
+	/**
+	 * <p>listHeader</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-List-Header")
 	public String listHeader();
 

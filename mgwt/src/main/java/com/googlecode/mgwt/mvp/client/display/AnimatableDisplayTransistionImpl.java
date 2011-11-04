@@ -33,9 +33,9 @@ import com.googlecode.mgwt.mvp.client.resources.TransistionCss;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 	protected FlowPanel main;
@@ -48,10 +48,18 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 
 	protected final TransistionCss css;
 
+	/**
+	 * <p>Constructor for AnimatableDisplayTransistionImpl.</p>
+	 */
 	public AnimatableDisplayTransistionImpl() {
 		this(AnimationSelector.getBundle().transitionCss());
 	}
 
+	/**
+	 * <p>Constructor for AnimatableDisplayTransistionImpl.</p>
+	 *
+	 * @param css a {@link com.googlecode.mgwt.mvp.client.resources.TransistionCss} object.
+	 */
 	public AnimatableDisplayTransistionImpl(TransistionCss css) {
 
 		this.css = css;
@@ -85,16 +93,21 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setFirstWidget(IsWidget w) {
 		first.setWidget(w);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void setSecondWidget(IsWidget w) {
 		second.setWidget(w);
 	}
 
+	/**
+	 * <p>removeAllStyles</p>
+	 */
 	protected void removeAllStyles() {
 
 		first.removeStyleName(this.css.in());
@@ -135,7 +148,7 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 	protected AnimationEndCallback lastCallback;
 
 	/**
-	 * 
+	 * <p>blurBeforeAnimation</p>
 	 */
 	protected native void blurBeforeAnimation() /*-{
 		var node = $doc.querySelector(":focus");
@@ -148,11 +161,13 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 		}
 	}-*/;
 
+	/** {@inheritDoc} */
 	@Override
 	public Widget asWidget() {
 		return main;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void animate(Animation animation, boolean currentIsFirst, AnimationEndCallback callback) {
 
@@ -220,6 +235,9 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 
 	}
 
+	/**
+	 * <p>onAnimationEnd</p>
+	 */
 	protected void onAnimationEnd() {
 		if (showFirst) {
 

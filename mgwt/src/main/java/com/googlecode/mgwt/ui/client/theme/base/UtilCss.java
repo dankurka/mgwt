@@ -17,12 +17,38 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>UtilCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface UtilCss extends CssResource {
+	/**
+	 * <p>landscapeonly</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String landscapeonly();
 
+	/**
+	 * <p>portraitonly</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String portraitonly();
 
+	/**
+	 * <p>portrait</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String portrait();
 
+	/**
+	 * <p>landscape</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String landscape();
 }

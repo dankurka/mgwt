@@ -20,14 +20,20 @@ import com.google.gwt.resources.client.ClientBundle;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface AnimationBundle extends ClientBundle {
 
+	/**
+	 * <p>animationCss</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.mvp.client.resources.AnimationCss} object.
+	 */
 	@Source("animation.css")
 	public AnimationCss animationCss();
 
+	/** Constant <code>INSTANCE</code> */
 	public final AnimationBundle INSTANCE = GWT.create(AnimationBundle.class);
 }

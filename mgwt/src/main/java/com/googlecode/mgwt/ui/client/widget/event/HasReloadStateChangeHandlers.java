@@ -20,14 +20,14 @@ import com.google.gwt.event.shared.HandlerRegistration;
 /**
  * widgets that implement this interface fire {@link ReloadStateChangedEvent}
  * events.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface HasReloadStateChangeHandlers {
 	/**
 	 * Adds a {@link ReloadStateChangedHandler} handler.
-	 * 
+	 *
 	 * @param handler the handler to add
 	 * @return {@link HandlerRegistration} used to remove this handler
 	 */

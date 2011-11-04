@@ -22,9 +22,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
  * A utility class to load images from a remote resource
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class ImageLoader {
 
@@ -59,7 +59,7 @@ public class ImageLoader {
 
 	/**
 	 * load an image from a given url
-	 * 
+	 *
 	 * @param url the url of the image
 	 * @param callback the callback to call when image loading has finished /
 	 *            failed
@@ -80,7 +80,6 @@ public class ImageLoader {
 
 	/**
 	 * Cancel the load of an image
-	 * 
 	 */
 	public void cancel() {
 		canceled = true;
@@ -89,6 +88,9 @@ public class ImageLoader {
 		}
 	}
 
+	/**
+	 * <p>onError</p>
+	 */
 	protected void onError() {
 		started = false;
 		if (canceled)
@@ -96,6 +98,9 @@ public class ImageLoader {
 		callback.onFailure(new Exception());
 	}
 
+	/**
+	 * <p>onLoad</p>
+	 */
 	protected void onLoad() {
 		started = false;
 		if (canceled)

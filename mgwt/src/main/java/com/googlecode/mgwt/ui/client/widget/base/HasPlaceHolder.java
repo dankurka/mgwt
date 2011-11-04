@@ -18,23 +18,22 @@ package com.googlecode.mgwt.ui.client.widget.base;
 /**
  * Widgets that implement this interface can display a text when they have no
  * text set
- * 
+ *
  * @author Daniel Kurka
- * 
- * 
+ * @version $Id: $
  */
 public interface HasPlaceHolder {
 
 	/**
 	 * set a place holder
-	 * 
+	 *
 	 * @param text the text to display when empty
 	 */
 	public void setPlaceHolder(String text);
 
 	/**
 	 * get the place holder
-	 * 
+	 *
 	 * @return the text of the place holder
 	 */
 	public String getPlaceHolder();

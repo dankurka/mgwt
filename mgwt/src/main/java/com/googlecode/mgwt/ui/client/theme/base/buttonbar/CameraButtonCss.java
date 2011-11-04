@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>CameraButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface CameraButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>camera</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String camera();
 }

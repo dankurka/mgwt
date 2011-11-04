@@ -20,10 +20,15 @@ import com.google.gwt.dom.client.ImageElement;
 
 /**
  * Classes that implement this interface provide an image element
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface IsImage {
+	/**
+	 * <p>getElement</p>
+	 *
+	 * @return a {@link com.google.gwt.dom.client.ImageElement} object.
+	 */
 	public ImageElement getElement();
 }

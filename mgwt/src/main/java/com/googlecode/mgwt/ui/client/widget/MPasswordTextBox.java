@@ -21,9 +21,9 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * An input element that can handle passwords
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MPasswordTextBox extends MTextBox {
 
@@ -36,7 +36,7 @@ public class MPasswordTextBox extends MTextBox {
 
 	/**
 	 * Construct a password text box with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MPasswordTextBox(InputCss css) {

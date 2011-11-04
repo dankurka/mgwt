@@ -46,9 +46,9 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A search widget
- * 
+ *
  * @author Daniel Kurka Date: 30.05.2010
- * 
+ * @version $Id: $
  */
 public class MSearchBox extends Composite implements HasChangeHandlers, HasText, HasName, HasValue<String>, HasPlaceHolder, HasAllKeyHandlers {
 	private class SearchBoxChangeHandler implements KeyUpHandler {
@@ -150,7 +150,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 
 	/**
 	 * Construct a search box with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MSearchBox(MSearchBoxCss css) {
@@ -188,6 +188,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Composite#onAttach()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void onAttach() {
 		super.onAttach();
@@ -202,6 +203,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Composite#onDetach()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void onDetach() {
 		super.onDetach();
@@ -213,6 +215,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder#setPlaceHolder(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	public void setPlaceHolder(String text) {
 		box.getElement().setAttribute("placeholder", text);
 	}
@@ -227,6 +230,11 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder#getPlaceHolder()
 	 */
+	/**
+	 * <p>getPlaceHolder</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getPlaceHolder() {
 		return box.getElement().getAttribute("placeholder");
 	}
@@ -234,6 +242,11 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#getText()
+	 */
+	/**
+	 * <p>getText</p>
+	 *
+	 * @return a {@link java.lang.String} object.
 	 */
 	public String getText() {
 		return box.getText();
@@ -243,6 +256,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#setText(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	public void setText(String text) {
 		box.setText(text);
 	}
@@ -251,6 +265,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.logical.shared.HasValueChangeHandlers#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)
 	 */
+	/** {@inheritDoc} */
 	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<String> stringValueChangeHandler) {
 		return box.addValueChangeHandler(stringValueChangeHandler);
 	}
@@ -259,6 +274,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasName#setName(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	public void setName(String name) {
 		box.setName(name);
 	}
@@ -266,6 +282,11 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasName#getName()
+	 */
+	/**
+	 * <p>getName</p>
+	 *
+	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
 		return box.getName();
@@ -275,6 +296,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.HasChangeHandlers#addChangeHandler(com.google.gwt.event.dom.client.ChangeHandler)
 	 */
+	/** {@inheritDoc} */
 	public com.google.gwt.event.shared.HandlerRegistration addChangeHandler(ChangeHandler handler) {
 		return box.addChangeHandler(handler);
 	}
@@ -282,6 +304,11 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#getValue()
+	 */
+	/**
+	 * <p>getValue</p>
+	 *
+	 * @return a {@link java.lang.String} object.
 	 */
 	public String getValue() {
 		return box.getValue();
@@ -291,6 +318,11 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
 	 */
+	/**
+	 * <p>setValue</p>
+	 *
+	 * @param value a {@link java.lang.String} object.
+	 */
 	public void setValue(String value) {
 		box.setValue(value);
 	}
@@ -299,6 +331,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object, boolean)
 	 */
+	/** {@inheritDoc} */
 	public void setValue(String value, boolean fireEvents) {
 		box.setValue(value, fireEvents);
 	}
@@ -307,6 +340,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.HasKeyUpHandlers#addKeyUpHandler(com.google.gwt.event.dom.client.KeyUpHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
 		return box.addKeyUpHandler(handler);
@@ -316,6 +350,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.HasKeyDownHandlers#addKeyDownHandler(com.google.gwt.event.dom.client.KeyDownHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
 		return box.addKeyDownHandler(handler);
@@ -325,6 +360,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.HasKeyPressHandlers#addKeyPressHandler(com.google.gwt.event.dom.client.KeyPressHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return box.addKeyPressHandler(handler);

@@ -28,9 +28,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 
 /**
  * The implementation for touch devices of {@link TouchWidgetImpl}
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TouchWidgetMobileImpl implements TouchWidgetImpl {
 
@@ -38,6 +38,7 @@ public class TouchWidgetMobileImpl implements TouchWidgetImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl#addTouchStartHandler(com.google.gwt.user.client.ui.Widget, com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchStartHandler(Widget w, TouchStartHandler handler) {
 		return w.addDomHandler(handler, TouchStartEvent.getType());
@@ -47,6 +48,7 @@ public class TouchWidgetMobileImpl implements TouchWidgetImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl#addTouchMoveHandler(com.google.gwt.user.client.ui.Widget, com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchMoveHandler(Widget w, TouchMoveHandler handler) {
 		return w.addDomHandler(handler, TouchMoveEvent.getType());
@@ -56,6 +58,7 @@ public class TouchWidgetMobileImpl implements TouchWidgetImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl#addTouchCancelHandler(com.google.gwt.user.client.ui.Widget, com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchCancelHandler(Widget w, TouchCancelHandler handler) {
 		return w.addDomHandler(handler, TouchCancelEvent.getType());
@@ -65,6 +68,7 @@ public class TouchWidgetMobileImpl implements TouchWidgetImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl#addTouchEndHandler(com.google.gwt.user.client.ui.Widget, com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler) {
 		return w.addDomHandler(handler, TouchEndEvent.getType());

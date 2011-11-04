@@ -21,17 +21,23 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 
 /**
  * Convert TouchEndHandlers to MouseUpHandlers for non touch devices or dev mode
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TouchEndToMouseUpHandler implements MouseUpHandler {
 	private final TouchEndHandler handler;
 
+	/**
+	 * <p>Constructor for TouchEndToMouseUpHandler.</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler} object.
+	 */
 	public TouchEndToMouseUpHandler(TouchEndHandler handler) {
 		this.handler = handler;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onMouseUp(MouseUpEvent event) {
 		handler.onTouchEnd(new SimulatedTouchEndEvent(event));

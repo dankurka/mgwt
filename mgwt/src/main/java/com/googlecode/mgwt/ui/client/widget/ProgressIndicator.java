@@ -22,9 +22,9 @@ import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
 
 /**
  * A simple progress indicator
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class ProgressIndicator extends Widget {
 
@@ -39,7 +39,7 @@ public class ProgressIndicator extends Widget {
 
 	/**
 	 * Construct a progress indicator with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public ProgressIndicator(ProgressIndicatorCss css) {

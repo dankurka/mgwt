@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostViewedTabBarButtonCss;
 
+/**
+ * <p>MostViewedTabBarButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class MostViewedTabBarButton extends TabBarButtonBase {
 
+	/**
+	 * <p>Constructor for MostViewedTabBarButton.</p>
+	 */
 	public MostViewedTabBarButton() {
 		this(MGWTStyle.getDefaultClientBundle().getMostViewedTabBarButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for MostViewedTabBarButton.</p>
+	 *
+	 * @param mostViewedTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.MostViewedTabBarButtonCss} object.
+	 */
 	public MostViewedTabBarButton(MostViewedTabBarButtonCss mostViewedTabBarButtonCss) {
 		super(mostViewedTabBarButtonCss);
 		addStyleName(mostViewedTabBarButtonCss.mostViewed());

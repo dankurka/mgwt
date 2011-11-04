@@ -17,6 +17,17 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>ButtonBaseCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ButtonBaseCss extends CssResource {
+	/**
+	 * <p>active</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String active();
 }

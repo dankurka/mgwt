@@ -17,21 +17,21 @@ package com.googlecode.mgwt.ui.client.widget.base;
 
 /**
  * Widgets that implement this interface can capitalize the beginning of words
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface HasAutoCapitalize {
 	/**
 	 * Should the widget capitalize every word
-	 * 
+	 *
 	 * @param capitalize true to capitalize
 	 */
 	public void setAutoCapitalize(boolean capitalize);
 
 	/**
 	 * Should the widget capitalize every word
-	 * 
+	 *
 	 * @return true to capitalize, otherwise false
 	 */
 	public boolean isAutoCapitalize();

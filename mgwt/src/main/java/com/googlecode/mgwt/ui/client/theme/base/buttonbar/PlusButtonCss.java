@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>PlusButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface PlusButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>plus</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String plus();
 }

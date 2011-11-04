@@ -15,23 +15,49 @@
  */
 package com.googlecode.mgwt.ui.client.theme.mgwt;
 
+/**
+ * <p>MGWTColorScheme class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class MGWTColorScheme {
 	private static String baseColor = "#0D56a6";
 
 	private static String fontColor = "#eeeeff";
 
+	/**
+	 * <p>Getter for the field <code>baseColor</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String getBaseColor() {
 		return baseColor;
 	}
 
+	/**
+	 * <p>Getter for the field <code>fontColor</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public static String getFontColor() {
 		return fontColor;
 	}
 
+	/**
+	 * <p>Setter for the field <code>baseColor</code>.</p>
+	 *
+	 * @param baseColor a {@link java.lang.String} object.
+	 */
 	public static void setBaseColor(String baseColor) {
 		MGWTColorScheme.baseColor = baseColor;
 	}
 
+	/**
+	 * <p>Setter for the field <code>fontColor</code>.</p>
+	 *
+	 * @param fontColor a {@link java.lang.String} object.
+	 */
 	public static void setFontColor(String fontColor) {
 		MGWTColorScheme.fontColor = fontColor;
 	}

@@ -14,6 +14,12 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.O
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
 
+/**
+ * <p>MGWTUtil class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class MGWTUtil {
 	private static final OsDetection OS_DETECTION = GWT.create(OsDetection.class);
 
@@ -29,10 +35,19 @@ public class MGWTUtil {
 
 	}
 
+	/**
+	 * <p>addOrientationChangeHandler</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler} object.
+	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 */
 	public static HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
 		return manager.addHandler(OrientationChangeEvent.getType(), handler);
 	}
 
+	/**
+	 * <p>fixIOSScrollIssueBlur</p>
+	 */
 	public static void fixIOSScrollIssueBlur() {
 		if (!scrollingDisabled) {
 			return;
@@ -55,6 +70,9 @@ public class MGWTUtil {
 		timer.schedule(100);
 	}
 
+	/**
+	 * <p>fixIOSScrollIssueFocus</p>
+	 */
 	public static void fixIOSScrollIssueFocus() {
 		if (!scrollingDisabled) {
 			return;
@@ -66,10 +84,20 @@ public class MGWTUtil {
 		timer = null;
 	}
 
+	/**
+	 * <p>getOsDetection</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.ui.client.OsDetection} object.
+	 */
 	public static OsDetection getOsDetection() {
 		return OS_DETECTION;
 	}
 
+	/**
+	 * <p>getOrientation</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION} object.
+	 */
 	public static ORIENTATION getOrientation() {
 
 		if (!orientationSupport()) {
@@ -106,6 +134,11 @@ public class MGWTUtil {
 
 	}
 
+	/**
+	 * <p>Setter for the field <code>scrollingDisabled</code>.</p>
+	 *
+	 * @param disabled a boolean.
+	 */
 	public static void setScrollingDisabled(boolean disabled) {
 		scrollingDisabled = disabled;
 	}

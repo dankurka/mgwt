@@ -15,18 +15,54 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
+/**
+ * <p>ButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ButtonCss extends ButtonBaseCss {
 
+	/**
+	 * <p>button</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-Button")
 	public String button();
 
+	/**
+	 * <p>active</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String active();
 
+	/**
+	 * <p>small</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String small();
 
+	/**
+	 * <p>round</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String round();
 
+	/**
+	 * <p>important</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String important();
 
+	/**
+	 * <p>confirm</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String confirm();
 }

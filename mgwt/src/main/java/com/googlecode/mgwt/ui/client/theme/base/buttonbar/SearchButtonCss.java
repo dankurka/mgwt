@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>SearchButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface SearchButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>search</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String search();
 }

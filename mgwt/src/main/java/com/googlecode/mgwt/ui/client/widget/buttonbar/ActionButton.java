@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ActionButtonCss;
 
+/**
+ * <p>ActionButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class ActionButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for ActionButton.</p>
+	 */
 	public ActionButton() {
 		this(MGWTStyle.getDefaultClientBundle().getActionButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for ActionButton.</p>
+	 *
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ActionButtonCss} object.
+	 */
 	public ActionButton(ActionButtonCss css) {
 		super(css);
 		addStyleName(css.action());

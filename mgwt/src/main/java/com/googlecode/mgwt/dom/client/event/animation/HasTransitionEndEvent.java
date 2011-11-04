@@ -20,14 +20,14 @@ import com.google.gwt.event.shared.HandlerRegistration;
 /**
  * A widget that implements this interface provides registration for
  * {@link TransitionEndHandler} instances.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface HasTransitionEndEvent {
 	/**
 	 * Adds a {@link TransitionEndHandler} handler.
-	 * 
+	 *
 	 * @param handler the transistion end handler
 	 * @return {@link HandlerRegistration} used to remove this handler
 	 */

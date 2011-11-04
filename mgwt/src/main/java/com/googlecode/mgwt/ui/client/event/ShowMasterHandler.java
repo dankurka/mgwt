@@ -17,6 +17,17 @@ package com.googlecode.mgwt.ui.client.event;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * <p>ShowMasterHandler interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ShowMasterHandler extends EventHandler {
+	/**
+	 * <p>onShowMaster</p>
+	 *
+	 * @param event a {@link com.googlecode.mgwt.ui.client.event.ShowMasterEvent} object.
+	 */
 	public void onShowMaster(ShowMasterEvent event);
 }

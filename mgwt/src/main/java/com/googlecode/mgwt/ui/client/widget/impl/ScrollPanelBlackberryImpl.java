@@ -29,12 +29,12 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
  * The blackberry implementation of scrollpanel lacks any scrolling capabilities
  * because blackberry phones don«t offer any input method to handle scrolling on
  * anything else than the web page itself.
- * 
+ *
  * Therefore content is just placed in a div so that we can use the scrolling of
  * the whole web page
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 
@@ -51,6 +51,9 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	private boolean scrollingEnabledX;
 	private boolean scrollingEnabledY;
 
+	/**
+	 * <p>Constructor for ScrollPanelBlackberryImpl.</p>
+	 */
 	public ScrollPanelBlackberryImpl() {
 		main = new SimplePanel();
 		initWidget(main);
@@ -60,6 +63,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void add(Widget w) {
 		main.add(w);
@@ -70,6 +74,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void clear() {
 		main.clear();
@@ -80,6 +85,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Iterator<Widget> iterator() {
 		return main.iterator();
@@ -89,6 +95,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean remove(Widget w) {
 		return main.remove(w);
@@ -98,6 +105,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollStartHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addScrollStartHandler(ScrollStartHandler handler) {
 		return new NoopHandlerRegistration();
@@ -107,6 +115,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollhandler(com.googlecode.mgwt.ui.client.widget.event.ScrollHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler) {
 		return new NoopHandlerRegistration();
@@ -116,6 +125,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollEndHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addScrollEndHandler(ScrollEndHandler handler) {
 		return new NoopHandlerRegistration();
@@ -125,6 +135,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setPosition(int, int)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setPosition(int newPosX, int newPosY) {
 
@@ -134,6 +145,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setUsePos(boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setUsePos(boolean pos) {
 
@@ -143,6 +155,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#scrollTo(int, int, int)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void scrollTo(int destX, int destY, int newDuration) {
 
@@ -152,6 +165,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#isScrollingEnabledX()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean isScrollingEnabledX() {
 		return scrollingEnabledX;
@@ -161,6 +175,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setScrollingEnabledX(boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setScrollingEnabledX(boolean scrollingEnabledX) {
 		this.scrollingEnabledX = scrollingEnabledX;
@@ -171,6 +186,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#isScrollingEnabledY()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean isScrollingEnabledY() {
 		return scrollingEnabledY;
@@ -180,6 +196,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setScrollingEnabledY(boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setScrollingEnabledY(boolean scrollingEnabledY) {
 		this.scrollingEnabledY = scrollingEnabledY;
@@ -190,6 +207,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setOffset(int, int)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setOffset(int offsetX, int offsetY) {
 
@@ -199,6 +217,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setWidget(com.google.gwt.user.client.ui.IsWidget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setWidget(IsWidget child) {
 		main.setWidget(child);
@@ -209,6 +228,7 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#refresh()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void refresh() {
 

@@ -17,15 +17,46 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>PullToRefreshCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface PullToRefreshCss extends CssResource {
+	/**
+	 * <p>pullToRefresh</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String pullToRefresh();
 
+	/**
+	 * <p>arrow</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String arrow();
 
+	/**
+	 * <p>text</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String text();
 
+	/**
+	 * <p>spinner</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String spinner();
 
+	/**
+	 * <p>error</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String error();
 
 }

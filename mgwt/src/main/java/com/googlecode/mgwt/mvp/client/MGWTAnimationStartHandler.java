@@ -19,14 +19,14 @@ import com.google.gwt.event.shared.EventHandler;
 
 /**
  * Handler for {@link MGWTAnimationStartEvent} events:
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface MGWTAnimationStartHandler extends EventHandler {
 	/**
 	 * Called when a mgwt animation start event is fired.
-	 * 
+	 *
 	 * @param event the {@link MGWTAnimationStartEvent} that was fired
 	 */
 	public void onAnimationStartHandler(MGWTAnimationStartEvent event);

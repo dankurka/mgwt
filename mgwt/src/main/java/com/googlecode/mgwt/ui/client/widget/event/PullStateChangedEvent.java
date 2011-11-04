@@ -19,9 +19,9 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * A pull state changed event is fired when the status of a pull panel changes
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class PullStateChangedEvent extends GwtEvent<PullStateChangedHandler> {
 
@@ -32,6 +32,11 @@ public class PullStateChangedEvent extends GwtEvent<PullStateChangedHandler> {
 		PULL_RELEASE, NO_ACTION
 	};
 
+	/**
+	 * <p>Constructor for PullStateChangedEvent.</p>
+	 *
+	 * @param state a {@link com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State} object.
+	 */
 	public PullStateChangedEvent(State state) {
 		this.state = state;
 	}
@@ -40,25 +45,32 @@ public class PullStateChangedEvent extends GwtEvent<PullStateChangedHandler> {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<PullStateChangedHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(PullStateChangedHandler handler) {
 		handler.onPullStateChanged(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<PullStateChangedHandler> getType() {
 		return TYPE;
 	}
 
 	/**
 	 * The current state of the pull panel
-	 * 
-	 * @return
+	 *
+	 * @return a {@link com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State} object.
 	 */
 	public State getState() {
 		return state;

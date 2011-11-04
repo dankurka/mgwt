@@ -20,14 +20,14 @@ import com.google.gwt.event.shared.HandlerRegistration;
 /**
  * A widget that implements this interface provides registration for
  * {@link AnimationEndHandler} instances.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface HasAnimationEndEvent {
 	/**
 	 * Adds a {@link AnimationEndEvent} handler.
-	 * 
+	 *
 	 * @param handler the animation end handler
 	 * @return {@link HandlerRegistration} used to remove this handler
 	 */

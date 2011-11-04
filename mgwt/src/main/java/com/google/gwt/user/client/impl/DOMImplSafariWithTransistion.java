@@ -18,18 +18,21 @@ package com.google.gwt.user.client.impl;
 import com.google.gwt.user.client.Element;
 
 /**
- * @author Daniel Kurka
+ * <p>DOMImplSafariWithTransistion class.</p>
  *
+ * @author Daniel Kurka
+ * @version $Id: $
  */
 public class DOMImplSafariWithTransistion extends DOMImplWebkit {
 
 	/**
-	 * 
+	 * <p>Constructor for DOMImplSafariWithTransistion.</p>
 	 */
 	public DOMImplSafariWithTransistion() {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public native int eventGetTypeInt(String eventType) /*-{
 		switch (eventType) {
@@ -64,6 +67,7 @@ public class DOMImplSafariWithTransistion extends DOMImplWebkit {
 		}
 	}-*/;
 
+	/** {@inheritDoc} */
 	protected native void sinkEventsImpl(Element elem, int bits) /*-{
 		var chMask = (elem.__eventBits || 0) ^ bits;
 		elem.__eventBits = bits;

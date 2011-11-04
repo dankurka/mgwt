@@ -24,12 +24,12 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 /**
  * A simple options dialog
- * 
+ *
  * This dialog should offer a number of choises, represented by a number of
  * buttons
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class OptionsDialog implements HasWidgets, Dialog {
 
@@ -38,7 +38,7 @@ public class OptionsDialog implements HasWidgets, Dialog {
 
 	/**
 	 * Construct an OptionDialog with a css class
-	 * 
+	 *
 	 * @param css the css class to use
 	 */
 	public OptionsDialog(DialogCss css) {
@@ -54,6 +54,7 @@ public class OptionsDialog implements HasWidgets, Dialog {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void add(Widget w) {
 		container.add(w);
@@ -64,6 +65,7 @@ public class OptionsDialog implements HasWidgets, Dialog {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void clear() {
 		container.clear();
@@ -81,6 +83,7 @@ public class OptionsDialog implements HasWidgets, Dialog {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Iterator<Widget> iterator() {
 		return container.iterator();
@@ -90,6 +93,7 @@ public class OptionsDialog implements HasWidgets, Dialog {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean remove(Widget w) {
 		return container.remove(w);
@@ -97,7 +101,7 @@ public class OptionsDialog implements HasWidgets, Dialog {
 
 	/**
 	 * Set the area to cover
-	 * 
+	 *
 	 * @param widgetToCover the widet to cover
 	 */
 	public void setPanelToOverlay(HasWidgets widgetToCover) {
@@ -108,6 +112,9 @@ public class OptionsDialog implements HasWidgets, Dialog {
 	/*
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
+	 */
+	/**
+	 * <p>show</p>
 	 */
 	public void show() {
 		slideUpPanel.show();

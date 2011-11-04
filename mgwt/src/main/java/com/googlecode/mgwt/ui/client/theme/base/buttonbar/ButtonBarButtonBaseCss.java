@@ -17,8 +17,19 @@ package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 
+/**
+ * <p>ButtonBarButtonBaseCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ButtonBarButtonBaseCss extends ButtonBaseCss {
 
+	/**
+	 * <p>barButton</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-BarButton")
 	public String barButton();
 }

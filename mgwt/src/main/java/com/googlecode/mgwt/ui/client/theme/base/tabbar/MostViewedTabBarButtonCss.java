@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>MostViewedTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface MostViewedTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>mostViewed</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String mostViewed();
 }

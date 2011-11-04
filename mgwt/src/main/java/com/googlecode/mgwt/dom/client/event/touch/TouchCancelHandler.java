@@ -19,14 +19,14 @@ import com.google.gwt.event.shared.EventHandler;
 
 /**
  * Handler for {@link TouchCancelEvent} events:
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface TouchCancelHandler extends EventHandler {
 	/**
 	 * Called when a touch cancel event is fired.
-	 * 
+	 *
 	 * @param event the {@link TouchCancelEvent} that was fired
 	 */
 	public void onTouchCanceled(TouchCancelEvent event);

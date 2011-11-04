@@ -15,36 +15,107 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
+/**
+ * <p>DialogCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface DialogCss extends ButtonBaseCss {
 
+	/**
+	 * <p>getDialogPanel</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DialogPanel")
 	String getDialogPanel();
 
+	/**
+	 * <p>getBottomPanel</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-BottomPanel")
 	String getBottomPanel();
 
+	/**
+	 * <p>container</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String container();
 
+	/**
+	 * <p>title</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String title();
 
+	/**
+	 * <p>content</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String content();
 
+	/**
+	 * <p>footer</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String footer();
 
+	/**
+	 * <p>okbutton</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String okbutton();
 
+	/**
+	 * <p>cancelbutton</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String cancelbutton();
 
+	/**
+	 * <p>active</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String active();
 
+	/**
+	 * <p>animationContainer</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DialogAnimationContainer")
 	String animationContainer();
 
+	/**
+	 * <p>animationContainerShadow</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DialogAnimationContainer-Shadow")
 	String animationContainerShadow();
 
+	/**
+	 * <p>z_index</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String z_index();
 
+	/**
+	 * <p>animationContainerCenter</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DialogAnimationContainer-center")
 	String animationContainerCenter();
 

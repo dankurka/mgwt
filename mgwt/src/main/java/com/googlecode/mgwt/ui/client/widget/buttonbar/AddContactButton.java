@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.AddContactButtonCss;
 
+/**
+ * <p>AddContactButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class AddContactButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for AddContactButton.</p>
+	 */
 	public AddContactButton() {
 		this(MGWTStyle.getDefaultClientBundle().getAddContactButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for AddContactButton.</p>
+	 *
+	 * @param addContactButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.AddContactButtonCss} object.
+	 */
 	public AddContactButton(AddContactButtonCss addContactButtonCss) {
 		super(addContactButtonCss);
 		addStyleName(addContactButtonCss.contactAdd());

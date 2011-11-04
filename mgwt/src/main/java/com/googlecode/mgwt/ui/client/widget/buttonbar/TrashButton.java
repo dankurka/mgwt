@@ -19,12 +19,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 
+/**
+ * <p>TrashButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class TrashButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for TrashButton.</p>
+	 */
 	public TrashButton() {
 		this(MGWTStyle.getDefaultClientBundle().getTrashButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for TrashButton.</p>
+	 *
+	 * @param trashButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss} object.
+	 */
 	public TrashButton(TrashButtonCss trashButtonCss) {
 		super(trashButtonCss);
 		addStyleName(trashButtonCss.trash());

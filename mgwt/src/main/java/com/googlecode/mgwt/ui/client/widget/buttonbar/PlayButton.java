@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PlayButtonCss;
 
+/**
+ * <p>PlayButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class PlayButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for PlayButton.</p>
+	 */
 	public PlayButton() {
 		this(MGWTStyle.getDefaultClientBundle().getPlayButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for PlayButton.</p>
+	 *
+	 * @param playButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.PlayButtonCss} object.
+	 */
 	public PlayButton(PlayButtonCss playButtonCss) {
 		super(playButtonCss);
 		addStyleName(playButtonCss.play());

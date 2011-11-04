@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostRecentTabBarButtonCss;
 
+/**
+ * <p>MostRecentTabBarButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class MostRecentTabBarButton extends TabBarButtonBase {
 
+	/**
+	 * <p>Constructor for MostRecentTabBarButton.</p>
+	 */
 	public MostRecentTabBarButton() {
 		this(MGWTStyle.getDefaultClientBundle().getMostRecentTabBarButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for MostRecentTabBarButton.</p>
+	 *
+	 * @param mostRecentTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.MostRecentTabBarButtonCss} object.
+	 */
 	public MostRecentTabBarButton(MostRecentTabBarButtonCss mostRecentTabBarButtonCss) {
 		super(mostRecentTabBarButtonCss);
 		addStyleName(mostRecentTabBarButtonCss.mostRecent());

@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>FastForwardButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface FastForwardButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>fastForward</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String fastForward();
 }

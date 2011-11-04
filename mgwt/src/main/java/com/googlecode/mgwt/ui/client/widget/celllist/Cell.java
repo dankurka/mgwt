@@ -19,22 +19,23 @@ import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 
 /**
  * A Cell represents a small amount of html when rendered
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface Cell<T> {
 	/**
 	 * Called when the cell needs to render itself
-	 * 
+	 *
 	 * @param safeHtmlBuilder the builder to append the html of the cell to
 	 * @param model the current model for the cell
+	 * @param <T> a T object.
 	 */
 	public void render(SafeHtmlBuilder safeHtmlBuilder, T model);
 
 	/**
 	 * Can this cell be selected
-	 * 
+	 *
 	 * @param model the model of this cell
 	 * @return true if the cell can be selected, otherwise false
 	 */

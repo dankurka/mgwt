@@ -30,11 +30,11 @@ import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 /**
  * A Tablet overlay class
- * 
+ *
  * the content of the overlay is only visible in portrait mode
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
@@ -118,6 +118,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.AcceptsOneWidget#setWidget(com.google.gwt.user.client.ui.IsWidget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setWidget(IsWidget w) {
 		ipadMenu.getBody().clear();
@@ -128,6 +129,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasOneWidget#getWidget()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Widget getWidget() {
 		if (ipadMenu.getBody().getWidgetCount() > 0) {
@@ -141,6 +143,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasOneWidget#setWidget(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setWidget(Widget w) {
 		ipadMenu.getBody().clear();
@@ -152,6 +155,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void show() {
 		popinDialog.show();

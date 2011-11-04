@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.NewIconButtonCss;
 
+/**
+ * <p>NewIconButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class NewIconButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for NewIconButton.</p>
+	 */
 	public NewIconButton() {
 		this(MGWTStyle.getDefaultClientBundle().getNewIconButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for NewIconButton.</p>
+	 *
+	 * @param newIconButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.NewIconButtonCss} object.
+	 */
 	public NewIconButton(NewIconButtonCss newIconButtonCss) {
 		super(newIconButtonCss);
 		addStyleName(newIconButtonCss.newIcon());

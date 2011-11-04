@@ -21,14 +21,19 @@ import com.googlecode.mgwt.ui.client.MGWTUtil;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class AnimationSelector {
 
 	private static final MVPBundle BUNDLE = GWT.create(MVPBundle.class);
 
+	/**
+	 * <p>getNames</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.mvp.client.AnimationNames} object.
+	 */
 	public static AnimationNames getNames() {
 		if (MGWTUtil.getOsDetection().isAndroid()) {
 			return BUNDLE.transitionCss();
@@ -37,6 +42,11 @@ public class AnimationSelector {
 		}
 	}
 
+	/**
+	 * <p>getBundle</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.mvp.client.resources.MVPBundle} object.
+	 */
 	public static MVPBundle getBundle() {
 		return BUNDLE;
 	}

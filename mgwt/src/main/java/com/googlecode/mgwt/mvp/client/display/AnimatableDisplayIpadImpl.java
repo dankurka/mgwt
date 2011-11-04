@@ -22,17 +22,21 @@ import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
+	/**
+	 * <p>Constructor for AnimatableDisplayIpadImpl.</p>
+	 */
 	public AnimatableDisplayIpadImpl() {
 		main.add(first);
 
 		main.add(second);
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void onAnimationEnd() {
 
@@ -72,6 +76,7 @@ public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 		}
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void animate(Animation animation, boolean currentIsFirst, AnimationEndCallback callback) {
 		lastCallback = callback;

@@ -17,6 +17,12 @@ package com.googlecode.mgwt.ui.client.widget.event;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * <p>ScrollStartEvent class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class ScrollStartEvent extends GwtEvent<ScrollStartHandler> {
 
 	private static final Type<ScrollStartHandler> TYPE = new Type<ScrollStartHandler>();
@@ -24,31 +30,54 @@ public class ScrollStartEvent extends GwtEvent<ScrollStartHandler> {
 	private final int x;
 	private final int y;
 
+	/**
+	 * <p>Constructor for ScrollStartEvent.</p>
+	 *
+	 * @param x a int.
+	 * @param y a int.
+	 */
 	public ScrollStartEvent(int x, int y) {
 		this.x = x;
 		this.y = y;
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ScrollStartHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(ScrollStartHandler handler) {
 		handler.onStartScroll(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<ScrollStartHandler> getType() {
 		return TYPE;
 	}
 
+	/**
+	 * <p>Getter for the field <code>x</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * <p>Getter for the field <code>y</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getY() {
 		return y;
 	}

@@ -26,9 +26,9 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 /**
  * A simple alert dialog with an ok button.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialog {
 
@@ -38,7 +38,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 
 	/**
 	 * Construct an alert dialog
-	 * 
+	 *
 	 * @param title - the title of the dialog
 	 * @param text - the text of the dialog
 	 */
@@ -48,7 +48,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 
 	/**
 	 * Construct an alert dialog
-	 * 
+	 *
 	 * @param css - the css to use
 	 * @param title - the title of the dialog
 	 * @param text - the text of the dialog
@@ -82,6 +82,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#getText()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public String getText() {
 		return textLabel.getText();
@@ -91,6 +92,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#setText(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setText(String text) {
 		textLabel.setText(text);
@@ -101,6 +103,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.dialog.HasTitleText#setTitleText(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setTitleText(String text) {
 		dialogPanel1.getDialogTitle().setText(text);
@@ -111,6 +114,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.dialog.HasTitleText#getTitleText()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public String getTitleText() {
 		return dialogPanel1.getDialogTitle().getText();
@@ -120,6 +124,9 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
 	 */
+	/**
+	 * <p>show</p>
+	 */
 	public void show() {
 		popinDialog.center();
 	}
@@ -128,6 +135,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.tap.HasTapEvent#addTapHandler(com.googlecode.mgwt.dom.client.event.tap.TapHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTapHandler(TapHandler handler) {
 		return dialogPanel1.getOkButton().addTapHandler(handler);

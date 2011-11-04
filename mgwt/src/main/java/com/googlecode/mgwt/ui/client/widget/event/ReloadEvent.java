@@ -18,11 +18,11 @@ package com.googlecode.mgwt.ui.client.widget.event;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * 
+ *
  * A Reload event is fired by a component to trigger a reload
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class ReloadEvent extends GwtEvent<ReloadHandler> {
 
@@ -32,17 +32,24 @@ public class ReloadEvent extends GwtEvent<ReloadHandler> {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ReloadHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(ReloadHandler handler) {
 		handler.onReload(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<ReloadHandler> getType() {
 		return TYPE;
 	}

@@ -17,6 +17,17 @@ package com.googlecode.mgwt.dom.client.event.touch;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * <p>TouchStartHandler interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface TouchStartHandler extends EventHandler {
+	/**
+	 * <p>onTouchStart</p>
+	 *
+	 * @param event a {@link com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent} object.
+	 */
 	public void onTouchStart(TouchStartEvent event);
 }

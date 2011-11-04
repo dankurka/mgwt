@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>MoreTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface MoreTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>more</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String more();
 }

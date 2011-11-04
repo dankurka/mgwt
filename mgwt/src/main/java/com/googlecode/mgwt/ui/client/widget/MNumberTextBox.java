@@ -20,9 +20,9 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * An input element that handles numbers
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MNumberTextBox extends MTextBox {
 
@@ -36,7 +36,7 @@ public class MNumberTextBox extends MTextBox {
 
 	/**
 	 * Construct a number text box with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MNumberTextBox(InputCss css) {

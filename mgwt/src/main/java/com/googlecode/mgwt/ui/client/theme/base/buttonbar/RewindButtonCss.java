@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>RewindButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface RewindButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>rewind</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String rewind();
 }

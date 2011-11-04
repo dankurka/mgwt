@@ -19,12 +19,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.SearchButtonCss;
 
+/**
+ * <p>SearchButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class SearchButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for SearchButton.</p>
+	 */
 	public SearchButton() {
 		this(MGWTStyle.getDefaultClientBundle().getSearchButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for SearchButton.</p>
+	 *
+	 * @param searchButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.SearchButtonCss} object.
+	 */
 	public SearchButton(SearchButtonCss searchButtonCss) {
 		super(searchButtonCss);
 		addStyleName(searchButtonCss.search());

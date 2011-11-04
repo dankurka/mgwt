@@ -21,9 +21,9 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * A list box
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MListBox extends ListBox {
 
@@ -38,7 +38,7 @@ public class MListBox extends ListBox {
 
 	/**
 	 * Construct a list box with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MListBox(InputCss css) {

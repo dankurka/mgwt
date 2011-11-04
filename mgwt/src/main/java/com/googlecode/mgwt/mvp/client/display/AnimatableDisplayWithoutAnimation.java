@@ -20,20 +20,25 @@ import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class AnimatableDisplayWithoutAnimation extends AnimatableDisplayBaseImpl {
+	/**
+	 * <p>Constructor for AnimatableDisplayWithoutAnimation.</p>
+	 */
 	public AnimatableDisplayWithoutAnimation() {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void onAnimationEnd() {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void animate(Animation animation, boolean currentIsFirst, AnimationEndCallback callback) {
 

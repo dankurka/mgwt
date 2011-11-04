@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>FeaturedTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface FeaturedTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>featured</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String featured();
 }

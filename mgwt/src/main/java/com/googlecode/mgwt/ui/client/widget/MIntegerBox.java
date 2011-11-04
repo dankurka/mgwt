@@ -22,9 +22,9 @@ import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
 /**
  * An input element that handles integers
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MIntegerBox extends MValueBoxBase<Integer> {
 
@@ -37,7 +37,7 @@ public class MIntegerBox extends MValueBoxBase<Integer> {
 
 	/**
 	 * Construct an integer box with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MIntegerBox(InputCss css) {

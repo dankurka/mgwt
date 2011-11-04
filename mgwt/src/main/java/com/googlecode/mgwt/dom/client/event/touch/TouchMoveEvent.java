@@ -17,32 +17,41 @@ package com.googlecode.mgwt.dom.client.event.touch;
 
 /**
  * This represents a native touch move Event
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TouchMoveEvent extends TouchEvent<TouchMoveHandler> {
 
 	private static final Type<TouchMoveHandler> TYPE = new Type<TouchMoveHandler>("touchmove", new TouchMoveEvent());
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<TouchMoveHandler> getType() {
 		return TYPE;
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * Gets the event type associated with animation end events.
-	 * 
-	 * @return the handler type
 	 */
 	@Override
 	public com.google.gwt.event.dom.client.DomEvent.Type<TouchMoveHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/**
+	 * <p>Constructor for TouchMoveEvent.</p>
+	 */
 	protected TouchMoveEvent() {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(TouchMoveHandler handler) {
 		handler.onTouchMove(this);

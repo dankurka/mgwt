@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.DeleteButtonCss;
 
+/**
+ * <p>DeleteButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class DeleteButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for DeleteButton.</p>
+	 */
 	public DeleteButton() {
 		this(MGWTStyle.getDefaultClientBundle().getDeleteButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for DeleteButton.</p>
+	 *
+	 * @param deleteButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.DeleteButtonCss} object.
+	 */
 	public DeleteButton(DeleteButtonCss deleteButtonCss) {
 		super(deleteButtonCss);
 		addStyleName(deleteButtonCss.delete());

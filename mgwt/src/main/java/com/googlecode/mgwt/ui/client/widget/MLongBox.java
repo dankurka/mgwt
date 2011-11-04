@@ -22,9 +22,9 @@ import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
 /**
  * An input element that handles longs
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MLongBox extends MValueBoxBase<Long> {
 
@@ -37,7 +37,7 @@ public class MLongBox extends MValueBoxBase<Long> {
 
 	/**
 	 * Construct a long box with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MLongBox(InputCss css) {

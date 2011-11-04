@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>ComposeButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ComposeButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>compose</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String compose();
 }

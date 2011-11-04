@@ -19,14 +19,14 @@ import com.google.gwt.event.shared.EventHandler;
 
 /**
  * Handler for {@link TransitionEndEvent} events:
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface TransitionEndHandler extends EventHandler {
 	/**
 	 * Called when a transition end event is fired.
-	 * 
+	 *
 	 * @param event the {@link TransitionEndEvent} that was fired
 	 */
 	public void onTransitionEnd(TransitionEndEvent event);

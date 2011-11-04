@@ -23,28 +23,33 @@ import com.google.gwt.event.shared.HandlerRegistration;
 /**
  * A baseclass for Activities which adds the ability to collect all handler
  * instances and removes them when the activity is stopped.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public abstract class MGWTAbstractActivity extends AbstractActivity {
 
 	private LinkedList<HandlerRegistration> handlers;
 
+	/**
+	 * <p>Constructor for MGWTAbstractActivity.</p>
+	 */
 	public MGWTAbstractActivity() {
 		handlers = new LinkedList<HandlerRegistration>();
 	}
 
 	/**
 	 * add a {@link HandlerRegistration} to the handler collection
-	 * 
-	 * @param handlerRegistration
+	 *
+	 * @param handlerRegistration a {@link com.google.gwt.event.shared.HandlerRegistration} object.
 	 */
 	protected void addHandlerRegistration(HandlerRegistration handlerRegistration) {
 		handlers.add(handlerRegistration);
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * onStop is overriden to automatically clear all
 	 * {@link HandlerRegistration}
 	 */

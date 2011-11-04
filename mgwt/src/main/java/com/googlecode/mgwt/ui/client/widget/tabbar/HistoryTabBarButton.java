@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.HistoryTabBarButtonCss;
 
+/**
+ * <p>HistoryTabBarButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class HistoryTabBarButton extends TabBarButtonBase {
 
+	/**
+	 * <p>Constructor for HistoryTabBarButton.</p>
+	 */
 	public HistoryTabBarButton() {
 		this(MGWTStyle.getDefaultClientBundle().getHistoryTabBarButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for HistoryTabBarButton.</p>
+	 *
+	 * @param historyTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.HistoryTabBarButtonCss} object.
+	 */
 	public HistoryTabBarButton(HistoryTabBarButtonCss historyTabBarButtonCss) {
 		super(historyTabBarButtonCss);
 		addStyleName(historyTabBarButtonCss.history());

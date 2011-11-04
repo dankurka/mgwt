@@ -20,34 +20,43 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * TapEvent is considered an activation event something like a normal
  * "click event". Like a button, but with touch events.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TapEvent extends GwtEvent<TapHandler> {
 
 	private static final Type<TapHandler> TYPE = new Type<TapHandler>();
 
+	/**
+	 * <p>Constructor for TapEvent.</p>
+	 */
 	public TapEvent() {
 
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * Gets the event type associated with animation end events.
-	 * 
-	 * @return the handler type
 	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<TapHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(TapHandler handler) {
 		handler.onTap(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<TapHandler> getType() {
 		return TYPE;
 	}

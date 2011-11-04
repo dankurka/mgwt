@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>PreviousSlideButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface PreviousSlideButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>previousSlide</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String previousSlide();
 }

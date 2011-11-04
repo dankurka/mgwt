@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>ContactsTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ContactsTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>contacts</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String contacts();
 }

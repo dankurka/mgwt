@@ -21,25 +21,33 @@ import com.google.gwt.event.shared.GwtEvent;
  * This event is fired at the end of an mgwt animation (if
  * {@link AnimatingActivityManager} is told to fire these events, see
  * {@link AnimatingActivityManager#setFireAnimationEvents(boolean)})
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MGWTAnimationEndEvent extends GwtEvent<MGWTAnimationEndHandler> {
 
+	/** Constant <code>TYPE</code> */
 	public static final GwtEvent.Type<MGWTAnimationEndHandler> TYPE = new Type<MGWTAnimationEndHandler>();
 
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<MGWTAnimationEndHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(MGWTAnimationEndHandler handler) {
 		handler.onAnimationEnd(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a {@link com.google.gwt.event.shared.GwtEvent.Type} object.
+	 */
 	public static GwtEvent.Type<MGWTAnimationEndHandler> getType() {
 		return TYPE;
 	}

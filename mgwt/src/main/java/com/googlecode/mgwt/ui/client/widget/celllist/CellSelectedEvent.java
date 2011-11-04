@@ -19,9 +19,9 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * This event is fired when a cell {@link Cell} is selected
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class CellSelectedEvent extends GwtEvent<CellSelectedHandler> {
 
@@ -30,13 +30,14 @@ public class CellSelectedEvent extends GwtEvent<CellSelectedHandler> {
 
 	/**
 	 * Construct a cell selected event
-	 * 
+	 *
 	 * @param index the index of the cell that was selected
 	 */
 	public CellSelectedEvent(int index) {
 		this.index = index;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<CellSelectedHandler> getAssociatedType() {
 		return TYPE;
@@ -45,19 +46,25 @@ public class CellSelectedEvent extends GwtEvent<CellSelectedHandler> {
 	/* (non-Javadoc)
 	 * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(CellSelectedHandler handler) {
 		handler.onCellSelected(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a {@link com.google.gwt.event.shared.GwtEvent.Type} object.
+	 */
 	public static GwtEvent.Type<CellSelectedHandler> getType() {
 		return TYPE;
 	}
 
 	/**
 	 * get the index of the selected cell
-	 * 
+	 *
 	 * @return the index of the selected cell
 	 */
 	public int getIndex() {

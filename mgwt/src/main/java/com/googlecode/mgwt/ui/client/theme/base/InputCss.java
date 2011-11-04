@@ -17,26 +17,72 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>InputCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface InputCss extends CssResource {
 
+	/**
+	 * <p>cover</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String cover();
 
+	/**
+	 * <p>textBox</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-TextBox")
 	String textBox();
 
+	/**
+	 * <p>textArea</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-TextArea")
 	String textArea();
 
+	/**
+	 * <p>passwordBox</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-PasswordTextBox")
 	String passwordBox();
 
+	/**
+	 * <p>radioButton</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-RadioButton")
 	String radioButton();
 
+	/**
+	 * <p>box</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String box();
 
+	/**
+	 * <p>disabled</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String disabled();
 
+	/**
+	 * <p>listBox</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-ListBox")
 	String listBox();
 

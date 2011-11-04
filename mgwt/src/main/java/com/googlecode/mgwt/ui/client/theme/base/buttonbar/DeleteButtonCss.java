@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>DeleteButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface DeleteButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>delete</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String delete();
 }

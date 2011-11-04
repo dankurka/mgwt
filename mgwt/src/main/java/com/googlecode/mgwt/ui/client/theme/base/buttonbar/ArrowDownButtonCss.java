@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>ArrowDownButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ArrowDownButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>arrowDown</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String arrowDown();
 }

@@ -19,9 +19,9 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * A scroll end event is fired after a scroll has finished
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class ScrollEndEvent extends GwtEvent<ScrollEndHandler> {
 
@@ -32,6 +32,15 @@ public class ScrollEndEvent extends GwtEvent<ScrollEndHandler> {
 	private final int currentX;
 	private final int currentY;
 
+	/**
+	 * <p>Constructor for ScrollEndEvent.</p>
+	 *
+	 * @param x a int.
+	 * @param y a int.
+	 * @param duration a int.
+	 * @param currentX a int.
+	 * @param currentY a int.
+	 */
 	public ScrollEndEvent(int x, int y, int duration, int currentX, int currentY) {
 		this.x = x;
 		this.y = y;
@@ -45,47 +54,87 @@ public class ScrollEndEvent extends GwtEvent<ScrollEndHandler> {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ScrollEndHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(ScrollEndHandler handler) {
 		handler.onScrollEnd(this);
 
 	}
 
+	/**
+	 * <p>Getter for the field <code>x</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * <p>Getter for the field <code>y</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getY() {
 		return y;
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<ScrollEndHandler> getType() {
 		return TYPE;
 	}
 
+	/**
+	 * <p>Getter for the field <code>currentX</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getCurrentX() {
 		return currentX;
 	}
 
+	/**
+	 * <p>Getter for the field <code>currentY</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getCurrentY() {
 		return currentY;
 	}
 
+	/**
+	 * <p>Getter for the field <code>duration</code>.</p>
+	 *
+	 * @return a int.
+	 */
 	public int getDuration() {
 		return duration;
 	}
 
 	private boolean preventDefault;
 
+	/**
+	 * <p>preventDefault</p>
+	 */
 	public void preventDefault() {
 		preventDefault = true;
 	}
 
+	/**
+	 * <p>isPreventDefault</p>
+	 *
+	 * @return a boolean.
+	 */
 	public boolean isPreventDefault() {
 		return preventDefault;
 	}

@@ -20,9 +20,9 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * An input element that accepts email addresses
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MEmailTextBox extends MTextBox {
 
@@ -36,7 +36,7 @@ public class MEmailTextBox extends MTextBox {
 
 	/**
 	 * Construct an EmailTextBox with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MEmailTextBox(InputCss css) {

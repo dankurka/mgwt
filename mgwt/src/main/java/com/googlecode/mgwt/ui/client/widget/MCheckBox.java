@@ -36,9 +36,9 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A check box class
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEditor<LeafValueEditor<Boolean>> {
 
@@ -137,7 +137,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 	/**
 	 * Construct a checkbox with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MCheckBox(CheckBoxCss css) {
@@ -173,6 +173,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.logical.shared.HasValueChangeHandlers#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(ValueChangeHandler<Boolean> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
@@ -182,6 +183,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#getValue()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Boolean getValue() {
 		return value;
@@ -191,6 +193,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setValue(Boolean value) {
 		setValue(value, true);
@@ -200,6 +203,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object, boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setValue(Boolean value, boolean fireEvents) {
 
@@ -227,7 +231,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 	/**
 	 * Should this check box be rendered as important
-	 * 
+	 *
 	 * @param important true to render the check box as important
 	 */
 	public void setImportant(boolean important) {
@@ -242,6 +246,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	 * (non-Javadoc)
 	 * @see com.google.gwt.editor.client.IsEditor#asEditor()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public LeafValueEditor<Boolean> asEditor() {
 		if (editor == null) {

@@ -26,8 +26,10 @@ import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 /**
+ * <p>MGWT class.</p>
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MGWT {
 
@@ -35,6 +37,11 @@ public class MGWT {
 
 	private FlowPanel flowPanel;
 
+	/**
+	 * <p>getFeatureDetection</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.ui.client.OsDetection} object.
+	 */
 	public static final OsDetection getFeatureDetection() {
 		return FEATURE_DETECTION;
 	}
@@ -49,6 +56,11 @@ public class MGWT {
 		return elementsByTagName.getItem(0);
 	}
 
+	/**
+	 * <p>applySettings</p>
+	 *
+	 * @param settings a {@link com.googlecode.mgwt.ui.client.MGWTSettings} object.
+	 */
 	public void applySettings(MGWTSettings settings) {
 
 		//This is a very nasty workaround because GWT CssResource does not support @media correctly!
@@ -144,14 +156,29 @@ public class MGWT {
 
 	}-*/;
 
+	/**
+	 * <p>getWindowInnerHeight</p>
+	 *
+	 * @return a int.
+	 */
 	public native int getWindowInnerHeight()/*-{
 		return $wnd.innerHeight;
 	}-*/;
 
+	/**
+	 * <p>getWindowInnerWidth</p>
+	 *
+	 * @return a int.
+	 */
 	public native int getWindowInnerWidth()/*-{
 		return $wnd.innerWidth;
 	}-*/;
 
+	/**
+	 * <p>isFullScreen</p>
+	 *
+	 * @return a boolean.
+	 */
 	public native boolean isFullScreen()/*-{
 		if ($wnd.navigator.standalone) {
 			return true;

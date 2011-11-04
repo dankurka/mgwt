@@ -25,14 +25,14 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 /**
  * The touch widget interface is used to abstract implementation details for
  * adding touch handlers on touch devices / mouse devices
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface TouchWidgetImpl {
 	/**
 	 * Add a touch start handler to a widget
-	 * 
+	 *
 	 * @param w the widget that the handler should be added to
 	 * @param handler the handler to add
 	 * @return the handlerregistration
@@ -41,7 +41,7 @@ public interface TouchWidgetImpl {
 
 	/**
 	 * Add a touch move handler to a widget
-	 * 
+	 *
 	 * @param w the widget that the handler should be added to
 	 * @param handler the handler to add
 	 * @return the handlerregistration
@@ -50,7 +50,7 @@ public interface TouchWidgetImpl {
 
 	/**
 	 * Add a touch cancel handler to a widget
-	 * 
+	 *
 	 * @param w the widget that the handler should be added to
 	 * @param handler the handler to add
 	 * @return the handlerregistration
@@ -59,7 +59,7 @@ public interface TouchWidgetImpl {
 
 	/**
 	 * Add a touch end handler to a widget
-	 * 
+	 *
 	 * @param w the widget that the handler should be added to
 	 * @param handler the handler to add
 	 * @return the handlerregistration

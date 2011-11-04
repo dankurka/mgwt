@@ -22,7 +22,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * {@link ScrollHandler} and {@link ScrollEndEvent} events.
  * 
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface HasScrollHandlers {
 	/**
@@ -36,10 +36,12 @@ public interface HasScrollHandlers {
 	/**
 	 * Adds a {@link ScrollHandler} handler.
 	 * 
-	 * @param handler the handler to add
 	 * @return {@link HandlerRegistration} used to remove this handler
+	 * @param handler a
+	 *            {@link com.googlecode.mgwt.ui.client.widget.event.ScrollHandler}
+	 *            object.
 	 */
-	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler);
+	public HandlerRegistration addScrollhandler(ScrollHandler handler);
 
 	/**
 	 * Adds a {@link ScrollEndHandler} handler.

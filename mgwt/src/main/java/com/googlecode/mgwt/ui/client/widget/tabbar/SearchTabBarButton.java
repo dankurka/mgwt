@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss;
 
+/**
+ * <p>SearchTabBarButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class SearchTabBarButton extends TabBarButtonBase {
 
+	/**
+	 * <p>Constructor for SearchTabBarButton.</p>
+	 */
 	public SearchTabBarButton() {
 		this(MGWTStyle.getDefaultClientBundle().getSearchTabBarButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for SearchTabBarButton.</p>
+	 *
+	 * @param searchTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss} object.
+	 */
 	public SearchTabBarButton(SearchTabBarButtonCss searchTabBarButtonCss) {
 		super(searchTabBarButtonCss);
 		addStyleName(searchTabBarButtonCss.search());

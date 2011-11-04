@@ -15,37 +15,103 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
+/**
+ * <p>HeaderCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface HeaderCss extends ButtonBaseCss {
 
+	/**
+	 * <p>headerButton</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-HeaderButton")
 	public String headerButton();
 
+	/**
+	 * <p>active</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String active();
 
+	/**
+	 * <p>back</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String back();
 
+	/**
+	 * <p>forward</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String forward();
 
+	/**
+	 * <p>round</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String round();
 
+	/**
+	 * <p>headerPanel</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-HeaderPanel")
 	String headerPanel();
 
+	/**
+	 * <p>left</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-HeaderPanel-left")
 	String left();
 
+	/**
+	 * <p>center</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-HeaderPanel-center")
 	String center();
 
+	/**
+	 * <p>right</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-HeaderPanel-right")
 	String right();
 
+	/**
+	 * <p>main</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DropDownMenu")
 	public String main();
 
+	/**
+	 * <p>content</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DropDownMenu-content")
 	public String content();
 
+	/**
+	 * <p>arrow</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DropDownMenu-arrow")
 	public String arrow();
 }

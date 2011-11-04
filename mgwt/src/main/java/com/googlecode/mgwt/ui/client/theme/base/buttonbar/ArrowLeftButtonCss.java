@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>ArrowLeftButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ArrowLeftButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>arrowLeft</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String arrowLeft();
 }

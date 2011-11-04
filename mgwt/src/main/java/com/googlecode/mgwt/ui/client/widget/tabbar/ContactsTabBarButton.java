@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.ContactsTabBarButtonCss;
 
+/**
+ * <p>ContactsTabBarButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class ContactsTabBarButton extends TabBarButtonBase {
 
+	/**
+	 * <p>Constructor for ContactsTabBarButton.</p>
+	 */
 	public ContactsTabBarButton() {
 		this(MGWTStyle.getDefaultClientBundle().getContactsTabBarButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for ContactsTabBarButton.</p>
+	 *
+	 * @param contactsTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.ContactsTabBarButtonCss} object.
+	 */
 	public ContactsTabBarButton(ContactsTabBarButtonCss contactsTabBarButtonCss) {
 		super(contactsTabBarButtonCss);
 		addStyleName(contactsTabBarButtonCss.contacts());

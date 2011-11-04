@@ -32,9 +32,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 
 /**
  * A simple panel that supports {@link TouchEvent}
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHandlers {
 
@@ -44,6 +44,7 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchStartHandler(com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
 		return impl.addTouchStartHandler(this, handler);
@@ -54,6 +55,7 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchMoveHandler(com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
 		return impl.addTouchMoveHandler(this, handler);
@@ -64,6 +66,7 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchCancelHandler(com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
 		return impl.addTouchCancelHandler(this, handler);
@@ -74,6 +77,7 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchEndHandler(com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
 		return impl.addTouchEndHandler(this, handler);
@@ -84,6 +88,7 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchHandler(com.googlecode.mgwt.dom.client.event.touch.TouchHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchHandler(TouchHandler handler) {
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
@@ -99,6 +104,7 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.tap.HasTapEvent#addTapHandler(com.googlecode.mgwt.dom.client.event.tap.TapHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTapHandler(TapHandler handler) {
 		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);

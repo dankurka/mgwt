@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>LocateButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface LocateButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>locate</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String locate();
 }

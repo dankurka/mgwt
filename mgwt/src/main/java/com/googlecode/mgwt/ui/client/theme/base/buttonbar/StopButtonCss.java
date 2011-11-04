@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>StopButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface StopButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>stop</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String stop();
 }

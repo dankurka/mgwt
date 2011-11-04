@@ -20,26 +20,66 @@ import com.googlecode.mgwt.mvp.client.AnimationNames;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface TransistionCss extends CssResource, AnimationNames {
 
+	/**
+	 * <p>display</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String display();
 
+	/**
+	 * <p>displayContainer</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String displayContainer();
 
+	/**
+	 * <p>reverse</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String reverse();
 
+	/**
+	 * <p>in</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String in();
 
+	/**
+	 * <p>out</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String out();
 
+	/**
+	 * <p>start</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String start();
 
+	/**
+	 * <p>end</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String end();
 
+	/**
+	 * <p>slide</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String slide();
 
 }

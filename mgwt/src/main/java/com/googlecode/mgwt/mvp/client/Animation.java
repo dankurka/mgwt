@@ -19,9 +19,9 @@ import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 /**
  * Java representation of all mgwt Animations
- * 
+ *
  * References of Animations should be returned by {@link AnimationMapper}
- * 
+ *
  * Animations that are currently available:
  * <ul>
  * <li>Slide</li>
@@ -32,12 +32,12 @@ import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
  * <li>Pop</li>
  * <li>Swap</li>
  * </ul>
- * 
+ *
  * All animations can be used in both directions: {@link Animation#SLIDE} <->
  * {@link Animation#SLIDE_REVERSE}
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public enum Animation {
 	SLIDE(AnimationSelector.getNames().slide()), SLIDE_REVERSE(AnimationSelector.getNames().slide(), true), SLIDE_UP(AnimationSelector.getNames().slideup()), SLIDE_UP_REVERSE(AnimationSelector
@@ -58,18 +58,38 @@ public enum Animation {
 		this.inverse = inverse;
 	}
 
+	/**
+	 * <p>Setter for the field <code>cssName</code>.</p>
+	 *
+	 * @param cssName a {@link java.lang.String} object.
+	 */
 	public void setCssName(String cssName) {
 		this.cssName = cssName;
 	}
 
+	/**
+	 * <p>Setter for the field <code>inverse</code>.</p>
+	 *
+	 * @param inverse a boolean.
+	 */
 	public void setInverse(boolean inverse) {
 		this.inverse = inverse;
 	}
 
+	/**
+	 * <p>Getter for the field <code>cssName</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getCssName() {
 		return cssName;
 	}
 
+	/**
+	 * <p>isInverse</p>
+	 *
+	 * @return a boolean.
+	 */
 	public boolean isInverse() {
 		return inverse;
 	}

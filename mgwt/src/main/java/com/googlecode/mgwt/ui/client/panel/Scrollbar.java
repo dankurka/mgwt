@@ -24,8 +24,10 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.FeatureDetection;
 
 /**
+ * <p>Scrollbar class.</p>
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class Scrollbar extends Widget {
 
@@ -58,7 +60,13 @@ public class Scrollbar extends Widget {
 	}
 
 	/**
-	 * 
+	 * <p>Constructor for Scrollbar.</p>
+	 *
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss} object.
+	 * @param orientation a {@link com.googlecode.mgwt.ui.client.panel.Scrollbar.Orientation} object.
+	 * @param has3d a boolean.
+	 * @param scrollAreaSize a int.
+	 * @param wholeSize a int.
 	 */
 	public Scrollbar(ScrollPanelCss css, Orientation orientation, boolean has3d, int scrollAreaSize, int wholeSize) {
 		this.css = css;
@@ -160,6 +168,11 @@ public class Scrollbar extends Widget {
 																el.style.cssText = styleText;
 																}-*/;
 
+	/**
+	 * <p>setPosition</p>
+	 *
+	 * @param pos a int.
+	 */
 	public void setPosition(int pos) {
 		show();
 		pos = (int) Math.round(wrapperProp * pos);
@@ -194,6 +207,9 @@ public class Scrollbar extends Widget {
 																	el.style.webkitTransform = transform;
 																	}-*/;
 
+	/**
+	 * <p>hide</p>
+	 */
 	public void hide() {
 		if (FeatureDetection.has3d()) {
 			CssUtil.setWebKitTransitionsDelay(getElement(), 350);
@@ -202,6 +218,9 @@ public class Scrollbar extends Widget {
 		CssUtil.setOpacity(getElement(), 0);
 	}
 
+	/**
+	 * <p>show</p>
+	 */
 	public void show() {
 		if (FeatureDetection.has3d()) {
 			CssUtil.setWebKitTransitionsDelay(getElement(), 0);
@@ -212,7 +231,9 @@ public class Scrollbar extends Widget {
 	}
 
 	/**
-	 * @param milliseconds
+	 * <p>setTransitionTime</p>
+	 *
+	 * @param milliseconds a int.
 	 */
 	public void setTransitionTime(int milliseconds) {
 		if (FeatureDetection.has3d()) {

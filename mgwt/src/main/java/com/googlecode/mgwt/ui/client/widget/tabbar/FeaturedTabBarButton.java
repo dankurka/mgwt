@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.FeaturedTabBarButtonCss;
 
+/**
+ * <p>FeaturedTabBarButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class FeaturedTabBarButton extends TabBarButtonBase {
 
+	/**
+	 * <p>Constructor for FeaturedTabBarButton.</p>
+	 */
 	public FeaturedTabBarButton() {
 		this(MGWTStyle.getDefaultClientBundle().getFeaturedTabBarButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for FeaturedTabBarButton.</p>
+	 *
+	 * @param featuredTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.FeaturedTabBarButtonCss} object.
+	 */
 	public FeaturedTabBarButton(FeaturedTabBarButtonCss featuredTabBarButtonCss) {
 		super(featuredTabBarButtonCss);
 		addStyleName(featuredTabBarButtonCss.featured());

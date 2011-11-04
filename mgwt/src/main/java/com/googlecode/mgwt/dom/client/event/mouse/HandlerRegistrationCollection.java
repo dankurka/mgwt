@@ -22,9 +22,9 @@ import com.google.gwt.event.shared.HandlerRegistration;
 /**
  * A collection of HandlerRegistrations which behaves like a single
  * registration: On remove all collected Handlers are removed.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class HandlerRegistrationCollection implements HandlerRegistration {
 
@@ -39,7 +39,7 @@ public class HandlerRegistrationCollection implements HandlerRegistration {
 
 	/**
 	 * Add a {@link HandlerRegistration} to the collection
-	 * 
+	 *
 	 * @param handlerRegistration the handlerregistration to add
 	 */
 	public void addHandlerRegistration(HandlerRegistration handlerRegistration) {
@@ -47,6 +47,8 @@ public class HandlerRegistrationCollection implements HandlerRegistration {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * Remove all handlers: Call remove on each Handler
 	 */
 	@Override

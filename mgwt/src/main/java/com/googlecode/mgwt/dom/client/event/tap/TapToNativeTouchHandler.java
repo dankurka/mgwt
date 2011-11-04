@@ -29,9 +29,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 /**
  * Utility class for adding a simple touch handler on a widget that only
  * supports {@link HasTouchHandlers}
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TapToNativeTouchHandler implements TouchCancelHandler, TouchEndHandler, TouchMoveHandler, TouchStartHandler {
 
@@ -43,13 +43,16 @@ public class TapToNativeTouchHandler implements TouchCancelHandler, TouchEndHand
 	private int y;
 
 	/**
-	 * 
+	 * <p>Constructor for TapToNativeTouchHandler.</p>
+	 *
+	 * @param tapHandler a {@link com.googlecode.mgwt.dom.client.event.tap.TapHandler} object.
 	 */
 	public TapToNativeTouchHandler(TapHandler tapHandler) {
 		this.tapHandler = tapHandler;
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onTouchStart(TouchStartEvent event) {
 
@@ -60,6 +63,7 @@ public class TapToNativeTouchHandler implements TouchCancelHandler, TouchEndHand
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
 		Touch touch = event.touches().get(0);
@@ -69,6 +73,7 @@ public class TapToNativeTouchHandler implements TouchCancelHandler, TouchEndHand
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
 		if (!hasMoved && !touchCanceled)
@@ -76,6 +81,7 @@ public class TapToNativeTouchHandler implements TouchCancelHandler, TouchEndHand
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onTouchCanceled(TouchCancelEvent event) {
 		touchCanceled = true;

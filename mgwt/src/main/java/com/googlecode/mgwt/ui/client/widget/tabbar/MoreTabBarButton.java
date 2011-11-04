@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.MoreTabBarButtonCss;
 
+/**
+ * <p>MoreTabBarButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class MoreTabBarButton extends TabBarButtonBase {
 
+	/**
+	 * <p>Constructor for MoreTabBarButton.</p>
+	 */
 	public MoreTabBarButton() {
 		this(MGWTStyle.getDefaultClientBundle().getMoreTabBarButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for MoreTabBarButton.</p>
+	 *
+	 * @param moreTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.MoreTabBarButtonCss} object.
+	 */
 	public MoreTabBarButton(MoreTabBarButtonCss moreTabBarButtonCss) {
 		super(moreTabBarButtonCss);
 		addStyleName(moreTabBarButtonCss.more());

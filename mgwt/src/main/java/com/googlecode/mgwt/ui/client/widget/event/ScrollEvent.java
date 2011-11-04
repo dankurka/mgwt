@@ -17,37 +17,67 @@ package com.googlecode.mgwt.ui.client.widget.event;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * <p>ScrollEvent class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class ScrollEvent extends GwtEvent<ScrollHandler> {
 
+	/** Constant <code>TYPE</code> */
 	public static final GwtEvent.Type<ScrollHandler> TYPE = new Type<ScrollHandler>();
 	private final int posX;
 	private final int posY;
 
+	/**
+	 * <p>Constructor for ScrollEvent.</p>
+	 *
+	 * @param posX a int.
+	 * @param posY a int.
+	 */
 	public ScrollEvent(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ScrollHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(ScrollHandler handler) {
 		handler.onScroll(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a {@link com.google.gwt.event.shared.GwtEvent.Type} object.
+	 */
 	public static GwtEvent.Type<ScrollHandler> getType() {
 		return TYPE;
 	}
 
+	/**
+	 * <p>getX</p>
+	 *
+	 * @return a int.
+	 */
 	public int getX() {
 		return posX;
 	}
 
+	/**
+	 * <p>getY</p>
+	 *
+	 * @return a int.
+	 */
 	public int getY() {
 		return posY;
 	}

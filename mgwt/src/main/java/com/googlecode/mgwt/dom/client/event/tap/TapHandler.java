@@ -19,14 +19,14 @@ import com.google.gwt.event.shared.EventHandler;
 
 /**
  * Handler for {@link TapEvent} events:
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface TapHandler extends EventHandler {
 	/**
 	 * Called when a simple touch event is fired.
-	 * 
+	 *
 	 * @param event the {@link TapEvent} that was fired
 	 */
 	public void onTap(TapEvent event);

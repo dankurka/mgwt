@@ -18,9 +18,9 @@ package com.googlecode.mgwt.dom.client.event.tap;
 /**
  * Tap is considered for elements that offer something like a normal
  * "click event". Like a button.
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class Tap {
 	/**

@@ -18,8 +18,19 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ButtonBarButtonBaseCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
+/**
+ * <p>ButtonBarButtonBase class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class ButtonBarButtonBase extends ButtonBase {
 
+	/**
+	 * <p>Constructor for ButtonBarButtonBase.</p>
+	 *
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ButtonBarButtonBaseCss} object.
+	 */
 	public ButtonBarButtonBase(ButtonBarButtonBaseCss css) {
 		super(css);
 		addStyleName(css.barButton());

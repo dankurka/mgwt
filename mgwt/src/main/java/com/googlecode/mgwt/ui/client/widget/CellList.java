@@ -45,11 +45,11 @@ import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
- * 
+ *
  * A widget that renders its children as a list
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
@@ -170,7 +170,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	/**
 	 * Construct a CellList
-	 * 
+	 *
 	 * @param cell the cell to use
 	 */
 	public CellList(Cell<T> cell) {
@@ -179,7 +179,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	/**
 	 * Construct a celllist with a given cell and css
-	 * 
+	 *
 	 * @param cell the cell to use
 	 * @param css the css to use
 	 */
@@ -198,7 +198,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	/**
 	 * Should the CellList be rendered with rounded corners
-	 * 
+	 *
 	 * @param round true to render with rounded corners, otherwise false
 	 */
 	public void setRound(boolean round) {
@@ -213,6 +213,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler#addCellSelectedHandler(com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler)
 	 */
+	/** {@inheritDoc} */
 	public HandlerRegistration addCellSelectedHandler(CellSelectedHandler cellSelectedHandler) {
 		return addHandler(cellSelectedHandler, CellSelectedEvent.getType());
 	}
@@ -221,6 +222,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Composite#onAttach()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void onAttach() {
 
@@ -237,6 +239,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Composite#onDetach()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void onDetach() {
 
@@ -250,7 +253,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	/**
 	 * Render a List of models in this cell list
-	 * 
+	 *
 	 * @param models the list of models to render
 	 */
 	public void render(List<T> models) {
@@ -295,7 +298,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	/**
 	 * Set a selected element in the celllist
-	 * 
+	 *
 	 * @param index the index of the element
 	 * @param selected true to select the element, false to deselect
 	 */

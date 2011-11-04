@@ -18,13 +18,20 @@ package com.googlecode.mgwt.ui.client.util;
 import com.google.gwt.user.client.Element;
 
 /**
- * 
+ *
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class CssUtil {
+	/**
+	 * <p>translate</p>
+	 *
+	 * @param el a {@link com.google.gwt.user.client.Element} object.
+	 * @param x a int.
+	 * @param y a int.
+	 */
 	public static void translate(Element el, int x, int y) {
 		String cssText = null;
 		if (FeatureDetection.has3d()) {
@@ -41,14 +48,32 @@ public class CssUtil {
 		el.style.webkitTransform = css;
 	}-*/;
 
+	/**
+	 * <p>setWebKitTransitionsDelay</p>
+	 *
+	 * @param el a {@link com.google.gwt.user.client.Element} object.
+	 * @param milliseconds a int.
+	 */
 	public native static void setWebKitTransitionsDelay(Element el, int milliseconds)/*-{
 		el.style.webkitTransitionDelay = milliseconds + "ms";
 	}-*/;
 
+	/**
+	 * <p>setOpacity</p>
+	 *
+	 * @param el a {@link com.google.gwt.user.client.Element} object.
+	 * @param opacity a double.
+	 */
 	public native static void setOpacity(Element el, double opacity)/*-{
 		el.style.opacity = opacity;
 	}-*/;
 
+	/**
+	 * <p>setWebKitTransitionDuration</p>
+	 *
+	 * @param el a {@link com.google.gwt.user.client.Element} object.
+	 * @param time a int.
+	 */
 	public native static void setWebKitTransitionDuration(Element el, int time)/*-{
 		el.style.webkitTransitionDuration = time + "ms";
 	}-*/;

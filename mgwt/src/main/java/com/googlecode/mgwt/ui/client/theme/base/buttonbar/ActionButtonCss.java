@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>ActionButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ActionButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>action</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String action();
 
 }

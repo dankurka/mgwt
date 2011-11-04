@@ -17,29 +17,75 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>CheckBoxCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface CheckBoxCss extends CssResource {
 
+	/**
+	 * <p>checkBox</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-CheckBox")
 	public String checkBox();
 
+	/**
+	 * <p>middle</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-CheckBox-middle")
 	public String middle();
 
+	/**
+	 * <p>content</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-CheckBox-middle-content")
 	public String content();
 
+	/**
+	 * <p>on</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-CheckBox-on")
 	public String on();
 
+	/**
+	 * <p>off</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-CheckBox-off")
 	public String off();
 
+	/**
+	 * <p>important</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-CheckBox-important")
 	public String important();
 
+	/**
+	 * <p>checked</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-CheckBox-checked")
 	public String checked();
 
+	/**
+	 * <p>notChecked</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-CheckBox-notchecked")
 	public String notChecked();
 

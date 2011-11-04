@@ -27,9 +27,9 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
  * A dialog panel with title, text, ok and cancel button
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class DialogPanel extends Composite {
 	private class CancelButton extends ButtonBase {
@@ -73,7 +73,7 @@ public class DialogPanel extends Composite {
 
 	/**
 	 * Construct panel with a special css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public DialogPanel(DialogCss css) {
@@ -113,7 +113,7 @@ public class DialogPanel extends Composite {
 
 	/**
 	 * get the container of the panel
-	 * 
+	 *
 	 * @return the container of the dialog panel
 	 */
 	public HasWidgets getContent() {
@@ -122,7 +122,7 @@ public class DialogPanel extends Composite {
 
 	/**
 	 * get {@link HasTapHandlers} for the cancel button
-	 * 
+	 *
 	 * @return the {@link HasTapHandlers} for cancel button
 	 */
 	public HasTapHandlers getCancelButton() {
@@ -131,7 +131,7 @@ public class DialogPanel extends Composite {
 
 	/**
 	 * get {@link HasTapHandlers} for the ok button
-	 * 
+	 *
 	 * @return the {@link HasTapHandlers} for ok button
 	 */
 	public HasTapHandlers getOkButton() {
@@ -140,7 +140,7 @@ public class DialogPanel extends Composite {
 
 	/**
 	 * show the cancel button
-	 * 
+	 *
 	 * @param show true to show, otherwise hidden
 	 */
 	public void showCancelButton(boolean show) {
@@ -156,7 +156,7 @@ public class DialogPanel extends Composite {
 
 	/**
 	 * show the ok button
-	 * 
+	 *
 	 * @param show true to show, otherwise hidden
 	 */
 	public void showOkButton(boolean show) {
@@ -169,7 +169,7 @@ public class DialogPanel extends Composite {
 
 	/**
 	 * Get the title of the dialog
-	 * 
+	 *
 	 * @return the title of the dialog
 	 */
 	public HasHTML getDialogTitle() {

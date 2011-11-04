@@ -26,9 +26,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 /**
  * Convert TouchMoveHandlers to MouseMoveHandlers for non touch devices or dev
  * mode
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TouchMoveToMouseMoveHandler implements MouseMoveHandler, MouseDownHandler, MouseUpHandler {
 
@@ -36,13 +36,16 @@ public class TouchMoveToMouseMoveHandler implements MouseMoveHandler, MouseDownH
 	private final TouchMoveHandler touchMoveHandler;
 
 	/**
-	 * 
+	 * <p>Constructor for TouchMoveToMouseMoveHandler.</p>
+	 *
+	 * @param touchMoveHandler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler} object.
 	 */
 	public TouchMoveToMouseMoveHandler(TouchMoveHandler touchMoveHandler) {
 		this.touchMoveHandler = touchMoveHandler;
 		ignoreEvent = true;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onMouseMove(MouseMoveEvent event) {
 		if (ignoreEvent)
@@ -54,6 +57,7 @@ public class TouchMoveToMouseMoveHandler implements MouseMoveHandler, MouseDownH
 	/* (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.MouseUpHandler#onMouseUp(com.google.gwt.event.dom.client.MouseUpEvent)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void onMouseUp(MouseUpEvent event) {
 		ignoreEvent = true;
@@ -63,6 +67,7 @@ public class TouchMoveToMouseMoveHandler implements MouseMoveHandler, MouseDownH
 	/* (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.MouseDownHandler#onMouseDown(com.google.gwt.event.dom.client.MouseDownEvent)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void onMouseDown(MouseDownEvent event) {
 		ignoreEvent = false;

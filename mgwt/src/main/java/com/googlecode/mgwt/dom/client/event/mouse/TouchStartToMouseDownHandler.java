@@ -22,16 +22,18 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 /**
  * Convert TouchStartHandlers to mouse down handlers for non touch devices or
  * dev mode
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class TouchStartToMouseDownHandler implements MouseDownHandler {
 
 	private final TouchStartHandler handler;
 
 	/**
-	 * @param handler
+	 * <p>Constructor for TouchStartToMouseDownHandler.</p>
+	 *
+	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler} object.
 	 */
 	public TouchStartToMouseDownHandler(TouchStartHandler handler) {
 
@@ -39,6 +41,7 @@ public class TouchStartToMouseDownHandler implements MouseDownHandler {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void onMouseDown(MouseDownEvent event) {
 		handler.onTouchStart(new SimulatedTouchStartEvent(event));

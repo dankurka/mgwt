@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>RefreshButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface RefreshButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>refresh</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String refresh();
 }

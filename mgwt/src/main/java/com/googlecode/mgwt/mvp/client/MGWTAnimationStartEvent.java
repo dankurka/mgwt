@@ -21,25 +21,33 @@ import com.google.gwt.event.shared.GwtEvent;
  * This event is fired at the start of an mgwt animation (if
  * {@link AnimatingActivityManager} is told to fire these events, see
  * {@link AnimatingActivityManager#setFireAnimationEvents(boolean)})
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MGWTAnimationStartEvent extends GwtEvent<MGWTAnimationStartHandler> {
 
+	/** Constant <code>TYPE</code> */
 	public static final GwtEvent.Type<MGWTAnimationStartHandler> TYPE = new Type<MGWTAnimationStartHandler>();
 
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<MGWTAnimationStartHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(MGWTAnimationStartHandler handler) {
 		handler.onAnimationStartHandler(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a {@link com.google.gwt.event.shared.GwtEvent.Type} object.
+	 */
 	public static GwtEvent.Type<MGWTAnimationStartHandler> getType() {
 		return TYPE;
 	}

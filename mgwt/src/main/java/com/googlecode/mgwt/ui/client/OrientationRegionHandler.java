@@ -6,11 +6,24 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.O
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 
+/**
+ * <p>OrientationRegionHandler class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class OrientationRegionHandler {
 	private final HasOneWidget landscapeDisplay;
 	private final HasOneWidget portraitDisplay;
 	private final AnimatableDisplay display;
 
+	/**
+	 * <p>Constructor for OrientationRegionHandler.</p>
+	 *
+	 * @param landscapeDisplay a {@link com.google.gwt.user.client.ui.HasOneWidget} object.
+	 * @param portraitDisplay a {@link com.google.gwt.user.client.ui.HasOneWidget} object.
+	 * @param display a {@link com.googlecode.mgwt.mvp.client.AnimatableDisplay} object.
+	 */
 	public OrientationRegionHandler(HasOneWidget landscapeDisplay, HasOneWidget portraitDisplay, AnimatableDisplay display) {
 		this.landscapeDisplay = landscapeDisplay;
 		this.portraitDisplay = portraitDisplay;

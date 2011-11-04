@@ -50,9 +50,9 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A touch enabled radio button implementation
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MRadioButton extends TouchWidget implements HasText, HasEnabled, HasValueChangeHandlers<Boolean>, HasName, HasValue<Boolean>, HasWordWrap, IsEditor<LeafValueEditor<Boolean>> {
 
@@ -63,7 +63,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
 	/**
 	 * Construct a radio button
-	 * 
+	 *
 	 * @param name the name of the group
 	 */
 	@UiConstructor
@@ -73,7 +73,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
 	/**
 	 * Construct a radio button
-	 * 
+	 *
 	 * @param css the css to use
 	 * @param name the group name to use
 	 */
@@ -173,6 +173,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#getText()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public String getText() {
 		return labelElement.getInnerText();
@@ -182,6 +183,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#setText(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setText(String text) {
 		labelElement.setInnerText(text);
@@ -192,6 +194,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.logical.shared.HasValueChangeHandlers#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Boolean> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
@@ -201,6 +204,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.editor.client.IsEditor#asEditor()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public LeafValueEditor<Boolean> asEditor() {
 		if (editor == null) {
@@ -213,6 +217,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWordWrap#getWordWrap()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean getWordWrap() {
 		return !getElement().getStyle().getProperty("whiteSpace").equals("nowrap");
@@ -222,6 +227,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWordWrap#setWordWrap(boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setWordWrap(boolean wrap) {
 		getElement().getStyle().setProperty("whiteSpace", wrap ? "normal" : "nowrap");
@@ -232,6 +238,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#getValue()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Boolean getValue() {
 		if (isAttached()) {
@@ -245,6 +252,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setValue(Boolean value) {
 		setValue(value, false);
@@ -255,6 +263,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object, boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setValue(Boolean value, boolean fireEvents) {
 		if (value == null) {
@@ -277,6 +286,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasName#setName(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setName(String name) {
 		replaceInputElement(DOM.createInputRadio(name));
@@ -324,7 +334,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
 	/**
 	 * set the formvalue of this radio button
-	 * 
+	 *
 	 * @param formValue the formvalue that would be sent to a server
 	 */
 	public void setFormValue(String formValue) {
@@ -336,6 +346,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasName#getName()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public String getName() {
 		return inputRadio.getName();
@@ -345,6 +356,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasEnabled#isEnabled()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean isEnabled() {
 		return !inputRadio.isDisabled();
@@ -354,6 +366,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasEnabled#setEnabled(boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setEnabled(boolean enabled) {
 		inputRadio.setDisabled(!enabled);
@@ -367,7 +380,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
 	/**
 	 * get the form value of the input element
-	 * 
+	 *
 	 * @return the form value
 	 */
 	public String getFormValue() {

@@ -22,9 +22,9 @@ import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
 /**
  * A input box that accepts doubles
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MDoubleBox extends MValueBoxBase<Double> {
 
@@ -37,7 +37,7 @@ public class MDoubleBox extends MValueBoxBase<Double> {
 
 	/**
 	 * Construct a double box with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MDoubleBox(InputCss css) {

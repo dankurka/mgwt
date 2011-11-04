@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>MostRecentTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface MostRecentTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>mostRecent</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String mostRecent();
 }

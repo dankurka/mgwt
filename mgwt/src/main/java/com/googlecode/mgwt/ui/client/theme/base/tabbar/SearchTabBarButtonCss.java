@@ -15,7 +15,18 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
+/**
+ * <p>SearchTabBarButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface SearchTabBarButtonCss extends TabBarButtonBaseCss {
 
+	/**
+	 * <p>search</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String search();
 }

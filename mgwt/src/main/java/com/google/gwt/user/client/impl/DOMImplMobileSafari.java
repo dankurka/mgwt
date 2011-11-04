@@ -17,12 +17,22 @@ package com.google.gwt.user.client.impl;
 
 import com.google.gwt.user.client.Element;
 
+/**
+ * <p>DOMImplMobileSafari class.</p>
+ *
+ * @author Daniel Kurka
+ * @version $Id: $
+ */
 public class DOMImplMobileSafari extends DOMImplWebkit {
 
+	/**
+	 * <p>Constructor for DOMImplMobileSafari.</p>
+	 */
 	public DOMImplMobileSafari() {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public native int eventGetTypeInt(String eventType) /*-{
 		switch (eventType) {
@@ -60,6 +70,7 @@ public class DOMImplMobileSafari extends DOMImplWebkit {
 		}
 	}-*/;
 
+	/** {@inheritDoc} */
 	protected native void sinkEventsImpl(Element elem, int bits) /*-{
 		var chMask = (elem.__eventBits || 0) ^ bits;
 		elem.__eventBits = bits;

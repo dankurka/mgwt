@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>ReplyButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ReplyButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>reply</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String reply();
 }

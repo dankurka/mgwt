@@ -48,9 +48,9 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
 /**
  * Baseclass for creating dialogs that are animated
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers, HasTapHandlers, Dialog {
 
@@ -122,8 +122,8 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * Create an instance of an animated dialog
-	 * 
-	 * @param css
+	 *
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss} object.
 	 */
 	public AnimatableDialogBase(DialogCss css) {
 		this.css = css;
@@ -149,6 +149,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void add(Widget w) {
 		container.add(w);
@@ -159,6 +160,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchStartHandler(com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
 		return touchDelegate.addTouchStartHandler(handler);
@@ -169,6 +171,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchMoveHandler(com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
 		return touchDelegate.addTouchMoveHandler(handler);
@@ -179,6 +182,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchCancelHandler(com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
 		return touchDelegate.addTouchCancelHandler(handler);
@@ -189,6 +193,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchEndHandler(com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
 		return touchDelegate.addTouchEndHandler(handler);
@@ -199,6 +204,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchHandler(com.googlecode.mgwt.dom.client.event.touch.TouchHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchHandler(TouchHandler handler) {
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
@@ -214,6 +220,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.simple.HasSimpleTouchHandler#addSimpleTouchHandler(com.googlecode.mgwt.dom.client.event.touch.simple.SimpleTouchHandler)
 	 */
+	/** {@inheritDoc} */
 	public HandlerRegistration addTapHandler(TapHandler handler) {
 		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);
 
@@ -238,6 +245,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void clear() {
 		container.clear();
@@ -245,7 +253,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * get the panel that the dialog overlays
-	 * 
+	 *
 	 * @return the panel that is overlayed by this dialog
 	 */
 	public HasWidgets getPanelToOverlay() {
@@ -278,7 +286,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * Should the dialog hide itself if there is a tap outside the dialog
-	 * 
+	 *
 	 * @return true if the dialog automatically hides, otherwise false
 	 */
 	public boolean isHideOnBackgroundClick() {
@@ -289,6 +297,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Iterator<Widget> iterator() {
 		return container.iterator();
@@ -298,6 +307,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean remove(Widget w) {
 		return container.remove(w);
@@ -305,7 +315,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * Should the content of the dialog be centered
-	 * 
+	 *
 	 * @param centerContent true to center content
 	 */
 	public void setCenterContent(boolean centerContent) {
@@ -314,7 +324,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * Should the dialog hide itself if there is a tap outside the dialog
-	 * 
+	 *
 	 * @param hideOnBackgroundClick true if the dialog automatically hides,
 	 *            otherwise false
 	 */
@@ -324,7 +334,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * set the panel that should be overlayed by the dialog
-	 * 
+	 *
 	 * @param panel the area to be overlayed
 	 */
 	public void setPanelToOverlay(HasWidgets panel) {
@@ -333,7 +343,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * should the dialog add a shadow over the area that it covers
-	 * 
+	 *
 	 * @param shadow true to add a shadow
 	 */
 	public void setShadow(boolean shadow) {
@@ -349,6 +359,9 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	/*
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
+	 */
+	/**
+	 * <p>show</p>
 	 */
 	public void show() {
 		if (isVisible) {
@@ -380,10 +393,23 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	}
 
+	/**
+	 * <p>getShowAnimation</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.mvp.client.Animation} object.
+	 */
 	protected abstract Animation getShowAnimation();
 
+	/**
+	 * <p>getHideAnimation</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.mvp.client.Animation} object.
+	 */
 	protected abstract Animation getHideAnimation();
 
+	/**
+	 * <p>maybeHide</p>
+	 */
 	protected void maybeHide() {
 		if (hideOnBackgroundClick) {
 			hide();

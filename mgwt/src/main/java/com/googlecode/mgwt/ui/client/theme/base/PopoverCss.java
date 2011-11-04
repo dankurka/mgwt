@@ -17,13 +17,34 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>PopoverCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface PopoverCss extends CssResource {
+	/**
+	 * <p>main</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DropDownMenu")
 	public String main();
 
+	/**
+	 * <p>content</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DropDownMenu-content")
 	public String content();
 
+	/**
+	 * <p>arrow</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-DropDownMenu-arrow")
 	public String arrow();
 

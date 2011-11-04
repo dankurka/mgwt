@@ -17,12 +17,33 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>LayoutCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface LayoutCss extends CssResource {
 
+	/**
+	 * <p>fillPanel</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String fillPanel();
 
+	/**
+	 * <p>fillPanelExpandChild</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	String fillPanelExpandChild();
 
+	/**
+	 * <p>fillPanelHorizontal</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("horizontal")
 	String fillPanelHorizontal();
 }

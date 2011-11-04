@@ -17,17 +17,48 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>MSearchBoxCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface MSearchBoxCss extends CssResource {
 
+	/**
+	 * <p>searchBox</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-SearchBox")
 	public String searchBox();
 
+	/**
+	 * <p>round</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String round();
 
+	/**
+	 * <p>clear</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String clear();
 
+	/**
+	 * <p>clearActive</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("clear-active")
 	public String clearActive();
 
+	/**
+	 * <p>input</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String input();
 }

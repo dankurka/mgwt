@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>ArrowUpButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface ArrowUpButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>arrowUp</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String arrowUp();
 }

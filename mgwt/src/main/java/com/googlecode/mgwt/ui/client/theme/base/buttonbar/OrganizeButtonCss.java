@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>OrganizeButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface OrganizeButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>organize</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String organize();
 }

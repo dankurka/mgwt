@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.FavoritesTabBarButtonCss;
 
+/**
+ * <p>FavoritesTabBarButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class FavoritesTabBarButton extends TabBarButtonBase {
 
+	/**
+	 * <p>Constructor for FavoritesTabBarButton.</p>
+	 */
 	public FavoritesTabBarButton() {
 		this(MGWTStyle.getDefaultClientBundle().getFavoritesTabBarButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for FavoritesTabBarButton.</p>
+	 *
+	 * @param favoritesTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.FavoritesTabBarButtonCss} object.
+	 */
 	public FavoritesTabBarButton(FavoritesTabBarButtonCss favoritesTabBarButtonCss) {
 		super(favoritesTabBarButtonCss);
 		addStyleName(favoritesTabBarButtonCss.favorites());

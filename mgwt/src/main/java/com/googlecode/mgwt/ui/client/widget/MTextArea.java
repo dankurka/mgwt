@@ -23,9 +23,9 @@ import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
 
 /**
  * A simple text area
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MTextArea extends MTextBoxBase {
 
@@ -38,7 +38,7 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * Construct a text area with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MTextArea(InputCss css) {
@@ -48,7 +48,7 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * get the number of character per line
-	 * 
+	 *
 	 * @return the number of characters per line
 	 */
 	public int getCharacterWidth() {
@@ -57,7 +57,7 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * get the number of visible lines
-	 * 
+	 *
 	 * @return the number of visible lines
 	 */
 	public int getVisibleLines() {
@@ -66,7 +66,7 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * set the number of characters per line
-	 * 
+	 *
 	 * @param width the number of characters per line
 	 */
 	public void setCharacterWidth(int width) {
@@ -75,7 +75,7 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * Set the number of visible lines
-	 * 
+	 *
 	 * @param lines the number of visible lines
 	 */
 	public void setVisibleLines(int lines) {

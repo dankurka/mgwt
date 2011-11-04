@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>NewIconButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface NewIconButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>newIcon</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String newIcon();
 }

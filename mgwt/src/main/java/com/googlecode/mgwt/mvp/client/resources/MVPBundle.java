@@ -19,14 +19,24 @@ import com.google.gwt.resources.client.ClientBundle;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface MVPBundle extends ClientBundle {
+	/**
+	 * <p>animationCss</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.mvp.client.resources.AnimationCss} object.
+	 */
 	@Source("animation.css")
 	public AnimationCss animationCss();
 
+	/**
+	 * <p>transitionCss</p>
+	 *
+	 * @return a {@link com.googlecode.mgwt.mvp.client.resources.TransistionCss} object.
+	 */
 	@Source("transition.css")
 	public TransistionCss transitionCss();
 }

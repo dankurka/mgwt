@@ -21,9 +21,9 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 /**
  * A simple panel with rounded corners
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class RoundPanel extends TouchPanel {
 
@@ -36,7 +36,7 @@ public class RoundPanel extends TouchPanel {
 
 	/**
 	 * Construct a round panel with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public RoundPanel(PanelCss css) {

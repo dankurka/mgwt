@@ -20,9 +20,9 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * An input element that handles urls
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MUrlTextBox extends MTextBox {
 	/**
@@ -35,7 +35,7 @@ public class MUrlTextBox extends MTextBox {
 
 	/**
 	 * Construct a url text box with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MUrlTextBox(InputCss css) {

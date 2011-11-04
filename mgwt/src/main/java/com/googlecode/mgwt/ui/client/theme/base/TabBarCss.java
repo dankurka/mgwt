@@ -17,7 +17,18 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>TabBarCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface TabBarCss extends CssResource {
+	/**
+	 * <p>tabbar</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	@ClassName("mgwt-TabBar")
 	public String tabbar();
 

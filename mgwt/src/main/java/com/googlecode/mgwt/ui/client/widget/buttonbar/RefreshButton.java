@@ -19,12 +19,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RefreshButtonCss;
 
+/**
+ * <p>RefreshButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class RefreshButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for RefreshButton.</p>
+	 */
 	public RefreshButton() {
 		this(MGWTStyle.getDefaultClientBundle().getRefreshButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for RefreshButton.</p>
+	 *
+	 * @param refreshButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.RefreshButtonCss} object.
+	 */
 	public RefreshButton(RefreshButtonCss refreshButtonCss) {
 		super(refreshButtonCss);
 		addStyleName(refreshButtonCss.refresh());

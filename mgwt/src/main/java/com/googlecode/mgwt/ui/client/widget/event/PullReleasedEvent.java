@@ -19,9 +19,9 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * A pull released event
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class PullReleasedEvent extends GwtEvent<PullReleasedHandler> {
 
@@ -31,17 +31,24 @@ public class PullReleasedEvent extends GwtEvent<PullReleasedHandler> {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<PullReleasedHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(PullReleasedHandler handler) {
 		handler.onPullReleased(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<PullReleasedHandler> getType() {
 		return TYPE;
 	}

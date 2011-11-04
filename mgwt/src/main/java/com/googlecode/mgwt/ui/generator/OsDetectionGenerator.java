@@ -17,17 +17,16 @@ import com.googlecode.mgwt.ui.client.OsDetection;
 
 /**
  * Considered internal
- * 
+ *
  * {@link OsDetectionGenerator} creates the implementation for
  * {@link OsDetection} for each platform
- * 
+ *
  * @author Daniel Kurka
- * 
- * 
- * 
+ * @version $Id: $
  */
 public class OsDetectionGenerator extends Generator {
 
+	/** {@inheritDoc} */
 	@Override
 	public String generate(TreeLogger logger, GeneratorContext context, String typeName) throws UnableToCompleteException {
 

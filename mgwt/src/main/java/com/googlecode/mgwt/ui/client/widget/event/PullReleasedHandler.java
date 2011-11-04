@@ -19,14 +19,14 @@ import com.google.gwt.event.shared.EventHandler;
 
 /**
  * A pull released handler receives {@link PullReleasedEvent} events
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public interface PullReleasedHandler extends EventHandler {
 	/**
 	 * Called when a {@link PullReleasedEvent} occurs.
-	 * 
+	 *
 	 * @param event the {@link PullReleasedEvent}
 	 */
 	public void onPullReleased(PullReleasedEvent event);

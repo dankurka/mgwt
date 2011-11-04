@@ -35,9 +35,9 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A slider widget
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class MSlider extends Composite implements HasValue<Integer>, LeafValueEditor<Integer> {
 
@@ -103,7 +103,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	/**
 	 * Construct a slider with a given css
-	 * 
+	 *
 	 * @param css the css to use
 	 */
 	public MSlider(SliderCss css) {
@@ -122,6 +122,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.logical.shared.HasValueChangeHandlers#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Integer> handler) {
 		return addHandler(handler, ValueChangeEvent.getType());
@@ -129,7 +130,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	/**
 	 * Set the maximum of the slider
-	 * 
+	 *
 	 * @param max the maximum to use
 	 */
 	public void setMax(int max) {
@@ -141,7 +142,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	/**
 	 * get the maximum of the slider
-	 * 
+	 *
 	 * @return the maximum of the slider
 	 */
 	public int getMax() {
@@ -152,6 +153,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#getValue()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public Integer getValue() {
 		return value;
@@ -161,6 +163,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setValue(Integer value) {
 		setValue(value, true);
@@ -171,6 +174,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Composite#onAttach()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void onAttach() {
 		super.onAttach();
@@ -181,6 +185,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object, boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setValue(Integer value, boolean fireEvents) {
 		if (value == null) {

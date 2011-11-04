@@ -17,30 +17,53 @@ package com.googlecode.mgwt.ui.client.event;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * <p>ShowMasterEvent class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class ShowMasterEvent extends GwtEvent<ShowMasterHandler> {
 	private static final Type<ShowMasterHandler> TYPE = new Type<ShowMasterHandler>();
 	private final String id;
 
+	/**
+	 * <p>Constructor for ShowMasterEvent.</p>
+	 *
+	 * @param id a {@link java.lang.String} object.
+	 */
 	public ShowMasterEvent(String id) {
 		this.id = id;
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ShowMasterHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(ShowMasterHandler handler) {
 		handler.onShowMaster(this);
 
 	}
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<ShowMasterHandler> getType() {
 		return TYPE;
 	}
 
+	/**
+	 * <p>Getter for the field <code>id</code>.</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getId() {
 		return id;
 	}

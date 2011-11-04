@@ -17,6 +17,12 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
 
+/**
+ * <p>MainCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface MainCss extends CssResource {
 
 }

@@ -53,12 +53,12 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 /**
  * Base class for all input boxes
- * 
+ *
  * This is a clone of {@link com.google.gwt.user.client.ui.ValueBoxBase}
- * 
+ *
  * @author Daniel Kurka
- * 
  * @param <T> the type of the input
+ * @version $Id: $
  */
 public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>,
 		AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers {
@@ -67,6 +67,13 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	protected final ValueBoxBase<T> box;
 	private FlowPanel cover;
 
+	/**
+	 * <p>Constructor for MValueBoxBase.</p>
+	 *
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.InputCss} object.
+	 * @param box a {@link com.google.gwt.user.client.ui.ValueBoxBase} object.
+	 * @param <T> a T object.
+	 */
 	public MValueBoxBase(InputCss css, final ValueBoxBase<T> box) {
 		this.box = box;
 
@@ -138,6 +145,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder#setPlaceHolder(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	public void setPlaceHolder(String value) {
 		box.getElement().setAttribute("placeholder", value);
 	}
@@ -145,6 +153,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	/*
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder#getPlaceHolder()
+	 */
+	/**
+	 * <p>getPlaceHolder</p>
+	 *
+	 * @return a {@link java.lang.String} object.
 	 */
 	public String getPlaceHolder() {
 		return box.getElement().getAttribute("placeholder");
@@ -154,6 +167,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.HasChangeHandlers#addChangeHandler(com.google.gwt.event.dom.client.ChangeHandler)
 	 */
+	/** {@inheritDoc} */
 	public com.google.gwt.event.shared.HandlerRegistration addChangeHandler(ChangeHandler handler) {
 		return box.addChangeHandler(handler);
 	}
@@ -162,6 +176,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.logical.shared.HasValueChangeHandlers#addValueChangeHandler(com.google.gwt.event.logical.shared.ValueChangeHandler)
 	 */
+	/** {@inheritDoc} */
 	public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(ValueChangeHandler<T> handler) {
 		return box.addValueChangeHandler(handler);
 	}
@@ -170,14 +185,27 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.editor.client.IsEditor#asEditor()
 	 */
+	/**
+	 * <p>asEditor</p>
+	 *
+	 * @return a {@link com.google.gwt.editor.ui.client.adapters.ValueBoxEditor} object.
+	 */
 	public ValueBoxEditor<T> asEditor() {
 		return box.asEditor();
 	}
 
+	/**
+	 * <p>cancelKey</p>
+	 */
 	public void cancelKey() {
 		box.cancelKey();
 	}
 
+	/**
+	 * <p>getCursorPos</p>
+	 *
+	 * @return a int.
+	 */
 	public int getCursorPos() {
 		return box.getCursorPos();
 	}
@@ -185,6 +213,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.i18n.client.HasDirection#getDirection()
+	 */
+	/**
+	 * <p>getDirection</p>
+	 *
+	 * @return a Direction object.
 	 */
 	public Direction getDirection() {
 		return box.getDirection();
@@ -194,6 +227,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.i18n.shared.HasDirectionEstimator#getDirectionEstimator()
 	 */
+	/**
+	 * <p>getDirectionEstimator</p>
+	 *
+	 * @return a {@link com.google.gwt.i18n.shared.DirectionEstimator} object.
+	 */
 	public DirectionEstimator getDirectionEstimator() {
 		return box.getDirectionEstimator();
 	}
@@ -202,14 +240,29 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasName#getName()
 	 */
+	/**
+	 * <p>getName</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getName() {
 		return box.getName();
 	}
 
+	/**
+	 * <p>getSelectedText</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String getSelectedText() {
 		return box.getSelectedText();
 	}
 
+	/**
+	 * <p>getSelectionLength</p>
+	 *
+	 * @return a int.
+	 */
 	public int getSelectionLength() {
 		return box.getSelectionLength();
 	}
@@ -217,6 +270,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#getText()
+	 */
+	/**
+	 * <p>getText</p>
+	 *
+	 * @return a {@link java.lang.String} object.
 	 */
 	public String getText() {
 		return box.getText();
@@ -226,14 +284,30 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#getValue()
 	 */
+	/**
+	 * <p>getValue</p>
+	 *
+	 * @return a T object.
+	 */
 	public T getValue() {
 		return box.getValue();
 	}
 
+	/**
+	 * <p>getValueOrThrow</p>
+	 *
+	 * @return a T object.
+	 * @throws java.text.ParseException if any.
+	 */
 	public T getValueOrThrow() throws ParseException {
 		return box.getValueOrThrow();
 	}
 
+	/**
+	 * <p>isReadOnly</p>
+	 *
+	 * @return a boolean.
+	 */
 	public boolean isReadOnly() {
 		return box.isReadOnly();
 	}
@@ -242,19 +316,33 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Composite#onBrowserEvent(com.google.gwt.user.client.Event)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void onBrowserEvent(Event event) {
 		box.onBrowserEvent(event);
 	}
 
+	/**
+	 * <p>selectAll</p>
+	 */
 	public void selectAll() {
 		box.selectAll();
 	}
 
+	/**
+	 * <p>setAlignment</p>
+	 *
+	 * @param align a {@link com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment} object.
+	 */
 	public void setAlignment(TextAlignment align) {
 		box.setAlignment(align);
 	}
 
+	/**
+	 * <p>setCursorPos</p>
+	 *
+	 * @param pos a int.
+	 */
 	public void setCursorPos(int pos) {
 		box.setCursorPos(pos);
 	}
@@ -262,6 +350,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.i18n.client.HasDirection#setDirection(com.google.gwt.i18n.client.HasDirection.Direction)
+	 */
+	/**
+	 * <p>setDirection</p>
+	 *
+	 * @param direction a Direction object.
 	 */
 	public void setDirection(Direction direction) {
 		box.setDirection(direction);
@@ -271,6 +364,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.i18n.shared.HasDirectionEstimator#setDirectionEstimator(boolean)
 	 */
+	/** {@inheritDoc} */
 	public void setDirectionEstimator(boolean enabled) {
 		box.setDirectionEstimator(enabled);
 	}
@@ -278,6 +372,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.i18n.shared.HasDirectionEstimator#setDirectionEstimator(com.google.gwt.i18n.shared.DirectionEstimator)
+	 */
+	/**
+	 * <p>setDirectionEstimator</p>
+	 *
+	 * @param directionEstimator a {@link com.google.gwt.i18n.shared.DirectionEstimator} object.
 	 */
 	public void setDirectionEstimator(DirectionEstimator directionEstimator) {
 		box.setDirectionEstimator(directionEstimator);
@@ -287,14 +386,15 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasName#setName(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	public void setName(String name) {
 		box.setName(name);
 	}
 
 	/**
 	 * set readonly
-	 * 
-	 * @param readOnly
+	 *
+	 * @param readOnly a boolean.
 	 */
 	public void setReadOnly(boolean readOnly) {
 		box.setReadOnly(readOnly);
@@ -302,6 +402,9 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 
 	/**
 	 * {@link com.google.gwt.user.client.ui.ValueBoxBase#setSelectionRange(int,int)}
+	 *
+	 * @param pos a int.
+	 * @param length a int.
 	 */
 	public void setSelectionRange(int pos, int length) {
 		box.setSelectionRange(pos, length);
@@ -311,6 +414,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#setText(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	public void setText(String text) {
 		box.setText(text);
 	}
@@ -318,6 +422,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	/*
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
+	 */
+	/**
+	 * <p>setValue</p>
+	 *
+	 * @param value a T object.
 	 */
 	public void setValue(T value) {
 		box.setValue(value);
@@ -327,6 +436,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object, boolean)
 	 */
+	/** {@inheritDoc} */
 	public void setValue(T value, boolean fireEvents) {
 		box.setValue(value, fireEvents);
 	}
@@ -335,6 +445,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.HasKeyUpHandlers#addKeyUpHandler(com.google.gwt.event.dom.client.KeyUpHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
 		return box.addKeyUpHandler(handler);
@@ -344,6 +455,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchStartHandler(com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
 		return main.addTouchStartHandler(handler);
@@ -353,6 +465,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchMoveHandler(com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
 		return main.addTouchMoveHandler(handler);
@@ -362,6 +475,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchCancelHandler(com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
 		return main.addTouchCancelHandler(handler);
@@ -371,6 +485,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchEndHandler(com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
 		return main.addTouchEndHandler(handler);
@@ -380,6 +495,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchHandler(com.googlecode.mgwt.dom.client.event.touch.TouchHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchHandler(TouchHandler handler) {
 		return main.addTouchHandler(handler);
@@ -389,6 +505,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasAutoCorrect#setAutoCorrectEnabled(boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setAutoCorrectEnabled(boolean enabled) {
 		if (enabled) {
@@ -403,6 +520,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasAutoCorrect#isAutoCorrectEnabled()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean isAutoCorrectEnabled() {
 		String autoCorrent = box.getElement().getPropertyString("autocorrect");
@@ -413,6 +531,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasAutoCapitalize#setAutoCapitalize(boolean)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setAutoCapitalize(boolean capitalize) {
 		if (capitalize) {
@@ -427,6 +546,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasAutoCapitalize#isAutoCapitalize()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean isAutoCapitalize() {
 		String auto = box.getElement().getPropertyString("autocapitalize");
@@ -437,6 +557,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.HasKeyDownHandlers#addKeyDownHandler(com.google.gwt.event.dom.client.KeyDownHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
 		return box.addKeyDownHandler(handler);
@@ -446,6 +567,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 	 * (non-Javadoc)
 	 * @see com.google.gwt.event.dom.client.HasKeyPressHandlers#addKeyPressHandler(com.google.gwt.event.dom.client.KeyPressHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return box.addKeyPressHandler(handler);

@@ -18,12 +18,26 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowRightButtonCss;
 
+/**
+ * <p>ArrowRightButton class.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public class ArrowRightButton extends ButtonBarButtonBase {
 
+	/**
+	 * <p>Constructor for ArrowRightButton.</p>
+	 */
 	public ArrowRightButton() {
 		this(MGWTStyle.getDefaultClientBundle().getArrowRightButtonCss());
 	}
 
+	/**
+	 * <p>Constructor for ArrowRightButton.</p>
+	 *
+	 * @param arrowRightButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowRightButtonCss} object.
+	 */
 	public ArrowRightButton(ArrowRightButtonCss arrowRightButtonCss) {
 		super(arrowRightButtonCss);
 		addStyleName(arrowRightButtonCss.arrowRight());

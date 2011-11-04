@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>NextSlideButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface NextSlideButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>nextSlide</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String nextSlide();
 }

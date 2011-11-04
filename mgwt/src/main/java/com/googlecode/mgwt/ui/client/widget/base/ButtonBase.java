@@ -37,15 +37,15 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * Base class for all buttons
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public abstract class ButtonBase extends TouchWidget implements HasText, HasTapHandlers {
 
 	/**
 	 * Construct a base button with a given css
-	 * 
+	 *
 	 * @param css the css to use for this button
 	 */
 	public ButtonBase(ButtonBaseCss css) {
@@ -56,7 +56,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 
 	/**
 	 * Construct a button with a given element and css
-	 * 
+	 *
 	 * @param element the element to use
 	 * @param css the css to use
 	 */
@@ -126,6 +126,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#getText()
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public String getText() {
 		return getElement().getInnerText();
@@ -135,6 +136,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasText#setText(java.lang.String)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public void setText(String text) {
 		getElement().setInnerText(text);
@@ -145,6 +147,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.touch.TouchWidget#addTapHandler(com.googlecode.mgwt.dom.client.event.tap.TapHandler)
 	 */
+	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTapHandler(TapHandler handler) {
 		return super.addTapHandler(handler);

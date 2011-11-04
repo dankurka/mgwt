@@ -18,11 +18,11 @@ package com.googlecode.mgwt.dom.client.event.animation;
 import com.google.gwt.event.dom.client.DomEvent;
 
 /**
- * 
+ *
  * Represent a native animation end event
- * 
+ *
  * @author Daniel Kurka
- * 
+ * @version $Id: $
  */
 public class AnimationEndEvent extends DomEvent<AnimationEndHandler> {
 	/**
@@ -30,14 +30,19 @@ public class AnimationEndEvent extends DomEvent<AnimationEndHandler> {
 	 */
 	private static final Type<AnimationEndHandler> TYPE = new Type<AnimationEndHandler>("webkitAnimationEnd", new AnimationEndEvent());
 
+	/**
+	 * <p>getType</p>
+	 *
+	 * @return a Type object.
+	 */
 	public static Type<AnimationEndHandler> getType() {
 		return TYPE;
 	}
 
 	/**
+	 * {@inheritDoc}
+	 *
 	 * Gets the event type associated with animation end events.
-	 * 
-	 * @return the handler type
 	 */
 	@Override
 	public com.google.gwt.event.dom.client.DomEvent.Type<AnimationEndHandler> getAssociatedType() {
@@ -53,6 +58,7 @@ public class AnimationEndEvent extends DomEvent<AnimationEndHandler> {
 
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	protected void dispatch(AnimationEndHandler handler) {
 		handler.onAnimationEnd(this);

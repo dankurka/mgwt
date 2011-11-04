@@ -15,6 +15,17 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
 
+/**
+ * <p>PlayButtonCss interface.</p>
+ *
+ * @author kurt
+ * @version $Id: $
+ */
 public interface PlayButtonCss extends ButtonBarButtonBaseCss {
+	/**
+	 * <p>play</p>
+	 *
+	 * @return a {@link java.lang.String} object.
+	 */
 	public String play();
 }
