@@ -15,6 +15,7 @@ xw * Copyright 2010 Daniel Kurka
  */
 package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
 import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.widget.MCheckBox;
@@ -38,10 +39,13 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 	public ElementsViewImpl() {
 
 		scrollPanel.setScrollingEnabledX(false);
+		FlowPanel container = new FlowPanel();
 
 		WidgetList widgetList = new WidgetList();
 		widgetList.setRound(true);
-		scrollPanel.setWidget(widgetList);
+		container.add(widgetList);
+
+		scrollPanel.setWidget(container);
 		// workaround for android formfields jumping around when using
 		// -webkit-transform
 		scrollPanel.setUsePos(MGWTUtil.getOsDetection().isAndroid());
@@ -58,44 +62,54 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		numberBox.setPlaceHolder("number keyboard");
 		widgetList.add(numberBox);
 
+		WidgetList widgetList1 = new WidgetList();
+		widgetList1.setRound(true);
+
 		MPhoneNumberTextBox phoneBox = new MPhoneNumberTextBox();
 		phoneBox.setPlaceHolder("phonebox");
-		widgetList.add(phoneBox);
+		widgetList1.add(phoneBox);
 
 		MUrlTextBox urlBox = new MUrlTextBox();
 		urlBox.setPlaceHolder("url keyboard");
-		widgetList.add(urlBox);
+		widgetList1.add(urlBox);
 
 		MEmailTextBox emailBox = new MEmailTextBox();
 		emailBox.setPlaceHolder("email keyboard");
-		widgetList.add(emailBox);
+		widgetList1.add(emailBox);
 
 		MTextArea mTextArea = new MTextArea();
 		mTextArea.setPlaceHolder("text area");
-		widgetList.add(mTextArea);
+		widgetList1.add(mTextArea);
+
+		container.add(widgetList1);
+
+		WidgetList widgetList2 = new WidgetList();
+		widgetList2.setRound(true);
 
 		MListBox mListBox = new MListBox();
 		mListBox.addItem("iPhone");
 		mListBox.addItem("iPad");
 		mListBox.addItem("iPod");
-		widgetList.add(mListBox);
+		widgetList2.add(mListBox);
 
 		MCheckBox mCheckBox = new MCheckBox();
 		// mCheckBox.setText("smeeee");
-		widgetList.add(mCheckBox);
+		widgetList2.add(mCheckBox);
 
 		MCheckBox mCheckBox1 = new MCheckBox();
 		// mCheckBox1.setText("again");
 		mCheckBox1.setImportant(true);
-		widgetList.add(mCheckBox1);
+		widgetList2.add(mCheckBox1);
 
 		MRadioButton androidRadioButton = new MRadioButton("os");
 		androidRadioButton.setText("Android");
-		widgetList.add(androidRadioButton);
+		widgetList2.add(androidRadioButton);
 
 		MRadioButton iOSRadioButton = new MRadioButton("os");
 		iOSRadioButton.setText("iOS");
-		widgetList.add(iOSRadioButton);
+		widgetList2.add(iOSRadioButton);
+
+		container.add(widgetList2);
 
 		main.add(scrollPanel);
 	}
