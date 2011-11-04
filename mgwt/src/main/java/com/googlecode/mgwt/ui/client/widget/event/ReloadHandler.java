@@ -17,6 +17,17 @@ package com.googlecode.mgwt.ui.client.widget.event;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * A reload handler handles {@link ReloadEvent} events.
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface ReloadHandler extends EventHandler {
+	/**
+	 * Called when a {@link ReloadEvent} occurs.
+	 * 
+	 * @param event the {@link ReloadEvent}
+	 */
 	public void onReload(ReloadEvent event);
 }

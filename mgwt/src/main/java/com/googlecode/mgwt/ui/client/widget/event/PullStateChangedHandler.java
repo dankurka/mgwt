@@ -17,6 +17,17 @@ package com.googlecode.mgwt.ui.client.widget.event;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * A pull state change handler receives {@link PullStateChangedEvent} events
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface PullStateChangedHandler extends EventHandler {
+	/**
+	 * Called when a {@link PullStateChangedEvent} occurs.
+	 * 
+	 * @param event the {@link PullStateChangedEvent}
+	 */
 	public void onPullStateChanged(PullStateChangedEvent event);
 }

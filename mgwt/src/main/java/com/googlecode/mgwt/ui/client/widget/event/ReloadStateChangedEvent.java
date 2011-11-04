@@ -17,6 +17,13 @@ package com.googlecode.mgwt.ui.client.widget.event;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * a reload state changed event is fired when the state of a refresh panel
+ * changes
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class ReloadStateChangedEvent extends GwtEvent<ReloadStateChangedHandler> {
 
 	private static final Type<ReloadStateChangedHandler> TYPE = new Type<ReloadStateChangedHandler>();
@@ -31,6 +38,10 @@ public class ReloadStateChangedEvent extends GwtEvent<ReloadStateChangedHandler>
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
+	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ReloadStateChangedHandler> getAssociatedType() {
 		return TYPE;

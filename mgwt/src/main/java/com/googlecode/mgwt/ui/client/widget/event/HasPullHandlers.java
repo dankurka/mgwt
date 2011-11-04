@@ -17,8 +17,27 @@ package com.googlecode.mgwt.ui.client.widget.event;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 
+/**
+ * widgets that implement this interface fire {@link PullReleasedEvent} and
+ * {@link PullStateChangedEvent} events.
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface HasPullHandlers {
+	/**
+	 * Adds a {@link PullReleasedHandler} handler.
+	 * 
+	 * @param handler the handler to add
+	 * @return {@link HandlerRegistration} used to remove this handler
+	 */
 	public HandlerRegistration addPullReleasedHandler(PullReleasedHandler handler);
 
+	/**
+	 * Adds a {@link PullStateChangedHandler} handler.
+	 * 
+	 * @param handler the handler to add
+	 * @return {@link HandlerRegistration} used to remove this handler
+	 */
 	public HandlerRegistration addPullStateChangedHandler(PullStateChangedHandler handler);
 }

@@ -17,6 +17,12 @@ package com.googlecode.mgwt.ui.client.widget.event;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * A scroll end event is fired after a scroll has finished
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class ScrollEndEvent extends GwtEvent<ScrollEndHandler> {
 
 	private static final Type<ScrollEndHandler> TYPE = new Type<ScrollEndHandler>();
@@ -35,6 +41,10 @@ public class ScrollEndEvent extends GwtEvent<ScrollEndHandler> {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
+	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ScrollEndHandler> getAssociatedType() {
 		return TYPE;
