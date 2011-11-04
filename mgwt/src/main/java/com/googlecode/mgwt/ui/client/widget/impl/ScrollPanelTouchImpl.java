@@ -145,13 +145,13 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			public void execute() {
 				if (scrollingEnabledX && widgetToScroll.getOffsetWidth() > 0) {
 					hScrollbar = new Scrollbar(css, Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), widgetToScroll.getOffsetWidth());
-					if (main.getOffsetWidth() < widgetToScroll.getOffsetWidth())
+					if (getClientWidth(main.getElement()) < widgetToScroll.getOffsetWidth())
 						main.add(hScrollbar);
 				}
 
 				if (scrollingEnabledY && widgetToScroll.getOffsetHeight() > 0) {
 					vScrollbar = new Scrollbar(css, Orientation.VERTICAL, has3d, main.getOffsetHeight(), widgetToScroll.getOffsetHeight());
-					if (main.getOffsetHeight() < widgetToScroll.getOffsetHeight())
+					if (getClientHeight(main.getElement()) < widgetToScroll.getOffsetHeight())
 						main.add(vScrollbar);
 				}
 
@@ -428,13 +428,13 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			if (touchTime < 300 && momentum) {
 				if (scrollingEnabledX) {
-					Momentum m = calculateMomentum(position_x - scrollStartX, scrollTime, -position_x, position_x + widgetToScroll.getOffsetWidth() - main.getOffsetWidth());
+					Momentum m = calculateMomentum(position_x - scrollStartX, scrollTime, -position_x, position_x + widgetToScroll.getOffsetWidth() - getClientWidth(main.getElement()));
 					newDuration = Math.max(m.getTime(), newDuration);
 					newPosX = position_x + m.getDist();
 				}
 
 				if (scrollingEnabledY) {
-					Momentum m = calculateMomentum(position_y - scrollStartY, scrollTime, -position_y, position_y + widgetToScroll.getOffsetHeight() - main.getOffsetHeight());
+					Momentum m = calculateMomentum(position_y - scrollStartY, scrollTime, -position_y, position_y + widgetToScroll.getOffsetHeight() - getClientHeight(main.getElement()));
 					newDuration = Math.max(m.getTime(), newDuration);
 					newPosY = position_y + m.getDist();
 
@@ -576,7 +576,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * 
 	 */
 	private int getMaxScrollY() {
-		return main.getOffsetHeight() - widgetToScroll.getOffsetHeight();
+		return getClientHeight(main.getElement()) - widgetToScroll.getOffsetHeight();
 
 	}
 
@@ -585,9 +585,17 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 */
 	private int getMaxScrollX() {
 
-		return main.getOffsetWidth() - widgetToScroll.getOffsetWidth() - offsetX;
+		return getClientWidth(main.getElement()) - widgetToScroll.getOffsetWidth() - offsetX;
 
 	}
+
+	private native int getClientWidth(Element el)/*-{
+		return el.clientWidth || 1;
+	}-*/;
+
+	private native int getClientHeight(Element el)/*-{
+		return el.clientHeight || 1;
+	}-*/;
 
 	private class Momentum {
 		private final int time;

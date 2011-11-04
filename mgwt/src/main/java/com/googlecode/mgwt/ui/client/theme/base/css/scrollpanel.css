@@ -8,10 +8,9 @@
 	position: relative;
 }
 
-.mgwt-ScrollPanel.container {
+.mgwt-ScrollPanel .container {
 	\-webkit-transition-property: literal('-webkit-transform');
 	\-webkit-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
-	border: 1px solid green;
 	overflow: visible;
 }
 

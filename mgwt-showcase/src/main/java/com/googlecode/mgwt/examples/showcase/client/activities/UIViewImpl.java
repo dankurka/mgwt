@@ -20,11 +20,11 @@ import java.util.List;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.examples.showcase.client.BasicCell;
+import com.googlecode.mgwt.ui.client.widget.CellList;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
-import com.googlecode.mgwt.ui.client.widget.celllist.CellListWithHeader;
 import com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler;
 
 /**
@@ -36,7 +36,7 @@ public class UIViewImpl implements UIView {
 	private LayoutPanel main;
 	private HeaderPanel headerPanel;
 	private HeaderButton headerBackButton;
-	private CellListWithHeader<Item> cellListWithHeader;
+	private CellList<Item> cellListWithHeader;
 
 	public UIViewImpl() {
 		main = new LayoutPanel();
@@ -52,7 +52,7 @@ public class UIViewImpl implements UIView {
 
 		ScrollPanel scrollPanel = new ScrollPanel();
 
-		cellListWithHeader = new CellListWithHeader<Item>(new BasicCell<Item>() {
+		cellListWithHeader = new CellList<Item>(new BasicCell<Item>() {
 
 			@Override
 			public String getDisplayString(Item model) {
@@ -64,7 +64,7 @@ public class UIViewImpl implements UIView {
 				return true;
 			}
 		});
-		cellListWithHeader.getCellList().setRound(true);
+		cellListWithHeader.setRound(true);
 		scrollPanel.setWidget(cellListWithHeader);
 		scrollPanel.setScrollingEnabledX(false);
 
@@ -96,18 +96,18 @@ public class UIViewImpl implements UIView {
 
 	@Override
 	public HasCellSelectedHandler getList() {
-		return cellListWithHeader.getCellList();
+		return cellListWithHeader;
 	}
 
 	@Override
 	public void renderItems(List<Item> items) {
-		cellListWithHeader.getCellList().render(items);
+		cellListWithHeader.render(items);
 
 	}
 
 	@Override
 	public void setSelectedIndex(int index, boolean selected) {
-		cellListWithHeader.getCellList().setSelectedIndex(index, selected);
+		cellListWithHeader.setSelectedIndex(index, selected);
 
 	}
 
