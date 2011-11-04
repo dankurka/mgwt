@@ -18,6 +18,7 @@ package com.googlecode.mgwt.ui.client.widget.base;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader;
 import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State;
@@ -41,7 +42,8 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	/**
 	 * Construct a {@link PullArrowHeader} with a given css
 	 * 
-	 * @param css the css to use
+	 * @param css
+	 *            the css to use
 	 */
 	public PullArrowHeader(PullToRefreshCss css) {
 
@@ -75,7 +77,8 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 */
 	@Override
 	public void scrollStart(State state) {
-		icon.removeClassName(css.spinner());
+		remoteStyles();
+
 		icon.addClassName(css.arrow());
 
 	}
@@ -87,7 +90,11 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	@Override
 	public void onScroll(State state, int positionY) {
 		int degree = getRotation(positionY);
-		icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
+		if (MGWTUtil.getOsDetection().isAndroid()) {
+			icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
+		} else {
+			icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
+		}
 
 	}
 
@@ -99,10 +106,6 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	public void onScrollEnd(State state, int positionY, int duration) {
 		if (state == State.PULL_RELEASE) {
 			showSpinner();
-		} else {
-			int degree = getRotation(positionY);
-			icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);-webkit-transition: all " + duration + "ms linear;");
-
 		}
 
 	}
@@ -118,7 +121,7 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 */
 	@Override
 	public int getHeight() {
-		// TODO calculate height to be able to accept different css
+		//TODO
 		return 40;
 	}
 
@@ -128,7 +131,7 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 */
 	@Override
 	public int getStateSwitchPosition() {
-		// TODO calculate height to be able to accept different css
+		//TODO
 		return 40;
 	}
 

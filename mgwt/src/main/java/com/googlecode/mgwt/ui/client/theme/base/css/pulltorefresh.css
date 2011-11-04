@@ -21,13 +21,13 @@
 	position: absolute;
 	
 	margin-left: 50px;
-	
+	top: 10px;
 	width: 40px;
 	height: 40px;
 	background-image: nextSlideImage;
 	background-repeat: no-repeat;
 	
-	\-webkit-transform: rotate(90deg) translateZ(0);
+	\-webkit-transform: rotate(90deg);
 	\-webkit-transform-origin: 12px 9px;
 }
 
@@ -67,9 +67,10 @@
 
 .pullToRefresh .text{
 	position: absolute;
-	top: 0px;
+	top: 10px;
 	left: 100px;
 	display: inline-block;
+	font-size: 20px;
 }
 
 
