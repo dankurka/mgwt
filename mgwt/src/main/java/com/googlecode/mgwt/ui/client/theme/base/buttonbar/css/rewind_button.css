@@ -1,0 +1,10 @@
+@url rewindImage buttonBarRewindImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.rewind {
+	background-image: rewindImage;
+}
+
+.rewind.active {
+	background-image:  pressedImage, rewindImage;
+}

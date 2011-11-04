@@ -1,0 +1,10 @@
+@url arrowLeftImage buttonBarArrowLeftImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.arrowLeft{
+	background-image: arrowLeftImage;
+}
+
+.arrowLeft.active{
+	background-image: pressedImage, arrowLeftImage;
+}

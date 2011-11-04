@@ -1,0 +1,10 @@
+@url previousSlideImage buttonBarPreviousSlideImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.previousSlide {
+	background-image: previousSlideImage;
+}
+
+.previousSlide.active {
+	background-image: pressedImage, previousSlideImage ;
+}

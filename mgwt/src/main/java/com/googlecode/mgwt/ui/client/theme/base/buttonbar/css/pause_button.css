@@ -1,0 +1,10 @@
+@url pauseImage buttonBarPauseImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.pause {
+	background-image: pauseImage;
+}
+
+.pause.active {
+	background-image: pressedImage, pauseImage;
+}

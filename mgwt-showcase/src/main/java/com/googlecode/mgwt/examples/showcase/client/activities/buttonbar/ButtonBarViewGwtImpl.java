@@ -16,10 +16,34 @@
 package com.googlecode.mgwt.examples.showcase.client.activities.buttonbar;
 
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.widget.BarButton;
-import com.googlecode.mgwt.ui.client.widget.BarButton.TYPE;
-import com.googlecode.mgwt.ui.client.widget.ButtonBar;
 import com.googlecode.mgwt.ui.client.widget.RoundPanel;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ActionButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.AddContactButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowDownButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowLeftButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowRightButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ArrowUpButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.BookmarkButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBar;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.CameraButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ComposeButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.DeleteButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.FastForwardButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.InfoButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.LocateButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.NewIconButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.NextSlideButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.OrganizeButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.PauseButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.PlayButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.PlusButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.PreviousSlideButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.RefreshButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ReplyButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.RewindButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.SearchButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.StopButton;
+import com.googlecode.mgwt.ui.client.widget.buttonbar.TrashButton;
 
 /**
  * @author Daniel Kurka
@@ -41,32 +65,32 @@ public class ButtonBarViewGwtImpl extends DetailViewGwtImpl implements ButtonBar
 
 		footerPanel = new ButtonBar();
 
-		footerPanel.add(new BarButton(TYPE.refresh));
-		footerPanel.add(new BarButton(TYPE.action));
-		footerPanel.add(new BarButton(TYPE.arrow_down));
-		footerPanel.add(new BarButton(TYPE.arrow_up));
-		footerPanel.add(new BarButton(TYPE.arrow_left));
-		footerPanel.add(new BarButton(TYPE.arrow_right));
-		footerPanel.add(new BarButton(TYPE.bookmark));
-		footerPanel.add(new BarButton(TYPE.camera));
-		footerPanel.add(new BarButton(TYPE.compose));
-		footerPanel.add(new BarButton(TYPE.contact_add));
-		footerPanel.add(new BarButton(TYPE.fast_forward));
-		footerPanel.add(new BarButton(TYPE.delete));
-		footerPanel.add(new BarButton(TYPE.info));
-		footerPanel.add(new BarButton(TYPE.locate));
-		footerPanel.add(new BarButton(TYPE.new_icon));
-		footerPanel.add(new BarButton(TYPE.next_slide));
-		footerPanel.add(new BarButton(TYPE.organize));
-		footerPanel.add(new BarButton(TYPE.pause));
-		footerPanel.add(new BarButton(TYPE.play));
-		footerPanel.add(new BarButton(TYPE.plus));
-		footerPanel.add(new BarButton(TYPE.previous_slide));
-		footerPanel.add(new BarButton(TYPE.reply));
-		footerPanel.add(new BarButton(TYPE.rewind));
-		footerPanel.add(new BarButton(TYPE.search));
-		footerPanel.add(new BarButton(TYPE.stop));
-		footerPanel.add(new BarButton(TYPE.trash));
+		footerPanel.add(new RefreshButton());
+		footerPanel.add(new ActionButton());
+		footerPanel.add(new ArrowDownButton());
+		footerPanel.add(new ArrowUpButton());
+		footerPanel.add(new ArrowLeftButton());
+		footerPanel.add(new ArrowRightButton());
+		footerPanel.add(new BookmarkButton());
+		footerPanel.add(new CameraButton());
+		footerPanel.add(new ComposeButton());
+		footerPanel.add(new AddContactButton());
+		footerPanel.add(new FastForwardButton());
+		footerPanel.add(new DeleteButton());
+		footerPanel.add(new InfoButton());
+		footerPanel.add(new LocateButton());
+		footerPanel.add(new NewIconButton());
+		footerPanel.add(new NextSlideButton());
+		footerPanel.add(new OrganizeButton());
+		footerPanel.add(new PauseButton());
+		footerPanel.add(new PlayButton());
+		footerPanel.add(new PlusButton());
+		footerPanel.add(new PreviousSlideButton());
+		footerPanel.add(new ReplyButton());
+		footerPanel.add(new RewindButton());
+		footerPanel.add(new SearchButton());
+		footerPanel.add(new StopButton());
+		footerPanel.add(new TrashButton());
 
 		main.add(footerPanel);
 	}

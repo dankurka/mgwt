@@ -1,0 +1,10 @@
+@url newImage buttonBarNewImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.newIcon {
+	background-image: newImage;
+}
+
+.newIcon.active {
+	background-image: pressedImage, newImage;
+}

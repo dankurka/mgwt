@@ -1,0 +1,10 @@
+@url composeImage buttonBarComposeImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.compose {
+	background-image: composeImage;
+}
+
+.compose.active {
+	background-image: pressedImage, composeImage;
+}

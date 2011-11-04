@@ -1,0 +1,10 @@
+@url replyImage buttonBarReplyImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.reply {
+	background-image: replyImage;
+}
+
+.reply.active {
+	background-image: pressedImage, replyImage;
+}

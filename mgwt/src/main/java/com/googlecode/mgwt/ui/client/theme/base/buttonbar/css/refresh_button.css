@@ -1,0 +1,10 @@
+@url refreshImage buttonBarRefreshImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.refresh {
+	background-image: refreshImage;
+}
+
+.refresh.active {
+	background-image: pressedImage, refreshImage;
+}

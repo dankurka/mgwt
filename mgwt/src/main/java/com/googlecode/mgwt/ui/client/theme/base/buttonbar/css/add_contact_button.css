@@ -1,0 +1,10 @@
+@url contactAddImage buttonBarContactAddImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.contactAdd {
+	background-image: contactAddImage;
+}
+
+.contactAdd.active {
+	background-image: pressedImage, contactAddImage;
+}

@@ -1,0 +1,9 @@
+
+.mgwt-BarButton {
+	position: relative;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 40px;
+	height: 40px;
+}

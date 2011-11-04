@@ -1,0 +1,10 @@
+@url locateImage buttonBarLocateImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.locate {
+	background-image: locateImage;
+}
+
+.locate.active {
+	background-image: pressedImage, locateImage;
+}

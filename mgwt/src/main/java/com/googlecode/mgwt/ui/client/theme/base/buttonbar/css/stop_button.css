@@ -1,0 +1,12 @@
+@url stopImage buttonBarStopImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+
+
+.stop {
+	background-image: stopImage;
+}
+
+.stop.active {
+	background-image:  pressedImage, stopImage;
+}

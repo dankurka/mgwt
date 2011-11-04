@@ -1,0 +1,10 @@
+@url bookmarksImage buttonBarBookmarksImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.bookmark {
+	background-image: bookmarksImage;
+}
+
+.bookmark.active {
+	background-image: pressedImage, bookmarksImage;
+}

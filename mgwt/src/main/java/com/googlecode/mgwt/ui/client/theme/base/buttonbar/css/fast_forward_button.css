@@ -1,0 +1,10 @@
+@url fastForwardImage buttonBarFastForwardImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.fastForward {
+	background-image: fastForwardImage;
+}
+
+.fastForward.active {
+	background-image: pressedImage, fastForwardImage;
+}

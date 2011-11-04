@@ -1,0 +1,10 @@
+@url plusImage buttonBarPlusImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.plus {
+	background-image: plusImage;
+}
+
+.plus.active {
+	background-image: pressedImage, plusImage;
+}

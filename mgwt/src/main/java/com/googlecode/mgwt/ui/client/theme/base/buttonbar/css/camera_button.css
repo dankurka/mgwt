@@ -1,0 +1,10 @@
+@url cameraImage buttonBarCameraImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.camera {
+	background-image: cameraImage;
+}
+
+.camera.active {
+	background-image: pressedImage, cameraImage;
+}

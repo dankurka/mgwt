@@ -1,0 +1,12 @@
+@url trashImage buttonBarTrashImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+
+
+.trash {
+	background-image: trashImage;
+}
+
+.trash.active {
+	background-image: pressedImage, trashImage  ;
+}

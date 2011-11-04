@@ -1,0 +1,10 @@
+@url playImage buttonBarPlayImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.play {
+	background-image: playImage;
+}
+
+.play.active {
+	background-image: pressedImage, playImage  ;
+}

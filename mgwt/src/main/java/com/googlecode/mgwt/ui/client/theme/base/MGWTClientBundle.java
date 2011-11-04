@@ -3,6 +3,32 @@ package com.googlecode.mgwt.ui.client.theme.base;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.TextResource;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ActionButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.AddContactButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowDownButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowLeftButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowRightButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowUpButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.BookmarkButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.CameraButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ComposeButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.DeleteButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.FastForwardButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.InfoButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.LocateButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.NewIconButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.NextSlideButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.OrganizeButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PauseButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PlayButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PlusButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PreviousSlideButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RefreshButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ReplyButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RewindButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.SearchButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 
 public interface MGWTClientBundle extends ClientBundle {
 
@@ -239,4 +265,82 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("resources/input/check_android_not_checked.png")
 	DataResource android_check_not_checked();
 
+	//buttonbar buttons
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/action_button.css" })
+	public ActionButtonCss getActionButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/arrow_left_button.css" })
+	public ArrowLeftButtonCss getLeftButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/arrow_right_button.css" })
+	public ArrowRightButtonCss getArrowRightButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/arrow_up_button.css" })
+	public ArrowUpButtonCss getArrowUpButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/arrow_down_button.css" })
+	public ArrowDownButtonCss getArrowDownButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/add_contact_button.css" })
+	public AddContactButtonCss getAddContactButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/bookmark_button.css" })
+	public BookmarkButtonCss getBookmarkButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/camera_button.css" })
+	public CameraButtonCss getCameraButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/compose_button.css" })
+	public ComposeButtonCss getComposeButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/delete_button.css" })
+	public DeleteButtonCss getDeleteButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/fast_forward_button.css" })
+	public FastForwardButtonCss getFastForwardButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/info_button.css" })
+	public InfoButtonCss getInfoButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/locate_button.css" })
+	public LocateButtonCss getLocateButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/new_icon_button.css" })
+	public NewIconButtonCss getNewIconButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/next_slide_button.css" })
+	public NextSlideButtonCss getNextSlideButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/organize_button.css" })
+	public OrganizeButtonCss getOrganizeButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/pause_button.css" })
+	public PauseButtonCss getPauseButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/play_button.css" })
+	public PlayButtonCss getPlayButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/plus_button.css" })
+	public PlusButtonCss getPlusButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/previous_slide_button.css" })
+	public PreviousSlideButtonCss getPreviousSlideButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/refresh_button.css" })
+	public RefreshButtonCss getRefreshButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/reply_button.css" })
+	public ReplyButtonCss getReplyButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/rewind_button.css" })
+	public RewindButtonCss getRewindButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/search_button.css" })
+	public SearchButtonCss getSearchButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/stop_button.css" })
+	public StopButtonCss getStopButtonCss();
+
+	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/trash_button.css" })
+	public TrashButtonCss getTrashButtonCss();
 }

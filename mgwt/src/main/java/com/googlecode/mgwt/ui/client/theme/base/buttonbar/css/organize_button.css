@@ -1,0 +1,10 @@
+@url organizeImage buttonBarOrganizeImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.organize {
+	background-image: organizeImage;
+}
+
+.organize.active {
+	background-image: pressedImage, organizeImage;
+}

@@ -1,0 +1,10 @@
+@url deleteImage buttonBarDeleteImage;
+@url pressedImage buttonBarPressedIndicatorImage;
+
+.delete {
+	background-image: deleteImage;
+}
+
+.delete.active {
+	background-image: pressedImage, deleteImage;
+}
