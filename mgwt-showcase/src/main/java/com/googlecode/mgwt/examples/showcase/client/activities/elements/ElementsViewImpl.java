@@ -1,5 +1,5 @@
 /*
-xw * Copyright 2010 Daniel Kurka
+ * xw * Copyright 2010 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -17,7 +17,7 @@ package com.googlecode.mgwt.examples.showcase.client.activities.elements;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.googlecode.mgwt.examples.showcase.client.DetailViewGwtImpl;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.MCheckBox;
 import com.googlecode.mgwt.ui.client.widget.MEmailTextBox;
 import com.googlecode.mgwt.ui.client.widget.MListBox;
@@ -48,7 +48,7 @@ public class ElementsViewImpl extends DetailViewGwtImpl implements ElementsView 
 		scrollPanel.setWidget(container);
 		// workaround for android formfields jumping around when using
 		// -webkit-transform
-		scrollPanel.setUsePos(MGWTUtil.getOsDetection().isAndroid());
+		scrollPanel.setUsePos(MGWT.getOsDetection().isAndroid());
 
 		MTextBox mTextBox = new MTextBox();
 		mTextBox.setPlaceHolder("textbox");

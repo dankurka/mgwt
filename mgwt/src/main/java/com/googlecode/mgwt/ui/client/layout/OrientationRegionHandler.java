@@ -1,15 +1,18 @@
-package com.googlecode.mgwt.ui.client;
+package com.googlecode.mgwt.ui.client.layout;
 
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
+import com.googlecode.mgwt.ui.client.MGWT;
 
 /**
- * <p>OrientationRegionHandler class.</p>
- *
- * @author kurt
+ * <p>
+ * OrientationRegionHandler class.
+ * </p>
+ * 
+ * @author Daniel Kurka
  * @version $Id: $
  */
 public class OrientationRegionHandler {
@@ -18,18 +21,23 @@ public class OrientationRegionHandler {
 	private final AnimatableDisplay display;
 
 	/**
-	 * <p>Constructor for OrientationRegionHandler.</p>
-	 *
-	 * @param landscapeDisplay a {@link com.google.gwt.user.client.ui.HasOneWidget} object.
-	 * @param portraitDisplay a {@link com.google.gwt.user.client.ui.HasOneWidget} object.
-	 * @param display a {@link com.googlecode.mgwt.mvp.client.AnimatableDisplay} object.
+	 * <p>
+	 * Constructor for OrientationRegionHandler.
+	 * </p>
+	 * 
+	 * @param landscapeDisplay a
+	 *            {@link com.google.gwt.user.client.ui.HasOneWidget} object.
+	 * @param portraitDisplay a
+	 *            {@link com.google.gwt.user.client.ui.HasOneWidget} object.
+	 * @param display a {@link com.googlecode.mgwt.mvp.client.AnimatableDisplay}
+	 *            object.
 	 */
 	public OrientationRegionHandler(HasOneWidget landscapeDisplay, HasOneWidget portraitDisplay, AnimatableDisplay display) {
 		this.landscapeDisplay = landscapeDisplay;
 		this.portraitDisplay = portraitDisplay;
 		this.display = display;
-		MGWTUtil.addOrientationChangeHandler(new InternalOrientationChangeHandler());
-		changeDisplay(MGWTUtil.getOrientation());
+		MGWT.addOrientationChangeHandler(new InternalOrientationChangeHandler());
+		changeDisplay(MGWT.getOrientation());
 	}
 
 	private void changeDisplay(ORIENTATION o) {

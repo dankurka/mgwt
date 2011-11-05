@@ -31,13 +31,13 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * Base class for all buttons
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -45,7 +45,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 
 	/**
 	 * Construct a base button with a given css
-	 *
+	 * 
 	 * @param css the css to use for this button
 	 */
 	public ButtonBase(ButtonBaseCss css) {
@@ -56,7 +56,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 
 	/**
 	 * Construct a button with a given element and css
-	 *
+	 * 
 	 * @param element the element to use
 	 * @param css the css to use
 	 */
@@ -65,7 +65,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 		css.ensureInjected();
 		this.active = css.active();
 
-		if (MGWTUtil.getOsDetection().isBlackBerry() || MGWTUtil.getOsDetection().isDesktop()) {
+		if (MGWT.getOsDetection().isBlackBerry() || MGWT.getOsDetection().isDesktop()) {
 			addDomHandler(new MouseOverHandler() {
 
 				@Override

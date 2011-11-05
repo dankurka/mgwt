@@ -47,7 +47,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
@@ -97,7 +97,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 
 			@Override
 			public void onBlur(BlurEvent event) {
-				MGWTUtil.fixIOSScrollIssueBlur();
+				MGWT.fixIOSScrollIssueBlur();
 
 			}
 		});
@@ -106,7 +106,7 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 
 			@Override
 			public void onFocus(FocusEvent event) {
-				MGWTUtil.fixIOSScrollIssueFocus();
+				MGWT.fixIOSScrollIssueFocus();
 
 			}
 		});

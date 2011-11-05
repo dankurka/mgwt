@@ -18,14 +18,14 @@ package com.googlecode.mgwt.ui.client.widget.base;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader;
 import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State;
 
 /**
  * A header for a pull panel that shows an arrow
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -41,9 +41,8 @@ public class PullArrowHeader extends Widget implements PullHeader {
 
 	/**
 	 * Construct a {@link PullArrowHeader} with a given css
-	 *
-	 * @param css
-	 *            the css to use
+	 * 
+	 * @param css the css to use
 	 */
 	public PullArrowHeader(PullToRefreshCss css) {
 
@@ -93,7 +92,7 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	@Override
 	public void onScroll(State state, int positionY) {
 		int degree = getRotation(positionY);
-		if (MGWTUtil.getOsDetection().isAndroid()) {
+		if (MGWT.getOsDetection().isAndroid()) {
 			icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
 		} else {
 			icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
@@ -115,7 +114,9 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	}
 
 	/**
-	 * <p>showError</p>
+	 * <p>
+	 * showError
+	 * </p>
 	 */
 	public void showError() {
 		remoteStyles();
@@ -129,7 +130,7 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	/** {@inheritDoc} */
 	@Override
 	public int getHeight() {
-		//TODO
+		// TODO
 		return 40;
 	}
 
@@ -140,7 +141,7 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	/** {@inheritDoc} */
 	@Override
 	public int getStateSwitchPosition() {
-		//TODO
+		// TODO
 		return 40;
 	}
 
@@ -156,7 +157,9 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	}
 
 	/**
-	 * <p>showArrow</p>
+	 * <p>
+	 * showArrow
+	 * </p>
 	 */
 	protected void showArrow() {
 		remoteStyles();
@@ -164,7 +167,9 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	}
 
 	/**
-	 * <p>showSpinner</p>
+	 * <p>
+	 * showSpinner
+	 * </p>
 	 */
 	protected void showSpinner() {
 		remoteStyles();
@@ -174,8 +179,10 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	}
 
 	/**
-	 * <p>getRotation</p>
-	 *
+	 * <p>
+	 * getRotation
+	 * </p>
+	 * 
 	 * @param y a int.
 	 * @return a int.
 	 */
@@ -191,7 +198,9 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	}
 
 	/**
-	 * <p>remoteStyles</p>
+	 * <p>
+	 * remoteStyles
+	 * </p>
 	 */
 	protected void remoteStyles() {
 		icon.removeClassName(css.arrow());

@@ -4,8 +4,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.widget.HeaderButton;
 import com.googlecode.mgwt.ui.client.widget.HeaderPanel;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
@@ -34,7 +34,7 @@ public abstract class DetailViewGwtImpl implements DetailView {
 		headerMainButton = new HeaderButton();
 		headerMainButton.setRoundButton(true);
 
-		if (MGWTUtil.getOsDetection().isPhone()) {
+		if (MGWT.getOsDetection().isPhone()) {
 			headerPanel.setLeftWidget(headerBackButton);
 		} else {
 			headerPanel.setLeftWidget(headerMainButton);

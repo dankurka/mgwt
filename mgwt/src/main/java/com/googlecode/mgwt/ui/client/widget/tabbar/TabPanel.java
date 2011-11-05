@@ -27,8 +27,8 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
@@ -102,7 +102,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			}
 		});
 
-		if (MGWTUtil.getOsDetection().isAndroid()) {
+		if (MGWT.getOsDetection().isAndroid()) {
 			container.add(tabBar);
 			container.add(tabContainer);
 

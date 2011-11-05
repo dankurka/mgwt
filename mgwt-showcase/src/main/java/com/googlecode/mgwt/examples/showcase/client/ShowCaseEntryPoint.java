@@ -1,5 +1,5 @@
 /*
-x * Copyright 2010 Daniel Kurka
+ * x * Copyright 2010 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -32,10 +32,11 @@ import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.AnimationMapper;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTSettings;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
-import com.googlecode.mgwt.ui.client.MasterRegionHandler;
-import com.googlecode.mgwt.ui.client.OrientationRegionHandler;
+import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
+import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
 import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
+import com.googlecode.mgwt.ui.client.layout.MasterRegionHandler;
+import com.googlecode.mgwt.ui.client.layout.OrientationRegionHandler;
 
 /**
  * @author Daniel Kurka
@@ -44,21 +45,25 @@ import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
 public class ShowCaseEntryPoint implements EntryPoint {
 
 	private void start() {
-		//		MGWTColorScheme.setBaseColor("#56a60D");
-		//		MGWTColorScheme.setFontColor("#eee");
+		// MGWTColorScheme.setBaseColor("#56a60D");
+		// MGWTColorScheme.setFontColor("#eee");
 		//
-		//		MGWTStyle.setDefaultBundle((MGWTClientBundle) GWT.create(MGWTStandardBundle.class));
-		//		MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
+		// MGWTStyle.setDefaultBundle((MGWTClientBundle)
+		// GWT.create(MGWTStandardBundle.class));
+		// MGWTStyle.getDefaultClientBundle().getMainCss().ensureInjected();
+
+		ViewPort viewPort = new MGWTSettings.ViewPort();
+		viewPort.setHeightToDeviceHeight().setTargetDensity(DENSITY.MEDIUM);
+		viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
 
 		MGWTSettings settings = new MGWTSettings();
+		settings.setViewPort(viewPort);
 		settings.setIconUrl("logo.png");
 		settings.setAddGlosToIcon(true);
-		settings.setFixViewPort(true);
 		settings.setFullscreen(true);
 		settings.setPreventScrolling(true);
 
-		MGWT mgwt = new MGWT();
-		mgwt.applySettings(settings);
+		MGWT.applySettings(settings);
 
 		final ClientFactory clientFactory = new ClientFactoryImpl();
 
@@ -68,7 +73,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		historyHandler.register(clientFactory.getPlaceController(), clientFactory.getEventBus(), new HomePlace());
 
-		if (MGWTUtil.getOsDetection().isTablet()) {
+		if (MGWT.getOsDetection().isTablet()) {
 
 			// very nasty workaround because GWT does not corretly support
 			// @media

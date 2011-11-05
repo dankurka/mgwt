@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.ui.client;
+package com.googlecode.mgwt.ui.client.layout;
 
 import com.google.web.bindery.event.shared.EventBus;
 import com.googlecode.mgwt.ui.client.dialog.Dialog;

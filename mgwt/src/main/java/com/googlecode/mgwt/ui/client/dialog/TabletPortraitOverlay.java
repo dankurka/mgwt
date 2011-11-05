@@ -24,15 +24,15 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.mvp.client.Animation;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.MGWTUtil;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 /**
  * A Tablet overlay class
- *
+ * 
  * the content of the overlay is only visible in portrait mode
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -101,7 +101,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 		popinDialog.add(ipadMenu);
 		popinDialog.setHideOnBackgroundClick(true);
 
-		MGWTUtil.addOrientationChangeHandler(new OrientationChangeHandler() {
+		MGWT.addOrientationChangeHandler(new OrientationChangeHandler() {
 
 			@Override
 			public void onOrientationChanged(OrientationChangeEvent event) {
