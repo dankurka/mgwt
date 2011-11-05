@@ -132,6 +132,10 @@ public class MGWTSettings {
 
 	}
 
+	public enum StatusBarStyle {
+		DEFAULT, BLACK, BLACK_TRANSLUCENT;
+	};
+
 	private ViewPort viewPort;
 
 	private boolean gloss;
@@ -145,6 +149,10 @@ public class MGWTSettings {
 	private String statusBar;
 
 	private boolean preventScrolling;
+
+	private boolean disablePhoneNumberDetection;
+
+	private StatusBarStyle statusBarStyle;
 
 	public ViewPort getViewPort() {
 		return viewPort;
@@ -183,66 +191,54 @@ public class MGWTSettings {
 	}
 
 	/**
-	 * <p>
-	 * Getter for the field <code>iconUrl</code>.
-	 * </p>
+	 * The icon url to use on the home screen on ios
 	 * 
-	 * @return a {@link java.lang.String} object.
+	 * @return the icon url
 	 */
 	public String getIconUrl() {
 		return iconUrl;
 	}
 
 	/**
-	 * <p>
-	 * Setter for the field <code>iconUrl</code>.
-	 * </p>
+	 * Set the icon url to use on the home screen on ios
 	 * 
-	 * @param iconUrl a {@link java.lang.String} object.
+	 * @param url the url of the icon to use
 	 */
-	public void setIconUrl(String iconUrl) {
-		this.iconUrl = iconUrl;
+	public void setIconUrl(String url) {
+		this.iconUrl = url;
 	}
 
 	/**
-	 * <p>
-	 * Getter for the field <code>startUrl</code>.
-	 * </p>
+	 * Get the url to the image to use at startup if running on home screen
 	 * 
-	 * @return a {@link java.lang.String} object.
+	 * @return the url of the image
 	 */
 	public String getStartUrl() {
 		return startUrl;
 	}
 
 	/**
-	 * <p>
-	 * Setter for the field <code>startUrl</code>.
-	 * </p>
+	 * Set the url to the image to use at startup if running on home screen
 	 * 
-	 * @param startUrl a {@link java.lang.String} object.
+	 * @param startUrl the url to use
 	 */
 	public void setStartUrl(String startUrl) {
 		this.startUrl = startUrl;
 	}
 
 	/**
-	 * <p>
-	 * isFullscreen
-	 * </p>
+	 * Can the app be used in full screen mode
 	 * 
-	 * @return a boolean.
+	 * @return true if the app can be used in full screen mode
 	 */
 	public boolean isFullscreen() {
 		return fullscreen;
 	}
 
 	/**
-	 * <p>
-	 * Setter for the field <code>fullscreen</code>.
-	 * </p>
+	 * Can the app be used in full screen
 	 * 
-	 * @param fullscreen a boolean.
+	 * @param fullscreen true if app can be run in full screen
 	 */
 	public void setFullscreen(boolean fullscreen) {
 		this.fullscreen = fullscreen;
@@ -271,25 +267,72 @@ public class MGWTSettings {
 	}
 
 	/**
-	 * <p>
-	 * isPreventScrolling
-	 * </p>
+	 * Should mgwt prevent default scrolling behaviour
 	 * 
-	 * @return a boolean.
+	 * @return true if mgwt should prevent default scrolling behaviour
 	 */
 	public boolean isPreventScrolling() {
 		return preventScrolling;
 	}
 
 	/**
-	 * <p>
-	 * Setter for the field <code>preventScrolling</code>.
-	 * </p>
+	 * Should mgwt prevent default scrolling behaviour
 	 * 
-	 * @param preventScrolling the preventScrolling to set
+	 * @param preventScrolling true if mgwt should prevent default scrolling
+	 *            behaviour
 	 */
 	public void setPreventScrolling(boolean preventScrolling) {
 		this.preventScrolling = preventScrolling;
 	}
 
+	/**
+	 * <p>
+	 * ios only
+	 * </p>
+	 * disable the auto dection of phonenumbers in your app
+	 * 
+	 * @param disablePhoneNumberDetection true to disable
+	 */
+	public void setDisablePhoneNumberDetection(boolean disablePhoneNumberDetection) {
+		this.disablePhoneNumberDetection = disablePhoneNumberDetection;
+	}
+
+	/**
+	 * 
+	 * <p>
+	 * ios only
+	 * </p>
+	 * disable the auto dection of phonenumbers in your app
+	 * 
+	 * @return true to disable
+	 */
+	public boolean isDisablePhoneNumberDetection() {
+		return disablePhoneNumberDetection;
+	}
+
+	/**
+	 * <p>
+	 * ios only
+	 * </p>
+	 * 
+	 * set the style of the status bar if the app is running in full screen
+	 * 
+	 * @param statusBarStyle the style to use
+	 */
+	public void setStatusBarStyle(StatusBarStyle statusBarStyle) {
+		this.statusBarStyle = statusBarStyle;
+	}
+
+	/**
+	 * <p>
+	 * ios only
+	 * </p>
+	 * 
+	 * get the style of the status bar if the app is running in full screen
+	 * 
+	 * @return statusBarStyle the style to use
+	 */
+	public StatusBarStyle getStatusBarStyle() {
+		return statusBarStyle;
+	}
 }

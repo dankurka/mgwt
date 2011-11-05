@@ -4,9 +4,11 @@ import com.google.gwt.core.client.GWT;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle;
 
 /**
- * <p>MGWTStyle class.</p>
- *
- * @author kurt
+ * <p>
+ * MGWTStyle class.
+ * </p>
+ * 
+ * @author Daniel Kurka
  * @version $Id: $
  */
 public class MGWTStyle {
@@ -14,9 +16,13 @@ public class MGWTStyle {
 	private static MGWTClientBundle defaultClientBundle;
 
 	/**
-	 * <p>Getter for the field <code>defaultClientBundle</code>.</p>
-	 *
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle} object.
+	 * <p>
+	 * Getter for the field <code>defaultClientBundle</code>.
+	 * </p>
+	 * 
+	 * @return a
+	 *         {@link com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle}
+	 *         object.
 	 */
 	public static final MGWTClientBundle getDefaultClientBundle() {
 		if (defaultClientBundle == null) {
@@ -27,9 +33,13 @@ public class MGWTStyle {
 	}
 
 	/**
-	 * <p>setDefaultBundle</p>
-	 *
-	 * @param bundle a {@link com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle} object.
+	 * <p>
+	 * setDefaultBundle
+	 * </p>
+	 * 
+	 * @param bundle a
+	 *            {@link com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle}
+	 *            object.
 	 */
 	public static final void setDefaultBundle(MGWTClientBundle bundle) {
 		if (defaultClientBundle != null) {

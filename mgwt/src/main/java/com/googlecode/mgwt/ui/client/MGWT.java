@@ -152,6 +152,34 @@ public class MGWT {
 
 		}
 
+		if (settings.isDisablePhoneNumberDetection()) {
+			MetaElement fullScreenMetaTag = Document.get().createMetaElement();
+			fullScreenMetaTag.setName("format-detection");
+			fullScreenMetaTag.setContent("telephone=no");
+			head.appendChild(fullScreenMetaTag);
+		}
+
+		if (settings.getStatusBarStyle() != null) {
+			MetaElement statusBarTag = Document.get().createMetaElement();
+			statusBarTag.setName("apple-mobile-web-app-status-bar-style");
+			switch (settings.getStatusBarStyle()) {
+			case DEFAULT:
+				statusBarTag.setContent("default");
+				break;
+			case BLACK:
+				statusBarTag.setContent("black");
+				break;
+			case BLACK_TRANSLUCENT:
+				statusBarTag.setContent("black-translucent");
+				break;
+			default:
+				statusBarTag.setContent("default");
+				break;
+			}
+
+			head.appendChild(statusBarTag);
+		}
+
 	}
 
 	/**
