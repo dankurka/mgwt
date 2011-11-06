@@ -33,13 +33,9 @@ public class MGWTStyle {
 	private static MGWTClientBundle defaultClientBundle;
 
 	/**
-	 * <p>
-	 * Getter for the field <code>defaultClientBundle</code>.
-	 * </p>
+	 * get the default bundle of this mgwt app
 	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle}
-	 *         object.
+	 * @return the default bundle
 	 */
 	public static final MGWTClientBundle getDefaultClientBundle() {
 		if (defaultClientBundle == null) {
@@ -50,13 +46,14 @@ public class MGWTStyle {
 	}
 
 	/**
-	 * <p>
-	 * setDefaultBundle
-	 * </p>
+	 * Set the default bundle of this mgwt app
 	 * 
-	 * @param bundle a
-	 *            {@link com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle}
-	 *            object.
+	 * <p>
+	 * can only be called once at startup
+	 * <p>
+	 * 
+	 * 
+	 * @param bundle the default bundle to use
 	 */
 	public static final void setDefaultBundle(MGWTClientBundle bundle) {
 		if (defaultClientBundle != null) {
