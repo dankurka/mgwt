@@ -52,56 +52,130 @@ public class MGWTSettings {
 
 		private String targetDensity;
 
+		/**
+		 * Set the width of the viewport
+		 * 
+		 * @param value the width in px
+		 * @return the viewport instance
+		 */
 		public ViewPort setWidth(int value) {
 			this.width = "" + value;
 			return this;
 		}
 
+		/**
+		 * Set the height of the viewport
+		 * 
+		 * @param value the height in px
+		 * @return the viewport instance
+		 */
 		public ViewPort setHeight(int value) {
 			this.height = "" + value;
 			return this;
 		}
 
+		/**
+		 * Set width to device width
+		 * 
+		 * Most common for most apps
+		 * 
+		 * @return the viewport instance
+		 */
 		public ViewPort setWidthToDeviceWidth() {
 			this.width = "device-width";
 			return this;
 		}
 
+		/**
+		 * Set the height to device height
+		 * 
+		 * 
+		 * @return the viewport instance
+		 */
 		public ViewPort setHeightToDeviceHeight() {
 			this.height = "device-height";
 			return this;
 		}
 
+		/**
+		 * <p>
+		 * android only
+		 * </p>
+		 * set the target density in dpi
+		 * 
+		 * 
+		 * @param value the target density in dpi
+		 * @return the viewport instance
+		 */
 		public ViewPort setTargetDensity(int value) {
 			targetDensity = "" + value;
 			return this;
 		}
 
+		/**
+		 * <p>
+		 * android only
+		 * </p>
+		 * 
+		 * set the target density
+		 * 
+		 * @param d the density to use
+		 * @return the viewport instance
+		 */
 		public ViewPort setTargetDensity(DENSITY d) {
 			targetDensity = d.getValue();
 			return this;
 		}
 
+		/**
+		 * Should the viewport be scalable by the user
+		 * 
+		 * @param userScaleAble ture to allow scaling
+		 * @return the viewport instance
+		 */
 		public ViewPort setUserScaleAble(boolean userScaleAble) {
 			this.userScaleAble = userScaleAble;
 			return this;
 		}
 
+		/**
+		 * set the minimum scaling of the viewport
+		 * 
+		 * @param minimumScale the scale to use
+		 * @return the viewport instance
+		 */
 		public ViewPort setMinimumScale(double minimumScale) {
 			this.minimumScale = minimumScale;
 			return this;
 		}
 
+		/**
+		 * Set the maximum scale of the viewport
+		 * 
+		 * @param maximumScale the scale to use
+		 * @return the viewport instance
+		 */
 		public ViewPort setMaximumScale(double maximumScale) {
 			this.maximumScale = maximumScale;
 			return this;
 		}
 
+		/**
+		 * set the initial scale of the viewport
+		 * 
+		 * @param initialScale the scale to use
+		 * @return the viewport instance
+		 */
 		public ViewPort setInitialScale(double initialScale) {
 			this.initialScale = initialScale;
 			return this;
 		}
 
+		/**
+		 * get the content for the viewport meta tag
+		 * 
+		 * @return content of the viewport meta tag
+		 */
 		public String getContent() {
 			StringBuffer buffer = new StringBuffer();
 
@@ -132,6 +206,16 @@ public class MGWTSettings {
 
 	}
 
+	/**
+	 * <p>
+	 * ios only
+	 * </p>
+	 * 
+	 * All possible styles for the statusbar if the app is running in fullscreen
+	 * 
+	 * @author Daniel Kurka
+	 * 
+	 */
 	public enum StatusBarStyle {
 		DEFAULT, BLACK, BLACK_TRANSLUCENT;
 	};
@@ -154,10 +238,20 @@ public class MGWTSettings {
 
 	private StatusBarStyle statusBarStyle;
 
+	/**
+	 * Get the viewport for the mgwt app
+	 * 
+	 * @return the viewport
+	 */
 	public ViewPort getViewPort() {
 		return viewPort;
 	}
 
+	/**
+	 * Set the viewport the the mgwt app
+	 * 
+	 * @param viewPort the viewport to use
+	 */
 	public void setViewPort(ViewPort viewPort) {
 		this.viewPort = viewPort;
 	}
