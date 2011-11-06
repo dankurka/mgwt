@@ -28,10 +28,11 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.ui.client.util.NoopHandlerRegistration;
 
 /**
  * The implementation for mouse devices of {@link TouchWidgetImpl}
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -69,13 +70,7 @@ public class TouchWidgetDesktopImpl implements TouchWidgetImpl {
 	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchCancelHandler(Widget w, TouchCancelHandler handler) {
-		return new HandlerRegistration() {
-
-			@Override
-			public void removeHandler() {
-
-			}
-		};
+		return new NoopHandlerRegistration();
 	}
 
 	/*

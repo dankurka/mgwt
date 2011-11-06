@@ -121,6 +121,8 @@ public class Scrollbar extends Widget {
 
 			bar.addClassName(css.vertical());
 			break;
+		default:
+			throw new RuntimeException("how did we get here?");
 
 		}
 
@@ -138,6 +140,8 @@ public class Scrollbar extends Widget {
 		case VERTICAL:
 			cssText += "height: " + size + "px; width: 5px;";
 			break;
+		default:
+			throw new RuntimeException("how did we get here?");
 
 		}
 
