@@ -55,7 +55,9 @@ public class MGWT {
 	private static final Logger logger = Logger.getLogger("MGWT");
 
 	static {
-		setupOrientation();
+		if (GWT.isClient()) {
+			setupOrientation();
+		}
 
 	}
 
@@ -374,6 +376,7 @@ public class MGWT {
 	}-*/;
 
 	private static void setupOrientation() {
+
 		if (!orientationSupport()) {
 			Window.addResizeHandler(new ResizeHandler() {
 
