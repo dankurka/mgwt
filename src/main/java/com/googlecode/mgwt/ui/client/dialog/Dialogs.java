@@ -27,7 +27,7 @@ import com.googlecode.mgwt.ui.client.widget.Button;
 
 /**
  * Utility class to use the most common dialog classes
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -48,7 +48,7 @@ public class Dialogs {
 
 	/**
 	 * Show an alert to the user
-	 *
+	 * 
 	 * @param title - the title of the alert
 	 * @param text - the text of the alert
 	 * @param callback - the callback that is called when the user clicks the ok
@@ -73,7 +73,7 @@ public class Dialogs {
 
 	/**
 	 * Show a confirm dialog to the user
-	 *
+	 * 
 	 * @param title - The title of the Dialog
 	 * @param text - the text to confirm
 	 * @param callback - the callback that is called when a button is taped on
@@ -110,7 +110,7 @@ public class Dialogs {
 
 	/**
 	 * Show an options dialog to the user
-	 *
+	 * 
 	 * @param options - text and type of the buttons to show
 	 * @param callback - the callback of the button that was selected
 	 */
@@ -121,7 +121,7 @@ public class Dialogs {
 
 	/**
 	 * Show an options dialog to the user
-	 *
+	 * 
 	 * @param options - text and type of the buttons to show
 	 * @param callback - the callback of the button that was selected
 	 * @param widgetToCover - the widget that should be covered by the dialog
@@ -143,6 +143,8 @@ public class Dialogs {
 			case CONFIRM:
 				button.setConfirm(true);
 				break;
+			default:
+				throw new RuntimeException("how did we get here?");
 			}
 			button.addTapHandler(new InternalTouchHandler(count, optionsDialog, callback));
 			optionsDialog.add(button);

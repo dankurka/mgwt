@@ -24,8 +24,10 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.FeatureDetection;
 
 /**
- * <p>Scrollbar class.</p>
- *
+ * <p>
+ * Scrollbar class.
+ * </p>
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -60,17 +62,23 @@ public class Scrollbar extends Widget {
 	}
 
 	/**
-	 * <p>Constructor for Scrollbar.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss} object.
-	 * @param orientation a {@link com.googlecode.mgwt.ui.client.panel.Scrollbar.Orientation} object.
+	 * <p>
+	 * Constructor for Scrollbar.
+	 * </p>
+	 * 
+	 * @param css a
+	 *            {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
+	 *            object.
+	 * @param orientation a
+	 *            {@link com.googlecode.mgwt.ui.client.panel.Scrollbar.Orientation}
+	 *            object.
 	 * @param has3d a boolean.
 	 * @param scrollAreaSize a int.
 	 * @param wholeSize a int.
 	 */
 	public Scrollbar(ScrollPanelCss css, Orientation orientation, boolean has3d, int scrollAreaSize, int wholeSize) {
 		this.css = css;
-		//TODO remove this
+		// TODO remove this
 		if (wholeSize == 0) {
 			wholeSize = 300;
 		}
@@ -78,7 +86,7 @@ public class Scrollbar extends Widget {
 		this.orientation = orientation;
 		uuid = ++global_uuid;
 		maxSize = scrollAreaSize - 10;
-		size = Math.max(Math.round(maxSize * maxSize / wholeSize), 6);
+		size = Math.max(Math.round(((float) maxSize * maxSize) / wholeSize), 6);
 		maxScroll = maxSize - size;
 		wrapperSize = ((double) scrollAreaSize) / (wholeSize);
 		wrapperProp = ((double) maxScroll / (scrollAreaSize - wholeSize));
@@ -159,18 +167,22 @@ public class Scrollbar extends Widget {
 			canvas1.closePath();
 			canvas1.fill();
 			break;
+		default:
+			throw new RuntimeException("how did we get here?");
 
 		}
 
 	}
 
 	private native void applyStyle(Element el, String styleText)/*-{
-																el.style.cssText = styleText;
-																}-*/;
+		el.style.cssText = styleText;
+	}-*/;
 
 	/**
-	 * <p>setPosition</p>
-	 *
+	 * <p>
+	 * setPosition
+	 * </p>
+	 * 
 	 * @param pos a int.
 	 */
 	public void setPosition(int pos) {
@@ -199,16 +211,20 @@ public class Scrollbar extends Widget {
 			CssUtil.translate(bar, 0, pos);
 			break;
 
+		default:
+			throw new RuntimeException("how did we get here?");
 		}
 
 	}
 
 	private native void setTransform(Element el, String transform)/*-{
-																	el.style.webkitTransform = transform;
-																	}-*/;
+		el.style.webkitTransform = transform;
+	}-*/;
 
 	/**
-	 * <p>hide</p>
+	 * <p>
+	 * hide
+	 * </p>
 	 */
 	public void hide() {
 		if (FeatureDetection.has3d()) {
@@ -219,7 +235,9 @@ public class Scrollbar extends Widget {
 	}
 
 	/**
-	 * <p>show</p>
+	 * <p>
+	 * show
+	 * </p>
 	 */
 	public void show() {
 		if (FeatureDetection.has3d()) {
@@ -231,8 +249,10 @@ public class Scrollbar extends Widget {
 	}
 
 	/**
-	 * <p>setTransitionTime</p>
-	 *
+	 * <p>
+	 * setTransitionTime
+	 * </p>
+	 * 
 	 * @param milliseconds a int.
 	 */
 	public void setTransitionTime(int milliseconds) {

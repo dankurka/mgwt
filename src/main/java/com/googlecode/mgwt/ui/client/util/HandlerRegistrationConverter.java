@@ -20,7 +20,7 @@ import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
  * Considered internal
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -29,9 +29,12 @@ public class HandlerRegistrationConverter implements HandlerRegistration, com.go
 	private final HandlerRegistration hrOld;
 
 	/**
-	 * <p>Constructor for HandlerRegistrationConverter.</p>
-	 *
-	 * @param hr a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 * <p>
+	 * Constructor for HandlerRegistrationConverter.
+	 * </p>
+	 * 
+	 * @param hr a {@link com.google.gwt.event.shared.HandlerRegistration}
+	 *            object.
 	 */
 	public HandlerRegistrationConverter(com.google.gwt.event.shared.HandlerRegistration hr) {
 		this.hr = hr;
@@ -39,9 +42,13 @@ public class HandlerRegistrationConverter implements HandlerRegistration, com.go
 	}
 
 	/**
-	 * <p>Constructor for HandlerRegistrationConverter.</p>
-	 *
-	 * @param hrOld a {@link com.google.web.bindery.event.shared.HandlerRegistration} object.
+	 * <p>
+	 * Constructor for HandlerRegistrationConverter.
+	 * </p>
+	 * 
+	 * @param hrOld a
+	 *            {@link com.google.web.bindery.event.shared.HandlerRegistration}
+	 *            object.
 	 */
 	public HandlerRegistrationConverter(HandlerRegistration hrOld) {
 		this.hrOld = hrOld;
@@ -51,10 +58,10 @@ public class HandlerRegistrationConverter implements HandlerRegistration, com.go
 	/** {@inheritDoc} */
 	@Override
 	public void removeHandler() {
-		if (hr == null) {
+		if (hr != null) {
 			hr.removeHandler();
 		}
-		if (hrOld == null) {
+		if (hrOld != null) {
 			hrOld.removeHandler();
 		}
 

@@ -38,7 +38,7 @@ import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
  */
 public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
-	public class IpadMenu extends Composite {
+	public static class IpadMenu extends Composite {
 
 		private FlowPanel main;
 

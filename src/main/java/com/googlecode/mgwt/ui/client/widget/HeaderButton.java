@@ -20,7 +20,6 @@ import com.google.gwt.dom.client.ParagraphElement;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
@@ -28,11 +27,11 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
  * A Button that can be used inside a {@link HeaderPanel}
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
-public class HeaderButton extends ButtonBase implements HasTapHandlers {
+public class HeaderButton extends ButtonBase {
 
 	private ParagraphElement pElement;
 	protected final HeaderCss headerCss;
@@ -46,7 +45,7 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 
 	/**
 	 * Construct a HeaderButton with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public HeaderButton(HeaderCss css) {
@@ -96,7 +95,7 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 
 	/**
 	 * Should the button be rendered as a back button
-	 *
+	 * 
 	 * @param back true to render as a back button
 	 */
 	public void setBackButton(boolean back) {
@@ -108,7 +107,7 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 
 	/**
 	 * Should the button be rendered as a forward button
-	 *
+	 * 
 	 * @param forward true to render as a forward button
 	 */
 	public void setForwardButton(boolean forward) {
@@ -120,7 +119,7 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 
 	/**
 	 * Should the button be rendered with rounded corners
-	 *
+	 * 
 	 * @param round true to render as a round button
 	 */
 	public void setRoundButton(boolean round) {
@@ -131,7 +130,9 @@ public class HeaderButton extends ButtonBase implements HasTapHandlers {
 	}
 
 	/**
-	 * <p>removeStyles</p>
+	 * <p>
+	 * removeStyles
+	 * </p>
 	 */
 	protected void removeStyles() {
 		removeStyleName(headerCss.back());

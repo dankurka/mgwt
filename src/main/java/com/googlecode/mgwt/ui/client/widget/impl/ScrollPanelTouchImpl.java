@@ -50,9 +50,9 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 /**
- *
+ * 
  * A ScrollPanel implementation based on -webkit-transform and css scrollbars
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -113,16 +113,22 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	private int offsetX;
 
 	/**
-	 * <p>Constructor for ScrollPanelTouchImpl.</p>
+	 * <p>
+	 * Constructor for ScrollPanelTouchImpl.
+	 * </p>
 	 */
 	public ScrollPanelTouchImpl() {
 		this(MGWTStyle.getDefaultClientBundle().getScrollPanelCss());
 	}
 
 	/**
-	 * <p>Constructor for ScrollPanelTouchImpl.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss} object.
+	 * <p>
+	 * Constructor for ScrollPanelTouchImpl.
+	 * </p>
+	 * 
+	 * @param css a
+	 *            {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
+	 *            object.
 	 */
 	public ScrollPanelTouchImpl(ScrollPanelCss css) {
 		this.css = css;
@@ -206,7 +212,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#refresh()
 	 */
 	/**
-	 * <p>refresh</p>
+	 * <p>
+	 * refresh
+	 * </p>
 	 */
 	public void refresh() {
 		updateScrollBars();
@@ -617,7 +625,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		return el.clientHeight || 1;
 	}-*/;
 
-	private class Momentum {
+	private static class Momentum {
 		private final int time;
 		private final int dist;
 
@@ -669,8 +677,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#isScrollingEnabledX()
 	 */
 	/**
-	 * <p>isScrollingEnabledX</p>
-	 *
+	 * <p>
+	 * isScrollingEnabledX
+	 * </p>
+	 * 
 	 * @return a boolean.
 	 */
 	public boolean isScrollingEnabledX() {
@@ -691,8 +701,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#isScrollingEnabledY()
 	 */
 	/**
-	 * <p>isScrollingEnabledY</p>
-	 *
+	 * <p>
+	 * isScrollingEnabledY
+	 * </p>
+	 * 
 	 * @return a boolean.
 	 */
 	public boolean isScrollingEnabledY() {

@@ -165,15 +165,14 @@ public class MGWT {
 			MetaElement statusBarTag = Document.get().createMetaElement();
 			statusBarTag.setName("apple-mobile-web-app-status-bar-style");
 			switch (settings.getStatusBarStyle()) {
-			case DEFAULT:
-				statusBarTag.setContent("default");
-				break;
+
 			case BLACK:
 				statusBarTag.setContent("black");
 				break;
 			case BLACK_TRANSLUCENT:
 				statusBarTag.setContent("black-translucent");
 				break;
+			case DEFAULT:
 			default:
 				statusBarTag.setContent("default");
 				break;

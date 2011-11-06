@@ -12,9 +12,9 @@ import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedHandler;
 
 /**
  * Experimental don`t use right now
- *
+ * 
  * May change in future releases
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -27,7 +27,9 @@ public class PullToRefresh extends PullPanel {
 	private SafeHtml loadingFailedHTML;
 
 	/**
-	 * <p>Constructor for PullToRefresh.</p>
+	 * <p>
+	 * Constructor for PullToRefresh.
+	 * </p>
 	 */
 	public PullToRefresh() {
 		super(new PullArrowHeader(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss()));
@@ -46,8 +48,10 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>Setter for the field <code>noReloadHTML</code>.</p>
-	 *
+	 * <p>
+	 * Setter for the field <code>noReloadHTML</code>.
+	 * </p>
+	 * 
 	 * @param html a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public void setNoReloadHTML(SafeHtml html) {
@@ -59,8 +63,10 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>Setter for the field <code>reloadHTML</code>.</p>
-	 *
+	 * <p>
+	 * Setter for the field <code>reloadHTML</code>.
+	 * </p>
+	 * 
 	 * @param html a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public void setReloadHTML(SafeHtml html) {
@@ -72,8 +78,10 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>Getter for the field <code>noReloadHTML</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>noReloadHTML</code>.
+	 * </p>
+	 * 
 	 * @return a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public SafeHtml getNoReloadHTML() {
@@ -81,8 +89,10 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>Getter for the field <code>reloadHTML</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>reloadHTML</code>.
+	 * </p>
+	 * 
 	 * @return a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public SafeHtml getReloadHTML() {
@@ -90,8 +100,10 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>Getter for the field <code>loadingHTML</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>loadingHTML</code>.
+	 * </p>
+	 * 
 	 * @return a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public SafeHtml getLoadingHTML() {
@@ -99,17 +111,22 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>Setter for the field <code>loadingHTML</code>.</p>
-	 *
-	 * @param loadingHTML a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
+	 * <p>
+	 * Setter for the field <code>loadingHTML</code>.
+	 * </p>
+	 * 
+	 * @param loadingHTML a {@link com.google.gwt.safehtml.shared.SafeHtml}
+	 *            object.
 	 */
 	public void setLoadingHTML(SafeHtml loadingHTML) {
 		this.loadingHTML = loadingHTML;
 	}
 
 	/**
-	 * <p>Getter for the field <code>loadingFailedHTML</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>loadingFailedHTML</code>.
+	 * </p>
+	 * 
 	 * @return a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public SafeHtml getLoadingFailedHTML() {
@@ -117,16 +134,21 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>Setter for the field <code>loadingFailedHTML</code>.</p>
-	 *
-	 * @param loadingFailedHTML a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
+	 * <p>
+	 * Setter for the field <code>loadingFailedHTML</code>.
+	 * </p>
+	 * 
+	 * @param loadingFailedHTML a
+	 *            {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public void setLoadingFailedHTML(SafeHtml loadingFailedHTML) {
 		this.loadingFailedHTML = loadingFailedHTML;
 	}
 
 	/**
-	 * <p>updateText</p>
+	 * <p>
+	 * updateText
+	 * </p>
 	 */
 	protected void updateText() {
 		switch (getState()) {
@@ -136,11 +158,15 @@ public class PullToRefresh extends PullPanel {
 		case PULL_RELEASE:
 			header.setHTML(reloadHTML.asString());
 			break;
+		default:
+			throw new RuntimeException("how did we get here?");
 		}
 	}
 
 	/**
-	 * <p>onLoadingSucceeded</p>
+	 * <p>
+	 * onLoadingSucceeded
+	 * </p>
 	 */
 	public void onLoadingSucceeded() {
 		showHeader(false);
@@ -148,7 +174,9 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>onLoadingFailed</p>
+	 * <p>
+	 * onLoadingFailed
+	 * </p>
 	 */
 	public void onLoadingFailed() {
 		showHeader(true);
@@ -172,9 +200,13 @@ public class PullToRefresh extends PullPanel {
 	}
 
 	/**
-	 * <p>getHeader</p>
-	 *
-	 * @return a {@link com.googlecode.mgwt.ui.client.widget.base.PullArrowHeader} object.
+	 * <p>
+	 * getHeader
+	 * </p>
+	 * 
+	 * @return a
+	 *         {@link com.googlecode.mgwt.ui.client.widget.base.PullArrowHeader}
+	 *         object.
 	 */
 	protected PullArrowHeader getHeader() {
 		return (PullArrowHeader) header;

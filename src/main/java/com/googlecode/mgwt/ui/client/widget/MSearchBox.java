@@ -46,7 +46,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A search widget
- *
+ * 
  * @author Daniel Kurka Date: 30.05.2010
  * @version $Id: $
  */
@@ -127,7 +127,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		}
 	}
 
-	private class ClearButton extends TouchWidget {
+	private static class ClearButton extends TouchWidget {
 
 		public ClearButton() {
 			setElement(DOM.createDiv());
@@ -150,7 +150,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 
 	/**
 	 * Construct a search box with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MSearchBox(MSearchBoxCss css) {
@@ -231,8 +231,10 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * @see com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder#getPlaceHolder()
 	 */
 	/**
-	 * <p>getPlaceHolder</p>
-	 *
+	 * <p>
+	 * getPlaceHolder
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getPlaceHolder() {
@@ -244,8 +246,10 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * @see com.google.gwt.user.client.ui.HasText#getText()
 	 */
 	/**
-	 * <p>getText</p>
-	 *
+	 * <p>
+	 * getText
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getText() {
@@ -284,8 +288,10 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * @see com.google.gwt.user.client.ui.HasName#getName()
 	 */
 	/**
-	 * <p>getName</p>
-	 *
+	 * <p>
+	 * getName
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getName() {
@@ -306,8 +312,10 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * @see com.google.gwt.user.client.ui.HasValue#getValue()
 	 */
 	/**
-	 * <p>getValue</p>
-	 *
+	 * <p>
+	 * getValue
+	 * </p>
+	 * 
 	 * @return a {@link java.lang.String} object.
 	 */
 	public String getValue() {
@@ -319,8 +327,10 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
 	 */
 	/**
-	 * <p>setValue</p>
-	 *
+	 * <p>
+	 * setValue
+	 * </p>
+	 * 
 	 * @param value a {@link java.lang.String} object.
 	 */
 	public void setValue(String value) {
