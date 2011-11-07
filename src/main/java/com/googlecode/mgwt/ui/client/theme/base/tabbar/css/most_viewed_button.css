@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, mostViewed, selected;
+}
+
 .mgwt-TabBar-Button.mostViewed{
 		
 }

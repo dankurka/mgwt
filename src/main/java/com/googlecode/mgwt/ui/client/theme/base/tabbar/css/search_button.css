@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, search, selected;
+}
+
 .mgwt-TabBar-Button.search{
 	
 }

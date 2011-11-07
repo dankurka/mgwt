@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, favorites, selected;
+}
+
 .mgwt-TabBar-Button.favorites{
 	
 }

@@ -1,22 +1,5 @@
 @url backgroundImage tabBarBackgroundImage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @if mgwt.css pretty {
 	@external mgwt-TabBar;
 }

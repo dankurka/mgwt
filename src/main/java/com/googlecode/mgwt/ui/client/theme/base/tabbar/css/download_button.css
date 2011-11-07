@@ -1,3 +1,6 @@
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, downloads, selected;
+}
 
 .mgwt-TabBar-Button.downloads{
 

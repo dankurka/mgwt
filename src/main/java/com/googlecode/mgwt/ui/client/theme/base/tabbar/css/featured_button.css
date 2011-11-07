@@ -1,3 +1,6 @@
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, featured, selected;
+}
 
 .mgwt-TabBar-Button.featured{
 		

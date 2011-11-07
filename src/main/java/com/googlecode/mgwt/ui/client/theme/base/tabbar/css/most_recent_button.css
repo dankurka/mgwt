@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, mostRecent, selected;
+}
+
 .mgwt-TabBar-Button.mostRecent{
 		
 }

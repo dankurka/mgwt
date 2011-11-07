@@ -1,6 +1,5 @@
 @if mgwt.css pretty {
-	@external mgwt-Button, active, small, round, important, confirm;
-	
+	@external mgwt-Button, active, small, round, important, confirm;	
 }
 
 
