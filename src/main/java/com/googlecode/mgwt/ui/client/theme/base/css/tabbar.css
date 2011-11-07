@@ -29,8 +29,9 @@
 		/*background: literal('-webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(1%,#3d3d3d), color-stop(2%,#212121), color-stop(100%,#0e0e0e))'); 
 		*/
 		background-image: backgroundImage;
-		background-repeat: repeat-x;
-		display: inline-block;
+		
+		display: \-webkit-box;
+		\-webkit-box-orient: horizontal;
 		overflow: hidden;
 	}
 
@@ -44,7 +45,9 @@
 		width: 100%;
 		height: 40px;
 		background-color: inherit;
-		display: inline-block;
+		
+		display: \-webkit-box;
+		\-webkit-box-orient: horizontal;
 		overflow: hidden;
 		border-bottom: 2px solid rgb(82, 163, 196);
 	}
@@ -58,8 +61,8 @@
 	.mgwt-TabBar{
 		width: 100%;
 		height: 40px;
-		background-color: inherit;
-		display: inline-block;
+		display: \-webkit-box;
+		\-webkit-box-orient: horizontal;
 		overflow: hidden;
 		border-bottom: 2px solid rgb(0, 92, 176);
 	}

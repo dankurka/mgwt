@@ -5,16 +5,15 @@
 @if mgwt.os ipad iphone desktop {
 
 	.mgwt-TabBar-Button{
-		display: inline-block;
-			position: relative;
-			min-width: 60px;
-			font-size: 9px;
-			color: #999995;
-			padding-top: 33px;
-			margin-top: 3px;
-			text-align: center;
-			background-position: 50% 0px;
-			background-repeat: no-repeat;
+		\-webkit-box-flex: 1;		
+		min-width: 60px;
+		font-size: 9px;
+		color: #999995;
+		padding-top: 33px;
+		margin-top: 3px;
+		text-align: center;
+		background-position: 50% 0px;
+		background-repeat: no-repeat;
 	}
 	
 	.mgwt-TabBar-Button.selected{
@@ -25,8 +24,7 @@
 @if mgwt.os android android_tablet {
 
 	.mgwt-TabBar-Button{
-		display: inline-block;
-		position: relative;
+		\-webkit-box-flex: 1;		
 		min-width: 80px;
 		font-size: 14px;
 		color: white;
@@ -45,8 +43,7 @@
 @if mgwt.os blackberry {
 	
 	.mgwt-TabBar-Button { 
-		display: inline-block;
-		position: relative;
+		\-webkit-box-flex: 1;		
 		min-width: 80px;
 		font-size: 14px;
 		color: white;
