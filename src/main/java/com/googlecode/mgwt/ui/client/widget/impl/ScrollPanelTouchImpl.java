@@ -38,7 +38,6 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
@@ -252,9 +251,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			if (isAttached()) {
 				transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
 				updateScrollBars();
-				if (MGWT.getOsDetection().isDesktop()) {
-					mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
-				}
+
+				mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
+
 			}
 			widgetToScroll.addStyleName(css.container());
 
@@ -301,9 +300,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			updateScrollBars();
 			transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
 
-			if (MGWT.getOsDetection().isDesktop()) {
-				mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
-			}
+			mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
 
 		}
 	}
@@ -322,11 +319,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			transEndHandler.removeHandler();
 			transEndHandler = null;
 		}
-		if (MGWT.getOsDetection().isDesktop()) {
-			if (mouseWheelHandlerRegistration != null) {
-				mouseWheelHandlerRegistration.removeHandler();
-				mouseWheelHandlerRegistration = null;
-			}
+
+		if (mouseWheelHandlerRegistration != null) {
+			mouseWheelHandlerRegistration.removeHandler();
+			mouseWheelHandlerRegistration = null;
 		}
 
 	}
