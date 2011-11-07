@@ -20,9 +20,12 @@ import java.util.Iterator;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.MouseWheelEvent;
+import com.google.gwt.event.dom.client.MouseWheelHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -35,6 +38,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
@@ -111,6 +115,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	private int offsetY;
 
 	private int offsetX;
+
+	private HandlerRegistration mouseWheelHandlerRegistration;
 
 	/**
 	 * <p>
@@ -246,6 +252,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			if (isAttached()) {
 				transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
 				updateScrollBars();
+				if (MGWT.getOsDetection().isDesktop()) {
+					mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
+				}
 			}
 			widgetToScroll.addStyleName(css.container());
 
@@ -259,6 +268,17 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			resetPosition();
 		}
 
+	}
+
+	private final class MouseWheelHandlerImplementation implements MouseWheelHandler {
+		@Override
+		public void onMouseWheel(MouseWheelEvent event) {
+
+			int velocity = getMouseWheelVelocity(event.getNativeEvent());
+
+			scrollTo(position_x, position_y + velocity, 100);
+
+		}
 	}
 
 	private class TransistionEndListener implements TransitionEndHandler {
@@ -281,8 +301,16 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			updateScrollBars();
 			transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
 
+			if (MGWT.getOsDetection().isDesktop()) {
+				mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
+			}
+
 		}
 	}
+
+	private native int getMouseWheelVelocity(NativeEvent evt)/*-{
+		return Math.round(-evt.wheelDelta) || 0;
+	}-*/;
 
 	/** {@inheritDoc} */
 	@Override
@@ -293,6 +321,12 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		if (transEndHandler != null) {
 			transEndHandler.removeHandler();
 			transEndHandler = null;
+		}
+		if (MGWT.getOsDetection().isDesktop()) {
+			if (mouseWheelHandlerRegistration != null) {
+				mouseWheelHandlerRegistration.removeHandler();
+				mouseWheelHandlerRegistration = null;
+			}
 		}
 
 	}
