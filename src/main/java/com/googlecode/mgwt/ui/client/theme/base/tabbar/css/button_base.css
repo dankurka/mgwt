@@ -28,13 +28,13 @@
 
 	.mgwt-TabBar-Button{
 		\-webkit-box-flex: 1;		
-		min-width: 80px;
-		font-size: 14px;
+		min-width: 60px;
+		font-size: 12px;
 		color: white;
 		text-align: center;
 		top:10px;
 		height: 30px;
-		
+		white-space: \-webkit-nowrap;
 		margin-left: 10px;
 	}
 	.mgwt-TabBar-Button.selected{
