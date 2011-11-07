@@ -18,9 +18,9 @@ package com.googlecode.mgwt.ui.client.widget.event;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * <p>ScrollStartEvent class.</p>
- *
- * @author kurt
+ * A Scroll start event is fired, when the scrolling starts
+ * 
+ * @author Daniel Kurka
  * @version $Id: $
  */
 public class ScrollStartEvent extends GwtEvent<ScrollStartHandler> {
@@ -31,10 +31,12 @@ public class ScrollStartEvent extends GwtEvent<ScrollStartHandler> {
 	private final int y;
 
 	/**
-	 * <p>Constructor for ScrollStartEvent.</p>
-	 *
-	 * @param x a int.
-	 * @param y a int.
+	 * Construct a scroll start event
+	 * 
+	 * @param x
+	 *            the x position of the touch where the scrolling started
+	 * @param y
+	 *            the y position of the touch where the scrolling started
 	 */
 	public ScrollStartEvent(int x, int y) {
 		this.x = x;
@@ -56,8 +58,10 @@ public class ScrollStartEvent extends GwtEvent<ScrollStartHandler> {
 	}
 
 	/**
-	 * <p>getType</p>
-	 *
+	 * <p>
+	 * getType
+	 * </p>
+	 * 
 	 * @return a Type object.
 	 */
 	public static Type<ScrollStartHandler> getType() {
@@ -65,18 +69,18 @@ public class ScrollStartEvent extends GwtEvent<ScrollStartHandler> {
 	}
 
 	/**
-	 * <p>Getter for the field <code>x</code>.</p>
-	 *
-	 * @return a int.
+	 * Get the x position of the scroll start
+	 * 
+	 * @return the x position
 	 */
 	public int getX() {
 		return x;
 	}
 
 	/**
-	 * <p>Getter for the field <code>y</code>.</p>
-	 *
-	 * @return a int.
+	 * Get the y position of the scroll start
+	 * 
+	 * @return the y position
 	 */
 	public int getY() {
 		return y;
