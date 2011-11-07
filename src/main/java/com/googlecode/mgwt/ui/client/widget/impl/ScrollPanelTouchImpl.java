@@ -32,12 +32,15 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
+import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
+import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
@@ -116,6 +119,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	private int offsetX;
 
 	private HandlerRegistration mouseWheelHandlerRegistration;
+
+	private HandlerRegistration orientationHandlerRegistration;
 
 	/**
 	 * <p>
@@ -294,6 +299,15 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	protected void onAttach() {
 		super.onAttach();
 
+		orientationHandlerRegistration = MGWT.addOrientationChangeHandler(new OrientationChangeHandler() {
+
+			@Override
+			public void onOrientationChanged(OrientationChangeEvent event) {
+				refresh();
+
+			}
+		});
+
 		touchRegistration = main.addTouchHandler(touchObserver);
 
 		if (widgetToScroll != null) {
@@ -328,6 +342,11 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		if (mouseWheelHandlerRegistration != null) {
 			mouseWheelHandlerRegistration.removeHandler();
 			mouseWheelHandlerRegistration = null;
+		}
+
+		if (orientationHandlerRegistration != null) {
+			orientationHandlerRegistration.removeHandler();
+			orientationHandlerRegistration = null;
 		}
 
 	}
