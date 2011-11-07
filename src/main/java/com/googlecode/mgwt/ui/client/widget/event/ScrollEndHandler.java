@@ -18,16 +18,16 @@ package com.googlecode.mgwt.ui.client.widget.event;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
- * <p>ScrollEndHandler interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * A scroll end handlers handles {@link ScrollEndEvent} events.
+ * 
+ * @author Daniel Kurka
  */
 public interface ScrollEndHandler extends EventHandler {
 	/**
-	 * <p>onScrollEnd</p>
-	 *
-	 * @param event a {@link com.googlecode.mgwt.ui.client.widget.event.ScrollEndEvent} object.
+	 * Called when a scroll event occurs
+	 * 
+	 * @param event
+	 *            the scroll end event
 	 */
 	public void onScrollEnd(ScrollEndEvent event);
 }
