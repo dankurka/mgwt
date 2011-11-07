@@ -18,16 +18,17 @@ package com.googlecode.mgwt.ui.client.widget.event;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
- * <p>ScrollStartHandler interface.</p>
- *
- * @author kurt
+ * A scroll start handler receives {@link ScrollStartEvent} events.
+ * 
+ * @author Daniel Kurka
  * @version $Id: $
  */
 public interface ScrollStartHandler extends EventHandler {
 	/**
-	 * <p>onStartScroll</p>
-	 *
-	 * @param event a {@link com.googlecode.mgwt.ui.client.widget.event.ScrollStartEvent} object.
+	 * Called when a scroll start event occurs
+	 * 
+	 * @param event
+	 *            the scroll start event
 	 */
 	public void onStartScroll(ScrollStartEvent event);
 }
