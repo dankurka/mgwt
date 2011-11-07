@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.panel;
+package com.googlecode.mgwt.ui.client.widget.base;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
@@ -70,7 +70,7 @@ public class Scrollbar extends Widget {
 	 *            {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
 	 *            object.
 	 * @param orientation a
-	 *            {@link com.googlecode.mgwt.ui.client.panel.Scrollbar.Orientation}
+	 *            {@link com.googlecode.mgwt.ui.client.widget.base.Scrollbar.Orientation}
 	 *            object.
 	 * @param has3d a boolean.
 	 * @param scrollAreaSize a int.
