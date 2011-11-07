@@ -1,3 +1,6 @@
+@if mgwt.css pretty {
+	@external mgwt-BarButton;
+}
 
 .mgwt-BarButton {
 	position: relative;

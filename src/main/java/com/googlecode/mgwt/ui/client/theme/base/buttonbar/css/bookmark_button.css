@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external bookmark, active;
+}
+
 @url bookmarksImage buttonBarBookmarksImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

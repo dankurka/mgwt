@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external play, active;
+}
+
 @url playImage buttonBarPlayImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

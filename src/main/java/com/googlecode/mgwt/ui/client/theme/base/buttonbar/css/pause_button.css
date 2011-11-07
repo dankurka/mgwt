@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external pause, active;
+}
+
 @url pauseImage buttonBarPauseImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external delete, active;
+}
+
 @url deleteImage buttonBarDeleteImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

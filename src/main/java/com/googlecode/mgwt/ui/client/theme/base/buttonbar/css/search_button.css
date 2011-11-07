@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external search, active;
+}
+
 @url searchImage buttonBarSearchImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

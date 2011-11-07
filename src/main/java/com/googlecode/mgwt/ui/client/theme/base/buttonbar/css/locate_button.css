@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external locate, active;
+}
+
 @url locateImage buttonBarLocateImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

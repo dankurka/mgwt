@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external compose, active;
+}
+
 @url composeImage buttonBarComposeImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

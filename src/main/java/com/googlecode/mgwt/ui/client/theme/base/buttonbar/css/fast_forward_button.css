@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external fastForward, active;
+}
+
 @url fastForwardImage buttonBarFastForwardImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

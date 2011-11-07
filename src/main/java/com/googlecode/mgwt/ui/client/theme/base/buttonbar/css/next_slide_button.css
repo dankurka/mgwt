@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external nextSlide, active;
+}
+
 @url nextSlideImage buttonBarNextSlideImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

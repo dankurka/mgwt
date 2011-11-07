@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external stop, active;
+}
+
 @url stopImage buttonBarStopImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

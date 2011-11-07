@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external organize, active;
+}
+
 @url organizeImage buttonBarOrganizeImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

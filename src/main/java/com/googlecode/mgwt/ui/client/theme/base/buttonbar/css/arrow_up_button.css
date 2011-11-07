@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external arrowUp, active;
+}
+
 @url arrowUpImage buttonBarArrowUpImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

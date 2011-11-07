@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external rewind, active;
+}
+
 @url rewindImage buttonBarRewindImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

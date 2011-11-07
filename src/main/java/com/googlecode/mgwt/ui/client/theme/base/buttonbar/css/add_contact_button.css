@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external contactAdd, active;
+}
+
 @url contactAddImage buttonBarContactAddImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external refresh, active;
+}
+
 @url refreshImage buttonBarRefreshImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

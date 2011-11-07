@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external trash, active;
+}
+
 @url trashImage buttonBarTrashImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

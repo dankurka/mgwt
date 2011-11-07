@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external reply, active;
+}
+
 @url replyImage buttonBarReplyImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

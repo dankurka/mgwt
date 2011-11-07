@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external newIcon, active;
+}
+
 @url newImage buttonBarNewImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 

@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+	@external camera, active;
+}
+
 @url cameraImage buttonBarCameraImage;
 @url pressedImage buttonBarPressedIndicatorImage;
 
