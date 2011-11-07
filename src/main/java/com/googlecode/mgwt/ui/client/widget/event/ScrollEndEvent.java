@@ -19,7 +19,7 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * A scroll end event is fired after a scroll has finished
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -31,15 +31,21 @@ public class ScrollEndEvent extends GwtEvent<ScrollEndHandler> {
 	private final int duration;
 	private final int currentX;
 	private final int currentY;
+	private boolean preventDefault;
 
 	/**
-	 * <p>Constructor for ScrollEndEvent.</p>
-	 *
-	 * @param x a int.
-	 * @param y a int.
-	 * @param duration a int.
-	 * @param currentX a int.
-	 * @param currentY a int.
+	 * Construct a scroll end event
+	 * 
+	 * @param x
+	 *            the end position of the scroll
+	 * @param y
+	 *            the end position of the scroll
+	 * @param duration
+	 *            the remaining time to reach the end position
+	 * @param currentX
+	 *            the current x position
+	 * @param currentY
+	 *            the current y position
 	 */
 	public ScrollEndEvent(int x, int y, int duration, int currentX, int currentY) {
 		this.x = x;
@@ -50,17 +56,17 @@ public class ScrollEndEvent extends GwtEvent<ScrollEndHandler> {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
+	/**
+	 * {@inheritDoc}
 	 */
-	/** {@inheritDoc} */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ScrollEndHandler> getAssociatedType() {
 		return TYPE;
 	}
 
-	/** {@inheritDoc} */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void dispatch(ScrollEndHandler handler) {
 		handler.onScrollEnd(this);
@@ -68,72 +74,70 @@ public class ScrollEndEvent extends GwtEvent<ScrollEndHandler> {
 	}
 
 	/**
-	 * <p>Getter for the field <code>x</code>.</p>
-	 *
-	 * @return a int.
+	 * get the x end position of the scroll
+	 * 
+	 * @return the x position
 	 */
 	public int getX() {
 		return x;
 	}
 
 	/**
-	 * <p>Getter for the field <code>y</code>.</p>
-	 *
-	 * @return a int.
+	 * get the y end position of the scroll
+	 * 
+	 * @return the y position
 	 */
 	public int getY() {
 		return y;
 	}
 
 	/**
-	 * <p>getType</p>
-	 *
-	 * @return a Type object.
+	 * get the type of the event
+	 * 
+	 * @return the type of the event
 	 */
 	public static Type<ScrollEndHandler> getType() {
 		return TYPE;
 	}
 
 	/**
-	 * <p>Getter for the field <code>currentX</code>.</p>
-	 *
-	 * @return a int.
+	 * get the current x position of the scroller
+	 * 
+	 * @return the current x position
 	 */
 	public int getCurrentX() {
 		return currentX;
 	}
 
 	/**
-	 * <p>Getter for the field <code>currentY</code>.</p>
-	 *
-	 * @return a int.
+	 * get the current y position of the scroller
+	 * 
+	 * @return the current y position
 	 */
 	public int getCurrentY() {
 		return currentY;
 	}
 
 	/**
-	 * <p>Getter for the field <code>duration</code>.</p>
-	 *
-	 * @return a int.
+	 * the duration in ms to reach to end position
+	 * 
+	 * @return the duration in ms to reach the end position
 	 */
 	public int getDuration() {
 		return duration;
 	}
 
-	private boolean preventDefault;
-
 	/**
-	 * <p>preventDefault</p>
+	 * should scrolling the end position be prevented?
 	 */
 	public void preventDefault() {
 		preventDefault = true;
 	}
 
 	/**
-	 * <p>isPreventDefault</p>
-	 *
-	 * @return a boolean.
+	 * should scrolling the end position be prevented?
+	 * 
+	 * @return true if someone called {@link #preventDefault()}
 	 */
 	public boolean isPreventDefault() {
 		return preventDefault;
