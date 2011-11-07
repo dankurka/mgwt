@@ -27,9 +27,20 @@
 	background-image: nextSlideImage;
 	background-repeat: no-repeat;
 	
-	\-webkit-transform: rotate(90deg);
 	\-webkit-transform-origin: 12px 9px;
 }
+
+
+@if mgwt.os iphone desktop ipad { 
+	.pullToRefresh .arrow {
+		\-webkit-transform: rotate(90deg) translateZ(0);
+	}
+} @else {
+	.pullToRefresh .arrow {
+	\-webkit-transform: rotate(90deg);
+	}
+}
+
 
 .pullToRefresh .spinner{
 	position: absolute;
@@ -44,6 +55,7 @@
     \-webkit-animation-name: progressIndicatorAnimation;
 	
 }
+
 
 .pullToRefresh .error{
 	position: absolute;
