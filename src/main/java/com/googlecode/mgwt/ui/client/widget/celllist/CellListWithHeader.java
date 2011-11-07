@@ -24,9 +24,7 @@ import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.CellList;
 
 /**
- * <p>
- * CellListWithHeader class.
- * </p>
+ * A cell list with a header text
  * 
  * @author Daniel Kurka
  * @version $Id: $
@@ -37,26 +35,22 @@ public class CellListWithHeader<T> extends Composite {
 	private HTML header;
 
 	/**
-	 * <p>
-	 * Constructor for CellListWithHeader.
-	 * </p>
+	 * Construct a cell list
 	 * 
-	 * @param cell a {@link com.googlecode.mgwt.ui.client.widget.celllist.Cell}
-	 *            object.
+	 * @param cell
+	 *            the cell to use for this cell list
 	 */
 	public CellListWithHeader(Cell<T> cell) {
 		this(cell, MGWTStyle.getDefaultClientBundle().getListCss());
 	}
 
 	/**
-	 * <p>
-	 * Constructor for CellListWithHeader.
-	 * </p>
+	 * Construct a cell list with a given cell and css
 	 * 
-	 * @param cell a {@link com.googlecode.mgwt.ui.client.widget.celllist.Cell}
-	 *            object.
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ListCss}
-	 *            object.
+	 * @param cell
+	 *            the cell to use
+	 * @param css
+	 *            the css to use
 	 */
 	public CellListWithHeader(Cell<T> cell, ListCss css) {
 		css.ensureInjected();
@@ -73,22 +67,18 @@ public class CellListWithHeader<T> extends Composite {
 	}
 
 	/**
-	 * <p>
-	 * Getter for the field <code>header</code>.
-	 * </p>
+	 * Get the header of the cell list
 	 * 
-	 * @return a {@link com.google.gwt.user.client.ui.HasText} object.
+	 * @return the header of the cell list
 	 */
 	public HasText getHeader() {
 		return header;
 	}
 
 	/**
-	 * <p>
-	 * Getter for the field <code>cellList</code>.
-	 * </p>
+	 * Get the cell list
 	 * 
-	 * @return the cellList
+	 * @return the cell list
 	 */
 	public CellList<T> getCellList() {
 		return cellList;
