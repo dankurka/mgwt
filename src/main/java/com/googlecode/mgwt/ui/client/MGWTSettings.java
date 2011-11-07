@@ -42,7 +42,7 @@ public class MGWTSettings {
 			}
 		};
 
-		private String width = "device-width";
+		private String width;
 		private String height;
 
 		private double initialScale = 1;
@@ -187,20 +187,22 @@ public class MGWTSettings {
 		public String getContent() {
 			StringBuffer buffer = new StringBuffer();
 
+			// initial scale
+			buffer.append("initial-scale=" + initialScale);
+			// minimum scale
+			buffer.append(",minimum-scale=" + minimumScale);
+			// maximum scale
+			buffer.append(",maximum-scale=" + maximumScale);
+
 			// width
-			buffer.append("width=" + width);
+			if (width != null) {
+				buffer.append("width=" + width);
+			}
 
 			// height
 			if (height != null) {
 				buffer.append(",height=" + height);
 			}
-
-			// initial scale
-			buffer.append(",initial-scale=" + initialScale);
-			// minimum scale
-			buffer.append(",minimum-scale=" + minimumScale);
-			// maximum scale
-			buffer.append(",maximum-scale=" + maximumScale);
 
 			// user scaleable
 			if (!userScaleAble) {
