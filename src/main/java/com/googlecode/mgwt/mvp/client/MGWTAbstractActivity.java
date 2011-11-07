@@ -23,33 +23,50 @@ import com.google.gwt.event.shared.HandlerRegistration;
 /**
  * A baseclass for Activities which adds the ability to collect all handler
  * instances and removes them when the activity is stopped.
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
 public abstract class MGWTAbstractActivity extends AbstractActivity {
 
-	private LinkedList<HandlerRegistration> handlers;
+	private LinkedList<HandlerRegistration> oldHandlers;
+	private LinkedList<com.google.web.bindery.event.shared.HandlerRegistration> handlers;
 
 	/**
-	 * <p>Constructor for MGWTAbstractActivity.</p>
+	 * <p>
+	 * Constructor for MGWTAbstractActivity.
+	 * </p>
 	 */
 	public MGWTAbstractActivity() {
-		handlers = new LinkedList<HandlerRegistration>();
+		oldHandlers = new LinkedList<HandlerRegistration>();
+		handlers = new LinkedList<com.google.web.bindery.event.shared.HandlerRegistration>();
 	}
 
 	/**
 	 * add a {@link HandlerRegistration} to the handler collection
-	 *
-	 * @param handlerRegistration a {@link com.google.gwt.event.shared.HandlerRegistration} object.
+	 * 
+	 * @param handlerRegistration
+	 *            a {@link com.google.gwt.event.shared.HandlerRegistration}
+	 *            object.
 	 */
-	protected void addHandlerRegistration(HandlerRegistration handlerRegistration) {
+	protected void addHandlerRegistration(com.google.web.bindery.event.shared.HandlerRegistration handlerRegistration) {
 		handlers.add(handlerRegistration);
 	}
 
 	/**
+	 * add a {@link HandlerRegistration} to the handler collection
+	 * 
+	 * @param handlerRegistration
+	 *            a {@link com.google.gwt.event.shared.HandlerRegistration}
+	 *            object.
+	 */
+	protected void addHandlerRegistration(HandlerRegistration handlerRegistration) {
+		oldHandlers.add(handlerRegistration);
+	}
+
+	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * onStop is overriden to automatically clear all
 	 * {@link HandlerRegistration}
 	 */
@@ -61,10 +78,15 @@ public abstract class MGWTAbstractActivity extends AbstractActivity {
 	}
 
 	/**
-	 * Remove all collected handlers, and remove them from the collection
+	 * Remove all collected oldHandlers, and remove them from the collection
 	 */
 	protected void cancelAllHandlerRegistrations() {
-		for (HandlerRegistration hr : handlers) {
+		for (HandlerRegistration hr : oldHandlers) {
+			hr.removeHandler();
+		}
+		oldHandlers.clear();
+
+		for (com.google.web.bindery.event.shared.HandlerRegistration hr : handlers) {
 			hr.removeHandler();
 		}
 		handlers.clear();
