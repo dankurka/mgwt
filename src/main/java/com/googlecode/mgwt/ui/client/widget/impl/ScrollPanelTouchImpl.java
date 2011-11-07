@@ -126,7 +126,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * Constructor for ScrollPanelTouchImpl.
 	 * </p>
 	 * 
-	 * @param css a
+	 * @param css
+	 *            a
 	 *            {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
 	 *            object.
 	 */
@@ -157,15 +158,15 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			@Override
 			public void execute() {
-				if (scrollingEnabledX && widgetToScroll.getOffsetWidth() > 0) {
-					hScrollbar = new Scrollbar(css, Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), widgetToScroll.getOffsetWidth());
-					if (getClientWidth(main.getElement()) < widgetToScroll.getOffsetWidth())
+				if (scrollingEnabledX && getWidgetToScrollWidth() > 0) {
+					hScrollbar = new Scrollbar(css, Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), getWidgetToScrollWidth());
+					if (getClientWidth(main.getElement()) < getWidgetToScrollWidth())
 						main.add(hScrollbar);
 				}
 
-				if (scrollingEnabledY && widgetToScroll.getOffsetHeight() > 0) {
-					vScrollbar = new Scrollbar(css, Orientation.VERTICAL, has3d, main.getOffsetHeight(), widgetToScroll.getOffsetHeight());
-					if (getClientHeight(main.getElement()) < widgetToScroll.getOffsetHeight())
+				if (scrollingEnabledY && getWidgetToScrollHeight() > 0) {
+					vScrollbar = new Scrollbar(css, Orientation.VERTICAL, has3d, main.getOffsetHeight(), getWidgetToScrollHeight());
+					if (getClientHeight(main.getElement()) < getWidgetToScrollHeight())
 						main.add(vScrollbar);
 				}
 
@@ -453,13 +454,13 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			if (touchTime < 300 && momentum) {
 				if (scrollingEnabledX) {
-					Momentum m = calculateMomentum(position_x - scrollStartX, scrollTime, -position_x, position_x + widgetToScroll.getOffsetWidth() - getClientWidth(main.getElement()));
+					Momentum m = calculateMomentum(position_x - scrollStartX, scrollTime, -position_x, position_x + getWidgetToScrollWidth() - getClientWidth(main.getElement()));
 					newDuration = Math.max(m.getTime(), newDuration);
 					newPosX = position_x + m.getDist();
 				}
 
 				if (scrollingEnabledY) {
-					Momentum m = calculateMomentum(position_y - scrollStartY, scrollTime, -position_y, position_y + widgetToScroll.getOffsetHeight() - getClientHeight(main.getElement()));
+					Momentum m = calculateMomentum(position_y - scrollStartY, scrollTime, -position_y, position_y + getWidgetToScrollHeight() - getClientHeight(main.getElement()));
 					newDuration = Math.max(m.getTime(), newDuration);
 					newPosY = position_y + m.getDist();
 
@@ -604,7 +605,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * 
 	 */
 	private int getMaxScrollY() {
-		return getClientHeight(main.getElement()) - widgetToScroll.getOffsetHeight();
+		return getClientHeight(main.getElement()) - getWidgetToScrollHeight();
 
 	}
 
@@ -613,7 +614,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 */
 	private int getMaxScrollX() {
 
-		return getClientWidth(main.getElement()) - widgetToScroll.getOffsetWidth() - offsetX;
+		return getClientWidth(main.getElement()) - getWidgetToScrollWidth() - offsetX;
 
 	}
 
@@ -798,5 +799,36 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		scrollTo(position_x, position_y, 200);
 
 	}
+
+	private int getWidgetToScrollHeight() {
+		return widgetToScroll.getOffsetHeight() + getMarginHeight(widgetToScroll.getElement());
+	}
+
+	private int getWidgetToScrollWidth() {
+		return widgetToScroll.getOffsetWidth() + getMarginWidth(widgetToScroll.getElement());
+	}
+
+	private native int getMarginWidth(com.google.gwt.user.client.Element el)/*-{
+		var left = 0;
+		var right = 0;
+		var style = $wnd.getComputedStyle(el);
+
+		left = parseInt(style.marginLeft, 10);
+		right = parseInt(style.marginRight, 10);
+
+		return left + right;
+	}-*/;
+
+	private native int getMarginHeight(com.google.gwt.user.client.Element el)/*-{
+
+		var top = 0;
+		var bottom = 0;
+		var style = $wnd.getComputedStyle(el);
+
+		top = parseInt(style.marginTop, 10);
+		bottom = parseInt(style.marginBottom, 10);
+
+		return top + bottom;
+	}-*/;
 
 }
