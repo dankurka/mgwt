@@ -18,23 +18,24 @@ package com.googlecode.mgwt.ui.client.widget.event;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * <p>ScrollEvent class.</p>
- *
- * @author kurt
- * @version $Id: $
+ * The scroll event is fired while scrolling
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public class ScrollEvent extends GwtEvent<ScrollHandler> {
 
-	/** Constant <code>TYPE</code> */
-	public static final GwtEvent.Type<ScrollHandler> TYPE = new Type<ScrollHandler>();
+	private static final GwtEvent.Type<ScrollHandler> TYPE = new Type<ScrollHandler>();
 	private final int posX;
 	private final int posY;
 
 	/**
-	 * <p>Constructor for ScrollEvent.</p>
-	 *
-	 * @param posX a int.
-	 * @param posY a int.
+	 * Construct a scroll event
+	 * 
+	 * @param posX
+	 *            the x position of the scroller
+	 * @param posY
+	 *            the y position of the scroller
 	 */
 	public ScrollEvent(int posX, int posY) {
 		this.posX = posX;
@@ -42,13 +43,17 @@ public class ScrollEvent extends GwtEvent<ScrollHandler> {
 
 	}
 
-	/** {@inheritDoc} */
+	/**
+	 * {@inheritDoc}
+	 * */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<ScrollHandler> getAssociatedType() {
 		return TYPE;
 	}
 
-	/** {@inheritDoc} */
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected void dispatch(ScrollHandler handler) {
 		handler.onScroll(this);
@@ -56,27 +61,27 @@ public class ScrollEvent extends GwtEvent<ScrollHandler> {
 	}
 
 	/**
-	 * <p>getType</p>
-	 *
-	 * @return a {@link com.google.gwt.event.shared.GwtEvent.Type} object.
+	 * Get the type of the event for generic handler registration
+	 * 
+	 * @return the type of the event
 	 */
 	public static GwtEvent.Type<ScrollHandler> getType() {
 		return TYPE;
 	}
 
 	/**
-	 * <p>getX</p>
-	 *
-	 * @return a int.
+	 * The x position of the scroll event
+	 * 
+	 * @return the x position of the scroll event
 	 */
 	public int getX() {
 		return posX;
 	}
 
 	/**
-	 * <p>getY</p>
-	 *
-	 * @return a int.
+	 * get the y position of the scroll event
+	 * 
+	 * @return the y position of the scroll event
 	 */
 	public int getY() {
 		return posY;
