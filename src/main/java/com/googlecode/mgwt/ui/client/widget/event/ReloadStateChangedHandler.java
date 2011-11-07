@@ -18,16 +18,23 @@ package com.googlecode.mgwt.ui.client.widget.event;
 import com.google.gwt.event.shared.EventHandler;
 
 /**
- * <p>ReloadStateChangedHandler interface.</p>
- *
- * @author kurt
+ * <p>
+ * ReloadStateChangedHandler interface.
+ * </p>
+ * 
+ * @author Daniel Kurka
  * @version $Id: $
  */
 public interface ReloadStateChangedHandler extends EventHandler {
 	/**
-	 * <p>onReloadStateChanged</p>
-	 *
-	 * @param event a {@link com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedEvent} object.
+	 * <p>
+	 * onReloadStateChanged
+	 * </p>
+	 * 
+	 * @param event
+	 *            a
+	 *            {@link com.googlecode.mgwt.ui.client.widget.event.ReloadStateChangedEvent}
+	 *            object.
 	 */
 	public void onReloadStateChanged(ReloadStateChangedEvent event);
 }
