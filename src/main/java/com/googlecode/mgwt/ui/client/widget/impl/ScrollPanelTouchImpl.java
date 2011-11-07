@@ -156,6 +156,13 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	}
 
 	private void updateScrollBars() {
+
+		if (!isAttached()) {
+			return;
+		}
+		if (widgetToScroll == null) {
+			return;
+		}
 		if (hScrollbar != null) {
 			main.remove(hScrollbar);
 		}
@@ -168,6 +175,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			@Override
 			public void execute() {
+
 				if (scrollingEnabledX && getWidgetToScrollWidth() > 0) {
 					hScrollbar = new Scrollbar(css, Orientation.HORIZONTAL, has3d, main.getOffsetWidth(), getWidgetToScrollWidth());
 					if (getClientWidth(main.getElement()) < getWidgetToScrollWidth())
