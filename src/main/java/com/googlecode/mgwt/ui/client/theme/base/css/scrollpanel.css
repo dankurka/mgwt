@@ -28,14 +28,14 @@
 .mgwt-Scrollbar.horizontal {
 	bottom: 2px;
 	left: 2px;
-	right: 7px;
+	right: 8px;
 	height: 5px;
 }
 
 .mgwt-Scrollbar.vertical {
 	top: 2px;
 	right: 2px;
-	bottom: 7px;
+	bottom: 8px;
 	width: 5px;
 }
 @if mgwt.os desktop ipad iphone {
