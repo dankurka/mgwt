@@ -82,7 +82,7 @@
 		padding: 0;
 		top: 0px;
 		left: 25px;
-		right: 40px;
+		right: 60px;
 		bottom: 0px;
 		\-webkit-user-select: text;
 		\-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -164,15 +164,15 @@
 
 .mgwt-SearchBox .clear {
 	position: absolute;
-	top: 1px;
-	right: 20px;
-	width: 20px;
-	height: 20px;
+	top: -9px;
+	right: 10px;
+	width: 40px;
+	height: 40px;
 	font-size: 13px;
 	padding: 0;
 	background-image: clearImage;
 	background-repeat: no-repeat;
-	background-position: 0px 50%;
+	background-position: 50% 50%;
 }
 
 .mgwt-SearchBox .clear-active {
