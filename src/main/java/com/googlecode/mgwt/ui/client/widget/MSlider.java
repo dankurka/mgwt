@@ -35,7 +35,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A slider widget
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -103,8 +103,9 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	/**
 	 * Construct a slider with a given css
-	 *
-	 * @param css the css to use
+	 * 
+	 * @param css
+	 *            the css to use
 	 */
 	public MSlider(SliderCss css) {
 		css.ensureInjected();
@@ -130,8 +131,9 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	/**
 	 * Set the maximum of the slider
-	 *
-	 * @param max the maximum to use
+	 * 
+	 * @param max
+	 *            the maximum to use
 	 */
 	public void setMax(int max) {
 		if (max <= 0) {
@@ -142,7 +144,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 	/**
 	 * get the maximum of the slider
-	 *
+	 * 
 	 * @return the maximum of the slider
 	 */
 	public int getMax() {
@@ -188,6 +190,11 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	/** {@inheritDoc} */
 	@Override
 	public void setValue(Integer value, boolean fireEvents) {
+		setValue(value, fireEvents, true);
+
+	}
+
+	protected void setValue(Integer value, boolean fireEvents, boolean updateSlider) {
 		if (value == null) {
 			throw new IllegalArgumentException("value can not be null");
 		}
@@ -197,8 +204,10 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		}
 
 		int oldValue = this.value;
-
-		setSliderPos(value);
+		this.value = value;
+		if (updateSlider) {
+			setSliderPos(value);
+		}
 
 		if (fireEvents) {
 			ValueChangeEvent.fireIfNotEqual(this, oldValue, value);
@@ -231,8 +240,10 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		}
 
 		// scale it to max
-		x = x * max / width;
-		setValue(x, true);
+		int componentValue = x * max / width;
+		setValue(componentValue, true, false);
+
+		sliderWidget.setPos(x);
 	}
 
 }
