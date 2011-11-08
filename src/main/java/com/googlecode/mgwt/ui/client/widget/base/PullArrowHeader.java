@@ -15,11 +15,16 @@
  */
 package com.googlecode.mgwt.ui.client.widget.base;
 
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Style.Display;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
+import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
+import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader;
 import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State;
 
@@ -29,36 +34,54 @@ import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State;
  * @author Daniel Kurka
  * @version $Id: $
  */
-public class PullArrowHeader extends Widget implements PullHeader {
+public class PullArrowHeader extends Composite implements PullHeader {
 
-	private Element main;
+	private FlowPanel main;
 
-	private Element icon;
+	private FlowPanel icon;
 
-	private Element textContainer;
+	private HTML textContainer;
+
+	private ProgressIndicator indicator;
 
 	private final PullToRefreshCss css;
 
 	/**
 	 * Construct a {@link PullArrowHeader} with a given css
 	 * 
-	 * @param css the css to use
+	 * @param css
+	 *            the css to use
 	 */
 	public PullArrowHeader(PullToRefreshCss css) {
 
 		this.css = css;
 		css.ensureInjected();
-		main = DOM.createDiv();
-		main.addClassName(css.pullToRefresh());
-		setElement(main);
+		main = new FlowPanel();
+		main.addStyleName(css.pullToRefresh());
+		initWidget(main);
 
-		icon = DOM.createDiv();
-		icon.addClassName(css.arrow());
-		main.appendChild(icon);
+		icon = new FlowPanel();
+		icon.addStyleName(css.arrow());
+		main.add(icon);
 
-		textContainer = DOM.createDiv();
-		textContainer.addClassName(css.text());
-		main.appendChild(textContainer);
+		indicator = new ProgressIndicator();
+		indicator.addStyleName(css.spinner());
+		indicator.getElement().getStyle().setDisplay(Display.NONE);
+		main.add(indicator);
+
+		textContainer = new HTML();
+		textContainer.addStyleName(css.text());
+		main.add(textContainer);
+
+		addDomHandler(new TransitionEndHandler() {
+
+			@Override
+			public void onTransitionEnd(TransitionEndEvent event) {
+				event.preventDefault();
+				event.stopPropagation();
+
+			}
+		}, TransitionEndEvent.getType());
 	}
 
 	/*
@@ -80,7 +103,9 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	public void scrollStart(State state) {
 		remoteStyles();
 
-		icon.addClassName(css.arrow());
+		icon.addStyleName(css.arrow());
+		icon.setVisible(true);
+		indicator.setVisible(false);
 
 	}
 
@@ -93,9 +118,9 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	public void onScroll(State state, int positionY) {
 		int degree = getRotation(positionY);
 		if (MGWT.getOsDetection().isAndroid()) {
-			icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
+			icon.getElement().setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
 		} else {
-			icon.setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
+			icon.getElement().setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
 		}
 
 	}
@@ -107,8 +132,11 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	/** {@inheritDoc} */
 	@Override
 	public void onScrollEnd(State state, int positionY, int duration) {
+		icon.getElement().setAttribute("style", "");
 		if (state == State.PULL_RELEASE) {
 			showSpinner();
+		} else {
+
 		}
 
 	}
@@ -120,7 +148,10 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 */
 	public void showError() {
 		remoteStyles();
-		icon.addClassName(css.error());
+		icon.addStyleName(css.error());
+
+		icon.setVisible(true);
+		indicator.setVisible(false);
 	}
 
 	/*
@@ -131,7 +162,7 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	@Override
 	public int getHeight() {
 		// TODO
-		return 40;
+		return 70;
 	}
 
 	/*
@@ -142,7 +173,7 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	@Override
 	public int getStateSwitchPosition() {
 		// TODO
-		return 40;
+		return 50;
 	}
 
 	/*
@@ -151,8 +182,13 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 */
 	/** {@inheritDoc} */
 	@Override
-	public void setHTML(String html) {
-		textContainer.setInnerHTML(html);
+	public void setHTML(final String html) {
+		String htmlToSet = html;
+		if (html == null) {
+			htmlToSet = "";
+		}
+
+		textContainer.setHTML(htmlToSet);
 
 	}
 
@@ -163,7 +199,10 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 */
 	protected void showArrow() {
 		remoteStyles();
-		icon.addClassName(css.arrow());
+		icon.addStyleName(css.arrow());
+
+		icon.setVisible(true);
+		indicator.setVisible(false);
 	}
 
 	/**
@@ -173,8 +212,8 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 */
 	protected void showSpinner() {
 		remoteStyles();
-
-		icon.addClassName(css.spinner());
+		icon.setVisible(false);
+		indicator.setVisible(true);
 
 	}
 
@@ -183,7 +222,8 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 * getRotation
 	 * </p>
 	 * 
-	 * @param y a int.
+	 * @param y
+	 *            a int.
 	 * @return a int.
 	 */
 	protected int getRotation(int y) {
@@ -203,9 +243,8 @@ public class PullArrowHeader extends Widget implements PullHeader {
 	 * </p>
 	 */
 	protected void remoteStyles() {
-		icon.removeClassName(css.arrow());
-		icon.removeClassName(css.spinner());
-		icon.removeClassName(css.error());
+		icon.removeStyleName(css.arrow());
+		icon.removeStyleName(css.error());
 	}
 
 }

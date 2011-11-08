@@ -289,9 +289,12 @@ key frame for doing nothing
     
         -webkit-transform: translate3d(-180px, 0px, -400px) rotateY(20deg);
         -webkit-animation-timing-function: ease-in;
+        opacity: 0.8;
+       
     }
     100% {
         -webkit-transform:  translate3d(0px, 0px, -800px) rotateY(70deg);
+         opacity: 0;
     }
 }
 
@@ -303,9 +306,11 @@ key frame for doing nothing
     50% {
         -webkit-transform:  translate3d(180px, 0px, -400px) rotateY(-20deg);
         -webkit-animation-timing-function: ease-in;
+        opacity: 0.8;
     }
     100% {
         -webkit-transform: translate3d(0px, 0px, -800px) rotateY(-70deg);
+        opacity: 0;
     }
 }
 

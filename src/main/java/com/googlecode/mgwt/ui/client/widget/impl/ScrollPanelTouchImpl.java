@@ -237,6 +237,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 */
 	public void refresh() {
 		updateScrollBars();
+		resetPosition();
 	}
 
 	/*
@@ -326,6 +327,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
 
 		}
+		refresh();
 	}
 
 	private native int getMouseWheelVelocityX(NativeEvent evt)/*-{
@@ -505,7 +507,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			currentlyScrolling = false;
 
 			if (!moved) {
+				ScrollEndEvent scrollEndEvent = new ScrollEndEvent(position_x, position_y, 1, position_x, position_y);
+				fireEvent(scrollEndEvent);
 				resetPosition();
+
 				return;
 			}
 
@@ -536,9 +541,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			ScrollEndEvent scrollEndEvent = new ScrollEndEvent(newPosX, newPosY, newDuration, position_x, position_y);
 			fireEvent(scrollEndEvent);
-			if (!scrollEndEvent.isPreventDefault()) {
-				scrollTo(newPosX, newPosY, newDuration);
-			}
+			//if (!scrollEndEvent.isPreventDefault()) {
+			scrollTo(newPosX, newPosY, newDuration);
+			//}
 		}
 
 		@Override
@@ -619,14 +624,13 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 		moved = true;
 
-		setTransistionTime(newDuration);
-		setPosition(destX, destY);
-
 		if (newDuration == 0) {
 			resetPosition();
 
 		} else {
 			listenForTransitionEnd = true;
+			setTransistionTime(newDuration);
+			setPosition(destX, destY);
 
 		}
 
@@ -857,11 +861,11 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setOffset(int, int)
 	 */
 	/** {@inheritDoc} */
-	public void setOffset(int offsetX, int offsetY) {
-		this.offsetY = offsetY;
-		this.offsetX = offsetX;
-
-		scrollTo(position_x, position_y, 200);
+	public void setOffset(final int offsetX, final int offsetY) {
+		ScrollPanelTouchImpl.this.offsetY = offsetY;
+		ScrollPanelTouchImpl.this.offsetX = offsetX;
+		//
+		//		scrollTo(position_x, position_y, 200);
 
 	}
 
@@ -878,8 +882,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		var right = 0;
 		var style = $wnd.getComputedStyle(el);
 
-		left = parseInt(style.marginLeft, 10);
-		right = parseInt(style.marginRight, 10);
+		left = parseInt(style.marginLeft, 10) || 0;
+		right = parseInt(style.marginRight, 10) || 0;
 
 		return left + right;
 	}-*/;
@@ -890,8 +894,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		var bottom = 0;
 		var style = $wnd.getComputedStyle(el);
 
-		top = parseInt(style.marginTop, 10);
-		bottom = parseInt(style.marginBottom, 10);
+		top = parseInt(style.marginTop, 10) || 0;
+		bottom = parseInt(style.marginBottom, 10) || 0;
 
 		return top + bottom;
 	}-*/;

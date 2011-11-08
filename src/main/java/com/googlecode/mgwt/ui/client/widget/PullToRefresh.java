@@ -52,7 +52,8 @@ public class PullToRefresh extends PullPanel {
 	 * Setter for the field <code>noReloadHTML</code>.
 	 * </p>
 	 * 
-	 * @param html a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
+	 * @param html
+	 *            a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public void setNoReloadHTML(SafeHtml html) {
 		if (html == null) {
@@ -67,7 +68,8 @@ public class PullToRefresh extends PullPanel {
 	 * Setter for the field <code>reloadHTML</code>.
 	 * </p>
 	 * 
-	 * @param html a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
+	 * @param html
+	 *            a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public void setReloadHTML(SafeHtml html) {
 		if (html == null) {
@@ -115,8 +117,8 @@ public class PullToRefresh extends PullPanel {
 	 * Setter for the field <code>loadingHTML</code>.
 	 * </p>
 	 * 
-	 * @param loadingHTML a {@link com.google.gwt.safehtml.shared.SafeHtml}
-	 *            object.
+	 * @param loadingHTML
+	 *            a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public void setLoadingHTML(SafeHtml loadingHTML) {
 		this.loadingHTML = loadingHTML;
@@ -138,8 +140,8 @@ public class PullToRefresh extends PullPanel {
 	 * Setter for the field <code>loadingFailedHTML</code>.
 	 * </p>
 	 * 
-	 * @param loadingFailedHTML a
-	 *            {@link com.google.gwt.safehtml.shared.SafeHtml} object.
+	 * @param loadingFailedHTML
+	 *            a {@link com.google.gwt.safehtml.shared.SafeHtml} object.
 	 */
 	public void setLoadingFailedHTML(SafeHtml loadingFailedHTML) {
 		this.loadingFailedHTML = loadingFailedHTML;
@@ -161,6 +163,7 @@ public class PullToRefresh extends PullPanel {
 		default:
 			throw new RuntimeException("how did we get here?");
 		}
+
 	}
 
 	/**
@@ -182,6 +185,8 @@ public class PullToRefresh extends PullPanel {
 		showHeader(true);
 		getHeader().showError();
 		header.setHTML(loadingFailedHTML.asString());
+		refresh();
+
 	}
 
 	private class InternalPullListener implements PullStateChangedHandler, PullReleasedHandler {
