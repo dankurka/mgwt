@@ -237,6 +237,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 */
 	public void refresh() {
 		updateScrollBars();
+		if (widgetToScroll == null) {
+			return;
+		}
 		resetPosition();
 	}
 
