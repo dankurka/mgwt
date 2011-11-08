@@ -516,16 +516,17 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			int newDuration = 1;
 
-			long touchTime = touchStartTime - System.currentTimeMillis();
+			long touchTime = System.currentTimeMillis() - touchStartTime;
 
 			if (touchTime < 300 && momentum) {
-				if (scrollingEnabledX) {
+
+				if (scrollingEnabledX && getWidgetToScrollWidth() > getClientWidth(main.getElement())) {
 					Momentum m = calculateMomentum(position_x - scrollStartX, scrollTime, -position_x, position_x + getWidgetToScrollWidth() - getClientWidth(main.getElement()));
 					newDuration = Math.max(m.getTime(), newDuration);
 					newPosX = position_x + m.getDist();
 				}
 
-				if (scrollingEnabledY) {
+				if (scrollingEnabledY && getWidgetToScrollHeight() > getClientHeight(main.getElement())) {
 					Momentum m = calculateMomentum(position_y - scrollStartY, scrollTime, -position_y, position_y + getWidgetToScrollHeight() - getClientHeight(main.getElement()));
 					newDuration = Math.max(m.getTime(), newDuration);
 					newPosY = position_y + m.getDist();
@@ -611,7 +612,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 */
 	/** {@inheritDoc} */
 	public void scrollTo(int destX, int destY, int newDuration) {
-
 		if (position_x == destX && position_y == destY) {
 			resetPosition();
 			return;
@@ -633,7 +633,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	}
 
 	private void resetPosition() {
-
 		int resetX = position_x;
 		int resetY = position_y;
 
