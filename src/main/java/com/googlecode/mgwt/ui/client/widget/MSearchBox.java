@@ -38,6 +38,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss;
 import com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder;
@@ -55,10 +56,12 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 
 		@Override
 		public void onKeyUp(KeyUpEvent event) {
-			if (box.getValue().length() > 0) {
-				roundDiv.add(clearButton);
-			} else {
-				roundDiv.remove(clearButton);
+			if (!MGWT.getOsDetection().isDesktop()) {
+				if (box.getValue().length() > 0) {
+					roundDiv.add(clearButton);
+				} else {
+					roundDiv.remove(clearButton);
+				}
 			}
 
 		}
@@ -151,7 +154,8 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	/**
 	 * Construct a search box with a given css
 	 * 
-	 * @param css the css to use
+	 * @param css
+	 *            the css to use
 	 */
 	public MSearchBox(MSearchBoxCss css) {
 		this.css = css;
@@ -331,7 +335,8 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * setValue
 	 * </p>
 	 * 
-	 * @param value a {@link java.lang.String} object.
+	 * @param value
+	 *            a {@link java.lang.String} object.
 	 */
 	public void setValue(String value) {
 		box.setValue(value);
