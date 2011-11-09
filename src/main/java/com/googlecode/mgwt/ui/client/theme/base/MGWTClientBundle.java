@@ -730,16 +730,6 @@ public interface MGWTClientBundle extends ClientBundle {
 
 	/**
 	 * <p>
-	 * tabBarBackgroundImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarBackgroundBlack.png")
-	DataResource tabBarBackgroundImage();
-
-	/**
-	 * <p>
 	 * tabBarBookMarkImage
 	 * </p>
 	 * 

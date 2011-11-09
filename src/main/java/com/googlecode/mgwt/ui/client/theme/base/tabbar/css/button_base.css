@@ -1,3 +1,4 @@
+
 @if mgwt.css pretty {
 	@external mgwt-TabBar-Button, active, selected;
 }
@@ -13,14 +14,16 @@
 		font-size: 9px;
 		color: #999995;
 		padding-top: 33px;
-		margin-top: 3px;
+		margin: 2px;
 		text-align: center;
 		background-position: 50% 0px;
 		background-repeat: no-repeat;
+		\-webkit-border-radius: 3px;
 	}
 	
 	.mgwt-TabBar-Button.selected{
 		color: white;
+		background-color: rgba(255, 255, 255, 0.15);
 	}
 }
 
@@ -38,6 +41,7 @@
 		margin-left: 10px;
 	}
 	.mgwt-TabBar-Button.selected{
+	
 		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(82, 163, 196, 1)), to(rgba(82, 163, 196, 1)))');
 	}
 	
