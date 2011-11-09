@@ -2,9 +2,29 @@
 	@external mgwt-ButtonBar;
 }
 
+.mgwt-ButtonBar .spacer{
+	\-webkit-box-flex: 1;
+}
+
+.mgwt-ButtonBar .text{
+	margin-top: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+		
+	font-size: 12px;
+	font-weight: bold;
+	text-shadow: 0px 1px 0px #333;
+	color: white;
+}
 
 @if mgwt.os iphone {
 	.mgwt-ButtonBar {
+		display: \-webkit-box;
+		\-webkit-box-orient: horizontal;
+		
+		overflow:hidden;
 		position: relative;
 		height: 40px;
 		width: 100%;
@@ -15,6 +35,9 @@
 
 @if mgwt.os ipad desktop {
 	.mgwt-ButtonBar {
+		display: \-webkit-box;
+		\-webkit-box-orient: horizontal;
+		overflow:hidden;
 		height: 40px;
 		width: 100%;
 		background-color: #B0B4C0;
@@ -26,6 +49,9 @@
 
 @if mgwt.os android android_tablet {
 	.mgwt-ButtonBar {
+		display: \-webkit-box;
+		\-webkit-box-orient: horizontal;
+		overflow:hidden;
 		height: 40px;
 		width: 100%;
 		background-color: transparent;
@@ -36,6 +62,9 @@
 
 @if mgwt.os blackberry {
 	.mgwt-ButtonBar {
+		display: \-webkit-box;
+		\-webkit-box-orient: horizontal;
+		overflow:hidden;
 		height: 40px;
 		width: 100%;
 		background-color: transparent;
