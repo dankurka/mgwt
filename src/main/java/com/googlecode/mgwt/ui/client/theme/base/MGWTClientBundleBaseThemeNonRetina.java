@@ -166,34 +166,13 @@ public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTCl
 	@Source("css/searchbox.css")
 	MSearchBoxCss getSearchBoxCss();
 
-	/**
-	 * <p>
-	 * searchSearchImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/search/search.png")
+	@Source("resources/search/glass.png")
 	DataResource searchSearchImage();
 
-	/**
-	 * <p>
-	 * searchClearImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/search/clear.png")
+	@Source("resources/search/search_clear.png")
 	DataResource searchClearImage();
 
-	/**
-	 * <p>
-	 * searchClearTouchedImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/search/clear_touched.png")
+	@Source("resources/search/search_clear_touched.png")
 	DataResource searchClearTouchedImage();
 
 	/**
