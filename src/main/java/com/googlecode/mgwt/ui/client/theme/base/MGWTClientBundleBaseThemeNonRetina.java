@@ -18,6 +18,7 @@ package com.googlecode.mgwt.ui.client.theme.base;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.TextResource;
+import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ActionButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.AddContactButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowDownButtonCss;
@@ -63,7 +64,7 @@ import com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss;
  * @author kurt
  * @version $Id: $
  */
-public interface MGWTClientBundle extends ClientBundle {
+public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTClientBundle {
 
 	/**
 	 * <p>
@@ -76,7 +77,8 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/progressbar.css")
 	ProgressBarCss getProgressBarCss();
 
-	//This is a very nasty workaround because GWT CssResource does not support @media correctly!
+	// This is a very nasty workaround because GWT CssResource does not support
+	// @media correctly!
 	/**
 	 * <p>
 	 * getUtilCss
@@ -88,7 +90,8 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("css/util_fake.css")
 	UtilCss getUtilCss();
 
-	//This is a very nasty workaround because GWT CssResource does not support @media correctly!
+	// This is a very nasty workaround because GWT CssResource does not support
+	// @media correctly!
 	/**
 	 * <p>
 	 * utilTextResource
@@ -596,7 +599,7 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("resources/buttons/UIButtonBarTrash.png")
 	DataResource buttonBarTrashImage();
 
-	//tabbar
+	// tabbar
 	/**
 	 * <p>
 	 * getTabBarCss
@@ -971,7 +974,7 @@ public interface MGWTClientBundle extends ClientBundle {
 	@Source("resources/input/check_android_not_checked.png")
 	DataResource android_check_not_checked();
 
-	//buttonbar buttons
+	// buttonbar buttons
 	/**
 	 * <p>
 	 * getActionButtonCss

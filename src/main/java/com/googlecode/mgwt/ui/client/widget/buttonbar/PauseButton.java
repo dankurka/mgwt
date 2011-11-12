@@ -30,7 +30,7 @@ public class PauseButton extends ButtonBarButtonBase {
 	 * <p>Constructor for PauseButton.</p>
 	 */
 	public PauseButton() {
-		this(MGWTStyle.getDefaultClientBundle().getPauseButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPauseButtonCss());
 	}
 
 	/**

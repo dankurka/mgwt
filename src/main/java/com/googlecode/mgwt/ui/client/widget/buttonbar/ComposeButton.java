@@ -30,7 +30,7 @@ public class ComposeButton extends ButtonBarButtonBase {
 	 * <p>Constructor for ComposeButton.</p>
 	 */
 	public ComposeButton() {
-		this(MGWTStyle.getDefaultClientBundle().getComposeButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getComposeButtonCss());
 	}
 
 	/**

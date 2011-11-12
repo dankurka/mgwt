@@ -23,7 +23,7 @@ import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.theme.base.LayoutCss;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
-import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle;
+import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeRetina;
 import com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss;
 import com.googlecode.mgwt.ui.client.theme.base.MainCss;
 import com.googlecode.mgwt.ui.client.theme.base.PanelCss;
@@ -40,7 +40,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  * @author kurt
  * @version $Id: $
  */
-public interface MGWTStandardBundle extends MGWTClientBundle {
+public interface MGWTStandardBundle extends MGWTClientBundleBaseThemeRetina {
 
 	/**
 	 * <p>getProgressBarCss</p>

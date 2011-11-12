@@ -162,7 +162,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	 *            the header to use for this panel
 	 */
 	public PullPanel(PullHeader pullHeader) {
-		this(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss(), pullHeader);
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss(), pullHeader);
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 		initWidget(scroll);
 
-		scroll.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
+		scroll.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
 
 		FlowPanel main = new FlowPanel();
 		scroll.setWidget(main);

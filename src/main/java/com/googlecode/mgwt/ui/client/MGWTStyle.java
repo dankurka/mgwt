@@ -1,7 +1,7 @@
 package com.googlecode.mgwt.ui.client;
 
-import com.google.gwt.core.client.GWT;
-import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle;
+import com.googlecode.mgwt.ui.client.theme.MGWTTheme;
+import com.googlecode.mgwt.ui.client.theme.MGWTThemeBaseThemeStandardImpl;
 
 /**
  * The {@link MGWTStyle} class provides an easy access to the default theme of
@@ -30,19 +30,20 @@ import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundle;
  */
 public class MGWTStyle {
 
-	private static MGWTClientBundle defaultClientBundle;
+	private static MGWTTheme theme;
 
 	/**
 	 * get the default bundle of this mgwt app
 	 * 
 	 * @return the default bundle
 	 */
-	public static final MGWTClientBundle getDefaultClientBundle() {
-		if (defaultClientBundle == null) {
-			defaultClientBundle = GWT.create(MGWTClientBundle.class);
-			defaultClientBundle.getMainCss().ensureInjected();
+	public static final MGWTTheme getTheme() {
+		if (theme == null) {
+			theme = new MGWTThemeBaseThemeStandardImpl();
+			theme.getMGWTClientBundle().getMainCss().ensureInjected();
+
 		}
-		return defaultClientBundle;
+		return theme;
 	}
 
 	/**
@@ -55,11 +56,11 @@ public class MGWTStyle {
 	 * 
 	 * @param bundle the default bundle to use
 	 */
-	public static final void setDefaultBundle(MGWTClientBundle bundle) {
-		if (defaultClientBundle != null) {
-			throw new IllegalStateException("can not change default bundle if theres already an instance...");
+	public static final void setTheme(MGWTTheme newTheme) {
+		if (theme != null) {
+			throw new IllegalStateException("can not change default theme if theres already an instance...");
 		}
-		bundle.getMainCss().ensureInjected();
-		defaultClientBundle = bundle;
+		theme = newTheme;
+		theme.getMGWTClientBundle().getMainCss().ensureInjected();
 	}
 }

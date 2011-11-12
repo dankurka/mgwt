@@ -34,7 +34,7 @@ public class BookmarkTabBarButton extends TabBarButtonBase {
 	 * </p>
 	 */
 	public BookmarkTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getBookmarkTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getBookmarkTabBarButtonCss());
 	}
 
 	/**

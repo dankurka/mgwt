@@ -31,7 +31,7 @@ public class RefreshButton extends ButtonBarButtonBase {
 	 * <p>Constructor for RefreshButton.</p>
 	 */
 	public RefreshButton() {
-		this(MGWTStyle.getDefaultClientBundle().getRefreshButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getRefreshButtonCss());
 	}
 
 	/**

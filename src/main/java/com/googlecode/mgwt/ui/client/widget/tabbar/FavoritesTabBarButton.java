@@ -30,7 +30,7 @@ public class FavoritesTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for FavoritesTabBarButton.</p>
 	 */
 	public FavoritesTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getFavoritesTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getFavoritesTabBarButtonCss());
 	}
 
 	/**

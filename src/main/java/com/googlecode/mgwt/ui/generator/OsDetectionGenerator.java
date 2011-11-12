@@ -17,10 +17,10 @@ import com.googlecode.mgwt.ui.client.OsDetection;
 
 /**
  * Considered internal
- *
+ * 
  * {@link OsDetectionGenerator} creates the implementation for
  * {@link OsDetection} for each platform
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -80,7 +80,7 @@ public class OsDetectionGenerator extends Generator {
 		writer.println("}");
 
 		writer.println("public boolean isIPhone() {");
-		writer.println("return " + mgwtProperty.equals("iphone") + ";");
+		writer.println("return " + mgwtProperty.equals("iphone") + " || " + mgwtProperty.equals("retina") + ";");
 		writer.println("}");
 
 		writer.println("public boolean isIPad() {");
@@ -88,7 +88,7 @@ public class OsDetectionGenerator extends Generator {
 		writer.println("}");
 
 		writer.println("public boolean isIOs() {");
-		writer.println("return " + (mgwtProperty.equals("iphone") || mgwtProperty.equals("ipad")) + ";");
+		writer.println("return isIPhone() || isIPad();");
 		writer.println("}");
 
 		writer.println("public boolean isDesktop() {");
@@ -113,6 +113,10 @@ public class OsDetectionGenerator extends Generator {
 
 		writer.println("public boolean isAndroidPhone() {");
 		writer.println("return " + mgwtProperty.equals("android") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isRetina() {");
+		writer.println("return " + mgwtProperty.equals("retina") + ";");
 		writer.println("}");
 
 		writer.commit(logger);

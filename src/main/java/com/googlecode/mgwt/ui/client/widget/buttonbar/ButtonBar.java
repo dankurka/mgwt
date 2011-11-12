@@ -40,7 +40,7 @@ public class ButtonBar extends Composite implements HasWidgets {
 	 * <p>Constructor for ButtonBar.</p>
 	 */
 	public ButtonBar() {
-		this(MGWTStyle.getDefaultClientBundle().getButtonBarCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarCss());
 	}
 
 	/**

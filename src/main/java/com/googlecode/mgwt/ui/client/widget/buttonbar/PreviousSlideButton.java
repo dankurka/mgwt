@@ -30,7 +30,7 @@ public class PreviousSlideButton extends ButtonBarButtonBase {
 	 * <p>Constructor for PreviousSlideButton.</p>
 	 */
 	public PreviousSlideButton() {
-		this(MGWTStyle.getDefaultClientBundle().getPreviousSlideButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPreviousSlideButtonCss());
 	}
 
 	/**

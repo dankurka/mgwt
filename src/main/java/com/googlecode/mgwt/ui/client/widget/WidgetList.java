@@ -106,7 +106,7 @@ public class WidgetList extends Composite implements HasWidgets {
 	 * Construct a widget list using the default css
 	 */
 	public WidgetList() {
-		this(MGWTStyle.getDefaultClientBundle().getListCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getListCss());
 	}
 
 	/**

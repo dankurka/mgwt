@@ -30,7 +30,7 @@ public class StopButton extends ButtonBarButtonBase {
 	 * <p>Constructor for StopButton.</p>
 	 */
 	public StopButton() {
-		this(MGWTStyle.getDefaultClientBundle().getStopButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getStopButtonCss());
 	}
 
 	/**

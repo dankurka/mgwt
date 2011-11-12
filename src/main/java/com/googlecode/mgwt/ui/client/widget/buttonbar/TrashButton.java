@@ -31,7 +31,7 @@ public class TrashButton extends ButtonBarButtonBase {
 	 * <p>Constructor for TrashButton.</p>
 	 */
 	public TrashButton() {
-		this(MGWTStyle.getDefaultClientBundle().getTrashButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTrashButtonCss());
 	}
 
 	/**

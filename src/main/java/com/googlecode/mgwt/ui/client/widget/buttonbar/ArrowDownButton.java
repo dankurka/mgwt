@@ -30,7 +30,7 @@ public class ArrowDownButton extends ButtonBarButtonBase {
 	 * <p>Constructor for ArrowDownButton.</p>
 	 */
 	public ArrowDownButton() {
-		this(MGWTStyle.getDefaultClientBundle().getArrowDownButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getArrowDownButtonCss());
 	}
 
 	/**

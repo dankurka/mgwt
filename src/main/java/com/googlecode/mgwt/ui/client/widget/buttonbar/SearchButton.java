@@ -31,7 +31,7 @@ public class SearchButton extends ButtonBarButtonBase {
 	 * <p>Constructor for SearchButton.</p>
 	 */
 	public SearchButton() {
-		this(MGWTStyle.getDefaultClientBundle().getSearchButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getSearchButtonCss());
 	}
 
 	/**

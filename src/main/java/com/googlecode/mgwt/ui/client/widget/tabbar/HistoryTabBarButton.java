@@ -30,7 +30,7 @@ public class HistoryTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for HistoryTabBarButton.</p>
 	 */
 	public HistoryTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getHistoryTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getHistoryTabBarButtonCss());
 	}
 
 	/**

@@ -30,7 +30,7 @@ public class PlusButton extends ButtonBarButtonBase {
 	 * <p>Constructor for PlusButton.</p>
 	 */
 	public PlusButton() {
-		this(MGWTStyle.getDefaultClientBundle().getPlusButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPlusButtonCss());
 	}
 
 	/**

@@ -30,7 +30,7 @@ public class NewIconButton extends ButtonBarButtonBase {
 	 * <p>Constructor for NewIconButton.</p>
 	 */
 	public NewIconButton() {
-		this(MGWTStyle.getDefaultClientBundle().getNewIconButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getNewIconButtonCss());
 	}
 
 	/**

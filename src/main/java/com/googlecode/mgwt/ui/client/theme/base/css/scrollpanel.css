@@ -38,7 +38,7 @@
 	bottom: 8px;
 	width: 5px;
 }
-@if mgwt.os desktop ipad iphone {
+@if mgwt.os desktop ipad iphone retina {
 	.mgwt-Scrollbar-Bar {
 		position: absolute;
 		top: 0px;

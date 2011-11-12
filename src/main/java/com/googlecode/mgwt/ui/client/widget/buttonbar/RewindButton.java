@@ -30,7 +30,7 @@ public class RewindButton extends ButtonBarButtonBase {
 	 * <p>Constructor for RewindButton.</p>
 	 */
 	public RewindButton() {
-		this(MGWTStyle.getDefaultClientBundle().getRewindButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getRewindButtonCss());
 	}
 
 	/**

@@ -9,7 +9,7 @@
 	position: relative;	
 }
 
-@if mgwt.os iphone {
+@if mgwt.os iphone retina {
 	.mgwt-HeaderPanel {
 		height: 40px;
 		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
@@ -59,7 +59,7 @@
 	left: 50%;
 }
 
-@if mgwt.os iphone {
+@if mgwt.os iphone retina {
 	.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
 		top: 0px;
 		left: 6px;
@@ -217,7 +217,7 @@
 	\-webkit-border-radius: 4px;
 	
 }
-@if mgwt.os iphone {
+@if mgwt.os iphone retina {
 	.mgwt-HeaderButton p {
 		color: #fff; 
 		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
@@ -293,7 +293,7 @@
     \-webkit-border-radius: 4px;
 }
 
-@if mgwt.os iphone {
+@if mgwt.os iphone retina {
 	.mgwt-HeaderButton.back span { 
     	background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa))');     
 	}

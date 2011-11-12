@@ -41,7 +41,7 @@ public class CellListWithHeader<T> extends Composite {
 	 *            the cell to use for this cell list
 	 */
 	public CellListWithHeader(Cell<T> cell) {
-		this(cell, MGWTStyle.getDefaultClientBundle().getListCss());
+		this(cell, MGWTStyle.getTheme().getMGWTClientBundle().getListCss());
 	}
 
 	/**

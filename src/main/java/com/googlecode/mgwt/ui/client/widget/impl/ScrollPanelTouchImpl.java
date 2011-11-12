@@ -128,7 +128,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * </p>
 	 */
 	public ScrollPanelTouchImpl() {
-		this(MGWTStyle.getDefaultClientBundle().getScrollPanelCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getScrollPanelCss());
 	}
 
 	/**

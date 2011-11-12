@@ -32,7 +32,7 @@ public class MDoubleBox extends MValueBoxBase<Double> {
 	 * Construct a double box
 	 */
 	public MDoubleBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 	}
 
 	/**

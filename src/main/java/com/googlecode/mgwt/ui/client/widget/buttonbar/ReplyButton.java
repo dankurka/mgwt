@@ -30,7 +30,7 @@ public class ReplyButton extends ButtonBarButtonBase {
 	 * <p>Constructor for ReplyButton.</p>
 	 */
 	public ReplyButton() {
-		this(MGWTStyle.getDefaultClientBundle().getReplyButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getReplyButtonCss());
 	}
 
 	/**

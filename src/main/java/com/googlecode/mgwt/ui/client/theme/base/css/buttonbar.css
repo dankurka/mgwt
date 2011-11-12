@@ -19,7 +19,7 @@
 	color: white;
 }
 
-@if mgwt.os iphone {
+@if mgwt.os iphone retina {
 	.mgwt-ButtonBar {
 		display: \-webkit-box;
 		\-webkit-box-orient: horizontal;

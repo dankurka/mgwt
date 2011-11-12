@@ -45,7 +45,7 @@ public class HeaderPanel extends Composite {
 	 * Construct a HeaderPanel
 	 */
 	public HeaderPanel() {
-		this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getHeaderCss());
 	}
 
 	/**

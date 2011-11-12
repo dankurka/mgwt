@@ -30,7 +30,7 @@ public class MEmailTextBox extends MTextBox {
 	 * Construct an EmailTextBox
 	 */
 	public MEmailTextBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 
 	}
 

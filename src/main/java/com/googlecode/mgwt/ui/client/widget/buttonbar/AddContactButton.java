@@ -30,7 +30,7 @@ public class AddContactButton extends ButtonBarButtonBase {
 	 * <p>Constructor for AddContactButton.</p>
 	 */
 	public AddContactButton() {
-		this(MGWTStyle.getDefaultClientBundle().getAddContactButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getAddContactButtonCss());
 	}
 
 	/**

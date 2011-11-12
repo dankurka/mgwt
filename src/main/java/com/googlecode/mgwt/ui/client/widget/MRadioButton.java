@@ -68,7 +68,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 	 */
 	@UiConstructor
 	public MRadioButton(String name) {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss(), name);
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss(), name);
 	}
 
 	/**

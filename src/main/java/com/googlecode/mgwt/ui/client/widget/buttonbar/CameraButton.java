@@ -30,7 +30,7 @@ public class CameraButton extends ButtonBarButtonBase {
 	 * <p>Constructor for CameraButton.</p>
 	 */
 	public CameraButton() {
-		this(MGWTStyle.getDefaultClientBundle().getCameraButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getCameraButtonCss());
 	}
 
 	/**

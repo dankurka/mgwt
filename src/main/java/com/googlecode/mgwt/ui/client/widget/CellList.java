@@ -174,7 +174,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 	 * @param cell the cell to use
 	 */
 	public CellList(Cell<T> cell) {
-		this(cell, MGWTStyle.getDefaultClientBundle().getListCss());
+		this(cell, MGWTStyle.getTheme().getMGWTClientBundle().getListCss());
 	}
 
 	/**

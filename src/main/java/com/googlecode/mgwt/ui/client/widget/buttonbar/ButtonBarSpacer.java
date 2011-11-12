@@ -10,7 +10,7 @@ public class ButtonBarSpacer extends TouchWidget {
 	private final ButtonBarCss css;
 
 	public ButtonBarSpacer() {
-		this(MGWTStyle.getDefaultClientBundle().getButtonBarCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarCss());
 	}
 
 	public ButtonBarSpacer(ButtonBarCss css) {

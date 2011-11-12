@@ -10,11 +10,11 @@ public class ButtonBarText extends TouchWidget implements HasHTML {
 	private final ButtonBarCss css;
 
 	public ButtonBarText() {
-		this(MGWTStyle.getDefaultClientBundle().getButtonBarCss(), "");
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarCss(), "");
 	}
 
 	public ButtonBarText(String html) {
-		this(MGWTStyle.getDefaultClientBundle().getButtonBarCss(), html);
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarCss(), html);
 	}
 
 	public ButtonBarText(ButtonBarCss css, String html) {

@@ -33,7 +33,7 @@ public class MTextArea extends MTextBoxBase {
 	 * Construct a text area
 	 */
 	public MTextArea() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 	}
 
 	/**

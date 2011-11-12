@@ -31,7 +31,7 @@ public class MPasswordTextBox extends MTextBox {
 	 * Construct a password text box
 	 */
 	public MPasswordTextBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 	}
 
 	/**

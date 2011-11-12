@@ -75,6 +75,13 @@ public interface OsDetection {
 	public boolean isIOs();
 
 	/**
+	 * Are we running on the iphone retina display
+	 * 
+	 * @return true if runnning on retina display
+	 */
+	public boolean isRetina();
+
+	/**
 	 * Are we running in a desktop browser (chrome, safari or similiar)
 	 * 
 	 * @return true if running on desktop browser

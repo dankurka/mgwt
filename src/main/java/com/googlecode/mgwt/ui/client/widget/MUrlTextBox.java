@@ -29,7 +29,7 @@ public class MUrlTextBox extends MTextBox {
 	 * Construct a url text box
 	 */
 	public MUrlTextBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 
 	}
 

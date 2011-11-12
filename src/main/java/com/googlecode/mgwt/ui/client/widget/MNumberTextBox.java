@@ -30,7 +30,7 @@ public class MNumberTextBox extends MTextBox {
 	 * Construct a number textbox
 	 */
 	public MNumberTextBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 
 	}
 

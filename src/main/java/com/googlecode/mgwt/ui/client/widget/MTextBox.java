@@ -33,7 +33,7 @@ public class MTextBox extends MTextBoxBase {
 	 * Construct a text box
 	 */
 	public MTextBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 
 	}
 

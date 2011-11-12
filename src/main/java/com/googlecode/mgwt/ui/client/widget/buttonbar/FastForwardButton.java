@@ -30,7 +30,7 @@ public class FastForwardButton extends ButtonBarButtonBase {
 	 * <p>Constructor for FastForwardButton.</p>
 	 */
 	public FastForwardButton() {
-		this(MGWTStyle.getDefaultClientBundle().getFastForwardButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getFastForwardButtonCss());
 	}
 
 	/**

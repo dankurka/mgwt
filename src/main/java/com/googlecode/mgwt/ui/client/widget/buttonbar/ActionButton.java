@@ -30,7 +30,7 @@ public class ActionButton extends ButtonBarButtonBase {
 	 * <p>Constructor for ActionButton.</p>
 	 */
 	public ActionButton() {
-		this(MGWTStyle.getDefaultClientBundle().getActionButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getActionButtonCss());
 	}
 
 	/**

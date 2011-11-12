@@ -30,7 +30,7 @@ public class BookmarkButton extends ButtonBarButtonBase {
 	 * <p>Constructor for BookmarkButton.</p>
 	 */
 	public BookmarkButton() {
-		this(MGWTStyle.getDefaultClientBundle().getBookmarkButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getBookmarkButtonCss());
 	}
 
 	/**

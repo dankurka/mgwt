@@ -31,7 +31,7 @@ public class RoundPanel extends TouchPanel {
 	 * Construct a round panel
 	 */
 	public RoundPanel() {
-		this(MGWTStyle.getDefaultClientBundle().getPanelCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPanelCss());
 	}
 
 	/**

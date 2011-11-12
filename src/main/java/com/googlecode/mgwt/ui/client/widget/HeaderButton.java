@@ -40,7 +40,7 @@ public class HeaderButton extends ButtonBase {
 	 * Construct a HeaderButton
 	 */
 	public HeaderButton() {
-		this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getHeaderCss());
 	}
 
 	/**

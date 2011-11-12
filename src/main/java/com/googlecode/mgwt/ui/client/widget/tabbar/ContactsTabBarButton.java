@@ -30,7 +30,7 @@ public class ContactsTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for ContactsTabBarButton.</p>
 	 */
 	public ContactsTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getContactsTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getContactsTabBarButtonCss());
 	}
 
 	/**

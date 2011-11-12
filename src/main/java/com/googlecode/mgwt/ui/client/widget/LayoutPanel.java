@@ -58,7 +58,7 @@ public class LayoutPanel extends Composite implements HasWidgets, InsertPanel {
 	 * Construct a layout panel
 	 */
 	public LayoutPanel() {
-		this(MGWTStyle.getDefaultClientBundle().getLayoutCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss());
 	}
 
 	/*

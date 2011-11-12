@@ -30,7 +30,7 @@ public class LocateButton extends ButtonBarButtonBase {
 	 * <p>Constructor for LocateButton.</p>
 	 */
 	public LocateButton() {
-		this(MGWTStyle.getDefaultClientBundle().getLocateButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getLocateButtonCss());
 	}
 
 	/**

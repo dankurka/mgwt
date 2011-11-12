@@ -32,7 +32,7 @@ public class MLongBox extends MValueBoxBase<Long> {
 	 * Construct a long box
 	 */
 	public MLongBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 	}
 
 	/**

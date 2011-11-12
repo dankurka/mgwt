@@ -75,7 +75,7 @@
 	\-webkit-box-flex: 1;
 }
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 	.mgwt-RadioButton>input {
 		\-webkit-appearance: none;
 		width: 18px;

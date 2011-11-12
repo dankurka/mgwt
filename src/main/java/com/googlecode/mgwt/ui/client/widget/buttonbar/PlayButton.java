@@ -30,7 +30,7 @@ public class PlayButton extends ButtonBarButtonBase {
 	 * <p>Constructor for PlayButton.</p>
 	 */
 	public PlayButton() {
-		this(MGWTStyle.getDefaultClientBundle().getPlayButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPlayButtonCss());
 	}
 
 	/**

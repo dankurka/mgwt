@@ -20,7 +20,7 @@ body {
 	position: absolute;
 }
 
-@if mgwt.os iphone {
+@if mgwt.os iphone retina {
 	body {
 		background-color:#C5CCD4;
 		background-image: literal('-webkit-gradient(linear, left top, right top, from(#C5CCD4), to(#CBD2D8), color-stop(0.6, #C5CCD4), color-stop(0.6, #CBD2D8))');

@@ -26,7 +26,7 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 /**
  * A simple alert dialog with an ok button.
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -38,17 +38,17 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 
 	/**
 	 * Construct an alert dialog
-	 *
+	 * 
 	 * @param title - the title of the dialog
 	 * @param text - the text of the dialog
 	 */
 	public AlertDialog(String title, String text) {
-		this(MGWTStyle.getDefaultClientBundle().getDialogCss(), title, text);
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getDialogCss(), title, text);
 	}
 
 	/**
 	 * Construct an alert dialog
-	 *
+	 * 
 	 * @param css - the css to use
 	 * @param title - the title of the dialog
 	 * @param text - the text of the dialog
@@ -125,7 +125,9 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
 	 */
 	/**
-	 * <p>show</p>
+	 * <p>
+	 * show
+	 * </p>
 	 */
 	public void show() {
 		popinDialog.center();

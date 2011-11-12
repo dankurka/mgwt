@@ -34,7 +34,7 @@ public class ProgressBar extends Widget {
 	 * Construct a progress bar widget
 	 */
 	public ProgressBar() {
-		this(MGWTStyle.getDefaultClientBundle().getProgressBarCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getProgressBarCss());
 	}
 
 	/**

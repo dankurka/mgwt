@@ -30,7 +30,7 @@ public class MPhoneNumberTextBox extends MTextBox {
 	 * Construct a phone number box
 	 */
 	public MPhoneNumberTextBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 
 	}
 

@@ -30,7 +30,7 @@ public class InfoButton extends ButtonBarButtonBase {
 	 * <p>Constructor for InfoButton.</p>
 	 */
 	public InfoButton() {
-		this(MGWTStyle.getDefaultClientBundle().getInfoButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInfoButtonCss());
 	}
 
 	/**

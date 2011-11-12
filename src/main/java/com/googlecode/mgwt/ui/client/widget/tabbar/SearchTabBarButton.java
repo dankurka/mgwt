@@ -30,7 +30,7 @@ public class SearchTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for SearchTabBarButton.</p>
 	 */
 	public SearchTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getSearchTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getSearchTabBarButtonCss());
 	}
 
 	/**

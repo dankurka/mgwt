@@ -30,7 +30,7 @@ public class DownloadsTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for DownloadsTabBarButton.</p>
 	 */
 	public DownloadsTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getDownloadsTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getDownloadsTabBarButtonCss());
 	}
 
 	/**

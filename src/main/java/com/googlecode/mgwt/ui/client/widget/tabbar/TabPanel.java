@@ -72,7 +72,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	 * </p>
 	 */
 	public TabPanel() {
-		this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
 	/**
@@ -86,11 +86,11 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	public TabPanel(TabBarCss css) {
 		container = new LayoutPanel();
 		initWidget(container);
-		container.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
+		container.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
 
 		tabContainer = new TabContainer();
 
-		tabContainer.addStyleName(MGWTStyle.getDefaultClientBundle().getLayoutCss().fillPanelExpandChild());
+		tabContainer.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
 		tabBar = new TabBar(css);
 
 		tabBar.addSelectionHandler(new SelectionHandler<Integer>() {
@@ -227,7 +227,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		protected final TabBarCss css;
 
 		public TabBar() {
-			this(MGWTStyle.getDefaultClientBundle().getTabBarCss());
+			this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 		}
 
 		public TabBar(TabBarCss css) {

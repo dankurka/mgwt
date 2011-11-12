@@ -132,7 +132,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	 * Construct a checkbox
 	 */
 	public MCheckBox() {
-		this(MGWTStyle.getDefaultClientBundle().getCheckBoxCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getCheckBoxCss());
 	}
 
 	/**

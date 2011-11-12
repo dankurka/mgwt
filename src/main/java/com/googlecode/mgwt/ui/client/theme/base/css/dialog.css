@@ -29,7 +29,7 @@
     \-webkit-box-align: center;
 }
 
-@if mgwt.os desktop ipad iphone {
+@if mgwt.os desktop ipad iphone retina {
 	.mgwt-DialogPanel {
 	
 		border: solid 1px #72767b;

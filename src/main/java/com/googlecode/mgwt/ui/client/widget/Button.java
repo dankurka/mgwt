@@ -36,7 +36,7 @@ public class Button extends ButtonBase {
 	 * Construct a button
 	 */
 	public Button() {
-		this(MGWTStyle.getDefaultClientBundle().getButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonCss());
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class Button extends ButtonBase {
 	 * @param text the text to use in the button
 	 */
 	public Button(String text) {
-		this(MGWTStyle.getDefaultClientBundle().getButtonCss(), text);
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonCss(), text);
 
 	}
 

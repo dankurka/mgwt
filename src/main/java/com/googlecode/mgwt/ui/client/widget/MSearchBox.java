@@ -148,7 +148,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * Construct a search box
 	 */
 	public MSearchBox() {
-		this(MGWTStyle.getDefaultClientBundle().getSearchBoxCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getSearchBoxCss());
 	}
 
 	/**

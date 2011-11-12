@@ -3,7 +3,7 @@
 	
 }
 
-@if mgwt.os desktop ipad iphone {
+@if mgwt.os desktop ipad iphone retina {
 	.mgwt-Slider {
 		display: inline-block;
 		width: 277px;

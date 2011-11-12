@@ -30,7 +30,7 @@ public class ArrowLeftButton extends ButtonBarButtonBase {
 	 * <p>Constructor for ArrowLeftButton.</p>
 	 */
 	public ArrowLeftButton() {
-		this(MGWTStyle.getDefaultClientBundle().getLeftButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getLeftButtonCss());
 	}
 
 	/**

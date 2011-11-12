@@ -34,7 +34,7 @@ public class ProgressIndicator extends Widget {
 	 * Construct a progress indicator
 	 */
 	public ProgressIndicator() {
-		this(MGWTStyle.getDefaultClientBundle().getProgressIndicatorCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getProgressIndicatorCss());
 	}
 
 	/**

@@ -21,7 +21,7 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 /**
  * A dialog that pops into view
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -31,12 +31,12 @@ public class PopinDialog extends AnimatableDialogBase {
 	 * Construct a popin dialog
 	 */
 	public PopinDialog() {
-		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getDialogCss());
 	}
 
 	/**
 	 * Construct a popin dialog with specific css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public PopinDialog(DialogCss css) {

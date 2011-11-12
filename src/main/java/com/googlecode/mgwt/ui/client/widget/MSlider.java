@@ -98,7 +98,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	 * Construct a slider
 	 */
 	public MSlider() {
-		this(MGWTStyle.getDefaultClientBundle().getSliderCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getSliderCss());
 	}
 
 	/**

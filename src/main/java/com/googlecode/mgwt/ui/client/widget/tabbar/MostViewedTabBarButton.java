@@ -30,7 +30,7 @@ public class MostViewedTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for MostViewedTabBarButton.</p>
 	 */
 	public MostViewedTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getMostViewedTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getMostViewedTabBarButtonCss());
 	}
 
 	/**

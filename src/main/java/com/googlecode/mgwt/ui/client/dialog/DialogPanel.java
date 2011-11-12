@@ -68,7 +68,7 @@ public class DialogPanel extends Composite {
 	 * Construct the panel
 	 */
 	public DialogPanel() {
-		this(MGWTStyle.getDefaultClientBundle().getDialogCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getDialogCss());
 	}
 
 	/**

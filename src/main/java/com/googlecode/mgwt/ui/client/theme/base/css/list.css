@@ -13,7 +13,7 @@
 	border-collapse: collapse;
 }
 
-@if mgwt.os iphone ipad desktop {
+@if mgwt.os iphone ipad desktop retina {
 	
 	.mgwt-List li {
 		background-color: white;

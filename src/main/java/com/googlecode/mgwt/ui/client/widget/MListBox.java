@@ -33,7 +33,7 @@ public class MListBox extends ListBox {
 	 * Construct a list box
 	 */
 	public MListBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 	}
 
 	/**

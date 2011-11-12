@@ -30,7 +30,7 @@ public class FeaturedTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for FeaturedTabBarButton.</p>
 	 */
 	public FeaturedTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getFeaturedTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getFeaturedTabBarButtonCss());
 	}
 
 	/**

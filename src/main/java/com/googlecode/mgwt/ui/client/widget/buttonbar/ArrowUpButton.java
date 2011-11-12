@@ -30,7 +30,7 @@ public class ArrowUpButton extends ButtonBarButtonBase {
 	 * <p>Constructor for ArrowUpButton.</p>
 	 */
 	public ArrowUpButton() {
-		this(MGWTStyle.getDefaultClientBundle().getArrowUpButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getArrowUpButtonCss());
 	}
 
 	/**

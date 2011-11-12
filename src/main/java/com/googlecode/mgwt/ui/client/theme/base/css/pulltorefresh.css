@@ -30,7 +30,7 @@
 }
 
 
-@if mgwt.os iphone desktop ipad { 
+@if mgwt.os iphone desktop ipad retina { 
 	.pullToRefresh .arrow {
 		\-webkit-transform: rotate(90deg) translateZ(0);
 	}

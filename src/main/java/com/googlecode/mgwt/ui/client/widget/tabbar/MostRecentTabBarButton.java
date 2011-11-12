@@ -30,7 +30,7 @@ public class MostRecentTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for MostRecentTabBarButton.</p>
 	 */
 	public MostRecentTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getMostRecentTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getMostRecentTabBarButtonCss());
 	}
 
 	/**

@@ -7,7 +7,7 @@
 	
 }
 
-@if mgwt.os iphone {
+@if mgwt.os iphone retina {
 	.mgwt-SearchBox {
 		height: 44px;
 		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1f3f4), color-stop(3%, #e0e4e7), color-stop(50%, #c7cfd4), color-stop(51%, #bec7cd), color-stop(97%, #b4bec6), to(#8999a5) )');
@@ -53,7 +53,7 @@
 }
 
 
-@if mgwt.os iphone ipad desktop {
+@if mgwt.os iphone ipad desktop retina {
 	.mgwt-SearchBox .round {
 		\-webkit-background-clip: padding-box;
 		background-clip: padding-box;

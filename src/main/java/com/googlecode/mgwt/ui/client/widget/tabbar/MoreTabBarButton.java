@@ -30,7 +30,7 @@ public class MoreTabBarButton extends TabBarButtonBase {
 	 * <p>Constructor for MoreTabBarButton.</p>
 	 */
 	public MoreTabBarButton() {
-		this(MGWTStyle.getDefaultClientBundle().getMoreTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getMoreTabBarButtonCss());
 	}
 
 	/**

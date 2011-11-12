@@ -96,7 +96,7 @@ public class MGWT {
 
 		// This is a very nasty workaround because GWT CssResource does not
 		// support @media correctly!
-		StyleInjector.inject(MGWTStyle.getDefaultClientBundle().utilTextResource().getText());
+		StyleInjector.inject(MGWTStyle.getTheme().getMGWTClientBundle().utilTextResource().getText());
 
 		Element head = getHead();
 
@@ -342,7 +342,7 @@ public class MGWT {
 
 	// update styles on body
 	private static void setClasses(ORIENTATION o) {
-		UtilCss utilCss = MGWTStyle.getDefaultClientBundle().getUtilCss();
+		UtilCss utilCss = MGWTStyle.getTheme().getMGWTClientBundle().getUtilCss();
 		switch (o) {
 
 		case PORTRAIT:

@@ -47,7 +47,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 		private FlowPanel content;
 
 		public IpadMenu() {
-			this(MGWTStyle.getDefaultClientBundle().getHeaderCss());
+			this(MGWTStyle.getTheme().getMGWTClientBundle().getHeaderCss());
 		}
 
 		public IpadMenu(HeaderCss css) {
@@ -81,7 +81,7 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 	 * Construct a TabletOverlay
 	 */
 	public TabletPortraitOverlay() {
-		popinDialog = new AnimatableDialogBase(MGWTStyle.getDefaultClientBundle().getDialogCss()) {
+		popinDialog = new AnimatableDialogBase(MGWTStyle.getTheme().getMGWTClientBundle().getDialogCss()) {
 
 			@Override
 			protected Animation getShowAnimation() {

@@ -55,7 +55,7 @@ public class Dialogs {
 	 *            button (can be null)
 	 */
 	public static void alert(String title, String text, final AlertCallback callback) {
-		AlertDialog alertDialog = new AlertDialog(MGWTStyle.getDefaultClientBundle().getDialogCss(), title, text);
+		AlertDialog alertDialog = new AlertDialog(MGWTStyle.getTheme().getMGWTClientBundle().getDialogCss(), title, text);
 
 		alertDialog.addTapHandler(new TapHandler() {
 
@@ -128,7 +128,7 @@ public class Dialogs {
 	 */
 	public static void options(List<OptionsDialogOption> options, OptionCallback callback, HasWidgets widgetToCover) {
 
-		OptionsDialog optionsDialog = new OptionsDialog(MGWTStyle.getDefaultClientBundle().getDialogCss());
+		OptionsDialog optionsDialog = new OptionsDialog(MGWTStyle.getTheme().getMGWTClientBundle().getDialogCss());
 
 		int count = 0;
 		for (OptionsDialogOption optionsDialogOption : options) {

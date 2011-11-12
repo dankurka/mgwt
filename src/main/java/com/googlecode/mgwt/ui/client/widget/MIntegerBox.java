@@ -32,7 +32,7 @@ public class MIntegerBox extends MValueBoxBase<Integer> {
 	 * Construct an integer box
 	 */
 	public MIntegerBox() {
-		this(MGWTStyle.getDefaultClientBundle().getInputCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 	}
 
 	/**

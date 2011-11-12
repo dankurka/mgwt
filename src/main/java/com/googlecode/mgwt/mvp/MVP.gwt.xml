@@ -28,6 +28,13 @@
         </all>
     </replace-with>
     
+    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIphoneImpl">
+        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
+        <all>
+            <when-property-is name="mgwt.os" value="retina"/>
+        </all>
+    </replace-with>
+    
     <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIpadImpl">
         <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
         <all>

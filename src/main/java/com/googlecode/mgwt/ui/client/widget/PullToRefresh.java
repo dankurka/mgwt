@@ -32,7 +32,7 @@ public class PullToRefresh extends PullPanel {
 	 * </p>
 	 */
 	public PullToRefresh() {
-		super(new PullArrowHeader(MGWTStyle.getDefaultClientBundle().getPullToRefreshCss()));
+		super(new PullArrowHeader(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss()));
 		InternalPullListener listener = new InternalPullListener();
 
 		addPullReleasedHandler(listener);

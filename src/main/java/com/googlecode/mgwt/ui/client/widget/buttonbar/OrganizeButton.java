@@ -30,7 +30,7 @@ public class OrganizeButton extends ButtonBarButtonBase {
 	 * <p>Constructor for OrganizeButton.</p>
 	 */
 	public OrganizeButton() {
-		this(MGWTStyle.getDefaultClientBundle().getOrganizeButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getOrganizeButtonCss());
 	}
 
 	/**

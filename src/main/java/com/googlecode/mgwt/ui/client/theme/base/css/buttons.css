@@ -3,7 +3,7 @@
 }
 
 
-@if mgwt.os iphone {
+@if mgwt.os iphone retina {
 
 	.mgwt-Button {
 		border: solid 1px rgba(0,0,0, 0.5);
@@ -312,7 +312,7 @@
 	}
 	
 }
-
+ 
 
 
 

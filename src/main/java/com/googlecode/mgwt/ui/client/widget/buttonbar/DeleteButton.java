@@ -30,7 +30,7 @@ public class DeleteButton extends ButtonBarButtonBase {
 	 * <p>Constructor for DeleteButton.</p>
 	 */
 	public DeleteButton() {
-		this(MGWTStyle.getDefaultClientBundle().getDeleteButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getDeleteButtonCss());
 	}
 
 	/**

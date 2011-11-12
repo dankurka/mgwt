@@ -24,7 +24,7 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 
 /**
  * A simple confirm dialog with ok and cancel buttons
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -54,18 +54,18 @@ public class ConfirmDialog implements HasText, HasTitleText, Dialog {
 
 	/**
 	 * Construct a Confirmdialg
-	 *
+	 * 
 	 * @param title - the title of the dialog
 	 * @param text - the text of the dialog
 	 * @param callback - the callback used when a button of the dialog is taped
 	 */
 	public ConfirmDialog(String title, String text, ConfirmCallback callback) {
-		this(MGWTStyle.getDefaultClientBundle().getDialogCss(), title, text, callback);
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getDialogCss(), title, text, callback);
 	}
 
 	/**
 	 * Construct a Confirmdialg
-	 *
+	 * 
 	 * @param css . css to use
 	 * @param title - the title of the dialog
 	 * @param text - the text of the dialog
@@ -154,7 +154,9 @@ public class ConfirmDialog implements HasText, HasTitleText, Dialog {
 	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
 	 */
 	/**
-	 * <p>show</p>
+	 * <p>
+	 * show
+	 * </p>
 	 */
 	public void show() {
 		popinDialog.center();
