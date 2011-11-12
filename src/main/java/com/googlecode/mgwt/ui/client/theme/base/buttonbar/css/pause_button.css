@@ -3,7 +3,7 @@
 }
 
 @url pauseImage buttonBarPauseImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .pause {
 	background-image: pauseImage;

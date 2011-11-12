@@ -3,7 +3,7 @@
 }
 
 @url refreshImage buttonBarRefreshImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .refresh {
 	background-image: refreshImage;

@@ -3,7 +3,7 @@
 }
 
 @url organizeImage buttonBarOrganizeImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .organize {
 	background-image: organizeImage;

@@ -36,7 +36,6 @@ import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ActionButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.AddContactButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowDownButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowLeftButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowRightButtonCss;
@@ -44,7 +43,6 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowUpButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.BookmarkButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.CameraButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ComposeButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.DeleteButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.FastForwardButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.InfoButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.LocateButtonCss;
@@ -258,15 +256,11 @@ public interface MGWTClientBundle {
 
 	public ArrowDownButtonCss getArrowDownButtonCss();
 
-	public AddContactButtonCss getAddContactButtonCss();
-
 	public BookmarkButtonCss getBookmarkButtonCss();
 
 	public CameraButtonCss getCameraButtonCss();
 
 	public ComposeButtonCss getComposeButtonCss();
-
-	public DeleteButtonCss getDeleteButtonCss();
 
 	public FastForwardButtonCss getFastForwardButtonCss();
 

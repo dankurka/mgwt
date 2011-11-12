@@ -3,7 +3,7 @@
 }
 
 @url bookmarksImage buttonBarBookmarksImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .bookmark {
 	background-image: bookmarksImage;

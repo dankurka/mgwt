@@ -3,7 +3,7 @@
 }
 
 @url replyImage buttonBarReplyImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .reply {
 	background-image: replyImage;

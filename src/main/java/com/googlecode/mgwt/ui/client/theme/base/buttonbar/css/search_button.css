@@ -3,7 +3,7 @@
 }
 
 @url searchImage buttonBarSearchImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .search {
 	background-image: searchImage;

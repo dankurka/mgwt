@@ -3,7 +3,7 @@
 }
 
 @url infoImage buttonBarInfoImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .info {
 	background-image: infoImage;

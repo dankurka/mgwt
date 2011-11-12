@@ -3,7 +3,7 @@
 }
 
 @url newImage buttonBarNewImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .newIcon {
 	background-image: newImage;

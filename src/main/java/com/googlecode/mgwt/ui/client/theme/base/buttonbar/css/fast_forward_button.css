@@ -3,7 +3,7 @@
 }
 
 @url fastForwardImage buttonBarFastForwardImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .fastForward {
 	background-image: fastForwardImage;

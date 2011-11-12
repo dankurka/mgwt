@@ -26,7 +26,7 @@
 		
 		overflow:hidden;
 		position: relative;
-		height: 40px;
+		height: 44px;
 		width: 100%;
 		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
 		border-top: 1px solid rgb(45, 54, 66);
@@ -38,7 +38,7 @@
 		display: \-webkit-box;
 		\-webkit-box-orient: horizontal;
 		overflow:hidden;
-		height: 40px;
+		height: 44px;
 		width: 100%;
 		background-color: #B0B4C0;
 		background-image: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');

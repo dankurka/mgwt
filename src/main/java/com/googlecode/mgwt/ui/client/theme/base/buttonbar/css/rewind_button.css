@@ -3,7 +3,7 @@
 }
 
 @url rewindImage buttonBarRewindImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .rewind {
 	background-image: rewindImage;

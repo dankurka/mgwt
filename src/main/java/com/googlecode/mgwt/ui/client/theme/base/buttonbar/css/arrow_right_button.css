@@ -3,7 +3,7 @@
 }
 
 @url arrowRightImage buttonBarArrowRightImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .arrowRight{
 	background-image: arrowRightImage;

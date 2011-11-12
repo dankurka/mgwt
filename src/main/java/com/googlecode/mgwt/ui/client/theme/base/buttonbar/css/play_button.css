@@ -3,7 +3,7 @@
 }
 
 @url playImage buttonBarPlayImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .play {
 	background-image: playImage;

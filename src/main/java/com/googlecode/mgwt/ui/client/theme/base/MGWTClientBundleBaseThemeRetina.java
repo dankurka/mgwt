@@ -20,7 +20,6 @@ import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.TextResource;
 import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ActionButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.AddContactButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowDownButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowLeftButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowRightButtonCss;
@@ -28,7 +27,6 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowUpButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.BookmarkButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.CameraButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ComposeButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.DeleteButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.FastForwardButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.InfoButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.LocateButtonCss;
@@ -329,275 +327,83 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("css/pulltorefresh.css")
 	PullToRefreshCss getPullToRefreshCss();
 
-	/**
-	 * <p>
-	 * buttonBarActionImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarAction.png")
-	DataResource buttonBarActionImage();
+	@Source("resources/toolbar/action_x2.png")
+	DataResource toolbarActionImage();
 
-	/**
-	 * <p>
-	 * buttonBarArrowDownImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarArrowDown.png")
-	DataResource buttonBarArrowDownImage();
+	@Source("resources/toolbar/arrowdown_x2.png")
+	DataResource toolbarArrowDownImage();
 
-	/**
-	 * <p>
-	 * buttonBarArrowUpImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarArrowUp.png")
-	DataResource buttonBarArrowUpImage();
+	@Source("resources/toolbar/arrowleft_x2.png")
+	DataResource toolbarArrowLeftImage();
 
-	/**
-	 * <p>
-	 * buttonBarArrowLeftImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarArrowLeft.png")
-	DataResource buttonBarArrowLeftImage();
+	@Source("resources/toolbar/arrowright_x2.png")
+	DataResource toolbarArrowRightImage();
 
-	/**
-	 * <p>
-	 * buttonBarArrowRightImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarArrowRight.png")
-	DataResource buttonBarArrowRightImage();
+	@Source("resources/toolbar/arrowup_x2.png")
+	DataResource toolbarArrowUpImage();
 
-	/**
-	 * <p>
-	 * buttonBarBookmarksImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarBookmarks.png")
-	DataResource buttonBarBookmarksImage();
+	@Source("resources/toolbar/bookmarks_x2.png")
+	DataResource toolbarBookmarksImage();
 
-	/**
-	 * <p>
-	 * buttonBarCameraImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarCamera.png")
-	DataResource buttonBarCameraImage();
+	@Source("resources/toolbar/camera_x2.png")
+	DataResource toolbarCameraImage();
 
-	/**
-	 * <p>
-	 * buttonBarComposeImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarCompose.png")
-	DataResource buttonBarComposeImage();
+	@Source("resources/toolbar/camera_x2.png")
+	DataResource toolbarCameraImage();
 
-	/**
-	 * <p>
-	 * buttonBarContactAddImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarContactAdd.png")
-	DataResource buttonBarContactAddImage();
+	@Source("resources/toolbar/compose_x2.png")
+	DataResource toolbarComposeImage();
 
-	/**
-	 * <p>
-	 * buttonBarDeleteImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarDelete.png")
-	DataResource buttonBarDeleteImage();
+	@Source("resources/toolbar/fastforward_x2.png")
+	DataResource toolbarFastForwardImage();
 
-	/**
-	 * <p>
-	 * buttonBarFastForwardImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarFastForward.png")
-	DataResource buttonBarFastForwardImage();
+	@Source("resources/toolbar/info_x2.png")
+	DataResource toolbarInfoImage();
 
-	/**
-	 * <p>
-	 * buttonBarInfoImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarInfo.png")
-	DataResource buttonBarInfoImage();
+	@Source("resources/toolbar/locate_x2.png")
+	DataResource toolbarLocateImage();
 
-	/**
-	 * <p>
-	 * buttonBarLocateImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarLocate.png")
-	DataResource buttonBarLocateImage();
+	@Source("resources/toolbar/new_x2.png")
+	DataResource toolbarNewImage();
 
-	/**
-	 * <p>
-	 * buttonBarNewImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarNew.png")
-	DataResource buttonBarNewImage();
+	@Source("resources/toolbar/nextslide_x2.png")
+	DataResource toolbarNextSlideImage();
 
-	/**
-	 * <p>
-	 * buttonBarNextSlideImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarNextSlide.png")
-	DataResource buttonBarNextSlideImage();
+	@Source("resources/toolbar/organize_x2.png")
+	DataResource toolbarOrganizeImage();
 
-	/**
-	 * <p>
-	 * buttonBarOrganizeImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarOrganize.png")
-	DataResource buttonBarOrganizeImage();
+	@Source("resources/toolbar/pause_x2.png")
+	DataResource toolbarPauseImage();
 
-	/**
-	 * <p>
-	 * buttonBarPauseImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarPause.png")
-	DataResource buttonBarPauseImage();
+	@Source("resources/toolbar/play_x2.png")
+	DataResource toolbarPlayImage();
 
-	/**
-	 * <p>
-	 * buttonBarPlayImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarPlay.png")
-	DataResource buttonBarPlayImage();
+	@Source("resources/toolbar/plus_x2.png")
+	DataResource toolbarPlusImage();
 
-	/**
-	 * <p>
-	 * buttonBarPlusImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarPlus.png")
-	DataResource buttonBarPlusImage();
+	@Source("resources/toolbar/press_x2.png")
+	DataResource toolbarPressImage();
 
-	/**
-	 * <p>
-	 * buttonBarPressedIndicatorImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarPressedIndicator.png")
-	DataResource buttonBarPressedIndicatorImage();
+	@Source("resources/toolbar/previousslide_x2.png")
+	DataResource toolbarPreviousSlideImage();
 
-	/**
-	 * <p>
-	 * buttonBarPreviousSlideImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarPreviousSlide.png")
-	DataResource buttonBarPreviousSlideImage();
+	@Source("resources/toolbar/refresh_x2.png")
+	DataResource toolbarRefreshImage();
 
-	/**
-	 * <p>
-	 * buttonBarRefreshImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarRefresh.png")
-	DataResource buttonBarRefreshImage();
+	@Source("resources/toolbar/reply_x2.png")
+	DataResource toolbarReplyImage();
 
-	/**
-	 * <p>
-	 * buttonBarReplyImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarReply.png")
-	DataResource buttonBarReplyImage();
+	@Source("resources/toolbar/rewind_x2.png")
+	DataResource toolbarRewindImage();
 
-	/**
-	 * <p>
-	 * buttonBarRewindImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarRewind.png")
-	DataResource buttonBarRewindImage();
+	@Source("resources/toolbar/search_x2.png")
+	DataResource toolbarSearchImage();
 
-	/**
-	 * <p>
-	 * buttonBarSearchImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarSearch.png")
-	DataResource buttonBarSearchImage();
+	@Source("resources/toolbar/stop_x2.png")
+	DataResource toolbarStopImage();
 
-	/**
-	 * <p>
-	 * buttonBarStopImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarStop.png")
-	DataResource buttonBarStopImage();
-
-	/**
-	 * <p>
-	 * buttonBarTrashImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/buttons/UIButtonBarTrash.png")
-	DataResource buttonBarTrashImage();
+	@Source("resources/toolbar/trash_x2.png")
+	DataResource toolbarTrashImage();
 
 	// tabbar
 	/**
@@ -1037,18 +843,6 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 
 	/**
 	 * <p>
-	 * getAddContactButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.AddContactButtonCss}
-	 *         object.
-	 */
-	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/add_contact_button.css" })
-	public AddContactButtonCss getAddContactButtonCss();
-
-	/**
-	 * <p>
 	 * getBookmarkButtonCss
 	 * </p>
 	 * 
@@ -1082,18 +876,6 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	 */
 	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/compose_button.css" })
 	public ComposeButtonCss getComposeButtonCss();
-
-	/**
-	 * <p>
-	 * getDeleteButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.DeleteButtonCss}
-	 *         object.
-	 */
-	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/delete_button.css" })
-	public DeleteButtonCss getDeleteButtonCss();
 
 	/**
 	 * <p>

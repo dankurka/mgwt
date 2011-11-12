@@ -3,7 +3,7 @@
 }
 
 @url plusImage buttonBarPlusImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .plus {
 	background-image: plusImage;

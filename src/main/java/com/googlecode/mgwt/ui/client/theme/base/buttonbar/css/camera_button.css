@@ -3,7 +3,7 @@
 }
 
 @url cameraImage buttonBarCameraImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .camera {
 	background-image: cameraImage;

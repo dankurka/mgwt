@@ -3,7 +3,7 @@
 }
 
 @url composeImage buttonBarComposeImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .compose {
 	background-image: composeImage;

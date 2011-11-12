@@ -3,7 +3,7 @@
 }
 
 @url locateImage buttonBarLocateImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .locate {
 	background-image: locateImage;

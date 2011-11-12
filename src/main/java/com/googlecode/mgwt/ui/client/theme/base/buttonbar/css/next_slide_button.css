@@ -3,7 +3,7 @@
 }
 
 @url nextSlideImage buttonBarNextSlideImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .nextSlide {
 	background-image: nextSlideImage;

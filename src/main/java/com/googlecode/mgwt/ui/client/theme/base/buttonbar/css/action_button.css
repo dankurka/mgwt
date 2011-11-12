@@ -3,7 +3,7 @@
 }
 
 @url actionImage buttonBarActionImage;
-@url pressedImage buttonBarPressedIndicatorImage;
+@url pressedImage toolbarPressImage;
 
 .action{
 	background-image: actionImage;
@@ -11,4 +11,10 @@
 
 .action.active{
 	background-image: pressedImage, actionImage;
+}
+
+@if mgwt.os retina {
+	.action {
+		background-size: 23px 18px;
+	}
 }
