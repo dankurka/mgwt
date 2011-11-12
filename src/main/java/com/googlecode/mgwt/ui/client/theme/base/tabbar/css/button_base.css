@@ -47,12 +47,12 @@
 		margin-right: auto;
 		z-index:0;
 		
-		background-image: -webkit-gradient(linear, 40% 0%, 60% 70%, from(#ccc), to(#888));
+		background-image: literal('-webkit-gradient(linear, 30% 0%, 60% 70%, from(#ccc), to(#888))');
 	
 	}
 		
 	.mgwt-TabBar-Button.selected .icon{
-		background-image: -webkit-gradient(linear, 40% 0%, 60% 70%, from(#dee8f1), to(#3ec6f9), color-stop(0.6,#7ab3ed),color-stop(0.7,#2f92e6));
+		background-image: literal('-webkit-gradient(linear, 30% 0%, 60% 70%,  from(#dee8f1), to(#3ec6f9), color-stop(0.6,#7ab3ed),color-stop(0.7,#2f92e6))');
 		
 	}
 	
