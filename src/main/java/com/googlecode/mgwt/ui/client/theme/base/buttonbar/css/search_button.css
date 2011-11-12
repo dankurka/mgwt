@@ -2,7 +2,7 @@
 	@external search, active;
 }
 
-@url searchImage buttonBarSearchImage;
+@url searchImage toolbarSearchImage;
 @url pressedImage toolbarPressImage;
 
 .search {

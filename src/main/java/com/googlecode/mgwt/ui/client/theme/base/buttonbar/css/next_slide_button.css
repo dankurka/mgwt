@@ -2,7 +2,7 @@
 	@external nextSlide, active;
 }
 
-@url nextSlideImage buttonBarNextSlideImage;
+@url nextSlideImage toolbarNextSlideImage;
 @url pressedImage toolbarPressImage;
 
 .nextSlide {

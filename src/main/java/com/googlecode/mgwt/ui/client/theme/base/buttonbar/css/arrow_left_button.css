@@ -2,7 +2,7 @@
 	@external arrowLeft, active;
 }
 
-@url arrowLeftImage buttonBarArrowLeftImage;
+@url arrowLeftImage toolbarArrowLeftImage;
 @url pressedImage toolbarPressImage;
 
 .arrowLeft{

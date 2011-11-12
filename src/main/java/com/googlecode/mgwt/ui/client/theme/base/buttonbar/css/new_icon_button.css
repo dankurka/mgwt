@@ -2,7 +2,7 @@
 	@external newIcon, active;
 }
 
-@url newImage buttonBarNewImage;
+@url newImage toolbarNewImage;
 @url pressedImage toolbarPressImage;
 
 .newIcon {

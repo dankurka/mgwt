@@ -2,7 +2,7 @@
 	@external fastForward, active;
 }
 
-@url fastForwardImage buttonBarFastForwardImage;
+@url fastForwardImage toolbarFastForwardImage;
 @url pressedImage toolbarPressImage;
 
 .fastForward {

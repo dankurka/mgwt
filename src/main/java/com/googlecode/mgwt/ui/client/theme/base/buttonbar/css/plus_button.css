@@ -2,7 +2,7 @@
 	@external plus, active;
 }
 
-@url plusImage buttonBarPlusImage;
+@url plusImage toolbarPlusImage;
 @url pressedImage toolbarPressImage;
 
 .plus {

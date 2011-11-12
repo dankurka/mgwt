@@ -2,7 +2,7 @@
 	@external arrowUp, active;
 }
 
-@url arrowUpImage buttonBarArrowUpImage;
+@url arrowUpImage toolbarArrowUpImage;
 @url pressedImage toolbarPressImage;
 
 .arrowUp{

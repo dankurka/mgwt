@@ -2,7 +2,7 @@
 	@external trash, active;
 }
 
-@url trashImage buttonBarTrashImage;
+@url trashImage toolbarTrashImage;
 @url pressedImage toolbarPressImage;
 
 

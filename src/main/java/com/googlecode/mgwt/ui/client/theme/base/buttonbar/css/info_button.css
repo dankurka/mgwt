@@ -2,7 +2,7 @@
 	@external info, active;
 }
 
-@url infoImage buttonBarInfoImage;
+@url infoImage toolbarInfoImage;
 @url pressedImage toolbarPressImage;
 
 .info {

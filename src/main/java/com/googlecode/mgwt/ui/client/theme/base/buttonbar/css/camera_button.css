@@ -2,7 +2,7 @@
 	@external camera, active;
 }
 
-@url cameraImage buttonBarCameraImage;
+@url cameraImage toolbarCameraImage;
 @url pressedImage toolbarPressImage;
 
 .camera {

@@ -2,7 +2,7 @@
 	@external organize, active;
 }
 
-@url organizeImage buttonBarOrganizeImage;
+@url organizeImage toolbarOrganizeImage;
 @url pressedImage toolbarPressImage;
 
 .organize {

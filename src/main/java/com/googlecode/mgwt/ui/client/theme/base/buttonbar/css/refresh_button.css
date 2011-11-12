@@ -2,7 +2,7 @@
 	@external refresh, active;
 }
 
-@url refreshImage buttonBarRefreshImage;
+@url refreshImage toolbarRefreshImage;
 @url pressedImage toolbarPressImage;
 
 .refresh {

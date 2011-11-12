@@ -2,7 +2,7 @@
 	@external stop, active;
 }
 
-@url stopImage buttonBarStopImage;
+@url stopImage toolbarStopImage;
 @url pressedImage toolbarPressImage;
 
 

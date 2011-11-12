@@ -2,7 +2,7 @@
 	@external locate, active;
 }
 
-@url locateImage buttonBarLocateImage;
+@url locateImage toolbarLocateImage;
 @url pressedImage toolbarPressImage;
 
 .locate {

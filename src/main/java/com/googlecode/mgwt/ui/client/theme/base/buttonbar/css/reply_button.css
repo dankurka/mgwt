@@ -2,7 +2,7 @@
 	@external reply, active;
 }
 
-@url replyImage buttonBarReplyImage;
+@url replyImage toolbarBarReplyImage;
 @url pressedImage toolbarPressImage;
 
 .reply {

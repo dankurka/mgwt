@@ -2,7 +2,7 @@
 	@external action, active;
 }
 
-@url actionImage buttonBarActionImage;
+@url actionImage toolbarActionImage;
 @url pressedImage toolbarPressImage;
 
 .action{

@@ -2,7 +2,7 @@
 	@external pause, active;
 }
 
-@url pauseImage buttonBarPauseImage;
+@url pauseImage toolbarPauseImage;
 @url pressedImage toolbarPressImage;
 
 .pause {

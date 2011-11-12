@@ -2,7 +2,7 @@
 	@external compose, active;
 }
 
-@url composeImage buttonBarComposeImage;
+@url composeImage toolbarComposeImage;
 @url pressedImage toolbarPressImage;
 
 .compose {

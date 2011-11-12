@@ -2,7 +2,7 @@
 	@external rewind, active;
 }
 
-@url rewindImage buttonBarRewindImage;
+@url rewindImage toolbarRewindImage;
 @url pressedImage toolbarPressImage;
 
 .rewind {

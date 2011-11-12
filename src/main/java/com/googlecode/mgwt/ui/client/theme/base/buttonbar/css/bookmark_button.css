@@ -2,7 +2,7 @@
 	@external bookmark, active;
 }
 
-@url bookmarksImage buttonBarBookmarksImage;
+@url bookmarksImage toolbarBookmarksImage;
 @url pressedImage toolbarPressImage;
 
 .bookmark {
