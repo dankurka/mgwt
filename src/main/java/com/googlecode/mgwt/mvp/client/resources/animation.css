@@ -60,7 +60,7 @@
 	}
  	
 
- 	@if mgwt.os iphone ipad {
+ 	@if mgwt.os iphone ipad retina {
 		 .display {
 			\-webkit-perspective: 800;
 		    \-webkit-transform-style: preserve-3d;

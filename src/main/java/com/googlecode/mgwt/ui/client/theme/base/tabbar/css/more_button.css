@@ -12,15 +12,25 @@
 
 
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 	@url moreImage tabBarMoreImage;
-	@url moreSelectedImage tabBarMoreSelectedImage;
 	
-	.mgwt-TabBar-Button.more{
-		background-image: moreImage;
+	
+	.mgwt-TabBar-Button.more .icon{
+		position:relative;
+		top: 15px;
+		\-webkit-mask-box-image: moreImage;
+		width: 29px;
+	
+		
+		height: 16px;
+		
 	}
 	
-	.mgwt-TabBar-Button.more.selected{
-		background-image: moreSelectedImage;
+	.mgwt-TabBar-Button.more .text{
+		margin-top: 18px;
+
 	}
+	
+	
 }

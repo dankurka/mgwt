@@ -194,43 +194,23 @@ public interface MGWTClientBundle {
 
 	DataResource tabBarBookMarkImage();
 
-	DataResource tabBarBookMarkSelectedImage();
-
 	DataResource tabBarContactsImage();
-
-	DataResource tabBarContactsSelectedImage();
 
 	DataResource tabBarDownloadsImage();
 
-	DataResource tabBarDownloadsSelectedImage();
-
 	DataResource tabBarFavoritesImage();
-
-	DataResource tabBarFavoritesSelectedImage();
 
 	DataResource tabBarFeaturedImage();
 
-	DataResource tabBarFeaturedSelectedImage();
-
 	DataResource tabBarHistoryImage();
-
-	DataResource tabBarHistorySelectedImage();
 
 	DataResource tabBarMoreImage();
 
-	DataResource tabBarMoreSelectedImage();
-
 	DataResource tabBarMostRecentImage();
-
-	DataResource tabBarMostRecentSelectedImage();
 
 	DataResource tabBarMostViewedImage();
 
-	DataResource tabBarMostViewedSelectedImage();
-
 	DataResource tabBarSearchImage();
-
-	DataResource tabBarSearchSelectedImage();
 
 	DataResource spinnerImage();
 

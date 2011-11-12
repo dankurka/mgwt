@@ -10,14 +10,17 @@
 }
 
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 	@url contactsImage tabBarContactsImage;
-	@url contactsSelectedImage tabBarContactsSelectedImage;
-		
-	.mgwt-TabBar-Button.contacts{
-		background-image: contactsImage;
-	}	
-	.mgwt-TabBar-Button.contacts.selected{
-		background-image: contactsSelectedImage;
+	
+	
+	
+	.mgwt-TabBar-Button.contacts .icon{
+		\-webkit-mask-box-image: contactsImage;
+		width: 45px;
+		height: 36px;
+		margin-bottom: 3px;
 	}
+	
+	
 }

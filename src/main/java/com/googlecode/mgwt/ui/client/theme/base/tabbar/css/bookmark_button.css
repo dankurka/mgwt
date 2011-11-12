@@ -10,15 +10,14 @@
 		
 }
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 	@url bookmarkImage tabBarBookMarkImage;
-	@url bookmarkSelectedImage tabBarBookMarkSelectedImage;
 		
-	.mgwt-TabBar-Button.bookmark{
-		background-image: bookmarkImage;
+	.mgwt-TabBar-Button.bookmark .icon{
+		\-webkit-mask-box-image: bookmarkImage;
+		width: 36px;
+		height: 39px;
 	}
 		
-	.mgwt-TabBar-Button.bookmark.selected{
-		background-image: bookmarkSelectedImage;
-	}
+	
 }

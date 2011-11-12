@@ -3,28 +3,60 @@
 	@external mgwt-TabBar-Button, active, selected;
 }
 
+
+
 .active{
 }
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 
 	.mgwt-TabBar-Button{
 		\-webkit-box-flex: 1;		
 		min-width: 60px;
-		font-size: 9px;
-		color: #999995;
-		padding-top: 33px;
+		
 		margin: 2px;
-		text-align: center;
-		background-position: 50% 0px;
-		background-repeat: no-repeat;
+		
+		
 		\-webkit-border-radius: 3px;
 	}
 	
+	
+	.mgwt-TabBar-Button .text {
+		
+		font-size: 9px;
+		color: #999995;
+		text-align: center;
+		z-index:1;
+		margin-top: -5px;
+	}
+	
+	
 	.mgwt-TabBar-Button.selected{
-		color: white;
 		background-color: rgba(255, 255, 255, 0.15);
 	}
+	
+	.mgwt-TabBar-Button.selected .text{
+		color: white;
+		
+	}
+	
+	
+	
+	.mgwt-TabBar-Button .icon{
+		margin-left: auto;
+		margin-right: auto;
+		z-index:0;
+		
+		background-image: -webkit-gradient(linear, 40% 0%, 60% 70%, from(#ccc), to(#888));
+	
+	}
+		
+	.mgwt-TabBar-Button.selected .icon{
+		background-image: -webkit-gradient(linear, 40% 0%, 60% 70%, from(#dee8f1), to(#3ec6f9), color-stop(0.6,#7ab3ed),color-stop(0.7,#2f92e6));
+		
+	}
+	
+	
 }
 
 @if mgwt.os android android_tablet {
@@ -32,17 +64,23 @@
 	.mgwt-TabBar-Button{
 		\-webkit-box-flex: 1;		
 		min-width: 60px;
-		font-size: 12px;
-		color: white;
-		text-align: center;
 		top:10px;
 		height: 30px;
-		white-space: \-webkit-nowrap;
 		margin-left: 10px;
 	}
 	.mgwt-TabBar-Button.selected{
 	
 		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(82, 163, 196, 1)), to(rgba(82, 163, 196, 1)))');
+	}
+	
+	.mgwt-TabBar-Button .text{
+		white-space: \-webkit-nowrap;
+		font-size: 12px;
+		color: white;
+		text-align: center;
+	}
+	
+	.mgwt-TabBar-Button .icon{
 	}
 	
 }
@@ -52,15 +90,24 @@
 	.mgwt-TabBar-Button { 
 		\-webkit-box-flex: 1;		
 		min-width: 80px;
-		font-size: 14px;
-		color: white;
-		text-align: center;
+		
+		
 		top:10px;
 		height: 30px;
 		margin-left: 10px;
 	}
 	.mgwt-TabBar-Button.selected{
 		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(0, 92, 176, 1)), to(rgb(0, 92, 176)))');
+	}
+	
+	.mgwt-TabBar-Button .text{
+		white-space: \-webkit-nowrap;
+		font-size: 12px;
+		color: white;
+		text-align: center;
+	}
+	
+	.mgwt-TabBar-Button .icon{
 	}
 		
 }

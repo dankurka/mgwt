@@ -11,14 +11,16 @@
 
 
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 	@url searchImage tabBarSearchImage;
-	@url searchSelectedImage tabBarSearchSelectedImage;
 	
-	.mgwt-TabBar-Button.search{
-		background-image: searchImage;
+	
+	
+	.mgwt-TabBar-Button.search .icon{
+		\-webkit-mask-box-image: searchImage;
+		width: 30px;
+		height: 39px;
 	}
-	.mgwt-TabBar-Button.search.selected{
-		background-image: searchSelectedImage;
-	}
+	
+	
 }

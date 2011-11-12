@@ -12,15 +12,15 @@
 
 
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 	@url mostRecentImage tabBarMostRecentImage;
-	@url mostRecentSelectedImage tabBarMostRecentSelectedImage;
 	
-	.mgwt-TabBar-Button.mostRecent{
-		background-image: mostRecentImage;
+	
+	.mgwt-TabBar-Button.mostRecent .icon{
+		\-webkit-mask-box-image: mostRecentImage;
+		width: 31px;
+		height: 39px;
 	}
 	
-	.mgwt-TabBar-Button.mostRecent.selected{
-		background-image: mostRecentSelectedImage;
-	}
+	
 }

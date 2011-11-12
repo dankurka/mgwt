@@ -11,14 +11,15 @@
 
 
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 	@url favoritesImage tabBarFavoritesImage;
-	@url favoritesSelectedImage tabBarFavoritesSelectedImage;
+	
 		
-	.mgwt-TabBar-Button.favorites{
-		background-image: favoritesImage;
+	.mgwt-TabBar-Button.favorites .icon{
+		\-webkit-mask-box-image: favoritesImage;
+		width: 35px;
+		height: 39px;
 	}
-	.mgwt-TabBar-Button.favorites.selected{
-		background-image: favoritesSelectedImage;
-	}
+	
+	
 }

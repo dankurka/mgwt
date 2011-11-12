@@ -11,15 +11,16 @@
 }
 
 
-@if mgwt.os ipad iphone desktop {
+@if mgwt.os ipad iphone desktop retina {
 	@url historyImage tabBarHistoryImage;
-	@url historySelectedImage tabBarHistorySelectedImage;		
 	
-	.mgwt-TabBar-Button.history{
-		background-image: historyImage;
+	
+	.mgwt-TabBar-Button.history .icon{
+		\-webkit-mask-box-image: historyImage;
+		width: 45px;
+		height: 36px;
+		margin-bottom: 3px;
 	}
 	
-	.mgwt-TabBar-Button.history.selected{
-		background-image: historySelectedImage;
-	}
+	
 }
