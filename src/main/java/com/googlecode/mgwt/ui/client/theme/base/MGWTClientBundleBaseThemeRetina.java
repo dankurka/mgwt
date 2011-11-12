@@ -534,104 +534,34 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source({ "tabbar/css/button_base.css", "tabbar/css/search_button.css" })
 	SearchTabBarButtonCss getSearchTabBarButtonCss();
 
-	/**
-	 * <p>
-	 * tabBarBookMarkImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarBookmarks.png")
+	@Source("resources/tabbar/bookmarks.png")
 	DataResource tabBarBookMarkImage();
 
-	/**
-	 * <p>
-	 * tabBarContactsImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarContacts.png")
+	@Source("resources/tabbar/contacts.png")
 	DataResource tabBarContactsImage();
 
-	/**
-	 * <p>
-	 * tabBarDownloadsImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarDownloads.png")
+	@Source("resources/tabbar/downloads.png")
 	DataResource tabBarDownloadsImage();
 
-	/**
-	 * <p>
-	 * tabBarFavoritesImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarFavorites.png")
+	@Source("resources/tabbar/favorites.png")
 	DataResource tabBarFavoritesImage();
 
-	/**
-	 * <p>
-	 * tabBarFeaturedImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarFeatured.png")
+	@Source("resources/tabbar/featured.png")
 	DataResource tabBarFeaturedImage();
 
-	/**
-	 * <p>
-	 * tabBarHistoryImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarHistory.png")
+	@Source("resources/tabbar/history.png")
 	DataResource tabBarHistoryImage();
 
-	/**
-	 * <p>
-	 * tabBarMoreImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarMore.png")
+	@Source("resources/tabbar/more.png")
 	DataResource tabBarMoreImage();
 
-	/**
-	 * <p>
-	 * tabBarMostRecentImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarMostRecent.png")
+	@Source("resources/tabbar/mostrecent.png")
 	DataResource tabBarMostRecentImage();
 
-	/**
-	 * <p>
-	 * tabBarMostViewedImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarMostViewed.png")
+	@Source("resources/tabbar/mostviewed.png")
 	DataResource tabBarMostViewedImage();
 
-	/**
-	 * <p>
-	 * tabBarSearchImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/tabbar/UITabBarSearch.png")
+	@Source("resources/tabbar/search.png")
 	DataResource tabBarSearchImage();
 
 	/**
