@@ -12,3 +12,13 @@
 .newIcon.active {
 	background-image: pressedImage, newImage;
 }
+
+@if mgwt.os retina {
+	.newIcon {
+		background-size: 18px 18px;
+	}
+	
+	.newIcon.active {
+		background-size: 44px 44px, 18px 18px;
+	}
+}

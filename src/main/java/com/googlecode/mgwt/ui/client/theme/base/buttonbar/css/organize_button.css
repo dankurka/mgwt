@@ -12,3 +12,13 @@
 .organize.active {
 	background-image: pressedImage, organizeImage;
 }
+
+@if mgwt.os retina {
+	.organize {
+		background-size: 19px 19px;
+	}
+	
+	.organize.active {
+		background-size: 44px 44px, 19px 19px;
+	}
+}

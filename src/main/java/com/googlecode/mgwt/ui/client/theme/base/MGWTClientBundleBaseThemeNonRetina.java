@@ -348,9 +348,6 @@ public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTCl
 	@Source("resources/toolbar/camera.png")
 	DataResource toolbarCameraImage();
 
-	@Source("resources/toolbar/camera.png")
-	DataResource toolbarCameraImage();
-
 	@Source("resources/toolbar/compose.png")
 	DataResource toolbarComposeImage();
 
@@ -381,7 +378,7 @@ public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTCl
 	@Source("resources/toolbar/plus.png")
 	DataResource toolbarPlusImage();
 
-	@Source("resources/toolbar/press.png")
+	@Source("resources/toolbar/pressed.png")
 	DataResource toolbarPressImage();
 
 	@Source("resources/toolbar/previousslide.png")

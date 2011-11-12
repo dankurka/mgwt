@@ -12,3 +12,13 @@
 .rewind.active {
 	background-image:  pressedImage, rewindImage;
 }
+
+@if mgwt.os retina {
+	.rewind {
+		background-size: 21px 19px;
+	}
+	
+	.rewind.active {
+		background-size: 44px 44px, 21px 19px;
+	}
+}

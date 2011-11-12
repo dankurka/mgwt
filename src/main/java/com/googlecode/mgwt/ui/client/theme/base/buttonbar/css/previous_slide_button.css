@@ -12,3 +12,13 @@
 .previousSlide.active {
 	background-image: pressedImage, previousSlideImage ;
 }
+
+@if mgwt.os retina {
+	.previousSlide {
+		background-size: 23px 18px;
+	}
+	
+	.previousSlide.active {
+		background-size: 44px 44px, 23px 18px;
+	}
+}

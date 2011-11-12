@@ -12,3 +12,13 @@
 .info.active {
 	background-image: pressedImage, infoImage;
 }
+
+@if mgwt.os retina {
+	.info {
+		background-size: 18px 19px;
+	}
+	
+	.info.active {
+		background-size: 44px 44px, 18px 19px;
+	}
+}

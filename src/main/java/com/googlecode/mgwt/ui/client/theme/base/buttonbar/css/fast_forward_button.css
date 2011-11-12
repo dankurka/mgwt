@@ -12,3 +12,13 @@
 .fastForward.active {
 	background-image: pressedImage, fastForwardImage;
 }
+
+@if mgwt.os retina {
+	.fastForward {
+		background-size: 21px 19px;
+	}
+	
+	.fastForward.active {
+		background-size: 44px 44px, 21px 19px;
+	}
+}

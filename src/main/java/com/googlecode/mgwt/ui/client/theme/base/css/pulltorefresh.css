@@ -1,4 +1,4 @@
-@url nextSlideImage buttonBarNextSlideImage;
+@url nextSlideImage toolbarNextSlideImage;
 @url error errorImage;
 
 @if mgwt.css pretty {

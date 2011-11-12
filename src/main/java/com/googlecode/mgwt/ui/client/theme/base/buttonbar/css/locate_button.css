@@ -12,3 +12,13 @@
 .locate.active {
 	background-image: pressedImage, locateImage;
 }
+
+@if mgwt.os retina {
+	.locate {
+		background-size: 19px 19px;
+	}
+	
+	.locate.active {
+		background-size: 44px 44px, 19px 19px;
+	}
+}

@@ -12,3 +12,13 @@
 .arrowRight.active{
 	background-image: pressedImage, arrowRightImage;
 }
+
+@if mgwt.os retina {
+	.arrowRight {
+		background-size: 16px 19px;
+	}
+	
+	.arrowRight.active {
+		background-size: 44px 44px, 16px 19px;
+	}
+}

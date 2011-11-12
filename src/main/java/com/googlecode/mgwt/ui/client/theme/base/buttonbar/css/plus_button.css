@@ -12,3 +12,13 @@
 .plus.active {
 	background-image: pressedImage, plusImage;
 }
+
+@if mgwt.os retina {
+	.plus {
+		background-size: 16px 17px;
+	}
+	
+	.plus.active {
+		background-size: 44px 44px, 16px 17px;
+	}
+}

@@ -120,59 +120,55 @@ public interface MGWTClientBundle {
 
 	PullToRefreshCss getPullToRefreshCss();
 
-	DataResource buttonBarActionImage();
+	DataResource toolbarActionImage();
 
-	DataResource buttonBarArrowDownImage();
+	DataResource toolbarArrowDownImage();
 
-	DataResource buttonBarArrowUpImage();
+	DataResource toolbarArrowLeftImage();
 
-	DataResource buttonBarArrowLeftImage();
+	DataResource toolbarArrowRightImage();
 
-	DataResource buttonBarArrowRightImage();
+	DataResource toolbarArrowUpImage();
 
-	DataResource buttonBarBookmarksImage();
+	DataResource toolbarBookmarksImage();
 
-	DataResource buttonBarCameraImage();
+	DataResource toolbarCameraImage();
 
-	DataResource buttonBarComposeImage();
+	DataResource toolbarComposeImage();
 
-	DataResource buttonBarContactAddImage();
+	DataResource toolbarFastForwardImage();
 
-	DataResource buttonBarDeleteImage();
+	DataResource toolbarInfoImage();
 
-	DataResource buttonBarFastForwardImage();
+	DataResource toolbarLocateImage();
 
-	DataResource buttonBarInfoImage();
+	DataResource toolbarNewImage();
 
-	DataResource buttonBarLocateImage();
+	DataResource toolbarNextSlideImage();
 
-	DataResource buttonBarNewImage();
+	DataResource toolbarOrganizeImage();
 
-	DataResource buttonBarNextSlideImage();
+	DataResource toolbarPauseImage();
 
-	DataResource buttonBarOrganizeImage();
+	DataResource toolbarPlayImage();
 
-	DataResource buttonBarPauseImage();
+	DataResource toolbarPlusImage();
 
-	DataResource buttonBarPlayImage();
+	DataResource toolbarPressImage();
 
-	DataResource buttonBarPlusImage();
+	DataResource toolbarPreviousSlideImage();
 
-	DataResource buttonBarPressedIndicatorImage();
+	DataResource toolbarRefreshImage();
 
-	DataResource buttonBarPreviousSlideImage();
+	DataResource toolbarReplyImage();
 
-	DataResource buttonBarRefreshImage();
+	DataResource toolbarRewindImage();
 
-	DataResource buttonBarReplyImage();
+	DataResource toolbarSearchImage();
 
-	DataResource buttonBarRewindImage();
+	DataResource toolbarStopImage();
 
-	DataResource buttonBarSearchImage();
-
-	DataResource buttonBarStopImage();
-
-	DataResource buttonBarTrashImage();
+	DataResource toolbarTrashImage();
 
 	TabBarCss getTabBarCss();
 

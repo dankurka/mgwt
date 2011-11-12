@@ -12,3 +12,13 @@
 .play.active {
 	background-image: pressedImage, playImage  ;
 }
+
+@if mgwt.os retina {
+	.play {
+		background-size: 15px 18px;
+	}
+	
+	.play.active {
+		background-size: 44px 44px, 15px 18px;
+	}
+}

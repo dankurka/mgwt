@@ -2,7 +2,7 @@
 	@external reply, active;
 }
 
-@url replyImage toolbarBarReplyImage;
+@url replyImage toolbarReplyImage;
 @url pressedImage toolbarPressImage;
 
 .reply {
@@ -11,4 +11,14 @@
 
 .reply.active {
 	background-image: pressedImage, replyImage;
+}
+
+@if mgwt.os retina {
+	.reply {
+		background-size: 24.5px 18px;
+	}
+	
+	.reply.active {
+		background-size: 44px 44px, 24.5px 18px;
+	}
 }

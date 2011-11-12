@@ -14,3 +14,13 @@
 .trash.active {
 	background-image: pressedImage, trashImage  ;
 }
+
+@if mgwt.os retina {
+	.trash {
+		background-size: 16px 21px;
+	}
+	
+	.trash.active {
+		background-size: 44px 44px, 17px 17px;
+	}
+}

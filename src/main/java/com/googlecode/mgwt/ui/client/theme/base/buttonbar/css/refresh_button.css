@@ -12,3 +12,13 @@
 .refresh.active {
 	background-image: pressedImage, refreshImage;
 }
+
+@if mgwt.os retina {
+	.refresh {
+		background-size: 18px 22px;
+	}
+	
+	.refresh.active {
+		background-size: 44px 44px, 18px 22px;
+	}
+}

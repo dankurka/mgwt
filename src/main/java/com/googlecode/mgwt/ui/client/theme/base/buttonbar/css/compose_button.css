@@ -12,3 +12,13 @@
 .compose.active {
 	background-image: pressedImage, composeImage;
 }
+
+@if mgwt.os retina {
+	.compose {
+		background-size: 22px 18px;
+	}
+	
+	.compose.active {
+		background-size: 44px 44px, 22px 18px;
+	}
+}

@@ -12,3 +12,13 @@
 .camera.active {
 	background-image: pressedImage, cameraImage;
 }
+
+@if mgwt.os retina {
+	.camera {
+		background-size: 24px 18px;
+	}
+	
+	.camera.active {
+		background-size: 44px 44px, 24px 18px;
+	}
+}

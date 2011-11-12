@@ -17,4 +17,8 @@
 	.action {
 		background-size: 23px 18px;
 	}
+	
+	.action.active {
+		background-size: 44px 44px, 23px 18px;
+	}
 }

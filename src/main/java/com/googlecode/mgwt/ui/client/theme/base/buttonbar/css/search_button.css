@@ -12,3 +12,13 @@
 .search.active {
 	background-image: pressedImage, searchImage ;
 }
+
+@if mgwt.os retina {
+	.search {
+		background-size: 20px 20px;
+	}
+	
+	.search.active {
+		background-size: 44px 44px, 20px 20px;
+	}
+}

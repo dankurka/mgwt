@@ -12,3 +12,13 @@
 .bookmark.active {
 	background-image: pressedImage, bookmarksImage;
 }
+
+@if mgwt.os retina {
+	.bookmark {
+		background-size: 24px 16px;
+	}
+	
+	.bookmark.active {
+		background-size: 44px 44px, 24px 16px;
+	}
+}

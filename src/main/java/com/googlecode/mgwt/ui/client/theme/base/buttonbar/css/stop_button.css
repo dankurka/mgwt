@@ -14,3 +14,13 @@
 .stop.active {
 	background-image:  pressedImage, stopImage;
 }
+
+@if mgwt.os retina {
+	.stop {
+		background-size: 17px 17px;
+	}
+	
+	.stop.active {
+		background-size: 44px 44px, 17px 17px;
+	}
+}
