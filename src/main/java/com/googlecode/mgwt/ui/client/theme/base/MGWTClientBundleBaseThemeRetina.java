@@ -280,7 +280,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	 * 
 	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
 	 */
-	@Source("resources/input/check.png")
+	@Source("resources/input/ios_check.png")
 	DataResource inputCheckImage();
 
 	/**
