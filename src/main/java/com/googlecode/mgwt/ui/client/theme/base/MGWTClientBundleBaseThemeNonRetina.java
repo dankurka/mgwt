@@ -157,16 +157,6 @@ public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTCl
 
 	/**
 	 * <p>
-	 * listArrowTouched
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
-	@Source("resources/list/arrow_touched.png")
-	DataResource listArrowTouched();
-
-	/**
-	 * <p>
 	 * getSearchBoxCss
 	 * </p>
 	 * 

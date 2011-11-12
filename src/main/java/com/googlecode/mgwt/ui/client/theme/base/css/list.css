@@ -1,5 +1,4 @@
 @url arrowImage listArrow;
-@url arrowTouchedImage listArrowTouched;
 
 
 @if mgwt.css pretty {
@@ -62,7 +61,7 @@
 		color: white;
 		background-repeat: no-repeat, repeat;
 		background-position: 100% 50%, 0 0;
-		background-image: arrowTouchedImage, literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)), to(rgb(1, 95, 230)) )');
+		background-image: arrowImage, literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)), to(rgb(1, 95, 230)) )');
 	}
 	
 	.mgwt-List-Header {
