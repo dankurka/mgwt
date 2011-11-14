@@ -88,8 +88,6 @@ public interface MGWTClientBundle {
 
 	DataResource listArrow();
 
-	DataResource listArrowTouched();
-
 	MSearchBoxCss getSearchBoxCss();
 
 	DataResource searchSearchImage();
