@@ -12,6 +12,7 @@
 	\-webkit-transition-property: literal('-webkit-transform');
 	\-webkit-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
 	overflow: visible;
+	
 }
 
 .mgwt-Scrollbar {

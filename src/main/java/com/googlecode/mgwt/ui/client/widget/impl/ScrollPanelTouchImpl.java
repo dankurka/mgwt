@@ -136,8 +136,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * Constructor for ScrollPanelTouchImpl.
 	 * </p>
 	 * 
-	 * @param css
-	 *            a
+	 * @param css a
 	 *            {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
 	 *            object.
 	 */
@@ -544,9 +543,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			ScrollEndEvent scrollEndEvent = new ScrollEndEvent(newPosX, newPosY, newDuration, position_x, position_y);
 			fireEvent(scrollEndEvent);
-			//if (!scrollEndEvent.isPreventDefault()) {
+			// if (!scrollEndEvent.isPreventDefault()) {
 			scrollTo(newPosX, newPosY, newDuration);
-			//}
+			// }
 		}
 
 		@Override
@@ -643,12 +642,15 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		int resetX = position_x;
 		int resetY = position_y;
 
+		System.out.println("posx: " + position_x);
 		if (position_x >= 0) {
 			resetX = 0;
 		} else {
 			int maxScrollX = getMaxScrollX();
+			System.out.println("maxscroll: " + maxScrollX);
 			if (position_x < maxScrollX) {
 				resetX = maxScrollX;
+
 			}
 		}
 
@@ -685,6 +687,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * 
 	 */
 	private int getMaxScrollX() {
+
+		System.out.println("width: " + getClientWidth(main.getElement()));
+		System.out.println("widgetToscrollWidth: " + getWidgetToScrollWidth());
 
 		return getClientWidth(main.getElement()) - getWidgetToScrollWidth() - offsetX;
 
@@ -868,7 +873,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		ScrollPanelTouchImpl.this.offsetY = offsetY;
 		ScrollPanelTouchImpl.this.offsetX = offsetX;
 		//
-		//		scrollTo(position_x, position_y, 200);
+		// scrollTo(position_x, position_y, 200);
 
 	}
 
@@ -877,7 +882,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	}
 
 	private int getWidgetToScrollWidth() {
-		return widgetToScroll.getOffsetWidth() + getMarginWidth(widgetToScroll.getElement());
+
+		// TODO discuss fix later
+		return widgetToScroll.getOffsetWidth();// +
+												// getMarginWidth(widgetToScroll.getElement());
 	}
 
 	private native int getMarginWidth(com.google.gwt.user.client.Element el)/*-{
