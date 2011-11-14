@@ -215,6 +215,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 	\-webkit-border-radius: 4px;
+	height: 15px;
 	
 }
 @if mgwt.os iphone retina {
