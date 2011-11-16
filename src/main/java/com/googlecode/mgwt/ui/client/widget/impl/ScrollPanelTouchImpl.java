@@ -136,7 +136,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * Constructor for ScrollPanelTouchImpl.
 	 * </p>
 	 * 
-	 * @param css a
+	 * @param css
+	 *            a
 	 *            {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
 	 *            object.
 	 */
@@ -289,8 +290,16 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		@Override
 		public void onMouseWheel(MouseWheelEvent event) {
 
-			int velocityX = getMouseWheelVelocityX(event.getNativeEvent());
-			int velocityY = getMouseWheelVelocityY(event.getNativeEvent());
+			int velocityX = 0;
+			int velocityY = 0;
+
+			if (isScrollingEnabledX()) {
+				velocityX = getMouseWheelVelocityX(event.getNativeEvent()) / 10;
+			}
+
+			if (isScrollingEnabledY()) {
+				velocityY = getMouseWheelVelocityY(event.getNativeEvent()) / 10;
+			}
 
 			scrollTo(position_x + velocityX, position_y + velocityY, 100);
 
@@ -642,12 +651,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		int resetX = position_x;
 		int resetY = position_y;
 
-		System.out.println("posx: " + position_x);
 		if (position_x >= 0) {
 			resetX = 0;
 		} else {
 			int maxScrollX = getMaxScrollX();
-			System.out.println("maxscroll: " + maxScrollX);
 			if (position_x < maxScrollX) {
 				resetX = maxScrollX;
 
@@ -687,10 +694,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * 
 	 */
 	private int getMaxScrollX() {
-
-		System.out.println("width: " + getClientWidth(main.getElement()));
-		System.out.println("widgetToscrollWidth: " + getWidgetToScrollWidth());
-
 		return getClientWidth(main.getElement()) - getWidgetToScrollWidth() - offsetX;
 
 	}
