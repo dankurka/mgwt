@@ -18,6 +18,10 @@
 		
 		
 		\-webkit-border-radius: 3px;
+		\-webkit-appearance: none;
+		border: 0px solid black;
+		background-color: transparent;
+		box-sizing: content-box;
 	}
 	
 	
@@ -67,6 +71,10 @@
 		top:10px;
 		height: 30px;
 		margin-left: 10px;
+		\-webkit-appearance: none;
+		border: 0px solid black;
+		background-color: transparent;
+		box-sizing: content-box;
 	}
 	.mgwt-TabBar-Button.selected{
 	
@@ -95,6 +103,10 @@
 		top:10px;
 		height: 30px;
 		margin-left: 10px;
+		\-webkit-appearance: none;
+		border: 0px solid black;
+		background-color: transparent;
+		box-sizing: content-box;
 	}
 	.mgwt-TabBar-Button.selected{
 		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(0, 92, 176, 1)), to(rgb(0, 92, 176)))');

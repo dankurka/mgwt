@@ -410,6 +410,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			event.preventDefault();
 			event.stopPropagation();
+
 			currentlyScrolling = true;
 			// event.stopPropagation();
 

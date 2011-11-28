@@ -20,7 +20,7 @@
 		font-size: 19px;
 		font-weight: bold;
 		text-align: center;
-		
+		\-webkit-appearance: none;
 		
 	}
 	
@@ -98,7 +98,7 @@
 		font-size: 19px;
 		font-weight: bold;
 		text-align: center;
-		
+		\-webkit-appearance: none;
 	}
 	
 	.mgwt-Button.active {
@@ -176,7 +176,7 @@
 		text-align: center;
 		
 		border: 1px solid rgba(0, 0, 0, 0.5);
-		
+		\-webkit-appearance: none;
 	}
 	
 	.mgwt-Button.active {
@@ -257,7 +257,7 @@
 		font-size: 19px;
 		text-align: center;
 		border: 2px solid rgb(0, 92, 176);
-		
+		\-webkit-appearance: none;
 	}
 	
 	.mgwt-Button.active {

@@ -198,6 +198,10 @@
 	z-index: 1;
 	margin: 6px 0 0 12px;
 	height: 26px;
+	\-webkit-appearance: none;
+	border: 0px solid black;
+	background-color: transparent;
+	box-sizing: content-box;
 }
 
 .mgwt-HeaderButton p { 
