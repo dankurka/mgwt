@@ -25,7 +25,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
  * A simulated TouchMoveEvent is really a mouse down event. This is used mostly
  * in dev mode and for blackberry devices to handle them equally to real touch
  * devices
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -34,15 +34,19 @@ public class SimulatedTouchStartEvent extends TouchStartEvent {
 	private int y;
 
 	/**
-	 * <p>Constructor for SimulatedTouchStartEvent.</p>
-	 *
-	 * @param event a {@link com.google.gwt.event.dom.client.MouseDownEvent} object.
+	 * <p>
+	 * Constructor for SimulatedTouchStartEvent.
+	 * </p>
+	 * 
+	 * @param event
+	 *            a {@link com.google.gwt.event.dom.client.MouseDownEvent}
+	 *            object.
 	 */
 	public SimulatedTouchStartEvent(MouseDownEvent event) {
 		x = event.getClientX();
 		y = event.getClientY();
 		setNativeEvent(event.getNativeEvent());
-
+		setSource(event.getSource());
 	}
 
 	/** {@inheritDoc} */
