@@ -46,7 +46,8 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 	/**
 	 * Construct a base button with a given css
 	 * 
-	 * @param css the css to use for this button
+	 * @param css
+	 *            the css to use for this button
 	 */
 	public ButtonBase(ButtonBaseCss css) {
 		this(DOM.createDiv(), css);
@@ -57,8 +58,10 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 	/**
 	 * Construct a button with a given element and css
 	 * 
-	 * @param element the element to use
-	 * @param css the css to use
+	 * @param element
+	 *            the element to use
+	 * @param css
+	 *            the css to use
 	 */
 	public ButtonBase(Element element, ButtonBaseCss css) {
 		setElement(element);
@@ -89,13 +92,13 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 				@Override
 				public void onTouchCanceled(TouchCancelEvent event) {
 					removeStyleName(active);
-
+					DOM.releaseCapture(getElement());
 				}
 
 				@Override
 				public void onTouchEnd(TouchEndEvent event) {
 					removeStyleName(active);
-
+					DOM.releaseCapture(getElement());
 				}
 
 				@Override
@@ -106,7 +109,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 				@Override
 				public void onTouchStart(TouchStartEvent event) {
 					addStyleName(active);
-
+					DOM.setCapture(getElement());
 				}
 			});
 		}
