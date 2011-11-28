@@ -32,6 +32,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 public class SimulatedTouchStartEvent extends TouchStartEvent {
 	private int x;
 	private int y;
+	private final MouseDownEvent event;
 
 	/**
 	 * <p>
@@ -43,6 +44,7 @@ public class SimulatedTouchStartEvent extends TouchStartEvent {
 	 *            object.
 	 */
 	public SimulatedTouchStartEvent(MouseDownEvent event) {
+		this.event = event;
 		x = event.getClientX();
 		y = event.getClientY();
 		setNativeEvent(event.getNativeEvent());
@@ -78,4 +80,9 @@ public class SimulatedTouchStartEvent extends TouchStartEvent {
 
 		return toucharray;
 	}-*/;
+
+	@Override
+	public void stopPropagation() {
+		event.stopPropagation();
+	}
 }

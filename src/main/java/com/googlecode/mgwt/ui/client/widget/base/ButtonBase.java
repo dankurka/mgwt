@@ -16,10 +16,6 @@
 package com.googlecode.mgwt.ui.client.widget.base;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.MouseOutEvent;
-import com.google.gwt.event.dom.client.MouseOutHandler;
-import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
@@ -31,7 +27,6 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
@@ -68,51 +63,32 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 		css.ensureInjected();
 		this.active = css.active();
 
-		if (MGWT.getOsDetection().isBlackBerry() || MGWT.getOsDetection().isDesktop()) {
-			addDomHandler(new MouseOverHandler() {
+		addTouchHandler(new TouchHandler() {
 
-				@Override
-				public void onMouseOver(MouseOverEvent event) {
-					addStyleName(active);
+			@Override
+			public void onTouchCanceled(TouchCancelEvent event) {
+				removeStyleName(active);
+				DOM.releaseCapture(getElement());
+			}
 
-				}
-			}, MouseOverEvent.getType());
+			@Override
+			public void onTouchEnd(TouchEndEvent event) {
+				removeStyleName(active);
+				DOM.releaseCapture(getElement());
+			}
 
-			addDomHandler(new MouseOutHandler() {
+			@Override
+			public void onTouchMove(TouchMoveEvent event) {
 
-				@Override
-				public void onMouseOut(MouseOutEvent event) {
-					removeStyleName(active);
+			}
 
-				}
-			}, MouseOutEvent.getType());
-		} else {
-			addTouchHandler(new TouchHandler() {
-
-				@Override
-				public void onTouchCanceled(TouchCancelEvent event) {
-					removeStyleName(active);
-					DOM.releaseCapture(getElement());
-				}
-
-				@Override
-				public void onTouchEnd(TouchEndEvent event) {
-					removeStyleName(active);
-					DOM.releaseCapture(getElement());
-				}
-
-				@Override
-				public void onTouchMove(TouchMoveEvent event) {
-
-				}
-
-				@Override
-				public void onTouchStart(TouchStartEvent event) {
-					addStyleName(active);
-					DOM.setCapture(getElement());
-				}
-			});
-		}
+			@Override
+			public void onTouchStart(TouchStartEvent event) {
+				event.stopPropagation();
+				addStyleName(active);
+				DOM.setCapture(getElement());
+			}
+		});
 
 		addTapHandler(new TapHandler() {
 
