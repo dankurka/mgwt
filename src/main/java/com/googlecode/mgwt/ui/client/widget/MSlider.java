@@ -69,7 +69,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
 			setValueContrained(event.touches().get(0).getPageX());
-
+			DOM.setCapture(getElement());
 		}
 
 		@Override
@@ -80,12 +80,12 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
-
+			DOM.releaseCapture(getElement());
 		}
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
-
+			DOM.releaseCapture(getElement());
 		}
 
 	}
