@@ -70,5 +70,10 @@
         </all>
     </replace-with>
     
+     <replace-with class="com.googlecode.mgwt.mvp.client.history.Html5HistorianImpl">
+        <when-type-is class="com.googlecode.mgwt.mvp.client.history.Html5Historian"/>
+       
+    </replace-with>
+    
   	<source path="client"/>
 </module>
