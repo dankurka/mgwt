@@ -15,7 +15,7 @@ public class Html5HistorianImpl implements Html5Historian {
 	private native void bind() /*-{
 		var that = this;
 		$wnd.addEventListener( 'popstate', function(event) {
-			alert("pop");
+			
 			var data = "";
 			
 			if(event.state != null)
@@ -54,7 +54,6 @@ public class Html5HistorianImpl implements Html5Historian {
 
 	@Override
 	public native void pushState(String data, String title, String url) /*-{
-		alert("push: '" + url + "' data: '" + data + "'");
 		$wnd.history.pushState(data, title, url);
 	}-*/;
 
