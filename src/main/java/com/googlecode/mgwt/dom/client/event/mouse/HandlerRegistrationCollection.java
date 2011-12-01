@@ -26,9 +26,9 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * @author Daniel Kurka
  * @version $Id: $
  */
-public class HandlerRegistrationCollection implements HandlerRegistration {
+public class HandlerRegistrationCollection implements HandlerRegistration, com.google.web.bindery.event.shared.HandlerRegistration {
 
-	private LinkedList<HandlerRegistration> collectedHandlers = new LinkedList<HandlerRegistration>();
+	private LinkedList<com.google.web.bindery.event.shared.HandlerRegistration> collectedHandlers = new LinkedList<com.google.web.bindery.event.shared.HandlerRegistration>();
 
 	/**
 	 * Construct an empty HandlerRegistrationCollection
@@ -46,6 +46,10 @@ public class HandlerRegistrationCollection implements HandlerRegistration {
 		collectedHandlers.add(handlerRegistration);
 	}
 
+	public void addHandlerRegistration(com.google.web.bindery.event.shared.HandlerRegistration handlerRegistration) {
+		collectedHandlers.add(handlerRegistration);
+	}
+
 	/**
 	 * {@inheritDoc}
 	 *
@@ -53,7 +57,7 @@ public class HandlerRegistrationCollection implements HandlerRegistration {
 	 */
 	@Override
 	public void removeHandler() {
-		for (HandlerRegistration handlerRegistration : collectedHandlers) {
+		for (com.google.web.bindery.event.shared.HandlerRegistration handlerRegistration : collectedHandlers) {
 			handlerRegistration.removeHandler();
 		}
 		collectedHandlers.clear();
