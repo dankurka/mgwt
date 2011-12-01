@@ -208,9 +208,13 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		if (value == null) {
 			throw new IllegalArgumentException("value can not be null");
 		}
+		
+		if (value < 0) {
+			throw new IllegalArgumentException("value >= 0");
+		}
 
-		if (value > max) {
-			throw new IllegalArgumentException("value > max");
+		if (value >= max) {
+			throw new IllegalArgumentException("value >= max");
 		}
 
 		int oldValue = this.value;
@@ -245,8 +249,8 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 			x = 0;
 		}
 
-		if (x > width) {
-			x = width;
+		if (x > (width-1)) {
+			x = width-1;
 		}
 
 		// scale it to max
