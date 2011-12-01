@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -180,7 +182,15 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	@Override
 	protected void onAttach() {
 		super.onAttach();
-		setSliderPos(value);
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+			
+			@Override
+			public void execute() {
+				setSliderPos(value);
+				
+			}
+		});
+		
 	}
 
 	/*
