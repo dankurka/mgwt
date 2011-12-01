@@ -45,7 +45,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 	 *            the css to use for this button
 	 */
 	public ButtonBase(ButtonBaseCss css) {
-		this(DOM.createButton(), css);
+		this(DOM.createDiv(), css);
 	}
 
 	private final String active;

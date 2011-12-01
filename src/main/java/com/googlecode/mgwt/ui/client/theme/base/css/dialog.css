@@ -84,6 +84,7 @@
 	}
 	
 	.mgwt-DialogPanel .okbutton, .mgwt-DialogPanel .cancelbutton {
+		display: block;
 		font-size: 17px;
 		font-weight: bold;
 		text-align: center;
@@ -174,6 +175,7 @@
 	}
 	
 	.mgwt-DialogPanel .okbutton, .mgwt-DialogPanel .cancelbutton {
+		display: block;
 		font-size: 17px;
 		
 		text-align: center;
@@ -264,6 +266,7 @@
 	}
 	
 	.mgwt-DialogPanel .okbutton, .mgwt-DialogPanel .cancelbutton {
+		display: block;
 		font-size: 17px;
 		
 		text-align: center;

@@ -6,6 +6,7 @@
 @if mgwt.os iphone retina {
 
 	.mgwt-Button {
+		display: block;
 		border: solid 1px rgba(0,0,0, 0.5);
 		\-webkit-border-radius: 6px;
 		\-webkit-box-shadow: 2px 2px 3px #999; 	
@@ -83,6 +84,10 @@
 @if mgwt.os ipad desktop {
 
 	.mgwt-Button {
+		display: block;
+		width: auto;
+		background-color: transparent;
+		position:relative;
 		border: solid 1px rgba(0,0,0, 0.5);
 		\-webkit-border-radius: 6px;
 		\-webkit-box-shadow: 2px 2px 3px #999; 	
@@ -99,6 +104,7 @@
 		font-weight: bold;
 		text-align: center;
 		\-webkit-appearance: none;
+		box-sizing: content-box;
 	}
 	
 	.mgwt-Button.active {
@@ -158,7 +164,7 @@
 @if mgwt.os android android_tablet {
 
 	.mgwt-Button {
-		
+		display: block;
 		\-webkit-border-radius: 4px;
 		
 		/*background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)))'); */
@@ -242,7 +248,7 @@
 @if mgwt.os blackberry {
 
 	.mgwt-Button {
-		
+		display: block;
 		\-webkit-border-radius: 4px;
 		
 		/*background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)))'); */
