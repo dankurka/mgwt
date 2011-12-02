@@ -18,6 +18,7 @@ package com.googlecode.mgwt.ui.client.widget.experimental;
 import java.util.LinkedList;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -94,6 +95,8 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		initWidget(container);
 
 		aniContainer = new FlowPanel();
+		//TODO
+		aniContainer.getElement().getStyle().setPosition(Position.RELATIVE);
 
 		container.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
 
