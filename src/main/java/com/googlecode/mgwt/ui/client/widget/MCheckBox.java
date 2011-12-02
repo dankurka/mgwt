@@ -54,6 +54,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		public void onTouchCanceled(TouchCancelEvent event) {
 			event.stopPropagation();
 			event.preventDefault();
+			DOM.releaseCapture(getElement());
 			setValue(getValue());
 		}
 
@@ -62,6 +63,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 			event.stopPropagation();
 			event.preventDefault();
+			DOM.releaseCapture(getElement());
 			if (!moved) {
 				setValue(!getValue());
 			} else {
@@ -102,6 +104,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		public void onTouchStart(TouchStartEvent event) {
 			event.stopPropagation();
 			event.preventDefault();
+			DOM.setCapture(getElement());
 			Touch touch = event.touches().get(0);
 			x_start = touch.getPageX();
 			moved = false;
