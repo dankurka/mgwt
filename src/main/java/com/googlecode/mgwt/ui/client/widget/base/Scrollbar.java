@@ -234,7 +234,7 @@ public class Scrollbar extends Widget {
 	 */
 	public void hide() {
 		if (FeatureDetection.has3d()) {
-			CssUtil.setWebKitTransitionsDelay(getElement(), 350);
+			CssUtil.setTransitionsDelay(getElement(), 350);
 		}
 
 		CssUtil.setOpacity(getElement(), 0);
@@ -247,7 +247,7 @@ public class Scrollbar extends Widget {
 	 */
 	public void show() {
 		if (FeatureDetection.has3d()) {
-			CssUtil.setWebKitTransitionsDelay(getElement(), 0);
+			CssUtil.setTransitionsDelay(getElement(), 0);
 		}
 
 		CssUtil.setOpacity(getElement(), 1);
@@ -263,12 +263,12 @@ public class Scrollbar extends Widget {
 	 */
 	public void setTransitionTime(int milliseconds) {
 		if (FeatureDetection.has3d()) {
-			CssUtil.setWebKitTransitionDuration(getElement(), 300);
+			CssUtil.setTransitionDuration(getElement(), 300);
 		} else {
-			CssUtil.setWebKitTransitionDuration(getElement(), 0);
+			CssUtil.setTransitionDuration(getElement(), 0);
 		}
 
-		CssUtil.setWebKitTransitionDuration(bar, milliseconds);
+		CssUtil.setTransitionDuration(bar, milliseconds);
 
 	}
 }

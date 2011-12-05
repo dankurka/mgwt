@@ -55,6 +55,26 @@ under * the License.
 	</replace-with>
 	
 	
+	<!-- CSS UTIL -->
+	
+	
+	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.WebkitCssUtilImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
+		 <all> 
+   			<when-property-is name="user.agent" value="safari" />
+  		</all>
+		
+	</replace-with>
+	
+	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.FireFoxCssUtilImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
+		 <all> 
+   			<when-property-is name="user.agent" value="gecko1_8" />
+  		</all>
+		
+	</replace-with>
+	
+	
 	
 
 	<source path="client" />

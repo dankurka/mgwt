@@ -604,7 +604,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	private void setTransistionTime(int milliseconds) {
 
 		if (!usePos)
-			widgetToScroll.getElement().getStyle().setProperty("webkitTransitionDuration", milliseconds + "ms");
+			CssUtil.setTransitionDuration(widgetToScroll.getElement(), milliseconds);
 		if (scrollingEnabledX && hScrollbar != null) {
 			hScrollbar.setTransitionTime(milliseconds);
 		}

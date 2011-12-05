@@ -3,62 +3,56 @@
 	
 }
 
-@if mgwt.os iphone ipad desktop retina {
-	.mgwt-ProgressBar {
+.mgwt-ProgressBar {
 		position: relative;
 		width: 250px;
 		height: 15px;
-		\-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
-		border: 1px solid #bebebe;
-		background-color: rgb(57, 137, 214);
 		background-repeat: repeat-x;
-		\-webkit-background-size: 25px 15px;
-		background-image: literal('-webkit-gradient(linear, 19 0, 0 10, color-stop(0.25, rgba(255, 255, 255, 0) ), color-stop(0.3, rgba(255, 255, 255, 0.7) ), color-stop(0.3, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 0.7) ), color-stop(0.8, rgba(255, 255, 255, 0) ) ), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.05, rgba(0, 0, 0, .2) ), color-stop(0.06, rgba(255, 255, 255, .8) ), color-stop(0.4, rgba(255, 255, 255, .05) ), color-stop(0.6, rgba(0, 0, 0, .05) ), color-stop(0.9, rgba(0, 0, 0, .2) ), color-stop(0.98, rgba(0, 0, 0, .5) ) ), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.2, transparent), color-stop(0.2, rgba(255, 255, 255, .5) ), color-stop(0.5, rgba(255, 255, 255, .5) ), color-stop(0.5, transparent))');
 		background-position-x: 0;
-		\-webkit-animation-duration: 9s;
-		\-webkit-animation-name: anmiateProgressBar;
-		\-webkit-animation-iteration-count: infinite;
-		\-webkit-animation-timing-function: linear;
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 20px;
 		margin-bottom: 20px;
-		\-webkit-box-sizing: border-box;
-		\-webkit-border-radius: 6px;
 		
+}
+
+
+@if user.agent safari {
+
+}
+
+@if mgwt.os iphone ipad desktop retina {
+	.mgwt-ProgressBar {
+		border: 1px solid #bebebe;
+		background-color: rgb(57, 137, 214);
+		border-radius: 6px;
 	}
 	
-	@-webkit-keyframes anmiateProgressBar {
-	
-	    0% { background-position-x:  0%; }
-	
-	    100% { background-position-x: 100%; }
-	
+	@if user.agent safari {
+		.mgwt-ProgressBar {
+			\-webkit-background-size: 25px 15px;
+			\-webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+			\-webkit-box-sizing: border-box;
+			background-image: literal('-webkit-gradient(linear, 19 0, 0 10, color-stop(0.25, rgba(255, 255, 255, 0) ), color-stop(0.3, rgba(255, 255, 255, 0.7) ), color-stop(0.3, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 0.7) ), color-stop(0.8, rgba(255, 255, 255, 0) ) ), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.05, rgba(0, 0, 0, .2) ), color-stop(0.06, rgba(255, 255, 255, .8) ), color-stop(0.4, rgba(255, 255, 255, .05) ), color-stop(0.6, rgba(0, 0, 0, .05) ), color-stop(0.9, rgba(0, 0, 0, .2) ), color-stop(0.98, rgba(0, 0, 0, .5) ) ), -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.2, transparent), color-stop(0.2, rgba(255, 255, 255, .5) ), color-stop(0.5, rgba(255, 255, 255, .5) ), color-stop(0.5, transparent))');
+		}
 	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-ProgressBar {
+			background-size: 25px 15px;
+			\-moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+			\-moz-box-sizing: border-box;
+			
+			background-image: literal('-moz-linear-gradient(top left ,  rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.7) 30%, rgba(255, 255, 255, 1) 31%, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0.7) 71%, rgba(255, 255, 255, 0) 80% ), -moz-linear-gradient(top, rgba(0, 0, 0, .2) 5%, rgba(255, 255, 255, .8) 6%, rgba(255, 255, 255, .05) 40%, rgba(0, 0, 0, .05) 60% , rgba(0, 0, 0, .2) 90% , rgba(0, 0, 0, .5) 98% ), -moz-linear-gradient(top, rgba(255,255,255, 1) 20%, rgba(255, 255, 255, .5) 21%, rgba(255, 255, 255, .5) 50% ,  rgba(255, 255, 255, 1) 51%)');
+		}
+	}
+	
+	
 }
 
 @if mgwt.os android android_tablet {
 	.mgwt-ProgressBar {
-		position: relative;
-		width: 250px;
-		height: 15px;
-		
-		
 		background-color: inherit;
-		background-repeat: repeat-x;
-		\-webkit-background-size: 15px 15px;
-		background-image: literal('-webkit-gradient(linear, 5 5, 10 10, color-stop(0.25, rgba(82, 163, 196, 0) ), color-stop(0.3, rgba(82, 163, 196, 0.7) ), color-stop(0.3, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 0.7) ), color-stop(0.8, rgba(82, 163, 196, 0) ) )');
-		background-position-x: 0;
-		\-webkit-animation-duration: 9s;
-		\-webkit-animation-name: anmiateProgressBar;
-		\-webkit-animation-iteration-count: infinite;
-		\-webkit-animation-timing-function: linear;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 20px;
-		margin-bottom: 20px;
-		\-webkit-box-sizing: border-box;
-	
 		border: 2px solid rbg(82, 163, 196);
 		
 		
@@ -66,50 +60,95 @@
 		
 	}
 	
-	@-webkit-keyframes anmiateProgressBar {
-	
-	    0% { background-position-x:  0%; }
-	
-	    100% { background-position-x: 100%; }
-	
+	@if user.agent safari {
+		.mgwt-ProgressBar {
+			\-webkit-background-size: 15px 15px;
+			background-image: literal('-webkit-gradient(linear, 5 5, 10 10, color-stop(0.25, rgba(82, 163, 196, 0) ), color-stop(0.3, rgba(82, 163, 196, 0.7) ), color-stop(0.3, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 0.7) ), color-stop(0.8, rgba(82, 163, 196, 0) ) )');
+			\-webkit-box-sizing: border-box;
+		}
 	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-ProgressBar {
+			\-moz-background-size: 15px 15px;
+			background-image: literal('-webkit-gradient(linear, 5 5, 10 10, color-stop(0.25, rgba(82, 163, 196, 0) ), color-stop(0.3, rgba(82, 163, 196, 0.7) ), color-stop(0.3, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 0.7) ), color-stop(0.8, rgba(82, 163, 196, 0) ) )');
+			\-moz-box-sizing: border-box
+		}
+	}
+	
+	
+	
+
 }
 
 
 @if mgwt.os blackberry {
 	.mgwt-ProgressBar {
-		position: relative;
-		width: 250px;
-		height: 15px;
-		
-		
 		background-color: inherit;
-		background-repeat: repeat-x;
-		\-webkit-background-size: 15px 15px;
-		background-image: literal('-webkit-gradient(linear, 5 5, 10 10, color-stop(0.25, rgba(255, 255, 255, 0) ), color-stop(0.3, rgba(255, 255, 255, 0.7) ), color-stop(0.3, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 0.7) ), color-stop(0.8, rgba(255, 255, 255, 0) ) )');
-		background-position-x: 0;
+		border: 2px solid rbg(82, 163, 196);
+		
+		
+	}
+	
+	@if user.agent safari {
+		.mgwt-ProgressBar {
+			\-webkit-background-size: 15px 15px;
+			background-image: literal('-webkit-gradient(linear, 5 5, 10 10, color-stop(0.25, rgba(255, 255, 255, 0) ), color-stop(0.3, rgba(255, 255, 255, 0.7) ), color-stop(0.3, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 1) ), color-stop(0.7, rgba(255, 255, 255, 0.7) ), color-stop(0.8, rgba(255, 255, 255, 0) ) )');
+			\-webkit-box-sizing: border-box;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-ProgressBar {
+			\-moz-background-size: 15px 15px;
+			background-image: literal('-webkit-gradient(linear, 5 5, 10 10, color-stop(0.25, rgba(82, 163, 196, 0) ), color-stop(0.3, rgba(82, 163, 196, 0.7) ), color-stop(0.3, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 1) ), color-stop(0.7, rgba(82, 163, 196, 0.7) ), color-stop(0.8, rgba(82, 163, 196, 0) ) )');
+			\-moz-box-sizing: border-box
+		}
+	}
+	
+	
+
+}
+
+@if user.agent safari {
+	.mgwt-ProgressBar {
 		\-webkit-animation-duration: 9s;
 		\-webkit-animation-name: anmiateProgressBar;
 		\-webkit-animation-iteration-count: infinite;
 		\-webkit-animation-timing-function: linear;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 20px;
-		margin-bottom: 20px;
-		\-webkit-box-sizing: border-box;
-	
-		border: 2px solid rbg(82, 163, 196);
-		
-		
-		
-		
 	}
+
 	
 	@-webkit-keyframes anmiateProgressBar {
+		
+		    0% { background-position-x:  0%; }
+		
+		    100% { background-position-x: 100%; }
+		
+	}
+
+}
+
+
+@if user.agent gecko1_8 {
+
+	.mgwt-ProgressBar {
+		\-moz-animation-duration: 9s;
+		\-moz-animation-name: anmiateProgressBar;
+		\-moz-animation-iteration-count: infinite;
+		\-moz-animation-timing-function: linear;
+	}
 	
-	    0% { background-position-x:  0%; }
+	@-moz-keyframes anmiateProgressBar {
 	
-	    100% { background-position-x: 100%; }
+	    0% { background-position:   0 0; }
+	
+	    100% { background-position:   100% 0;}
 	
 	}
 }
+
+
+
+
+

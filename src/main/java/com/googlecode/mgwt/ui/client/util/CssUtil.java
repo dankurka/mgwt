@@ -15,7 +15,9 @@
  */
 package com.googlecode.mgwt.ui.client.util;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Element;
+import com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl;
 
 /**
  *
@@ -25,56 +27,23 @@ import com.google.gwt.user.client.Element;
  * @version $Id: $
  */
 public class CssUtil {
-	/**
-	 * <p>translate</p>
-	 *
-	 * @param el a {@link com.google.gwt.user.client.Element} object.
-	 * @param x a int.
-	 * @param y a int.
-	 */
-	public static void translate(Element el, int x, int y) {
-		String cssText = null;
-		if (FeatureDetection.has3d()) {
-			cssText = "translate3d(" + x + "px, " + y + "px, 0px)";
-		} else {
-			cssText = "translate( " + x + "px, " + y + "px )";
-		}
 
-		_translate(el, cssText);
+	private static final CssUtilImpl cssUtilImpl = GWT.create(CssUtilImpl.class);
+
+	public static void translate(Element el, int x, int y) {
+		cssUtilImpl.translate(el, x, y);
 
 	}
 
-	private native static void _translate(Element el, String css)/*-{
-		el.style.webkitTransform = css;
-	}-*/;
+	public static void setTransitionsDelay(Element el, int milliseconds) {
+		cssUtilImpl.setDelay(el, milliseconds);
+	}
 
-	/**
-	 * <p>setWebKitTransitionsDelay</p>
-	 *
-	 * @param el a {@link com.google.gwt.user.client.Element} object.
-	 * @param milliseconds a int.
-	 */
-	public native static void setWebKitTransitionsDelay(Element el, int milliseconds)/*-{
-		el.style.webkitTransitionDelay = milliseconds + "ms";
-	}-*/;
+	public static void setOpacity(Element el, double opacity) {
+		cssUtilImpl.setOpacity(el, opacity);
+	}
 
-	/**
-	 * <p>setOpacity</p>
-	 *
-	 * @param el a {@link com.google.gwt.user.client.Element} object.
-	 * @param opacity a double.
-	 */
-	public native static void setOpacity(Element el, double opacity)/*-{
-		el.style.opacity = opacity;
-	}-*/;
-
-	/**
-	 * <p>setWebKitTransitionDuration</p>
-	 *
-	 * @param el a {@link com.google.gwt.user.client.Element} object.
-	 * @param time a int.
-	 */
-	public native static void setWebKitTransitionDuration(Element el, int time)/*-{
-		el.style.webkitTransitionDuration = time + "ms";
-	}-*/;
+	public static void setTransitionDuration(Element el, int time) {
+		cssUtilImpl.setDuration(el, time);
+	}
 }
