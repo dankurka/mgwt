@@ -14,6 +14,8 @@
  * the License.
  */
 
+@if user.agent safari {
+
 @if mgwt.os blackberry {
 	
 	.display {
@@ -83,16 +85,23 @@
 
 
 
-/**    
+
+
+
+
+
+@if user.agent safari {
+	
+	
+	
+	/**    
 key frame for doing nothing
 */
 @-webkit-keyframes donothing {
     from { opacity: 0.9; }
     to { opacity: 1; }
 }
-
-
-
+	
 
 
 .in, .out {
@@ -383,6 +392,9 @@ key frame for doing nothing
     }
 }
 
+} 
+
+}
 
 
 

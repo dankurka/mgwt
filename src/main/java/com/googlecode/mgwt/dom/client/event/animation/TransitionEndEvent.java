@@ -15,7 +15,9 @@
  */
 package com.googlecode.mgwt.dom.client.event.animation;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.DomEvent;
+import com.googlecode.mgwt.dom.client.event.EventTypes;
 
 /**
  *
@@ -26,7 +28,9 @@ import com.google.gwt.event.dom.client.DomEvent;
  */
 public class TransitionEndEvent extends DomEvent<TransitionEndHandler> {
 
-	private static final Type<TransitionEndHandler> TYPE = new Type<TransitionEndHandler>("webkitTransitionEnd", new TransitionEndEvent());
+	private static final EventTypes EVENT_TYPES = GWT.create(EventTypes.class);
+	
+	private static final Type<TransitionEndHandler> TYPE = new Type<TransitionEndHandler>(EVENT_TYPES.getTransistionEnd(), new TransitionEndEvent());
 
 	/**
 	 * <p>getType</p>

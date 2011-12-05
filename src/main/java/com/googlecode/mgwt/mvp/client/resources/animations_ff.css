@@ -1,0 +1,298 @@
+
+@if user.agent gecko1_8 {
+
+	
+.displayContainer {
+ 		position: absolute;
+		width: 100%;
+		height: 100%;
+		overflow:hidden;
+	}
+	
+.display {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		overflow:hidden;
+			
+	}
+	
+
+/*firefox*/
+	
+	.in, .out {
+	\-moz-animation-timing-function: ease;
+	\-moz-animation-duration: 300ms;
+	\-moz-animation-fill-mode: both;
+	
+}
+
+.in {
+	z-index:10;
+}
+
+.out{
+	z-index: 0 !important;
+}
+
+.slide.in {
+	\-moz-animation-name: slideinfromright;
+	
+}
+
+.slide.out {
+	\-moz-animation-name: slideouttoleft;
+}
+
+.slide.in.reverse {
+	\-moz-animation-name: slideinfromleft;
+	
+}
+
+.slide.out.reverse {
+	\-moz-animation-name: slideouttoright;
+}
+
+@-moz-keyframes slideinfromright {
+    from { -moz-transform: translateX(100%); }
+    to { -moz-transform: translateX(0); }
+}
+
+@-moz-keyframes slideinfromleft {
+    from { -moz-transform: translateX(-100%); }
+    to { -moz-transform: translateX(0); }
+}
+
+@-moz-keyframes slideouttoleft {
+    from { -moz-transform: translateX(0); }
+    to { -moz-transform: translateX(-100%); }
+}
+
+@-moz-keyframes slideouttoright {
+    from { -moz-transform: translateX(0); }
+    to { -moz-transform: translateX(100%); }
+}
+
+
+.flip {
+	\-moz-animation-duration: .65s;
+	\-moz-backface-visibility: hidden;
+}
+
+.flip.in {
+	\-moz-animation-name: flipinfromleft;
+}
+
+.flip.out {
+	\-moz-animation-name: flipouttoleft;
+}
+
+.flip.in.reverse {
+	\-moz-animation-name: flipinfromright;
+}
+
+.flip.out.reverse {
+	\-moz-animation-name: flipouttoright;
+}
+
+@-moz-keyframes flipinfromright {
+    from { -moz-transform: rotate(-180deg) scale(.8); opacity: 0;}
+    to { -moz-transform: rotate(0) scale(1); opacity: 1;}
+}
+
+@-moz-keyframes flipinfromleft {
+    from { -moz-transform: rotate(180deg) scale(.8); opacity: 0; }
+    to { -moz-transform: rotate(0) scale(1);  opacity: 1;}
+}
+
+@-moz-keyframes flipouttoleft {
+    from { -moz-transform: rotate(0) scale(1);
+    	opacity: 1;
+     }
+    to { -moz-transform: rotate(-180deg) scale(.8); 
+    	opacity: 0;
+    }
+}
+
+@-moz-keyframes flipouttoright {
+    from { -moz-transform: rotate(0) scale(1); opacity: 1;}
+    to { -moz-transform: rotate(180deg) scale(.8); opacity: 0;}
+}
+
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-moz-keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.fade.in {
+	z-index: 10;
+	\-moz-animation-name: fadein;
+}
+.fade.out {
+	z-index: 8;
+	\-moz-animation-name: fadeout;
+}
+
+.dissolve.in {
+	\-moz-animation-name: fadein;
+}
+
+.dissolve.out {
+	\-moz-animation-name: fadeout;	
+}
+
+
+
+
+
+.slideup.in {
+	\-moz-animation-name: slideupfrombottom;
+	z-index: 10;
+}
+
+.slideup.out {
+	\-moz-animation-name: slideupfrommiddle;
+	z-index: 0;
+}
+
+.slideup.out.reverse {
+	z-index: 10;
+	\-moz-animation-name: slidedownfrommiddle;
+}
+
+.slideup.in.reverse {
+	z-index: 0;
+	\-moz-animation-name: slidedownfromtop;
+}
+
+
+@-moz-keyframes slideupfrombottom {
+    from { -moz-transform: translateY(100%); }
+    to { -moz-transform: translateY(0); }
+}
+
+@-moz-keyframes slidedownfrommiddle {
+    from { -moz-transform: translateY(0); }
+    to { -moz-transform: translateY(100%); }
+}
+
+@-moz-keyframes slideupfrommiddle {
+    from { -moz-transform: translateY(0); }
+    to { -moz-transform: translateY(-100%); }
+}
+
+@-moz-keyframes slidedownfromtop {
+    from { -moz-transform: translateY(-100%); }
+    to { -moz-transform: translateY(0%); }
+}
+
+
+.swap {
+	\-moz-transform: perspective(800);
+	\-moz-animation-duration: .7s;
+}
+.swap.out {
+	\-moz-animation-name: swapouttoleft;
+}
+.swap.in {
+	\-moz-animation-name: swapinfromright;
+}
+.swap.out.reverse {
+	\-moz-animation-name: swapouttoright;
+}
+.swap.in.reverse {
+	\-moz-animation-name: swapinfromleft;
+}
+
+
+@-moz-keyframes swapouttoright {
+    0% {
+         \-moz-transform: translateX(0%) scale(0.3);
+        
+    }
+   
+    100% {
+         \-moz-transform: translateX(100%) scale(1);
+    }
+}
+
+@-moz-keyframes swapouttoleft {
+    0% {
+         \-moz-transform: translateX(0%) scale(1);
+       
+    }
+   
+    100% {
+        \-moz-transform: translateX(-100%) scale(0.3);
+    }
+}
+
+@-moz-keyframes swapinfromright {
+    0% {
+        \-moz-transform: translateX(100%) scale(0.3);
+    }
+   
+    100% {
+        \-moz-transform: translateX(0%) scale(1);
+    }
+}
+
+@-moz-keyframes swapinfromleft {
+    0% {
+        \-moz-transform: translateX(-100%) scale(0.3);
+       
+    }
+   
+    100% {
+        \-moz-transform: translateX(0%) scale(1);
+    }
+}
+
+
+
+
+
+/****************************
+*	Pop in animation
+*****************************/
+
+
+.pop.in {
+	\-moz-animation-name: popin;
+}
+
+.pop.out {
+	\-moz-animation-name: popout;
+}
+
+
+
+@-moz-keyframes popin {
+    from {
+        -moz-transform: scale(.3);
+        opacity: 0;
+    }
+    to {
+        -moz-transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes popout {
+    from {
+        -moz-transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        -moz-transform: scale(.3);
+        opacity: 0;
+    }
+}
+}

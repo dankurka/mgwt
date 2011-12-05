@@ -6,6 +6,8 @@
 	
 }
 
+@if user.agent safari {
+
 .mgwt-List {
 	position: relative;
 	list-style: none;
@@ -188,7 +190,7 @@
 
 
 
-
+}
 
 
 

@@ -15,7 +15,9 @@
  */
 package com.googlecode.mgwt.dom.client.event.animation;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.DomEvent;
+import com.googlecode.mgwt.dom.client.event.EventTypes;
 
 /**
  *
@@ -25,10 +27,12 @@ import com.google.gwt.event.dom.client.DomEvent;
  * @version $Id: $
  */
 public class AnimationEndEvent extends DomEvent<AnimationEndHandler> {
+	
+	private static final EventTypes EVENT_TYPES = GWT.create(EventTypes.class);
 	/**
 	 * Event type for animation end events.
 	 */
-	private static final Type<AnimationEndHandler> TYPE = new Type<AnimationEndHandler>("webkitAnimationEnd", new AnimationEndEvent());
+	private static final Type<AnimationEndHandler> TYPE = new Type<AnimationEndHandler>(EVENT_TYPES.getAnimationEnd(), new AnimationEndEvent());
 
 	/**
 	 * <p>getType</p>

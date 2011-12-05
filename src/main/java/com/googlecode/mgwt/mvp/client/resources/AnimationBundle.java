@@ -31,7 +31,7 @@ public interface AnimationBundle extends ClientBundle {
 	 *
 	 * @return a {@link com.googlecode.mgwt.mvp.client.resources.AnimationCss} object.
 	 */
-	@Source("animation.css")
+	@Source({"animation.css", "animations_ff.css"})
 	public AnimationCss animationCss();
 
 	/** Constant <code>INSTANCE</code> */

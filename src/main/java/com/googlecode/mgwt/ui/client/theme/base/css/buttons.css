@@ -3,6 +3,8 @@
 }
 
 
+@if user.agent safari {
+
 @if mgwt.os iphone retina {
 
 	.mgwt-Button {
@@ -320,6 +322,7 @@
 	
 }
  
+}
 
 
 

@@ -2,6 +2,8 @@
 	@external mgwt-ButtonBar;
 }
 
+@if user.agent safari {
+
 .mgwt-ButtonBar .spacer{
 	\-webkit-box-flex: 1;
 }
@@ -72,3 +74,4 @@
 	}
 }
 
+}

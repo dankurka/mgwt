@@ -148,7 +148,9 @@ public class Scrollbar extends Widget {
 		applyStyle(bar, cssText);
 
 		DOM.appendChild(getElement(), bar);
-
+		//TODO
+		if(true)
+			return;
 		switch (orientation) {
 		case HORIZONTAL:
 			CssCanvas canvas = CssCanvas.getCssCanvasContext("2d", "scrollbar" + uuid, maxSize, 5);

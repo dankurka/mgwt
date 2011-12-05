@@ -5,6 +5,8 @@
 }
 
 
+@if user.agent safari {
+
 .mgwt-HeaderPanel {
 	position: relative;	
 }
@@ -482,6 +484,7 @@
 }
 
 
+}
 
 
 
