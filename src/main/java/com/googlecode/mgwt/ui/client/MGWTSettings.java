@@ -196,7 +196,7 @@ public class MGWTSettings {
 
 			// width
 			if (width != null) {
-				buffer.append("width=" + width);
+				buffer.append(",width=" + width);
 			}
 
 			// height
