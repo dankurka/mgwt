@@ -101,7 +101,7 @@ public class PullArrowHeader extends Composite implements PullHeader {
 	/** {@inheritDoc} */
 	@Override
 	public void scrollStart(State state) {
-		remoteStyles();
+		removeStyles();
 
 		icon.addStyleName(css.arrow());
 		icon.setVisible(true);
@@ -147,7 +147,7 @@ public class PullArrowHeader extends Composite implements PullHeader {
 	 * </p>
 	 */
 	public void showError() {
-		remoteStyles();
+		removeStyles();
 		icon.addStyleName(css.error());
 
 		icon.setVisible(true);
@@ -198,7 +198,7 @@ public class PullArrowHeader extends Composite implements PullHeader {
 	 * </p>
 	 */
 	protected void showArrow() {
-		remoteStyles();
+		removeStyles();
 		icon.addStyleName(css.arrow());
 
 		icon.setVisible(true);
@@ -211,7 +211,7 @@ public class PullArrowHeader extends Composite implements PullHeader {
 	 * </p>
 	 */
 	protected void showSpinner() {
-		remoteStyles();
+		removeStyles();
 		icon.setVisible(false);
 		indicator.setVisible(true);
 
@@ -242,9 +242,16 @@ public class PullArrowHeader extends Composite implements PullHeader {
 	 * remoteStyles
 	 * </p>
 	 */
-	protected void remoteStyles() {
+	protected void removeStyles() {
 		icon.removeStyleName(css.arrow());
 		icon.removeStyleName(css.error());
+	}
+
+	public void showSuccess() {
+		removeStyles();
+
+		icon.setVisible(false);
+		indicator.setVisible(false);
 	}
 
 }

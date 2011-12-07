@@ -3,6 +3,7 @@ package com.googlecode.mgwt.ui.client.widget;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.widget.base.PullArrowHeader;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel;
 import com.googlecode.mgwt.ui.client.widget.event.PullReleasedEvent;
@@ -24,15 +25,16 @@ public class PullToRefresh extends PullPanel {
 	private SafeHtml reloadHTML;
 	private SafeHtml loadingHTML;
 
+	private SafeHtml successHTML;
+
 	private SafeHtml loadingFailedHTML;
 
-	/**
-	 * <p>
-	 * Constructor for PullToRefresh.
-	 * </p>
-	 */
 	public PullToRefresh() {
-		super(new PullArrowHeader(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss()));
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss());
+	}
+
+	public PullToRefresh(PullToRefreshCss css) {
+		super(new PullArrowHeader(css));
 		InternalPullListener listener = new InternalPullListener();
 
 		addPullReleasedHandler(listener);
@@ -43,6 +45,8 @@ public class PullToRefresh extends PullPanel {
 
 		setLoadingFailedHTML(SafeHtmlUtils.fromTrustedString("<div>failed to load</div>"));
 		setLoadingHTML(SafeHtmlUtils.fromTrustedString("<div>loading</div>"));
+
+		setSuccessHTML(SafeHtmlUtils.fromTrustedString("<div> loading done</div>"));
 
 		updateText();
 	}
@@ -61,6 +65,10 @@ public class PullToRefresh extends PullPanel {
 		}
 		this.noReloadHTML = html;
 		updateText();
+	}
+
+	public void setSuccessHTML(SafeHtml successHTML) {
+		this.successHTML = successHTML;
 	}
 
 	/**
@@ -172,7 +180,12 @@ public class PullToRefresh extends PullPanel {
 	 * </p>
 	 */
 	public void onLoadingSucceeded() {
-		showHeader(false);
+		if (isAutoHideHeader()) {
+			showHeader(false);
+
+		}
+		header.setHTML(successHTML.asString());
+		getHeader().showSuccess();
 		refresh();
 	}
 

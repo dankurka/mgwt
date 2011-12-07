@@ -105,6 +105,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 		 *            the html as String
 		 */
 		public void setHTML(String html);
+
 	}
 
 	private class ScrollListener implements ScrollHandler, ScrollEndHandler, ScrollStartHandler {
@@ -119,11 +120,16 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 			header.onScrollEnd(getState(), event.getCurrentY(), event.getDuration());
 			if (getState() == State.PULL_RELEASE) {
 				event.preventDefault();
+
 				scroll.setOffset(0, 0);
+
 				startLoading();
 
 			} else {
-				scroll.setOffset(0, -header.getHeight());
+				if (isAutoHideHeader()) {
+					scroll.setOffset(0, -header.getHeight());
+				}
+
 			}
 
 		}
@@ -154,6 +160,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 	private State state;
 	protected final PullHeader header;
+	private boolean autoHideHeader = true;
 
 	/**
 	 * Construct a pull panel with a given header
@@ -331,6 +338,15 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	private void startLoading() {
 		fireEvent(new PullReleasedEvent());
 
+	}
+
+	public void setAutoHideHeader(boolean autoHideHeader) {
+		this.autoHideHeader = autoHideHeader;
+
+	}
+
+	public boolean isAutoHideHeader() {
+		return autoHideHeader;
 	}
 
 }
