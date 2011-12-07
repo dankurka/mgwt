@@ -6,7 +6,7 @@
 
 	* {
 		\-webkit-user-select: none;
-		\-moz-user-select: none;
+		
 		\-webkit-text-size-adjust: none;
 		margin: 0px;
 		padding: 0px;
@@ -22,7 +22,7 @@
 		margin: 0px;
 		padding: 0px;
 		font-family: Helvetica, sans-serif;
-	
+		\-moz-user-select: none;
 	}
 }
 
