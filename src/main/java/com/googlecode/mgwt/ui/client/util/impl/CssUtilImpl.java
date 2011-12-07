@@ -12,4 +12,6 @@ public interface CssUtilImpl {
 
 	public void setDuration(Element el, int time);
 
+	public void rotate(Element element, int degree);
+
 }

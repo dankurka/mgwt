@@ -22,8 +22,8 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
-import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
+import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader;
 import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State;
@@ -117,11 +117,8 @@ public class PullArrowHeader extends Composite implements PullHeader {
 	@Override
 	public void onScroll(State state, int positionY) {
 		int degree = getRotation(positionY);
-		if (MGWT.getOsDetection().isAndroid()) {
-			icon.getElement().setAttribute("style", "-webkit-transform: rotate(" + degree + "deg);");
-		} else {
-			icon.getElement().setAttribute("style", "-webkit-transform: rotate(" + degree + "deg) translateZ(0);");
-		}
+
+		CssUtil.rotate(icon.getElement(), degree);
 
 	}
 

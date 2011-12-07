@@ -46,4 +46,9 @@ public class CssUtil {
 	public static void setTransitionDuration(Element el, int time) {
 		cssUtilImpl.setDuration(el, time);
 	}
+
+	public static void rotate(Element element, int degree) {
+		cssUtilImpl.rotate(element, degree);
+
+	}
 }
