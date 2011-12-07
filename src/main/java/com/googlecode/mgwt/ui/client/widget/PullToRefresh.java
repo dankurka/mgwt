@@ -24,6 +24,8 @@ public class PullToRefresh extends PullPanel {
 	private SafeHtml reloadHTML;
 	private SafeHtml loadingHTML;
 
+	private SafeHtml successHTML;
+
 	private SafeHtml loadingFailedHTML;
 
 	/**
@@ -44,6 +46,8 @@ public class PullToRefresh extends PullPanel {
 		setLoadingFailedHTML(SafeHtmlUtils.fromTrustedString("<div>failed to load</div>"));
 		setLoadingHTML(SafeHtmlUtils.fromTrustedString("<div>loading</div>"));
 
+		setSuccessHTML(SafeHtmlUtils.fromTrustedString("<div> loading done</div>"));
+
 		updateText();
 	}
 
@@ -61,6 +65,10 @@ public class PullToRefresh extends PullPanel {
 		}
 		this.noReloadHTML = html;
 		updateText();
+	}
+
+	public void setSuccessHTML(SafeHtml successHTML) {
+		this.successHTML = successHTML;
 	}
 
 	/**
@@ -172,7 +180,12 @@ public class PullToRefresh extends PullPanel {
 	 * </p>
 	 */
 	public void onLoadingSucceeded() {
-		showHeader(false);
+		if (isAutoHideHeader()) {
+			showHeader(false);
+
+		}
+		header.setHTML(successHTML.asString());
+		getHeader().showSuccess();
 		refresh();
 	}
 
