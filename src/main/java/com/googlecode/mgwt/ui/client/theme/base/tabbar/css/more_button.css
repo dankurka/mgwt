@@ -19,13 +19,23 @@
 	.mgwt-TabBar-Button.more .icon{
 		position:relative;
 		top: 15px;
-		\-webkit-mask-box-image: moreImage;
 		width: 29px;
-	
-		
 		height: 16px;
 		
 	}
+	
+	@if user.agent safari {
+		.mgwt-TabBar-Button.more .icon{
+			\-webkit-mask-box-image: moreImage;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-TabBar-Button.more .icon{
+			background-image: moreImage;
+		}
+	}
+	
 	
 	.mgwt-TabBar-Button.more .text{
 		margin-top: 18px;

@@ -16,9 +16,20 @@
 	
 		
 	.mgwt-TabBar-Button.favorites .icon{
-		\-webkit-mask-box-image: favoritesImage;
 		width: 35px;
 		height: 39px;
+	}
+	
+	@if user.agent safari {
+		.mgwt-TabBar-Button.favorites .icon{
+			\-webkit-mask-box-image: favoritesImage;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-TabBar-Button.favorites .icon{
+			background-image: favoritesImage;
+		}
 	}
 	
 	

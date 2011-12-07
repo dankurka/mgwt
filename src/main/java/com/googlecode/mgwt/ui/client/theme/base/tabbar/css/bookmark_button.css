@@ -19,6 +19,18 @@
 		height: 39px;
 	}
 	
+	@if user.agent safari {
+		.mgwt-TabBar-Button.bookmark .icon{
+			\-webkit-mask-box-image: bookmarkImage;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-TabBar-Button.bookmark .icon{
+			background-image: bookmarkImage;
+		}
+	}
+	
 	
 		
 	
