@@ -29,7 +29,7 @@ public interface MVPBundle extends ClientBundle {
 	 *
 	 * @return a {@link com.googlecode.mgwt.mvp.client.resources.AnimationCss} object.
 	 */
-	@Source({"animation.css", "animations_ff.css"})
+	@Source({"animation.css", "animations_ff.css", "animations_ie.css"})
 	public AnimationCss animationCss();
 
 	/**

@@ -79,7 +79,8 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 
 			@Override
 			public void onTouchMove(TouchMoveEvent event) {
-
+				event.preventDefault();
+				event.stopPropagation();
 			}
 
 			@Override

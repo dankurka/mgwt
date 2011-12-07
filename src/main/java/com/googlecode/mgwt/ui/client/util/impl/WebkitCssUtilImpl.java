@@ -47,10 +47,11 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 	@Override
 	public void rotate(Element el, int degree) {
 		if (MGWT.getOsDetection().isAndroid()) {
-
 			el.getStyle().setProperty("WebkitTransform", "rotate(" + degree + "deg)");
+			//_translate(el, );
 		} else {
-			el.getStyle().setProperty("WebkitTransform", "rotate(" + degree + "deg) translateZ(0);");
+			el.getStyle().setProperty("WebkitTransform", "rotate(" + degree + "deg) translateZ(0)");
+			//_translate(el,"rotate(" + degree + "deg) translateZ(0)");
 
 		}
 
