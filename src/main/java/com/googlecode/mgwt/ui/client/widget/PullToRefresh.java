@@ -3,6 +3,7 @@ package com.googlecode.mgwt.ui.client.widget;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.widget.base.PullArrowHeader;
 import com.googlecode.mgwt.ui.client.widget.base.PullPanel;
 import com.googlecode.mgwt.ui.client.widget.event.PullReleasedEvent;
@@ -28,13 +29,12 @@ public class PullToRefresh extends PullPanel {
 
 	private SafeHtml loadingFailedHTML;
 
-	/**
-	 * <p>
-	 * Constructor for PullToRefresh.
-	 * </p>
-	 */
 	public PullToRefresh() {
-		super(new PullArrowHeader(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss()));
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss());
+	}
+
+	public PullToRefresh(PullToRefreshCss css) {
+		super(new PullArrowHeader(css));
 		InternalPullListener listener = new InternalPullListener();
 
 		addPullReleasedHandler(listener);
