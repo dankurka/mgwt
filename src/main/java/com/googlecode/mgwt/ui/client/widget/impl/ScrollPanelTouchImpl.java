@@ -289,7 +289,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	private final class MouseWheelHandlerImplementation implements MouseWheelHandler {
 		@Override
 		public void onMouseWheel(MouseWheelEvent event) {
-			System.out.println("mousewheel");
 			int velocityX = 0;
 			int velocityY = 0;
 

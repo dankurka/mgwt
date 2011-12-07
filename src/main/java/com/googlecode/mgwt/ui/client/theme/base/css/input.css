@@ -18,7 +18,9 @@
     height: 100%;
     
     \-webkit-appearance: none;
+    \-moz-appearance: none;
     \-webkit-user-select: text;
+    \-moz-user-select: text;
 }
 
 
@@ -66,18 +68,45 @@
 }
 
 .mgwt-RadioButton {
-	display: -webkit-box;
-	-webkit-box-orient: horizontal;
+		position: relative;
+	}
+
+
+@if user.agent safari {
+	.mgwt-RadioButton {
+		display: \-webkit-box;
+		-webkit-box-orient: horizontal;
+	}
+
+	.mgwt-RadioButton > label {
+		display: \-webkit-box;
+		\-webkit-box-flex: 1;
+	}
 }
 
-.mgwt-RadioButton > label {
-	display: -webkit-box;
-	\-webkit-box-flex: 1;
+@if user.agent gecko1_8 {
+	.mgwt-RadioButton {
+		display: \-moz-box;
+		\-moz-box-orient: horizontal;
+		width: 100%;
+	}
+
+	.mgwt-RadioButton > label {
+		display: -moz-box;
+		position: relative;
+		\-moz-box-flex: 1;
+	}
 }
+
+
+
+
+
+
 
 @if mgwt.os ipad iphone desktop retina {
+	
 	.mgwt-RadioButton>input {
-		\-webkit-appearance: none;
 		width: 18px;
 		height: 18px;
 		border: none;
@@ -87,46 +116,86 @@
 	}
 	
 	.mgwt-RadioButton>input:CHECKED {
-		\-webkit-appearance: none;
 		background-image: checkImage;
 		opacity: 1.0;
 		background-color: transparent;
 		
 		
 	}
+	
+	@if user.agent safari {
+		.mgwt-RadioButton>input {
+			\-webkit-appearance: none;
+		}
+		
+		.mgwt-RadioButton>input:CHECKED {
+			\-webkit-appearance: none;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-RadioButton>input {
+			\-moz-appearance: none  !important;
+		}
+		
+		.mgwt-RadioButton>input:CHECKED {
+			\-moz-appearance: none  !important;
+		}
+	}
+	
+	
 }
-
 
 
 @if mgwt.os android android_tablet {
 	
-	
 	.mgwt-RadioButton>input {
-		\-webkit-appearance: none;
 		width: 32px;
 		height: 32px;
 		border: none;
 		background-color: transparent;
 		background-image: androidCheckNotChecked;
-		\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-    	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
-		
 	}
 	
 	.mgwt-RadioButton>input:CHECKED {
-		\-webkit-appearance: none;
 		background-image: androidCheckChecked;
-		
 		background-color: transparent;
-		
-		
 	}
 	.mgwt-RadioButton>input:FOCUS{
 		\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     	\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
 	}
 	
+	@if user.agent safari {
+		.mgwt-RadioButton>input {
+			\-webkit-appearance: none;
+			\-webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    		\-webkit-focus-ring-color:  rgba(0, 0, 0, 0); 
+		}
+		
+		.mgwt-RadioButton>input:CHECKED {
+			\-webkit-appearance: none;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-RadioButton>input {
+			\-moz-appearance: none;
+			\-moz-tap-highlight-color:  rgba(255, 255, 255, 0);
+    		\-moz-focus-ring-color:  rgba(0, 0, 0, 0); 
+		}
+		
+		.mgwt-RadioButton>input:CHECKED {
+			\-moz-appearance: none;
+		}
+	}
+	
+	
 }
+
+
+
+
 
 /*TODO */
 @if mgwt.os blackberry {
@@ -134,6 +203,7 @@
 	
 	.mgwt-RadioButton>input {
 		\-webkit-appearance: none;
+		\-moz-appearance: none;
 		width: 32px;
 		height: 32px;
 		border: none;
@@ -144,6 +214,7 @@
 	
 	.mgwt-RadioButton>input:CHECKED {
 		\-webkit-appearance: none;
+		\-moz-appearance: none;
 		background-image: androidCheckChecked;
 		
 		background-color: transparent;
