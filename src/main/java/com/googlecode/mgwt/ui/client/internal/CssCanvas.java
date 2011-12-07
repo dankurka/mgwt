@@ -65,6 +65,11 @@ public class CssCanvas {
 		return new CssCanvas(contextType, id, width, height);
 	}
 
+	public native static final boolean isSupported()/*-{
+		return typeof ($doc.getCSSCanvasContext) != "undefined";
+
+	}-*/;
+
 	/**
 	 * <p>setFillStyle</p>
 	 *
@@ -93,8 +98,8 @@ public class CssCanvas {
 	 * @param antiClockwise a boolean.
 	 */
 	public native void arc(double x, double y, double radius, double startAngle, double endAngle, boolean antiClockwise)/*-{
-		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.arc(x, y,
-				radius, startAngle, endAngle, antiClockwise);
+		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.arc(x,
+				y, radius, startAngle, endAngle, antiClockwise);
 	}-*/;
 
 	/**
@@ -104,8 +109,8 @@ public class CssCanvas {
 	 * @param y a double.
 	 */
 	public native void lineTo(double x, double y)/*-{
-		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.lineTo(x,
-				y);
+		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.lineTo(
+				x, y);
 	}-*/;
 
 	/**
