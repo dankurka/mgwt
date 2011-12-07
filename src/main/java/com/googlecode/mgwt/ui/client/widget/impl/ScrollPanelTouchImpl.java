@@ -289,7 +289,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	private final class MouseWheelHandlerImplementation implements MouseWheelHandler {
 		@Override
 		public void onMouseWheel(MouseWheelEvent event) {
-
 			int velocityX = 0;
 			int velocityY = 0;
 
@@ -346,7 +345,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	}-*/;
 
 	private native int getMouseWheelVelocityY(NativeEvent evt)/*-{
-		return Math.round(-evt.wheelDeltaY) || 0;
+
+		var val = (evt.detail * 40) || -evt.wheelDeltaY || 0;
+		return Math.round(val);
 	}-*/;
 
 	/** {@inheritDoc} */

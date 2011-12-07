@@ -29,16 +29,32 @@
 	\-webkit-transform-origin: 12px 9px;
 }
 
-
-@if mgwt.os iphone desktop ipad retina { 
+@if user.agent safari {
 	.pullToRefresh .arrow {
-		\-webkit-transform: rotate(90deg) translateZ(0);
+		\-webkit-transform-origin: 12px 9px;
 	}
-} @else {
+	
+	@if mgwt.os iphone desktop ipad retina { 
+		.pullToRefresh .arrow {
+			\-webkit-transform: rotate(90deg) translateZ(0);
+		}
+	} @else {
+		.pullToRefresh .arrow {
+		\-webkit-transform: rotate(90deg);
+		}
+	}
+	
+}
+
+@if user.agent gecko1_8 {
 	.pullToRefresh .arrow {
-	\-webkit-transform: rotate(90deg);
+		\-moz-transform-origin: 12px 9px;
+		\-moz-transform: rotate(90deg);
 	}
 }
+
+
+
 
 
 .pullToRefresh .spinner{

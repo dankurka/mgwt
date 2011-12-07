@@ -3,17 +3,51 @@
 	
 }
 
+
+
 .mgwt-ScrollPanel {
 	overflow: hidden;
 	position: relative;
-}
-
-.mgwt-ScrollPanel .container {
-	\-webkit-transition-property: literal('-webkit-transform');
-	\-webkit-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
-	overflow: visible;
+	display: \-moz-box;
+	\-moz-box-orient: vertical;
 	
 }
+
+@if user.agent safari {
+
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-ScrollPanel {
+		
+		/*display: \-moz-box;
+		\-moz-box-orient: vertical;*/
+	}
+}
+
+
+.mgwt-ScrollPanel .container {
+	overflow: visible;
+}
+
+
+@if user.agent safari {
+	.mgwt-ScrollPanel .container {
+		\-webkit-transition-property: literal('-webkit-transform');
+		\-webkit-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-ScrollPanel .container {
+		\-moz-transition-property: literal('-moz-transform');
+		\-moz-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
+		vertical-align: top;
+	}
+}
+
+
+
 
 .mgwt-Scrollbar {
 	position: absolute;
@@ -21,10 +55,29 @@
 	pointer-events: none;
 	overflow: hidden;
 	opacity: 0;
-	\-webkit-transition-duration: 300ms;
-	\-webkit-transition-delay: 0ms;
-	\-webkit-transition-property: opacity;
 }
+
+@if user.agent safari {
+	.mgwt-Scrollbar {
+	
+		\-webkit-transition-duration: 300ms;
+		\-webkit-transition-delay: 0ms;
+		\-webkit-transition-property: opacity;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-Scrollbar {
+		
+		\-moz-transition-duration: 300ms;
+		\-moz-transition-delay: 0ms;
+		\-moz-transition-property: opacity;
+	}
+}
+
+
+/*TODO build this for ff as well, workaround for position bug?*/
+
 
 .mgwt-Scrollbar.horizontal {
 	bottom: 2px;
@@ -34,6 +87,7 @@
 }
 
 .mgwt-Scrollbar.vertical {
+	
 	top: 2px;
 	right: 2px;
 	bottom: 8px;

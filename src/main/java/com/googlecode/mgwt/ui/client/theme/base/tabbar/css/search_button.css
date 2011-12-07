@@ -17,9 +17,20 @@
 	
 	
 	.mgwt-TabBar-Button.search .icon{
-		\-webkit-mask-box-image: searchImage;
 		width: 30px;
 		height: 39px;
+	}
+	
+	@if user.agent safari {
+		.mgwt-TabBar-Button.search .icon{
+			\-webkit-mask-box-image: searchImage;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-TabBar-Button.search .icon{
+			background-image: searchImage;
+		}
 	}
 	
 	

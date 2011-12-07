@@ -32,4 +32,9 @@ public class FireFoxCssUtilImpl implements CssUtilImpl {
 		el.getStyle().setProperty("MozTransitionDuration", time + "ms");
 	}
 
+	@Override
+	public void rotate(Element el, int degree) {
+		el.getStyle().setProperty("MozTransform", "rotate(" + degree + "deg)");
+	}
+
 }
