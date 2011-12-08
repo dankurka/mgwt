@@ -429,3 +429,21 @@
 	border-top: 1px solid #030506;
 	padding: 10px;
 }
+
+
+
+
+/* other browsers */
+
+@if user.agent ie6 ie8 ie9 gecko opera {
+	.mgwt-DialogAnimationContainer {
+		
+    
+	}
+	
+	.mgwt-DialogAnimationContainer-center {
+		
+	}
+	.active{}
+}
+

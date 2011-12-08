@@ -193,5 +193,17 @@
 }
 
 
+/* other browsers */
+
+@if user.agent ie6 ie8 ie9 gecko opera {
+	.selected{}
+                        .first{}
+                         .last{}
+                         .mgwt-List{}
+                         .mgwt-List-Header{}
+                         .round{}
+                        .group{}
+}
+
 
 

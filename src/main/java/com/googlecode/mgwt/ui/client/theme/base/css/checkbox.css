@@ -257,7 +257,8 @@
 }
 
 
-@if user.agent ie {
+/*TODO add browser....*/
+@if user.agent ie6 ie8 ie9 gecko opera {
 
 	.mgwt-CheckBox-important .mgwt-CheckBox-on {
 		

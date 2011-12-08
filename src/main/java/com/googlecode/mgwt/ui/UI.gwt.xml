@@ -74,6 +74,15 @@ under * the License.
 		
 	</replace-with>
 	
+	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.FailingImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
+		 <none> 
+   			<when-property-is name="user.agent" value="gecko1_8" />
+   			<when-property-is name="user.agent" value="safari" />
+  		</none>
+		
+	</replace-with>
+	
 	
 	
 

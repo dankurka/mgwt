@@ -487,4 +487,21 @@
 }
 
 
+/* other browsers */
+
+@if user.agent ie6 ie8 ie9 gecko opera {
+	.mgwt-HeaderPanel-right{}
+                        .mgwt-HeaderPanel{}
+                         .round{}
+                         .mgwt-HeaderButton{}
+                        .active{}
+                        .mgwt-DropDownMenu{}
+                         .mgwt-HeaderPanel-center{}
+                         .forward{}
+                         .mgwt-DropDownMenu-content{}
+                        .mgwt-HeaderPanel-left{}
+                        .mgwt-DropDownMenu-arrow{}
+                       .back{}
+}
+
 

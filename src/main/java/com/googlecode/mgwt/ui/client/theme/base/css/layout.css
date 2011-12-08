@@ -56,3 +56,13 @@
 		overflow: hidden;
 	} 
 }
+
+
+
+/* other browsers */
+
+@if user.agent ie6 ie8 ie9 gecko opera {
+	.fillPanel{}
+                        .fillPanelExpandChild{}
+                        .horizontal{}
+}
