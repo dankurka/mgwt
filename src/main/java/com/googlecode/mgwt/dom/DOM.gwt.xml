@@ -21,14 +21,22 @@
     <define-property name="mobile.user.agent" values="mobilesafari, not_mobile" />
 <property-provider name="mobile.user.agent"><![CDATA[
   {
-    var ua = window.navigator.userAgent.toLowerCase();
-    if (ua.indexOf('android') != -1) { return 'mobilesafari'; }
-    if (ua.indexOf('iphone') != -1) { return 'mobilesafari'; }
-     if (ua.indexOf('ipad') != -1) { return 'mobilesafari'; }
-     if (ua.indexOf('blackberry') != -1) { return 'not_mobile'; }
-    return 'not_mobile';
+    var user_agent = (function(){
+    	var ua = window.navigator.userAgent.toLowerCase();
+    	if (ua.indexOf('android') != -1 && ua.indexOf('gecko') == -1) { return 'mobilesafari'; }
+    	if (ua.indexOf('iphone') != -1) { return 'mobilesafari'; }
+     	if (ua.indexOf('ipad') != -1) { return 'mobilesafari'; }
+     	if (ua.indexOf('blackberry') != -1) { return 'not_mobile'; }
+    	return 'not_mobile';
+    })();
+    
+    return user_agent;
   }
 ]]></property-provider>
+
+
+
+
 
 <!-- Constrain the value for non-webkit browsers -->
 <set-property name="mobile.user.agent" value="not_mobile" >
@@ -68,6 +76,8 @@
     <define-property name="mgwt.os" values="iphone, ipad, retina, android, android_tablet, blackberry, desktop" />
 	<property-provider name="mgwt.os"><![CDATA[
   	{
+	    
+	    var mgwt_os = (function(){
 	    var ua = window.navigator.userAgent.toLowerCase();
 	    
 	    if(ua.indexOf('android') != -1)
@@ -100,6 +110,12 @@
 	    }
 	
 	    return "desktop";
+	    
+	    })();
+	    
+	  
+	    
+	    return mgwt_os;
   	}
 ]]></property-provider>
 
