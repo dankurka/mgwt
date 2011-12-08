@@ -3,327 +3,399 @@
 }
 
 
-@if user.agent safari {
 
-@if mgwt.os iphone retina {
-
-	.mgwt-Button {
+.mgwt-Button {
 		display: block;
-		border: solid 1px rgba(0,0,0, 0.5);
-		\-webkit-border-radius: 6px;
-		\-webkit-box-shadow: 2px 2px 3px #999; 	
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)))'); 
-		color: #000;
-		text-shadow: rgba(255, 255, 255, .6) 0 1px 0;
+		position:relative;
 		padding: 9px 13px;
 		margin: 5px;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		font-size: 19px;
-		font-weight: bold;
-		text-align: center;
+		text-align: center;		
+}
+
+@if user.agent safari {
+	.mgwt-Button {
 		\-webkit-appearance: none;
-		
 	}
-	
-	.mgwt-Button.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)),  to(rgb(1, 95, 230)) , color-stop(0.5, rgba(5, 140, 245,0.70)), color-stop(0.5, rgba(1, 95, 230,0.70)) )');
-		color: #fff;
-		text-shadow: #000 0 1px 0;
-		\-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
-	
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-Button {
+		\-moz-appearance: none;
 	}
-	
-	.mgwt-Button.small{
-		padding: 5px 7px;
-		margin: 2px;
-		margin-left: 5px;
-		margin-right: 5px;
-		font-size: 12px;
-	}
-	
-	.mgwt-Button.round {
-		border-bottom-left-radius: 16px 16px;
-		border-bottom-right-radius: 16px 16px;
-		border-top-left-radius: 16px 16px;
-		border-top-right-radius: 16px 16px;
-	}
-	
-	.mgwt-Button.important {
-		\-webkit-box-shadow: 2px 2px 3px #999; 
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)), color-stop(0.5, rgba(233,72,72,0.80)), color-stop(0.5, rgba(184,0,0,0.70)), to(rgba(255,0,0,0.80)))'); 
-		color: #fff;
-		text-shadow: #000 0 1px 0;
-		padding: 9px 11px;
-	}
-	
-	.mgwt-Button.important.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,1)), color-stop(0.5, rgba(233,40,40,1)), color-stop(0.5, rgba(184,0,0,1)), to(rgba(255,0,0,1)))'); 
-	}
-	
-	.mgwt-Button.confirm {
-		\-webkit-box-shadow: 2px 2px 3px #999; 
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), color-stop(0.5, rgba(73,171,14,0.60)), color-stop(0.5, rgba(0,113,0,0.70)), to(rgba(0,150,0,0.80)))'); 
-		color: #fff;
-		text-shadow: #000 0 1px 0;
-		padding: 9px 11px;
-	}
-	
-	.mgwt-Button.confirm.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(80,200,80,1)), color-stop(0.5, rgba(50,150,0,1)), color-stop(0.5, rgba(0,100,0,1)), to(rgba(0,80,0,1)))'); 
-		color: #fff;
-		text-shadow: #000 0 1px 0;
-		\-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
-		
-		
-	}
-	
 }
 
 
 
-@if mgwt.os ipad desktop {
-
+@if mgwt.os iphone retina {
 	.mgwt-Button {
-		display: block;
-		width: auto;
-		background-color: transparent;
-		position:relative;
 		border: solid 1px rgba(0,0,0, 0.5);
-		\-webkit-border-radius: 6px;
-		\-webkit-box-shadow: 2px 2px 3px #999; 	
-		/*background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)))'); */
-		background-image: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
 		color: #000;
 		text-shadow: rgba(255, 255, 255, .6) 0 1px 0;
-		padding: 9px 13px;
-		margin: 5px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		font-size: 19px;
 		font-weight: bold;
-		text-align: center;
-		\-webkit-appearance: none;
+	}
+	
+	.mgwt-Button.active {
+		color: #fff;
+		text-shadow: #000 0 1px 0;
+	}
+	
+	@if user.agent safari {
+		.mgwt-Button {
+			\-webkit-border-radius: 6px;
+			\-webkit-box-shadow: 2px 2px 3px #999; 	
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)))'); 
+		}
+		
+		.mgwt-Button.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)),  to(rgb(1, 95, 230)) , color-stop(0.5, rgba(5, 140, 245,0.70)), color-stop(0.5, rgba(1, 95, 230,0.70)) )');
+			\-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-Button {
+			\-moz-border-radius: 6px;
+			\-moz-box-shadow: 2px 2px 3px #999; 	
+			background-image: literal('-webkit-linear-gradient(top, rgba(234,234,234,0.90), rgba(195,195,195,0.70) 50%, rgba(166,166,166,0.70) 51%, rgba(167,167,167,0.80))'); 
+		}
+		
+		.mgwt-Button.active {
+			background-image: literal('-moz-linear-gradient(top, rgb(5, 140, 245),  rgba(5, 140, 245,0.70) 50%, rgba(1, 95, 230,0.70) 51% , rgb(1, 95, 230) )');
+			\-moz-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+		}
+	}
+}
+
+
+@if mgwt.os ipad desktop {
+	.mgwt-Button {
+		border: solid 1px rgba(0,0,0, 0.5);
+		color: #000;
+		text-shadow: rgba(255, 255, 255, .6) 0 1px 0;
+		font-weight: bold;
 		box-sizing: content-box;
 	}
 	
 	.mgwt-Button.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)),  to(rgb(1, 95, 230)) )');
 		color: #fff;
 		text-shadow: #000 0 1px 0;
-		\-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
-	
 	}
 	
-	.mgwt-Button.small{
-		padding: 5px 7px;
-		margin: 2px;
-		margin-left: 5px;
-		margin-right: 5px;
-		font-size: 12px;
-	}
-	
-	.mgwt-Button.round {
-		border-bottom-left-radius: 16px 16px;
-		border-bottom-right-radius: 16px 16px;
-		border-top-left-radius: 16px 16px;
-		border-top-right-radius: 16px 16px;
-	}
-	
-	.mgwt-Button.important {
-		\-webkit-box-shadow: 2px 2px 3px #999; 
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)), color-stop(0.5, rgba(233,72,72,0.80)), color-stop(0.5, rgba(184,0,0,0.70)), to(rgba(255,0,0,0.80)))'); 
-		color: #fff;
-		text-shadow: #000 0 1px 0;
-		padding: 9px 11px;
-	}
-	
-	.mgwt-Button.important.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,1)), color-stop(0.5, rgba(233,40,40,1)), color-stop(0.5, rgba(184,0,0,1)), to(rgba(255,0,0,1)))'); 
-	}
-	
-	.mgwt-Button.confirm {
-		\-webkit-box-shadow: 2px 2px 3px #999; 
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), color-stop(0.5, rgba(73,171,14,0.60)), color-stop(0.5, rgba(0,113,0,0.70)), to(rgba(0,150,0,0.80)))'); 
-		color: #fff;
-		text-shadow: #000 0 1px 0;
-		padding: 9px 11px;
-	}
-	
-	.mgwt-Button.confirm.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(80,200,80,1)), color-stop(0.5, rgba(50,150,0,1)), color-stop(0.5, rgba(0,100,0,1)), to(rgba(0,80,0,1)))'); 
-		color: #fff;
-		text-shadow: #000 0 1px 0;
-		\-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+	@if user.agent safari {
+		.mgwt-Button {
+			\-webkit-border-radius: 6px;
+			\-webkit-box-shadow: 2px 2px 3px #999; 	
+			background-image: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
+		}
 		
-		
+		.mgwt-Button.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)),  to(rgb(1, 95, 230)) )');
+			\-webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+		}
 	}
 	
+	@if user.agent gecko1_8 {
+		.mgwt-Button {
+			\-moz-border-radius: 6px;
+			\-moz-box-shadow: 2px 2px 3px #999; 	
+			background-image: literal('-moz-linear-gradient(bottom,#A8ACB9 , #eee)');
+		}
+		
+		.mgwt-Button.active {
+			background-image: literal('-moz-linear-gradient(top, rgb(5, 140, 245),  rgb(1, 95, 230))');
+			\-moz-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+		}
+	}
 }
 
 @if mgwt.os android android_tablet {
-
 	.mgwt-Button {
-		display: block;
-		\-webkit-border-radius: 4px;
-		
-		/*background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)))'); */
-		
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(180, 180, 180)), to(rgb(160, 160, 160)) )');
 		color: black;
-		
-		padding: 9px 13px;
-		margin: 5px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		font-size: 19px;
-		
-		text-align: center;
-		
 		border: 1px solid rgba(0, 0, 0, 0.5);
-		\-webkit-appearance: none;
 	}
 	
 	.mgwt-Button.active {
-	
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(82, 163, 196)), to(rgb(62, 143, 176)) )');
-		color: #fff;
-		
-		
-	
-	}
-	
-	.mgwt-Button.small{
-		padding: 5px 7px;
-		margin: 2px;
-		margin-left: 5px;
-		margin-right: 5px;
-		font-size: 12px;
-	}
-	
-	
-	
-	.mgwt-Button.important {
-		border: 2px solid rgb(82, 163, 196);
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)),  to(rgba(255,0,0,0.80)))'); 
-		
-		
-		padding: 9px 11px;
-		border: 1px solid rgba(0, 0, 0, 0.5);
-	}
-	
-	.mgwt-Button.important.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,0.80)), to(rgba(255,0,0,0.90)))'); 
 		color: #fff;
 	}
 	
-	.mgwt-Button.confirm {
+	@if user.agent safari {
+		.mgwt-Button {
+			\-webkit-border-radius: 4px;
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(180, 180, 180)), to(rgb(160, 160, 160)) )');
+		}
 		
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), to(rgba(0,150,0,0.80)))'); 
-		
-		
-		padding: 9px 11px;
+		.mgwt-Button.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(82, 163, 196)), to(rgb(62, 143, 176)) )');
+		}
 	}
 	
-	.mgwt-Button.confirm.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(100,220,100,0.70)), to(rgba(0,100,0,0.80)))'); 
-		color: #fff;
+	@if user.agent gecko1_8 {
+		.mgwt-Button {
+			\-moz-border-radius: 4px;
+			background-image: literal('-moz-linear-gradient(top, rgb(180, 180, 180), rgb(160, 160, 160))');
+		}
 		
-		
-		
-		
+		.mgwt-Button.active {
+			background-image: literal('-moz-linear-gradient(top, rgb(82, 163, 196), rgb(62, 143, 176))');
+		}
 	}
-	
-	.mgwt-Button.round {
-		border-bottom-left-radius: 16px 16px;
-		border-bottom-right-radius: 16px 16px;
-		border-top-left-radius: 16px 16px;
-		border-top-right-radius: 16px 16px;
-	}
-	
 }
-
 
 @if mgwt.os blackberry {
-
 	.mgwt-Button {
-		display: block;
-		\-webkit-border-radius: 4px;
-		
-		/*background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)))'); */
 		background-color: transparent;
 		color: white;
-		
-		padding: 9px 13px;
-		margin: 5px;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		font-size: 19px;
-		text-align: center;
 		border: 2px solid rgb(0, 92, 176);
-		\-webkit-appearance: none;
 	}
 	
 	.mgwt-Button.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+		
 		color: #fff;
+	}
+	
+	@if user.agent safari {
+		.mgwt-Button {
+			\-webkit-border-radius: 4px;
+		}
 		
+		.mgwt-Button.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-Button {
+			\-moz-border-radius: 4px;
+		}
 		
-	
+		.mgwt-Button.active {
+			background-image: literal('-moz-linear-gradient(top, rgb(0, 92, 176), rgb(0, 72, 156))');
+		}
 	}
-	
-	.mgwt-Button.small{
-		padding: 5px 7px;
-		margin: 2px;
-		margin-left: 5px;
-		margin-right: 5px;
-		font-size: 12px;
-	}
-	
-	.mgwt-Button.round {
-		border-bottom-left-radius: 16px 16px;
-		border-bottom-right-radius: 16px 16px;
-		border-top-left-radius: 16px 16px;
-		border-top-right-radius: 16px 16px;
-	}
-	
+}
+
+
+
+.mgwt-Button.small{
+	padding: 5px 7px;
+	margin: 2px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-size: 12px;
+}
+
+.mgwt-Button.round {
+	border-bottom-left-radius: 16px 16px;
+	border-bottom-right-radius: 16px 16px;
+	border-top-left-radius: 16px 16px;
+	border-top-right-radius: 16px 16px;
+}
+
+
+@if mgwt.os iphone retina {
 	.mgwt-Button.important {
-		border: none;
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)), color-stop(0.5, rgba(233,72,72,0.80)), color-stop(0.5, rgba(184,0,0,0.70)), to(rgba(255,0,0,0.80)))'); 
 		color: #fff;
-		text-shadow: #000 0 1px 0;
-		padding: 9px 11px;
+	}
+	@if user.agent safari {
+		.mgwt-Button.important {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)), color-stop(0.5, rgba(233,72,72,0.80)), color-stop(0.5, rgba(184,0,0,0.70)), to(rgba(255,0,0,0.80)))'); 
+		}
+		
+		.mgwt-Button.important.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,1)), color-stop(0.5, rgba(233,40,40,1)), color-stop(0.5, rgba(184,0,0,1)), to(rgba(255,0,0,1)))'); 
+		}
 	}
 	
-	.mgwt-Button.important.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,0.80)), color-stop(0.5, rgba(233,40,40,0.90)), color-stop(0.5, rgba(184,0,0,0.80)), to(rgba(255,0,0,0.90)))'); 
+	@if user.agent gecko1_8 {
+		.mgwt-Button.important {
+			background-image: literal('-moz-linear-gradient(top, rgba(255,59,59,0.70), rgba(233,72,72,0.80) 50%, rgba(184,0,0,0.70) 51%, rgba(255,0,0,0.80))'); 
+		}
+		.mgwt-Button.important.active {
+			background-image: literal('-moz-linear-gradient(ltop, rgba(255,30,30,1), rgba(233,40,40,1) 50%, rgba(184,0,0,1) 51%, rgba(255,0,0,1))'); 
+		}
 	}
 	
 	.mgwt-Button.confirm {
-		border: none;
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), color-stop(0.5, rgba(73,171,14,0.60)), color-stop(0.5, rgba(0,113,0,0.70)), to(rgba(0,150,0,0.80)))'); 
 		color: #fff;
-		text-shadow: #000 0 1px 0;
-		padding: 9px 11px;
 	}
 	
-	.mgwt-Button.confirm.active {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(85,209,85,0.70)), color-stop(0.5, rgba(43,131,0,0.60)), color-stop(0.5, rgba(0,83,0,0.70)), to(rgba(0,120,0,0.80)))'); 
-		color: #fff;
-		text-shadow: #000 0 1px 0;
+	@if user.agent safari {
+		.mgwt-Button.confirm {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), color-stop(0.5, rgba(73,171,14,0.60)), color-stop(0.5, rgba(0,113,0,0.70)), to(rgba(0,150,0,0.80)))'); 
+		}
 		
-		
-		
+		.mgwt-Button.confirm.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(80,200,80,1)), color-stop(0.5, rgba(50,150,0,1)), color-stop(0.5, rgba(0,100,0,1)), to(rgba(0,80,0,1)))'); 
+		}
 	}
 	
+	@if user.agent gecko1_8 {
+		.mgwt-Button.confirm {
+			background-image: literal('-moz-linear-gradient(top, rgba(115,239,115,0.70), rgba(73,171,14,0.60) 50%, rgba(0,113,0,0.70) 51%, rgba(0,150,0,0.80))'); 
+		}
+		
+		.mgwt-Button.confirm.active {
+			background-image: literal('-moz-linear-gradient(top, rgba(80,200,80,1), rgba(50,150,0,1) 50%, rgba(0,100,0,1) 51%, rgba(0,80,0,1))'); 
+		}
+	}
+
 }
- 
+
+@if mgwt.os ipad desktop {
+	.mgwt-Button.important {
+		color: #fff;
+	}
+	@if user.agent safari {
+		.mgwt-Button.important {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)), color-stop(0.5, rgba(233,72,72,0.80)), color-stop(0.5, rgba(184,0,0,0.70)), to(rgba(255,0,0,0.80)))'); 
+		}
+		
+		.mgwt-Button.important.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,1)), color-stop(0.5, rgba(233,40,40,1)), color-stop(0.5, rgba(184,0,0,1)), to(rgba(255,0,0,1)))'); 
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-Button.important {
+			background-image: literal('-moz-linear-gradient(top, rgba(255,59,59,0.70), rgba(233,72,72,0.80) 50%, rgba(184,0,0,0.70) 51%, rgba(255,0,0,0.80))'); 
+		}
+		.mgwt-Button.important.active {
+			background-image: literal('-moz-linear-gradient(top, rgba(255,30,30,1), rgba(233,40,40,1) 50%, rgba(184,0,0,1) 51%, rgba(255,0,0,1))');  
+		}
+	}
+	
+	.mgwt-Button.confirm {
+		color: #fff;
+	}
+	
+	@if user.agent safari {
+		.mgwt-Button.confirm {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), color-stop(0.5, rgba(73,171,14,0.60)), color-stop(0.5, rgba(0,113,0,0.70)), to(rgba(0,150,0,0.80)))'); 
+		}
+		
+		.mgwt-Button.confirm.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(80,200,80,1)), color-stop(0.5, rgba(50,150,0,1)), color-stop(0.5, rgba(0,100,0,1)), to(rgba(0,80,0,1)))'); 
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-Button.confirm {
+			background-image: literal('-moz-linear-gradient(top, rgba(115,239,115,0.70),rgba(73,171,14,0.60) 50%, rgba(0,113,0,0.70) 51%, rgba(0,150,0,0.80))'); 
+		}
+		
+		.mgwt-Button.confirm.active {
+			background-image: literal('-moz-linear-gradient(top, rgba(80,200,80,1), rgba(50,150,0,1) 50%, rgba(0,100,0,1) 51%, rgba(0,80,0,1))'); 
+		}
+	}
+
 }
 
 
+@if mgwt.os android android_tablet {
+	.mgwt-Button.important {
+		border: 1px solid rgba(0, 0, 0, 0.5);
+	}
+	@if user.agent safari {
+		.mgwt-Button.important {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)),  to(rgba(255,0,0,0.80)))'); 
+		}
+		
+		.mgwt-Button.important.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,0.80)), to(rgba(255,0,0,0.90)))'); 
+			color: #fff;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-Button.important {
+			background-image: literal('-moz-linear-gradient(top, rgba(255,59,59,0.70),  rgba(255,0,0,0.80))'); 
+		}
+		.mgwt-Button.important.active {
+			background-image: literal('-moz-linear-gradient(top, rgba(255,30,30,0.80), rgba(255,0,0,0.90))'); 
+			color: #fff;
+		}
+	}
+	
+	.mgwt-Button.confirm {
+		border: 1px solid rgba(0, 0, 0, 0.5);
+	}
+	
+	@if user.agent safari {
+		.mgwt-Button.confirm {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), to(rgba(0,150,0,0.80)))'); 
+		}
+		
+		.mgwt-Button.confirm.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(100,220,100,0.70)), to(rgba(0,100,0,0.80)))'); 
+			color: #fff;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-Button.confirm {
+			background-image: literal('-moz-linear-gradient(top, rgba(115,239,115,0.70), rgba(0,150,0,0.80))'); 
+		}
+		
+		.mgwt-Button.confirm.active {
+			background-image: literal('-moz-linear-gradient(top, rgba(100,220,100,0.70), rgba(0,100,0,0.80))'); 
+			color: #fff;
+		}
+	}
 
+}
 
+@if mgwt.os blackberry {
+	.mgwt-Button.important {
+		
+		color: #fff;
+	}
+	@if user.agent safari {
+		.mgwt-Button.important {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,59,59,0.70)), color-stop(0.5, rgba(233,72,72,0.80)), color-stop(0.5, rgba(184,0,0,0.70)), to(rgba(255,0,0,0.80)))'); 
+		}
+		
+		.mgwt-Button.important.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,30,30,0.80)), color-stop(0.5, rgba(233,40,40,0.90)), color-stop(0.5, rgba(184,0,0,0.80)), to(rgba(255,0,0,0.90)))'); 
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-Button.important {
+			background-image: literal('-moz-linear-gradient(top, rgba(255,59,59,0.70), rgba(233,72,72,0.80) 50%, rgba(184,0,0,0.70) 51%, rgba(255,0,0,0.80))'); 
+		}
+		.mgwt-Button.important.active {
+			background-image: literal('-moz-linear-gradient(top, rgba(255,30,30,0.80), rgba(233,40,40,0.90) 50%, rgba(184,0,0,0.80) 51%, rgba(255,0,0,0.90))'); 
+		}
+	}
+	
+	.mgwt-Button.confirm {
+		color: #fff;
+	}
+	
+	@if user.agent safari {
+		.mgwt-Button.confirm {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(115,239,115,0.70)), color-stop(0.5, rgba(73,171,14,0.60)), color-stop(0.5, rgba(0,113,0,0.70)), to(rgba(0,150,0,0.80)))'); 
+		}
+		
+		.mgwt-Button.confirm.active {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(85,209,85,0.70)), color-stop(0.5, rgba(43,131,0,0.60)), color-stop(0.5, rgba(0,83,0,0.70)), to(rgba(0,120,0,0.80)))'); 
+			color: #fff;
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-Button.confirm {
+			background-image: literal('-moz-linear-gradient(top, rgba(115,239,115,0.70), rgba(73,171,14,0.60) 50%, rgba(0,113,0,0.70) 51%, rgba(0,150,0,0.80))'); 
+		}
+		
+		.mgwt-Button.confirm.active {
+			background-image: literal('-moz-linear-gradient(top, rgba(85,209,85,0.70), rgba(43,131,0,0.60) 50%, rgba(0,83,0,0.70) 51%, rgba(0,120,0,0.80))'); 
+			color: #fff;
+		}
+	}
+
+}

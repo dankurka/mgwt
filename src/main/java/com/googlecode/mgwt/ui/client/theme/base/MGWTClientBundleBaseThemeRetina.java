@@ -120,7 +120,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.HeaderCss}
 	 *         object.
 	 */
-	@Source({"css/header.css", "css/header_ff.css"})
+	@Source({ "css/header.css", "css/header_ff.css" })
 	HeaderCss getHeaderCss();
 
 	/**
@@ -142,7 +142,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ListCss}
 	 *         object.
 	 */
-	@Source({"css/list.css", "css/list_ff.css"})
+	@Source({ "css/list.css", "css/list_ff.css" })
 	ListCss getListCss();
 
 	/**
@@ -201,7 +201,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ButtonCss}
 	 *         object.
 	 */
-	@Source({"css/buttons.css", "css/buttons_ff.css"})
+	@Source({ "css/buttons.css" })
 	ButtonCss getButtonCss();
 
 	/**
@@ -223,8 +223,8 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss}
 	 *         object.
 	 */
-	
-	@Source({"css/buttonbar.css", "css/buttonbar_ff.css"})
+
+	@Source({ "css/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
 	/**

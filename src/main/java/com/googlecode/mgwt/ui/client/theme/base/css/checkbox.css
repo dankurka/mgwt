@@ -5,18 +5,12 @@
 }
 
 .mgwt-CheckBox {
-	
 	width: 94px;
-	display: -webkit-box;
-	\-webkit-box-orient: horizontal;
-	\-webkit-box-pack: justify;
-	\-webkit-tap-highlight-color: transparent;
 	overflow: hidden;
-	\-webkit-border-radius: 6px;
 	text-align: center;
 	line-height: 28px;
 	cursor: pointer;
-	\-webkit-box-sizing: border-box;
+	
 }
 
 @if user.agent safari {
@@ -258,6 +252,40 @@
 	
 	.mgwt-CheckBox-checked .mgwt-CheckBox-on {
 	    \-moz-transform: translate(0px,0);
+	}
+	
+}
+
+
+@if user.agent ie {
+
+	.mgwt-CheckBox-important .mgwt-CheckBox-on {
+		
+	}
+	
+	
+	.mgwt-CheckBox-notchecked .mgwt-CheckBox-middle {
+	    
+	}
+	
+	.mgwt-CheckBox-checked .mgwt-CheckBox-middle {
+
+	}
+	
+	.mgwt-CheckBox-notchecked .mgwt-CheckBox-off {
+	   
+	}
+	
+	.mgwt-CheckBox-checked .mgwt-CheckBox-off {
+	    
+	}
+	
+	.mgwt-CheckBox-notchecked .mgwt-CheckBox-on {
+	
+	}
+	
+	.mgwt-CheckBox-checked .mgwt-CheckBox-on {
+	   
 	}
 	
 }
