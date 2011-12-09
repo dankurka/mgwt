@@ -4,9 +4,6 @@
 	@external mgwt-DropDownMenu, mgwt-DropDownMenu-content,  mgwt-DropDownMenu-arrow;
 }
 
-
-@if user.agent safari {
-
 .mgwt-HeaderPanel {
 	position: relative;	
 }
@@ -14,18 +11,39 @@
 @if mgwt.os iphone retina {
 	.mgwt-HeaderPanel {
 		height: 40px;
-		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
 		border-bottom: 1px solid rgb(45, 54, 66);
 	}
+	@if user.agent safari {
+		.mgwt-HeaderPanel {
+			background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
+		}
+	}
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderPanel {
+			background-image: literal('-moz-linear-gradient(top, rgba(176, 188, 205, 1), rgba(129, 149, 175, 1))');
+		}
+	}
+	
 }
 
 @if mgwt.os ipad desktop {
 	.mgwt-HeaderPanel {
 		height: 40px;
 		background: #B0B4C0;
-		background: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
+		
 		border-bottom: 1px solid #797F90;
 	}
+	@if user.agent safari {
+		.mgwt-HeaderPanel {
+			background: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
+		}
+	}
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderPanel {
+			background: literal('-moz-linear-gradient(bottom,#A8ACB9,#eee)');
+		}
+	}
+	
 }
 
 
@@ -194,7 +212,6 @@
 	}
 }
 
-/*rgb(46, 54, 60)*/
 
 .mgwt-HeaderButton {
 	z-index: 1;
@@ -205,9 +222,19 @@
 	background-color: transparent;
 	box-sizing: content-box;
 }
+@if user.agent safari {
+	.mgwt-HeaderButton {
+		\-webkit-appearance: none;
+	}
+}
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton {
+		\-moz-appearance: none;
+	}
+}
+
 
 .mgwt-HeaderButton p { 
-	\-webkit-background-origin: border-box;
     position: relative; 
     z-index: 2; 
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -220,10 +247,24 @@
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
-	\-webkit-border-radius: 4px;
 	height: 14px;
 	
 }
+	
+@if user.agent safari {
+	.mgwt-HeaderButton p {
+		\-webkit-border-radius: 4px;
+		\-webkit-background-origin: border-box;
+	}
+}
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton p {
+		\-moz-border-radius: 4px;
+		\-moz-background-origin: border-box;
+	}
+}	
+	
+
 @if mgwt.os iphone retina {
 	.mgwt-HeaderButton p {
 		color: #fff; 
@@ -232,24 +273,66 @@
 		color: white;
 		font-weight: bold; 
 	}
-	
-	.mgwt-HeaderButton.active p{
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+	@if user.agent safari {
+		.mgwt-HeaderButton p {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+		}
 	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton p {
+			background-image: literal('-moz-linear-gradient(top, #9fb3cc, #6b8bb2 50%, #597eaa 51%, #5b80ab )');
+		}
+	}
+	
+	@if user.agent safari {
+		.mgwt-HeaderButton.active p{
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.active p{
+			background-image: literal('-moz-linear-gradient(top, #7582a4, #6b8bb2 50%, #597eaa 51%, #283d6f )');
+		}
+	}
+	
+	
 }
 
 @if mgwt.os ipad desktop {
 	.mgwt-HeaderButton p {
 		color: #fff; 
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
 		text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
 		color: white;
 		font-weight: bold; 
 	}
 	
-	.mgwt-HeaderButton.active p{
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
+	@if user.agent safari {
+		.mgwt-HeaderButton p {
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
+		}
 	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton p {
+			background-image: literal('-moz-linear-gradient(top, rgb(178, 182, 188), rgb(108, 115,126))');
+		}
+	}
+	
+	@if user.agent safari {
+		.mgwt-HeaderButton.active p{
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.active p{
+			background-image: literal('-moz-linear-gradient(top, rgb(138, 142, 148), rgb(68, 75,86))');
+		}
+	}
+	
+	
 }
 
 @if mgwt.os android android_tablet {
@@ -257,9 +340,20 @@
 		color: white;
 		border: 2px solid rgb(82, 163, 196);
 	}
-	.mgwt-HeaderButton.active p{
-		background: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(42, 123, 156)), to(rgb(32, 113, 146)) )');
+	
+	@if user.agent safari {
+		.mgwt-HeaderButton.active p{
+			background: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(42, 123, 156)), to(rgb(32, 113, 146)) )');
+		}
 	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.active p{
+			background: literal('-moz-linear-gradient(top, rgb(42, 123, 156), rgb(32, 113, 146))');
+		}
+	}
+	
+	
 }
 
 @if mgwt.os blackberry {
@@ -269,10 +363,16 @@
 		
 	}
 	
-	.mgwt-HeaderButton.active p {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
-		
-		
+	@if user.agent safari {
+		.mgwt-HeaderButton.active p{
+			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.active p{
+			background-image: literal('-moz-linear-gradient(top, rgb(0, 92, 176), rgb(0, 72, 156))');
+		}
 	}
 }
 
@@ -286,8 +386,23 @@
 	z-index: 1;
 	top: 4.5px;
 	left: -7.5px;
-	\-webkit-transform: rotate(54deg);
 }
+
+@if user.agent safari {
+	.mgwt-HeaderButton.back div {	
+		\-webkit-transform: rotate(54deg);
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.back div {	
+		top: 4px;
+		left: -7px;
+		\-moz-transform: rotate(52deg);
+	}
+}
+
+
 .mgwt-HeaderButton.back span { 
     \-webkit-transform: skew(15deg);
     display: block; 
@@ -300,27 +415,83 @@
     \-webkit-border-radius: 4px;
 }
 
-@if mgwt.os iphone retina {
+@if user.agent safari {
 	.mgwt-HeaderButton.back span { 
-    	background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa))');     
+	    \-webkit-transform: skew(15deg);
+	    \-webkit-border-radius: 2px; 
+	    \-webkit-border-radius: 4px;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.back span { 
+	    \-moz-transform: skew(15deg);
+	    \-moz-border-radius: 2px; 
+	    \-moz-border-radius: 4px;
+	}
+}
+
+
+@if mgwt.os iphone retina {
+	@if user.agent safari {
+		.mgwt-HeaderButton.back span { 
+	    	background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa))');     
+		}
 	}
 	
-	.mgwt-HeaderButton.active span{
-		background: literal('-webkit-gradient(linear, left top, right bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.back span { 
+	    	background-image: literal('-moz-linear-gradient(top, #9fb3cc,#6b8bb2 50%, #597eaa 51%, #5b80ab)');     
+		}
 	}
+	
+	@if user.agent safari {
+		.mgwt-HeaderButton.active span{
+			background: literal('-webkit-gradient(linear, left top, right bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.active span{
+			background: literal('-moz-linear-gradient(top, #7582a4, #6b8bb2 50%, #597eaa 51%,#283d6f)');
+		}
+	}
+	
+	
+	
 }
 
 
 
 @if mgwt.os ipad desktop {
 	.mgwt-HeaderButton.back span {
-		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
 		text-shadow: 0 -1px 0 rgba(0,0,0, 0.4);
 		color: white;
 		font-weight: bold; 
 	}
-	.mgwt-HeaderButton.active span{
-		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
+	
+	@if user.agent safari {
+		.mgwt-HeaderButton.back span {
+			background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.back span {
+			background-image: literal('-moz-linear-gradient(top, rgb(178, 182, 188), rgb(108, 115,126))');
+		}
+	}
+	
+	@if user.agent safari {
+		.mgwt-HeaderButton.active span{
+			background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.active span{
+			background-image: literal('-moz-linear-gradient(top, rgb(138, 142, 148), rgb(68, 75,86))');
+		}
 	}
 }
 
@@ -331,11 +502,30 @@
 		border: 2px solid rgb(82, 163, 196);
     	border-right: none;
     	border-top:none;
-    	 \-webkit-box-shadow: none;	
 	}
 	
-	.mgwt-HeaderButton.active span{
-		background: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(42, 123, 156)), to(rgb(32, 113, 146)) )');
+	@if user.agent safari {
+		.mgwt-HeaderButton.back span {
+	    	 \-webkit-box-shadow: none;	
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.back span {
+	    	 \-moz-box-shadow: none;	
+		}
+	}
+	
+	@if user.agent safari {
+		.mgwt-HeaderButton.active span{
+			background: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(42, 123, 156)), to(rgb(32, 113, 146)) )');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.active span{
+			background: literal('-moz-linear-gradient(top, rgb(42, 123, 156), rgb(32, 113, 146))');
+		}
 	}
 }
 
@@ -345,12 +535,18 @@
     	border-right: none;
     	border-top:none;
 	}
+	@if user.agent safari {
+		.mgwt-HeaderButton.active span{
+			background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+			
+		}
+	}
 	
-	
-	
-	.mgwt-HeaderButton.active span{
-		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
-		
+	@if user.agent gecko1_8 {
+		.mgwt-HeaderButton.active span{
+			background-image: literal('-moz-linear-gradient(top, rgb(0, 92, 176), rgb(0, 72, 156))');
+			
+		}
 	}
 }
 
@@ -484,7 +680,7 @@
 }
 
 
-}
+
 
 
 /* other browsers */

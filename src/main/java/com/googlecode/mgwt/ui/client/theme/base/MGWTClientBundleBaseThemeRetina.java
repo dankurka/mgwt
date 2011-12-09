@@ -120,7 +120,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.HeaderCss}
 	 *         object.
 	 */
-	@Source({ "css/header.css", "css/header_ff.css" })
+	@Source({ "css/header.css" })
 	HeaderCss getHeaderCss();
 
 	/**
