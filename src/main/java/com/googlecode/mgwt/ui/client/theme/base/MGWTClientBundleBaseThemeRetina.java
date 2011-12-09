@@ -142,7 +142,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ListCss}
 	 *         object.
 	 */
-	@Source({ "css/list.css", "css/list_ff.css" })
+	@Source({ "css/list.css" })
 	ListCss getListCss();
 
 	/**
