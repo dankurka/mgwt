@@ -25,12 +25,15 @@ import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
+import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
+import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase;
@@ -70,6 +73,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	private TabBar tabBar;
 
 	private final AnimatableDisplay animatableDisplay;
+
+	private HandlerRegistration addDomHandler;
+
+	private HandlerRegistration addDomHandler1;
 
 	/**
 	 * <p>
@@ -124,7 +131,47 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			container.add(tabBar);
 
 		}
+		tabBar.getElement().getStyle().setProperty("WebkitTransformProperty", "opacity");
 
+	}
+
+	public void showTabBar(boolean show) {
+		if (show) {
+			CssUtil.setTransitionDuration(tabBar.getElement(), 200);
+
+			CssUtil.setOpacity(tabBar.getElement(), 0);
+
+			addDomHandler1 = tabBar.addDomHandler(new TransitionEndHandler() {
+
+				@Override
+				public void onTransitionEnd(TransitionEndEvent event) {
+					if (addDomHandler1 != null) {
+						addDomHandler1.removeHandler();
+						tabBar.setVisible(true);
+						addDomHandler1 = null;
+					}
+
+				}
+			}, TransitionEndEvent.getType());
+		} else {
+			CssUtil.setTransitionDuration(tabBar.getElement(), 200);
+
+			CssUtil.setOpacity(tabBar.getElement(), 0);
+
+			addDomHandler = tabBar.addDomHandler(new TransitionEndHandler() {
+
+				@Override
+				public void onTransitionEnd(TransitionEndEvent event) {
+					if (addDomHandler != null) {
+						addDomHandler.removeHandler();
+						tabBar.setVisible(false);
+						addDomHandler = null;
+					}
+
+				}
+			}, TransitionEndEvent.getType());
+
+		}
 	}
 
 	public AnimatableDisplay getAnimatableDisplay() {
