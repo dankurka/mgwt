@@ -429,12 +429,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			scrollStartY = position_y;
 
 			touchStartTime = System.currentTimeMillis();
-			// TODO
-			// directionX = 0;
-			// directionY = 0;
 
-			// TODO...
-			fireEvent(new ScrollStartEvent(0, 0));
+			fireEvent(new ScrollStartEvent(position_x, position_y));
 
 		}
 
@@ -489,18 +485,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 				// fire scroll event to world
 				fireEvent(new ScrollEvent(newPosX, newPosY));
 				moved = true;
-				// TODO
-				// if (leftDelta > 0) {
-				// directionX = -1;
-				// } else {
-				// directionX = 1;
-				// }
-				//
-				// if (topDelta > 0) {
-				// directionY = -1;
-				// } else {
-				// directionY = 1;
-				// }
 
 			}
 
@@ -554,9 +538,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			ScrollEndEvent scrollEndEvent = new ScrollEndEvent(newPosX, newPosY, newDuration, position_x, position_y);
 			fireEvent(scrollEndEvent);
-			// if (!scrollEndEvent.isPreventDefault()) {
+
 			scrollTo(newPosX, newPosY, newDuration);
-			// }
+
 		}
 
 		@Override

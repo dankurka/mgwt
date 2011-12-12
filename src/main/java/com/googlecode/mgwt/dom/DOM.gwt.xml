@@ -23,7 +23,7 @@
   {
     var user_agent = (function(){
     	var ua = window.navigator.userAgent.toLowerCase();
-    	if (ua.indexOf('android') != -1 && ua.indexOf('gecko') == -1) { return 'mobilesafari'; }
+    	if (ua.indexOf('android') != -1) { return 'mobilesafari'; }
     	if (ua.indexOf('iphone') != -1) { return 'mobilesafari'; }
      	if (ua.indexOf('ipad') != -1) { return 'mobilesafari'; }
      	if (ua.indexOf('blackberry') != -1) { return 'not_mobile'; }
