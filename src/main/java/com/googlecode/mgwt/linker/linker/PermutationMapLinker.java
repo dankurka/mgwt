@@ -33,7 +33,7 @@ public class PermutationMapLinker extends AbstractLinker {
 		xmlPermutationProvider = new XMLPermutationProvider();
 	}
 
-	private static final String MANIFEST_MAP = "manifest.map";
+	public static final String MANIFEST_MAP = "manifest.map";
 
 	@Override
 	public String getDescription() {

@@ -1,5 +1,6 @@
 package com.googlecode.mgwt.linker.server;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
@@ -28,8 +29,19 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 		}
 
 		if (userAgent.contains("iphone")) {
+			String value = getRetinaCookieValue(req);
+			if (value == null) {
+				return "iphone_undefined";
+			}
 
-			return "iphone";
+			if ("0".equals(value)) {
+				return "iphone";
+			}
+
+			if ("1".equals(value)) {
+				return "retina";
+			}
+
 		}
 
 		if (userAgent.contains("blackberry")) {
@@ -38,5 +50,17 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 
 		return "desktop";
 
+	}
+
+	public String getRetinaCookieValue(HttpServletRequest req) {
+
+		Cookie[] cookies = req.getCookies();
+
+		for (int i = 0; i < cookies.length; i++) {
+			Cookie cookie = cookies[i];
+			if ("mgwt_ios_retina".equals(cookie.getName()))
+				return (cookie.getValue());
+		}
+		return null;
 	}
 }
