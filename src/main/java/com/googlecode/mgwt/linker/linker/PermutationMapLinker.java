@@ -32,6 +32,7 @@ public class PermutationMapLinker extends AbstractLinker {
 
 	public PermutationMapLinker() {
 		xmlPermutationProvider = new XMLPermutationProvider();
+		System.out.println("construct");
 	}
 
 	public static final String MANIFEST_MAP = "manifest.map";
@@ -72,18 +73,35 @@ public class PermutationMapLinker extends AbstractLinker {
 			toReturn.add(emitString(logger, permInformation, strongName + ".perm.xml"));
 			//TODO fix this!!
 			artifactsForCompilation.add("showcase.nocache.js");
-			String manifest = buildManiFest(logger, artifactsForCompilation, externalFiles, context);
-			toReturn.add(emitString(logger, manifest, strongName + ".manifest"));
+			PermutationArtifact permutationArtifact = new PermutationArtifact(PermutationMapLinker.class, strongName, artifactsForCompilation);
+			toReturn.add(permutationArtifact);
+			System.out.println("emit");
+			//String manifest = buildManiFest(logger, artifactsForCompilation, externalFiles, context);
+			//toReturn.add(emitString(logger, manifest, strongName + ".manifest"));
 
 			return toReturn;
 		}
 
+		System.out.println("link...");
+		
 		ArtifactSet toReturn = new ArtifactSet(artifacts);
 		Map<String, List<BindingProperty>> map = buildPermutationMap(logger, context, artifacts);
 
 		if (map.size() == 0) {
 			//hosted mode
 			return toReturn;
+		}
+		
+		SortedSet<PermutationArtifact> artifactSet = artifacts.find(PermutationArtifact.class);
+		for (PermutationArtifact permutationArtifact : artifactSet) {
+			
+				System.out.println("perm: " + permutationArtifact.getPermutationName());
+				Set<String> permutationFiles = permutationArtifact.getPermutationFiles();
+				for (String string : permutationFiles) {
+					System.out.println(string);
+				}
+			
+			
 		}
 
 		toReturn.add(createPermutationMap(logger, map));
