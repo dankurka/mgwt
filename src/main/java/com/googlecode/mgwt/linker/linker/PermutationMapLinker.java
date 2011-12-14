@@ -41,8 +41,6 @@ public class PermutationMapLinker extends AbstractLinker {
 		return "PermutationMapLinker";
 	}
 
-	private Map<String, List<BindingProperty>> permutationMap = new HashMap<String, List<BindingProperty>>();
-
 	@Override
 	public ArtifactSet link(TreeLogger logger, LinkerContext context, ArtifactSet artifacts, boolean onePermutation) throws UnableToCompleteException {
 		if (onePermutation) {
@@ -60,7 +58,6 @@ public class PermutationMapLinker extends AbstractLinker {
 			Entry<String, List<BindingProperty>> next = entrySet.iterator().next();
 			String strongName = next.getKey();
 			List<BindingProperty> bindingProperties = next.getValue();
-			this.permutationMap.put(strongName, bindingProperties);
 
 			Set<String> artifactsForCompilation = getArtifactsForCompilation(logger, context, artifacts);
 			Set<String> externalFiles = getExternalFiles(logger, context);
@@ -73,7 +70,8 @@ public class PermutationMapLinker extends AbstractLinker {
 
 			ArtifactSet toReturn = new ArtifactSet(artifacts);
 			toReturn.add(emitString(logger, permInformation, strongName + ".perm.xml"));
-
+			//TODO fix this!!
+			artifactsForCompilation.add("showcase.nocache.js");
 			String manifest = buildManiFest(logger, artifactsForCompilation, externalFiles, context);
 			toReturn.add(emitString(logger, manifest, strongName + ".manifest"));
 
@@ -81,7 +79,14 @@ public class PermutationMapLinker extends AbstractLinker {
 		}
 
 		ArtifactSet toReturn = new ArtifactSet(artifacts);
-		toReturn.add(createPermutationMap(logger, permutationMap));
+		Map<String, List<BindingProperty>> map = buildPermutationMap(logger, context, artifacts);
+
+		if (map.size() == 0) {
+			//hosted mode
+			return toReturn;
+		}
+
+		toReturn.add(createPermutationMap(logger, map));
 		return toReturn;
 
 	}
@@ -220,6 +225,7 @@ public class PermutationMapLinker extends AbstractLinker {
 
 	protected EmittedArtifact createPermutationMap(TreeLogger logger, Map<String, List<BindingProperty>> map) throws UnableToCompleteException {
 		String string = xmlPermutationProvider.serializeMap(map);
+		System.out.println(string);
 		return emitString(logger, string, MANIFEST_MAP);
 
 	}

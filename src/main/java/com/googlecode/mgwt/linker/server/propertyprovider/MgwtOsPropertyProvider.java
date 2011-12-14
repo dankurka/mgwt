@@ -55,6 +55,8 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 	public String getRetinaCookieValue(HttpServletRequest req) {
 
 		Cookie[] cookies = req.getCookies();
+		if (cookies == null)
+			return null;
 
 		for (int i = 0; i < cookies.length; i++) {
 			Cookie cookie = cookies[i];
