@@ -10,26 +10,26 @@
 		
 }
 
-
-@if mgwt.os ipad iphone desktop retina {
-
-	@url featuredImage tabBarFeaturedImage;
+@if user.agent safari gecko1_8 { 
+	@if mgwt.os ipad iphone desktop retina {
 	
-	.mgwt-TabBar-Button.featured .icon{
-		width: 40px;
-		height: 39px;
-	}
-	
-	@if user.agent safari {
+		@url featuredImage tabBarFeaturedImage;
+		
 		.mgwt-TabBar-Button.featured .icon{
-			\-webkit-mask-box-image: featuredImage;
+			width: 40px;
+			height: 39px;
+		}
+		
+		@if user.agent safari {
+			.mgwt-TabBar-Button.featured .icon{
+				\-webkit-mask-box-image: featuredImage;
+			}
+		}
+		
+		@if user.agent gecko1_8 {
+			.mgwt-TabBar-Button.featured .icon{
+				background-image: featuredImage;
+			}
 		}
 	}
-	
-	@if user.agent gecko1_8 {
-		.mgwt-TabBar-Button.featured .icon{
-			background-image: featuredImage;
-		}
-	}
-
 }

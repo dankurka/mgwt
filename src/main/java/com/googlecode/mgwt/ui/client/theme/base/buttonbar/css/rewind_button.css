@@ -2,23 +2,27 @@
 	@external rewind, active;
 }
 
-@url rewindImage toolbarRewindImage;
-@url pressedImage toolbarPressImage;
-
-.rewind {
-	background-image: rewindImage;
-}
-
-.rewind.active {
-	background-image:  pressedImage, rewindImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 { 
+	@url rewindImage toolbarRewindImage;
+	@url pressedImage toolbarPressImage;
 	.rewind {
-		background-size: 21px 19px;
+		background-image: rewindImage;
 	}
-	
 	.rewind.active {
-		background-size: 44px 44px, 21px 19px;
+		background-image: pressedImage, rewindImage;
+	}
+	@if mgwt.os retina {
+		.rewind {
+			background-size: 21px 19px;
+		}
+		.rewind.active {
+			background-size: 44px 44px, 21px 19px;
+		}
 	}
 }
+	.rewind {
+		
+	}
+	.rewind.active {
+		
+	}

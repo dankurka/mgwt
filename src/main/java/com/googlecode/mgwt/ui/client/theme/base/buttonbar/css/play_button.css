@@ -2,23 +2,27 @@
 	@external play, active;
 }
 
-@url playImage toolbarPlayImage;
-@url pressedImage toolbarPressImage;
-
-.play {
-	background-image: playImage;
-}
-
-.play.active {
-	background-image: pressedImage, playImage  ;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 { 
+	@url playImage toolbarPlayImage;
+	@url pressedImage toolbarPressImage;
 	.play {
-		background-size: 15px 18px;
+		background-image: playImage;
 	}
-	
 	.play.active {
-		background-size: 44px 44px, 15px 18px;
+		background-image: pressedImage, playImage;
+	}
+	@if mgwt.os retina {
+		.play {
+			background-size: 15px 18px;
+		}
+		.play.active {
+			background-size: 44px 44px, 15px 18px;
+		}
 	}
 }
+	.play {
+		
+	}
+	.play.active {
+		
+	}

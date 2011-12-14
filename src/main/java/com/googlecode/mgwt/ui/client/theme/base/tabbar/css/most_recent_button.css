@@ -11,27 +11,27 @@
 }
 
 
-
-@if mgwt.os ipad iphone desktop retina {
-	@url mostRecentImage tabBarMostRecentImage;
-	
-	
-	.mgwt-TabBar-Button.mostRecent .icon{
-		width: 31px;
-		height: 39px;
-	}
-	
-	@if user.agent safari {
+@if user.agent safari gecko1_8 { 
+	@if mgwt.os ipad iphone desktop retina {
+		@url mostRecentImage tabBarMostRecentImage;
+		
+		
 		.mgwt-TabBar-Button.mostRecent .icon{
-			\-webkit-mask-box-image: mostRecentImage;
+			width: 31px;
+			height: 39px;
 		}
-	}
-	
-	@if user.agent gecko1_8 {
-		.mgwt-TabBar-Button.mostRecent .icon{
-			background-image: mostRecentImage;
+		
+		@if user.agent safari {
+			.mgwt-TabBar-Button.mostRecent .icon{
+				\-webkit-mask-box-image: mostRecentImage;
+			}
 		}
+		
+		@if user.agent gecko1_8 {
+			.mgwt-TabBar-Button.mostRecent .icon{
+				background-image: mostRecentImage;
+			}
+		}
+		
 	}
-	
-	
 }

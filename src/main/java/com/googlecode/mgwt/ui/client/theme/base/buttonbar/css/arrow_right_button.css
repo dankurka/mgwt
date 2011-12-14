@@ -2,23 +2,27 @@
 	@external arrowRight, active;
 }
 
-@url arrowRightImage toolbarArrowRightImage;
-@url pressedImage toolbarPressImage;
-
-.arrowRight{
-	background-image: arrowRightImage;
-}
-
-.arrowRight.active{
-	background-image: pressedImage, arrowRightImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 {
+	@url arrowRightImage toolbarArrowRightImage;
+	@url pressedImage toolbarPressImage;
 	.arrowRight {
-		background-size: 16px 19px;
+		background-image: arrowRightImage;
 	}
-	
 	.arrowRight.active {
-		background-size: 44px 44px, 16px 19px;
+		background-image: pressedImage, arrowRightImage;
+	}
+	@if mgwt.os retina {
+		.arrowRight {
+			background-size: 16px 19px;
+		}
+		.arrowRight.active {
+			background-size: 44px 44px, 16px 19px;
+		}
 	}
 }
+	.arrowRight {
+		
+	}
+	.arrowRight.active {
+		
+	}

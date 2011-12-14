@@ -13,6 +13,7 @@ import java.util.TreeMap;
 
 import com.google.gwt.core.ext.LinkerContext;
 import com.google.gwt.core.ext.TreeLogger;
+import com.google.gwt.core.ext.TreeLogger.Type;
 import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.core.ext.linker.AbstractLinker;
 import com.google.gwt.core.ext.linker.ArtifactSet;
@@ -40,18 +41,71 @@ public class PermutationMapLinker extends AbstractLinker {
 		return "PermutationMapLinker";
 	}
 
+	private Map<String, List<BindingProperty>> permutationMap = new HashMap<String, List<BindingProperty>>();
+
 	@Override
 	public ArtifactSet link(TreeLogger logger, LinkerContext context, ArtifactSet artifacts, boolean onePermutation) throws UnableToCompleteException {
-		if (onePermutation)
-			return artifacts;
+		if (onePermutation) {
+			Map<String, List<BindingProperty>> permutationMap = buildPermutationMap(logger, context, artifacts);
+			Set<Entry<String, List<BindingProperty>>> entrySet = permutationMap.entrySet();
+
+			//since we are in onePermutation there should be just one strongName
+			//better make sure..
+
+			if (permutationMap.size() != 1) {
+				logger.log(Type.ERROR, "There should be only one permutation right now, but there were: '" + permutationMap.size() + "'");
+				throw new UnableToCompleteException();
+			}
+
+			Entry<String, List<BindingProperty>> next = entrySet.iterator().next();
+			String strongName = next.getKey();
+			List<BindingProperty> bindingProperties = next.getValue();
+			this.permutationMap.put(strongName, bindingProperties);
+
+			Set<String> artifactsForCompilation = getArtifactsForCompilation(logger, context, artifacts);
+			Set<String> externalFiles = getExternalFiles(logger, context);
+			Set<String> set = new HashSet<String>();
+
+			set.addAll(artifactsForCompilation);
+			set.addAll(externalFiles);
+
+			String permInformation = xmlPermutationProvider.writePermutationInformation(strongName, bindingProperties, set);
+
+			ArtifactSet toReturn = new ArtifactSet(artifacts);
+			toReturn.add(emitString(logger, permInformation, strongName + ".perm.xml"));
+
+			String manifest = buildManiFest(logger, artifactsForCompilation, externalFiles, context);
+			toReturn.add(emitString(logger, manifest, strongName + ".manifest"));
+
+			return toReturn;
+		}
+
 		ArtifactSet toReturn = new ArtifactSet(artifacts);
-
-		Map<String, List<BindingProperty>> map = buildPermutationMap(logger, context, artifacts);
-
-		toReturn.add(createPermutationMap(logger, map));
-		toReturn.addAll(createManifest(logger, context, artifacts));
-
+		toReturn.add(createPermutationMap(logger, permutationMap));
 		return toReturn;
+
+	}
+
+	protected Set<String> getArtifactsForCompilation(TreeLogger logger, LinkerContext context, ArtifactSet artifacts) {
+		SortedSet<EmittedArtifact> artifactSet = artifacts.find(EmittedArtifact.class);
+
+		Set<String> artifactNames = new HashSet<String>();
+
+		for (EmittedArtifact artifact : artifactSet) {
+
+			EmittedArtifact ea = (EmittedArtifact) artifact;
+			String pathName = ea.getPartialPath();
+
+			if (pathName.endsWith("symbolMap") || pathName.endsWith(".xml.gz") || pathName.endsWith("rpc.log") || pathName.endsWith("gwt.rpc") || pathName.endsWith("manifest.txt")
+					|| pathName.startsWith("rpcPolicyManifest") || pathName.startsWith("soycReport")) {
+				// skip these resources
+				//TODO put in reg exp
+			} else {
+				artifactNames.add(pathName);
+			}
+		}
+
+		return artifactNames;
 
 	}
 
@@ -115,7 +169,7 @@ public class PermutationMapLinker extends AbstractLinker {
 
 	}
 
-	private String buildManiFest(TreeLogger logger, HashSet<String> cacheResources, Set<String> externalFiles, LinkerContext context) {
+	protected String buildManiFest(TreeLogger logger, Set<String> cacheResources, Set<String> externalFiles, LinkerContext context) {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("CACHE MANIFEST\n");

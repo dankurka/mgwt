@@ -2,23 +2,27 @@
 	@external bookmark, active;
 }
 
-@url bookmarksImage toolbarBookmarksImage;
-@url pressedImage toolbarPressImage;
-
-.bookmark {
-	background-image: bookmarksImage;
-}
-
-.bookmark.active {
-	background-image: pressedImage, bookmarksImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 {
+	@url bookmarksImage toolbarBookmarksImage;
+	@url pressedImage toolbarPressImage;
 	.bookmark {
-		background-size: 24px 16px;
+		background-image: bookmarksImage;
 	}
-	
 	.bookmark.active {
-		background-size: 44px 44px, 24px 16px;
+		background-image: pressedImage, bookmarksImage;
+	}
+	@if mgwt.os retina {
+		.bookmark {
+			background-size: 24px 16px;
+		}
+		.bookmark.active {
+			background-size: 44px 44px, 24px 16px;
+		}
 	}
 }
+	.bookmark {
+		
+	}
+	.bookmark.active {
+		
+	}

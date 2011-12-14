@@ -2,25 +2,27 @@
 	@external stop, active;
 }
 
-@url stopImage toolbarStopImage;
-@url pressedImage toolbarPressImage;
-
-
-
-.stop {
-	background-image: stopImage;
-}
-
-.stop.active {
-	background-image:  pressedImage, stopImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 { 
+	@url stopImage toolbarStopImage;
+	@url pressedImage toolbarPressImage;
 	.stop {
-		background-size: 17px 17px;
+		background-image: stopImage;
 	}
-	
 	.stop.active {
-		background-size: 44px 44px, 17px 17px;
+		background-image: pressedImage, stopImage;
+	}
+	@if mgwt.os retina {
+		.stop {
+			background-size: 17px 17px;
+		}
+		.stop.active {
+			background-size: 44px 44px, 17px 17px;
+		}
 	}
 }
+	.stop {
+		
+	}
+	.stop.active {
+		
+	}

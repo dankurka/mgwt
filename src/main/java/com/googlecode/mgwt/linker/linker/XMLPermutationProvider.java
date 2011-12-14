@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +33,7 @@ import org.xml.sax.SAXException;
 import com.googlecode.mgwt.linker.server.BindingProperty;
 
 public class XMLPermutationProvider {
+	private static final String PERMUTATION_NODE = "permutation";
 	private static final String PERMUTATION_NAME = "name";
 	private static final String PERMUTATIONS = "permutations";
 
@@ -111,15 +113,13 @@ public class XMLPermutationProvider {
 		try {
 			StringWriter xml = new StringWriter();
 
-			Document document;
-
-			document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+			Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
 			Element permutationsNode = document.createElement(PERMUTATIONS);
 			document.appendChild(permutationsNode);
 
 			for (Entry<String, List<BindingProperty>> entry : map.entrySet()) {
-				Element node = document.createElement("permutation");
+				Element node = document.createElement(PERMUTATION_NODE);
 				node.setAttribute(PERMUTATION_NAME, entry.getKey());
 				permutationsNode.appendChild(node);
 
@@ -155,6 +155,63 @@ public class XMLPermutationProvider {
 
 		//TODO 
 		throw new RuntimeException();
+	}
+
+	public String writePermutationInformation(String strongName, List<BindingProperty> bindingProperties, Set<String> files) {
+		try {
+			Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+
+			Element permutationNode = document.createElement(PERMUTATION_NODE);
+			document.appendChild(permutationNode);
+
+			permutationNode.setAttribute(PERMUTATION_NAME, strongName);
+
+			//create and append variables node
+			Element variablesNode = document.createElement("variables");
+			permutationNode.appendChild(variablesNode);
+
+			//write out all variables
+			for (BindingProperty prop : bindingProperties) {
+				Element varNode = document.createElement(prop.getName());
+				varNode.appendChild(document.createTextNode(prop.getValue()));
+				variablesNode.appendChild(varNode);
+			}
+
+			//create file node
+			Element filesNode = document.createElement("files");
+			permutationNode.appendChild(filesNode);
+
+			//write out all files
+			for (String string : files) {
+				Element fileNode = document.createElement("file");
+				fileNode.appendChild(document.createTextNode(string));
+				filesNode.appendChild(fileNode);
+			}
+
+			StringWriter xml = new StringWriter();
+			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.transform(new DOMSource(document), new StreamResult(xml));
+
+			String permMapString = xml.toString();
+			return permMapString;
+
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerFactoryConfigurationError e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//TODO 
+		throw new RuntimeException();
+
 	}
 
 }

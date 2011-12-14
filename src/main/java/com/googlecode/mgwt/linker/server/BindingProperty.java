@@ -48,4 +48,9 @@ public class BindingProperty {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "BindingProperty [name=" + name + ", value=" + value + "]";
+	}
+
 }

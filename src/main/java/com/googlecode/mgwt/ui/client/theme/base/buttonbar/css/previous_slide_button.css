@@ -2,23 +2,27 @@
 	@external previousSlide, active;
 }
 
-@url previousSlideImage toolbarPreviousSlideImage;
-@url pressedImage toolbarPressImage;
-
-.previousSlide {
-	background-image: previousSlideImage;
-}
-
-.previousSlide.active {
-	background-image: pressedImage, previousSlideImage ;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 {
+	@url previousSlideImage toolbarPreviousSlideImage;
+	@url pressedImage toolbarPressImage;
 	.previousSlide {
-		background-size: 23px 18px;
+		background-image: previousSlideImage;
 	}
-	
 	.previousSlide.active {
-		background-size: 44px 44px, 23px 18px;
+		background-image: pressedImage, previousSlideImage;
+	}
+	@if mgwt.os retina {
+		.previousSlide {
+			background-size: 23px 18px;
+		}
+		.previousSlide.active {
+			background-size: 44px 44px, 23px 18px;
+		}
 	}
 }
+	.previousSlide {
+		
+	}
+	.previousSlide.active {
+	
+	}

@@ -2,23 +2,27 @@
 	@external fastForward, active;
 }
 
-@url fastForwardImage toolbarFastForwardImage;
-@url pressedImage toolbarPressImage;
-
-.fastForward {
-	background-image: fastForwardImage;
-}
-
-.fastForward.active {
-	background-image: pressedImage, fastForwardImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 {
+	@url fastForwardImage toolbarFastForwardImage;
+	@url pressedImage toolbarPressImage;
 	.fastForward {
-		background-size: 21px 19px;
+		background-image: fastForwardImage;
 	}
-	
 	.fastForward.active {
-		background-size: 44px 44px, 21px 19px;
+		background-image: pressedImage, fastForwardImage;
+	}
+	@if mgwt.os retina {
+		.fastForward {
+			background-size: 21px 19px;
+		}
+		.fastForward.active {
+			background-size: 44px 44px, 21px 19px;
+		}
 	}
 }
+	.fastForward {
+		
+	}
+	.fastForward.active {
+		
+	}

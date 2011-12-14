@@ -19,7 +19,7 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.googlecode.mgwt.dom.DOM'/>
 	
-	<define-linker name="permutationmaplinker" class="com.googlecode.mgwt.linker.linker.test.PermutationMapLinker" />
+	<define-linker name="permutationmaplinker" class="com.googlecode.mgwt.linker.linker.PermutationMapLinker" />
     <define-configuration-property name="html5manifestlinker_files" is-multi-valued="true" />
   	<source path="client"/>
 </module>
