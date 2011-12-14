@@ -10,28 +10,27 @@
 		
 }
 
-@if mgwt.os ipad iphone desktop retina {
-	@url bookmarkImage tabBarBookMarkImage;
-		
-	.mgwt-TabBar-Button.bookmark .icon{
-		\-webkit-mask-box-image: bookmarkImage;
-		width: 36px;
-		height: 39px;
-	}
-	
-	@if user.agent safari {
+@if user.agent safari gecko1_8 { 
+
+	@if mgwt.os ipad iphone desktop retina {
+		@url bookmarkImage tabBarBookMarkImage;
+			
 		.mgwt-TabBar-Button.bookmark .icon{
 			\-webkit-mask-box-image: bookmarkImage;
+			width: 36px;
+			height: 39px;
 		}
-	}
-	
-	@if user.agent gecko1_8 {
-		.mgwt-TabBar-Button.bookmark .icon{
-			background-image: bookmarkImage;
-		}
-	}
-	
-	
 		
-	
+		@if user.agent safari {
+			.mgwt-TabBar-Button.bookmark .icon{
+				\-webkit-mask-box-image: bookmarkImage;
+			}
+		}
+		
+		@if user.agent gecko1_8 {
+			.mgwt-TabBar-Button.bookmark .icon{
+				background-image: bookmarkImage;
+			}
+		}
+	}
 }

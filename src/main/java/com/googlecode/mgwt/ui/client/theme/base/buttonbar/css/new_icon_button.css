@@ -2,23 +2,27 @@
 	@external newIcon, active;
 }
 
-@url newImage toolbarNewImage;
-@url pressedImage toolbarPressImage;
-
-.newIcon {
-	background-image: newImage;
-}
-
-.newIcon.active {
-	background-image: pressedImage, newImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 { 
+	@url newImage toolbarNewImage;
+	@url pressedImage toolbarPressImage;
 	.newIcon {
-		background-size: 18px 18px;
+		background-image: newImage;
 	}
-	
 	.newIcon.active {
-		background-size: 44px 44px, 18px 18px;
+		background-image: pressedImage, newImage;
+	}
+	@if mgwt.os retina {
+		.newIcon {
+			background-size: 18px 18px;
+		}
+		.newIcon.active {
+			background-size: 44px 44px, 18px 18px;
+		}
 	}
 }
+	.newIcon {
+		
+	}
+	.newIcon.active {
+		
+	}

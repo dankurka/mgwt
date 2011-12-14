@@ -15,8 +15,8 @@ under * the License.
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.googlecode.mgwt.dom.DOM' />
 	
-
-
+	<!-- need to remove ie6 (causing bugs with clientbundle inlining images) -->
+	<set-property name="user.agent" value="safari,gecko1_8,opera,ie9,ie8" />
 
 	<define-configuration-property name="mgwt.css" is-multi-valued="false" />
 	<set-configuration-property name="mgwt.css" value="obf" />

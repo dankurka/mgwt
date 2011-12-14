@@ -2,23 +2,27 @@
 	@external compose, active;
 }
 
-@url composeImage toolbarComposeImage;
-@url pressedImage toolbarPressImage;
-
-.compose {
-	background-image: composeImage;
-}
-
-.compose.active {
-	background-image: pressedImage, composeImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 { 
+	@url composeImage toolbarComposeImage;
+	@url pressedImage toolbarPressImage;
 	.compose {
-		background-size: 22px 18px;
+		background-image: composeImage;
 	}
-	
 	.compose.active {
-		background-size: 44px 44px, 22px 18px;
+		background-image: pressedImage, composeImage;
+	}
+	@if mgwt.os retina {
+		.compose {
+			background-size: 22px 18px;
+		}
+		.compose.active {
+			background-size: 44px 44px, 22px 18px;
+		}
 	}
 }
+	.compose {
+		
+	}
+	.compose.active {
+		
+	}

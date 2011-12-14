@@ -2,23 +2,27 @@
 	@external search, active;
 }
 
-@url searchImage toolbarSearchImage;
-@url pressedImage toolbarPressImage;
-
-.search {
-	background-image: searchImage;
-}
-
-.search.active {
-	background-image: pressedImage, searchImage ;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 { 
+	@url searchImage toolbarSearchImage;
+	@url pressedImage toolbarPressImage;
 	.search {
-		background-size: 20px 20px;
+		background-image: searchImage;
 	}
-	
 	.search.active {
-		background-size: 44px 44px, 20px 20px;
+		background-image: pressedImage, searchImage;
+	}
+	@if mgwt.os retina {
+		.search {
+			background-size: 20px 20px;
+		}
+		.search.active {
+			background-size: 44px 44px, 20px 20px;
+		}
 	}
 }
+	.search {
+		
+	}
+	.search.active {
+		
+	}

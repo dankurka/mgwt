@@ -9,31 +9,32 @@
 		
 }
 
-
-@if mgwt.os ipad iphone desktop retina {
-	@url contactsImage tabBarContactsImage;
-	
-	
-	
-	.mgwt-TabBar-Button.contacts .icon{
-		width: 45px;
-		height: 36px;
-		margin-bottom: 3px;
-	}
-	
-	
-	
-	@if user.agent safari {
+@if user.agent safari gecko1_8 { 
+	@if mgwt.os ipad iphone desktop retina {
+		@url contactsImage tabBarContactsImage;
+		
+		
+		
 		.mgwt-TabBar-Button.contacts .icon{
-			\-webkit-mask-box-image: contactsImage;
+			width: 45px;
+			height: 36px;
+			margin-bottom: 3px;
 		}
-	}
-	
-	@if user.agent gecko1_8 {
-		.mgwt-TabBar-Button.contacts .icon{
-			background-image: contactsImage;
+		
+		
+		
+		@if user.agent safari {
+			.mgwt-TabBar-Button.contacts .icon{
+				\-webkit-mask-box-image: contactsImage;
+			}
 		}
+		
+		@if user.agent gecko1_8 {
+			.mgwt-TabBar-Button.contacts .icon{
+				background-image: contactsImage;
+			}
+		}
+		
+		
 	}
-	
-	
 }

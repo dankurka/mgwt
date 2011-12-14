@@ -2,23 +2,27 @@
 	@external plus, active;
 }
 
-@url plusImage toolbarPlusImage;
-@url pressedImage toolbarPressImage;
-
-.plus {
-	background-image: plusImage;
-}
-
-.plus.active {
-	background-image: pressedImage, plusImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 { 
+	@url plusImage toolbarPlusImage;
+	@url pressedImage toolbarPressImage;
 	.plus {
-		background-size: 16px 17px;
+		background-image: plusImage;
 	}
-	
 	.plus.active {
-		background-size: 44px 44px, 16px 17px;
+		background-image: pressedImage, plusImage;
+	}
+	@if mgwt.os retina {
+		.plus {
+			background-size: 16px 17px;
+		}
+		.plus.active {
+			background-size: 44px 44px, 16px 17px;
+		}
 	}
 }
+	.plus {
+		
+	}
+	.plus.active {
+		
+	}

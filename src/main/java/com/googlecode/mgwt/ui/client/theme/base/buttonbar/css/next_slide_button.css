@@ -2,23 +2,27 @@
 	@external nextSlide, active;
 }
 
-@url nextSlideImage toolbarNextSlideImage;
-@url pressedImage toolbarPressImage;
-
-.nextSlide {
-	background-image: nextSlideImage;
-}
-
-.nextSlide.active {
-	background-image: pressedImage, nextSlideImage  ;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 {
+	@url nextSlideImage toolbarNextSlideImage;
+	@url pressedImage toolbarPressImage;
 	.nextSlide {
-		background-size: 23px 18px;
+		background-image: nextSlideImage;
 	}
-	
 	.nextSlide.active {
-		background-size: 44px 44px, 23px 18px;
+		background-image: pressedImage, nextSlideImage;
+	}
+	@if mgwt.os retina {
+		.nextSlide {
+			background-size: 23px 18px;
+		}
+		.nextSlide.active {
+			background-size: 44px 44px, 23px 18px;
+		}
 	}
 }
+	.nextSlide {
+		
+	}
+	.nextSlide.active {
+		
+	}

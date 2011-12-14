@@ -2,23 +2,27 @@
 	@external locate, active;
 }
 
-@url locateImage toolbarLocateImage;
-@url pressedImage toolbarPressImage;
-
-.locate {
-	background-image: locateImage;
-}
-
-.locate.active {
-	background-image: pressedImage, locateImage;
-}
-
-@if mgwt.os retina {
+@if user.agent safari gecko1_8 { 
+	@url locateImage toolbarLocateImage;
+	@url pressedImage toolbarPressImage;
 	.locate {
-		background-size: 19px 19px;
+		background-image: locateImage;
 	}
-	
 	.locate.active {
-		background-size: 44px 44px, 19px 19px;
+		background-image: pressedImage, locateImage;
+	}
+	@if mgwt.os retina {
+		.locate {
+			background-size: 19px 19px;
+		}
+		.locate.active {
+			background-size: 44px 44px, 19px 19px;
+		}
 	}
 }
+	.locate {
+		
+	}
+	.locate.active {
+		
+	}
