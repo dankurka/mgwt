@@ -26,6 +26,11 @@ import com.googlecode.mgwt.linker.server.BindingProperty;
 @Shardable
 public class PermutationMapLinker extends AbstractLinker {
 
+	private static final String EXTERNAL_FILES_CONFIGURATION_PROPERTY_NAME = "html5manifestlinker_files";
+	public static final String PERMUTATION_MANIFEST_FILE_ENDING = ".manifest";
+	public static final String PERMUTATION_FILE_ENDING = ".perm.xml";
+	public static final String MANIFEST_MAP_FILE_NAME = "manifest.map";
+
 	private XMLPermutationProvider xmlPermutationProvider;
 
 	public PermutationMapLinker() {
@@ -33,7 +38,6 @@ public class PermutationMapLinker extends AbstractLinker {
 		manifestWriter = new ManifestWriter();
 	}
 
-	public static final String MANIFEST_MAP = "manifest.map";
 	private ManifestWriter manifestWriter;
 
 	@Override
@@ -91,17 +95,18 @@ public class PermutationMapLinker extends AbstractLinker {
 			//remove all permutations
 			filesForCurrentPermutation.removeAll(allPermutationFiles);
 			//add files of the one permutation we are interested in
+			//leaving the common stuff for all permutations in...
 			filesForCurrentPermutation.addAll(entry.getValue().getPermutationFiles());
 
 			String permXml = buildPermXml(permutationArtifact, filesForCurrentPermutation, externalFiles);
 
 			//emit permutation information file
-			SyntheticArtifact emitString = emitString(logger, permXml, permutationArtifact.getPermutationName() + ".perm.xml");
+			SyntheticArtifact emitString = emitString(logger, permXml, permutationArtifact.getPermutationName() + PERMUTATION_FILE_ENDING);
 			toReturn.add(emitString);
 
 			//build manifest
 			String maniFest = buildManiFest(entry.getKey(), filesForCurrentPermutation, externalFiles);
-			toReturn.add(emitString(logger, maniFest, entry.getKey() + ".manifest"));
+			toReturn.add(emitString(logger, maniFest, entry.getKey() + PERMUTATION_MANIFEST_FILE_ENDING));
 
 		}
 
@@ -110,7 +115,7 @@ public class PermutationMapLinker extends AbstractLinker {
 
 	}
 
-	public String buildPermXml(PermutationArtifact permutationArtifact, Set<String> gwtCompiledFiles, Set<String> otherResources) {
+	protected String buildPermXml(PermutationArtifact permutationArtifact, Set<String> gwtCompiledFiles, Set<String> otherResources) {
 		HashSet<String> namesForPermXml = new HashSet<String>(gwtCompiledFiles);
 		namesForPermXml.addAll(otherResources);
 		String permXmlString = xmlPermutationProvider.writePermutationInformation(permutationArtifact.getPermutationName(), permutationArtifact.getBindingProperties(), namesForPermXml);
@@ -121,7 +126,7 @@ public class PermutationMapLinker extends AbstractLinker {
 	 * @param permutationArtifactAsMap
 	 * @return
 	 */
-	private Set<String> getAllPermutationFiles(Map<String, PermutationArtifact> permutationArtifactAsMap) {
+	protected Set<String> getAllPermutationFiles(Map<String, PermutationArtifact> permutationArtifactAsMap) {
 		Set<String> allPermutationFiles = new HashSet<String>();
 
 		for (Entry<String, PermutationArtifact> entry : permutationArtifactAsMap.entrySet()) {
@@ -138,7 +143,7 @@ public class PermutationMapLinker extends AbstractLinker {
 		return hashMap;
 	}
 
-	public boolean shouldArtifactBeInManifest(String pathName) {
+	protected boolean shouldArtifactBeInManifest(String pathName) {
 		if (pathName.endsWith("symbolMap") || pathName.endsWith(".xml.gz") || pathName.endsWith("rpc.log") || pathName.endsWith("gwt.rpc") || pathName.endsWith("manifest.txt")
 				|| pathName.startsWith("rpcPolicyManifest") || pathName.startsWith("soycReport")) {
 			return false;
@@ -163,18 +168,6 @@ public class PermutationMapLinker extends AbstractLinker {
 
 	}
 
-	protected Set<String> getCompilationStrongNames(ArtifactSet artifacts) {
-
-		HashSet<String> strongNames = new HashSet<String>();
-
-		SortedSet<SelectionInformation> compilationResults = artifacts.find(SelectionInformation.class);
-		for (SelectionInformation result : compilationResults) {
-			strongNames.add(result.getStrongName());
-		}
-
-		return strongNames;
-	}
-
 	protected String buildManiFest(String moduleName, Set<String> cacheResources, Set<String> externalFiles) {
 		return manifestWriter.writeManifest(externalFiles, cacheResources);
 	}
@@ -184,7 +177,7 @@ public class PermutationMapLinker extends AbstractLinker {
 		SortedSet<ConfigurationProperty> properties = context.getConfigurationProperties();
 		for (ConfigurationProperty configurationProperty : properties) {
 			String name = configurationProperty.getName();
-			if ("html5manifestlinker_files".equals(name)) {
+			if (EXTERNAL_FILES_CONFIGURATION_PROPERTY_NAME.equals(name)) {
 				for (String value : configurationProperty.getValues()) {
 					set.add(value);
 				}
@@ -196,18 +189,15 @@ public class PermutationMapLinker extends AbstractLinker {
 
 	protected EmittedArtifact createPermutationMap(TreeLogger logger, Map<String, Set<BindingProperty>> map) throws UnableToCompleteException {
 		String string = xmlPermutationProvider.serializeMap(map);
-		System.out.println(string);
-		return emitString(logger, string, MANIFEST_MAP);
+		return emitString(logger, string, MANIFEST_MAP_FILE_NAME);
 
 	}
 
 	protected Map<String, Set<BindingProperty>> buildPermutationMap(TreeLogger logger, LinkerContext context, ArtifactSet artifacts) throws UnableToCompleteException {
 
-		SortedSet<SelectionInformation> compilationResults = artifacts.find(SelectionInformation.class);
-
 		HashMap<String, Set<BindingProperty>> map = new HashMap<String, Set<BindingProperty>>();
 
-		for (SelectionInformation result : compilationResults) {
+		for (SelectionInformation result : artifacts.find(SelectionInformation.class)) {
 			Set<BindingProperty> list = new HashSet<BindingProperty>();
 			map.put(result.getStrongName(), list);
 

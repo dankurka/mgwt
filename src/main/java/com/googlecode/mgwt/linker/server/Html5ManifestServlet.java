@@ -223,7 +223,7 @@ public class Html5ManifestServlet extends HttpServlet {
 
 	public String getPermutationStrongName(String moduleName, Set<BindingProperty> computedBindings) throws FileNotFoundException, XMLPermutationProviderException {
 
-		FileInputStream fileInputStream = new FileInputStream(context.getRealPath(moduleName + "/" + PermutationMapLinker.MANIFEST_MAP));
+		FileInputStream fileInputStream = new FileInputStream(context.getRealPath(moduleName + "/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME));
 		Map<String, List<BindingProperty>> map = permutationProvider.getBindingProperties(fileInputStream);
 		for (Entry<String, List<BindingProperty>> entry : map.entrySet()) {
 			List<BindingProperty> value = entry.getValue();
