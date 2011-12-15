@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -211,6 +212,69 @@ public class XMLPermutationProvider {
 		}
 		//TODO 
 		throw new RuntimeException();
+
+	}
+
+	public Set<String> getPermutationFiles(InputStream inputStream) throws XMLPermutationProviderException {
+
+		try {
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+
+			Document document = builder.parse(inputStream);
+			Element documentNode = document.getDocumentElement();
+
+			Set<String> set = new HashSet<String>();
+			NodeList mainNodes = documentNode.getChildNodes();
+			for (int i = 0; i < mainNodes.getLength(); i++) {
+				Node item = mainNodes.item(i);
+				if (item.getNodeType() != Node.ELEMENT_NODE)
+					continue;
+				Element variables = (Element) item;
+				String varKey = variables.getTagName();
+
+				if ("files".equals(varKey)) {
+					NodeList fileNodes = variables.getChildNodes();
+
+					handleFileNodes(set, fileNodes);
+
+				}
+
+			}
+
+			return set;
+
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		throw new RuntimeException();
+
+	}
+
+	private void handleFileNodes(Set<String> set, NodeList fileNodes) throws XMLPermutationProviderException {
+		for (int i = 0; i < fileNodes.getLength(); i++) {
+			Node item = fileNodes.item(i);
+			if (item.getNodeType() != Node.ELEMENT_NODE)
+				continue;
+			Element fileNode = (Element) item;
+
+			NodeList childNodes = fileNode.getChildNodes();
+
+			if (childNodes.getLength() != 1) {
+				logger.severe("Unexpected XML Structure: Expected property value");
+				throw new XMLPermutationProviderException();
+			}
+
+			String varValue = childNodes.item(0).getNodeValue();
+			set.add(varValue);
+
+		}
 
 	}
 

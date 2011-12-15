@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
@@ -28,6 +29,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.googlecode.mgwt.linker.linker.ManifestWriter;
 import com.googlecode.mgwt.linker.linker.PermutationMapLinker;
 import com.googlecode.mgwt.linker.linker.XMLPermutationProvider;
 import com.googlecode.mgwt.linker.linker.XMLPermutationProviderException;
@@ -71,40 +73,27 @@ public class Html5ManifestServlet extends HttpServlet {
 
 		try {
 
-			Set<BindingProperty> computedBindings = new HashSet<BindingProperty>();
-
-			Set<Entry<String, PropertyProvider>> set = propertyProviders.entrySet();
-			for (Entry<String, PropertyProvider> entry : set) {
-				String varValue = entry.getValue().getPropertyValue(req);
-				BindingProperty bindingProperty = new BindingProperty(entry.getKey(), varValue);
-				computedBindings.add(bindingProperty);
-			}
+			Set<BindingProperty> computedBindings = calculateBindinPropertiesForClient(req);
 
 			String moduleName = getModuleName(req);
 
 			String strongName = getPermutationStrongName(moduleName, computedBindings);
 
 			if (strongName != null) {
-				serveManifest(req, resp, moduleName + "/" + strongName + ".manifest");
+				try {
+					String manifest = readManifest(moduleName + "/" + strongName + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
+					serveStringManifest(req, resp, manifest);
+
+				} catch (IOException e) {
+					//TODO log
+				}
 				return;
 			}
 
-			boolean matches = false;
-			BindingProperty bpToRemove = null;
+			BindingProperty bpToRemove = getIphoneBinding(computedBindings);
 			//maybe this is an iphone where we can`t detect retina or not retina...
-			for (BindingProperty bp : computedBindings) {
-				if ("mgwt.os".equals(bp.getName())) {
-					if ("iphone_undefined".equals(bp.getValue())) {
-						//oh shit this is an iphone
-						//so now we need to serve to manifests
-						//retina...
-						//non retina
-						matches = true;
-						bpToRemove = bp;
-					}
-				}
-			}
-			if (matches) {
+
+			if (bpToRemove != null) {
 				computedBindings.remove(bpToRemove);
 
 				Set<BindingProperty> iphoneMatch = new HashSet<BindingProperty>();
@@ -117,9 +106,22 @@ public class Html5ManifestServlet extends HttpServlet {
 
 				if (iPhoneStrong != null && retinaStrong != null) {
 					//put them together
-					String manifest = mergeManifests(moduleName, iPhoneStrong, retinaStrong);
+					//String mergedManifests = mergeManifests(moduleName, iPhoneStrong, retinaStrong);
 
-					serveStringManifest(req, resp, manifest);
+					Set<String> filesForPermutation = getFilesForPermutation(moduleName, iPhoneStrong);
+					filesForPermutation.addAll(getFilesForPermutation(moduleName, retinaStrong));
+					for (String string : filesForPermutation) {
+						System.out.println(string);
+					}
+
+					ManifestWriter manifestWriter = new ManifestWriter();
+					String writeManifest = manifestWriter.writeManifest(new HashSet<String>(), filesForPermutation);
+					System.out.println(writeManifest);
+					//String manifest = readManifest(moduleName + "/" + retinaStrong + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
+					//System.out.println(manifest);
+					serveStringManifest(req, resp, writeManifest);
+
+					//serveStringManifest(req, resp, mergedManifests);
 					return;
 				}
 
@@ -137,6 +139,90 @@ public class Html5ManifestServlet extends HttpServlet {
 		}
 		//TODO
 		throw new RuntimeException();
+	}
+
+	protected BindingProperty getIphoneBinding(Set<BindingProperty> bps) {
+		for (BindingProperty bp : bps) {
+			if ("mgwt.os".equals(bp.getName())) {
+				if ("iphone_undefined".equals(bp.getValue())) {
+					//oh shit this is an iphone
+					//so now we need to serve two manifests
+					//retina...
+					//non retina
+
+					return bp;
+
+				}
+			}
+		}
+		return null;
+	}
+
+	protected Set<String> getFilesForPermutation(String moduleName, String permutation) {
+		String fileName = moduleName + "/" + permutation + PermutationMapLinker.PERMUTATION_FILE_ENDING;
+		XMLPermutationProvider xmlPermutationProvider = new XMLPermutationProvider();
+
+		try {
+			File file = new File(context.getRealPath(fileName));
+			InputStream inputStream = new FileInputStream(file);
+			return xmlPermutationProvider.getPermutationFiles(inputStream);
+		} catch (XMLPermutationProviderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		throw new RuntimeException();
+	}
+
+	private String readManifest(String filePath) throws IOException {
+		File manifestFile = new File(context.getRealPath(filePath));
+
+		StringWriter manifestWriter = new StringWriter();
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(manifestFile));
+			String line = null;
+
+			while ((line = br.readLine()) != null) {
+
+				manifestWriter.append(line + "\n");
+			}
+
+			return manifestWriter.toString();
+		} catch (FileNotFoundException e) {
+			log("could not find manifest file", e);
+			throw new IOException("can not find manifest file", e);
+		} catch (IOException e) {
+			log("error while reading manifest file", e);
+			throw new IOException("error while reading manifest file", e);
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+
+				}
+			}
+		}
+	}
+
+	/**
+	 * @param req
+	 * @return
+	 * @throws PropertyProviderException
+	 */
+	private Set<BindingProperty> calculateBindinPropertiesForClient(HttpServletRequest req) throws PropertyProviderException {
+		Set<BindingProperty> computedBindings = new HashSet<BindingProperty>();
+
+		Set<Entry<String, PropertyProvider>> set = propertyProviders.entrySet();
+		for (Entry<String, PropertyProvider> entry : set) {
+			String varValue = entry.getValue().getPropertyValue(req);
+			BindingProperty bindingProperty = new BindingProperty(entry.getKey(), varValue);
+			computedBindings.add(bindingProperty);
+		}
+		return computedBindings;
 	}
 
 	private void serveStringManifest(HttpServletRequest req, HttpServletResponse resp, String manifest) {
@@ -169,56 +255,56 @@ public class Html5ManifestServlet extends HttpServlet {
 
 	}
 
-	private String mergeManifests(String moduleName, String iPhoneStrong, String retinaStrong) {
-		File iphoneManifest = new File(context.getRealPath(moduleName + "/" + iPhoneStrong + ".manifest"));
-		File retinaManifest = new File(context.getRealPath(moduleName + "/" + retinaStrong + ".manifest"));
+	private String mergeManifests(String moduleName, String iPhoneStrong, String retinaStrong) throws IOException {
 
-		if (!iphoneManifest.exists()) {
-			//TODO handle
-			throw new RuntimeException();
+		String manifest1;
+		String manifest2;
+		try {
+			manifest1 = readManifest(moduleName + "/" + iPhoneStrong + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
+			manifest2 = readManifest(moduleName + "/" + retinaStrong + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
+		} catch (IOException e) {
+			log("error while reading manifest for merging", e);
+			throw e;
 		}
 
-		if (!retinaManifest.exists()) {
-			//TODO handle
-			throw new RuntimeException();
-		}
-
-		StringWriter manifestWriter = new StringWriter();
+		StringWriter writer = new StringWriter();
+		writer.append(manifest1);
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(iphoneManifest));
-			String line = null;
+			writeSecondManifest(writer, manifest2);
+		} catch (IOException e) {
+			log("can`t write manifest", e);
+			throw e;
+		} finally {
 
-			while ((line = br.readLine()) != null) {
+		}
+		System.out.println(writer.toString());
+		return writer.toString();
 
-				manifestWriter.append(line);
-			}
-			br.close();
+	}
 
-			br = new BufferedReader(new FileReader(iphoneManifest));
+	private void writeSecondManifest(StringWriter writer, String manifest2) throws IOException {
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new StringReader(manifest2));
 			boolean first = true;
-			while ((line = br.readLine()) != null) {
+			String line = null;
+			while ((line = reader.readLine()) != null) {
 				if (first) {
 					first = false;
 					continue;
 				}
-				manifestWriter.append(line);
+				writer.append(line + "\n");
 			}
 
-			br.close();
-
-			return manifestWriter.toString();
-
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
+		} finally {
+			if (reader != null) {
+				reader.close();
+			}
 		}
 
-		//TODO 
-		throw new RuntimeException();
 	}
 
 	public String getPermutationStrongName(String moduleName, Set<BindingProperty> computedBindings) throws FileNotFoundException, XMLPermutationProviderException {
@@ -236,29 +322,6 @@ public class Html5ManifestServlet extends HttpServlet {
 			}
 		}
 		return null;
-	}
-
-	protected void serveManifest(HttpServletRequest req, HttpServletResponse resp, String path) throws IOException {
-
-		if (!new File(context.getRealPath(path)).exists()) {
-			resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-		} else {
-
-			resp.setHeader("Cache-Control", "no-cache");
-			resp.setHeader("Pragma", "no-cache");
-			resp.setDateHeader("Expires", new Date().getTime());
-
-			resp.setContentType("text/cache-manifest");
-
-			InputStream is = new FileInputStream(context.getRealPath(path));
-			ServletOutputStream os = resp.getOutputStream();
-			byte[] buffer = new byte[1024];
-			int bytesRead;
-
-			while ((bytesRead = is.read(buffer)) != -1) {
-				os.write(buffer, 0, bytesRead);
-			}
-		}
 	}
 
 	protected String getModuleName(HttpServletRequest req) throws ServletException {
