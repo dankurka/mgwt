@@ -26,7 +26,7 @@ import com.googlecode.mgwt.linker.server.BindingProperty;
 @Shardable
 public class PermutationMapLinker extends AbstractLinker {
 
-	private static final String EXTERNAL_FILES_CONFIGURATION_PROPERTY_NAME = "html5manifestlinker_files";
+	public static final String EXTERNAL_FILES_CONFIGURATION_PROPERTY_NAME = "html5manifestlinker_files";
 	public static final String PERMUTATION_MANIFEST_FILE_ENDING = ".manifest";
 	public static final String PERMUTATION_FILE_ENDING = ".perm.xml";
 	public static final String MANIFEST_MAP_FILE_NAME = "manifest.map";

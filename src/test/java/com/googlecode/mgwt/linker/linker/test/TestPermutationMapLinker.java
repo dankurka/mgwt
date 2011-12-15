@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeMap;
@@ -34,6 +36,11 @@ public class TestPermutationMapLinker {
 	private class MockLinkerContext implements LinkerContext {
 
 		private String moduleName;
+		private SortedSet<ConfigurationProperty> configurationProperties = new TreeSet<ConfigurationProperty>();
+
+		public void addConfigurationPropery(ConfigurationProperty configurationProperty) {
+			configurationProperties.add(configurationProperty);
+		}
 
 		public void setModuleName(String moduleName) {
 			this.moduleName = moduleName;
@@ -41,7 +48,7 @@ public class TestPermutationMapLinker {
 
 		@Override
 		public SortedSet<ConfigurationProperty> getConfigurationProperties() {
-			return new TreeSet<ConfigurationProperty>();
+			return configurationProperties;
 		}
 
 		@Override
@@ -162,6 +169,39 @@ public class TestPermutationMapLinker {
 
 	}
 
+	private class MockConfigurationProperty implements ConfigurationProperty {
+
+		private final String name;
+		private final List<String> list;
+
+		public MockConfigurationProperty(String name, List<String> list) {
+			this.name = name;
+			this.list = list;
+		}
+
+		@Override
+		public String getName() {
+			return name;
+		}
+
+		@Override
+		public String getValue() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public List<String> getValues() {
+			return list;
+		}
+
+		@Override
+		public boolean hasMultipleValues() {
+			return list.size() > 1;
+		}
+
+	}
+
 	@Test
 	public void testLinkWithAllPermutations() throws UnableToCompleteException, IOException {
 
@@ -186,6 +226,10 @@ public class TestPermutationMapLinker {
 
 		MockLinkerContext mockLinkerContext = new MockLinkerContext();
 		mockLinkerContext.setModuleName("strong");
+
+		List<String> list = new ArrayList<String>();
+		list.add("index.html");
+		mockLinkerContext.addConfigurationPropery(new MockConfigurationProperty(PermutationMapLinker.EXTERNAL_FILES_CONFIGURATION_PROPERTY_NAME, list));
 
 		//lets put in two permutationartifacts
 		HashSet<String> files = new HashSet<String>();
@@ -224,6 +268,7 @@ public class TestPermutationMapLinker {
 		Assert.assertTrue(theString.contains("strong/1.test"));
 		Assert.assertTrue(theString.contains("perm1_file1"));
 		Assert.assertTrue(theString.contains("strong/2.test"));
+		Assert.assertTrue(theString.contains("index.html"));
 		Assert.assertTrue(!theString.contains("perm2_file2"));
 		Assert.assertTrue(!theString.contains("perm2_file1"));
 
@@ -240,6 +285,7 @@ public class TestPermutationMapLinker {
 		Assert.assertTrue(theString.contains("strong/1.test"));
 		Assert.assertTrue(theString.contains("perm2_file1"));
 		Assert.assertTrue(theString.contains("strong/2.test"));
+		Assert.assertTrue(theString.contains("index.html"));
 		Assert.assertTrue(!theString.contains("perm1_file2"));
 		Assert.assertTrue(!theString.contains("perm1_file1"));
 
