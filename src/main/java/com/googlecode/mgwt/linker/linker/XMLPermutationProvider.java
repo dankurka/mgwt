@@ -109,7 +109,7 @@ public class XMLPermutationProvider {
 		}
 	}
 
-	public String serializeMap(Map<String, List<BindingProperty>> map) {
+	public String serializeMap(Map<String, Set<BindingProperty>> map) {
 		try {
 			StringWriter xml = new StringWriter();
 
@@ -118,7 +118,7 @@ public class XMLPermutationProvider {
 			Element permutationsNode = document.createElement(PERMUTATIONS);
 			document.appendChild(permutationsNode);
 
-			for (Entry<String, List<BindingProperty>> entry : map.entrySet()) {
+			for (Entry<String, Set<BindingProperty>> entry : map.entrySet()) {
 				Element node = document.createElement(PERMUTATION_NODE);
 				node.setAttribute(PERMUTATION_NAME, entry.getKey());
 				permutationsNode.appendChild(node);
@@ -157,7 +157,7 @@ public class XMLPermutationProvider {
 		throw new RuntimeException();
 	}
 
-	public String writePermutationInformation(String strongName, List<BindingProperty> bindingProperties, Set<String> files) {
+	public String writePermutationInformation(String strongName, Set<BindingProperty> bindingProperties, Set<String> files) {
 		try {
 			Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
