@@ -176,4 +176,13 @@ public class TestMgwtOsPropertyProvider {
 		Assert.assertNull(retinaCookieValue);
 	}
 
+	@Test
+	public void testGetRetinaCookieValueWithoutCookiesValues() {
+		MockServletRequest mockServletRequest = new MockServletRequest();
+
+		String retinaCookieValue = provider.getRetinaCookieValue(mockServletRequest);
+
+		Assert.assertNull(retinaCookieValue);
+	}
+
 }
