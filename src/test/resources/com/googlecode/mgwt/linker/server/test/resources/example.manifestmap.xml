@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permutations>
+	<permutation name="C83A451EFE8ADF0BDB46AEAAC44B0063">
+		<mgwt.os>blackberry</mgwt.os>
+		<mobile.user.agent>not_mobile</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="C5038CC6700BE1E13984B0C9B1C1CF39">
+		<mgwt.os>android</mgwt.os>
+		<mobile.user.agent>mobilesafari</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="BC0FBD6E19A643C849F55798FBDC6B7C">
+		<mgwt.os>retina</mgwt.os>
+		<mobile.user.agent>not_mobile</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="CE6093653BC656C5325AD9A3AD53190F">
+		<mgwt.os>ipad</mgwt.os>
+		<mobile.user.agent>mobilesafari</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="AFE43E4243D6D9E467B4EF9AC1B9A556">
+		<mgwt.os>desktop</mgwt.os>
+		<mobile.user.agent>not_mobile</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="214B4087FF08669D2E69F4A54A473857">
+		<mgwt.os>iphone</mgwt.os>
+		<mobile.user.agent>mobilesafari</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="04898CDE872132FE196264EA78903568">
+		<mgwt.os>android</mgwt.os>
+		<mobile.user.agent>not_mobile</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="1DE681F76CF42D7DAB43FBA413692180">
+		<mgwt.os>desktop</mgwt.os>
+		<mobile.user.agent>not_mobile</mobile.user.agent>
+		<user.agent>gecko1_8</user.agent>
+	</permutation>
+	<permutation name="24CDDA719C9F0168D42F39A56432B111">
+		<mgwt.os>blackberry</mgwt.os>
+		<mobile.user.agent>mobilesafari</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="3375A4CB10F21AB527E717409E342385">
+		<mgwt.os>android_tablet</mgwt.os>
+		<mobile.user.agent>mobilesafari</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="337DF9DBA826DEEAAB23EC650DD4A527">
+		<mgwt.os>ipad</mgwt.os>
+		<mobile.user.agent>not_mobile</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="7C2CC23ECDA1A4E8BC60B81F5AEAA04C">
+		<mgwt.os>retina</mgwt.os>
+		<mobile.user.agent>mobilesafari</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="65593A1B9B5E003CE88C406E73A3F475">
+		<mgwt.os>iphone</mgwt.os>
+		<mobile.user.agent>not_mobile</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="9EFCF8D411F0BC1926A3031A56459663">
+		<mgwt.os>desktop</mgwt.os>
+		<mobile.user.agent>mobilesafari</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+	<permutation name="7064A1A163CFC3C63ADF5DF50E91C5BB">
+		<mgwt.os>android_tablet</mgwt.os>
+		<mobile.user.agent>not_mobile</mobile.user.agent>
+		<user.agent>safari</user.agent>
+	</permutation>
+</permutations>

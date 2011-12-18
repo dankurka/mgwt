@@ -3,7 +3,12 @@ package com.googlecode.mgwt.linker.server.propertyprovider;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import com.googlecode.mgwt.linker.server.BindingProperty;
+
 public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
+
+	public static final BindingProperty iPhone = new BindingProperty("mgwt.os", "iphone");
+	public static final BindingProperty retina = new BindingProperty("mgwt.os", "retina");
 
 	@Override
 	public String getPropertyName() {
@@ -14,7 +19,7 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 	public String getPropertyValue(HttpServletRequest req) throws PropertyProviderException {
 		String userAgent = getUserAgent(req);
 
-		//android
+		// android
 		if (userAgent.contains("android")) {
 			if (userAgent.contains("mobile")) {
 				return "android";

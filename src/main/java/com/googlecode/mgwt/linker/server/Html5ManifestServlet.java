@@ -8,7 +8,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
@@ -21,8 +20,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -46,7 +43,6 @@ public class Html5ManifestServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -2540671294104865306L;
 	private XMLPermutationProvider permutationProvider;
-	private ServletContext context;
 
 	private Map<String, PropertyProvider> propertyProviders = new HashMap<String, PropertyProvider>();
 
@@ -64,120 +60,88 @@ public class Html5ManifestServlet extends HttpServlet {
 	}
 
 	@Override
-	public void init(ServletConfig config) throws ServletException {
-		context = config.getServletContext();
-	}
-
-	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		try {
+		String moduleName = getModuleName(req);
 
-			Set<BindingProperty> computedBindings = calculateBindinPropertiesForClient(req);
+		Set<BindingProperty> computedBindings = calculateBindinPropertiesForClient(req);
 
-			String moduleName = getModuleName(req);
+		String strongName = getPermutationStrongName(moduleName, computedBindings);
 
-			String strongName = getPermutationStrongName(moduleName, computedBindings);
+		if (strongName != null) {
+			String manifest = readManifest(moduleName + "/" + strongName + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
+			serveStringManifest(req, resp, manifest);
+			return;
+		}
 
-			if (strongName != null) {
-				try {
-					String manifest = readManifest(moduleName + "/" + strongName + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
-					serveStringManifest(req, resp, manifest);
+		if (isIphoneWithoutCookie(computedBindings)) {
 
-				} catch (IOException e) {
-					//TODO log
-				}
+			Set<BindingProperty> iphoneMatch = new HashSet<BindingProperty>();
+			iphoneMatch.add(MgwtOsPropertyProvider.iPhone);
+			Set<BindingProperty> retinaMatch = new HashSet<BindingProperty>();
+			retinaMatch.add(MgwtOsPropertyProvider.retina);
+
+			String moduleNameIphone = getPermutationStrongName(moduleName, iphoneMatch);
+			String moduleNameRetina = getPermutationStrongName(moduleName, retinaMatch);
+
+			if (moduleNameIphone != null && moduleNameRetina != null) {
+
+				// load files for both permutations
+				Set<String> filesForPermutation = getFilesForPermutation(moduleName, moduleNameIphone);
+				filesForPermutation.addAll(getFilesForPermutation(moduleName, moduleNameRetina));
+
+				// dynamically write a new manifest..
+				ManifestWriter manifestWriter = new ManifestWriter();
+				String writeManifest = manifestWriter.writeManifest(new HashSet<String>(), filesForPermutation);
+				serveStringManifest(req, resp, writeManifest);
 				return;
 			}
 
-			BindingProperty bpToRemove = getIphoneBinding(computedBindings);
-			//maybe this is an iphone where we can`t detect retina or not retina...
-
-			if (bpToRemove != null) {
-				computedBindings.remove(bpToRemove);
-
-				Set<BindingProperty> iphoneMatch = new HashSet<BindingProperty>();
-				iphoneMatch.add(new BindingProperty("mgwt.os", "iphone"));
-				Set<BindingProperty> retinaMatch = new HashSet<BindingProperty>();
-				retinaMatch.add(new BindingProperty("mgwt.os", "retina"));
-
-				String iPhoneStrong = getPermutationStrongName(moduleName, iphoneMatch);
-				String retinaStrong = getPermutationStrongName(moduleName, retinaMatch);
-
-				if (iPhoneStrong != null && retinaStrong != null) {
-					//put them together
-					//String mergedManifests = mergeManifests(moduleName, iPhoneStrong, retinaStrong);
-
-					Set<String> filesForPermutation = getFilesForPermutation(moduleName, iPhoneStrong);
-					filesForPermutation.addAll(getFilesForPermutation(moduleName, retinaStrong));
-					for (String string : filesForPermutation) {
-						System.out.println(string);
-					}
-
-					ManifestWriter manifestWriter = new ManifestWriter();
-					String writeManifest = manifestWriter.writeManifest(new HashSet<String>(), filesForPermutation);
-					System.out.println(writeManifest);
-					//String manifest = readManifest(moduleName + "/" + retinaStrong + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
-					//System.out.println(manifest);
-					serveStringManifest(req, resp, writeManifest);
-
-					//serveStringManifest(req, resp, mergedManifests);
-					return;
-				}
-
-			} else {
-				//TODO throw...
-				throw new RuntimeException();
-			}
-
-		} catch (XMLPermutationProviderException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PropertyProviderException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		//TODO
-		throw new RuntimeException();
+
+		// if we got here we just don`t know the device react with 500 -> no
+		// manifest...
+
+		throw new ServletException("unkown device");
+
 	}
 
-	protected BindingProperty getIphoneBinding(Set<BindingProperty> bps) {
+	public boolean isIphoneWithoutCookie(Set<BindingProperty> bps) {
 		for (BindingProperty bp : bps) {
 			if ("mgwt.os".equals(bp.getName())) {
 				if ("iphone_undefined".equals(bp.getValue())) {
-					//oh shit this is an iphone
-					//so now we need to serve two manifests
-					//retina...
-					//non retina
+					// oh shit this is an iphone
+					// so now we need to serve two manifests
+					// retina...
+					// non retina
 
-					return bp;
+					return true;
 
 				}
 			}
 		}
-		return null;
+		return false;
 	}
 
-	protected Set<String> getFilesForPermutation(String moduleName, String permutation) {
+	public Set<String> getFilesForPermutation(String moduleName, String permutation) throws ServletException {
 		String fileName = moduleName + "/" + permutation + PermutationMapLinker.PERMUTATION_FILE_ENDING;
 		XMLPermutationProvider xmlPermutationProvider = new XMLPermutationProvider();
 
 		try {
-			File file = new File(context.getRealPath(fileName));
+			File file = new File(getServletContext().getRealPath(fileName));
 			InputStream inputStream = new FileInputStream(file);
 			return xmlPermutationProvider.getPermutationFiles(inputStream);
 		} catch (XMLPermutationProviderException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log("can not read permutation file");
+			throw new ServletException("can not read permutation file", e);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log("can not read permutation file");
+			throw new ServletException("can not read permutation file", e);
 		}
-		throw new RuntimeException();
 	}
 
-	private String readManifest(String filePath) throws IOException {
-		File manifestFile = new File(context.getRealPath(filePath));
+	public String readManifest(String filePath) throws ServletException {
+		File manifestFile = new File(getServletContext().getRealPath(filePath));
 
 		StringWriter manifestWriter = new StringWriter();
 		BufferedReader br = null;
@@ -193,10 +157,10 @@ public class Html5ManifestServlet extends HttpServlet {
 			return manifestWriter.toString();
 		} catch (FileNotFoundException e) {
 			log("could not find manifest file", e);
-			throw new IOException("can not find manifest file", e);
+			throw new ServletException("can not find manifest file", e);
 		} catch (IOException e) {
 			log("error while reading manifest file", e);
-			throw new IOException("error while reading manifest file", e);
+			throw new ServletException("error while reading manifest file", e);
 		} finally {
 			if (br != null) {
 				try {
@@ -213,19 +177,26 @@ public class Html5ManifestServlet extends HttpServlet {
 	 * @return
 	 * @throws PropertyProviderException
 	 */
-	private Set<BindingProperty> calculateBindinPropertiesForClient(HttpServletRequest req) throws PropertyProviderException {
-		Set<BindingProperty> computedBindings = new HashSet<BindingProperty>();
+	public Set<BindingProperty> calculateBindinPropertiesForClient(HttpServletRequest req) throws ServletException {
 
-		Set<Entry<String, PropertyProvider>> set = propertyProviders.entrySet();
-		for (Entry<String, PropertyProvider> entry : set) {
-			String varValue = entry.getValue().getPropertyValue(req);
-			BindingProperty bindingProperty = new BindingProperty(entry.getKey(), varValue);
-			computedBindings.add(bindingProperty);
+		try {
+			Set<BindingProperty> computedBindings = new HashSet<BindingProperty>();
+
+			Set<Entry<String, PropertyProvider>> set = propertyProviders.entrySet();
+			for (Entry<String, PropertyProvider> entry : set) {
+				String varValue = entry.getValue().getPropertyValue(req);
+				BindingProperty bindingProperty = new BindingProperty(entry.getKey(), varValue);
+				computedBindings.add(bindingProperty);
+			}
+			return computedBindings;
+		} catch (PropertyProviderException e) {
+			log("cam not calculate properties for client", e);
+			throw new ServletException("can not calculate properties for client", e);
 		}
-		return computedBindings;
+
 	}
 
-	private void serveStringManifest(HttpServletRequest req, HttpServletResponse resp, String manifest) {
+	public void serveStringManifest(HttpServletRequest req, HttpServletResponse resp, String manifest) throws ServletException {
 		resp.setHeader("Cache-Control", "no-cache");
 		resp.setHeader("Pragma", "no-cache");
 		resp.setDateHeader("Expires", new Date().getTime());
@@ -243,91 +214,57 @@ public class Html5ManifestServlet extends HttpServlet {
 			}
 			return;
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log("can not write manifest to output stream", e);
+			throw new ServletException("can not write manifest to output stream", e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log("can not write manifest to output stream", e);
+			throw new ServletException("can not write manifest to output stream", e);
 		}
-
-		//TODO 
-		throw new RuntimeException();
 
 	}
 
-	private String mergeManifests(String moduleName, String iPhoneStrong, String retinaStrong) throws IOException {
+	public String getPermutationStrongName(String moduleName, Set<BindingProperty> computedBindings) throws ServletException {
 
-		String manifest1;
-		String manifest2;
-		try {
-			manifest1 = readManifest(moduleName + "/" + iPhoneStrong + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
-			manifest2 = readManifest(moduleName + "/" + retinaStrong + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
-		} catch (IOException e) {
-			log("error while reading manifest for merging", e);
-			throw e;
+		if (moduleName == null) {
+			throw new IllegalArgumentException("moduleName can not be null");
 		}
 
-		StringWriter writer = new StringWriter();
-		writer.append(manifest1);
-
-		try {
-			writeSecondManifest(writer, manifest2);
-		} catch (IOException e) {
-			log("can`t write manifest", e);
-			throw e;
-		} finally {
-
+		if (computedBindings == null) {
+			throw new IllegalArgumentException("computedBindings can not be null");
 		}
-		System.out.println(writer.toString());
-		return writer.toString();
 
-	}
+		String realPath = getServletContext().getRealPath(moduleName + "/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME);
 
-	private void writeSecondManifest(StringWriter writer, String manifest2) throws IOException {
-		BufferedReader reader = null;
 		try {
-			reader = new BufferedReader(new StringReader(manifest2));
-			boolean first = true;
-			String line = null;
-			while ((line = reader.readLine()) != null) {
-				if (first) {
-					first = false;
-					continue;
+
+			FileInputStream fileInputStream = new FileInputStream(realPath);
+
+			Map<String, List<BindingProperty>> map = permutationProvider.getBindingProperties(fileInputStream);
+			for (Entry<String, List<BindingProperty>> entry : map.entrySet()) {
+				List<BindingProperty> value = entry.getValue();
+
+				if (value.containsAll(computedBindings) && value.size() == computedBindings.size()) {
+					return entry.getKey();
 				}
-				writer.append(line + "\n");
 			}
-
-		} catch (IOException e) {
-			throw e;
-		} finally {
-			if (reader != null) {
-				reader.close();
-			}
+			return null;
+		} catch (FileNotFoundException e) {
+			log("can not find file: '" + realPath + "'", e);
+			throw new ServletException("can not find permutation file", e);
+		} catch (XMLPermutationProviderException e) {
+			log("can not read xml file", e);
+			throw new ServletException("can not read permutation information", e);
 		}
 
 	}
 
-	public String getPermutationStrongName(String moduleName, Set<BindingProperty> computedBindings) throws FileNotFoundException, XMLPermutationProviderException {
-
-		FileInputStream fileInputStream = new FileInputStream(context.getRealPath(moduleName + "/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME));
-		Map<String, List<BindingProperty>> map = permutationProvider.getBindingProperties(fileInputStream);
-		for (Entry<String, List<BindingProperty>> entry : map.entrySet()) {
-			List<BindingProperty> value = entry.getValue();
-
-			if (value.containsAll(computedBindings)) {
-				//found our match
-				//lets take a look if we find the manifest
-				String strongName = entry.getKey();
-				return strongName;
-			}
+	public String getModuleName(HttpServletRequest req) throws ServletException {
+		if (req == null) {
+			throw new IllegalArgumentException("reqeust can not be null");
 		}
-		return null;
-	}
 
-	protected String getModuleName(HttpServletRequest req) throws ServletException {
-
-		//request url should be something like .../modulename.manifest" within the same folder of your host page...
-
+		// request url should be something like .../modulename.manifest" within
+		// the same folder of your host page...
 		Pattern pattern = Pattern.compile("/([a-zA-Z0-9]+)\\.manifest$");
 		Matcher matcher = pattern.matcher(req.getRequestURI());
 		if (!matcher.find()) {
