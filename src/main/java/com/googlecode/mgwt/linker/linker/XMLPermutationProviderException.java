@@ -16,4 +16,8 @@ public class XMLPermutationProviderException extends Exception {
 		super(e);
 	}
 
+	public XMLPermutationProviderException(String string, Throwable e) {
+		super(string, e);
+	}
+
 }

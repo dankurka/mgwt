@@ -1,8 +1,12 @@
 package com.googlecode.mgwt.linker.linker.test;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -132,6 +136,51 @@ public class XMLPermutationProviderTest {
 		Assert.assertTrue(list.contains(new BindingProperty("mgwt.os", "android_tablet")));
 		Assert.assertTrue(list.contains(new BindingProperty("mobile.user.agent", "not_mobile")));
 		Assert.assertTrue(list.contains(new BindingProperty("user.agent", "safari")));
+
+	}
+
+	@Test
+	public void testReadPermutationFilesFromXml() throws XMLPermutationProviderException {
+		XMLPermutationProvider xmlPermutationProvider = new XMLPermutationProvider();
+
+		InputStream stream = getClass().getResourceAsStream("resources/example_permutation.perm.xml");
+
+		Set<String> files = xmlPermutationProvider.getPermutationFiles(stream);
+
+		Assert.assertEquals(7, files.size());
+
+		Assert.assertTrue(files.contains("showcase/01366743E08C511EF8DB208174B33C6F.cache.html"));
+		Assert.assertTrue(files.contains("index.html"));
+		Assert.assertTrue(files.contains("logo.png"));
+		Assert.assertTrue(files.contains("showcase/hosted.html"));
+		Assert.assertTrue(files.contains("showcase/showcase.nocache.js"));
+		Assert.assertTrue(files.contains("showcase/clear.cache.gif"));
+		Assert.assertTrue(files.contains("/"));
+
+	}
+
+	@Test
+	public void testReadWritePermInformation() throws XMLPermutationProviderException, UnsupportedEncodingException {
+		XMLPermutationProvider xmlPermutationProvider = new XMLPermutationProvider();
+
+		HashSet<String> set = new HashSet<String>();
+		set.add("1");
+		set.add("2");
+		set.add("3");
+		set.add("4");
+		set.add("5");
+
+		HashSet<BindingProperty> bpSet = new HashSet<BindingProperty>();
+		bpSet.add(new BindingProperty("mgwt.os", "iphone"));
+		bpSet.add(new BindingProperty("user.agent", "safari"));
+
+		String permutationInformation = xmlPermutationProvider.writePermutationInformation("permTest", bpSet, set);
+
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(permutationInformation.getBytes("UTf-8"));
+
+		Set<String> files = xmlPermutationProvider.getPermutationFiles(inputStream);
+
+		Assert.assertEquals(set, files);
 
 	}
 }

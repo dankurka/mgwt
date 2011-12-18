@@ -53,13 +53,11 @@ public class TestPermutationMapLinker {
 
 		@Override
 		public String getModuleFunctionName() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 
 		@Override
 		public long getModuleLastModified() {
-			// TODO Auto-generated method stub
 			return 0;
 		}
 
@@ -75,13 +73,11 @@ public class TestPermutationMapLinker {
 
 		@Override
 		public boolean isOutputCompact() {
-			// TODO Auto-generated method stub
 			return false;
 		}
 
 		@Override
 		public String optimizeJavaScript(TreeLogger logger, String jsProgram) throws UnableToCompleteException {
-			// TODO Auto-generated method stub
 			return null;
 		}
 	}
@@ -95,7 +91,7 @@ public class TestPermutationMapLinker {
 
 	@Test
 	public void testGetDescription() {
-		//just for code coverage duh
+		// just for code coverage duh
 		permutationMapLinker.getDescription();
 	}
 
@@ -109,7 +105,7 @@ public class TestPermutationMapLinker {
 		SelectionInformation selectionInformation = new SelectionInformation("strong", 0, map);
 		artifactSet.add(selectionInformation);
 
-		//put in some files
+		// put in some files
 		SyntheticArtifact a1 = new SyntheticArtifact(PermutationMapLinker.class, "1.test", "bla".getBytes("UTF-8"));
 		artifactSet.add(a1);
 		SyntheticArtifact a2 = new SyntheticArtifact(PermutationMapLinker.class, "2.test", "bla1".getBytes("UTF-8"));
@@ -126,16 +122,16 @@ public class TestPermutationMapLinker {
 
 		PermutationArtifact permutationArtifact = pas.iterator().next();
 
-		//is the permutation name okay?
+		// is the permutation name okay?
 		Assert.assertEquals("strong", permutationArtifact.getPermutationName());
 
-		//are the bindind properties okay?
+		// are the bindind properties okay?
 		Set<BindingProperty> bindingProperties = permutationArtifact.getBindingProperties();
 		Assert.assertEquals(2, bindingProperties.size());
 		Assert.assertTrue(bindingProperties.contains(new BindingProperty("prop1", "v1")));
 		Assert.assertTrue(bindingProperties.contains(new BindingProperty("prop2", "v2")));
 
-		//are the files okay?
+		// are the files okay?
 		Set<String> permutationFiles = permutationArtifact.getPermutationFiles();
 
 		Assert.assertEquals(2, permutationFiles.size());
@@ -186,7 +182,7 @@ public class TestPermutationMapLinker {
 
 		@Override
 		public String getValue() {
-			// TODO Auto-generated method stub
+
 			return null;
 		}
 
@@ -218,7 +214,7 @@ public class TestPermutationMapLinker {
 		selectionInformation = new SelectionInformation("perm2", 0, map1);
 		artifactSet.add(selectionInformation);
 
-		//put in some files
+		// put in some files
 		SyntheticArtifact a1 = new SyntheticArtifact(PermutationMapLinker.class, "1.test", "bla".getBytes("UTF-8"));
 		artifactSet.add(a1);
 		SyntheticArtifact a2 = new SyntheticArtifact(PermutationMapLinker.class, "2.test", "bla1".getBytes("UTF-8"));
@@ -231,7 +227,7 @@ public class TestPermutationMapLinker {
 		list.add("index.html");
 		mockLinkerContext.addConfigurationPropery(new MockConfigurationProperty(PermutationMapLinker.EXTERNAL_FILES_CONFIGURATION_PROPERTY_NAME, list));
 
-		//lets put in two permutationartifacts
+		// lets put in two permutationartifacts
 		HashSet<String> files = new HashSet<String>();
 		files.add("perm1_file1");
 		files.add("perm1_file2");
@@ -254,11 +250,11 @@ public class TestPermutationMapLinker {
 
 		Assert.assertEquals(7, pas.size());
 
-		//manifest for first permutation
+		// manifest for first permutation
 		SyntheticArtifact artifact = getArtifact("perm1" + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING, pas);
 		Assert.assertNotNull(artifact);
 		InputStream contents = artifact.getContents(null);
-		//test some things on artifact...
+		// test some things on artifact...
 		StringWriter writer = new StringWriter();
 		IOUtils.copy(contents, writer, "UTF-8");
 		String theString = writer.toString();
@@ -272,11 +268,11 @@ public class TestPermutationMapLinker {
 		Assert.assertTrue(!theString.contains("perm2_file2"));
 		Assert.assertTrue(!theString.contains("perm2_file1"));
 
-		//manifest for second permutation
+		// manifest for second permutation
 		artifact = getArtifact("perm2" + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING, pas);
 		Assert.assertNotNull(artifact);
 		contents = artifact.getContents(null);
-		//test some things on artifact...
+		// test some things on artifact...
 		writer = new StringWriter();
 		IOUtils.copy(contents, writer, "UTF-8");
 		theString = writer.toString();
@@ -289,11 +285,11 @@ public class TestPermutationMapLinker {
 		Assert.assertTrue(!theString.contains("perm1_file2"));
 		Assert.assertTrue(!theString.contains("perm1_file1"));
 
-		//manifest map file
+		// manifest map file
 		artifact = getArtifact(PermutationMapLinker.MANIFEST_MAP_FILE_NAME, pas);
 		Assert.assertNotNull(artifact);
 		contents = artifact.getContents(null);
-		//test some things on artifact...
+		// test some things on artifact...
 		writer = new StringWriter();
 		IOUtils.copy(contents, writer, "UTF-8");
 		theString = writer.toString();
@@ -307,7 +303,7 @@ public class TestPermutationMapLinker {
 
 		artifact = getArtifact("perm1" + PermutationMapLinker.PERMUTATION_FILE_ENDING, pas);
 		Assert.assertNotNull(artifact);
-		//test some things on artifact...
+		// test some things on artifact...
 
 	}
 

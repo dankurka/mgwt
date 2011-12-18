@@ -20,7 +20,7 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * An input element that can handle phone numbers
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -36,12 +36,12 @@ public class MPhoneNumberTextBox extends MTextBox {
 
 	/**
 	 * Construct a phone number box with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MPhoneNumberTextBox(InputCss css) {
 		super(css);
-		box.getElement().setPropertyString("type", "phone");
+		box.getElement().setPropertyString("type", "tel");
 	}
 
 }

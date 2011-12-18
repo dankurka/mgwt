@@ -106,7 +106,6 @@ public class TestManifestWriter {
 		set.add("b.stuff");
 
 		String manifest = writer.writeManifest(new HashSet<String>(), set);
-		System.out.println(manifest);
 		List<String> lines = Arrays.asList(manifest.split("\\r?\\n"));
 
 		Assert.assertEquals(14, lines.size());

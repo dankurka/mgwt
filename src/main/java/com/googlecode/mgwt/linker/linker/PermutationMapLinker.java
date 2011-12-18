@@ -51,8 +51,9 @@ public class PermutationMapLinker extends AbstractLinker {
 			Map<String, Set<BindingProperty>> permutationMap = buildPermutationMap(logger, context, artifacts);
 			Set<Entry<String, Set<BindingProperty>>> entrySet = permutationMap.entrySet();
 
-			//since we are in onePermutation there should be just one strongName
-			//better make sure..
+			// since we are in onePermutation there should be just one
+			// strongName
+			// better make sure..
 			if (permutationMap.size() != 1) {
 				logger.log(Type.ERROR, "There should be only one permutation right now, but there were: '" + permutationMap.size() + "'");
 				throw new UnableToCompleteException();
@@ -62,7 +63,7 @@ public class PermutationMapLinker extends AbstractLinker {
 			String strongName = next.getKey();
 			Set<BindingProperty> bindingProperties = next.getValue();
 
-			//all artifacts for this compilation
+			// all artifacts for this compilation
 			Set<String> artifactsForCompilation = getArtifactsForCompilation(logger, context, artifacts);
 
 			ArtifactSet toReturn = new ArtifactSet(artifacts);
@@ -75,7 +76,7 @@ public class PermutationMapLinker extends AbstractLinker {
 		Map<String, Set<BindingProperty>> map = buildPermutationMap(logger, context, artifacts);
 
 		if (map.size() == 0) {
-			//hosted mode
+			// hosted mode
 			return toReturn;
 		}
 
@@ -85,26 +86,26 @@ public class PermutationMapLinker extends AbstractLinker {
 
 		Set<String> allPermutationFiles = getAllPermutationFiles(permutationArtifactAsMap);
 
-		//get all artifacts
+		// get all artifacts
 		Set<String> allArtifacts = getArtifactsForCompilation(logger, context, artifacts);
 
 		for (Entry<String, PermutationArtifact> entry : permutationArtifactAsMap.entrySet()) {
 			PermutationArtifact permutationArtifact = entry.getValue();
-			//make a copy of all artifacts
+			// make a copy of all artifacts
 			HashSet<String> filesForCurrentPermutation = new HashSet<String>(allArtifacts);
-			//remove all permutations
+			// remove all permutations
 			filesForCurrentPermutation.removeAll(allPermutationFiles);
-			//add files of the one permutation we are interested in
-			//leaving the common stuff for all permutations in...
+			// add files of the one permutation we are interested in
+			// leaving the common stuff for all permutations in...
 			filesForCurrentPermutation.addAll(entry.getValue().getPermutationFiles());
 
-			String permXml = buildPermXml(permutationArtifact, filesForCurrentPermutation, externalFiles);
+			String permXml = buildPermXml(logger, permutationArtifact, filesForCurrentPermutation, externalFiles);
 
-			//emit permutation information file
+			// emit permutation information file
 			SyntheticArtifact emitString = emitString(logger, permXml, permutationArtifact.getPermutationName() + PERMUTATION_FILE_ENDING);
 			toReturn.add(emitString);
 
-			//build manifest
+			// build manifest
 			String maniFest = buildManiFest(entry.getKey(), filesForCurrentPermutation, externalFiles);
 			toReturn.add(emitString(logger, maniFest, entry.getKey() + PERMUTATION_MANIFEST_FILE_ENDING));
 
@@ -115,11 +116,17 @@ public class PermutationMapLinker extends AbstractLinker {
 
 	}
 
-	protected String buildPermXml(PermutationArtifact permutationArtifact, Set<String> gwtCompiledFiles, Set<String> otherResources) {
+	protected String buildPermXml(TreeLogger logger, PermutationArtifact permutationArtifact, Set<String> gwtCompiledFiles, Set<String> otherResources) throws UnableToCompleteException {
 		HashSet<String> namesForPermXml = new HashSet<String>(gwtCompiledFiles);
 		namesForPermXml.addAll(otherResources);
-		String permXmlString = xmlPermutationProvider.writePermutationInformation(permutationArtifact.getPermutationName(), permutationArtifact.getBindingProperties(), namesForPermXml);
-		return permXmlString;
+
+		try {
+			return xmlPermutationProvider.writePermutationInformation(permutationArtifact.getPermutationName(), permutationArtifact.getBindingProperties(), namesForPermXml);
+		} catch (XMLPermutationProviderException e) {
+			logger.log(Type.ERROR, "can not build xml for permutation file", e);
+			throw new UnableToCompleteException();
+		}
+
 	}
 
 	/**
@@ -149,7 +156,7 @@ public class PermutationMapLinker extends AbstractLinker {
 			return false;
 		}
 
-		//TODO reg exp
+		// TODO reg exp
 
 		return true;
 	}
@@ -188,8 +195,14 @@ public class PermutationMapLinker extends AbstractLinker {
 	}
 
 	protected EmittedArtifact createPermutationMap(TreeLogger logger, Map<String, Set<BindingProperty>> map) throws UnableToCompleteException {
-		String string = xmlPermutationProvider.serializeMap(map);
-		return emitString(logger, string, MANIFEST_MAP_FILE_NAME);
+
+		try {
+			String string = xmlPermutationProvider.serializeMap(map);
+			return emitString(logger, string, MANIFEST_MAP_FILE_NAME);
+		} catch (XMLPermutationProviderException e) {
+			logger.log(Type.ERROR, "can not build manifest map", e);
+			throw new UnableToCompleteException();
+		}
 
 	}
 
