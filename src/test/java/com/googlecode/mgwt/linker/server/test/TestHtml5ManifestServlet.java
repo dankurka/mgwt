@@ -1,7 +1,5 @@
 package com.googlecode.mgwt.linker.server.test;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -113,9 +111,6 @@ public class TestHtml5ManifestServlet {
 
 	@Test
 	public void testGetPermutationStrongName() throws ServletException, FileNotFoundException {
-		File file = new File("/Users/kurt/Documents/workspace-mgwt/mgwt/target/classes/com/googlecode/mgwt/linker/server/test/resources/example.manifestmap.xml");
-
-		new FileInputStream(file);
 
 		ServletConfig config = new MockServletConfig() {
 
@@ -150,9 +145,6 @@ public class TestHtml5ManifestServlet {
 
 	@Test
 	public void testGetPermutationStrongName1() throws ServletException, FileNotFoundException {
-		File file = new File("/Users/kurt/Documents/workspace-mgwt/mgwt/target/classes/com/googlecode/mgwt/linker/server/test/resources/example.manifestmap.xml");
-
-		new FileInputStream(file);
 
 		ServletConfig config = new MockServletConfig() {
 
