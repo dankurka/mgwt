@@ -20,9 +20,20 @@ public class Html5ApplicationCache implements ApplicationCache {
 	public static final ApplicationCacheStatus[] STATUS_MAPPING = new ApplicationCacheStatus[] { ApplicationCacheStatus.UNCACHED, ApplicationCacheStatus.IDLE, ApplicationCacheStatus.CHECKING,
 			ApplicationCacheStatus.DOWNLOADING, ApplicationCacheStatus.UPDATEREADY, ApplicationCacheStatus.OBSOLTE };
 
+	public static Html5ApplicationCache createIfSupported() {
+		if (!isSupported()) {
+			return null;
+		}
+		return new Html5ApplicationCache();
+	}
+
+	protected static native boolean isSupported()/*-{
+		return typeof ($wnd.applicationCache) == "object";
+	}-*/;
+
 	protected EventBus eventBus = new SimpleEventBus();
 
-	public Html5ApplicationCache() {
+	protected Html5ApplicationCache() {
 		initialize();
 	}
 
@@ -110,69 +121,47 @@ public class Html5ApplicationCache implements ApplicationCache {
 
 	protected native void initialize() /*-{
 	var that = this;
-	var oncheckOld = $wnd.applicationCache.onchecking;
-	$wnd.applicationCache.onchecking = $entry(function() {
+	
+	$wnd.applicationCache.addEventListener("checking", $entry(function() {
 		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onChecking()();
-		if (oncheckOld) {
-			oncheckOld();
-		}
-	});
+		}));
 
-	var onErrorHandler = $wnd.applicationCache.onerror;
-	$wnd.applicationCache.onerror = $entry(function() {
+	
+	$wnd.applicationCache.addEventListener("onerror", $entry(function() {
 		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onError()();
-		if (onErrorHandler) {
-			onErrorHandler();
-		}
-	});
+		
+	}));
 
-	var onNoUpdateHandler = $wnd.applicationCache.onnoupdate;
-	$wnd.applicationCache.onnoupdate = $entry(function() {
+	
+	$wnd.applicationCache.addEventListener("onnoupdate", $entry(function() {
 		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onNoUpadte()();
-		if (onNoUpdateHandler) {
-			onNoUpdateHandler();
-		}
-	});
+		
+	}));
 
-	var onDownloadingHandler = $wnd.applicationCache.ondownloading;
-	$wnd.applicationCache.ondownloading = $entry(function() {
+	
+	$wnd.applicationCache.addEventListener("ondownloading", $entry(function() {
 		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onDownloading()();
-		if (onDownloadingHandler) {
-			onDownloadingHandler();
-		}
-	});
+	}));
 
-	var onProgressHandler = $wnd.applicationCache.onprogress;
-	$wnd.applicationCache.onprogress = $entry(function() {
+	
+	$wnd.applicationCache.addEventListener("onprogress", $entry(function() {
 		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onProgress()();
-		if (onProgressHandler) {
-			onProgressHandler();
-		}
-	});
+	}));
 
-	var onUpdateReadyHandler = $wnd.applicationCache.onupdateready;
-	$wnd.applicationCache.onupdateready = function() {
-		($entry(that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onUpdateReady()))();
-		if (onUpdateReadyHandler) {
-			onUpdateReadyHandler();
-		}
-	};
 	
-	var onCachedHandler = $wnd.applicationCache.oncached;
-	$wnd.applicationCache.oncached = function() {
-		($entry(that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onCached()))();
-		if (onCachedHandler) {
-			onCachedHandler();
-		}
-	};
+	$wnd.applicationCache.addEventListener("onupdateready", $entry(function() {
+		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onUpdateReady()();
+	}));
 	
-	var onObsoleteHandler = $wnd.applicationCache.onobsolete;
-	$wnd.applicationCache.onobsolete = function() {
-		($entry(that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onCached()))();
-		if (onObsoleteHandler) {
-			onObsoleteHandler();
-		}
-	};
+	
+	$wnd.applicationCache.addEventListener("oncached", $entry(function() {
+		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onCached()();
+	}));
+	
+	
+	$wnd.applicationCache.addEventListener("onobsolete", $entry(function() {
+		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onObsolete()();
+	}));
 
 }-*/;
 
