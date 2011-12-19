@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.linker.server.propertyprovider.test;
+package com.googlecode.mgwt.linker.server.test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,16 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class MockServletRequest implements HttpServletRequest {
-
-	public MockServletRequest() {
-
-	}
-
-	private Cookie[] cookies;
-
-	public void setCookies(Cookie[] cookies) {
-		this.cookies = cookies;
-	}
 
 	@Override
 	public Object getAttribute(String arg0) {
@@ -211,7 +201,8 @@ public class MockServletRequest implements HttpServletRequest {
 
 	@Override
 	public Cookie[] getCookies() {
-		return cookies;
+
+		return null;
 	}
 
 	@Override
@@ -222,9 +213,7 @@ public class MockServletRequest implements HttpServletRequest {
 
 	@Override
 	public String getHeader(String arg0) {
-		if ("User-Agent".equals(arg0)) {
-			return userAgent;
-		}
+
 		return null;
 	}
 
@@ -276,10 +265,16 @@ public class MockServletRequest implements HttpServletRequest {
 		return null;
 	}
 
+	private String requestURI;
+
 	@Override
 	public String getRequestURI() {
 
-		return null;
+		return requestURI;
+	}
+
+	public void setRequestURI(String requestURI) {
+		this.requestURI = requestURI;
 	}
 
 	@Override
@@ -346,13 +341,6 @@ public class MockServletRequest implements HttpServletRequest {
 	public boolean isUserInRole(String arg0) {
 
 		return false;
-	}
-
-	private String userAgent;
-
-	public void setUserAgent(String string) {
-		userAgent = string;
-
 	}
 
 }
