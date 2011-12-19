@@ -31,12 +31,10 @@ import com.googlecode.mgwt.linker.linker.PermutationMapLinker;
 import com.googlecode.mgwt.linker.linker.XMLPermutationProvider;
 import com.googlecode.mgwt.linker.linker.XMLPermutationProviderException;
 import com.googlecode.mgwt.linker.server.propertyprovider.MgwtOsPropertyProvider;
-import com.googlecode.mgwt.linker.server.propertyprovider.MobileUserAgentProvider;
 import com.googlecode.mgwt.linker.server.propertyprovider.PropertyProvider;
 import com.googlecode.mgwt.linker.server.propertyprovider.PropertyProviderException;
-import com.googlecode.mgwt.linker.server.propertyprovider.UserAgentPropertyProvider;
 
-public class Html5ManifestServlet extends HttpServlet {
+public class Html5ManifestServletBase extends HttpServlet {
 
 	/**
 	 * 
@@ -46,17 +44,13 @@ public class Html5ManifestServlet extends HttpServlet {
 
 	private Map<String, PropertyProvider> propertyProviders = new HashMap<String, PropertyProvider>();
 
-	public Html5ManifestServlet() {
+	public Html5ManifestServletBase() {
 		permutationProvider = new XMLPermutationProvider();
 
-		MgwtOsPropertyProvider mgwtOsPropertyProvider = new MgwtOsPropertyProvider();
-		propertyProviders.put(mgwtOsPropertyProvider.getPropertyName(), mgwtOsPropertyProvider);
+	}
 
-		UserAgentPropertyProvider userAgentPropertyProvider = new UserAgentPropertyProvider();
-		propertyProviders.put(userAgentPropertyProvider.getPropertyName(), userAgentPropertyProvider);
-
-		MobileUserAgentProvider mobileUserAgentProvider = new MobileUserAgentProvider();
-		propertyProviders.put(mobileUserAgentProvider.getPropertyName(), mobileUserAgentProvider);
+	protected void addPropertyProvider(PropertyProvider propertyProvider) {
+		propertyProviders.put(propertyProvider.getPropertyName(), propertyProvider);
 	}
 
 	@Override

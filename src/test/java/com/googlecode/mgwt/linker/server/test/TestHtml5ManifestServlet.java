@@ -17,16 +17,17 @@ import org.junit.Test;
 
 import com.googlecode.mgwt.linker.linker.PermutationMapLinker;
 import com.googlecode.mgwt.linker.server.BindingProperty;
-import com.googlecode.mgwt.linker.server.Html5ManifestServlet;
+import com.googlecode.mgwt.linker.server.Html5ManifestServletBase;
+import com.googlecode.mgwt.linker.server.MGWTHtml5ManifestServlet;
 import com.googlecode.mgwt.linker.server.propertyprovider.test.UserAgents;
 
 public class TestHtml5ManifestServlet {
 
-	private Html5ManifestServlet servlet;
+	private Html5ManifestServletBase servlet;
 
 	@Before
 	public void before() {
-		servlet = new Html5ManifestServlet();
+		servlet = new MGWTHtml5ManifestServlet();
 	}
 
 	@Test
