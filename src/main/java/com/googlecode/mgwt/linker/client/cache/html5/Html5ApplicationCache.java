@@ -95,7 +95,7 @@ public class Html5ApplicationCache implements ApplicationCache {
 		eventBus.fireEventFromSource(new ErrorEvent(), this);
 	}
 
-	protected void onNoUpadte() {
+	protected void onNoUpdate() {
 		eventBus.fireEventFromSource(new NoUpadateEvent(), this);
 	}
 
@@ -134,7 +134,7 @@ public class Html5ApplicationCache implements ApplicationCache {
 
 	
 	$wnd.applicationCache.addEventListener("onnoupdate", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onNoUpadte()();
+		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onNoUpdate()();
 		
 	}));
 
