@@ -53,13 +53,13 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  */
 public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
-	interface Template extends SafeHtmlTemplates {
+	public interface Template extends SafeHtmlTemplates {
 		@SafeHtmlTemplates.Template("<li __idx=\"{0}\" class=\"{1}\">{2}</li>")
 		SafeHtml li(int idx, String classes, SafeHtml cellContents);
 
 	}
 
-	private static final Template LI_TEMPLATE = GWT.create(Template.class);
+	public static final Template LI_TEMPLATE = GWT.create(Template.class);
 
 	private static class UlTouchWidget extends TouchWidget {
 
@@ -312,7 +312,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		}
 	}
 
-	private void fixBug(final String html) {
+	protected void fixBug(final String html) {
 		new Timer() {
 
 			@Override
