@@ -8,20 +8,20 @@
 .mgwt-ScrollPanel {
 	overflow: hidden;
 	position: relative;
-	display: \-moz-box;
-	\-moz-box-orient: vertical;
 	
 }
 
 @if user.agent safari {
-
+	.mgwt-ScrollPanel {
+		display: \-webkit-box;
+		\-webkit-box-orient: vertical;
+	}
 }
 
 @if user.agent gecko1_8 {
 	.mgwt-ScrollPanel {
-		
-		/*display: \-moz-box;
-		\-moz-box-orient: vertical;*/
+		display: \-moz-box;
+		\-moz-box-orient: vertical;
 	}
 }
 
