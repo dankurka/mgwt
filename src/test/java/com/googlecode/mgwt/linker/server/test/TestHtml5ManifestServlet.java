@@ -139,7 +139,7 @@ public class TestHtml5ManifestServlet {
 		set.add(new BindingProperty("mgwt.os", "blackberry"));
 		set.add(new BindingProperty("mobile.user.agent", "not_mobile"));
 		set.add(new BindingProperty("user.agent", "safari"));
-		String permutationStrongName = servlet.getPermutationStrongName("a", "asdf", set);
+		String permutationStrongName = servlet.getPermutationStrongName("", "asdf", set);
 
 		Assert.assertEquals("C83A451EFE8ADF0BDB46AEAAC44B0063", permutationStrongName);
 	}
@@ -173,7 +173,7 @@ public class TestHtml5ManifestServlet {
 
 		set.add(new BindingProperty("mobile.user.agent", "not_mobile"));
 		set.add(new BindingProperty("user.agent", "safari"));
-		String permutationStrongName = servlet.getPermutationStrongName("a", "asdf", set);
+		String permutationStrongName = servlet.getPermutationStrongName("", "asdf", set);
 
 		Assert.assertEquals(null, permutationStrongName);
 	}
