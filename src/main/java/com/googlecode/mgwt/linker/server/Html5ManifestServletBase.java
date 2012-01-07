@@ -58,31 +58,35 @@ public class Html5ManifestServletBase extends HttpServlet {
 
 		String moduleName = getModuleName(req);
 
+		String baseUrl = getBaseUrl(req);
+
 		Set<BindingProperty> computedBindings = calculateBindinPropertiesForClient(req);
 
-		String strongName = getPermutationStrongName(moduleName, computedBindings);
+		String strongName = getPermutationStrongName(baseUrl, moduleName, computedBindings);
 
 		if (strongName != null) {
-			String manifest = readManifest(moduleName + "/" + strongName + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
+			String manifest = readManifest(baseUrl + moduleName + "/" + strongName + PermutationMapLinker.PERMUTATION_MANIFEST_FILE_ENDING);
 			serveStringManifest(req, resp, manifest);
 			return;
 		}
-
 		if (isIphoneWithoutCookie(computedBindings)) {
+			computedBindings.remove(MgwtOsPropertyProvider.iPhone_undefined);
 
 			Set<BindingProperty> iphoneMatch = new HashSet<BindingProperty>();
 			iphoneMatch.add(MgwtOsPropertyProvider.iPhone);
+			iphoneMatch.addAll(computedBindings);
 			Set<BindingProperty> retinaMatch = new HashSet<BindingProperty>();
 			retinaMatch.add(MgwtOsPropertyProvider.retina);
+			retinaMatch.addAll(computedBindings);
 
-			String moduleNameIphone = getPermutationStrongName(moduleName, iphoneMatch);
-			String moduleNameRetina = getPermutationStrongName(moduleName, retinaMatch);
+			String moduleNameIphone = getPermutationStrongName(baseUrl, moduleName, iphoneMatch);
+			String moduleNameRetina = getPermutationStrongName(baseUrl, moduleName, retinaMatch);
 
 			if (moduleNameIphone != null && moduleNameRetina != null) {
 
 				// load files for both permutations
-				Set<String> filesForPermutation = getFilesForPermutation(moduleName, moduleNameIphone);
-				filesForPermutation.addAll(getFilesForPermutation(moduleName, moduleNameRetina));
+				Set<String> filesForPermutation = getFilesForPermutation(baseUrl, moduleName, moduleNameIphone);
+				filesForPermutation.addAll(getFilesForPermutation(baseUrl, moduleName, moduleNameRetina));
 
 				// dynamically write a new manifest..
 				ManifestWriter manifestWriter = new ManifestWriter();
@@ -98,6 +102,12 @@ public class Html5ManifestServletBase extends HttpServlet {
 
 		throw new ServletException("unkown device");
 
+	}
+
+	protected String getBaseUrl(HttpServletRequest req) {
+		String base = req.getRequestURI();
+		// cut off module
+		return base.substring(0, base.lastIndexOf("/") + 1);
 	}
 
 	public boolean isIphoneWithoutCookie(Set<BindingProperty> bps) {
@@ -117,8 +127,8 @@ public class Html5ManifestServletBase extends HttpServlet {
 		return false;
 	}
 
-	public Set<String> getFilesForPermutation(String moduleName, String permutation) throws ServletException {
-		String fileName = moduleName + "/" + permutation + PermutationMapLinker.PERMUTATION_FILE_ENDING;
+	public Set<String> getFilesForPermutation(String baseUrl, String moduleName, String permutation) throws ServletException {
+		String fileName = baseUrl + moduleName + "/" + permutation + PermutationMapLinker.PERMUTATION_FILE_ENDING;
 		XMLPermutationProvider xmlPermutationProvider = new XMLPermutationProvider();
 
 		try {
@@ -217,7 +227,7 @@ public class Html5ManifestServletBase extends HttpServlet {
 
 	}
 
-	public String getPermutationStrongName(String moduleName, Set<BindingProperty> computedBindings) throws ServletException {
+	public String getPermutationStrongName(String baseUrl, String moduleName, Set<BindingProperty> computedBindings) throws ServletException {
 
 		if (moduleName == null) {
 			throw new IllegalArgumentException("moduleName can not be null");
@@ -227,7 +237,7 @@ public class Html5ManifestServletBase extends HttpServlet {
 			throw new IllegalArgumentException("computedBindings can not be null");
 		}
 
-		String realPath = getServletContext().getRealPath(moduleName + "/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME);
+		String realPath = getServletContext().getRealPath(baseUrl + moduleName + "/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME);
 
 		try {
 
@@ -236,7 +246,6 @@ public class Html5ManifestServletBase extends HttpServlet {
 			Map<String, List<BindingProperty>> map = permutationProvider.getBindingProperties(fileInputStream);
 			for (Entry<String, List<BindingProperty>> entry : map.entrySet()) {
 				List<BindingProperty> value = entry.getValue();
-
 				if (value.containsAll(computedBindings) && value.size() == computedBindings.size()) {
 					return entry.getKey();
 				}

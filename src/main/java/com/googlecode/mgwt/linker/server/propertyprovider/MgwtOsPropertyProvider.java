@@ -9,6 +9,7 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 
 	public static final BindingProperty iPhone = new BindingProperty("mgwt.os", "iphone");
 	public static final BindingProperty retina = new BindingProperty("mgwt.os", "retina");
+	public static final BindingProperty iPhone_undefined = new BindingProperty("mgwt.os", "iphone_undefined");
 
 	@Override
 	public String getPropertyName() {

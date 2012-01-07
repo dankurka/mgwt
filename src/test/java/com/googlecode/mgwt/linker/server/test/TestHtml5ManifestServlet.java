@@ -81,7 +81,7 @@ public class TestHtml5ManifestServlet {
 	public void testGetPermutationStrongNameWithInvalidArguments() throws ServletException {
 
 		try {
-			servlet.getPermutationStrongName(null, null);
+			servlet.getPermutationStrongName(null, null, null);
 			Assert.fail("Expected exception did not occur");
 		} catch (IllegalArgumentException e) {
 
@@ -92,7 +92,7 @@ public class TestHtml5ManifestServlet {
 	public void testGetPermutationStrongNameWithInvalidArguments1() throws ServletException {
 
 		try {
-			servlet.getPermutationStrongName("asdf", null);
+			servlet.getPermutationStrongName(null, "asdf", null);
 			Assert.fail("Expected exception did not occur");
 		} catch (IllegalArgumentException e) {
 
@@ -103,7 +103,7 @@ public class TestHtml5ManifestServlet {
 	public void testGetPermutationStrongNameWithInvalidArguments2() throws ServletException {
 
 		try {
-			servlet.getPermutationStrongName(null, new HashSet<BindingProperty>());
+			servlet.getPermutationStrongName(null, null, new HashSet<BindingProperty>());
 			Assert.fail("Expected exception did not occur");
 		} catch (IllegalArgumentException e) {
 
@@ -139,7 +139,7 @@ public class TestHtml5ManifestServlet {
 		set.add(new BindingProperty("mgwt.os", "blackberry"));
 		set.add(new BindingProperty("mobile.user.agent", "not_mobile"));
 		set.add(new BindingProperty("user.agent", "safari"));
-		String permutationStrongName = servlet.getPermutationStrongName("asdf", set);
+		String permutationStrongName = servlet.getPermutationStrongName("a", "asdf", set);
 
 		Assert.assertEquals("C83A451EFE8ADF0BDB46AEAAC44B0063", permutationStrongName);
 	}
@@ -173,7 +173,7 @@ public class TestHtml5ManifestServlet {
 
 		set.add(new BindingProperty("mobile.user.agent", "not_mobile"));
 		set.add(new BindingProperty("user.agent", "safari"));
-		String permutationStrongName = servlet.getPermutationStrongName("asdf", set);
+		String permutationStrongName = servlet.getPermutationStrongName("a", "asdf", set);
 
 		Assert.assertEquals(null, permutationStrongName);
 	}
