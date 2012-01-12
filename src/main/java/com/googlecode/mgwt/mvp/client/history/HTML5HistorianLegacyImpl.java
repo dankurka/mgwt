@@ -2,6 +2,7 @@ package com.googlecode.mgwt.mvp.client.history;
 
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.http.client.UrlBuilder;
 import com.google.gwt.place.shared.PlaceHistoryHandler.Historian;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
@@ -72,7 +73,10 @@ public class HTML5HistorianLegacyImpl implements Html5Historian, ValueChangeHand
 
 	@Override
 	public void replaceState(String data, String title, String url) {
-		History.newItem(data, false);
+		UrlBuilder builder = Window.Location.createUrlBuilder();
+		builder.setHash(data);
+		Window.Location.replace(builder.buildString());
+		
 		
 	}
 
