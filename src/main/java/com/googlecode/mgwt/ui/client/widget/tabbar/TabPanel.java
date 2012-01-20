@@ -277,8 +277,8 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		}
 
 		public boolean remove(TabBarButtonBase w) {
-			children.remove(w);
 			int indexForWidget = getIndexForWidget(w);
+			children.remove(w);
 			if (indexForWidget != -1) {
 				handlers.get(indexForWidget).removeHandler();
 				handlers.remove(indexForWidget);

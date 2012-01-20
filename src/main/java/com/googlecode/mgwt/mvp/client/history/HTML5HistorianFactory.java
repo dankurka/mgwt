@@ -14,3 +14,4 @@ public class HTML5HistorianFactory {
 		return typeof ($wnd.history.pushState) != "undefined";
 	}-*/;
 }
+	
