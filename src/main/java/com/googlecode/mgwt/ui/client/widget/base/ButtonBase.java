@@ -27,6 +27,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
@@ -41,8 +42,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 	/**
 	 * Construct a base button with a given css
 	 * 
-	 * @param css
-	 *            the css to use for this button
+	 * @param css the css to use for this button
 	 */
 	public ButtonBase(ButtonBaseCss css) {
 		this(DOM.createDiv(), css);
@@ -53,10 +53,8 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 	/**
 	 * Construct a button with a given element and css
 	 * 
-	 * @param element
-	 *            the element to use
-	 * @param css
-	 *            the css to use
+	 * @param element the element to use
+	 * @param css the css to use
 	 */
 	public ButtonBase(Element element, ButtonBaseCss css) {
 		setElement(element);
@@ -67,14 +65,20 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 
 			@Override
 			public void onTouchCanceled(TouchCancelEvent event) {
+				event.stopPropagation();
 				removeStyleName(active);
-				DOM.releaseCapture(getElement());
+				if (MGWT.getOsDetection().isDesktop()) {
+					DOM.releaseCapture(getElement());
+				}
 			}
 
 			@Override
 			public void onTouchEnd(TouchEndEvent event) {
+				event.stopPropagation();
 				removeStyleName(active);
-				DOM.releaseCapture(getElement());
+				if (MGWT.getOsDetection().isDesktop()) {
+					DOM.releaseCapture(getElement());
+				}
 			}
 
 			@Override
@@ -87,7 +91,10 @@ public abstract class ButtonBase extends TouchWidget implements HasText, HasTapH
 			public void onTouchStart(TouchStartEvent event) {
 				event.stopPropagation();
 				addStyleName(active);
-				DOM.setCapture(getElement());
+				if (MGWT.getOsDetection().isDesktop()) {
+					DOM.setCapture(getElement());
+				}
+
 			}
 		});
 
