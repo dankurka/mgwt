@@ -1,6 +1,5 @@
 package com.googlecode.mgwt.ui.client.theme.mgwt;
 
-import com.google.gwt.resources.client.ClientBundle.Source;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss;
