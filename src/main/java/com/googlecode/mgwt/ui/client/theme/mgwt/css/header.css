@@ -1,48 +1,54 @@
-@if mgwt.css pretty {
-	@external mgwt-HeaderPanel, mgwt-HeaderPanel-left, mgwt-HeaderPanel-right, mgwt-HeaderPanel-center, mgwt-DropDownMenu;
-	@external mgwt-HeaderButton, active, back, forward, round;
-}
 
-
-
-.mgwt-HeaderPanel {
-	
+.mgwt-HeaderPanel {	
 	background-color: baseColor;
 	border-bottom: 1px solid rgba(0,0,0,0.5);
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.15)), to(rgba(255,255,255, 0.1)), color-stop(0.5, rgba(0,0,0, 0.1)) )');
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
-		
-		color: fontColor;
-		
-		
+@if user.agent safari {
+	.mgwt-HeaderPanel {	
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.15)), to(rgba(255,255,255, 0.1)), color-stop(0.5, rgba(0,0,0, 0.1)) )');
 	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderPanel {	
+		background-image: literal('-moz-linear-gradient(top, rgba(255,255,255, 0.15), rgba(0,0,0, 0.1) 50%, rgba(255,255,255, 0.1) )');
+	}
+}
+
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+	color: fontColor;
+}
 
 
 .mgwt-HeaderButton p { 
     color: fontColor; 
     text-shadow: none;
     background-color: baseColor;
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.5)), to(rgba(0,0,0, 0.5)) )');
+	
 }
 
-.mgwt-HeaderButton.back span { 
-    background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.5)), to(rgba(0,0,0, 0.5)) )'); 
-    
-  
-    
+@if user.agent safari {
+	.mgwt-HeaderPanel p, .mgwt-HeaderButton.back span { 
+   		 background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.5)), to(rgba(0,0,0, 0.5)) )');  
+	}
+	
+	.mgwt-HeaderButton.active p, .mgwt-HeaderButton.active span {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.7)), to(rgba(0,0,0, 0.7)) )');
+	}
 }
 
-.mgwt-HeaderButton.active p {
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.7)), to(rgba(0,0,0, 0.7)) )');
+@if user.agent gecko1_8 {
+	.mgwt-HeaderPanel p, .mgwt-HeaderButton.back span {	
+		background-image: literal('-moz-linear-gradient(top, rgba(0,0,0, 0.5), rgba(0,0,0, 0.5) )');
+	}
+	
+	.mgwt-HeaderButton.active p, .mgwt-HeaderButton.active span {
+		background-image: literal('-moz-linear-gradient(top, rgba(0,0,0, 0.7), rgba(0,0,0, 0.7) )');
+	}
 }
 
-
-
-.mgwt-HeaderButton.active span{
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.7)), to(rgba(0,0,0, 0.7)) )');
-}
 
 
 /**
@@ -52,80 +58,99 @@
 
 
 .mgwt-DropDownMenu {
-	
-	
-	\-webkit-box-shadow: 2px 2px 10px #000000;
 	background-color: baseColor;
 	border: solid 2px rgba(0,0,0,0.5);
-	
 }
-
-
-
-.mgwt-DropDownMenu-content {
-	
-	display: -webkit-box;
-	\-webkit-box-orient: vertical;
-	width: 100%;
-	height: 100%;
-
-}
-
-
 
 .mgwt-DropDownMenu-arrow {
-	
 	background-color: baseColor;
-	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0, 0.2)), to(rgba(0,0,0, 0.2)) )');
 	border: solid 2px rgba(0,0,0,0.5);
 	border-bottom: none;
 	border-right: none;
-
 }
+
+@if user.agent safari {
+	.mgwt-DropDownMenu-arrow {
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0, 0.2)), to(rgba(0,0,0, 0.2)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-DropDownMenu-arrow {
+		background-image: literal('-moz-linear-gradient(top, rgba(0,0,0, 0.2), rgba(0,0,0, 0.2) )');
+	}
+}
+
 
 
 
 .mgwt-DropDownMenu .mgwt-HeaderPanel{
-	
-	
 	background-color: baseColor;
 	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0, 0.2)), color-stop(0.5, rgba(0,0,0, 0.3)), color-stop(0.5, rgba(0,0,0, 0.3)), to(rgba(0,0,0, 0.4)) )');
 	border-bottom: 1px solid rgba(0,0,0,0.5);
 	
 }
 
+@if user.agent safari {
+	.mgwt-DropDownMenu .mgwt-HeaderPanel {
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0, 0.2)), color-stop(0.5, rgba(0,0,0, 0.3)), color-stop(0.5, rgba(0,0,0, 0.3)), to(rgba(0,0,0, 0.4)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-DropDownMenu .mgwt-HeaderPanel{
+		background-image: literal('-moz-linear-gradient(top, rgba(0,0,0, 0.2), rgba(0,0,0, 0.3) 50%, rgba(0,0,0, 0.3) 51%, rgba(0,0,0, 0.4))');
+	
+	}
+}
+
+
+
+
+
 .mgwt-DropDownMenu .mgwt-HeaderButton.back span { 
     background-color: baseColor;
-   background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.5)), to(rgba(0,0,0, 0.5)) )'); 
- 
 }
 
 .mgwt-DropDownMenu .mgwt-HeaderButton
-		{
-			color: fontColor;
-			
-			
-			border: none;
-			
-			
-		}
+{
+	color: fontColor;
+	border: none;
+}
 
 .mgwt-DropDownMenu .mgwt-HeaderButton p {
 	 color: fontColor; 
     text-shadow: none;
     background-color: baseColor;
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.5)), to(rgba(0,0,0, 0.5)) )');
 }
 
-.mgwt-DropDownMenu .mgwt-HeaderButton.active p {
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.7)), to(rgba(0,0,0, 0.7)) )');
+
+@if user.agent safari {
+	.mgwt-DropDownMenu .mgwt-HeaderButton.back span, .mgwt-DropDownMenu .mgwt-HeaderButton p { 
+    	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.5)), to(rgba(0,0,0, 0.5)) )'); 
+ 	}
+ 	
+ 	.mgwt-DropDownMenu .mgwt-HeaderButton.active p, .mgwt-DropDownMenu .mgwt-HeaderButton.active span {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0, 0.7)), to(rgba(0,0,0, 0.7)) )');
+	}	
 }
 
-.mgwt-DropDownMenu .mgwt-HeaderButton.active span { 
-    
-   background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgba(0,0,0, 0.7)), to(rgba(0,0,0, 0.7)) )');
- 
+
+@if user.agent gecko1_8 {
+	.mgwt-DropDownMenu .mgwt-HeaderButton.back span, .mgwt-DropDownMenu .mgwt-HeaderButton p { 
+    	background-image: literal('-moz-linear-gradient(top,rgba(0,0,0, 0.5), rgba(0,0,0, 0.5))'); 
+ 	}
+ 	
+ 	.mgwt-DropDownMenu .mgwt-HeaderButton.active p, .mgwt-DropDownMenu .mgwt-HeaderButton.active span {
+		background-image: literal('-moz-linear-gradient(top,rgba(0,0,0, 0.7), rgba(0,0,0, 0.7))'); 
+	}	
 }
+
+
+
+
+
+
 
 
 

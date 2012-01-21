@@ -1,5 +1,4 @@
 @url arrowImage listArrow;
-@url arrowTouchedImage listArrowTouched;
 
 
 @if mgwt.css pretty {
@@ -31,7 +30,7 @@
 }
 
 .mgwt-List .group.selected {
-	background-image: arrowTouchedImage, literal('-webkit-gradient(linear,left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5)) )');
+	background-image: arrowImage, literal('-webkit-gradient(linear,left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5)) )');
 	background-repeat: no-repeat, repeat;
 	background-position: 100% 50%, 0 0;
 	color: baseColor;

@@ -1,24 +1,3 @@
-@url bookmarkImage tabBarBookMarkImage;
-@url contactsImage tabBarContactsImage;
-@url downloadsImage tabBarDownloadsImage;
-@url favoritesImage tabBarFavoritesImage;
-@url featuredImage tabBarFeaturedImage;
-@url historyImage tabBarHistoryImage;
-@url moreImage tabBarMoreImage;
-
-@url mostRecentImage tabBarMostRecentImage;
-
-@url mostViewedImage tabBarMostViewedImage;
-
-@url searchImage tabBarSearchImage;
-
-@def highlight literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.3)), to(rgba(255,255,255, 0.3)))');
-@def highlight_border 1px solid rgba(0,0,0, 0.5);
-
-
-@if mgwt.css pretty {
-	@external mgwt-TabBar, selected, bottom, bookmarkButton,  contactsButton,  downloadsButton,  favoritesButton,  featuredButton,  historyButton,  moreButton,  mostRecentButton,  mostViewedButton,  searchButton;
-}
 
 .mgwt-TabBar{
 	
@@ -28,112 +7,16 @@
 	color: fontColor;
 }
 
-
-
-
-.mgwt-TabBar .bookmarkButton, .mgwt-TabBar .contactsButton, .mgwt-TabBar .downloadsButton, .mgwt-TabBar .favoritesButton, .mgwt-TabBar .featuredButton, .mgwt-TabBar .historyButton, .mgwt-TabBar .moreButton, .mgwt-TabBar .mostRecentButton, .mgwt-TabBar .mostViewedButton, .mgwt-TabBar .searchButton{
-
-	color: fontColor;
-	
-	border: 1px solid rgba(0,0,0, 0)
-	
+@if user.agent safari {
+	.mgwt-TabBar{
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.15)), to(rgba(255,255,255, 0.1)), color-stop(0.5, rgba(0,0,0, 0.1)) )');
+	}
 }
 
-.mgwt-TabBar .bookmarkButton{
-	background-image:  bookmarkImage;
+@if user.agent gecko1_8 {
+	.mgwt-TabBar{
+		background-image: literal('-moz-linear-gradient(top, rgba(255,255,255, 0.15), rgba(0,0,0, 0.1) 50%, rgba(255,255,255, 0.1) )');
+	}
 }
 
-.mgwt-TabBar .bookmarkButton.selected{
-	background-image: highlight, bookmarkImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
 
-.mgwt-TabBar .contactsButton{
-	background-image: contactsImage;
-}
-
-.mgwt-TabBar .contactsButton.selected{
-	background-image: highlight , contactsImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
-
-.mgwt-TabBar .downloadsButton{
-	background-image: downloadsImage;
-}
-
-.mgwt-TabBar .downloadsButton.selected{
-	background-image: highlight , downloadsImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
-.mgwt-TabBar .favoritesButton{
-	background-image: favoritesImage;
-}
-
-.mgwt-TabBar .favoritesButton.selected{
-	background-image: highlight , favoritesImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
-
-.mgwt-TabBar .featuredButton{
-	background-image: featuredImage;
-}
-
-.mgwt-TabBar .featuredButton.selected{
-	background-image: highlight , featuredImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
-
-.mgwt-TabBar .historyButton{
-	background-image: historyImage;
-}
-
-.mgwt-TabBar .historyButton.selected{
-	background-image: highlight , historyImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
-
-.mgwt-TabBar .moreButton{
-	background-image: moreImage;
-}
-
-.mgwt-TabBar .moreButton.selected{
-	background-image: highlight , moreImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
-
-.mgwt-TabBar .mostRecentButton{
-	background-image: mostRecentImage;
-}
-
-.mgwt-TabBar .mostRecentButton.selected{
-	background-image: highlight , mostRecentImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
-
-.mgwt-TabBar .mostViewedButton{
-	background-image: mostViewedImage;
-}
-
-.mgwt-TabBar .mostViewedButton.selected{
-	background-image: highlight , mostViewedImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}
-
-.mgwt-TabBar .searchButton{
-	background-image: searchImage;
-}
-
-.mgwt-TabBar .searchButton.selected{
-	background-image: highlight , searchImage;
-	\-webkit-border-radius: 8px;
-	border: highlight_border;
-}

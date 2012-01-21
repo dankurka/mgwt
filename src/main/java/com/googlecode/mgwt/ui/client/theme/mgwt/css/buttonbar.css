@@ -1,44 +1,38 @@
-@url actionImage buttonBarActionImage;
-@url arrowDownImage buttonBarArrowDownImage;
-@url arrowUpImage buttonBarArrowUpImage;
-@url arrowLeftImage buttonBarArrowLeftImage;
-@url arrowRightImage buttonBarArrowRightImage;
-@url bookmarksImage buttonBarBookmarksImage;
-@url cameraImage buttonBarCameraImage;
-@url composeImage buttonBarComposeImage;
-@url contactAddImage buttonBarContactAddImage;
-@url deleteImage buttonBarDeleteImage;
-@url fastForwardImage buttonBarFastForwardImage;
-@url infoImage buttonBarInfoImage;
-@url locateImage buttonBarLocateImage;
-@url newImage buttonBarNewImage;
-@url nextSlideImage buttonBarNextSlideImage;
-@url organizeImage buttonBarOrganizeImage;
-@url pauseImage buttonBarPauseImage;
-@url playImage buttonBarPlayImage;
-@url plusImage buttonBarPlusImage;
-@url pressedImage buttonBarPressedIndicatorImage;
-@url previousSlideImage buttonBarPreviousSlideImage;
-@url refreshImage buttonBarRefreshImage;
-@url replyImage buttonBarReplyImage;
-@url rewindImage buttonBarRewindImage;
-@url searchImage buttonBarSearchImage;
-@url stopImage buttonBarStopImage;
-@url trashImage buttonBarTrashImage;
-
-@if mgwt.css pretty {
-	@external mgwt-ButtonBar, mgwt-BarButton, active;
-	@external  action ,arrowDown ,arrowUp ,arrowLeft ,arrowRight ,bookmark ,camera ,compose ,contactAdd ,delete ,fastForward ,info ,locate ,new ,nextSlide ,organize , pause, play ,plus ,pressed ,previousSlide ,refresh ,reply ,rewind ,search ,stop ,trash;
-	
-}
-
-
 
 .mgwt-ButtonBar {
 	
 	background-color: baseColor;
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.15)), to(rgba(255,255,255, 0.1)), color-stop(0.5, rgba(0,0,0, 0.1)) )');
 	border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
+
+@if user.agent safari {
+	.mgwt-ButtonBar {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.15)), to(rgba(255,255,255, 0.1)), color-stop(0.5, rgba(0,0,0, 0.1)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-ButtonBar {
+		background-image: literal('-moz-linear-gradient(top, rgba(255,255,255, 0.15), rgba(0,0,0, 0.1) 50%, rgba(255,255,255, 0.1))');
+	}
+}
+
+
+
+
+
+.mgwt-ButtonBar .text{
+	color: fontColor;
+}
+
+
+
+
+
+
+
+
+
+
 
 
