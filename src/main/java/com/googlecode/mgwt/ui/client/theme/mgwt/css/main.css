@@ -1,15 +1,23 @@
-
-
-@external body, *;
-
-
-
 body {
 	background-color:fontColor;
-	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.1)), to(rgba(0,0,0, 0.1)) )');
 	background-attachment: fixed;
 	color: fontColor;
 }
+
+
+
+@if user.agent safari {
+	body {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.1)), to(rgba(0,0,0, 0.1)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	body {
+		background-image: literal('-moz-linear-gradient(top, rgba(255,255,255, 0.1), rgba(0,0,0, 0.1))');
+	}
+}
+
 
 
 

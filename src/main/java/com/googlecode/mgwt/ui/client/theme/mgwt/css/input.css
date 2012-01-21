@@ -1,34 +1,29 @@
-@url checkImage inputCheckImage;
-
-@if mgwt.css pretty {
-	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, box, cover, mgwt-RadioButton, disabled;
-	
-}
-
 .mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box{
     color: fontColor;
     background-color: baseColor;
-    background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.3)), to(rgba(255,255,255, 0.3)) )');
-    
-
 }
-
-
-
 
 
 .mgwt-RadioButton>input {
 	background-color: transparent;
 }
 
-
-
-
-
 .mgwt-ListBox{
 	color: fontColor;
     background-color: baseColor;
-    background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.3)), to(rgba(255,255,255, 0.3)) )');
+}
+
+
+@if user.agent safari {
+	.mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box, .mgwt-ListBox{
+    	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255, 0.3)), to(rgba(255,255,255, 0.3)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-TextBox .box, .mgwt-PasswordTextBox .box, .mgwt-TextArea .box, .mgwt-ListBox{
+    	background-image: literal('-moz-linear-gradient(top, rgba(255,255,255, 0.3), rgba(255,255,255, 0.3) )');
+	}
 }
 
 

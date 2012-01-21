@@ -1,11 +1,6 @@
 @url arrowImage listArrow;
 
 
-@if mgwt.css pretty {
-	@external mgwt-List, selected, group, mgwt-List-Header;
-	
-}
-
 
 .mgwt-List li {
 	color: fontColor;
@@ -14,6 +9,20 @@
 	border: 1px solid rgba(0,0,0,0.5);
 	background-origin: padding-box;
 }
+
+@if user.agent safari {
+	.mgwt-List li {
+		background-image: literal('-webkit-gradient(linear,left top, left bottom, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0.3)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-List li {
+		background-image: literal('-moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3) )');
+	}
+}
+
+
 
 
 .mgwt-List.round li.last {
@@ -24,15 +33,26 @@
 
 
 .mgwt-List .group {
-	background-image: arrowImage, literal('-webkit-gradient(linear,left top, left bottom, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0.3)) )');
-	background-repeat: no-repeat;
-	background-position: 100% 50%;
-}
-
-.mgwt-List .group.selected {
-	background-image: arrowImage, literal('-webkit-gradient(linear,left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(255, 255, 255, 0.5)) )');
 	background-repeat: no-repeat, repeat;
 	background-position: 100% 50%, 0 0;
+}
+
+
+
+@if user.agent safari {
+	.mgwt-List .group, .mgwt-List .group.selected  {
+		background-image: arrowImage, literal('-webkit-gradient(linear,left top, left bottom, from(rgba(255, 255, 255, 0.3)), to(rgba(255, 255, 255, 0.3)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-List .group, .mgwt-List .group.selected  {
+		background-image: arrowImage, literal('-moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3))');
+	}
+}
+
+
+.mgwt-List .group.selected {
 	color: baseColor;
 	background-color: fontColor;
 }
