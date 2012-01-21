@@ -36,7 +36,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 public interface MGWTColorBundleNonRetina extends MGWTClientBundleBaseThemeNonRetina {
 
-	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/progressbar.css", "com/googlecode/mgwt/ui/client/theme/mgwt/css/progressbar.css" })
+	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/progressbar.css", "css/progressbar.css" })
 	ProgressBarCss getProgressBarCss();
 
 	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/progressindicator.css" })
