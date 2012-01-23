@@ -29,6 +29,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
@@ -36,7 +37,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A check box class
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -54,7 +55,9 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		public void onTouchCanceled(TouchCancelEvent event) {
 			event.stopPropagation();
 			event.preventDefault();
-			DOM.releaseCapture(getElement());
+			if (MGWT.getOsDetection().isDesktop()) {
+				DOM.releaseCapture(getElement());
+			}
 			setValue(getValue());
 		}
 
@@ -63,7 +66,10 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 			event.stopPropagation();
 			event.preventDefault();
-			DOM.releaseCapture(getElement());
+			if (MGWT.getOsDetection().isDesktop()) {
+				DOM.releaseCapture(getElement());
+			}
+
 			if (!moved) {
 				setValue(!getValue());
 			} else {
@@ -104,7 +110,10 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		public void onTouchStart(TouchStartEvent event) {
 			event.stopPropagation();
 			event.preventDefault();
-			DOM.setCapture(getElement());
+			if (MGWT.getOsDetection().isDesktop()) {
+				DOM.setCapture(getElement());
+			}
+
 			Touch touch = event.touches().get(0);
 			x_start = touch.getPageX();
 			moved = false;
@@ -140,7 +149,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 	/**
 	 * Construct a checkbox with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MCheckBox(CheckBoxCss css) {
@@ -234,7 +243,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 	/**
 	 * Should this check box be rendered as important
-	 *
+	 * 
 	 * @param important true to render the check box as important
 	 */
 	public void setImportant(boolean important) {

@@ -30,6 +30,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
@@ -71,7 +72,9 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
 			setValueContrained(event.touches().get(0).getPageX());
-			DOM.setCapture(getElement());
+			if (MGWT.getOsDetection().isDesktop()) {
+				DOM.setCapture(getElement());
+			}
 		}
 
 		@Override
@@ -82,12 +85,17 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
-			DOM.releaseCapture(getElement());
+			if (MGWT.getOsDetection().isDesktop()) {
+				DOM.releaseCapture(getElement());
+			}
+
 		}
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
-			DOM.releaseCapture(getElement());
+			if (MGWT.getOsDetection().isDesktop()) {
+				DOM.releaseCapture(getElement());
+			}
 		}
 
 	}
@@ -106,8 +114,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	/**
 	 * Construct a slider with a given css
 	 * 
-	 * @param css
-	 *            the css to use
+	 * @param css the css to use
 	 */
 	public MSlider(SliderCss css) {
 		css.ensureInjected();
@@ -134,8 +141,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	/**
 	 * Set the maximum of the slider
 	 * 
-	 * @param max
-	 *            the maximum to use
+	 * @param max the maximum to use
 	 */
 	public void setMax(int max) {
 		if (max <= 0) {
@@ -183,14 +189,14 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 	protected void onAttach() {
 		super.onAttach();
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-			
+
 			@Override
 			public void execute() {
 				setSliderPos(value);
-				
+
 			}
 		});
-		
+
 	}
 
 	/*
@@ -208,7 +214,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		if (value == null) {
 			throw new IllegalArgumentException("value can not be null");
 		}
-		
+
 		if (value < 0) {
 			throw new IllegalArgumentException("value >= 0");
 		}
@@ -249,8 +255,8 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 			x = 0;
 		}
 
-		if (x > (width-1)) {
-			x = width-1;
+		if (x > (width - 1)) {
+			x = width - 1;
 		}
 
 		// scale it to max
