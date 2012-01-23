@@ -16,31 +16,22 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostViewedTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
- * <p>MostViewedTabBarButton class.</p>
- *
- * @author kurt
- * @version $Id: $
+ * A simple most viewed tab bar button.
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public class MostViewedTabBarButton extends TabBarButtonBase {
 
-	/**
-	 * <p>Constructor for MostViewedTabBarButton.</p>
-	 */
 	public MostViewedTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getMostViewedTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
 	}
 
-	/**
-	 * <p>Constructor for MostViewedTabBarButton.</p>
-	 *
-	 * @param mostViewedTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.MostViewedTabBarButtonCss} object.
-	 */
-	public MostViewedTabBarButton(MostViewedTabBarButtonCss mostViewedTabBarButtonCss) {
-		super(mostViewedTabBarButtonCss);
-		addStyleName(mostViewedTabBarButtonCss.mostViewed());
+	public MostViewedTabBarButton(TabBarButtonCss css) {
+		super(css, MGWTStyle.getTheme().getMGWTClientBundle().tabBarMostViewedImage());
 		setText("Most Viewed");
 	}
 

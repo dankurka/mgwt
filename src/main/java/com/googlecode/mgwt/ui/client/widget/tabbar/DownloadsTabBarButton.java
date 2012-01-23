@@ -16,31 +16,22 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.DownloadsTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
- * <p>DownloadsTabBarButton class.</p>
- *
- * @author kurt
- * @version $Id: $
+ * A downloads tab bar button.
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public class DownloadsTabBarButton extends TabBarButtonBase {
 
-	/**
-	 * <p>Constructor for DownloadsTabBarButton.</p>
-	 */
 	public DownloadsTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getDownloadsTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
 	}
 
-	/**
-	 * <p>Constructor for DownloadsTabBarButton.</p>
-	 *
-	 * @param downloadsTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.DownloadsTabBarButtonCss} object.
-	 */
-	public DownloadsTabBarButton(DownloadsTabBarButtonCss downloadsTabBarButtonCss) {
-		super(downloadsTabBarButtonCss);
-		addStyleName(downloadsTabBarButtonCss.downloads());
+	public DownloadsTabBarButton(TabBarButtonCss css) {
+		super(css, MGWTStyle.getTheme().getMGWTClientBundle().tabBarDownloadsImage());
 		setText("Downloads");
 	}
 

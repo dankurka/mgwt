@@ -16,31 +16,22 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
- * <p>SearchTabBarButton class.</p>
- *
- * @author kurt
- * @version $Id: $
+ * A simple search tab bar button.
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public class SearchTabBarButton extends TabBarButtonBase {
 
-	/**
-	 * <p>Constructor for SearchTabBarButton.</p>
-	 */
 	public SearchTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getSearchTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
 	}
 
-	/**
-	 * <p>Constructor for SearchTabBarButton.</p>
-	 *
-	 * @param searchTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss} object.
-	 */
-	public SearchTabBarButton(SearchTabBarButtonCss searchTabBarButtonCss) {
-		super(searchTabBarButtonCss);
-		addStyleName(searchTabBarButtonCss.search());
+	public SearchTabBarButton(TabBarButtonCss css) {
+		super(css, MGWTStyle.getTheme().getMGWTClientBundle().tabBarSearchImage());
 		setText("Search");
 	}
 

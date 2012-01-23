@@ -84,6 +84,25 @@ under * the License.
 	</replace-with>
 	
 	
+	<!-- Tabbar Buttons -->
+	
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerWebkit">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
+		 <all> 
+   			<when-property-is name="user.agent" value="safari" />
+  		</all>
+		
+	</replace-with>
+	
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerBackground">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
+		 <none> 
+   			<when-property-is name="user.agent" value="safari" />
+  		</none>
+		
+	</replace-with>
+	
+	
 	
 
 	<source path="client" />

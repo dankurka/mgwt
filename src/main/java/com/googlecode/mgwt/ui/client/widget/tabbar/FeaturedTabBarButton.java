@@ -16,31 +16,23 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.FeaturedTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
- * <p>FeaturedTabBarButton class.</p>
- *
- * @author kurt
- * @version $Id: $
+ * A simple feature tab bar button.
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public class FeaturedTabBarButton extends TabBarButtonBase {
 
-	/**
-	 * <p>Constructor for FeaturedTabBarButton.</p>
-	 */
 	public FeaturedTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getFeaturedTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
 	}
 
-	/**
-	 * <p>Constructor for FeaturedTabBarButton.</p>
-	 *
-	 * @param featuredTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.FeaturedTabBarButtonCss} object.
-	 */
-	public FeaturedTabBarButton(FeaturedTabBarButtonCss featuredTabBarButtonCss) {
-		super(featuredTabBarButtonCss);
-		addStyleName(featuredTabBarButtonCss.featured());
+	public FeaturedTabBarButton(TabBarButtonCss css) {
+		super(css, MGWTStyle.getTheme().getMGWTClientBundle().tabBarFeaturedImage());
+
 		setText("Featured");
 	}
 

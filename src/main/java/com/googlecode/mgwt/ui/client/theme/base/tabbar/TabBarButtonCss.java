@@ -13,27 +13,32 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget.tabbar;
+package com.googlecode.mgwt.ui.client.theme.base.tabbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 
-/**
- * A simple Contacts Button for a tab bar.
- * 
- * @author Daniel Kurka
- * 
- */
-public class ContactsTabBarButton extends TabBarButtonBase {
+public interface TabBarButtonCss extends ButtonBaseCss {
 
-	public ContactsTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
-	}
+	/**
+	 * <p>
+	 * selected
+	 * </p>
+	 * 
+	 * @return a {@link java.lang.String} object.
+	 */
+	public String selected();
 
-	public ContactsTabBarButton(TabBarButtonCss css) {
-		super(css, MGWTStyle.getTheme().getMGWTClientBundle().tabBarContactsImage());
+	/**
+	 * <p>
+	 * button
+	 * </p>
+	 * 
+	 * @return a {@link java.lang.String} object.
+	 */
+	@ClassName("mgwt-TabBar-Button")
+	public String button();
 
-		setText("Contacts");
-	}
+	public String icon();
 
+	public String text();
 }

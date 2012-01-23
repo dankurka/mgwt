@@ -16,31 +16,22 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostRecentTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
- * <p>MostRecentTabBarButton class.</p>
- *
- * @author kurt
- * @version $Id: $
+ * A simple most recent tab bar button.
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public class MostRecentTabBarButton extends TabBarButtonBase {
 
-	/**
-	 * <p>Constructor for MostRecentTabBarButton.</p>
-	 */
 	public MostRecentTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getMostRecentTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
 	}
 
-	/**
-	 * <p>Constructor for MostRecentTabBarButton.</p>
-	 *
-	 * @param mostRecentTabBarButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.MostRecentTabBarButtonCss} object.
-	 */
-	public MostRecentTabBarButton(MostRecentTabBarButtonCss mostRecentTabBarButtonCss) {
-		super(mostRecentTabBarButtonCss);
-		addStyleName(mostRecentTabBarButtonCss.mostRecent());
+	public MostRecentTabBarButton(TabBarButtonCss css) {
+		super(css, MGWTStyle.getTheme().getMGWTClientBundle().tabBarMostRecentImage());
 		setText("Most Recent");
 	}
 

@@ -1,0 +1,178 @@
+
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, active, selected;
+}
+
+
+
+.active{
+}
+
+
+.mgwt-TabBar-Button{
+	min-width: 60px;
+	background-color: transparent;
+	box-sizing: content-box;
+}
+
+@if user.agent safari {
+	.mgwt-TabBar-Button{
+		\-webkit-appearance: none;
+		\-webkit-box-flex: 1;		
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-TabBar-Button{
+		\-moz-appearance: none;
+		\-moz-box-flex: 1;		
+	}
+}
+
+
+@if mgwt.os ipad iphone desktop retina {
+
+	.mgwt-TabBar-Button{
+		margin: 2px;
+		
+	}
+	
+	@if user.agent safari {
+		.mgwt-TabBar-Button{
+			\-webkit-border-radius: 3px;	
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-TabBar-Button{
+			\-moz-border-radius: 3px;
+		}
+	}
+	
+	.mgwt-TabBar-Button.selected{
+		background-color: rgba(255, 255, 255, 0.15);
+	}
+	
+	.mgwt-TabBar-Button.selected .text{
+		color: white;
+		
+	}
+	
+	
+	
+	.mgwt-TabBar-Button .text {
+		font-size: 9px;
+		color: #999995;
+		text-align: center;
+		z-index:1;
+		margin-top: -5px;
+	}
+	
+	
+	
+	
+	
+	
+	.mgwt-TabBar-Button .icon{
+		margin-left: auto;
+		margin-right: auto;
+		z-index:0;
+		
+	
+	}
+	
+	@if user.agent safari {
+		.mgwt-TabBar-Button .icon{
+			background-image: literal('-webkit-gradient(linear, 30% 0%, 60% 70%, from(#ccc), to(#888))');
+		}
+	}
+	
+	
+	
+	@if user.agent safari {
+		.mgwt-TabBar-Button.selected .icon{
+			background-image: literal('-webkit-gradient(linear, 30% 0%, 60% 70%,  from(#dee8f1), to(#3ec6f9), color-stop(0.6,#7ab3ed),color-stop(0.7,#2f92e6))');
+		}
+	}
+	
+	
+	
+	/*TODO icons in ff*/
+		
+	
+	
+	
+}
+
+@if mgwt.os android android_tablet {
+
+	.mgwt-TabBar-Button{
+		top:10px;
+		height: 30px;
+		margin-left: 10px;
+	}
+	
+	
+	@if user.agent safari {
+		.mgwt-TabBar-Button.selected{
+			background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(82, 163, 196, 1)), to(rgba(82, 163, 196, 1)))');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-TabBar-Button.selected{
+			background-image: literal('-moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0) 75%, rgba(82, 163, 196, 1) 76%, rgba(82, 163, 196, 1))');
+		}
+	}
+	
+	
+	
+	.mgwt-TabBar-Button .text{
+		
+		white-space: \-webkit-nowrap;
+		white-space: nowrap;
+		font-size: 12px;
+		color: white;
+		text-align: center;
+	}
+	
+	.mgwt-TabBar-Button .icon{
+	}
+	
+}
+
+@if mgwt.os blackberry {
+	
+	.mgwt-TabBar-Button { 
+		min-width: 80px;
+		top:10px;
+		height: 30px;
+		margin-left: 10px;
+	}
+	
+	@if user.agent safari {
+		.mgwt-TabBar-Button.selected{
+			background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255,255,255,0)), color-stop(0.75, rgba(255,255,255,0)), color-stop(0.75, rgba(0, 92, 176, 1)), to(rgb(0, 92, 176)))');
+		}
+	}
+	
+	@if user.agent gecko1_8 {
+		.mgwt-TabBar-Button.selected{
+			background-image: literal('-moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,0) 75%, rgba(0, 92, 176, 1) 76%, rgb(0, 92, 176))');
+		}
+	}
+	
+	.mgwt-TabBar-Button .text{
+		white-space: \-webkit-nowrap;
+		white-space: nowrap;
+		font-size: 12px;
+		color: white;
+		text-align: center;
+	}
+	
+	.mgwt-TabBar-Button .icon{
+	}
+		
+}
+
+	

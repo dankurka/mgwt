@@ -16,6 +16,7 @@
 package com.googlecode.mgwt.ui.client.theme;
 
 import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
@@ -59,16 +60,7 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RewindButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.SearchButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.BookmarkTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.ContactsTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.DownloadsTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.FavoritesTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.FeaturedTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.HistoryTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.MoreTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostRecentTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostViewedTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 public interface MGWTClientBundle {
 
@@ -170,45 +162,27 @@ public interface MGWTClientBundle {
 
 	TabBarCss getTabBarCss();
 
-	BookmarkTabBarButtonCss getBookmarkTabBarButtonCss();
+	TabBarButtonCss getTabBarButtonCss();
 
-	ContactsTabBarButtonCss getContactsTabBarButtonCss();
+	ImageResource tabBarBookMarkImage();
 
-	DownloadsTabBarButtonCss getDownloadsTabBarButtonCss();
+	ImageResource tabBarContactsImage();
 
-	FavoritesTabBarButtonCss getFavoritesTabBarButtonCss();
+	ImageResource tabBarDownloadsImage();
 
-	FeaturedTabBarButtonCss getFeaturedTabBarButtonCss();
+	ImageResource tabBarFavoritesImage();
 
-	HistoryTabBarButtonCss getHistoryTabBarButtonCss();
+	ImageResource tabBarFeaturedImage();
 
-	MoreTabBarButtonCss getMoreTabBarButtonCss();
+	ImageResource tabBarHistoryImage();
 
-	MostRecentTabBarButtonCss getMostRecentTabBarButtonCss();
+	ImageResource tabBarMoreImage();
 
-	MostViewedTabBarButtonCss getMostViewedTabBarButtonCss();
+	ImageResource tabBarMostRecentImage();
 
-	SearchTabBarButtonCss getSearchTabBarButtonCss();
+	ImageResource tabBarMostViewedImage();
 
-	DataResource tabBarBookMarkImage();
-
-	DataResource tabBarContactsImage();
-
-	DataResource tabBarDownloadsImage();
-
-	DataResource tabBarFavoritesImage();
-
-	DataResource tabBarFeaturedImage();
-
-	DataResource tabBarHistoryImage();
-
-	DataResource tabBarMoreImage();
-
-	DataResource tabBarMostRecentImage();
-
-	DataResource tabBarMostViewedImage();
-
-	DataResource tabBarSearchImage();
+	ImageResource tabBarSearchImage();
 
 	DataResource spinnerImage();
 

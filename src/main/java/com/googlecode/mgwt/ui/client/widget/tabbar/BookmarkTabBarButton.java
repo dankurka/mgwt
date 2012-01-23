@@ -16,39 +16,23 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.BookmarkTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
- * <p>
- * BookmarkTabBarButton class.
- * </p>
+ * 
+ * A simple bookmark button
  * 
  * @author Daniel Kurka
- * @version $Id: $
+ * 
  */
 public class BookmarkTabBarButton extends TabBarButtonBase {
 
-	/**
-	 * <p>
-	 * Constructor for BookmarkTabBarButton.
-	 * </p>
-	 */
 	public BookmarkTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getBookmarkTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
 	}
 
-	/**
-	 * <p>
-	 * Constructor for BookmarkTabBarButton.
-	 * </p>
-	 * 
-	 * @param css a
-	 *            {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.BookmarkTabBarButtonCss}
-	 *            object.
-	 */
-	public BookmarkTabBarButton(BookmarkTabBarButtonCss css) {
-		super(css);
-		addStyleName(css.bookmark());
+	public BookmarkTabBarButton(TabBarButtonCss tabBarButtonCss) {
+		super(tabBarButtonCss, MGWTStyle.getTheme().getMGWTClientBundle().tabBarBookMarkImage());
 		setText("Bookmarks");
 	}
 }

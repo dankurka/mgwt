@@ -17,6 +17,7 @@ package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
 import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ActionButtonCss;
@@ -43,16 +44,7 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RewindButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.SearchButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.BookmarkTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.ContactsTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.DownloadsTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.FavoritesTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.FeaturedTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.HistoryTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.MoreTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostRecentTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.MostViewedTabBarButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
  * <p>
@@ -391,155 +383,38 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("css/tabbar.css")
 	TabBarCss getTabBarCss();
 
-	/**
-	 * <p>
-	 * getBookmarkTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.BookmarkTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/bookmark_button.css" })
-	BookmarkTabBarButtonCss getBookmarkTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getContactsTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.ContactsTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/contact_button.css" })
-	ContactsTabBarButtonCss getContactsTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getDownloadsTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.DownloadsTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/download_button.css" })
-	DownloadsTabBarButtonCss getDownloadsTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getFavoritesTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.FavoritesTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/favorites_button.css" })
-	FavoritesTabBarButtonCss getFavoritesTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getFeaturedTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.FeaturedTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/featured_button.css" })
-	FeaturedTabBarButtonCss getFeaturedTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getHistoryTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.HistoryTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/history_button.css" })
-	HistoryTabBarButtonCss getHistoryTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getMoreTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.MoreTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/more_button.css" })
-	MoreTabBarButtonCss getMoreTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getMostRecentTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.MostRecentTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/most_recent_button.css" })
-	MostRecentTabBarButtonCss getMostRecentTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getMostViewedTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.MostViewedTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/most_viewed_button.css" })
-	MostViewedTabBarButtonCss getMostViewedTabBarButtonCss();
-
-	/**
-	 * <p>
-	 * getSearchTabBarButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.SearchTabBarButtonCss}
-	 *         object.
-	 */
-	@Source({ "tabbar/css/button_base.css", "tabbar/css/search_button.css" })
-	SearchTabBarButtonCss getSearchTabBarButtonCss();
+	@Source({ "tabbar/css/tabbar_button.css" })
+	TabBarButtonCss getTabBarButtonCss();
 
 	@Source("resources/tabbar/bookmarks.png")
-	DataResource tabBarBookMarkImage();
+	ImageResource tabBarBookMarkImage();
 
 	@Source("resources/tabbar/contacts.png")
-	DataResource tabBarContactsImage();
+	ImageResource tabBarContactsImage();
 
 	@Source("resources/tabbar/downloads.png")
-	DataResource tabBarDownloadsImage();
+	ImageResource tabBarDownloadsImage();
 
 	@Source("resources/tabbar/favorites.png")
-	DataResource tabBarFavoritesImage();
+	ImageResource tabBarFavoritesImage();
 
 	@Source("resources/tabbar/featured.png")
-	DataResource tabBarFeaturedImage();
+	ImageResource tabBarFeaturedImage();
 
 	@Source("resources/tabbar/history.png")
-	DataResource tabBarHistoryImage();
+	ImageResource tabBarHistoryImage();
 
 	@Source("resources/tabbar/more.png")
-	DataResource tabBarMoreImage();
+	ImageResource tabBarMoreImage();
 
 	@Source("resources/tabbar/mostrecent.png")
-	DataResource tabBarMostRecentImage();
+	ImageResource tabBarMostRecentImage();
 
 	@Source("resources/tabbar/mostviewed.png")
-	DataResource tabBarMostViewedImage();
+	ImageResource tabBarMostViewedImage();
 
 	@Source("resources/tabbar/search.png")
-	DataResource tabBarSearchImage();
+	ImageResource tabBarSearchImage();
 
 	/**
 	 * <p>

@@ -15,9 +15,12 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonBaseCss;
+import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
@@ -30,9 +33,41 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
  */
 public class TabBarButtonBase extends ButtonBase {
 
-	protected final TabBarButtonBaseCss css;
-	private Element icon;
-	private Element text;
+	protected final TabBarButtonStylerHandler tabBarButtonStylerHandler = GWT.create(TabBarButtonStylerHandler.class);
+
+	public interface TabBarButtonStylerHandler {
+		public void applyImage(Element element, ImageResource imageResource);
+	}
+
+	// used by deferred binding...
+	@SuppressWarnings("unused")
+	private static class TabBarButtonStylerHandlerWebkit implements TabBarButtonStylerHandler {
+
+		@Override
+		public void applyImage(Element element, ImageResource imageResource) {
+			element.getStyle().setProperty("WebkitMaskBoxImage", "url(" + imageResource.getSafeUri().asString() + ")");
+			element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
+			element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);
+		}
+
+	}
+
+	@SuppressWarnings("unused")
+	private static class TabBarButtonStylerHandlerBackground implements TabBarButtonStylerHandler {
+
+		@Override
+		public void applyImage(Element element, ImageResource imageResource) {
+
+			element.getStyle().setBackgroundImage("url(" + imageResource.getSafeUri().asString() + ")");
+			element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
+			element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);
+		}
+
+	}
+
+	protected final TabBarButtonCss css;
+	protected Element icon;
+	protected Element text;
 
 	/**
 	 * <p>
@@ -40,10 +75,11 @@ public class TabBarButtonBase extends ButtonBase {
 	 * </p>
 	 * 
 	 * @param css a
-	 *            {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonBaseCss}
+	 *            {@link com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss}
 	 *            object.
+	 * @param imageResource
 	 */
-	public TabBarButtonBase(TabBarButtonBaseCss css) {
+	public TabBarButtonBase(TabBarButtonCss css, ImageResource imageResource) {
 		super(css);
 		this.css = css;
 		addStyleName(css.button());
@@ -55,6 +91,8 @@ public class TabBarButtonBase extends ButtonBase {
 		text = DOM.createDiv();
 		text.addClassName(css.text());
 		getElement().appendChild(text);
+
+		tabBarButtonStylerHandler.applyImage(icon, imageResource);
 	}
 
 	/**
