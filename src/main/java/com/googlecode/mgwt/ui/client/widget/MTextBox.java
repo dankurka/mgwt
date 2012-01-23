@@ -23,7 +23,7 @@ import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
 
 /**
  * A simple text box
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -39,7 +39,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * Construct a text box with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MTextBox(InputCss css) {
@@ -50,7 +50,7 @@ public class MTextBox extends MTextBoxBase {
 	/**
 	 * Construct a text box with a given css and a {@link TextBox} to delegate
 	 * to
-	 *
+	 * 
 	 * @param css the css to use
 	 * @param textBox the text box to use
 	 */
@@ -61,7 +61,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * get the number of characters for this input element
-	 *
+	 * 
 	 * @return a int.
 	 */
 	public int getMaxLength() {
@@ -70,7 +70,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * get the number of visible characters
-	 *
+	 * 
 	 * @return a int.
 	 */
 	public int getVisibleLength() {
@@ -79,7 +79,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * set the maximum number of characters
-	 *
+	 * 
 	 * @param length the maximum number of characters
 	 */
 	public void setMaxLength(int length) {
@@ -88,7 +88,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * set the number of visible characters
-	 *
+	 * 
 	 * @param length the number of visible characters
 	 */
 	public void setVisibleLength(int length) {
@@ -97,6 +97,11 @@ public class MTextBox extends MTextBoxBase {
 
 	private InputElement getInputElement() {
 		return box.getElement().cast();
+	}
+
+	public void setFocus(boolean b) {
+		box.setFocus(b);
+
 	}
 
 }
