@@ -84,16 +84,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("css/util.css")
 	TextResource utilTextResource();
 
-	/**
-	 * <p>
-	 * getProgressIndicatorCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss}
-	 *         object.
-	 */
-	@Source("css/progressindicator.css")
+	@Source({ "css/progressindicator.css", "css/iphone/progressindicator.css" })
 	ProgressIndicatorCss getProgressIndicatorCss();
 
 	@Source({ "css/header.css", "css/iphone/header.css" })

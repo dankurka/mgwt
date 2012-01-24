@@ -1,0 +1,4 @@
+@url spinnerWhite spinnerWhiteImage;
+.mgwt-ProgressIndicator {
+	background-image: spinnerWhite;
+}

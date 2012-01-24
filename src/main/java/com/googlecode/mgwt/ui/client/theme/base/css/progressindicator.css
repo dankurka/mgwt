@@ -1,151 +1,123 @@
-
-
 @if mgwt.css pretty {
-	@external mgwt-ProgressIndicator;
-	
+	@external mgwt-ProgressIndicator;	
 }
 
 
 .mgwt-ProgressIndicator {
 	width: 50px;
-	height: 50px;
-	
-	
+	height: 50px;	
 }
 
-
-
-
-
-@if mgwt.os android android_tablet blackberry {
-	@url spinnerWhite spinnerWhiteImage;
-	.mgwt-ProgressIndicator {
-		background-image: spinnerWhite;
-	}
-	
-	
-	
-	
-} @else {
-	@url spinner spinnerImage;
-	.mgwt-ProgressIndicator {
-		background-image: spinner;
-	}	
-}
 
 @if user.agent safari {
 	
 	.mgwt-ProgressIndicator {
-	
-	\-webkit-animation-duration: 1s;
-    \-webkit-animation-iteration-count: infinite;
-    \-webkit-animation-timing-function: linear;
-    \-webkit-animation-name: progressIndicatorAnimation;
-	
-}
-	
-
-@-webkit-keyframes progressIndicatorAnimation {
-
-    0% { -webkit-transform: rotate(0deg); }
-    8.2% { -webkit-transform: rotate(0deg); }
-    
-    8.3% { -webkit-transform: rotate(30deg); }
-    16.5% { -webkit-transform: rotate(30deg); }
-    
-    16.6% { -webkit-transform: rotate(60deg); }
-    24.9% { -webkit-transform: rotate(60deg); }
-    
-    25% { -webkit-transform: rotate(90deg); }
-    33.2% { -webkit-transform: rotate(90deg); }
-    
-    33.3% { -webkit-transform: rotate(120deg); }
-    41.5% { -webkit-transform: rotate(120deg); }
-    
-    41.6% { -webkit-transform: rotate(150deg); }
-    49.9% { -webkit-transform: rotate(150deg); }
-    
-    50% { -webkit-transform: rotate(180deg); }
-    58.2% { -webkit-transform: rotate(180deg); }
-    
-    58.3% { -webkit-transform: rotate(210deg); }
-    66.5% { -webkit-transform: rotate(210deg); }
-    
-    66.6% { -webkit-transform: rotate(240deg); }
-    74.9% { -webkit-transform: rotate(240deg); }
-    
-    75% { -webkit-transform: rotate(270deg); }
-    83.2% { -webkit-transform: rotate(270deg); }
-    
-    83.3% { -webkit-transform: rotate(300deg); }
-    91.5% { -webkit-transform: rotate(300deg); }
-    
-    91.6% { -webkit-transform: rotate(330deg); }
-    99.90% { -webkit-transform: rotate(330deg); }
-    
-    99.91% { -webkit-transform: rotate(360deg); }
-    100% { -webkit-transform: rotate(360deg); }
-
-    
-
+		\-webkit-animation-duration: 1s;
+	    \-webkit-animation-iteration-count: infinite;
+	    \-webkit-animation-timing-function: linear;
+	    \-webkit-animation-name: progressIndicatorAnimation;	
 	}
+	
+
+	@-webkit-keyframes progressIndicatorAnimation {
+	
+		    0% { -webkit-transform: rotate(0deg); }
+		    8.2% { -webkit-transform: rotate(0deg); }
+		    
+		    8.3% { -webkit-transform: rotate(30deg); }
+		    16.5% { -webkit-transform: rotate(30deg); }
+		    
+		    16.6% { -webkit-transform: rotate(60deg); }
+		    24.9% { -webkit-transform: rotate(60deg); }
+		    
+		    25% { -webkit-transform: rotate(90deg); }
+		    33.2% { -webkit-transform: rotate(90deg); }
+		    
+		    33.3% { -webkit-transform: rotate(120deg); }
+		    41.5% { -webkit-transform: rotate(120deg); }
+		    
+		    41.6% { -webkit-transform: rotate(150deg); }
+		    49.9% { -webkit-transform: rotate(150deg); }
+		    
+		    50% { -webkit-transform: rotate(180deg); }
+		    58.2% { -webkit-transform: rotate(180deg); }
+		    
+		    58.3% { -webkit-transform: rotate(210deg); }
+		    66.5% { -webkit-transform: rotate(210deg); }
+		    
+		    66.6% { -webkit-transform: rotate(240deg); }
+		    74.9% { -webkit-transform: rotate(240deg); }
+		    
+		    75% { -webkit-transform: rotate(270deg); }
+		    83.2% { -webkit-transform: rotate(270deg); }
+		    
+		    83.3% { -webkit-transform: rotate(300deg); }
+		    91.5% { -webkit-transform: rotate(300deg); }
+		    
+		    91.6% { -webkit-transform: rotate(330deg); }
+		    99.90% { -webkit-transform: rotate(330deg); }
+		    
+		    99.91% { -webkit-transform: rotate(360deg); }
+		    100% { -webkit-transform: rotate(360deg); }
+		
+	    
+	
+		}
 }
 
 @if user.agent gecko1_8 {
 
 		.mgwt-ProgressIndicator {
-	
-	\-moz-animation-duration: 1s;
-    \-moz-animation-iteration-count: infinite;
-    \-moz-animation-timing-function: linear;
-    \-moz-animation-name: progressIndicatorAnimation;
-	
-}
+			\-moz-animation-duration: 1s;
+		    \-moz-animation-iteration-count: infinite;
+		    \-moz-animation-timing-function: linear;
+		    \-moz-animation-name: progressIndicatorAnimation;
+		}
 	
 	
-	@-moz-keyframes progressIndicatorAnimation {
-
-    0% { -moz-transform: rotate(0deg); }
-    8.2% { -moz-transform: rotate(0deg); }
-    
-    8.3% { -moz-transform: rotate(30deg); }
-    16.5% { -moz-transform: rotate(30deg); }
-    
-    16.6% { -moz-transform: rotate(60deg); }
-    24.9% { -moz-transform: rotate(60deg); }
-    
-    25% { -moz-transform: rotate(90deg); }
-    33.2% { -moz-transform: rotate(90deg); }
-    
-    33.3% { -moz-transform: rotate(120deg); }
-    41.5% { -moz-transform: rotate(120deg); }
-    
-    41.6% { -moz-transform: rotate(150deg); }
-    49.9% { -moz-transform: rotate(150deg); }
-    
-    50% { -moz-transform: rotate(180deg); }
-    58.2% { -moz-transform: rotate(180deg); }
-    
-    58.3% { -moz-transform: rotate(210deg); }
-    66.5% { -moz-transform: rotate(210deg); }
-    
-    66.6% { -moz-transform: rotate(240deg); }
-    74.9% { -moz-transform: rotate(240deg); }
-    
-    75% { -moz-transform: rotate(270deg); }
-    83.2% { -moz-transform: rotate(270deg); }
-    
-    83.3% { -moz-transform: rotate(300deg); }
-    91.5% { -moz-transform: rotate(300deg); }
-    
-    91.6% { -moz-transform: rotate(330deg); }
-    99.90% { -moz-transform: rotate(330deg); }
-    
-    99.91% { -moz-transform: rotate(360deg); }
-    100% { -moz-transform: rotate(360deg); }
-
-    
-
-	}
+		@-moz-keyframes progressIndicatorAnimation {
+	
+		    0% { -moz-transform: rotate(0deg); }
+		    8.2% { -moz-transform: rotate(0deg); }
+		    
+		    8.3% { -moz-transform: rotate(30deg); }
+		    16.5% { -moz-transform: rotate(30deg); }
+		    
+		    16.6% { -moz-transform: rotate(60deg); }
+		    24.9% { -moz-transform: rotate(60deg); }
+		    
+		    25% { -moz-transform: rotate(90deg); }
+		    33.2% { -moz-transform: rotate(90deg); }
+		    
+		    33.3% { -moz-transform: rotate(120deg); }
+		    41.5% { -moz-transform: rotate(120deg); }
+		    
+		    41.6% { -moz-transform: rotate(150deg); }
+		    49.9% { -moz-transform: rotate(150deg); }
+		    
+		    50% { -moz-transform: rotate(180deg); }
+		    58.2% { -moz-transform: rotate(180deg); }
+		    
+		    58.3% { -moz-transform: rotate(210deg); }
+		    66.5% { -moz-transform: rotate(210deg); }
+		    
+		    66.6% { -moz-transform: rotate(240deg); }
+		    74.9% { -moz-transform: rotate(240deg); }
+		    
+		    75% { -moz-transform: rotate(270deg); }
+		    83.2% { -moz-transform: rotate(270deg); }
+		    
+		    83.3% { -moz-transform: rotate(300deg); }
+		    91.5% { -moz-transform: rotate(300deg); }
+		    
+		    91.6% { -moz-transform: rotate(330deg); }
+		    99.90% { -moz-transform: rotate(330deg); }
+		    
+		    99.91% { -moz-transform: rotate(360deg); }
+		    100% { -moz-transform: rotate(360deg); }
+		
+	    
+	
+		}
 }
 
