@@ -114,6 +114,7 @@
 		background-color: transparent;
 		background-image: checkImage;
 		opacity: 0.2;
+		
 	}
 	
 	.mgwt-RadioButton>input:CHECKED {
@@ -127,6 +128,7 @@
 	@if user.agent safari {
 		.mgwt-RadioButton>input {
 			\-webkit-appearance: none;
+			\-webkit-tap-highlight-color:  rgba(0, 0, 0, 0);
 		}
 		
 		.mgwt-RadioButton>input:CHECKED {
