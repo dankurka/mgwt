@@ -113,15 +113,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
-	/**
-	 * <p>
-	 * getSearchBoxCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss}
-	 *         object.
-	 */
-	@Source("css/searchbox.css")
+	@Source({ "css/searchbox.css", "css/iphone/searchbox.css" })
 	MSearchBoxCss getSearchBoxCss();
 
 	/**

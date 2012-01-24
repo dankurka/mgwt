@@ -1,0 +1,17 @@
+.mgwt-SearchBox {
+	background-size: 100% 44px;
+	background-repeat: repeat;
+	background-position: 0px 0px;
+}
+
+@if user.agent safari {
+	.mgwt-SearchBox {
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1f3f4), color-stop(3%, #e0e4e7), color-stop(50%, #c7cfd4), color-stop(51%, #bec7cd), color-stop(97%, #b4bec6), to(#8999a5) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-SearchBox {
+		background-image: literal('-moz-linear-gradient(top, #f1f3f4, #e0e4e7 3%, #c7cfd4 50%, #bec7cd 51%, #b4bec6 97%, #8999a5)');
+	}
+}

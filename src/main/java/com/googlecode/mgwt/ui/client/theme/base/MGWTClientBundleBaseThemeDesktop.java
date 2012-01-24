@@ -106,15 +106,7 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
-	/**
-	 * <p>
-	 * getSearchBoxCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss}
-	 *         object.
-	 */
-	@Source("css/searchbox.css")
+	@Source({ "css/searchbox.css", "css/ipad/searchbox.css" })
 	MSearchBoxCss getSearchBoxCss();
 
 	@Source("resources/search/glass.png")

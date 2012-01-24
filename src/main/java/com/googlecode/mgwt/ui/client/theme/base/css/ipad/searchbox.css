@@ -1,0 +1,18 @@
+.mgwt-SearchBox {
+	background-color: #B0B4C0;
+	background-size: 100% 44px;
+	background-repeat: repeat;
+	background-position: 0px 0px;
+}
+
+@if user.agent safari {
+	.mgwt-SearchBox {
+		background-image: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-SearchBox {
+		background-image: literal('-moz-linear-gradient(bottom, #A8ACB9, #eee)');
+	}
+}

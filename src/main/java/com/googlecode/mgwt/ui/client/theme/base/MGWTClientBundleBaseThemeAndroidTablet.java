@@ -106,24 +106,9 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
-	/**
-	 * <p>
-	 * getSearchBoxCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss}
-	 *         object.
-	 */
-	@Source("css/searchbox.css")
+	@Source({ "css/searchbox.css", "css/android/searchbox.css" })
 	MSearchBoxCss getSearchBoxCss();
 
-	/**
-	 * <p>
-	 * searchSearchImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/search/glass.png")
 	DataResource searchSearchImage();
 

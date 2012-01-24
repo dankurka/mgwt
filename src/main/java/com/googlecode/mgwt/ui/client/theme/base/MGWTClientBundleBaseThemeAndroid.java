@@ -106,15 +106,7 @@ public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClie
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
-	/**
-	 * <p>
-	 * getSearchBoxCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss}
-	 *         object.
-	 */
-	@Source("css/searchbox.css")
+	@Source({ "css/searchbox.css", "css/android/searchbox.css" })
 	MSearchBoxCss getSearchBoxCss();
 
 	/**
@@ -613,15 +605,6 @@ public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClie
 	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/rewind_button.css" })
 	public RewindButtonCss getRewindButtonCss();
 
-	/**
-	 * <p>
-	 * getSearchButtonCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.SearchButtonCss}
-	 *         object.
-	 */
 	@Source({ "buttonbar/css/buttonbarbase.css", "buttonbar/css/search_button.css" })
 	public SearchButtonCss getSearchButtonCss();
 
