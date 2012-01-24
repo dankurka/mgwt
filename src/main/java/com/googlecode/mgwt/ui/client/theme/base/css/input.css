@@ -21,6 +21,7 @@
     \-moz-appearance: none;
     \-webkit-user-select: text;
     \-moz-user-select: text;
+    \-webkit-tap-highlight-color:  rgba(0, 0, 0, 0);
 }
 
 
