@@ -90,15 +90,7 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	@Source({ "css/header.css", "css/blackberry/header.css" })
 	HeaderCss getHeaderCss();
 
-	/**
-	 * <p>
-	 * getSliderCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.SliderCss}
-	 *         object.
-	 */
-	@Source("css/slider.css")
+	@Source({ "css/slider.css", "css/blackberry/slider.css" })
 	SliderCss getSliderCss();
 
 	@Source({ "css/list.css", "css/blackberry/list.css" })

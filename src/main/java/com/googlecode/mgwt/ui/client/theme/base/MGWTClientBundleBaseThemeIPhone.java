@@ -90,15 +90,7 @@ public interface MGWTClientBundleBaseThemeIPhone extends ClientBundle, MGWTClien
 	@Source({ "css/header.css", "css/iphone/header.css" })
 	HeaderCss getHeaderCss();
 
-	/**
-	 * <p>
-	 * getSliderCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.SliderCss}
-	 *         object.
-	 */
-	@Source("css/slider.css")
+	@Source({ "css/slider.css", "css/iphone/slider.css" })
 	SliderCss getSliderCss();
 
 	@Source({ "css/list.css", "css/iphone/list.css" })
