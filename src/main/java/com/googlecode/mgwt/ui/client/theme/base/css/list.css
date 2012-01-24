@@ -1,9 +1,6 @@
 @url arrowImage listArrow;
-
-
 @if mgwt.css pretty {
 	@external mgwt-List, selected, group, mgwt-List-Header;
-	
 }
 
 .mgwt-List {
@@ -11,7 +8,6 @@
 	list-style: none;
 	border-collapse: collapse;
 }
-
 
 .mgwt-List li {
 	position: relative;
@@ -22,213 +18,31 @@
 	padding: 12px;
 }
 
-@if mgwt.os iphone ipad desktop retina {
-	.mgwt-List li {
-		background-color: white;
-		border: 1px solid rgb(171, 173, 176);
-		border-bottom: none;
-		
-	}
-}
-
-@if mgwt.os android android_tablet {
-	.mgwt-List li {
-		color: white;
-		border-bottom: 1px solid rgb(50, 50, 50); 
-	}
-}
-
-@if mgwt.os blackberry {
-	.mgwt-List li {
-		color: white; 
-	}
-}
-
 .mgwt-List.round {
 	padding: 10px;
 }
 
-
-
-@if mgwt.os iphone ipad desktop retina {
-	
-
-	.mgwt-List.round li{
-		
-	}
-	
-	.mgwt-List.round li.first {
-		border-top-left-radius: 8px 8px;
-		border-top-right-radius: 8px 8px;
-	}
-	
-	.mgwt-List.round li.last {
-		border-bottom-left-radius: 8px 8px;
-		border-bottom-right-radius: 8px 8px;
-		border-bottom: 1px solid rgb(171, 173, 176);;
-		
-	}
-
-	.mgwt-List .selected {
-		
-	}
-	
-	.mgwt-List .group {
-		background-image: arrowImage;
-		background-repeat: no-repeat;
-		background-position: 100% 50%;
-	}
-	
-	.mgwt-List .group.selected {
-		font-weight: bold;
-		color: white;
-		background-repeat: no-repeat, repeat;
-		background-position: 100% 50%, 0 0;
-	}
-	
-	@if user.agent safari {
-		.mgwt-List .group.selected {
-			background-image: arrowImage, literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)), to(rgb(1, 95, 230)) )');
-		}
-	}
-	
-	@if user.agent gecko1_8 {
-		.mgwt-List .group.selected {
-			background-image: arrowImage, literal('-moz-linear-gradient(ltop, rgb(5, 140, 245), rgb(1, 95, 230))');
-		}
-	}
-	
-	.mgwt-List-Header {
-		color: black;
-		font-size: 18px;
-		font-weight: bold;
-		margin: 10px 20px 5px;
-		text-shadow: rgba(255, 255, 255, 0.19);
-	}
-}
-
-
-@if mgwt.os android android_tablet {
-	
-
-	.mgwt-List.round li{
-		
-	}
-	
-	.mgwt-List.round li.first {
-		
-	}
-	
-	.mgwt-List.round li.last {
-		
-		
-	}
-
-	.mgwt-List .selected {
-		
-	}
-	
-	.mgwt-List .group {
-		
-	}
-	
-	.mgwt-List .group.selected {
-		color: white;
-		background-repeat: no-repeat;
-		background-position: 0 49%;
-		background-size: 100% 95%;
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(11, 40, 94)), to(rgb(13, 41, 98)) )');
-	}
-	
-	@if user.agent safari {
-		.mgwt-List .group.selected {
-			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(11, 40, 94)), to(rgb(13, 41, 98)) )');
-		}
-	}
-	
-	@if user.agent gecko1_8 {
-		.mgwt-List .group.selected {
-			background-image: literal('-moz-linear-gradient(top, rgb(11, 40, 94), rgb(13, 41, 98))');
-		}
-	}
-	
-	.mgwt-List-Header {
-		color: rgb(82, 163, 196);
-		font-size: 18px;
-		font-weight: bold;
-		margin: 10px 20px 5px;
-		text-shadow: rgba(255, 255, 255, 0.19);
-	}
-}
-
-/**TODO blackberry still not styled*/
-@if mgwt.os blackberry {
-	
-
-	
-	.mgwt-List.round li.first {
-		
-	}
-	
-	.mgwt-List.round li.last {
-		
-		
-	}
-
-	.mgwt-List .selected {
-		
-	}
-	
-	.mgwt-List .group {
-		
-	}
-	
-	.mgwt-List .group.selected {
-		font-weight: bold;
-		color: white;
-		background-repeat: no-repeat;
-		background-position: 0 50%;
-		background-size: 100% 80%;
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(11, 40, 94)), to(rgb(13, 41, 98)) )');
-	}
-	
-	@if user.agent safari {
-		.mgwt-List .group.selected {
-			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(11, 40, 94)), to(rgb(13, 41, 98)) )');
-		}
-	}
-	
-	@if user.agent gecko1_8 {
-		.mgwt-List .group.selected {
-			background-image: literal('-moz-linear-gradient(top, rgb(11, 40, 94), rgb(13, 41, 98))');
-		}
-	}
-		
-	.mgwt-List-Header {
-		color: white;
-		font-size: 18px;
-		font-weight: bold;
-		margin: 10px 20px 5px;
-		text-shadow: rgba(255, 255, 255, 0.19);
-	}
-}
-
-
-
-
-
-
 /* other browsers */
-
 @if user.agent ie6 ie8 ie9 gecko opera {
-	.selected{}
-                        .first{}
-                         .last{}
-                         .mgwt-List{}
-                         .mgwt-List-Header{}
-                         .round{}
-                        .group{}
+	.selected {
+		
+	}
+	.first {
+		
+	}
+	.last {
+		
+	}
+	.mgwt-List {
+		
+	}
+	.mgwt-List-Header {
+		
+	}
+	.round {
+		
+	}
+	.group {
+		
+	}
 }
-
-
-

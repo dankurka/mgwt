@@ -110,15 +110,7 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	@Source("css/slider.css")
 	SliderCss getSliderCss();
 
-	/**
-	 * <p>
-	 * getListCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ListCss}
-	 *         object.
-	 */
-	@Source({ "css/list.css" })
+	@Source({ "css/list.css", "css/android/list.css" })
 	ListCss getListCss();
 
 	/**

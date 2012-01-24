@@ -118,15 +118,7 @@ public interface MGWTClientBundleBaseThemeIPad extends ClientBundle, MGWTClientB
 	@Source("css/slider.css")
 	SliderCss getSliderCss();
 
-	/**
-	 * <p>
-	 * getListCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ListCss}
-	 *         object.
-	 */
-	@Source({ "css/list.css" })
+	@Source({ "css/list.css", "css/ipad/list.css" })
 	ListCss getListCss();
 
 	/**
