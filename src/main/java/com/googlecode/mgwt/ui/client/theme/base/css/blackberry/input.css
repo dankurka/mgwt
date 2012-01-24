@@ -1,0 +1,36 @@
+.mgwt-TextBox .box:focus,.mgwt-PasswordTextBox .box:focus,.mgwt-TextArea .box:focus {
+	\-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	\-webkit-focus-ring-color: rgba(0, 0, 0, 0);
+}
+
+.mgwt-TextBox .box,.mgwt-PasswordTextBox .box,.mgwt-TextArea .box {
+	background-color: transparent;
+	color: white;
+}
+
+.mgwt-RadioButton>input {
+	\-webkit-appearance: none;
+	\-moz-appearance: none;
+	width: 32px;
+	height: 32px;
+	border: none;
+	background-color: transparent;
+	background-image: androidCheckNotChecked;
+}
+
+.mgwt-RadioButton>input:CHECKED {
+	\-webkit-appearance: none;
+	\-moz-appearance: none;
+	background-image: androidCheckChecked;
+	background-color: transparent;
+}
+
+.mgwt-ListBox,.mgwt-ListBox:focus {
+	\-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	\-webkit-focus-ring-color: rgba(0, 0, 0, 0);
+}
+
+.mgwt-ListBox {
+	background-color: transparent;
+	color: white;
+}

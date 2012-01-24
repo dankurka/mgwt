@@ -201,15 +201,7 @@ public interface MGWTClientBundleBaseThemeIPad extends ClientBundle, MGWTClientB
 	@Source("css/main.css")
 	MainCss getMainCss();
 
-	/**
-	 * <p>
-	 * getInputCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.InputCss}
-	 *         object.
-	 */
-	@Source("css/input.css")
+	@Source({ "css/input.css", "css/ipad/input.css" })
 	InputCss getInputCss();
 
 	/**

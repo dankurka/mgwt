@@ -201,15 +201,7 @@ public interface MGWTClientBundleBaseThemeIPhone extends ClientBundle, MGWTClien
 	@Source("css/main.css")
 	MainCss getMainCss();
 
-	/**
-	 * <p>
-	 * getInputCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.InputCss}
-	 *         object.
-	 */
-	@Source("css/input.css")
+	@Source({ "css/input.css", "css/iphone/input.css" })
 	InputCss getInputCss();
 
 	/**

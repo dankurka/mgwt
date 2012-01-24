@@ -201,15 +201,7 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source("css/main.css")
 	MainCss getMainCss();
 
-	/**
-	 * <p>
-	 * getInputCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.InputCss}
-	 *         object.
-	 */
-	@Source("css/input.css")
+	@Source({ "css/input.css", "css/ipad/input.css" })
 	InputCss getInputCss();
 
 	/**
