@@ -1,0 +1,24 @@
+body {
+	color: white;
+	background-attachment: fixed;
+}
+
+@if user.agent safari {
+	body {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#000000), to(rgb(46, 54, 60)))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	body {
+		background-image: literal('-moz-linear-gradient(top, #000000, rgb(46, 54, 60))');
+	}
+}
+
+input:FOCUS,button:FOCUS {
+	outline: none;
+}
+
+button {
+	outline: none;
+}

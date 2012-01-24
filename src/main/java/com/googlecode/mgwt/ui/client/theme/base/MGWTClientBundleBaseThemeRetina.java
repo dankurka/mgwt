@@ -123,7 +123,6 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 
 	/**
 	 * <p>
-	 * listArrow
 	 * </p>
 	 * 
 	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
@@ -189,15 +188,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("css/dialog.css")
 	DialogCss getDialogCss();
 
-	/**
-	 * <p>
-	 * getMainCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.MainCss}
-	 *         object.
-	 */
-	@Source("css/main.css")
+	@Source({ "css/main.css", "css/iphone/main.css" })
 	MainCss getMainCss();
 
 	@Source({ "css/input.css", "css/iphone/input.css" })

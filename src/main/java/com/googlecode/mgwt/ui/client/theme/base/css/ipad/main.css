@@ -1,0 +1,16 @@
+body {
+	background-color: #E0E1E5;
+}
+
+@if user.agent safari {
+	body {
+		\-webkit-perspective: 800;
+		\-webkit-transform-style: preserve-3d;
+	}
+}
+
+@if user.agent gecko1_8 {
+	body {
+		
+	}
+}

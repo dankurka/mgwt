@@ -182,14 +182,6 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source("css/dialog.css")
 	DialogCss getDialogCss();
 
-	/**
-	 * <p>
-	 * getMainCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.MainCss}
-	 *         object.
-	 */
 	@Source("css/main.css")
 	MainCss getMainCss();
 

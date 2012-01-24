@@ -181,15 +181,7 @@ public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClie
 	@Source("css/dialog.css")
 	DialogCss getDialogCss();
 
-	/**
-	 * <p>
-	 * getMainCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.MainCss}
-	 *         object.
-	 */
-	@Source("css/main.css")
+	@Source({ "css/main.css", "css/android/main.css" })
 	MainCss getMainCss();
 
 	@Source({ "css/input.css", "css/android/input.css" })
