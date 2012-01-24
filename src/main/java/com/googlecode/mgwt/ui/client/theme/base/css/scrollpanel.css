@@ -1,14 +1,10 @@
 @if mgwt.css pretty {
 	@external mgwt-ScrollPanel, container, mgwt-Scrollbar, horizontal, vertical, mgwt-Scrollbar-Bar;
-	
 }
-
-
 
 .mgwt-ScrollPanel {
 	overflow: hidden;
 	position: relative;
-	
 }
 
 @if user.agent safari {
@@ -25,11 +21,9 @@
 	}
 }
 
-
 .mgwt-ScrollPanel .container {
 	overflow: visible;
 }
-
 
 @if user.agent safari {
 	.mgwt-ScrollPanel .container {
@@ -46,9 +40,6 @@
 	}
 }
 
-
-
-
 .mgwt-Scrollbar {
 	position: absolute;
 	z-index: 10;
@@ -59,7 +50,6 @@
 
 @if user.agent safari {
 	.mgwt-Scrollbar {
-	
 		\-webkit-transition-duration: 300ms;
 		\-webkit-transition-delay: 0ms;
 		\-webkit-transition-property: opacity;
@@ -68,17 +58,13 @@
 
 @if user.agent gecko1_8 {
 	.mgwt-Scrollbar {
-		
 		\-moz-transition-duration: 300ms;
 		\-moz-transition-delay: 0ms;
 		\-moz-transition-property: opacity;
 	}
 }
 
-
 /*TODO build this for ff as well, workaround for position bug?*/
-
-
 .mgwt-Scrollbar.horizontal {
 	bottom: 2px;
 	left: 2px;
@@ -87,58 +73,11 @@
 }
 
 .mgwt-Scrollbar.vertical {
-	
 	top: 2px;
 	right: 2px;
 	bottom: 8px;
 	width: 5px;
 }
-@if mgwt.os desktop ipad iphone retina {
-	.mgwt-Scrollbar-Bar {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		\-webkit-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
-		pointer-events: none;
-		\-webkit-transition-duration: 0;
-		\-webkit-transition-delay: 0;
-		\-webkit-transition-property: literal('-webkit-transform');
-		z-index: 10;
-		background: rgba(0, 0, 0, 0.5);
-	}
-}
-
-@if mgwt.os android android_tablet {
-	.mgwt-Scrollbar-Bar {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		\-webkit-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
-		pointer-events: none;
-		\-webkit-transition-duration: 0;
-		\-webkit-transition-delay: 0;
-		\-webkit-transition-property: literal('-webkit-transform');
-		z-index: 10;
-		background: rgba(82, 163, 196, 0.7);
-	}
-}
-
-/** TODO */
-@if mgwt.os blackberry {
-	.mgwt-Scrollbar-Bar {
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		\-webkit-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
-		pointer-events: none;
-		\-webkit-transition-duration: 0;
-		\-webkit-transition-delay: 0;
-		\-webkit-transition-property: literal('-webkit-transform');
-		z-index: 10;
-		background: rgba(82, 163, 196, 0.7);
-	}
-}
-
 
 .mgwt-Scrollbar-Bar.vertical {
 	\-webkit-border-radius: 2px 3px;

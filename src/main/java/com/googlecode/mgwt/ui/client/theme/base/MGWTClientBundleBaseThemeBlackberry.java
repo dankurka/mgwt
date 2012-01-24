@@ -140,15 +140,7 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	@Source({ "css/buttons.css", "css/blackberry/buttons.css" })
 	ButtonCss getButtonCss();
 
-	/**
-	 * <p>
-	 * getScrollPanelCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
-	 *         object.
-	 */
-	@Source("css/scrollpanel.css")
+	@Source({ "css/scrollpanel.css", "css/blackberry/scrollpanel.css" })
 	ScrollPanelCss getScrollPanelCss();
 
 	@Source({ "css/buttonbar.css", "css/blackberry/buttonbar.css" })

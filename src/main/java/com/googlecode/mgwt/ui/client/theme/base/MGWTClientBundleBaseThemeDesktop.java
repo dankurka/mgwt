@@ -132,15 +132,7 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source({ "css/buttons.css", "css/ipad/buttons.css" })
 	ButtonCss getButtonCss();
 
-	/**
-	 * <p>
-	 * getScrollPanelCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
-	 *         object.
-	 */
-	@Source("css/scrollpanel.css")
+	@Source({ "css/scrollpanel.css", "css/ipad/scrollpanel.css" })
 	ScrollPanelCss getScrollPanelCss();
 
 	@Source({ "css/buttonbar.css", "css/ipad/buttonbar.css" })

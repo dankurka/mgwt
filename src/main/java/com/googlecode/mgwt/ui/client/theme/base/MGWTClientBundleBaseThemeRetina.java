@@ -146,15 +146,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source({ "css/buttons.css", "css/iphone/buttons.css" })
 	ButtonCss getButtonCss();
 
-	/**
-	 * <p>
-	 * getScrollPanelCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
-	 *         object.
-	 */
-	@Source("css/scrollpanel.css")
+	@Source({ "css/scrollpanel.css", "css/iphone/scrollpanel.css" })
 	ScrollPanelCss getScrollPanelCss();
 
 	@Source({ "css/buttonbar.css", "css/iphone/buttonbar.css" })
