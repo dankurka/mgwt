@@ -1,78 +1,24 @@
-
-
 @if mgwt.css pretty {
 	@external mgwt-TabBar;
 }
 
-
-.mgwt-TabBar{
-	
+.mgwt-TabBar {
 	height: 48px;
-	
-	
 	display: \-webkit-box;
 	\-webkit-box-orient: horizontal;
-	
 	overflow: hidden;
 }
 
-
 @if user.agent safari {
-	.mgwt-TabBar{
+	.mgwt-TabBar {
 		display: \-webkit-box;
 		\-webkit-box-orient: horizontal;
 	}
 }
-	
+
 @if user.agent gecko1_8 {
-	.mgwt-TabBar{
+	.mgwt-TabBar {
 		display: \-moz-box;
 		\-moz-box-orient: horizontal;
 	}
 }
-
-
-
-@if mgwt.os ipad iphone desktop retina {
-
-	.mgwt-TabBar{
-		height: 48px;
-		border-top: 1px solid black;
-	}
-	
-	@if user.agent safari {
-		.mgwt-TabBar{
-			background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(46, 46, 46)), color-stop(50%,rgb(22, 22, 22)), color-stop(51%, rgb(0,0,0)), to(rgb(0,0,0)))'); 
-		}
-	}
-	
-	@if user.agent gecko1_8 {
-		.mgwt-TabBar{
-			background-image: literal('-moz-linear-gradient(top, rgb(46, 46, 46), rgb(22, 22, 22) 50%, rgb(0,0,0) 51%, rgb(0,0,0))'); 
-		}
-	}
-
-}
-
-
-
-@if mgwt.os android android_tablet {
-
-	.mgwt-TabBar{
-		height: 40px;
-		background-color: inherit;
-		border-bottom: 2px solid rgb(82, 163, 196);
-	}
-	
-	
-
-}
-
-@if mgwt.os blackberry {
-
-	.mgwt-TabBar{
-		height: 40px;
-		border-bottom: 2px solid rgb(0, 92, 176);
-	}
-}
-

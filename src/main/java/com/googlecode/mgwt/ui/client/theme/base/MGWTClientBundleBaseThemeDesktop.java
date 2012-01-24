@@ -247,16 +247,7 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source("resources/toolbar/trash.png")
 	DataResource toolbarTrashImage();
 
-	// tabbar
-	/**
-	 * <p>
-	 * getTabBarCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.TabBarCss}
-	 *         object.
-	 */
-	@Source("css/tabbar.css")
+	@Source({ "css/tabbar.css", "css/ipad/tabbar.css" })
 	TabBarCss getTabBarCss();
 
 	@Source({ "tabbar/css/tabbar_button.css" })

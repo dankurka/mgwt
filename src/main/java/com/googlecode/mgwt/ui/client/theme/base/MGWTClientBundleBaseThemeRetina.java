@@ -263,16 +263,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("resources/toolbar/trash_x2.png")
 	DataResource toolbarTrashImage();
 
-	// tabbar
-	/**
-	 * <p>
-	 * getTabBarCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.TabBarCss}
-	 *         object.
-	 */
-	@Source("css/tabbar.css")
+	@Source({ "css/tabbar.css", "css/iphone/tabbar.css" })
 	TabBarCss getTabBarCss();
 
 	@Source({ "tabbar/css/tabbar_button.css" })
