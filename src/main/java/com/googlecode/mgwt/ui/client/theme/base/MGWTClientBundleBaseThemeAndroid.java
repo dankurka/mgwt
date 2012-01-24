@@ -46,6 +46,12 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
+/**
+ * The android client bundle
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClientBundle {
 
 	@Source({ "css/progressbar.css", "css/android/progressbar.css" })
@@ -53,26 +59,11 @@ public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClie
 
 	// This is a very nasty workaround because GWT CssResource does not support
 	// @media correctly!
-	/**
-	 * <p>
-	 * getUtilCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.UtilCss}
-	 *         object.
-	 */
 	@Source("css/util_fake.css")
 	UtilCss getUtilCss();
 
 	// This is a very nasty workaround because GWT CssResource does not support
 	// @media correctly!
-	/**
-	 * <p>
-	 * utilTextResource
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.TextResource} object.
-	 */
 	@Source("css/util.css")
 	TextResource utilTextResource();
 
