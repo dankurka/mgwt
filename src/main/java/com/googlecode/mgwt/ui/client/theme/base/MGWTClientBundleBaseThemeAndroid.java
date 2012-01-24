@@ -46,15 +46,7 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
-/**
- * <p>
- * MGWTClientBundle interface.
- * </p>
- * 
- * @author kurt
- * @version $Id: $
- */
-public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClientBundle {
+public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClientBundle {
 
 	/**
 	 * <p>
@@ -185,7 +177,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("css/checkbox.css")
 	CheckBoxCss getCheckBoxCss();
 
-	@Source({ "css/buttons.css", "css/iphone/buttons.css" })
+	@Source({ "css/buttons.css", "css/android/buttons.css" })
 	ButtonCss getButtonCss();
 
 	/**
@@ -199,7 +191,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("css/scrollpanel.css")
 	ScrollPanelCss getScrollPanelCss();
 
-	@Source({ "css/buttonbar.css", "css/iphone/buttonbar.css" })
+	@Source({ "css/buttonbar.css", "css/android/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
 	/**

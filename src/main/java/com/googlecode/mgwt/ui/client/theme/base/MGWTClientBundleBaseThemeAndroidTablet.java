@@ -46,15 +46,7 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
-/**
- * <p>
- * MGWTClientBundle interface.
- * </p>
- * 
- * @author kurt
- * @version $Id: $
- */
-public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTClientBundle {
+public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MGWTClientBundle {
 
 	/**
 	 * <p>
@@ -158,6 +150,13 @@ public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTCl
 	@Source("css/searchbox.css")
 	MSearchBoxCss getSearchBoxCss();
 
+	/**
+	 * <p>
+	 * searchSearchImage
+	 * </p>
+	 * 
+	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
+	 */
 	@Source("resources/search/glass.png")
 	DataResource searchSearchImage();
 
@@ -178,15 +177,7 @@ public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTCl
 	@Source("css/checkbox.css")
 	CheckBoxCss getCheckBoxCss();
 
-	/**
-	 * <p>
-	 * getButtonCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ButtonCss}
-	 *         object.
-	 */
-	@Source({ "css/buttons.css" })
+	@Source({ "css/buttons.css", "css/android/buttons.css" })
 	ButtonCss getButtonCss();
 
 	/**
@@ -200,15 +191,7 @@ public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTCl
 	@Source("css/scrollpanel.css")
 	ScrollPanelCss getScrollPanelCss();
 
-	/**
-	 * <p>
-	 * getButtonBarCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss}
-	 *         object.
-	 */
-	@Source({ "css/buttonbar.css" })
+	@Source({ "css/buttonbar.css", "css/android/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
 	/**
@@ -288,79 +271,79 @@ public interface MGWTClientBundleBaseThemeNonRetina extends ClientBundle, MGWTCl
 	@Source("css/pulltorefresh.css")
 	PullToRefreshCss getPullToRefreshCss();
 
-	@Source("resources/toolbar/action.png")
+	@Source("resources/toolbar/action_x2.png")
 	DataResource toolbarActionImage();
 
-	@Source("resources/toolbar/arrowdown.png")
+	@Source("resources/toolbar/arrowdown_x2.png")
 	DataResource toolbarArrowDownImage();
 
-	@Source("resources/toolbar/arrowleft.png")
+	@Source("resources/toolbar/arrowleft_x2.png")
 	DataResource toolbarArrowLeftImage();
 
-	@Source("resources/toolbar/arrowright.png")
+	@Source("resources/toolbar/arrowright_x2.png")
 	DataResource toolbarArrowRightImage();
 
-	@Source("resources/toolbar/arrowup.png")
+	@Source("resources/toolbar/arrowup_x2.png")
 	DataResource toolbarArrowUpImage();
 
-	@Source("resources/toolbar/bookmarks.png")
+	@Source("resources/toolbar/bookmarks_x2.png")
 	DataResource toolbarBookmarksImage();
 
-	@Source("resources/toolbar/camera.png")
+	@Source("resources/toolbar/camera_x2.png")
 	DataResource toolbarCameraImage();
 
-	@Source("resources/toolbar/compose.png")
+	@Source("resources/toolbar/compose_x2.png")
 	DataResource toolbarComposeImage();
 
-	@Source("resources/toolbar/fastforward.png")
+	@Source("resources/toolbar/fastforward_x2.png")
 	DataResource toolbarFastForwardImage();
 
-	@Source("resources/toolbar/info.png")
+	@Source("resources/toolbar/info_x2.png")
 	DataResource toolbarInfoImage();
 
-	@Source("resources/toolbar/locate.png")
+	@Source("resources/toolbar/locate_x2.png")
 	DataResource toolbarLocateImage();
 
-	@Source("resources/toolbar/new.png")
+	@Source("resources/toolbar/new_x2.png")
 	DataResource toolbarNewImage();
 
-	@Source("resources/toolbar/nextslide.png")
+	@Source("resources/toolbar/nextslide_x2.png")
 	DataResource toolbarNextSlideImage();
 
-	@Source("resources/toolbar/organize.png")
+	@Source("resources/toolbar/organize_x2.png")
 	DataResource toolbarOrganizeImage();
 
-	@Source("resources/toolbar/pause.png")
+	@Source("resources/toolbar/pause_x2.png")
 	DataResource toolbarPauseImage();
 
-	@Source("resources/toolbar/play.png")
+	@Source("resources/toolbar/play_x2.png")
 	DataResource toolbarPlayImage();
 
-	@Source("resources/toolbar/plus.png")
+	@Source("resources/toolbar/plus_x2.png")
 	DataResource toolbarPlusImage();
 
 	@Source("resources/toolbar/pressed.png")
 	DataResource toolbarPressImage();
 
-	@Source("resources/toolbar/previousslide.png")
+	@Source("resources/toolbar/previousslide_x2.png")
 	DataResource toolbarPreviousSlideImage();
 
-	@Source("resources/toolbar/refresh.png")
+	@Source("resources/toolbar/refresh_x2.png")
 	DataResource toolbarRefreshImage();
 
-	@Source("resources/toolbar/reply.png")
+	@Source("resources/toolbar/reply_x2.png")
 	DataResource toolbarReplyImage();
 
-	@Source("resources/toolbar/rewind.png")
+	@Source("resources/toolbar/rewind_x2.png")
 	DataResource toolbarRewindImage();
 
-	@Source("resources/toolbar/search.png")
+	@Source("resources/toolbar/search_x2.png")
 	DataResource toolbarSearchImage();
 
-	@Source("resources/toolbar/stop.png")
+	@Source("resources/toolbar/stop_x2.png")
 	DataResource toolbarStopImage();
 
-	@Source("resources/toolbar/trash.png")
+	@Source("resources/toolbar/trash_x2.png")
 	DataResource toolbarTrashImage();
 
 	// tabbar
