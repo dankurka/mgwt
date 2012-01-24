@@ -209,16 +209,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source("css/layout.css")
 	LayoutCss getLayoutCss();
 
-	/**
-	 * <p>
-	 * getPullToRefreshCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss}
-	 *         object.
-	 */
-	@Source("css/pulltorefresh.css")
+	@Source({ "css/pulltorefresh.css", "css/iphone/pulltorefresh.css" })
 	PullToRefreshCss getPullToRefreshCss();
 
 	@Source("resources/toolbar/action_x2.png")

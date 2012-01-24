@@ -1,0 +1,13 @@
+@if user.agent safari {
+	.pullToRefresh .arrow {
+		\-webkit-transform-origin: 12px 9px;
+		\-webkit-transform: rotate(90deg) translateZ(0);
+	}
+}
+
+@if user.agent gecko1_8 {
+	.pullToRefresh .arrow {
+		\-moz-transform-origin: 12px 9px;
+		\-moz-transform: rotate(90deg);
+	}
+}

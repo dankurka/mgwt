@@ -1,13 +1,10 @@
 @url nextSlideImage toolbarNextSlideImage;
 @url error errorImage;
-
 @if mgwt.css pretty {
 	@external pullToRefresh, arrow, mgwt-arrowUp, arrowDown;
 }
 
-
-
-.pullToRefresh{
+.pullToRefresh {
 	position: relative;
 	bottom: 0px;
 	left: 0px;
@@ -15,66 +12,25 @@
 	height: 70px;
 }
 
-
 .pullToRefresh .arrow {
 	position: absolute;
-	
 	margin-left: 50px;
 	top: 20px;
 	width: 40px;
 	height: 40px;
 	background-image: nextSlideImage;
 	background-repeat: no-repeat;
-	
-	
 }
 
-@if user.agent safari {
-	.pullToRefresh .arrow {
-		\-webkit-transform-origin: 12px 9px;
-	}
-	
-	@if mgwt.os iphone desktop ipad retina { 
-		.pullToRefresh .arrow {
-			\-webkit-transform: rotate(90deg) translateZ(0);
-		}
-	} @else {
-		.pullToRefresh .arrow {
-		\-webkit-transform: rotate(90deg);
-		}
-	}
-	
-	@if mgwt.os retina {
-		.pullToRefresh .arrow {
-			background-size: 23px 18px;
-		}
-	}
-	
-}
-
-@if user.agent gecko1_8 {
-	.pullToRefresh .arrow {
-		\-moz-transform-origin: 12px 9px;
-		\-moz-transform: rotate(90deg);
-	}
-}
-
-
-
-
-
-.pullToRefresh .spinner{
+.pullToRefresh .spinner {
 	position: absolute;
 	margin-left: 50px;
 	top: 10px;
 	width: 50px;
 	height: 50px;
-
-	
 }
 
-
-.pullToRefresh .error{
+.pullToRefresh .error {
 	position: absolute;
 	margin-left: 50px;
 	top: 15px;
@@ -82,24 +38,12 @@
 	height: 50px;
 	background-image: error;
 	background-repeat: no-repeat;
-	
 }
 
-
-
-
-
-.pullToRefresh .text{
+.pullToRefresh .text {
 	position: absolute;
 	top: 20px;
 	left: 110px;
 	display: inline-block;
 	font-size: 20px;
 }
-
-
-
-
-
-
-

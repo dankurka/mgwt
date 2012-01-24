@@ -193,16 +193,7 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source("css/layout.css")
 	LayoutCss getLayoutCss();
 
-	/**
-	 * <p>
-	 * getPullToRefreshCss
-	 * </p>
-	 * 
-	 * @return a
-	 *         {@link com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss}
-	 *         object.
-	 */
-	@Source("css/pulltorefresh.css")
+	@Source({ "css/pulltorefresh.css", "css/ipad/pulltorefresh.css" })
 	PullToRefreshCss getPullToRefreshCss();
 
 	@Source("resources/toolbar/action.png")
