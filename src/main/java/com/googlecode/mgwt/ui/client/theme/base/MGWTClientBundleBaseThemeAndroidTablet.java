@@ -48,15 +48,7 @@ import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MGWTClientBundle {
 
-	/**
-	 * <p>
-	 * getProgressBarCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ProgressBarCss}
-	 *         object.
-	 */
-	@Source("css/progressbar.css")
+	@Source({ "css/progressbar.css", "css/android/progressbar.css" })
 	ProgressBarCss getProgressBarCss();
 
 	// This is a very nasty workaround because GWT CssResource does not support

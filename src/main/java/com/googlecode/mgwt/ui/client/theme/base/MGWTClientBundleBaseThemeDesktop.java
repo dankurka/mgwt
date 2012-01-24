@@ -46,25 +46,9 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
-/**
- * <p>
- * MGWTClientBundle interface.
- * </p>
- * 
- * @author kurt
- * @version $Id: $
- */
 public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClientBundle {
 
-	/**
-	 * <p>
-	 * getProgressBarCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ProgressBarCss}
-	 *         object.
-	 */
-	@Source("css/progressbar.css")
+	@Source({ "css/progressbar.css", "css/ipad/progressbar.css" })
 	ProgressBarCss getProgressBarCss();
 
 	// This is a very nasty workaround because GWT CssResource does not support
