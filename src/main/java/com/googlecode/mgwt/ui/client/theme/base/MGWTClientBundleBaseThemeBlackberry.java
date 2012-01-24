@@ -104,15 +104,7 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	@Source("css/progressindicator.css")
 	ProgressIndicatorCss getProgressIndicatorCss();
 
-	/**
-	 * <p>
-	 * getHeaderCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.HeaderCss}
-	 *         object.
-	 */
-	@Source({ "css/header.css" })
+	@Source({ "css/header.css", "css/blackberry/header.css" })
 	HeaderCss getHeaderCss();
 
 	/**
