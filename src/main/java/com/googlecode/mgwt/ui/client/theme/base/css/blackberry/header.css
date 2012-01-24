@@ -1,0 +1,68 @@
+.mgwt-HeaderPanel {
+	height: 40px;
+	background-color: black;
+	background-image: none;
+	border-bottom: 2px solid rgb(0, 92, 176);
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+	top: 0px;
+	left: 6px;
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+	top: 0px;
+	right: 6px;
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+	left: 50%;
+	height: 31px;
+	width: 310px;
+	opacity: 1;
+	margin-top: 6px;
+	margin-left: -150px;
+	margin-right: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+	font-size: 16pt;
+	font-weight: bold;
+	color: white;
+}
+
+.mgwt-HeaderButton p {
+	color: white;
+	border: 2px solid #ccc;
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton.active p {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.active p {
+		background-image: literal('-moz-linear-gradient(top, rgb(0, 92, 176), rgb(0, 72, 156))');
+	}
+}
+
+.mgwt-HeaderButton.back span {
+	border: 2px solid #ccc;
+	border-right: none;
+	border-top: none;
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton.active span {
+		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.active span {
+		background-image: literal('-moz-linear-gradient(top, rgb(0, 92, 176), rgb(0, 72, 156))');
+	}
+}

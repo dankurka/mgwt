@@ -166,14 +166,6 @@ public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClie
 	@Source("resources/search/search_clear_touched.png")
 	DataResource searchClearTouchedImage();
 
-	/**
-	 * <p>
-	 * getCheckBoxCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss}
-	 *         object.
-	 */
 	@Source("css/checkbox.css")
 	CheckBoxCss getCheckBoxCss();
 

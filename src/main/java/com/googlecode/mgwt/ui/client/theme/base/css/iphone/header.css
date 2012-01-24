@@ -1,0 +1,98 @@
+.mgwt-HeaderPanel {
+	height: 40px;
+	border-bottom: 1px solid rgb(45, 54, 66);
+}
+
+@if user.agent safari {
+	.mgwt-HeaderPanel {
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderPanel {
+		background-image: literal('-moz-linear-gradient(top, rgba(176, 188, 205, 1), rgba(129, 149, 175, 1))');
+	}
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+	top: 0px;
+	left: 6px;
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+	top: 0px;
+	right: 6px;
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+	left: 50%;
+	height: 31px;
+	width: 310px;
+	margin-top: 6px;
+	margin-left: -150px;
+	margin-right: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+	font-size: 16pt;
+	font-weight: bold;
+	color: white;
+}
+
+.mgwt-HeaderButton p {
+	color: #fff;
+	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+	color: white;
+	font-weight: bold;
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton p {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton p {
+		background-image: literal('-moz-linear-gradient(top, #9fb3cc, #6b8bb2 50%, #597eaa 51%, #5b80ab )');
+	}
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton.active p {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.active p {
+		background-image: literal('-moz-linear-gradient(top, #7582a4, #6b8bb2 50%, #597eaa 51%, #283d6f )');
+	}
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton.back span {
+		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.back span {
+		background-image: literal('-moz-linear-gradient(top, #9fb3cc,#6b8bb2 50%, #597eaa 51%, #5b80ab)');
+	}
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton.active span {
+		background: literal('-webkit-gradient(linear, left top, right bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.active span {
+		background: literal('-moz-linear-gradient(top, #7582a4, #6b8bb2 50%, #597eaa 51%,#283d6f)');
+	}
+}

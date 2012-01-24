@@ -167,26 +167,10 @@ public interface MGWTClientBundleBaseThemeIPhone extends ClientBundle, MGWTClien
 	@Source("resources/search/search_clear_touched.png")
 	DataResource searchClearTouchedImage();
 
-	/**
-	 * <p>
-	 * getCheckBoxCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss}
-	 *         object.
-	 */
 	@Source("css/checkbox.css")
 	CheckBoxCss getCheckBoxCss();
 
-	/**
-	 * <p>
-	 * getButtonCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.ButtonCss}
-	 *         object.
-	 */
-	@Source({ "css/buttons.css" })
+	@Source({ "css/buttons.css", "css/iphone/buttons.css" })
 	ButtonCss getButtonCss();
 
 	/**

@@ -1,0 +1,104 @@
+.mgwt-HeaderPanel {
+	height: 40px;
+	background: #B0B4C0;
+	border-bottom: 1px solid #797F90;
+}
+
+@if user.agent safari {
+	.mgwt-HeaderPanel {
+		background: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderPanel {
+		background: literal('-moz-linear-gradient(bottom,#A8ACB9,#eee)');
+	}
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+	top: 0px;
+	left: 6px;
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+	top: 0px;
+	right: 6px;
+}
+
+.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+	left: 50%;
+	height: 31px;
+	width: 310px;
+	margin-top: 6px;
+	margin-left: -150px;
+	margin-right: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+	font-size: 16pt;
+	font-weight: bold;
+	color: #75777b;
+}
+
+.mgwt-HeaderButton p {
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+	color: white;
+	font-weight: bold;
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton p {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton p {
+		background-image: literal('-moz-linear-gradient(top, rgb(178, 182, 188), rgb(108, 115,126))');
+	}
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton.active p {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.active p {
+		background-image: literal('-moz-linear-gradient(top, rgb(138, 142, 148), rgb(68, 75,86))');
+	}
+}
+
+.mgwt-HeaderButton.back span {
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+	color: white;
+	font-weight: bold;
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton.back span {
+		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.back span {
+		background-image: literal('-moz-linear-gradient(top, rgb(178, 182, 188), rgb(108, 115,126))');
+	}
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton.active span {
+		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton.active span {
+		background-image: literal('-moz-linear-gradient(top, rgb(138, 142, 148), rgb(68, 75,86))');
+	}
+}
