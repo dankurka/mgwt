@@ -15,14 +15,9 @@ import com.googlecode.mgwt.ui.client.theme.MGWTThemeBaseThemeStandardImpl;
  * After startup the bundle can not be changed. If no bundle is set, MGWTStyle
  * creates the MGWT Default theme.
  * 
- * You can change the theme like this:
- * 
- * <pre>
- * // create your bundle
- * MGWTClientBundle bundle = GWT.create(YourBundle.class);
- * // set your bundle as default
- * MGWTStyle.setDefaultBundle(bundle);
- * </pre>
+ * If you like to create your own theme consult the docs at: <a
+ * href="http://code.google.com/p/mgwt/wiki/Styling"
+ * >http://code.google.com/p/mgwt/wiki/Styling</a>
  * 
  * 
  * @author Daniel Kurka
