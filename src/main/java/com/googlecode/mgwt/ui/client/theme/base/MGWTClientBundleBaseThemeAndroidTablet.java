@@ -79,13 +79,6 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	@Source({ "css/list.css", "css/android/list.css" })
 	ListCss getListCss();
 
-	/**
-	 * <p>
-	 * listArrow
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
@@ -113,15 +106,7 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	@Source({ "css/buttonbar.css", "css/android/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
-	/**
-	 * <p>
-	 * getDialogCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss}
-	 *         object.
-	 */
-	@Source("css/dialog.css")
+	@Source({ "css/dialog.css", "css/android/dialog.css" })
 	DialogCss getDialogCss();
 
 	@Source({ "css/main.css", "css/android/main.css" })

@@ -79,13 +79,6 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	@Source({ "css/list.css", "css/blackberry/list.css" })
 	ListCss getListCss();
 
-	/**
-	 * <p>
-	 * listArrow
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
@@ -113,15 +106,7 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	@Source({ "css/buttonbar.css", "css/blackberry/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
-	/**
-	 * <p>
-	 * getDialogCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss}
-	 *         object.
-	 */
-	@Source("css/dialog.css")
+	@Source({ "css/dialog.css", "css/blackberry/dialog.css" })
 	DialogCss getDialogCss();
 
 	@Source({ "css/main.css", "css/blackberry/main.css" })

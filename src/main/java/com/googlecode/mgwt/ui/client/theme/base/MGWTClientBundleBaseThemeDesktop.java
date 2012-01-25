@@ -79,13 +79,6 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source({ "css/list.css", "css/ipad/list.css" })
 	ListCss getListCss();
 
-	/**
-	 * <p>
-	 * listArrow
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
@@ -113,15 +106,7 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source({ "css/buttonbar.css", "css/ipad/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
-	/**
-	 * <p>
-	 * getDialogCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss}
-	 *         object.
-	 */
-	@Source("css/dialog.css")
+	@Source({ "css/dialog.css", "css/ipad/dialog.css" })
 	DialogCss getDialogCss();
 
 	@Source("css/main.css")

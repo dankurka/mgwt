@@ -79,25 +79,12 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source({ "css/list.css", "css/iphone/list.css" })
 	ListCss getListCss();
 
-	/**
-	 * <p>
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
 	@Source({ "css/searchbox.css", "css/iphone/searchbox.css" })
 	MSearchBoxCss getSearchBoxCss();
 
-	/**
-	 * <p>
-	 * searchSearchImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/search/glass.png")
 	DataResource searchSearchImage();
 
@@ -119,15 +106,7 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source({ "css/buttonbar.css", "css/iphone/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
-	/**
-	 * <p>
-	 * getDialogCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss}
-	 *         object.
-	 */
-	@Source("css/dialog.css")
+	@Source({ "css/dialog.css", "css/iphone/dialog.css" })
 	DialogCss getDialogCss();
 
 	@Source({ "css/main.css", "css/iphone/main.css" })
