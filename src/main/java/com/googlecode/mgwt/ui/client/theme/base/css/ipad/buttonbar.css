@@ -3,14 +3,15 @@
 	border-top: 1px solid rgb(45, 54, 66);
 }
 
+
 @if user.agent safari {
 	.mgwt-ButtonBar {
-		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
+		background: literal('-webkit-gradient(linear,left bottom,left top,color-stop(0, #A8ACB9),color-stop(1, #eee))');
 	}
 }
 
 @if user.agent gecko1_8 {
 	.mgwt-ButtonBar {
-		background-image: literal('-moz-linear-gradient(top, rgba(176, 188, 205, 1), rgba(129, 149, 175, 1))');
+		background: literal('-moz-linear-gradient(bottom,#A8ACB9,#eee)');
 	}
 }
