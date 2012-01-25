@@ -1,6 +1,6 @@
 @if mgwt.css pretty {
 	@external mgwt-HeaderPanel, mgwt-HeaderPanel-left, mgwt-HeaderPanel-right, mgwt-HeaderPanel-center, mgwt-DropDownMenu;
-	@external mgwt-HeaderButton, active, back, forward, round;
+	@external mgwt-HeaderButton, active, back, forward, round, mgwt-HeaderButton-text, mgwt-HeaderButton-border-content, mgwt-HeaderButton-border-container;
 	@external mgwt-DropDownMenu, mgwt-DropDownMenu-content,  mgwt-DropDownMenu-arrow;
 }
 
@@ -44,7 +44,11 @@
 }
 
 
-.mgwt-HeaderButton p { 
+
+
+
+	
+.mgwt-HeaderButton .mgwt-HeaderButton-text { 
     position: relative; 
     z-index: 2; 
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -62,25 +66,25 @@
 }
 	
 @if user.agent safari {
-	.mgwt-HeaderButton p {
+	.mgwt-HeaderButton .mgwt-HeaderButton-text {
 		\-webkit-border-radius: 4px;
 		\-webkit-background-origin: border-box;
 	}
 }
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton p {
+	.mgwt-HeaderButton .mgwt-HeaderButton-text {
 		\-moz-border-radius: 4px;
 		\-moz-background-origin: border-box;
 	}
 }	
 	
 
-.mgwt-HeaderButton.back p { 
+.mgwt-HeaderButton.back .mgwt-HeaderButton-text { 
     border-left: none;
    
 }
 
-.mgwt-HeaderButton.back div {
+.mgwt-HeaderButton.back .mgwt-HeaderButton-border-container {
 	position: absolute;
 	z-index: 1;
 	top: 4.5px;
@@ -88,13 +92,13 @@
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.back div {	
+	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-container {	
 		\-webkit-transform: rotate(54deg);
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.back div {	
+	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-container {	
 		top: 4px;
 		left: -7px;
 		\-moz-transform: rotate(52deg);
@@ -102,7 +106,7 @@
 }
 
 
-.mgwt-HeaderButton.back span { 
+.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content { 
     \-webkit-transform: skew(15deg);
     display: block; 
     width: 17px; 
@@ -115,7 +119,7 @@
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.back span { 
+	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content { 
 	    \-webkit-transform: skew(15deg);
 	    \-webkit-border-radius: 2px; 
 	    \-webkit-border-radius: 4px;
@@ -123,7 +127,7 @@
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.back span { 
+	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content { 
 	    \-moz-transform: skew(15deg);
 	    \-moz-border-radius: 2px; 
 	    \-moz-border-radius: 4px;
@@ -132,7 +136,7 @@
 
 
 
-.mgwt-HeaderButton.forward div {
+.mgwt-HeaderButton.forward .mgwt-HeaderButton-border-container {
 	position: absolute;
 	z-index: 1;
 	top: 4px;
@@ -220,7 +224,7 @@
 		
 	}
 
-.mgwt-DropDownMenu .mgwt-HeaderButton.back span { 
+.mgwt-DropDownMenu .mgwt-HeaderButton.back .mgwt-HeaderButton-border-content { 
     
    background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#7d828c),color-stop(0.5, #303749), color-stop(0.5, #121a2e), to(#121a2e))');   
  
@@ -240,15 +244,15 @@
 			
 		}
 
-.mgwt-DropDownMenu .mgwt-HeaderButton p {
+.mgwt-DropDownMenu .mgwt-HeaderButton .mgwt-HeaderButton-text {
 	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#7d828c),color-stop(0.5, #303749), color-stop(0.5, #121a2e), to(#121a2e))');
 }
 
-.mgwt-DropDownMenu .mgwt-HeaderButton.active p {
+.mgwt-DropDownMenu .mgwt-HeaderButton.active .mgwt-HeaderButton-text {
 	background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#5e636d), color-stop(0.5, #101628), color-stop(0.5, #00000e), to(#00000f) )');
 }
 
-.mgwt-DropDownMenu .mgwt-HeaderButton.active span { 
+.mgwt-DropDownMenu .mgwt-HeaderButton.active .mgwt-HeaderButton-border-content { 
     
    background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#5d626c),color-stop(0.5, #101729), color-stop(0.5, #00000e), to(#00000e))');   
  
