@@ -1,4 +1,4 @@
-@url nextSlideImage toolbarNextSlideImage;
+
 @url error errorImage;
 @if mgwt.css pretty {
 	@external pullToRefresh, arrow, mgwt-arrowUp, arrowDown;
@@ -11,6 +11,9 @@
 	width: 100%;
 	height: 70px;
 }
+
+
+@sprite .pullToRefresh .arrow {gwt-image: "getButtonBarNextSlideImage"; }
 
 .pullToRefresh .arrow {
 	position: absolute;

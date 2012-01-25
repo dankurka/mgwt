@@ -87,56 +87,6 @@ public interface MGWTClientBundle {
 
 	PullToRefreshCss getPullToRefreshCss();
 
-	DataResource toolbarActionImage();
-
-	DataResource toolbarArrowDownImage();
-
-	DataResource toolbarArrowLeftImage();
-
-	DataResource toolbarArrowRightImage();
-
-	DataResource toolbarArrowUpImage();
-
-	DataResource toolbarBookmarksImage();
-
-	DataResource toolbarCameraImage();
-
-	DataResource toolbarComposeImage();
-
-	DataResource toolbarFastForwardImage();
-
-	DataResource toolbarInfoImage();
-
-	DataResource toolbarLocateImage();
-
-	DataResource toolbarNewImage();
-
-	DataResource toolbarNextSlideImage();
-
-	DataResource toolbarOrganizeImage();
-
-	DataResource toolbarPauseImage();
-
-	DataResource toolbarPlayImage();
-
-	DataResource toolbarPlusImage();
-
-	DataResource toolbarPressImage();
-
-	DataResource toolbarPreviousSlideImage();
-
-	DataResource toolbarRefreshImage();
-
-	DataResource toolbarReplyImage();
-
-	DataResource toolbarRewindImage();
-
-	DataResource toolbarSearchImage();
-
-	DataResource toolbarStopImage();
-
-	DataResource toolbarTrashImage();
-
 	TabBarCss getTabBarCss();
 
 	TabBarButtonCss getTabBarButtonCss();

@@ -25,10 +25,10 @@ import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 
 /**
  * A HeaderPanel is usually at the top of a page containing navigation elements
- *
+ * 
  * it can contain three child elements. A left Widget, a center widget and a
  * right widget.
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -50,7 +50,7 @@ public class HeaderPanel extends Composite {
 
 	/**
 	 * Construct a headerPanel with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public HeaderPanel(HeaderCss css) {
@@ -65,7 +65,7 @@ public class HeaderPanel extends Composite {
 
 	/**
 	 * Set a text to appear in the middle of the HeaderPanel
-	 *
+	 * 
 	 * @param text the text to render
 	 */
 	public void setCenter(String text) {
@@ -76,13 +76,14 @@ public class HeaderPanel extends Composite {
 
 	/**
 	 * Set a widget that should appear in the center of the header panel
-	 *
+	 * 
 	 * @param w the widget that is displayed in the center
 	 */
 	@UiChild(limit = 1, tagname = "center")
 	public void setCenterWidget(Widget w) {
 		if (title != null) {
 			container.remove(title);
+			title.removeStyleName(css.center());
 		}
 		title = w;
 		if (title != null) {
@@ -95,13 +96,14 @@ public class HeaderPanel extends Composite {
 
 	/**
 	 * Set the left widget of the header panel
-	 *
+	 * 
 	 * @param newLeft the widget that should be displayed on the left side
 	 */
 	@UiChild(limit = 1, tagname = "left")
 	public void setLeftWidget(Widget newLeft) {
 		if (left != null) {
 			container.remove(left);
+			left.removeStyleName(css.left());
 		}
 
 		left = newLeft;
@@ -114,13 +116,14 @@ public class HeaderPanel extends Composite {
 
 	/**
 	 * Set the right widget of the header panel
-	 *
+	 * 
 	 * @param newRight the widget that should be displayed on the right side
 	 */
 	@UiChild(limit = 1, tagname = "right")
 	public void setRightWidget(Widget newRight) {
 		if (right != null) {
 			container.remove(right);
+			right.removeStyleName(css.right());
 		}
 
 		right = newRight;
