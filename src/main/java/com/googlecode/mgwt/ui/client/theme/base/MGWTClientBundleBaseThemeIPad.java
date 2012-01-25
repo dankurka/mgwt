@@ -20,7 +20,6 @@ import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
 import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
  * The ipad client bundle
@@ -181,7 +180,7 @@ public interface MGWTClientBundleBaseThemeIPad extends ClientBundle, MGWTClientB
 	@Source({ "css/tabbar.css", "css/ipad/tabbar.css" })
 	TabBarCss getTabBarCss();
 
-	@Source({ "tabbar/css/tabbar_button.css" })
+	@Source({ "css/tabbar_button.css" })
 	TabBarButtonCss getTabBarButtonCss();
 
 	@Source("resources/tabbar/bookmarks.png")

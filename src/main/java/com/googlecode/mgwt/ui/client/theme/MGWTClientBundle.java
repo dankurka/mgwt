@@ -35,9 +35,9 @@ import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
+import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 public interface MGWTClientBundle {
 

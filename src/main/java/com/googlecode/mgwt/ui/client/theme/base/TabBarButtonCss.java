@@ -13,9 +13,8 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.theme.base.tabbar;
+package com.googlecode.mgwt.ui.client.theme.base;
 
-import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 
 public interface TabBarButtonCss extends ButtonBaseCss {
 

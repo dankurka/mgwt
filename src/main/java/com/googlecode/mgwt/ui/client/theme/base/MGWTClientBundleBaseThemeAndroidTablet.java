@@ -20,7 +20,6 @@ import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
 import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 /**
  * The android tablet client bundle
@@ -181,7 +180,7 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	@Source({ "css/tabbar.css", "css/android/tabbar.css" })
 	TabBarCss getTabBarCss();
 
-	@Source({ "tabbar/css/tabbar_button.css" })
+	@Source({ "css/tabbar_button.css" })
 	TabBarButtonCss getTabBarButtonCss();
 
 	@Source("resources/tabbar/bookmarks.png")

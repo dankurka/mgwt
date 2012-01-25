@@ -16,7 +16,7 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 
 /**
  * A simple most viewed tab bar button.
