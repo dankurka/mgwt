@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PauseButtonCss;
 
-/**
- * <p>PauseButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class PauseButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for PauseButton.</p>
-	 */
 	public PauseButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getPauseButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for PauseButton.</p>
-	 *
-	 * @param pauseButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.PauseButtonCss} object.
-	 */
-	public PauseButton(PauseButtonCss pauseButtonCss) {
-		super(pauseButtonCss);
-		addStyleName(pauseButtonCss.pause());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarPauseImage());
 	}
 
 }

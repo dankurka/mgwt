@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ComposeButtonCss;
 
-/**
- * <p>ComposeButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class ComposeButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for ComposeButton.</p>
-	 */
 	public ComposeButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getComposeButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for ComposeButton.</p>
-	 *
-	 * @param composeButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ComposeButtonCss} object.
-	 */
-	public ComposeButton(ComposeButtonCss composeButtonCss) {
-		super(composeButtonCss);
-		addStyleName(composeButtonCss.compose());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarComposeImage());
 	}
 
 }

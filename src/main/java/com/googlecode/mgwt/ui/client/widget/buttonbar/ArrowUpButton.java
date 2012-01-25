@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowUpButtonCss;
 
-/**
- * <p>ArrowUpButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class ArrowUpButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for ArrowUpButton.</p>
-	 */
 	public ArrowUpButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getArrowUpButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for ArrowUpButton.</p>
-	 *
-	 * @param arrowUpButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowUpButtonCss} object.
-	 */
-	public ArrowUpButton(ArrowUpButtonCss arrowUpButtonCss) {
-		super(arrowUpButtonCss);
-		addStyleName(arrowUpButtonCss.arrowUp());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarArrowUpImage());
 	}
 
 }

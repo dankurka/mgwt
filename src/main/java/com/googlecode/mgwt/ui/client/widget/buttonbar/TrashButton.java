@@ -1,10 +1,9 @@
 /*
  * Copyright 2011 Daniel Kurka
  * 
- * Licensed under thimport com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
- obtain a copy of
- * the License at
+ * Licensed under thimport com.googlecode.mgwt.ui.client.MGWTStyle; import
+ * com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss; obtain a
+ * copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
@@ -17,31 +16,11 @@ import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 
-/**
- * <p>TrashButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class TrashButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for TrashButton.</p>
-	 */
 	public TrashButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTrashButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for TrashButton.</p>
-	 *
-	 * @param trashButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss} object.
-	 */
-	public TrashButton(TrashButtonCss trashButtonCss) {
-		super(trashButtonCss);
-		addStyleName(trashButtonCss.trash());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarTrashImage());
 	}
 
 }

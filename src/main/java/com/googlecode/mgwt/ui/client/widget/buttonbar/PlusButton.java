@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PlusButtonCss;
 
-/**
- * <p>PlusButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class PlusButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for PlusButton.</p>
-	 */
 	public PlusButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getPlusButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for PlusButton.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.PlusButtonCss} object.
-	 */
-	public PlusButton(PlusButtonCss css) {
-		super(css);
-		addStyleName(css.plus());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarPlusImage());
 	}
 
 }

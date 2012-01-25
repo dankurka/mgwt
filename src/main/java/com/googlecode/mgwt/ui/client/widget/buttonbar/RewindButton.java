@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RewindButtonCss;
 
-/**
- * <p>RewindButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class RewindButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for RewindButton.</p>
-	 */
 	public RewindButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getRewindButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for RewindButton.</p>
-	 *
-	 * @param rewindButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.RewindButtonCss} object.
-	 */
-	public RewindButton(RewindButtonCss rewindButtonCss) {
-		super(rewindButtonCss);
-		addStyleName(rewindButtonCss.rewind());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarRewindImage());
 	}
 
 }

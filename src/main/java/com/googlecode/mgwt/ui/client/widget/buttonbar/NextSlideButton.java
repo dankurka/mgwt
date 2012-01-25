@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.NextSlideButtonCss;
 
-/**
- * <p>NextSlideButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class NextSlideButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for NextSlideButton.</p>
-	 */
 	public NextSlideButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getNextSlideButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for NextSlideButton.</p>
-	 *
-	 * @param nextSlideButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.NextSlideButtonCss} object.
-	 */
-	public NextSlideButton(NextSlideButtonCss nextSlideButtonCss) {
-		super(nextSlideButtonCss);
-		addStyleName(nextSlideButtonCss.nextSlide());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarNextSlideImage());
 	}
 
 }

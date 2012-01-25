@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.LocateButtonCss;
 
-/**
- * <p>LocateButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class LocateButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for LocateButton.</p>
-	 */
 	public LocateButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getLocateButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for LocateButton.</p>
-	 *
-	 * @param locateButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.LocateButtonCss} object.
-	 */
-	public LocateButton(LocateButtonCss locateButtonCss) {
-		super(locateButtonCss);
-		addStyleName(locateButtonCss.locate());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarLocateImage());
 	}
 
 }

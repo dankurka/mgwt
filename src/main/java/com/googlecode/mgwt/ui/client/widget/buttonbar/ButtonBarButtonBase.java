@@ -15,25 +15,87 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ButtonBarButtonBaseCss;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.user.client.Element;
+import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
+import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
+import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
+import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
+import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.theme.base.ButtonBarButtonCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
-/**
- * <p>ButtonBarButtonBase class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class ButtonBarButtonBase extends ButtonBase {
 
-	/**
-	 * <p>Constructor for ButtonBarButtonBase.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ButtonBarButtonBaseCss} object.
-	 */
-	public ButtonBarButtonBase(ButtonBarButtonBaseCss css) {
+	protected final static IconHandler ICON_HANDLER = GWT.create(IconHandler.class);
+
+	public interface IconHandler {
+		public void setIcons(Element element, ImageResource icon, ImageResource highlight, boolean active);
+	}
+
+	public static class DefaultIconHandler implements IconHandler {
+
+		@Override
+		public void setIcons(Element element, ImageResource icon, ImageResource highlight, boolean active) {
+
+			if (!active) {
+				element.getStyle().setBackgroundImage("url(" + icon.getSafeUri().asString() + ")");
+
+				if (MGWT.getOsDetection().isRetina()) {
+					element.getStyle().setProperty("backgroundSize", (icon.getWidth() / 2) + "px " + (icon.getHeight() / 2) + "px");
+				}
+			} else {
+
+				element.getStyle().setBackgroundImage("url(" + highlight.getSafeUri().asString() + "), url(" + icon.getSafeUri().asString() + ")");
+				if (MGWT.getOsDetection().isRetina()) {
+					element.getStyle().setProperty("backgroundSize", (highlight.getWidth()) + "px " + (highlight.getHeight()) + "px, " + (icon.getWidth() / 2) + "px " + (icon.getHeight() / 2) + "px");
+				}
+			}
+
+		}
+	}
+
+	public ButtonBarButtonBase(ImageResource icon) {
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarButtonCss(), icon, MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarHighlightImage());
+	}
+
+	public ButtonBarButtonBase(ImageResource icon, ImageResource highlight) {
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarButtonCss(), icon, highlight);
+	}
+
+	public ButtonBarButtonBase(ButtonBarButtonCss css, final ImageResource icon, final ImageResource highlight) {
 		super(css);
+		ICON_HANDLER.setIcons(getElement(), icon, highlight, false);
 		addStyleName(css.barButton());
+
+		addTouchHandler(new TouchHandler() {
+
+			@Override
+			public void onTouchCanceled(TouchCancelEvent event) {
+				ICON_HANDLER.setIcons(getElement(), icon, highlight, false);
+
+			}
+
+			@Override
+			public void onTouchEnd(TouchEndEvent event) {
+				ICON_HANDLER.setIcons(getElement(), icon, highlight, false);
+
+			}
+
+			@Override
+			public void onTouchMove(TouchMoveEvent event) {
+
+			}
+
+			@Override
+			public void onTouchStart(TouchStartEvent event) {
+				ICON_HANDLER.setIcons(getElement(), icon, highlight, true);
+
+			}
+		});
 	}
 
 }

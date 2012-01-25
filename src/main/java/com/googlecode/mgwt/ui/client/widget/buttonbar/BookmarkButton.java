@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.BookmarkButtonCss;
 
-/**
- * <p>BookmarkButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class BookmarkButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for BookmarkButton.</p>
-	 */
 	public BookmarkButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getBookmarkButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for BookmarkButton.</p>
-	 *
-	 * @param bookmarkButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.BookmarkButtonCss} object.
-	 */
-	public BookmarkButton(BookmarkButtonCss bookmarkButtonCss) {
-		super(bookmarkButtonCss);
-		addStyleName(bookmarkButtonCss.bookmark());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarBookmarkImage());
 	}
 
 }

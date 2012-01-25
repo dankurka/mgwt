@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.OrganizeButtonCss;
 
-/**
- * <p>OrganizeButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class OrganizeButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for OrganizeButton.</p>
-	 */
 	public OrganizeButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getOrganizeButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for OrganizeButton.</p>
-	 *
-	 * @param organizeButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.OrganizeButtonCss} object.
-	 */
-	public OrganizeButton(OrganizeButtonCss organizeButtonCss) {
-		super(organizeButtonCss);
-		addStyleName(organizeButtonCss.organize());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarOrganizeImage());
 	}
 
 }

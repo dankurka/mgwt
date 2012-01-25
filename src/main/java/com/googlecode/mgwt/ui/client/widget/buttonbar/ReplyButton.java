@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ReplyButtonCss;
 
-/**
- * <p>ReplyButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class ReplyButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for ReplyButton.</p>
-	 */
 	public ReplyButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getReplyButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for ReplyButton.</p>
-	 *
-	 * @param replyButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ReplyButtonCss} object.
-	 */
-	public ReplyButton(ReplyButtonCss replyButtonCss) {
-		super(replyButtonCss);
-		addStyleName(replyButtonCss.reply());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarReplyImage());
 	}
 
 }

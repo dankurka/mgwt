@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
 
-/**
- * <p>StopButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class StopButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for StopButton.</p>
-	 */
 	public StopButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getStopButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for StopButton.</p>
-	 *
-	 * @param stopButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss} object.
-	 */
-	public StopButton(StopButtonCss stopButtonCss) {
-		super(stopButtonCss);
-		addStyleName(stopButtonCss.stop());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarStopImage());
 	}
 
 }

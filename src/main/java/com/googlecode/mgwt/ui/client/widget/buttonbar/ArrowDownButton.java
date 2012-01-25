@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowDownButtonCss;
 
-/**
- * <p>ArrowDownButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class ArrowDownButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for ArrowDownButton.</p>
-	 */
 	public ArrowDownButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getArrowDownButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for ArrowDownButton.</p>
-	 *
-	 * @param arrowDownButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowDownButtonCss} object.
-	 */
-	public ArrowDownButton(ArrowDownButtonCss arrowDownButtonCss) {
-		super(arrowDownButtonCss);
-		addStyleName(arrowDownButtonCss.arrowDown());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarArrowDownImage());
 	}
 
 }

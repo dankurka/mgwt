@@ -1,10 +1,9 @@
 /*
  * Copyright 2011 Daniel Kurka
  * 
- * Licensed under thimport com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RefreshButtonCss;
-btain a copy of
- * the License at
+ * Licensed under thimport com.googlecode.mgwt.ui.client.MGWTStyle; import
+ * com.googlecode.mgwt.ui.client.theme.base.buttonbar.RefreshButtonCss; btain a
+ * copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
@@ -17,31 +16,11 @@ btain a copy of
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RefreshButtonCss;
 
-/**
- * <p>RefreshButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class RefreshButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for RefreshButton.</p>
-	 */
 	public RefreshButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getRefreshButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for RefreshButton.</p>
-	 *
-	 * @param refreshButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.RefreshButtonCss} object.
-	 */
-	public RefreshButton(RefreshButtonCss refreshButtonCss) {
-		super(refreshButtonCss);
-		addStyleName(refreshButtonCss.refresh());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarRefreshImage());
 	}
 
 }

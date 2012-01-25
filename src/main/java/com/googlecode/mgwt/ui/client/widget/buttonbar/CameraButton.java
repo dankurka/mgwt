@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.CameraButtonCss;
 
-/**
- * <p>CameraButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class CameraButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for CameraButton.</p>
-	 */
 	public CameraButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getCameraButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for CameraButton.</p>
-	 *
-	 * @param cameraButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.CameraButtonCss} object.
-	 */
-	public CameraButton(CameraButtonCss cameraButtonCss) {
-		super(cameraButtonCss);
-		addStyleName(cameraButtonCss.camera());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarCameraImage());
 	}
 
 }

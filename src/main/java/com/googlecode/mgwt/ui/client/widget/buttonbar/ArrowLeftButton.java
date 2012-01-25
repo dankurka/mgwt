@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowLeftButtonCss;
 
-/**
- * <p>ArrowLeftButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class ArrowLeftButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for ArrowLeftButton.</p>
-	 */
 	public ArrowLeftButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getLeftButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for ArrowLeftButton.</p>
-	 *
-	 * @param arrowLeftCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowLeftButtonCss} object.
-	 */
-	public ArrowLeftButton(ArrowLeftButtonCss arrowLeftCss) {
-		super(arrowLeftCss);
-		addStyleName(arrowLeftCss.arrowLeft());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarArrowLeftImage());
 	}
 
 }

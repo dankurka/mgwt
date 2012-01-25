@@ -16,31 +16,11 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.FastForwardButtonCss;
 
-/**
- * <p>FastForwardButton class.</p>
- *
- * @author kurt
- * @version $Id: $
- */
 public class FastForwardButton extends ButtonBarButtonBase {
 
-	/**
-	 * <p>Constructor for FastForwardButton.</p>
-	 */
 	public FastForwardButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getFastForwardButtonCss());
-	}
-
-	/**
-	 * <p>Constructor for FastForwardButton.</p>
-	 *
-	 * @param fastForwardButtonCss a {@link com.googlecode.mgwt.ui.client.theme.base.buttonbar.FastForwardButtonCss} object.
-	 */
-	public FastForwardButton(FastForwardButtonCss fastForwardButtonCss) {
-		super(fastForwardButtonCss);
-		addStyleName(fastForwardButtonCss.fastForward());
+		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarFastForwardImage());
 	}
 
 }

@@ -18,6 +18,7 @@ package com.googlecode.mgwt.ui.client.theme;
 import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
+import com.googlecode.mgwt.ui.client.theme.base.ButtonBarButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss;
@@ -36,30 +37,6 @@ import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ActionButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowDownButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowLeftButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowRightButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ArrowUpButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.BookmarkButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.CameraButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ComposeButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.FastForwardButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.InfoButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.LocateButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.NewIconButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.NextSlideButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.OrganizeButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PauseButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PlayButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PlusButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.PreviousSlideButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RefreshButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.ReplyButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.RewindButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.SearchButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.StopButtonCss;
-import com.googlecode.mgwt.ui.client.theme.base.buttonbar.TrashButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.tabbar.TabBarButtonCss;
 
 public interface MGWTClientBundle {
@@ -164,25 +141,25 @@ public interface MGWTClientBundle {
 
 	TabBarButtonCss getTabBarButtonCss();
 
-	ImageResource tabBarBookMarkImage();
+	public ImageResource tabBarBookMarkImage();
 
-	ImageResource tabBarContactsImage();
+	public ImageResource tabBarContactsImage();
 
-	ImageResource tabBarDownloadsImage();
+	public ImageResource tabBarDownloadsImage();
 
-	ImageResource tabBarFavoritesImage();
+	public ImageResource tabBarFavoritesImage();
 
-	ImageResource tabBarFeaturedImage();
+	public ImageResource tabBarFeaturedImage();
 
-	ImageResource tabBarHistoryImage();
+	public ImageResource tabBarHistoryImage();
 
-	ImageResource tabBarMoreImage();
+	public ImageResource tabBarMoreImage();
 
-	ImageResource tabBarMostRecentImage();
+	public ImageResource tabBarMostRecentImage();
 
-	ImageResource tabBarMostViewedImage();
+	public ImageResource tabBarMostViewedImage();
 
-	ImageResource tabBarSearchImage();
+	public ImageResource tabBarSearchImage();
 
 	DataResource spinnerImage();
 
@@ -194,51 +171,55 @@ public interface MGWTClientBundle {
 
 	DataResource android_check_not_checked();
 
-	public ActionButtonCss getActionButtonCss();
+	public ButtonBarButtonCss getButtonBarButtonCss();
 
-	public ArrowLeftButtonCss getLeftButtonCss();
+	public ImageResource getButtonBarHighlightImage();
 
-	public ArrowRightButtonCss getArrowRightButtonCss();
+	public ImageResource getButtonBarActionImage();
 
-	public ArrowUpButtonCss getArrowUpButtonCss();
+	public ImageResource getButtonBarArrowDownImage();
 
-	public ArrowDownButtonCss getArrowDownButtonCss();
+	public ImageResource getButtonBarArrowLeftImage();
 
-	public BookmarkButtonCss getBookmarkButtonCss();
+	public ImageResource getButtonBarArrowRightImage();
 
-	public CameraButtonCss getCameraButtonCss();
+	public ImageResource getButtonBarArrowUpImage();
 
-	public ComposeButtonCss getComposeButtonCss();
+	public ImageResource getButtonBarBookmarkImage();
 
-	public FastForwardButtonCss getFastForwardButtonCss();
+	public ImageResource getButtonBarCameraImage();
 
-	public InfoButtonCss getInfoButtonCss();
+	public ImageResource getButtonBarComposeImage();
 
-	public LocateButtonCss getLocateButtonCss();
+	public ImageResource getButtonBarFastForwardImage();
 
-	public NewIconButtonCss getNewIconButtonCss();
+	public ImageResource getButtonBarInfoImage();
 
-	public NextSlideButtonCss getNextSlideButtonCss();
+	public ImageResource getButtonBarLocateImage();
 
-	public OrganizeButtonCss getOrganizeButtonCss();
+	public ImageResource getButtonBarNewImage();
 
-	public PauseButtonCss getPauseButtonCss();
+	public ImageResource getButtonBarNextSlideImage();
 
-	public PlayButtonCss getPlayButtonCss();
+	public ImageResource getButtonBarOrganizeImage();
 
-	public PlusButtonCss getPlusButtonCss();
+	public ImageResource getButtonBarPauseImage();
 
-	public PreviousSlideButtonCss getPreviousSlideButtonCss();
+	public ImageResource getButtonBarPlayImage();
 
-	public RefreshButtonCss getRefreshButtonCss();
+	public ImageResource getButtonBarPlusImage();
 
-	public ReplyButtonCss getReplyButtonCss();
+	public ImageResource getButtonBarPreviousSlideImage();
 
-	public RewindButtonCss getRewindButtonCss();
+	public ImageResource getButtonBarRefreshImage();
 
-	public SearchButtonCss getSearchButtonCss();
+	public ImageResource getButtonBarReplyImage();
 
-	public StopButtonCss getStopButtonCss();
+	public ImageResource getButtonBarRewindImage();
 
-	public TrashButtonCss getTrashButtonCss();
+	public ImageResource getButtonBarSearchImage();
+
+	public ImageResource getButtonBarStopImage();
+
+	public ImageResource getButtonBarTrashImage();
 }

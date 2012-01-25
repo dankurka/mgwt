@@ -13,19 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.theme.base.buttonbar;
+package com.googlecode.mgwt.ui.client.theme.base;
 
-/**
- * <p>NewIconButtonCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
- */
-public interface NewIconButtonCss extends ButtonBarButtonBaseCss {
-	/**
-	 * <p>newIcon</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	public String newIcon();
+
+public interface ButtonBarButtonCss extends ButtonBaseCss {
+
+	@ClassName("mgwt-BarButton")
+	public String barButton();
+
 }
