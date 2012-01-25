@@ -78,7 +78,7 @@ public interface MGWTClientBundleBaseThemeIPad extends ClientBundle, MGWTClientB
 	@Source({ "css/scrollpanel.css", "css/ipad/scrollpanel.css" })
 	ScrollPanelCss getScrollPanelCss();
 
-	@Source({ "css/buttonbar.css", "css/iphone/buttonbar.css" })
+	@Source({ "css/buttonbar.css", "css/ipad/buttonbar.css" })
 	ButtonBarCss getButtonBarCss();
 
 	@Source({ "css/dialog.css", "css/ipad/dialog.css" })
