@@ -15,7 +15,6 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
-
 public interface TabBarButtonCss extends ButtonBaseCss {
 
 	public String selected();
