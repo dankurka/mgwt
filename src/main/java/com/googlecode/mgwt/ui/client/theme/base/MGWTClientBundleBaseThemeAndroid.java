@@ -115,114 +115,91 @@ public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClie
 	@Source({ "css/input.css", "css/android/input.css" })
 	InputCss getInputCss();
 
-	/**
-	 * <p>
-	 * inputCheckImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/input/ios_check.png")
 	DataResource inputCheckImage();
 
-	/**
-	 * <p>
-	 * getPanelCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.PanelCss}
-	 *         object.
-	 */
 	@Source("css/panel.css")
 	PanelCss getPanelCss();
 
-	/**
-	 * <p>
-	 * getLayoutCss
-	 * </p>
-	 * 
-	 * @return a {@link com.googlecode.mgwt.ui.client.theme.base.LayoutCss}
-	 *         object.
-	 */
 	@Source("css/layout.css")
 	LayoutCss getLayoutCss();
 
 	@Source({ "css/pulltorefresh.css", "css/android/pulltorefresh.css" })
 	PullToRefreshCss getPullToRefreshCss();
 
-	@Source("resources/toolbar/action_x2.png")
+	@Source("resources/toolbar/action.png")
 	DataResource toolbarActionImage();
 
-	@Source("resources/toolbar/arrowdown_x2.png")
+	@Source("resources/toolbar/arrowdown.png")
 	DataResource toolbarArrowDownImage();
 
-	@Source("resources/toolbar/arrowleft_x2.png")
+	@Source("resources/toolbar/arrowleft.png")
 	DataResource toolbarArrowLeftImage();
 
-	@Source("resources/toolbar/arrowright_x2.png")
+	@Source("resources/toolbar/arrowright.png")
 	DataResource toolbarArrowRightImage();
 
-	@Source("resources/toolbar/arrowup_x2.png")
+	@Source("resources/toolbar/arrowup.png")
 	DataResource toolbarArrowUpImage();
 
-	@Source("resources/toolbar/bookmarks_x2.png")
+	@Source("resources/toolbar/bookmarks.png")
 	DataResource toolbarBookmarksImage();
 
-	@Source("resources/toolbar/camera_x2.png")
+	@Source("resources/toolbar/camera.png")
 	DataResource toolbarCameraImage();
 
-	@Source("resources/toolbar/compose_x2.png")
+	@Source("resources/toolbar/compose.png")
 	DataResource toolbarComposeImage();
 
-	@Source("resources/toolbar/fastforward_x2.png")
+	@Source("resources/toolbar/fastforward.png")
 	DataResource toolbarFastForwardImage();
 
-	@Source("resources/toolbar/info_x2.png")
+	@Source("resources/toolbar/info.png")
 	DataResource toolbarInfoImage();
 
-	@Source("resources/toolbar/locate_x2.png")
+	@Source("resources/toolbar/locate.png")
 	DataResource toolbarLocateImage();
 
-	@Source("resources/toolbar/new_x2.png")
+	@Source("resources/toolbar/new.png")
 	DataResource toolbarNewImage();
 
-	@Source("resources/toolbar/nextslide_x2.png")
+	@Source("resources/toolbar/nextslide.png")
 	DataResource toolbarNextSlideImage();
 
-	@Source("resources/toolbar/organize_x2.png")
+	@Source("resources/toolbar/organize.png")
 	DataResource toolbarOrganizeImage();
 
-	@Source("resources/toolbar/pause_x2.png")
+	@Source("resources/toolbar/pause.png")
 	DataResource toolbarPauseImage();
 
-	@Source("resources/toolbar/play_x2.png")
+	@Source("resources/toolbar/play.png")
 	DataResource toolbarPlayImage();
 
-	@Source("resources/toolbar/plus_x2.png")
+	@Source("resources/toolbar/plus.png")
 	DataResource toolbarPlusImage();
 
 	@Source("resources/toolbar/pressed.png")
 	DataResource toolbarPressImage();
 
-	@Source("resources/toolbar/previousslide_x2.png")
+	@Source("resources/toolbar/previousslide.png")
 	DataResource toolbarPreviousSlideImage();
 
-	@Source("resources/toolbar/refresh_x2.png")
+	@Source("resources/toolbar/refresh.png")
 	DataResource toolbarRefreshImage();
 
-	@Source("resources/toolbar/reply_x2.png")
+	@Source("resources/toolbar/reply.png")
 	DataResource toolbarReplyImage();
 
-	@Source("resources/toolbar/rewind_x2.png")
+	@Source("resources/toolbar/rewind.png")
 	DataResource toolbarRewindImage();
 
-	@Source("resources/toolbar/search_x2.png")
+	@Source("resources/toolbar/search.png")
 	DataResource toolbarSearchImage();
 
-	@Source("resources/toolbar/stop_x2.png")
+	@Source("resources/toolbar/stop.png")
 	DataResource toolbarStopImage();
 
-	@Source("resources/toolbar/trash_x2.png")
+	@Source("resources/toolbar/trash.png")
 	DataResource toolbarTrashImage();
 
 	@Source({ "css/tabbar.css", "css/android/tabbar.css" })
