@@ -238,46 +238,18 @@ public interface MGWTClientBundleBaseThemeAndroid extends ClientBundle, MGWTClie
 	@Source("resources/tabbar/search.png")
 	ImageResource tabBarSearchImage();
 
-	/**
-	 * <p>
-	 * spinnerImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/spinner.png")
 	DataResource spinnerImage();
 
 	@Source("resources/spinner_white.png")
 	DataResource spinnerWhiteImage();
 
-	/**
-	 * <p>
-	 * errorImage
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/error.png")
 	DataResource errorImage();
 
-	/**
-	 * <p>
-	 * android_check_checked
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/input/check_android_checked.png")
 	DataResource android_check_checked();
 
-	/**
-	 * <p>
-	 * android_check_not_checked
-	 * </p>
-	 * 
-	 * @return a {@link com.google.gwt.resources.client.DataResource} object.
-	 */
 	@Source("resources/input/check_android_not_checked.png")
 	DataResource android_check_not_checked();
 
