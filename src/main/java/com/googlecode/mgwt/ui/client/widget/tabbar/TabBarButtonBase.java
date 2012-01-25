@@ -45,6 +45,8 @@ public class TabBarButtonBase extends ButtonBase {
 
 		@Override
 		public void applyImage(Element element, ImageResource imageResource) {
+			if (imageResource == null)
+				return;
 			element.getStyle().setProperty("WebkitMaskBoxImage", "url(" + imageResource.getSafeUri().asString() + ")");
 			element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
 			element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);
@@ -57,7 +59,8 @@ public class TabBarButtonBase extends ButtonBase {
 
 		@Override
 		public void applyImage(Element element, ImageResource imageResource) {
-
+			if (imageResource == null)
+				return;
 			element.getStyle().setBackgroundImage("url(" + imageResource.getSafeUri().asString() + ")");
 			element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
 			element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);

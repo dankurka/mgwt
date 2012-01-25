@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 
@@ -31,7 +32,7 @@ public class FavoritesTabBarButton extends TabBarButtonBase {
 	}
 
 	public FavoritesTabBarButton(TabBarButtonCss css) {
-		super(css, MGWTStyle.getTheme().getMGWTClientBundle().tabBarFavoritesImage());
+		super(css, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarFavoritesImage() : null);
 		setText("Favorites");
 	}
 

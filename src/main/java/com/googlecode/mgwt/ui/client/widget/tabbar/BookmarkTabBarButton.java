@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 
@@ -32,7 +33,7 @@ public class BookmarkTabBarButton extends TabBarButtonBase {
 	}
 
 	public BookmarkTabBarButton(TabBarButtonCss tabBarButtonCss) {
-		super(tabBarButtonCss, MGWTStyle.getTheme().getMGWTClientBundle().tabBarBookMarkImage());
+		super(tabBarButtonCss, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarBookMarkImage() : null);
 		setText("Bookmarks");
 	}
 }
