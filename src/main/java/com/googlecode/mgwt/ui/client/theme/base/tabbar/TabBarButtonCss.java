@@ -19,22 +19,8 @@ import com.googlecode.mgwt.ui.client.theme.base.ButtonBaseCss;
 
 public interface TabBarButtonCss extends ButtonBaseCss {
 
-	/**
-	 * <p>
-	 * selected
-	 * </p>
-	 * 
-	 * @return a {@link java.lang.String} object.
-	 */
 	public String selected();
 
-	/**
-	 * <p>
-	 * button
-	 * </p>
-	 * 
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-TabBar-Button")
 	public String button();
 

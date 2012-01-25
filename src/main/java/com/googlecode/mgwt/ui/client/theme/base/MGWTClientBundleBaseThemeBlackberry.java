@@ -229,4 +229,82 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	@Source("resources/input/check_android_not_checked.png")
 	DataResource android_check_not_checked();
 
+	@Source("css/buttonbarbutton.css")
+	public ButtonBarButtonCss getButtonBarButtonCss();
+
+	@Source("resources/toolbar/pressed.png")
+	public ImageResource getButtonBarHighlightImage();
+
+	@Source("resources/toolbar/action.png")
+	public ImageResource getButtonBarActionImage();
+
+	@Source("resources/toolbar/arrowdown.png")
+	public ImageResource getButtonBarArrowDownImage();
+
+	@Source("resources/toolbar/arrowleft.png")
+	public ImageResource getButtonBarArrowLeftImage();
+
+	@Source("resources/toolbar/arrowright.png")
+	public ImageResource getButtonBarArrowRightImage();
+
+	@Source("resources/toolbar/arrowup.png")
+	public ImageResource getButtonBarArrowUpImage();
+
+	@Source("resources/toolbar/bookmarks.png")
+	public ImageResource getButtonBarBookmarkImage();
+
+	@Source("resources/toolbar/camera.png")
+	public ImageResource getButtonBarCameraImage();
+
+	@Source("resources/toolbar/compose.png")
+	public ImageResource getButtonBarComposeImage();
+
+	@Source("resources/toolbar/fastforward.png")
+	public ImageResource getButtonBarFastForwardImage();
+
+	@Source("resources/toolbar/info.png")
+	public ImageResource getButtonBarInfoImage();
+
+	@Source("resources/toolbar/locate.png")
+	public ImageResource getButtonBarLocateImage();
+
+	@Source("resources/toolbar/new.png")
+	public ImageResource getButtonBarNewImage();
+
+	@Source("resources/toolbar/nextslide.png")
+	public ImageResource getButtonBarNextSlideImage();
+
+	@Source("resources/toolbar/organize.png")
+	public ImageResource getButtonBarOrganizeImage();
+
+	@Source("resources/toolbar/pause.png")
+	public ImageResource getButtonBarPauseImage();
+
+	@Source("resources/toolbar/play.png")
+	public ImageResource getButtonBarPlayImage();
+
+	@Source("resources/toolbar/plus.png")
+	public ImageResource getButtonBarPlusImage();
+
+	@Source("resources/toolbar/previousslide.png")
+	public ImageResource getButtonBarPreviousSlideImage();
+
+	@Source("resources/toolbar/refresh.png")
+	public ImageResource getButtonBarRefreshImage();
+
+	@Source("resources/toolbar/reply.png")
+	public ImageResource getButtonBarReplyImage();
+
+	@Source("resources/toolbar/rewind.png")
+	public ImageResource getButtonBarRewindImage();
+
+	@Source("resources/toolbar/search.png")
+	public ImageResource getButtonBarSearchImage();
+
+	@Source("resources/toolbar/stop.png")
+	public ImageResource getButtonBarStopImage();
+
+	@Source("resources/toolbar/trash.png")
+	public ImageResource getButtonBarTrashImage();
+
 }

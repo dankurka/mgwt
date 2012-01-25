@@ -229,6 +229,9 @@ public interface MGWTClientBundleBaseThemeIPhone extends ClientBundle, MGWTClien
 	@Source("resources/input/check_android_not_checked.png")
 	DataResource android_check_not_checked();
 
+	@Source("css/buttonbarbutton.css")
+	public ButtonBarButtonCss getButtonBarButtonCss();
+
 	@Source("resources/toolbar/pressed.png")
 	public ImageResource getButtonBarHighlightImage();
 
