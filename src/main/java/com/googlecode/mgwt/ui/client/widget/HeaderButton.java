@@ -54,11 +54,14 @@ public class HeaderButton extends ButtonBase {
 		addStyleName(css.headerButton());
 
 		Element pointDiv = DOM.createDiv();
+		pointDiv.addClassName(css.headerButtonBorderContainer());
 		Element pointSpan = DOM.createSpan();
+		pointSpan.addClassName(css.headerButtonBorderContent());
 		pointDiv.appendChild(pointSpan);
 		getElement().appendChild(pointDiv);
 
 		pElement = Document.get().createPElement();
+		pElement.addClassName(css.headerButtonText());
 		getElement().appendChild(pElement);
 
 	}
