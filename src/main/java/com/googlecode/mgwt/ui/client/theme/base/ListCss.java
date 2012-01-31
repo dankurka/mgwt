@@ -16,65 +16,39 @@
 package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
-import com.google.gwt.resources.client.CssResource.Shared;
+import com.googlecode.mgwt.ui.client.widget.CellList;
+import com.googlecode.mgwt.ui.client.widget.WidgetList;
 
-@Shared
 /**
- * <p>ListCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * This is the css interface for lists in mgwt.
+ * 
+ * It is used by {@link CellList} and {@link WidgetList}
+ * 
+ * For styling explanations @see {@link CellList}
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public interface ListCss extends CssResource {
 
-	/**
-	 * <p>listCss</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-List")
 	public String listCss();
 
-	/**
-	 * <p>round</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-List-round")
 	public String round();
 
-	/**
-	 * <p>group</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-List-group")
 	public String group();
 
-	/**
-	 * <p>selected</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-List-selected")
 	public String selected();
 
-	/**
-	 * <p>first</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-List-first")
 	public String first();
 
-	/**
-	 * <p>last</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-List-last")
 	public String last();
 
-	/**
-	 * <p>listHeader</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-List-Header")
 	public String listHeader();
 

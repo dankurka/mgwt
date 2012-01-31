@@ -9,7 +9,7 @@
 	border-collapse: collapse;
 }
 
-.mgwt-List li {
+.mgwt-List>li {
 	position: relative;
 	list-style-type: none;
 	display: block;
@@ -18,19 +18,27 @@
 	padding: 12px;
 }
 
-.mgwt-List.round {
+.mgwt-List-round {
 	padding: 10px;
+}
+
+.mgwt-List-first {
+	
+}
+
+.mgwt-List-last {
+	
 }
 
 /* other browsers */
 @if user.agent ie6 ie8 ie9 gecko opera {
-	.selected {
+	.mgwt-List-selected {
 		
 	}
-	.first {
+	.mgwt-List-first {
 		
 	}
-	.last {
+	.mgwt-List-last {
 		
 	}
 	.mgwt-List {
@@ -39,10 +47,10 @@
 	.mgwt-List-Header {
 		
 	}
-	.round {
+	.mgwt-List-round {
 		
 	}
-	.group {
+	.mgwt-List-group {
 		
 	}
 }

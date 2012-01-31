@@ -16,6 +16,7 @@
 package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.CssResource.Shared;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
@@ -24,6 +25,7 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
  * @author Daniel Kurka
  * 
  */
+@Shared
 public interface ButtonBaseCss extends CssResource {
 
 	public String active();
