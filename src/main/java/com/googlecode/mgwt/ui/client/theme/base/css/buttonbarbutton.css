@@ -1,5 +1,5 @@
 @if mgwt.css pretty {
-	@external mgwt-BarButton, active;
+	@external mgwt-BarButton, mgwt-BarButton-active;
 }
 
 .mgwt-BarButton {
@@ -16,6 +16,6 @@
 	
 }
 
-.mgwt-BarButton.active{
+.mgwt-BarButton-active{
 }
 

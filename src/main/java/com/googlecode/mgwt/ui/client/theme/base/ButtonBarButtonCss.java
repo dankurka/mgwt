@@ -15,10 +15,12 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
-
 public interface ButtonBarButtonCss extends ButtonBaseCss {
 
 	@ClassName("mgwt-BarButton")
 	public String barButton();
+
+	@ClassName("mgwt-BarButton-active")
+	public String active();
 
 }

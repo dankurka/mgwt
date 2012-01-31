@@ -28,6 +28,31 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarButtonCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
+/**
+ * <h1>Base class for all buttons in the button bar</h1>
+ * 
+ * The class accepts two icons in its constructor which are used as background
+ * images. They can be null, which will lead to no background images for the
+ * button.
+ * 
+ * <h2>Styling<h2>
+ * The markup looks like:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-BarButton">&lt;/div>
+ * 
+ * <pre>
+ * 
+ * <h3>Children Styles:</h3>
+ * The following styles may be applied as well:
+ * <ul>
+ * <li>.mgwt-BarButton-active - this classes is set if the button is pressed</li>
+ * </ul>
+ * 
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class ButtonBarButtonBase extends ButtonBase {
 
 	protected final static IconHandler ICON_HANDLER = GWT.create(IconHandler.class);
@@ -40,6 +65,8 @@ public class ButtonBarButtonBase extends ButtonBase {
 
 		@Override
 		public void setIcons(Element element, ImageResource icon, ImageResource highlight, boolean active) {
+			if (icon == null)
+				return;
 
 			if (!active) {
 				element.getStyle().setBackgroundImage("url(" + icon.getSafeUri().asString() + ")");
@@ -48,6 +75,11 @@ public class ButtonBarButtonBase extends ButtonBase {
 					element.getStyle().setProperty("backgroundSize", (icon.getWidth() / 2) + "px " + (icon.getHeight() / 2) + "px");
 				}
 			} else {
+
+				// don't set active state if we don't have a hightlight icon...
+				if (highlight == null) {
+					return;
+				}
 
 				element.getStyle().setBackgroundImage("url(" + highlight.getSafeUri().asString() + "), url(" + icon.getSafeUri().asString() + ")");
 				if (MGWT.getOsDetection().isRetina()) {
