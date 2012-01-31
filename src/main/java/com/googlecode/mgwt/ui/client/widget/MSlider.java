@@ -37,10 +37,27 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
- * A slider widget
+ * <h1>The mgwt slider widget</h1>
+ * 
+ * 
+ * <h2>Styling</h2>
+ * 
+ * The DOM structure looks like this:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-Slider">
+ * 	&lt;div class="mgwt-Slider-bar">
+ * 		&lt;div class="mgwt-Slider-pointer"/>
+ * 	&lt;/div>
+ * &lt;/div>
+ * </pre>
+ * 
+ * 
+ * The pointer element is moved along the bar element to represent the value of
+ * the Slider
+ * 
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class MSlider extends Composite implements HasValue<Integer>, LeafValueEditor<Integer> {
 

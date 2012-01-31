@@ -1,11 +1,11 @@
-.mgwt-Slider .mgwt-Slider-bar {
+.mgwt-Slider-bar {
 	position: relative;
 	height: 9px;
 	background-repeat: no-repeat, repeat-x;
 }
 
 @if user.agent safari {
-	.mgwt-Slider .mgwt-Slider-bar {
+	.mgwt-Slider-bar {
 		\-webkit-box-sizing: padding-box;
 		\-webkit-box-shadow: 2px 2px 4px #666666;
 		\-webkit-border-radius: 4px;
@@ -14,7 +14,7 @@
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-Slider .mgwt-Slider-bar {
+	.mgwt-Slider-bar {
 		\-moz-box-sizing: padding-box;
 		\-moz-box-shadow: 2px 2px 4px #666666;
 		\-moz-border-radius: 4px;
@@ -22,7 +22,7 @@
 	}
 }
 
-.mgwt-Slider .mgwt-Slider-pointer {
+.mgwt-Slider-pointer {
 	position: relative;
 	height: 20px;
 	width: 20px;
@@ -31,7 +31,7 @@
 }
 
 @if user.agent safari {
-	.mgwt-Slider .mgwt-Slider-pointer {
+	.mgwt-Slider-pointer {
 		\-webkit-tap-highlight-color: transparent;
 		\-webkit-box-shadow: 2px 2px 3px #666666;
 		\-webkit-border-radius: 10px;
@@ -40,7 +40,7 @@
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-Slider .mgwt-Slider-pointer {
+	.mgwt-Slider-pointer {
 		\-moz-tap-highlight-color: transparent;
 		\-moz-box-shadow: 2px 2px 3px #666666;
 		\-moz-border-radius: 10px;

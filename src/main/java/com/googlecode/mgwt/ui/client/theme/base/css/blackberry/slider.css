@@ -1,4 +1,4 @@
-.mgwt-Slider .mgwt-Slider-bar {
+.mgwt-Slider-bar {
 	position: relative;
 	height: 4px;
 	\-webkit-box-sizing: padding-box;
@@ -6,7 +6,7 @@
 	background-image: literal('-webkit-gradient(linear, left top ,left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)))');
 }
 
-.mgwt-Slider .mgwt-Slider-pointer {
+.mgwt-Slider-pointer {
 	position: relative;
 	height: 26px;
 	width: 26px;

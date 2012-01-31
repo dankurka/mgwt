@@ -16,35 +16,23 @@
 package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
+import com.googlecode.mgwt.ui.client.widget.MSlider;
 
 /**
- * <p>SliderCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * The css interface for the mgwt slider
+ * 
+ * For style explanation @see {@link MSlider}
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public interface SliderCss extends CssResource {
-	/**
-	 * <p>slider</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-Slider")
 	public String slider();
 
-	/**
-	 * <p>pointer</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-Slider-pointer")
 	public String pointer();
 
-	/**
-	 * <p>bar</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-Slider-bar")
 	public String bar();
 }

@@ -1,24 +1,24 @@
-.mgwt-Slider .mgwt-Slider-bar {
+.mgwt-Slider-bar {
 	position: relative;
 	height: 4px;
 	background-repeat: repeat-x;
 }
 
 @if user.agent safari {
-	.mgwt-Slider .mgwt-Slider-bar {
+	.mgwt-Slider-bar {
 		\-webkit-box-sizing: padding-box;
 		background-image: literal('-webkit-gradient(linear, left top ,left bottom, from(rgb(146, 199, 0)), to(rgb(126, 179, 0)))');
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-Slider .mgwt-Slider-bar {
+	.mgwt-Slider-bar {
 		\-moz-box-sizing: padding-box;
 		background-image: literal('-moz-linear-gradient(top,  rgb(146, 199, 0), rgb(126, 179, 0))');
 	}
 }
 
-.mgwt-Slider .mgwt-Slider-pointer {
+.mgwt-Slider-pointer {
 	position: relative;
 	height: 26px;
 	width: 26px;
@@ -28,7 +28,7 @@
 }
 
 @if user.agent safari {
-	.mgwt-Slider .mgwt-Slider-pointer {
+	.mgwt-Slider-pointer {
 		\-webkit-tap-highlight-color: transparent;
 		\-webkit-border-radius: 15px;
 		background-image: literal('-webkit-gradient(radial, 50% 50%, 3, 50% 50%, 8, from(rgb(146, 199, 0)), color-stop(0.1, rgb(146, 199, 0)), color-stop(0.1, rgba(126, 179, 0, 0.7)), color-stop(0.15, rgba(255, 255, 255, 1)) ,color-stop(0.16, rgba(126, 179, 0, 0.3)), to(rgba(126, 179, 0, 0.4)))');
@@ -36,7 +36,7 @@
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-Slider .mgwt-Slider-pointer {
+	.mgwt-Slider-pointer {
 		\-moz-tap-highlight-color: transparent;
 		\-moz-border-radius: 15px;
 		background-image: literal('-moz-radial-gradient(radial, 50% 50%, 0, circle closest-side , rgb(146, 199, 0), rgb(146, 199, 0) 10% , rgba(126, 179, 0, 0.7) 11%,  rgba(255, 255, 255, 1) 15%  , rgba(126, 179, 0, 0.3) 16%, rgba(126, 179, 0, 0.4))');
