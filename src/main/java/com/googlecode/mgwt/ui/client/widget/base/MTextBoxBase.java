@@ -20,18 +20,12 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * BaseClass for textboxes
- *
- * @author kurt
+ * 
+ * @author Daniel Kurka
  * @version $Id: $
  */
 public class MTextBoxBase extends MValueBoxBase<String> {
 
-	/**
-	 * <p>Constructor for MTextBoxBase.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.InputCss} object.
-	 * @param box a {@link com.google.gwt.user.client.ui.ValueBoxBase} object.
-	 */
 	protected MTextBoxBase(InputCss css, ValueBoxBase<String> box) {
 		super(css, box);
 	}

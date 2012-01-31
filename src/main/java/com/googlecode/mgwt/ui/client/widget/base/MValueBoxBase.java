@@ -68,6 +68,8 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
  * 
  * 
  * 
+ * 
+ * 
  * @author Daniel Kurka
  */
 public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>,
