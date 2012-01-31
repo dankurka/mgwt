@@ -1,6 +1,6 @@
 @if mgwt.css pretty {
 	@external mgwt-HeaderPanel, mgwt-HeaderPanel-left, mgwt-HeaderPanel-right, mgwt-HeaderPanel-center, mgwt-DropDownMenu;
-	@external mgwt-HeaderButton, active, back, forward, round, mgwt-HeaderButton-text, mgwt-HeaderButton-border-content, mgwt-HeaderButton-border-container;
+	@external mgwt-HeaderButton, mgwt-HeaderButton-active, mgwt-HeaderButton-back, mgwt-HeaderButton-forward, mgwt-HeaderButton-round, mgwt-HeaderButton-text, mgwt-HeaderButton-border-content, mgwt-HeaderButton-border-container;
 	@external mgwt-DropDownMenu, mgwt-DropDownMenu-content,  mgwt-DropDownMenu-arrow;
 }
 
@@ -9,15 +9,15 @@
 }
 
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+.mgwt-HeaderPanel-left {
 	position: absolute;
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+.mgwt-HeaderPanel-right {
 	position: absolute;
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+.mgwt-HeaderPanel-center {
 	position: absolute;
 	left: 50%;
 }
@@ -48,7 +48,7 @@
 
 
 	
-.mgwt-HeaderButton .mgwt-HeaderButton-text { 
+.mgwt-HeaderButton-text { 
     position: relative; 
     z-index: 2; 
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -66,25 +66,25 @@
 }
 	
 @if user.agent safari {
-	.mgwt-HeaderButton .mgwt-HeaderButton-text {
+	.mgwt-HeaderButton-text {
 		\-webkit-border-radius: 4px;
 		\-webkit-background-origin: border-box;
 	}
 }
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton .mgwt-HeaderButton-text {
+	.mgwt-HeaderButton-text {
 		\-moz-border-radius: 4px;
 		\-moz-background-origin: border-box;
 	}
 }	
 	
 
-.mgwt-HeaderButton.back .mgwt-HeaderButton-text { 
+.mgwt-HeaderButton-back .mgwt-HeaderButton-text { 
     border-left: none;
    
 }
 
-.mgwt-HeaderButton.back .mgwt-HeaderButton-border-container {
+.mgwt-HeaderButton-back .mgwt-HeaderButton-border-container {
 	position: absolute;
 	z-index: 1;
 	top: 4.5px;
@@ -92,13 +92,13 @@
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-container {	
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-container {	
 		\-webkit-transform: rotate(54deg);
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-container {	
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-container {	
 		top: 4px;
 		left: -7px;
 		\-moz-transform: rotate(52deg);
@@ -106,7 +106,7 @@
 }
 
 
-.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content { 
+.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content { 
     \-webkit-transform: skew(15deg);
     display: block; 
     width: 17px; 
@@ -119,7 +119,7 @@
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content { 
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content { 
 	    \-webkit-transform: skew(15deg);
 	    \-webkit-border-radius: 2px; 
 	    \-webkit-border-radius: 4px;
@@ -127,7 +127,7 @@
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content { 
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content { 
 	    \-moz-transform: skew(15deg);
 	    \-moz-border-radius: 2px; 
 	    \-moz-border-radius: 4px;
@@ -136,7 +136,7 @@
 
 
 
-.mgwt-HeaderButton.forward .mgwt-HeaderButton-border-container {
+.mgwt-HeaderButton-forward .mgwt-HeaderButton-border-container {
 	position: absolute;
 	z-index: 1;
 	top: 4px;
@@ -144,7 +144,7 @@
 	\-webkit-transform: rotate(51deg);
 }
 
-.mgwt-HeaderButton.round{
+.mgwt-HeaderButton-round{
 }
 	
 	

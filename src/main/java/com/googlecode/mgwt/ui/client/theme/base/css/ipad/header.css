@@ -16,17 +16,17 @@
 	}
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+.mgwt-HeaderPanel-left {
 	top: 0px;
 	left: 6px;
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+.mgwt-HeaderPanel-right {
 	top: 0px;
 	right: 6px;
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+.mgwt-HeaderPanel-center {
 	left: 50%;
 	height: 31px;
 	width: 310px;
@@ -62,43 +62,43 @@
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.active .mgwt-HeaderButton-text {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-text {
 		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.active .mgwt-HeaderButton-text {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-text {
 		background-image: literal('-moz-linear-gradient(top, rgb(138, 142, 148), rgb(68, 75,86))');
 	}
 }
 
-.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content {
+.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
 	color: white;
 	font-weight: bold;
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content {
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content {
 		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(178, 182, 188)), to(rgb(108, 115,126)))');
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content {
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content {
 		background-image: literal('-moz-linear-gradient(top, rgb(178, 182, 188), rgb(108, 115,126))');
 	}
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.active .mgwt-HeaderButton-border-content {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-border-content {
 		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(138, 142, 148)), to(rgb(68, 75,86)))');
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.active .mgwt-HeaderButton-border-content {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-border-content {
 		background-image: literal('-moz-linear-gradient(top, rgb(138, 142, 148), rgb(68, 75,86))');
 	}
 }

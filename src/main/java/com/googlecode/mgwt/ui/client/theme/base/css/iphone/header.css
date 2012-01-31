@@ -15,17 +15,17 @@
 	}
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-left {
+.mgwt-HeaderPanel-left {
 	top: 0px;
 	left: 6px;
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-right {
+.mgwt-HeaderPanel-right {
 	top: 0px;
 	right: 6px;
 }
 
-.mgwt-HeaderPanel .mgwt-HeaderPanel-center {
+.mgwt-HeaderPanel-center {
 	left: 50%;
 	height: 31px;
 	width: 310px;
@@ -62,37 +62,37 @@
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.active .mgwt-HeaderButton-text {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-text {
 		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.active .mgwt-HeaderButton-text {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-text {
 		background-image: literal('-moz-linear-gradient(top, #7582a4, #6b8bb2 50%, #597eaa 51%, #283d6f )');
 	}
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content {
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content {
 		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#9fb3cc), to(#5b80ab), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa))');
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.back .mgwt-HeaderButton-border-content {
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content {
 		background-image: literal('-moz-linear-gradient(top, #9fb3cc,#6b8bb2 50%, #597eaa 51%, #5b80ab)');
 	}
 }
 
 @if user.agent safari {
-	.mgwt-HeaderButton.active .mgwt-HeaderButton-border-content {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-border-content {
 		background: literal('-webkit-gradient(linear, left top, right bottom, from(#7582a4), to(#283d6f), color-stop(0.5, #6b8bb2), color-stop(0.51, #597eaa) )');
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-HeaderButton.active .mgwt-HeaderButton-border-content {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-border-content {
 		background: literal('-moz-linear-gradient(top, #7582a4, #6b8bb2 50%, #597eaa 51%,#283d6f)');
 	}
 }

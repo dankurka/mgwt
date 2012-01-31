@@ -15,17 +15,34 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
+import com.google.gwt.user.client.ui.HeaderPanel;
+import com.googlecode.mgwt.ui.client.dialog.TabletPortraitOverlay;
+import com.googlecode.mgwt.ui.client.widget.HeaderButton;
+
+/**
+ * CSS interface for HeaderPanel and its content
+ * 
+ * explanation @see {@link HeaderPanel}, {@link HeaderButton},
+ * {@link TabletPortraitOverlay}
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface HeaderCss extends ButtonBaseCss {
 
 	@ClassName("mgwt-HeaderButton")
 	public String headerButton();
 
+	@ClassName("mgwt-HeaderButton-active")
 	public String active();
 
+	@ClassName("mgwt-HeaderButton-back")
 	public String back();
 
+	@ClassName("mgwt-HeaderButton-forward")
 	public String forward();
 
+	@ClassName("mgwt-HeaderButton-round")
 	public String round();
 
 	@ClassName("mgwt-HeaderButton-text")
