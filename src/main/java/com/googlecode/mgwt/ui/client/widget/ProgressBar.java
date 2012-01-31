@@ -22,9 +22,14 @@ import com.googlecode.mgwt.ui.client.theme.base.ProgressBarCss;
 
 /**
  * A progress bar widget
- *
+ * 
+ * <h2>Styling</h2> The DOM structure looks like:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-ProgressBar">&lt;/div>
+ * </pre>
+ * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class ProgressBar extends Widget {
 
@@ -39,7 +44,7 @@ public class ProgressBar extends Widget {
 
 	/**
 	 * Construct a progress bar widget with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public ProgressBar(ProgressBarCss css) {

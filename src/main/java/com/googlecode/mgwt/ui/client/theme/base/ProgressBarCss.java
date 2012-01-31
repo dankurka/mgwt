@@ -18,17 +18,12 @@ package com.googlecode.mgwt.ui.client.theme.base;
 import com.google.gwt.resources.client.CssResource;
 
 /**
- * <p>ProgressBarCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * The mgwt progress bar
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public interface ProgressBarCss extends CssResource {
-	/**
-	 * <p>progressBar</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-ProgressBar")
 	String progressBar();
 }
