@@ -20,7 +20,8 @@ import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
- * A simple button class
+ * <h1>A simple button class</h1> This is a simple class for rendering button in
+ * mgwt.
  * 
  * <h2>Styling notes:</h2> The button consists of a simple div element like
  * this:
