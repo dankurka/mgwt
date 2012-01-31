@@ -37,7 +37,6 @@ import com.google.gwt.i18n.shared.DirectionEstimator;
 import com.google.gwt.i18n.shared.HasDirectionEstimator;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase;
@@ -57,15 +56,25 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
  * 
  * This is a clone of {@link com.google.gwt.user.client.ui.ValueBoxBase}
  * 
+ * <h2>Styling</h2>
+ * 
+ * The DOM looks like (depending on the actual class)
+ * 
+ * <pre>
+ * &lt;div class="mgwt-TextBox">
+ * 	&lt;input class="mgwt-InputBox-box"/>
+ * &lt;/div>
+ * </pre>
+ * 
+ * 
+ * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>,
 		AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers, HasFocusHandlers {
 
 	private TouchPanel main;
 	protected final ValueBoxBase<T> box;
-	private FlowPanel cover;
 
 	/**
 	 * <p>
@@ -84,13 +93,6 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 		initWidget(main);
 
 		css.ensureInjected();
-
-		cover = new FlowPanel();
-		cover.addStyleName(css.cover());
-
-		// if (MGWTUtil.getFeatureDetection().isIOs() && false) {
-		// main.add(cover);
-		// }
 
 		main.add(box);
 
@@ -112,35 +114,6 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 			}
 		});
 
-		// if (MGWTUtil.getFeatureDetection().isIOs() && false) {
-		// cover.addDomHandler(new ClickHandler() {
-		//
-		// @Override
-		// public void onClick(ClickEvent event) {
-		// cover.getElement().getStyle().setDisplay(Display.NONE);
-		// box.setFocus(true);
-		//
-		// }
-		// }, ClickEvent.getType());
-		//
-		// box.addBlurHandler(new BlurHandler() {
-		//
-		// @Override
-		// public void onBlur(BlurEvent event) {
-		// cover.getElement().getStyle().setDisplay(Display.BLOCK);
-		//
-		// }
-		// });
-		//
-		// box.addFocusHandler(new FocusHandler() {
-		//
-		// @Override
-		// public void onFocus(FocusEvent event) {
-		// cover.getElement().getStyle().setDisplay(Display.NONE);
-		//
-		// }
-		// });
-		// }
 	}
 
 	/*

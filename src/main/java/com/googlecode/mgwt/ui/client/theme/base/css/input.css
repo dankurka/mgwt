@@ -2,10 +2,10 @@
 @url androidCheckChecked android_check_checked;
 @url androidCheckNotChecked android_check_not_checked;
 @if mgwt.css pretty {
-	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, box, cover, mgwt-RadioButton, disabled;
+	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, mgwt-InputBox-box, mgwt-RadioButton, mgwt-InputBox-disabled;
 }
 
-.mgwt-TextBox .box,.mgwt-PasswordTextBox .box,.mgwt-TextArea .box {
+.mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox .mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
 	color: #777;
 	border: 0;
 	font: normal 17px Helvetica;
@@ -21,11 +21,7 @@
 	\-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.mgwt-TextBox .cover,.mgwt-PasswordTextBox .cover,.mgwt-TextArea .cover {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-}
+
 
 .mgwt-TextBox,.mgwt-PasswordTextBox,.mgwt-TextArea {
 	position: relative;
@@ -60,7 +56,7 @@
 }
 
 /*todo*/
-.disabled {
+.mgwt-InputBox-box-disabled {
 	
 }
 
