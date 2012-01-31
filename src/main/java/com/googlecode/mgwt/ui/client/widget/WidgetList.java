@@ -32,9 +32,18 @@ import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 
 /**
  * A list that can contain widgets
- *
+ * 
+ * This class renders widgets into a list. The same thing is done by
+ * {@link CellList} much more efficient.
+ * 
+ * <b>Note:</b> Normally you should be using {@link CellList}. Only if you
+ * really need Widgets inside the list (which won't be the case most of the
+ * time) you should be using WidgetList.
+ * 
+ * The reference for styling can be found in CellList as well.
+ * 
+ * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class WidgetList extends Composite implements HasWidgets {
 
@@ -111,7 +120,7 @@ public class WidgetList extends Composite implements HasWidgets {
 
 	/**
 	 * Construct a widget list using a specific css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public WidgetList(ListCss css) {
@@ -207,7 +216,7 @@ public class WidgetList extends Composite implements HasWidgets {
 
 	/**
 	 * Should the list be displayed with rounded corners
-	 *
+	 * 
 	 * @param round true to display with rounded corners
 	 */
 	public void setRound(boolean round) {
