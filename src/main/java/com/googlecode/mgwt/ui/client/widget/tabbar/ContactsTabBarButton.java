@@ -25,7 +25,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
  * @author Daniel Kurka
  * 
  */
-public class ContactsTabBarButton extends TabBarButtonBase {
+public class ContactsTabBarButton extends TabBarButton {
 
 	public ContactsTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());

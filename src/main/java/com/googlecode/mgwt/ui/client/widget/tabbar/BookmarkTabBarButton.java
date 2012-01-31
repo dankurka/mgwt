@@ -26,7 +26,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
  * @author Daniel Kurka
  * 
  */
-public class BookmarkTabBarButton extends TabBarButtonBase {
+public class BookmarkTabBarButton extends TabBarButton {
 
 	public BookmarkTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());

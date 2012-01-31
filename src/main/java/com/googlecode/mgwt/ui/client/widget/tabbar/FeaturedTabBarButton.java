@@ -25,7 +25,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
  * @author Daniel Kurka
  * 
  */
-public class FeaturedTabBarButton extends TabBarButtonBase {
+public class FeaturedTabBarButton extends TabBarButton {
 
 	public FeaturedTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());

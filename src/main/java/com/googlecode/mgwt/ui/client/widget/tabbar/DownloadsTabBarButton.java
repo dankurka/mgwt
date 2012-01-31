@@ -25,7 +25,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
  * @author Daniel Kurka
  * 
  */
-public class DownloadsTabBarButton extends TabBarButtonBase {
+public class DownloadsTabBarButton extends TabBarButton {
 
 	public DownloadsTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());

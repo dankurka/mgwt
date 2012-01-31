@@ -25,7 +25,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
  * @author Daniel Kurka
  * 
  */
-public class MostRecentTabBarButton extends TabBarButtonBase {
+public class MostRecentTabBarButton extends TabBarButton {
 
 	public MostRecentTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());

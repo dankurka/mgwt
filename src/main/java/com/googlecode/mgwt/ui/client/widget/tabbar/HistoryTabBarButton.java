@@ -25,7 +25,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
  * @author Daniel Kurka
  * 
  */
-public class HistoryTabBarButton extends TabBarButtonBase {
+public class HistoryTabBarButton extends TabBarButton {
 
 	public HistoryTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());

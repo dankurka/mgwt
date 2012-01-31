@@ -105,7 +105,7 @@ public interface MGWTClientBundleBaseThemeIPhone extends ClientBundle, MGWTClien
 	@Source({ "css/tabbar.css", "css/iphone/tabbar.css" })
 	TabBarCss getTabBarCss();
 
-	@Source({ "css/tabbar_button.css" })
+	@Source({ "css/tabbar_button.css", "css/iphone/tabbar_button.css" })
 	TabBarButtonCss getTabBarButtonCss();
 
 	@Source("resources/tabbar/bookmarks.png")

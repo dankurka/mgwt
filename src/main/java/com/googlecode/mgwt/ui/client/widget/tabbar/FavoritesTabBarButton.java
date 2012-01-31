@@ -25,7 +25,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
  * @author Daniel Kurka
  * 
  */
-public class FavoritesTabBarButton extends TabBarButtonBase {
+public class FavoritesTabBarButton extends TabBarButton {
 
 	public FavoritesTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());

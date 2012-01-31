@@ -24,13 +24,11 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
- * <p>
- * TabBarButtonBase class.
- * </p>
+ * The base class for all tab bar buttonss
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
+
 public class TabBarButtonBase extends ButtonBase {
 
 	protected final TabBarButtonStylerHandler tabBarButtonStylerHandler = GWT.create(TabBarButtonStylerHandler.class);

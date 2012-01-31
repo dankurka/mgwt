@@ -105,7 +105,7 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	@Source({ "css/tabbar.css", "css/android/tabbar.css" })
 	TabBarCss getTabBarCss();
 
-	@Source({ "css/tabbar_button.css" })
+	@Source({ "css/tabbar_button.css", "css/android/tabbar_button.css" })
 	TabBarButtonCss getTabBarButtonCss();
 
 	@Source("resources/tabbar/bookmarks.png")

@@ -25,7 +25,7 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
  * @author Daniel Kurka
  * 
  */
-public class MostViewedTabBarButton extends TabBarButtonBase {
+public class MostViewedTabBarButton extends TabBarButton {
 
 	public MostViewedTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());

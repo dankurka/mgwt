@@ -15,14 +15,30 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
-public interface TabBarButtonCss extends ButtonBaseCss {
+import com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButton;
 
-	public String selected();
+/**
+ * The css interface for tab bar button
+ * 
+ * For css classes explanation see {@link TabBarButton}
+ * 
+ * @author Daniel Kurka
+ * 
+ */
+public interface TabBarButtonCss extends ButtonBaseCss {
 
 	@ClassName("mgwt-TabBar-Button")
 	public String button();
 
+	@ClassName("mgwt-TabBar-Button-selected")
+	public String selected();
+
+	@ClassName("mgwt-TabBar-Button-active")
+	public String active();
+
+	@ClassName("mgwt-TabBar-Button-icon")
 	public String icon();
 
+	@ClassName("mgwt-TabBar-Button-text")
 	public String text();
 }
