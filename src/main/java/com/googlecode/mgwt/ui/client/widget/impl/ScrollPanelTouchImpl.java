@@ -60,7 +60,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
  * A ScrollPanel implementation based on -webkit-transform and css scrollbars
  * 
  * @author Daniel Kurka
- * @version $Id: $
+ * 
  */
 public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
@@ -136,8 +136,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * Constructor for ScrollPanelTouchImpl.
 	 * </p>
 	 * 
-	 * @param css
-	 *            a
+	 * @param css a
 	 *            {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss}
 	 *            object.
 	 */

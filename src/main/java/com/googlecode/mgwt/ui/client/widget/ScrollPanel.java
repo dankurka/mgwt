@@ -31,9 +31,29 @@ import com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl;
 
 /**
  * A scroll pannel that can handle touch input and has momentum
- *
+ * 
+ * 
+ * <h2>Styling</h2>
+ * 
+ * The DOM structure looks like:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-ScrollPanel">
+ * 	&lt;yourChild class="mgwt-ScrollPanel-container">....&lt;/yourChild>
+ * 	&lt;div class="mgwt-ScrollBar mgwt-ScrollBar-vertical">
+ * 		&ltdiv class="mgwt-ScrollBar-Bar mgwt-ScrollBar-vertical">&lt;/div>
+ * 	&lt;/div>
+ * 	&lt;div class="mgwt-ScrollBar mgwt-ScrollBar-horizontal">
+ * 		&ltdiv class="mgwt-ScrollBar-Bar mgwt-ScrollBar-horizontal">&lt;/div>
+ * 	&lt;/div>
+ * &lt;/div>
+ * </pre>
+ * 
+ * The scrollbars maybe missing from the DOM if scrolling is disabled for a
+ * certain direction.
+ * 
  * @author Daniel Kurka
- * @version $Id: $
+ * 
  */
 public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandlers {
 
@@ -48,7 +68,7 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * set the widget that needs scrolling
 	 */
 	@Override
@@ -58,7 +78,7 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	/**
 	 * set the widget that needs scrolling
-	 *
+	 * 
 	 * @param w the widget to scroll
 	 */
 	public void setWidget(IsWidget w) {
@@ -97,7 +117,7 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * Methods only exists to make scroll panel work with UiBinder @use
 	 * {@link #setWidget(IsWidget)}
 	 */
@@ -140,9 +160,9 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	/**
 	 * Set the offset that the scroll panel should use
-	 *
+	 * 
 	 * This is useful for hiding parts of the child widget
-	 *
+	 * 
 	 * @param x the offset in x-axis
 	 * @param y the offset in y-axis
 	 */
@@ -153,7 +173,7 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	/**
 	 * Should scrolling in x-axis be enabled
-	 *
+	 * 
 	 * @param enabled true to enable
 	 */
 	public void setScrollingEnabledX(boolean enabled) {
@@ -163,10 +183,10 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	/**
 	 * Refresh the scroll panel
-	 *
+	 * 
 	 * This method needs to be called if the content of the child widget has
 	 * changed without calling {@link #setWidget(IsWidget)}
-	 *
+	 * 
 	 * ScrollPanel needs to recalculate sizes.
 	 */
 	public void refresh() {
@@ -176,7 +196,7 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	/**
 	 * Should scrolling in y-axis be enabled
-	 *
+	 * 
 	 * @param enabled true to enable
 	 */
 	public void setScrollingEnabledY(boolean enabled) {
@@ -186,11 +206,11 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	/**
 	 * Use position absolute instead of -webkit-translate
-	 *
+	 * 
 	 * This is required on android if the scrolling area contains input elements
-	 *
+	 * 
 	 * default: false
-	 *
+	 * 
 	 * @param android a boolean.
 	 */
 	public void setUsePos(boolean android) {

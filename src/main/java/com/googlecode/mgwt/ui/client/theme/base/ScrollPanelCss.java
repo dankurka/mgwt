@@ -18,58 +18,28 @@ package com.googlecode.mgwt.ui.client.theme.base;
 import com.google.gwt.resources.client.CssResource;
 
 /**
- * <p>ScrollPanelCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * The css interface for mgwt scroll panel
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public interface ScrollPanelCss extends CssResource {
 
-	/**
-	 * <p>scrollPanel</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-ScrollPanel")
 	String scrollPanel();
 
-	/**
-	 * <p>container</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	@ClassName("container")
+	@ClassName("mgwt-ScrollPanel-container")
 	String container();
 
-	/**
-	 * <p>scrollBar</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-Scrollbar")
 	String scrollBar();
 
-	/**
-	 * <p>horizontal</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	@ClassName("horizontal")
+	@ClassName("mgwt-Scrollbar-horizontal")
 	String horizontal();
 
-	/**
-	 * <p>vertical</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
-	@ClassName("vertical")
+	@ClassName("mgwt-Scrollbar-vertical")
 	String vertical();
 
-	/**
-	 * <p>scrollBarBar</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-Scrollbar-Bar")
 	String scrollBarBar();
 

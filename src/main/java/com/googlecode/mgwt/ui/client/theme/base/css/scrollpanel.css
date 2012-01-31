@@ -1,5 +1,5 @@
 @if mgwt.css pretty {
-	@external mgwt-ScrollPanel, container, mgwt-Scrollbar, horizontal, vertical, mgwt-Scrollbar-Bar;
+	@external mgwt-ScrollPanel, mgwt-ScrollPanel-container, mgwt-Scrollbar, mgwt-Scrollbar-horizontal, mgwt-Scrollbar-vertical, mgwt-Scrollbar-Bar;
 }
 
 .mgwt-ScrollPanel {
@@ -21,19 +21,19 @@
 	}
 }
 
-.mgwt-ScrollPanel .container {
+.mgwt-ScrollPanel-container {
 	overflow: visible;
 }
 
 @if user.agent safari {
-	.mgwt-ScrollPanel .container {
+	.mgwt-ScrollPanel-container {
 		\-webkit-transition-property: literal('-webkit-transform');
 		\-webkit-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
 	}
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-ScrollPanel .container {
+	.mgwt-ScrollPanel-container {
 		\-moz-transition-property: literal('-moz-transform');
 		\-moz-transition-timing-function: literal('cubic-bezier(0, 0, 0.25, 1)');
 		vertical-align: top;
@@ -65,27 +65,27 @@
 }
 
 /*TODO build this for ff as well, workaround for position bug?*/
-.mgwt-Scrollbar.horizontal {
+.mgwt-Scrollbar-horizontal {
 	bottom: 2px;
 	left: 2px;
 	right: 8px;
 	height: 5px;
 }
 
-.mgwt-Scrollbar.vertical {
+.mgwt-Scrollbar-vertical {
 	top: 2px;
 	right: 2px;
 	bottom: 8px;
 	width: 5px;
 }
 
-.mgwt-Scrollbar-Bar.vertical {
+.mgwt-Scrollbar-Bar.mgwt-Scrollbar-vertical {
 	\-webkit-border-radius: 2px 3px;
 	min-width: 5px;
 	min-height: 6px;
 }
 
-.mgwt-Scrollbar-Bar.horizontal {
+.mgwt-Scrollbar-Bar.mgwt-Scrollbar-horizontal {
 	\-webkit-border-radius: 3px 2px;
 	min-width: 6px;
 	min-height: 5px
