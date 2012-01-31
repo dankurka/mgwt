@@ -16,7 +16,14 @@
 package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
+import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
+/**
+ * Base css for all buttons that use {@link ButtonBase}
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface ButtonBaseCss extends CssResource {
 
 	public String active();

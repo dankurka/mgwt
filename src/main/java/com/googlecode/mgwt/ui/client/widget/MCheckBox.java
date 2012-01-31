@@ -36,10 +36,38 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
- * A check box class
+ * <h1>A checkbox widget</h1>
  * 
- * @author Daniel Kurka
- * @version $Id: $
+ * 
+ * 
+ * 
+ * <h2>Styling</h2>
+ * 
+ * The DOM structre of a checkbox looks like this:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-CheckBox">
+ * 	&lt;div class="mgwt-CheckBox-on">&lt;/div> 
+ * 	&lt;div class="mgwt-CheckBox-middle"> 
+ * 		&lt;div class="mgwt-CheckBox-middle-content ">&lt;/div>
+ * 	&lt;/div>
+ * 	&lt;div class="mgwt-CheckBox-off">&lt;/div>
+ * &lt;/div>
+ * </pre>
+ * 
+ * 
+ * The folling classes are applied dynamically:
+ * 
+ * <ul>
+ * <li>.mgwt-CheckBox-checked- is applied to the main div if the box is checked</li>
+ * <li>.mgwt-CheckBox-notchecked- is applied to the main div if the box is NOT
+ * checked</li>
+ * </ul>
+ * 
+ * 
+ * 
+ * 
+ * 
  */
 public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEditor<LeafValueEditor<Boolean>> {
 
