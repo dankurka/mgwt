@@ -15,6 +15,16 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
+import com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarButtonBase;
+
+/**
+ * The css interface for buttons in the button bar.
+ * 
+ * for an explanation on styling see {@link ButtonBarButtonBase}
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface ButtonBarButtonCss extends ButtonBaseCss {
 
 	@ClassName("mgwt-BarButton")

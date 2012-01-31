@@ -25,7 +25,7 @@
 }
 
 
-.mgwt-ButtonBar .text{
+.mgwt-ButtonBar-text{
 	margin-top: 14px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -40,17 +40,17 @@
 
 
 
-.mgwt-ButtonBar .spacer{
+.mgwt-ButtonBar-spacer{
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-ButtonBar .spacer{
+	.mgwt-ButtonBar-spacer{
 		\-moz-box-flex: 1;
 	}
 }
 
 @if user.agent safari {
-	.mgwt-ButtonBar .spacer{
+	.mgwt-ButtonBar-spacer{
 		\-webkit-box-flex: 1;
 	}
 }
