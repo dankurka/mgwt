@@ -28,9 +28,29 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 /**
  * A Button that can be used inside a {@link HeaderPanel}
  * 
+ * <h2>Styling</h2>
+ * 
+ * <pre>
+ * &lt;div class="mgwt-HeaderButton">
+ * 	&lt;div class="mgwt-HeaderButton-border-container">
+ * 		&lt;span class="mgwt-HeaderButton-border-content">&lt;/span>
+ * 	&lt;/div>
+ * 	&lt;p class="mgwt-HeaderButton-text">button text&lt;/p>
+ * &lt;/div>
+ * </pre>
+ * 
+ * Those styles are applied to the main div:
+ * <ul>
+ * <li>.mgwt-HeaderButton-back if the button is a back button</li>
+ * <li>.mgwt-HeaderButton-forward if the button is a forward button</li>
+ * <li>.mgwt-HeaderButton-round if the button should be rendered with rounded
+ * corners</li>
+ * <li>.mgwt-HeaderButton-active if the button is pressed</li>
+ * </ul>
+ * 
  * @author Daniel Kurka
- * @version $Id: $
  */
+
 public class HeaderButton extends ButtonBase {
 
 	private ParagraphElement pElement;
