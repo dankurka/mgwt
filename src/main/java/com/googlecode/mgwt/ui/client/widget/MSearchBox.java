@@ -48,9 +48,26 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 /**
  * A search widget
  * 
+ * <h2>Styling</h2> The DOM structure looks like:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-SearchBox">
+ * 	&lt;div class="mgwt-SearchBox-round">
+ * 		&lt;input class="mgwt-SearchBox-input" />
+ * 	&lt;/div>
+ * 	&lt;div class="mgwt-SearchBox-clear"/>
+ * &lt;/div>
+ * </pre>
+ * 
+ * 
+ * 
+ * If the clear element is touched its class is changed to
+ * .mgwt-SearchBox-clear-active
+ * 
  * @author Daniel Kurka Date: 30.05.2010
- * @version $Id: $
+ * 
  */
+
 public class MSearchBox extends Composite implements HasChangeHandlers, HasText, HasName, HasValue<String>, HasPlaceHolder, HasAllKeyHandlers {
 	private class SearchBoxChangeHandler implements KeyUpHandler {
 
@@ -154,8 +171,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	/**
 	 * Construct a search box with a given css
 	 * 
-	 * @param css
-	 *            the css to use
+	 * @param css the css to use
 	 */
 	public MSearchBox(MSearchBoxCss css) {
 		this.css = css;
@@ -335,8 +351,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	 * setValue
 	 * </p>
 	 * 
-	 * @param value
-	 *            a {@link java.lang.String} object.
+	 * @param value a {@link java.lang.String} object.
 	 */
 	public void setValue(String value) {
 		box.setValue(value);

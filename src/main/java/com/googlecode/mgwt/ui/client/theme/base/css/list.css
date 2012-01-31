@@ -1,6 +1,6 @@
 @url arrowImage listArrow;
 @if mgwt.css pretty {
-	@external mgwt-List, selected, group, mgwt-List-Header;
+	@external mgwt-List, mgwt-List-selected, mgwt-List-group, mgwt-List-first, mgwt-List-last, mgwt-List-Header;
 }
 
 .mgwt-List {

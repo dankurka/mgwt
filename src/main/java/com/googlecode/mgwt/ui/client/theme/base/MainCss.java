@@ -18,10 +18,15 @@ package com.googlecode.mgwt.ui.client.theme.base;
 import com.google.gwt.resources.client.CssResource;
 
 /**
- * <p>MainCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * This interface should contain css classes that are relevant to all elements
+ * in the dom like:
+ * 
+ * * {
+ * 
+ * }
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public interface MainCss extends CssResource {
 
