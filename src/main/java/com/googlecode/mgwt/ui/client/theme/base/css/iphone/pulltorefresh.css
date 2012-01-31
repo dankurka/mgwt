@@ -1,12 +1,12 @@
 @if user.agent safari {
-	.pullToRefresh .arrow {
+	.mgwt-PullToRefresh-arrow {
 		\-webkit-transform-origin: 12px 9px;
 		\-webkit-transform: rotate(90deg) translateZ(0);
 	}
 	
 	
 	@if mgwt.os retina {
-		.pullToRefresh .arrow {
+		.mgwt-PullToRefresh-arrow {
 			background-size: 23px 18px;
 		}
 	}
@@ -14,7 +14,7 @@
 }
 
 @if user.agent gecko1_8 {
-	.pullToRefresh .arrow {
+	.mgwt-PullToRefresh-arrow {
 		\-moz-transform-origin: 12px 9px;
 		\-moz-transform: rotate(90deg);
 	}

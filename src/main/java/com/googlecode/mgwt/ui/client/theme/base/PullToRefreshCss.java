@@ -16,47 +16,30 @@
 package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
+import com.googlecode.mgwt.ui.client.widget.PullToRefresh;
 
 /**
- * <p>PullToRefreshCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * The pull to refresh css interface
+ * 
+ * For an explanation of styling @see {@link PullToRefresh}
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public interface PullToRefreshCss extends CssResource {
-	/**
-	 * <p>pullToRefresh</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-PullToRefresh")
 	public String pullToRefresh();
 
-	/**
-	 * <p>arrow</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-PullToRefresh-arrow")
 	public String arrow();
 
-	/**
-	 * <p>text</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-PullToRefresh-text")
 	public String text();
 
-	/**
-	 * <p>spinner</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-PullToRefresh-spinner")
 	public String spinner();
 
-	/**
-	 * <p>error</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-PullToRefresh-error")
 	public String error();
 
 }

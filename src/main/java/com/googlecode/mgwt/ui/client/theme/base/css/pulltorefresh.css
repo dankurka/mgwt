@@ -1,10 +1,9 @@
-
 @url error errorImage;
 @if mgwt.css pretty {
-	@external pullToRefresh, arrow, mgwt-arrowUp, arrowDown;
+	@external mgwt-PullToRefresh, mgwt-PullToRefresh-arrow, mgwt-PullToRefresh-spinner, mgwt-PullToRefresh-error, mgwt-PullToRefresh-text;
 }
 
-.pullToRefresh {
+.mgwt-PullToRefresh {
 	position: relative;
 	bottom: 0px;
 	left: 0px;
@@ -12,10 +11,9 @@
 	height: 70px;
 }
 
+@sprite .mgwt-PullToRefresh-arrow {gwt-image: "getButtonBarNextSlideImage"; }
 
-@sprite .pullToRefresh .arrow {gwt-image: "getButtonBarNextSlideImage"; }
-
-.pullToRefresh .arrow {
+.mgwt-PullToRefresh-arrow {
 	position: absolute;
 	margin-left: 50px;
 	top: 20px;
@@ -25,7 +23,7 @@
 	background-repeat: no-repeat;
 }
 
-.pullToRefresh .spinner {
+.mgwt-PullToRefresh-spinner {
 	position: absolute;
 	margin-left: 50px;
 	top: 10px;
@@ -33,7 +31,7 @@
 	height: 50px;
 }
 
-.pullToRefresh .error {
+.mgwt-PullToRefresh-error {
 	position: absolute;
 	margin-left: 50px;
 	top: 15px;
@@ -43,7 +41,7 @@
 	background-repeat: no-repeat;
 }
 
-.pullToRefresh .text {
+.mgwt-PullToRefresh-text {
 	position: absolute;
 	top: 20px;
 	left: 110px;
