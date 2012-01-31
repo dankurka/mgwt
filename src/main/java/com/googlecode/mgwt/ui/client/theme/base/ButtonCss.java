@@ -15,54 +15,33 @@
  */
 package com.googlecode.mgwt.ui.client.theme.base;
 
+import com.googlecode.mgwt.ui.client.widget.Button;
+
 /**
- * <p>ButtonCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * The CSS interface for Buttons in mgwt.
+ * 
+ * for explanation see: {@link Button}
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public interface ButtonCss extends ButtonBaseCss {
 
-	/**
-	 * <p>button</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-Button")
 	public String button();
 
-	/**
-	 * <p>active</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-Button-active")
 	public String active();
 
-	/**
-	 * <p>small</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-Button-small")
 	public String small();
 
-	/**
-	 * <p>round</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-Button-round")
 	public String round();
 
-	/**
-	 * <p>important</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-Button-important")
 	public String important();
 
-	/**
-	 * <p>confirm</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
+	@ClassName("mgwt-Button-confirm")
 	public String confirm();
 }

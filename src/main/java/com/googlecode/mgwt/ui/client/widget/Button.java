@@ -21,9 +21,30 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
  * A simple button class
- *
+ * 
+ * <h2>Styling notes:</h2> The button consists of a simple div element like
+ * this:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-Button">ButtonText&lt;/div>
+ * </pre>
+ * 
+ * If the button is selected (active) the active style will be added:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-Button active">ButtonText&lt;/div>
+ * </pre>
+ * 
+ * The button can be set to be small, which would change the markup like this:
+ * 
+ * <pre>
+ * &lt;div class="mgwt-Button">ButtonText&lt;/div>
+ * </pre>
+ * 
+ * 
+ * 
+ * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class Button extends ButtonBase {
 
@@ -41,7 +62,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Construct a button with a given text
-	 *
+	 * 
 	 * @param text the text to use in the button
 	 */
 	public Button(String text) {
@@ -51,7 +72,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Construct a button with a given css
-	 *
+	 * 
 	 * @param css the css to use for this button
 	 */
 	public Button(ButtonCss css) {
@@ -60,7 +81,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Construct a button with a given css and text
-	 *
+	 * 
 	 * @param css the css to use
 	 * @param text the text to use
 	 */
@@ -74,7 +95,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Should the button have rounded corners
-	 *
+	 * 
 	 * @return true if the button has rounded corners, otherwise false
 	 */
 	public boolean isRound() {
@@ -83,7 +104,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Should the button have rounded corners
-	 *
+	 * 
 	 * @param round true if the button should have rounded corners, otherwise
 	 *            false
 	 */
@@ -98,7 +119,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Should the button be rendered small
-	 *
+	 * 
 	 * @param small true if the button should be rendered small, otherwise false
 	 */
 	public void setSmall(boolean small) {
@@ -112,7 +133,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Should the button be rendered small
-	 *
+	 * 
 	 * @return true if the button should be rendered small, otherwise false
 	 */
 	public boolean isSmall() {
@@ -123,7 +144,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Should the button be rendered as important
-	 *
+	 * 
 	 * @return true if the button should be rendered as important, otherwise
 	 *         false
 	 */
@@ -133,7 +154,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Should the button be rendered as important
-	 *
+	 * 
 	 * @param important true if the button should be rendered as important,
 	 *            otherwise false
 	 */
@@ -148,7 +169,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Should the button be rendered as a confirm button
-	 *
+	 * 
 	 * @return a boolean.
 	 */
 	public boolean isConfirm() {
@@ -157,7 +178,7 @@ public class Button extends ButtonBase {
 
 	/**
 	 * Should the button be rendered as a confirm button
-	 *
+	 * 
 	 * @param confirm true if the button should be rendered as a confirm button,
 	 *            otherwise false
 	 */
