@@ -29,18 +29,17 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
  * &lt;div class="mgwt-Button">ButtonText&lt;/div>
  * </pre>
  * 
- * If the button is selected (active) the active style will be added:
+ * The following classes are added as needed:
  * 
- * <pre>
- * &lt;div class="mgwt-Button active">ButtonText&lt;/div>
- * </pre>
- * 
- * The button can be set to be small, which would change the markup like this:
- * 
- * <pre>
- * &lt;div class="mgwt-Button">ButtonText&lt;/div>
- * </pre>
- * 
+ * <ul>
+ * <li>.mgwt-Button-active - Button is pressed</li>
+ * <li>.mgwt-Button-small - Button should be rendered small</li>
+ * <li>.mgwt-Button-confirm - Button should be rendered as a confirm button
+ * (e.g. green on iOS)</li>
+ * <li>.mgwt-Button-important - Button should be rendered as important (e.g. red
+ * on iOS)</li>
+ * <li>.mgwt-Button-round - Button should be rendered with rounded corners</li>
+ * </ul>
  * 
  * 
  * 
