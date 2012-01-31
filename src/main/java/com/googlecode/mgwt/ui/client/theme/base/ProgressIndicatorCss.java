@@ -16,19 +16,15 @@
 package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
+import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
 
 /**
- * <p>ProgressIndicatorCss interface.</p>
- *
- * @author kurt
- * @version $Id: $
+ * The css interface for {@link ProgressIndicator}
+ * 
+ * @author Daniel Kurka
+ * 
  */
 public interface ProgressIndicatorCss extends CssResource {
-	/**
-	 * <p>progressIndicator</p>
-	 *
-	 * @return a {@link java.lang.String} object.
-	 */
 	@ClassName("mgwt-ProgressIndicator")
 	String progressIndicator();
 }
