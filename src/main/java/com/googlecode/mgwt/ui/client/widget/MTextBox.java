@@ -99,9 +99,4 @@ public class MTextBox extends MTextBoxBase {
 		return box.getElement().cast();
 	}
 
-	public void setFocus(boolean b) {
-		box.setFocus(b);
-
-	}
-
 }

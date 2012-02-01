@@ -77,6 +77,9 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		tabContainer = new TabContainer();
 
 		tabContainer.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
+		// TODO
+		tabContainer.getElement().getStyle().setProperty("display", "-webkit-box");
+
 		tabBar = new TabBar(css);
 
 		tabBar.addSelectionHandler(new SelectionHandler<Integer>() {
