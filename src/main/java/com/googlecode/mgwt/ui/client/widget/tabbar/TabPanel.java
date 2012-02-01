@@ -24,6 +24,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
@@ -32,7 +33,6 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
 import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 
 /**
  * 
@@ -98,28 +98,6 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 		}
 
-	}
-
-	/**
-	 * <p>
-	 * setScrollingEnabledX
-	 * </p>
-	 * 
-	 * @param enabled a boolean.
-	 */
-	public void setScrollingEnabledX(boolean enabled) {
-		tabContainer.setScrollingEnabledX(enabled);
-	}
-
-	/**
-	 * <p>
-	 * setScrollingEnabledY
-	 * </p>
-	 * 
-	 * @param enabled a boolean.
-	 */
-	public void setScrollingEnabledY(boolean enabled) {
-		tabContainer.setScrollingEnabledY(enabled);
 	}
 
 	/**
@@ -324,12 +302,12 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 	public static class TabContainer extends Composite {
 
-		private ScrollPanel container;
+		private SimplePanel container;
 		private LinkedList<Widget> children = new LinkedList<Widget>();
 		private Widget activeWidget;
 
 		public TabContainer() {
-			container = new ScrollPanel();
+			container = new SimplePanel();
 			initWidget(container);
 
 		}
@@ -341,14 +319,6 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			}
 			children.add(w);
 
-		}
-
-		public void setScrollingEnabledX(boolean enabled) {
-			container.setScrollingEnabledX(enabled);
-		}
-
-		public void setScrollingEnabledY(boolean enabled) {
-			container.setScrollingEnabledY(enabled);
 		}
 
 		public void clear() {

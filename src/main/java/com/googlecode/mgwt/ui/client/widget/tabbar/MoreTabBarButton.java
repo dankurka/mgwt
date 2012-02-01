@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
+import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.dom.client.Style.Unit;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
@@ -32,9 +34,13 @@ public class MoreTabBarButton extends TabBarButton {
 	}
 
 	public MoreTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMoreImage() : null);
+		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMoreImage() : null);
 
 		setText("More");
+		icon.getStyle().setPosition(Position.RELATIVE);
+		icon.getStyle().setTop(15, Unit.PX);
+
+		icon.getStyle().setMarginBottom(20, Unit.PX);
 	}
 
 }

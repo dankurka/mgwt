@@ -32,7 +32,7 @@ public class FeaturedTabBarButton extends TabBarButton {
 	}
 
 	public FeaturedTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarFeaturedImage() : null);
+		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarFeaturedImage() : null);
 
 		setText("Featured");
 	}

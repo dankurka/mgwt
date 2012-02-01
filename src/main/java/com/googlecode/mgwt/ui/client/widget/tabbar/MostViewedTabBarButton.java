@@ -32,7 +32,7 @@ public class MostViewedTabBarButton extends TabBarButton {
 	}
 
 	public MostViewedTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMostViewedImage() : null);
+		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMostViewedImage() : null);
 		setText("Most Viewed");
 	}
 

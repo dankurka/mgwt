@@ -32,7 +32,7 @@ public class SearchTabBarButton extends TabBarButton {
 	}
 
 	public SearchTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarSearchImage() : null);
+		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarSearchImage() : null);
 		setText("Search");
 	}
 

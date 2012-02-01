@@ -33,7 +33,7 @@ public class BookmarkTabBarButton extends TabBarButton {
 	}
 
 	public BookmarkTabBarButton(TabBarCss tabBarButtonCss) {
-		super(tabBarButtonCss, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarBookMarkImage() : null);
+		super(tabBarButtonCss, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarBookMarkImage() : null);
 		setText("Bookmarks");
 	}
 }

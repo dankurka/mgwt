@@ -32,7 +32,7 @@ public class DownloadsTabBarButton extends TabBarButton {
 	}
 
 	public DownloadsTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarDownloadsImage() : null);
+		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarDownloadsImage() : null);
 		setText("Downloads");
 	}
 
