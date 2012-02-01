@@ -17,7 +17,7 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * A simple search tab bar button.
@@ -28,10 +28,10 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 public class SearchTabBarButton extends TabBarButton {
 
 	public SearchTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
-	public SearchTabBarButton(TabBarButtonCss css) {
+	public SearchTabBarButton(TabBarCss css) {
 		super(css, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarSearchImage() : null);
 		setText("Search");
 	}

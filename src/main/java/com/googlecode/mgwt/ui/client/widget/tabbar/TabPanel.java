@@ -47,7 +47,7 @@ import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
  * 	&lt;mgwt:tabs>
  * 		&lt;mgwt:Tab>
  * 			&lt;mgwt:button>
- * 				&lt;mgwt:TabBarButtonBase type="download">&lt;/mgwt:TabBarButtonBase>
+ * 				&lt;mgwt:DownloadsTabBarButton>&lt;/mgwt:DownloadsTabBarButton>
  * 			&lt;/mgwt:button>
  * 			&lt;mgwt:widget>
  * 				<!-- content for that tab -->
@@ -58,7 +58,6 @@ import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
  * </pre>
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class TabPanel extends Composite implements HasSelectionHandlers<Integer> {
 
@@ -66,23 +65,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	private TabContainer tabContainer;
 	private TabBar tabBar;
 
-	/**
-	 * <p>
-	 * Constructor for TabPanel.
-	 * </p>
-	 */
 	public TabPanel() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
-	/**
-	 * <p>
-	 * Constructor for TabPanel.
-	 * </p>
-	 * 
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.TabBarCss}
-	 *            object.
-	 */
 	public TabPanel(TabBarCss css) {
 		container = new LayoutPanel();
 		initWidget(container);

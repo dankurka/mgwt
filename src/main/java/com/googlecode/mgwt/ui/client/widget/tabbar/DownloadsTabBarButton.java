@@ -17,7 +17,7 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * A downloads tab bar button.
@@ -28,10 +28,10 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 public class DownloadsTabBarButton extends TabBarButton {
 
 	public DownloadsTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss());
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
-	public DownloadsTabBarButton(TabBarButtonCss css) {
+	public DownloadsTabBarButton(TabBarCss css) {
 		super(css, MGWT.getOsDetection().isIOs() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarDownloadsImage() : null);
 		setText("Downloads");
 	}

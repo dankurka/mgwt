@@ -2,7 +2,7 @@ package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.google.gwt.resources.client.ImageResource;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * <h1>A tab bar button</h1>
@@ -28,10 +28,10 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 public class TabBarButton extends TabBarButtonBase {
 
 	public TabBarButton(ImageResource imageResource) {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarButtonCss(), imageResource);
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss(), imageResource);
 	}
 
-	public TabBarButton(TabBarButtonCss css, ImageResource imageResource) {
+	public TabBarButton(TabBarCss css, ImageResource imageResource) {
 		super(css, imageResource);
 
 	}

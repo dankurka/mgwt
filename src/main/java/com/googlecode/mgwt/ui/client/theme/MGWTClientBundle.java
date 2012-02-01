@@ -35,7 +35,6 @@ import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
 
@@ -88,8 +87,6 @@ public interface MGWTClientBundle {
 	PullToRefreshCss getPullToRefreshCss();
 
 	TabBarCss getTabBarCss();
-
-	TabBarButtonCss getTabBarButtonCss();
 
 	public ImageResource tabBarBookMarkImage();
 

@@ -105,9 +105,6 @@ public interface MGWTClientBundleBaseThemeIPad extends ClientBundle, MGWTClientB
 	@Source({ "css/tabbar.css", "css/ipad/tabbar.css" })
 	TabBarCss getTabBarCss();
 
-	@Source({ "css/tabbar_button.css", "css/ipad/tabbar_button.css" })
-	TabBarButtonCss getTabBarButtonCss();
-
 	@Source("resources/tabbar/bookmarks.png")
 	ImageResource tabBarBookMarkImage();
 

@@ -20,7 +20,7 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 /**
@@ -66,7 +66,7 @@ public class TabBarButtonBase extends ButtonBase {
 
 	}
 
-	protected final TabBarButtonCss css;
+	protected final TabBarCss css;
 	protected Element icon;
 	protected Element text;
 
@@ -80,7 +80,7 @@ public class TabBarButtonBase extends ButtonBase {
 	 *            object.
 	 * @param imageResource
 	 */
-	public TabBarButtonBase(TabBarButtonCss css, ImageResource imageResource) {
+	public TabBarButtonBase(TabBarCss css, ImageResource imageResource) {
 		super(css);
 		this.css = css;
 		addStyleName(css.button());
