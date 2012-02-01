@@ -1,5 +1,9 @@
 package com.googlecode.mgwt.ui.client;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.LinkElement;
+import com.google.gwt.dom.client.NodeList;
 import com.googlecode.mgwt.ui.client.theme.MGWTTheme;
 import com.googlecode.mgwt.ui.client.theme.MGWTThemeBaseThemeStandardImpl;
 
@@ -57,5 +61,18 @@ public class MGWTStyle {
 		}
 		theme = newTheme;
 		theme.getMGWTClientBundle().getMainCss().ensureInjected();
+	}
+
+	public static void injectStyleSheet(String url) {
+		NodeList<Element> nodeList = Document.get().getElementsByTagName("head");
+		if (nodeList.getLength() != 1) {
+			throw new RuntimeException("can not find head element, does your html include a head section?");
+		}
+		Element head = nodeList.getItem(0);
+		LinkElement linkElement = Document.get().createLinkElement();
+		linkElement.setRel("stylesheet");
+		linkElement.setType("text/css");
+		linkElement.setHref(url);
+		head.appendChild(linkElement);
 	}
 }
