@@ -597,4 +597,8 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 		return box.addFocusHandler(handler);
 	}
 
+	public void setFocus(boolean b) {
+		box.setFocus(b);
+	}
+
 }

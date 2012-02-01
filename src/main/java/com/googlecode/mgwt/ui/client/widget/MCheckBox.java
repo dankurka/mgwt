@@ -81,6 +81,9 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
+			if (isReadonly()) {
+				return;
+			}
 			event.stopPropagation();
 			event.preventDefault();
 			if (MGWT.getOsDetection().isDesktop()) {
@@ -91,6 +94,9 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
+			if (isReadonly()) {
+				return;
+			}
 
 			event.stopPropagation();
 			event.preventDefault();
@@ -107,6 +113,9 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
+			if (isReadonly()) {
+				return;
+			}
 			event.stopPropagation();
 			event.preventDefault();
 			Touch touch = event.touches().get(0);
@@ -136,6 +145,9 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
+			if (isReadonly()) {
+				return;
+			}
 			event.stopPropagation();
 			event.preventDefault();
 			if (MGWT.getOsDetection().isDesktop()) {
@@ -167,6 +179,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	private static final int DRAG_DEADZONE = 8;
 	protected final CheckBoxCss css;
 	private LeafValueEditor<Boolean> editor;
+	private boolean readonly;
 
 	/**
 	 * Construct a checkbox
@@ -295,6 +308,24 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		return editor;
 	}
 
+	/**
+	 * Should the checkbox be readonly
+	 * 
+	 * @param readonly true to be read only
+	 */
+	public void setReadOnly(boolean readonly) {
+		this.readonly = readonly;
+	}
+
+	/**
+	 * Is the checkbox currently read only?
+	 * 
+	 * @return
+	 */
+	public boolean isReadonly() {
+		return readonly;
+	}
+
 	private void translate(int x) {
 		CssUtil.translate(onDiv, x, 0);
 		CssUtil.translate(middleDiv, x, 0);
@@ -307,4 +338,5 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		offDiv.setAttribute("style", "");
 
 	}
+
 }
