@@ -75,4 +75,8 @@ public class MGWTStyle {
 		linkElement.setHref(url);
 		head.appendChild(linkElement);
 	}
+
+	public native boolean matchMedia(String mediaQuery)/*-{
+		return $wnd.matchMedia(mediaQuery);
+	}-*/;
 }
