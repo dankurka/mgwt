@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
@@ -34,6 +35,8 @@ public class HistoryTabBarButton extends TabBarButton {
 	public HistoryTabBarButton(TabBarCss css) {
 		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarHistoryImage() : null);
 		setText("History");
+
+		text.getStyle().setPaddingTop(4, Unit.PX);
 	}
 
 }

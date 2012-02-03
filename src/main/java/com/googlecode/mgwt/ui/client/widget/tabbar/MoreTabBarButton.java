@@ -39,8 +39,9 @@ public class MoreTabBarButton extends TabBarButton {
 		setText("More");
 		icon.getStyle().setPosition(Position.RELATIVE);
 		icon.getStyle().setTop(15, Unit.PX);
+		text.getStyle().setPosition(Position.RELATIVE);
+		text.getStyle().setTop(23, Unit.PX);
 
-		icon.getStyle().setMarginBottom(20, Unit.PX);
 	}
 
 }

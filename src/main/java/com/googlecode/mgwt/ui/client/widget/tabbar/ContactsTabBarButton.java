@@ -37,7 +37,7 @@ public class ContactsTabBarButton extends TabBarButton {
 
 		setText("Contacts");
 
-		icon.getStyle().setPaddingTop(5, Unit.PX);
+		text.getStyle().setPaddingTop(3, Unit.PX);
 
 	}
 }
