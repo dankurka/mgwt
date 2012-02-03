@@ -1,19 +1,16 @@
 .mgwt-Button {
 	border: solid 1px rgba(0, 0, 0, 0.5);
 	color: #000;
-	text-shadow: rgba(255, 255, 255, .6) 0 1px 0;
 	font-weight: bold;
 }
 
 .mgwt-Button-active {
 	color: #fff;
-	text-shadow: #000 0 1px 0;
 }
 
 @if user.agent safari {
 	.mgwt-Button {
 		\-webkit-border-radius: 6px;
-		\-webkit-box-shadow: 2px 2px 3px #999;
 		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(234,234,234,0.90)), color-stop(0.5, rgba(195,195,195,0.70)), color-stop(0.5, rgba(166,166,166,0.70)), to(rgba(167,167,167,0.80)))');
 	}
 	.mgwt-Button-active {
@@ -25,7 +22,6 @@
 @if user.agent gecko1_8 {
 	.mgwt-Button {
 		\-moz-border-radius: 6px;
-		\-moz-box-shadow: 2px 2px 3px #999;
 		background-image: literal('-webkit-linear-gradient(top, rgba(234,234,234,0.90), rgba(195,195,195,0.70) 50%, rgba(166,166,166,0.70) 51%, rgba(167,167,167,0.80))');
 	}
 	.mgwt-Button-active {
