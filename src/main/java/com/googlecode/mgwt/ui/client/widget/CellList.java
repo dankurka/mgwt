@@ -51,8 +51,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * You can control the markup of the children by using the Cell interface,
  * therefore you can render any kind of arbitrary markup
  * 
- * <h2>Styling<h2>
- * The DOM will look like this:
+ * <h2>Styling</h2> The DOM will look like this:
  * 
  * <pre>
  * &lt;ul class="mgwt-List">
