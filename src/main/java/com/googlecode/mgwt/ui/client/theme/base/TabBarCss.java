@@ -28,6 +28,12 @@ import com.googlecode.mgwt.ui.client.widget.tabbar.TabPanel.TabBar;
  */
 public interface TabBarCss extends ButtonBaseCss {
 
+	@ClassName("mgwt-TabPanel")
+	public String tabPanel();
+
+	@ClassName("mgwt-TabPanel-container")
+	public String tabPanelContainer();
+
 	@ClassName("mgwt-TabBar")
 	public String tabbar();
 

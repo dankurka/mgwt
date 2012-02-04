@@ -32,7 +32,6 @@ import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 
 /**
  * 
@@ -61,7 +60,7 @@ import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
  */
 public class TabPanel extends Composite implements HasSelectionHandlers<Integer> {
 
-	private LayoutPanel container;
+	private FlowPanel container;
 	private TabContainer tabContainer;
 	private TabBar tabBar;
 
@@ -70,15 +69,12 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	}
 
 	public TabPanel(TabBarCss css) {
-		container = new LayoutPanel();
+		container = new FlowPanel();
 		initWidget(container);
-		container.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
+		container.addStyleName(css.tabPanel());
 
 		tabContainer = new TabContainer();
-
-		tabContainer.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
-		// TODO
-		tabContainer.getElement().getStyle().setProperty("display", "-webkit-box");
+		tabContainer.addStyleName(css.tabPanelContainer());
 
 		tabBar = new TabBar(css);
 
