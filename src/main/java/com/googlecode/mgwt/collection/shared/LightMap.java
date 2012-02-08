@@ -13,27 +13,19 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.touch;
+package com.googlecode.mgwt.collection.shared;
 
-/**
- * The touch object inside a {@link TouchEvent}
- * 
- * @author Daniel Kurka
- * @version $Id: $
- */
-public interface Touch {
+public interface LightMap<V> {
 
-	/**
-	 * The X position of the touch within the current document
-	 * 
-	 * @return the current x position of the touch
-	 */
-	public int getPageX();
+	public void clear();
 
-	/**
-	 * The Y position of the touch within the current document
-	 * 
-	 * @return the current y position of the touch
-	 */
-	public int getPageY();
+	public boolean containsKey(String key);
+
+	public LightArray<String> getKeys();
+
+	public void remove(String key);
+
+	public V get(String key);
+
+	public void put(String key, V value);
 }

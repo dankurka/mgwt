@@ -50,7 +50,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A touch enabled radio button implementation
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -63,7 +63,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
 	/**
 	 * Construct a radio button
-	 *
+	 * 
 	 * @param name the name of the group
 	 */
 	@UiConstructor
@@ -73,7 +73,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
 	/**
 	 * Construct a radio button
-	 *
+	 * 
 	 * @param css the css to use
 	 * @param name the group name to use
 	 */
@@ -126,7 +126,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 			public void onTouchMove(TouchMoveEvent event) {
 				if (ignore)
 					return;
-				Touch touch = event.touches().get(0);
+				Touch touch = event.getTouches().get(0);
 				last_x = touch.getPageX();
 				last_y = touch.getPageY();
 
@@ -140,7 +140,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 				if (ignore)
 					return;
 
-				Touch touch = event.touches().get(0);
+				Touch touch = event.getTouches().get(0);
 				start_x = touch.getPageX();
 				start_y = touch.getPageY();
 				last_x = start_x;
@@ -334,7 +334,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
 	/**
 	 * set the formvalue of this radio button
-	 *
+	 * 
 	 * @param formValue the formvalue that would be sent to a server
 	 */
 	public void setFormValue(String formValue) {
@@ -380,7 +380,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
 	/**
 	 * get the form value of the input element
-	 *
+	 * 
 	 * @return the form value
 	 */
 	public String getFormValue() {

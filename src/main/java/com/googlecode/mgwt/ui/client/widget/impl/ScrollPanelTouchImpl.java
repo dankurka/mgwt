@@ -420,7 +420,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 			setTransistionTime(0);
 
-			Touch touch = event.touches().get(0);
+			Touch touch = event.getTouches().get(0);
 			touchStartX = touch.getPageX();
 			touchStartY = touch.getPageY();
 
@@ -443,7 +443,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			event.preventDefault();
 			event.stopPropagation();
 
-			Touch touch = event.touches().get(0);
+			Touch touch = event.getTouches().get(0);
 
 			// calculate delta
 			int leftDelta = 0;

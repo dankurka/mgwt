@@ -16,11 +16,13 @@
 package com.googlecode.mgwt.ui.client.widget.touch;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
-import com.googlecode.mgwt.dom.client.event.tap.TapToNativeTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
@@ -31,22 +33,25 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 /**
  * A TouchDelegate can be used to source touch events from a widget that does
  * not support {@link HasTouchHandlers}
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
-public class TouchDelegate implements HasTouchHandlers {
 
+public class TouchDelegate implements HasTouchHandlers, HasTapHandlers {
+
+	protected final GestureUtility gestureUtility;
 	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
 	private final Widget w;
 
 	/**
 	 * Construct a touchDelegate
-	 *
+	 * 
 	 * @param w the widget to source touchevents from
 	 */
 	public TouchDelegate(Widget w) {
 		this.w = w;
+		gestureUtility = new GestureUtility(this);
 	}
 
 	/*
@@ -93,12 +98,12 @@ public class TouchDelegate implements HasTouchHandlers {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchHandler(com.googlecode.mgwt.dom.client.event.touch.TouchHandler)
-	 */
-	/** {@inheritDoc} */
 	@Override
+	public HandlerRegistration addTapHandler(TapHandler handler) {
+		gestureUtility.ensureTapRecognizer();
+		return w.addHandler(handler, TapEvent.getType());
+	}
+
 	public HandlerRegistration addTouchHandler(TouchHandler handler) {
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
 
@@ -109,22 +114,10 @@ public class TouchDelegate implements HasTouchHandlers {
 		return handlerRegistrationCollection;
 	}
 
-	/**
-	 * <p>addTapHandler</p>
-	 *
-	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.tap.TapHandler} object.
-	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
-	 */
-	protected HandlerRegistration addTapHandler(TapHandler handler) {
-		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);
+	@Override
+	public void fireEvent(GwtEvent<?> event) {
+		w.fireEvent(event);
 
-		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
-
-		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchMoveHandler(touchHandler));
-		return handlerRegistrationCollection;
 	}
 
 }

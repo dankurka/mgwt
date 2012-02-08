@@ -92,8 +92,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	 * Constructor for TabPanel.
 	 * </p>
 	 * 
-	 * @param css
-	 *            a {@link com.googlecode.mgwt.ui.client.theme.base.TabBarCss}
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.TabBarCss}
 	 *            object.
 	 */
 	public TabPanel(TabBarCss css, AnimatableDisplay display) {
@@ -102,7 +101,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 		initWidget(container);
 
 		aniContainer = new FlowPanel();
-		//TODO
+		// TODO
 		aniContainer.getElement().getStyle().setPosition(Position.RELATIVE);
 
 		container.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
@@ -118,7 +117,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
 				event.getSelectedItem();
-				//fire place event
+				// fire place event
 			}
 		});
 
@@ -183,8 +182,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	 * setSelectedChild
 	 * </p>
 	 * 
-	 * @param index
-	 *            a int.
+	 * @param index a int.
 	 */
 	public void setSelectedChild(int index) {
 		tabBar.setSelectedButton(index, true);
@@ -196,12 +194,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	 * add
 	 * </p>
 	 * 
-	 * @param button
-	 *            a
+	 * @param button a
 	 *            {@link com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase}
 	 *            object.
-	 * @param child
-	 *            a {@link com.google.gwt.user.client.ui.Widget} object.
+	 * @param child a {@link com.google.gwt.user.client.ui.Widget} object.
 	 */
 	public void add(TabBarButtonBase button) {
 
@@ -213,8 +209,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	 * remove
 	 * </p>
 	 * 
-	 * @param index
-	 *            a int.
+	 * @param index a int.
 	 */
 	public void remove(int index) {
 
@@ -226,8 +221,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 	 * remove
 	 * </p>
 	 * 
-	 * @param w
-	 *            a {@link com.google.gwt.user.client.ui.Widget} object.
+	 * @param w a {@link com.google.gwt.user.client.ui.Widget} object.
 	 */
 	public void remove(TabBarButtonBase w) {
 		int childIndex = tabBar.getIndexForWidget(w);

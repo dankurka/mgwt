@@ -21,47 +21,61 @@ import com.google.gwt.event.shared.GwtEvent;
  * TapEvent is considered an activation event something like a normal
  * "click event". Like a button, but with touch events.
  * 
+ * 
  * @author Daniel Kurka
  */
+
 public class TapEvent extends GwtEvent<TapHandler> {
 
 	private static final Type<TapHandler> TYPE = new Type<TapHandler>();
+	private final int startX;
+	private final int startY;
 
-	/**
-	 * <p>
-	 * Constructor for TapEvent.
-	 * </p>
-	 */
-	public TapEvent(Object source) {
+	public TapEvent(Object source, int startX, int startY) {
+		this.startX = startX;
+		this.startY = startY;
 		setSource(source);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Gets the event type associated with animation end events.
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
 	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<TapHandler> getAssociatedType() {
 		return TYPE;
 	}
 
-	/** {@inheritDoc} */
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
+	 */
 	@Override
 	protected void dispatch(TapHandler handler) {
 		handler.onTap(this);
 
 	}
 
-	/**
-	 * <p>
-	 * getType
-	 * </p>
-	 * 
-	 * @return a Type object.
-	 */
 	public static Type<TapHandler> getType() {
 		return TYPE;
+	}
+
+	/**
+	 * get the x start position of the tap
+	 * 
+	 * @return the x start position of the tap
+	 */
+	public int getStartX() {
+		return startX;
+	}
+
+	/**
+	 * get the y start position of the tap
+	 * 
+	 * @return the y start position of the tap
+	 */
+	public int getStartY() {
+		return startY;
 	}
 
 }

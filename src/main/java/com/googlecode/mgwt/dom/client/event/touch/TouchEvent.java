@@ -19,6 +19,8 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.DomEvent;
 import com.google.gwt.event.shared.EventHandler;
+import com.googlecode.mgwt.collection.client.JsLightArray;
+import com.googlecode.mgwt.collection.shared.LightArray;
 
 /**
  * BaseClass for all TouchEvents
@@ -34,10 +36,18 @@ public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 	 * touches
 	 * </p>
 	 * 
+	 * @deprecated use {@link #getTouches()} this method will be removed in a
+	 *             future release
+	 * 
 	 * @return a {@link com.google.gwt.core.client.JsArray} object.
 	 */
-	public JsArray<Touch> touches() {
+	@Deprecated
+	public JsArray<JsTouch> touches() {
 		return touches(getNativeEvent());
+	}
+
+	public LightArray<Touch> getTouches() {
+		return new JsLightArray<Touch>(getNativeEvent().getTouches());
 	}
 
 	/**
@@ -49,17 +59,26 @@ public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 	 *            object.
 	 * @return a {@link com.google.gwt.core.client.JsArray} object.
 	 */
-	protected native JsArray<Touch> touches(NativeEvent nativeEvent) /*-{
+	protected native JsArray<JsTouch> touches(NativeEvent nativeEvent) /*-{
 		return nativeEvent.touches;
 	}-*/;
 
 	/**
 	 * get the changed touches
 	 * 
+	 * @deprecated use {@link #getChangedTouches()}
+	 * 
+	 *             this method will be removed in a future release
+	 * 
 	 * @return the array of changed touches
 	 */
-	public JsArray<Touch> changedTouches() {
+	@Deprecated
+	public JsArray<JsTouch> changedTouches() {
 		return changedTouches(getNativeEvent());
+	}
+
+	public LightArray<Touch> getChangedTouches() {
+		return new JsLightArray<Touch>(getNativeEvent().getChangedTouches());
 	}
 
 	/**
@@ -71,7 +90,7 @@ public abstract class TouchEvent<H extends EventHandler> extends DomEvent<H> {
 	 *            object.
 	 * @return a {@link com.google.gwt.core.client.JsArray} object.
 	 */
-	protected native JsArray<Touch> changedTouches(NativeEvent nativeEvent) /*-{
+	protected native JsArray<JsTouch> changedTouches(NativeEvent nativeEvent) /*-{
 		return nativeEvent.changedTouches;
 	}-*/;
 

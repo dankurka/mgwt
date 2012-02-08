@@ -20,14 +20,14 @@ import com.google.gwt.event.shared.HandlerRegistration;
 /**
  * A widget that implements this interface provides registration for
  * {@link TapHandler} instances.
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
 public interface HasTapHandlers {
 	/**
 	 * Adds a {@link TapHandler} handler.
-	 *
+	 * 
 	 * @param handler the simple touch handler
 	 * @return {@link HandlerRegistration} used to remove this handler
 	 */
