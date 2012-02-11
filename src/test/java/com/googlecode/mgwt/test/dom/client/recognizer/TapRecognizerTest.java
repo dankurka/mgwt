@@ -60,6 +60,11 @@ public class TapRecognizerTest {
 	}
 
 	@Test
+	public void testTapRecognizerDistance1() {
+		new TapRecognizer(mockHasHandlers);
+	}
+
+	@Test
 	public void testSimpleTouchStartAndEnd() {
 		tapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2));
 		tapRecognizer.onTouchEnd(new MockTouchEndEvent());

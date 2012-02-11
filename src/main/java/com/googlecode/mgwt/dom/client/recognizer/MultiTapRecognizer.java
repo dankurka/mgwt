@@ -16,13 +16,16 @@
 package com.googlecode.mgwt.dom.client.recognizer;
 
 import com.google.gwt.event.shared.HasHandlers;
+import com.googlecode.mgwt.collection.shared.CollectionFactory;
+import com.googlecode.mgwt.collection.shared.LightArray;
+import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 
-public class DoubleTapRecognizer implements TouchHandler {
+public class MultiTapRecognizer implements TouchHandler {
 
 	public static final int DEFAULT_DISTANCE = 15;
 	public static final int DEFAULT_TIME_IN_MS = 300;
@@ -30,19 +33,41 @@ public class DoubleTapRecognizer implements TouchHandler {
 	private final HasHandlers source;
 	private final int distance;
 	private final int time;
+	private final int numberOfTabs;
 
-	public DoubleTapRecognizer(HasHandlers source) {
-		this(source, DEFAULT_DISTANCE, DEFAULT_TIME_IN_MS);
+	private int touchCount;
+	private boolean wasCanceled;
+
+	private LightArray<Touch> touches;
+
+	public MultiTapRecognizer(HasHandlers source, int numberOfTabs) {
+		this(source, numberOfTabs, DEFAULT_DISTANCE, DEFAULT_TIME_IN_MS);
 	}
 
-	public DoubleTapRecognizer(HasHandlers source, int distance) {
-		this(source, distance, DEFAULT_TIME_IN_MS);
+	public MultiTapRecognizer(HasHandlers source, int numberOfTabs, int distance) {
+		this(source, numberOfTabs, distance, DEFAULT_TIME_IN_MS);
 	}
 
-	public DoubleTapRecognizer(HasHandlers source, int distance, int time) {
+	public MultiTapRecognizer(HasHandlers source, int numberOfTabs, int distance, int time) {
+		if (source == null)
+			throw new IllegalArgumentException("source can not be null");
+
+		if (numberOfTabs < 1) {
+			throw new IllegalArgumentException("numberOfTabs > 0");
+		}
+
+		if (distance < 0)
+			throw new IllegalArgumentException("distance > 0");
+
+		if (time < 1) {
+			throw new IllegalArgumentException("time > 0");
+		}
 		this.source = source;
+		this.numberOfTabs = numberOfTabs;
 		this.distance = distance;
 		this.time = time;
+		touchCount = 0;
+		touches = CollectionFactory.constructArray();
 
 	}
 
@@ -66,7 +91,8 @@ public class DoubleTapRecognizer implements TouchHandler {
 
 	@Override
 	public void onTouchCanceled(TouchCancelEvent event) {
-		// TODO Auto-generated method stub
+		touchCount = 0;
+		wasCanceled = true;
 
 	}
 
