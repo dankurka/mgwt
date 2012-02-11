@@ -15,8 +15,6 @@
  */
 package com.googlecode.mgwt.test.dom.client.recognizer;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -67,11 +65,6 @@ public class TestMutliTapRecognizer {
 	@Test
 	public void testMultiTapRecognizerHasHandlersIntInt() {
 		new MultiTapRecognizer(new MockHasHandlers(), 1, 1, 1);
-	}
-
-	@Test
-	public void testOnTouchCanceled() {
-		fail("Not yet implemented");
 	}
 
 }
