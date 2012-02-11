@@ -27,7 +27,7 @@
 		\-webkit-box-orient: horizontal;
 	}
 	
-	.fillPanel > .fillPanelExpandChild {
+	.fillPanelExpandChild {
 		\-webkit-box-flex: 1;
 	} 
 }

@@ -15,13 +15,13 @@
 	display: \-webkit-box;
 	\-webkit-box-flex: 1;
 	\-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .mgwt-TabBar {
 	height: 48px;
 	display: \-webkit-box;
 	\-webkit-box-orient: horizontal;
-	overflow: hidden;
 }
 
 @if user.agent safari {

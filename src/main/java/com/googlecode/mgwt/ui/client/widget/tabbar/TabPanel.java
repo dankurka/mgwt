@@ -32,6 +32,7 @@ import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
+import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
 
 /**
  * 
@@ -315,6 +316,9 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			if (children.size() == 0) {
 				container.setWidget(w);
 				activeWidget = w;
+				if (activeWidget instanceof ScrollPanel) {
+					activeWidget.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
+				}
 			}
 			children.add(w);
 
@@ -329,6 +333,9 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 		public void setSelectedChild(int index) {
 			activeWidget = children.get(index);
+			if (activeWidget instanceof ScrollPanel) {
+				activeWidget.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
+			}
 			container.setWidget(activeWidget);
 		}
 
@@ -336,6 +343,9 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			int index = getChildIndex(w);
 			boolean remove = children.remove(w);
 			if (w == activeWidget) {
+				if (activeWidget instanceof ScrollPanel) {
+					activeWidget.removeStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
+				}
 				activeWidget = null;
 				if (index - 1 >= 0) {
 					setSelectedChild(index);
