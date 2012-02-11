@@ -25,6 +25,7 @@ import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.HasAllKeyHandlers;
+import com.google.gwt.event.dom.client.HasBlurHandlers;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
 import com.google.gwt.event.dom.client.HasFocusHandlers;
 import com.google.gwt.event.dom.client.KeyDownHandler;
@@ -72,8 +73,8 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
  * 
  * @author Daniel Kurka
  */
-public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator, HasValue<T>,
-		AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers, HasFocusHandlers {
+public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator,
+		HasValue<T>, AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers, HasFocusHandlers {
 
 	private TouchPanel main;
 	protected final ValueBoxBase<T> box;
@@ -599,6 +600,11 @@ public class MValueBoxBase<T> extends Composite implements HasTouchHandlers, Has
 
 	public void setFocus(boolean b) {
 		box.setFocus(b);
+	}
+
+	@Override
+	public HandlerRegistration addBlurHandler(BlurHandler handler) {
+		return box.addBlurHandler(handler);
 	}
 
 }
