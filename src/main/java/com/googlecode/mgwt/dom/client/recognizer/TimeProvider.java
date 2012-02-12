@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Daniel Kurka
+ * Copyright 2012 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,29 +13,8 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.touch;
+package com.googlecode.mgwt.dom.client.recognizer;
 
-/**
- * The touch object inside a {@link TouchEvent}
- * 
- * @author Daniel Kurka
- * @version $Id: $
- */
-public interface Touch {
-
-	/**
-	 * The X position of the touch within the current document
-	 * 
-	 * @return the current x position of the touch
-	 */
-	public int getPageX();
-
-	/**
-	 * The Y position of the touch within the current document
-	 * 
-	 * @return the current y position of the touch
-	 */
-	public int getPageY();
-
-	public int getIdentifier();
+public interface TimeProvider {
+	public long getTime();
 }

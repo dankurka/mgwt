@@ -16,11 +16,21 @@
 package com.googlecode.mgwt.test.dom.client.recognizer;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import com.google.gwt.event.shared.GwtEvent;
+import com.googlecode.mgwt.dom.client.recognizer.MultiTapEvent;
 import com.googlecode.mgwt.dom.client.recognizer.MultiTapRecognizer;
 
 public class TestMutliTapRecognizer {
+
+	private MockHasHandlers hasHandlers;
+
+	@Before
+	public void setup() {
+		hasHandlers = new MockHasHandlers();
+	}
 
 	@Test
 	public void testExceptionInConstructor() {
@@ -55,7 +65,17 @@ public class TestMutliTapRecognizer {
 	@Test
 	public void testExceptionInConstructor3() {
 		try {
-			new MultiTapRecognizer(new MockHasHandlers(), 1, 1, 0);
+			new MultiTapRecognizer(new MockHasHandlers(), 1, 1, -1);
+			Assert.fail("expected exception did not occur");
+		} catch (IllegalArgumentException e) {
+
+		}
+	}
+
+	@Test
+	public void testExceptionInConstructor4() {
+		try {
+			new MultiTapRecognizer(new MockHasHandlers(), 1, 1, 1, 0);
 			Assert.fail("expected exception did not occur");
 		} catch (IllegalArgumentException e) {
 
@@ -65,6 +85,25 @@ public class TestMutliTapRecognizer {
 	@Test
 	public void testMultiTapRecognizerHasHandlersIntInt() {
 		new MultiTapRecognizer(new MockHasHandlers(), 1, 1, 1);
+	}
+
+	@Test
+	public void testOneFingerSingleTap() {
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 1);
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 1));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		GwtEvent<?> event = hasHandlers.getEvent();
+		Assert.assertNotNull(event);
+
+		if (!(event instanceof MultiTapEvent)) {
+			Assert.fail("wrong event fired");
+		}
+		MultiTapEvent multiTapEvent = (MultiTapEvent) event;
+
+		Assert.assertEquals(1, multiTapEvent.getNumberOfFinders());
+
 	}
 
 }

@@ -24,8 +24,10 @@ public class MockTouchMoveEvent extends TouchMoveEvent {
 
 	private final int x;
 	private final int y;
+	private final int id;
 
-	public MockTouchMoveEvent(int x, int y) {
+	public MockTouchMoveEvent(int id, int x, int y) {
+		this.id = id;
 		this.x = x;
 		this.y = y;
 
@@ -35,7 +37,7 @@ public class MockTouchMoveEvent extends TouchMoveEvent {
 	public LightArray<Touch> getTouches() {
 		JavaLightArray<Touch> array = new JavaLightArray<Touch>();
 
-		array.push(new MockTouch(x, y));
+		array.push(new MockTouch(id, x, y));
 
 		return array;
 	}

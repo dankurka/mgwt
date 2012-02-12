@@ -36,21 +36,41 @@ public class MultiTapRecognizer implements TouchHandler {
 	private final int numberOfTabs;
 
 	private int touchCount;
-	private boolean wasCanceled;
 
 	private LightArray<Touch> touches;
+	private final int numberOfFingers;
 
-	public MultiTapRecognizer(HasHandlers source, int numberOfTabs) {
-		this(source, numberOfTabs, DEFAULT_DISTANCE, DEFAULT_TIME_IN_MS);
+	private TimeProvider timeProvider;
+
+	private enum State {
+		READY, FINGERS_GOING_DOWN, FINGERS_GOING_UP, INVALID
 	}
 
-	public MultiTapRecognizer(HasHandlers source, int numberOfTabs, int distance) {
-		this(source, numberOfTabs, distance, DEFAULT_TIME_IN_MS);
+	private State state;
+	private int foundTaps;
+	private int touchMax;
+	private long lastTime;
+
+	public MultiTapRecognizer(HasHandlers source, int numberOfFingers) {
+		this(source, numberOfFingers, 1, DEFAULT_DISTANCE, DEFAULT_TIME_IN_MS);
 	}
 
-	public MultiTapRecognizer(HasHandlers source, int numberOfTabs, int distance, int time) {
+	public MultiTapRecognizer(HasHandlers source, int numberOfFingers, int numberOfTabs) {
+		this(source, numberOfFingers, numberOfTabs, DEFAULT_DISTANCE, DEFAULT_TIME_IN_MS);
+	}
+
+	public MultiTapRecognizer(HasHandlers source, int numberOfFingers, int numberOfTabs, int distance) {
+		this(source, numberOfFingers, numberOfTabs, distance, DEFAULT_TIME_IN_MS);
+	}
+
+	public MultiTapRecognizer(HasHandlers source, int numberOfFingers, int numberOfTabs, int distance, int time) {
+
 		if (source == null)
 			throw new IllegalArgumentException("source can not be null");
+
+		if (numberOfFingers < 1) {
+			throw new IllegalArgumentException("numberOfFingers > 0");
+		}
 
 		if (numberOfTabs < 1) {
 			throw new IllegalArgumentException("numberOfTabs > 0");
@@ -63,37 +83,150 @@ public class MultiTapRecognizer implements TouchHandler {
 			throw new IllegalArgumentException("time > 0");
 		}
 		this.source = source;
+		this.numberOfFingers = numberOfFingers;
 		this.numberOfTabs = numberOfTabs;
 		this.distance = distance;
 		this.time = time;
 		touchCount = 0;
 		touches = CollectionFactory.constructArray();
+		state = State.READY;
+		foundTaps = 0;
+		timeProvider = new SystemTimeProvider();
 
+	}
+
+	public void setTimeProvider(TimeProvider timeProvider) {
+		if (timeProvider == null) {
+			throw new IllegalArgumentException("timeprovider can not be null");
+		}
+		this.timeProvider = timeProvider;
 	}
 
 	@Override
 	public void onTouchStart(TouchStartEvent event) {
-		// TODO Auto-generated method stub
+		touchCount++;
+		LightArray<Touch> currentTouches = event.getTouches();
+
+		switch (state) {
+		case READY:
+			touches.push(currentTouches.get(touchCount - 1));
+			state = State.FINGERS_GOING_DOWN;
+			break;
+
+		case FINGERS_GOING_DOWN:
+			touches.push(currentTouches.get(touchCount - 1));
+			break;
+
+		case FINGERS_GOING_UP:
+			state = State.INVALID;
+			break;
+		default:
+			state = State.INVALID;
+			break;
+		}
+
+		if (touchCount > numberOfFingers) {
+			state = State.INVALID;
+		}
 
 	}
 
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
-		// TODO Auto-generated method stub
+		switch (state) {
+		case FINGERS_GOING_DOWN:
+		case FINGERS_GOING_UP:
+			// compare positions
+			LightArray<Touch> currentTouches = event.getTouches();
+			for (int i = 0; i < currentTouches.length(); i++) {
+				Touch currentTouch = currentTouches.get(i);
+				for (int j = 0; j < touches.length(); j++) {
+					Touch startTouch = touches.get(j);
+					if (currentTouch.getIdentifier() == startTouch.getIdentifier()) {
+						if (Math.abs(currentTouch.getPageX() - startTouch.getPageX()) > distance || Math.abs(currentTouch.getPageY() - startTouch.getPageY()) > distance) {
+							state = State.INVALID;
+							break;
+						}
+					}
+					if (state == State.INVALID) {
+						break;
+					}
+				}
+			}
+
+			break;
+
+		default:
+			break;
+		}
 
 	}
 
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
-		// TODO Auto-generated method stub
 
+		switch (state) {
+		case FINGERS_GOING_DOWN:
+			state = State.FINGERS_GOING_UP;
+			touchMax = touchCount;
+
+			touchCount--;
+			handleTouchEnd();
+			break;
+		case FINGERS_GOING_UP:
+			touchCount--;
+			handleTouchEnd();
+			break;
+
+		case INVALID:
+			reset();
+			break;
+		case READY:
+			reset();
+		default:
+			reset();
+			break;
+		}
+
+	}
+
+	protected void handleTouchEnd() {
+		if (touchCount == 0) {
+			// found one successful tap
+			if (foundTaps > 0) {
+				// check time otherwise invalid
+				if (timeProvider.getTime() - lastTime > time) {
+					state = State.INVALID;
+				}
+			}
+			foundTaps++;
+			lastTime = timeProvider.getTime();
+			if (foundTaps == numberOfTabs) {
+				// fire if time is okay!
+
+				MultiTapEvent multiTapEvent = new MultiTapEvent(touchMax);
+				source.fireEvent(multiTapEvent);
+				reset();
+			} else {
+				state = State.READY;
+				touches = CollectionFactory.constructArray();
+			}
+
+		}
 	}
 
 	@Override
 	public void onTouchCanceled(TouchCancelEvent event) {
-		touchCount = 0;
-		wasCanceled = true;
+		state = State.INVALID;
+		reset();
 
+	}
+
+	protected void reset() {
+		touchCount = 0;
+		foundTaps = 0;
+		touches = CollectionFactory.constructArray();
+		state = State.READY;
 	}
 
 }

@@ -16,30 +16,19 @@
 package com.googlecode.mgwt.test.dom.client.recognizer;
 
 import com.googlecode.mgwt.collection.shared.LightArray;
-import com.googlecode.mgwt.collection.shared.java.JavaLightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 
-public class MockTouchStartEvent extends TouchStartEvent {
+public class MockMultiTouchStartEvent extends TouchStartEvent {
 
-	private final int x;
-	private final int y;
-	private final int id;
+	private final LightArray<Touch> touches;
 
-	public MockTouchStartEvent(int id, int x, int y) {
-		this.id = id;
-		this.x = x;
-		this.y = y;
-
+	public MockMultiTouchStartEvent(LightArray<Touch> touches) {
+		this.touches = touches;
 	}
 
 	@Override
 	public LightArray<Touch> getTouches() {
-		JavaLightArray<Touch> array = new JavaLightArray<Touch>();
-
-		array.push(new MockTouch(id, x, y));
-
-		return array;
+		return touches;
 	}
-
 }

@@ -66,7 +66,7 @@ public class TapRecognizerTest {
 
 	@Test
 	public void testSimpleTouchStartAndEnd() {
-		tapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2));
+		tapRecognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
 		tapRecognizer.onTouchEnd(new MockTouchEndEvent());
 
 		GwtEvent<?> event = mockHasHandlers.getEvent();
@@ -85,7 +85,7 @@ public class TapRecognizerTest {
 
 	@Test
 	public void testSimpleTouchStartAndCancel() {
-		tapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2));
+		tapRecognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
 		tapRecognizer.onTouchCanceled(new MockTouchCancelEvent());
 
 		GwtEvent<?> event = mockHasHandlers.getEvent();
@@ -96,8 +96,8 @@ public class TapRecognizerTest {
 
 	@Test
 	public void testSimpleTouchStartWithMoveAndEnd() {
-		tapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2));
-		tapRecognizer.onTouchMove(new MockTouchMoveEvent(2, 3));
+		tapRecognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		tapRecognizer.onTouchMove(new MockTouchMoveEvent(0, 2, 3));
 		tapRecognizer.onTouchEnd(new MockTouchEndEvent());
 
 		GwtEvent<?> event = mockHasHandlers.getEvent();
@@ -116,8 +116,8 @@ public class TapRecognizerTest {
 
 	@Test
 	public void testSimpleTouchStartWithMoveAndEnd1() {
-		tapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2));
-		tapRecognizer.onTouchMove(new MockTouchMoveEvent(1 + distance, 2 + distance));
+		tapRecognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		tapRecognizer.onTouchMove(new MockTouchMoveEvent(0, 1 + distance, 2 + distance));
 		tapRecognizer.onTouchEnd(new MockTouchEndEvent());
 
 		GwtEvent<?> event = mockHasHandlers.getEvent();
@@ -136,8 +136,8 @@ public class TapRecognizerTest {
 
 	@Test
 	public void testSimpleTouchStartWithMoveAndEnd2() {
-		tapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2));
-		tapRecognizer.onTouchMove(new MockTouchMoveEvent(1 - distance, 2 - distance));
+		tapRecognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		tapRecognizer.onTouchMove(new MockTouchMoveEvent(0, 1 - distance, 2 - distance));
 		tapRecognizer.onTouchEnd(new MockTouchEndEvent());
 
 		GwtEvent<?> event = mockHasHandlers.getEvent();
@@ -156,8 +156,8 @@ public class TapRecognizerTest {
 
 	@Test
 	public void testSimpleTouchStartWithMoveAndEndNoTapRcognized() {
-		tapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2));
-		tapRecognizer.onTouchMove(new MockTouchMoveEvent(1 + distance + 1, 2 + distance + 1));
+		tapRecognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		tapRecognizer.onTouchMove(new MockTouchMoveEvent(0, 1 + distance + 1, 2 + distance + 1));
 		tapRecognizer.onTouchEnd(new MockTouchEndEvent());
 
 		GwtEvent<?> event = mockHasHandlers.getEvent();
@@ -168,8 +168,8 @@ public class TapRecognizerTest {
 
 	@Test
 	public void testSimpleTouchStartWithMoveAndEndNoTapRcognized1() {
-		tapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2));
-		tapRecognizer.onTouchMove(new MockTouchMoveEvent(1 - distance - 1, 2 - distance - 1));
+		tapRecognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		tapRecognizer.onTouchMove(new MockTouchMoveEvent(0, 1 - distance - 1, 2 - distance - 1));
 		tapRecognizer.onTouchEnd(new MockTouchEndEvent());
 
 		GwtEvent<?> event = mockHasHandlers.getEvent();

@@ -22,7 +22,10 @@ public class MockTouch implements Touch {
 	private final int y;
 	private final int x;
 
-	public MockTouch(int x, int y) {
+	private final int id;
+
+	public MockTouch(int id, int x, int y) {
+		this.id = id;
 		this.x = x;
 		this.y = y;
 
@@ -36,6 +39,11 @@ public class MockTouch implements Touch {
 	@Override
 	public int getPageY() {
 		return y;
+	}
+
+	@Override
+	public int getIdentifier() {
+		return id;
 	}
 
 }

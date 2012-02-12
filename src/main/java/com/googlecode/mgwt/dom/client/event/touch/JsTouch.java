@@ -43,4 +43,9 @@ public class JsTouch extends JavaScriptObject implements Touch {
 	public final native int getPageY() /*-{
 		return this.pageY;
 	}-*/;
+
+	@Override
+	public native int getIdentifier() /*-{
+		return this.identifier;
+	}-*/;
 }
