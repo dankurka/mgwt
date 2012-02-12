@@ -17,7 +17,7 @@ package com.googlecode.mgwt.dom.client.event.touch;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class JsTouch extends JavaScriptObject implements Touch {
+public final class JsTouch extends JavaScriptObject implements Touch {
 	/**
 	 * <p>
 	 * Constructor for Touch.
