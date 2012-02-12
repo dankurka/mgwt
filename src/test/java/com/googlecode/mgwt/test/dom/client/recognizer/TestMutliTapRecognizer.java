@@ -324,7 +324,6 @@ public class TestMutliTapRecognizer {
 		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
 		recognizer.onTouchEnd(new MockTouchEndEvent());
 
-		GwtEvent<?> event = hasHandlers.getEvent();
 		Assert.assertNull(hasHandlers.getEvent());
 
 	}
