@@ -15,16 +15,31 @@
  */
 package com.googlecode.mgwt.dom.client.recognizer;
 
+import com.googlecode.mgwt.collection.shared.LightArray;
+import com.googlecode.mgwt.dom.client.event.touch.Touch;
+
 public class MultiTapEvent extends GestureEvent {
 
 	private final int numberOfFingers;
+	private final LightArray<LightArray<Touch>> touchStarts;
+	private final int numberOfTaps;
 
-	public MultiTapEvent(int numberOfFingers) {
+	public MultiTapEvent(int numberOfFingers, int numberOfTaps, LightArray<LightArray<Touch>> touchStarts) {
 		this.numberOfFingers = numberOfFingers;
+		this.numberOfTaps = numberOfTaps;
+		this.touchStarts = touchStarts;
 	}
 
 	public int getNumberOfFinders() {
 		return numberOfFingers;
+	}
+
+	public LightArray<LightArray<Touch>> getTouchStarts() {
+		return touchStarts;
+	}
+
+	public int getNumberOfTabs() {
+		return numberOfTaps;
 	}
 
 }

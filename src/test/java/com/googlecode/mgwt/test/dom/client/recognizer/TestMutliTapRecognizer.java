@@ -20,6 +20,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gwt.event.shared.GwtEvent;
+import com.googlecode.mgwt.collection.shared.CollectionFactory;
+import com.googlecode.mgwt.collection.shared.LightArray;
+import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.recognizer.MultiTapEvent;
 import com.googlecode.mgwt.dom.client.recognizer.MultiTapRecognizer;
 
@@ -103,6 +106,79 @@ public class TestMutliTapRecognizer {
 		MultiTapEvent multiTapEvent = (MultiTapEvent) event;
 
 		Assert.assertEquals(1, multiTapEvent.getNumberOfFinders());
+
+	}
+
+	@Test
+	public void testOneFingerSingleTapWithMove() {
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 1, 10);
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		LightArray<Touch> touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		GwtEvent<?> event = hasHandlers.getEvent();
+		Assert.assertNotNull(event);
+
+		if (!(event instanceof MultiTapEvent)) {
+			Assert.fail("wrong event fired");
+		}
+		MultiTapEvent multiTapEvent = (MultiTapEvent) event;
+
+		Assert.assertEquals(1, multiTapEvent.getNumberOfFinders());
+		Assert.assertEquals(1, multiTapEvent.getNumberOfTabs());
+
+		Assert.assertEquals(1, multiTapEvent.getTouchStarts().get(0).get(0).getPageX());
+		Assert.assertEquals(2, multiTapEvent.getTouchStarts().get(0).get(0).getPageY());
+
+	}
+
+	@Test
+	public void testOneFingerSingleTapWithMoveTwice() {
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 1, 10);
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		LightArray<Touch> touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		GwtEvent<?> event = hasHandlers.getEvent();
+		Assert.assertNotNull(event);
+
+		if (!(event instanceof MultiTapEvent)) {
+			Assert.fail("wrong event fired");
+		}
+		MultiTapEvent multiTapEvent = (MultiTapEvent) event;
+
+		Assert.assertEquals(1, multiTapEvent.getNumberOfFinders());
+		Assert.assertEquals(1, multiTapEvent.getNumberOfTabs());
+
+		Assert.assertEquals(1, multiTapEvent.getTouchStarts().get(0).get(0).getPageX());
+		Assert.assertEquals(2, multiTapEvent.getTouchStarts().get(0).get(0).getPageY());
+
+		// second input
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		event = hasHandlers.getEvent();
+		Assert.assertNotNull(event);
+
+		if (!(event instanceof MultiTapEvent)) {
+			Assert.fail("wrong event fired");
+		}
+		multiTapEvent = (MultiTapEvent) event;
+
+		Assert.assertEquals(1, multiTapEvent.getNumberOfFinders());
+		Assert.assertEquals(1, multiTapEvent.getNumberOfTabs());
+
+		Assert.assertEquals(1, multiTapEvent.getTouchStarts().get(0).get(0).getPageX());
+		Assert.assertEquals(2, multiTapEvent.getTouchStarts().get(0).get(0).getPageY());
 
 	}
 

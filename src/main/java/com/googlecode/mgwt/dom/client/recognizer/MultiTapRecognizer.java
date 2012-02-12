@@ -51,6 +51,8 @@ public class MultiTapRecognizer implements TouchHandler {
 	private int touchMax;
 	private long lastTime;
 
+	private LightArray<LightArray<Touch>> savedStartTouches;
+
 	public MultiTapRecognizer(HasHandlers source, int numberOfFingers) {
 		this(source, numberOfFingers, 1, DEFAULT_DISTANCE, DEFAULT_TIME_IN_MS);
 	}
@@ -89,6 +91,7 @@ public class MultiTapRecognizer implements TouchHandler {
 		this.time = time;
 		touchCount = 0;
 		touches = CollectionFactory.constructArray();
+		savedStartTouches = CollectionFactory.constructArray();
 		state = State.READY;
 		foundTaps = 0;
 		timeProvider = new SystemTimeProvider();
@@ -179,9 +182,8 @@ public class MultiTapRecognizer implements TouchHandler {
 			break;
 
 		case INVALID:
-			reset();
-			break;
 		case READY:
+			savedStartTouches = CollectionFactory.constructArray();
 			reset();
 		default:
 			reset();
@@ -196,16 +198,22 @@ public class MultiTapRecognizer implements TouchHandler {
 			if (foundTaps > 0) {
 				// check time otherwise invalid
 				if (timeProvider.getTime() - lastTime > time) {
-					state = State.INVALID;
+					savedStartTouches = CollectionFactory.constructArray();
+					reset();
+					return;
 				}
 			}
 			foundTaps++;
 			lastTime = timeProvider.getTime();
-			if (foundTaps == numberOfTabs) {
-				// fire if time is okay!
 
-				MultiTapEvent multiTapEvent = new MultiTapEvent(touchMax);
+			// remember touches
+			savedStartTouches.push(touches);
+
+			if (foundTaps == numberOfTabs) {
+
+				MultiTapEvent multiTapEvent = new MultiTapEvent(touchMax, numberOfTabs, savedStartTouches);
 				source.fireEvent(multiTapEvent);
+				savedStartTouches = CollectionFactory.constructArray();
 				reset();
 			} else {
 				state = State.READY;
