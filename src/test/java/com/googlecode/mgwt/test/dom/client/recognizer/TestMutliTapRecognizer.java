@@ -25,6 +25,7 @@ import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.recognizer.MultiTapEvent;
 import com.googlecode.mgwt.dom.client.recognizer.MultiTapRecognizer;
+import com.googlecode.mgwt.dom.client.recognizer.TimeProvider;
 
 public class TestMutliTapRecognizer {
 
@@ -179,6 +180,152 @@ public class TestMutliTapRecognizer {
 
 		Assert.assertEquals(1, multiTapEvent.getTouchStarts().get(0).get(0).getPageX());
 		Assert.assertEquals(2, multiTapEvent.getTouchStarts().get(0).get(0).getPageY());
+
+	}
+
+	@Test
+	public void testTwoTapsWithOneFinger() {
+
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 2, 10);
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		LightArray<Touch> touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNull(hasHandlers.getEvent());
+		recognizer.onTouchStart(new MockTouchStartEvent(1, 3, 4));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(1, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		GwtEvent<?> event = hasHandlers.getEvent();
+		Assert.assertNotNull(event);
+
+		if (!(event instanceof MultiTapEvent)) {
+			Assert.fail("wrong event fired");
+		}
+		MultiTapEvent multiTapEvent = (MultiTapEvent) event;
+
+		Assert.assertEquals(1, multiTapEvent.getNumberOfFinders());
+		Assert.assertEquals(2, multiTapEvent.getNumberOfTabs());
+
+		Assert.assertEquals(1, multiTapEvent.getTouchStarts().get(0).get(0).getPageX());
+		Assert.assertEquals(2, multiTapEvent.getTouchStarts().get(0).get(0).getPageY());
+
+		Assert.assertEquals(3, multiTapEvent.getTouchStarts().get(1).get(0).getPageX());
+		Assert.assertEquals(4, multiTapEvent.getTouchStarts().get(1).get(0).getPageY());
+
+	}
+
+	@Test
+	public void testTwoTapsWithOneFingerButMovetoofarOnSecondTap() {
+
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 2, 10);
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		LightArray<Touch> touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNull(hasHandlers.getEvent());
+		recognizer.onTouchStart(new MockTouchStartEvent(1, 3, 4));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(1, 3 + MultiTapRecognizer.DEFAULT_DISTANCE + 1, 4 + MultiTapRecognizer.DEFAULT_DISTANCE + 1));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNull(hasHandlers.getEvent());
+
+	}
+
+	@Test
+	public void testTwoTapsWithOneFingerButMovetoofarOnSecondTapAndThenTwoTaps() {
+
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 2, 10);
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		LightArray<Touch> touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNull(hasHandlers.getEvent());
+		recognizer.onTouchStart(new MockTouchStartEvent(1, 3, 4));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(1, 3 + MultiTapRecognizer.DEFAULT_DISTANCE + 1, 4 + MultiTapRecognizer.DEFAULT_DISTANCE + 1));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNull(hasHandlers.getEvent());
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNull(hasHandlers.getEvent());
+		recognizer.onTouchStart(new MockTouchStartEvent(1, 3, 4));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(1, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		GwtEvent<?> event = hasHandlers.getEvent();
+		Assert.assertNotNull(event);
+
+		if (!(event instanceof MultiTapEvent)) {
+			Assert.fail("wrong event fired");
+		}
+		MultiTapEvent multiTapEvent = (MultiTapEvent) event;
+
+		Assert.assertEquals(1, multiTapEvent.getNumberOfFinders());
+		Assert.assertEquals(2, multiTapEvent.getNumberOfTabs());
+
+		Assert.assertEquals(1, multiTapEvent.getTouchStarts().get(0).get(0).getPageX());
+		Assert.assertEquals(2, multiTapEvent.getTouchStarts().get(0).get(0).getPageY());
+
+		Assert.assertEquals(3, multiTapEvent.getTouchStarts().get(1).get(0).getPageX());
+		Assert.assertEquals(4, multiTapEvent.getTouchStarts().get(1).get(0).getPageY());
+
+	}
+
+	@Test
+	public void testTimeoutWithTwoSingleFingerTaps() {
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 2, 10);
+
+		recognizer.setTimeProvider(new TimeProvider() {
+
+			private int count = 0;
+
+			@Override
+			public long getTime() {
+				count++;
+				if (count == 1)
+					return 0;
+				return MultiTapRecognizer.DEFAULT_TIME_IN_MS + 1;
+			}
+		});
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		LightArray<Touch> touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNull(hasHandlers.getEvent());
+		recognizer.onTouchStart(new MockTouchStartEvent(1, 3, 4));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(1, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		GwtEvent<?> event = hasHandlers.getEvent();
+		Assert.assertNull(hasHandlers.getEvent());
 
 	}
 
