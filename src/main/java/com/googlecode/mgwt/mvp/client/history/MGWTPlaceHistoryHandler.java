@@ -139,13 +139,17 @@ public class MGWTPlaceHistoryHandler {
 		Place place = getPlaceForToken(token);
 
 		historyObserver.onHistoryChanged(place, defaultHistoryHandler);
-		//TODO maybe handle differently?
+		// TODO maybe handle differently?
 		ignore = true;
 		placeController.goTo(place);
 	}
 
 	protected void replaceToken(String token) {
-		historian.replaceState(token, Window.getTitle(), "#" + token);
+		if (token.length() > 0) {
+			historian.replaceState(token, Window.getTitle(), "#" + token);
+		} else {
+			historian.replaceState(token, Window.getTitle(), "");
+		}
 	}
 
 	protected void pushToken(String token) {
