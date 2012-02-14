@@ -421,7 +421,6 @@ public class TestMutliTapRecognizer {
 
 		Assert.assertEquals(30, multiTapEvent.getTouchStarts().get(0).get(1).getPageX());
 		Assert.assertEquals(40, multiTapEvent.getTouchStarts().get(0).get(1).getPageY());
-		// test
 
 	}
 
