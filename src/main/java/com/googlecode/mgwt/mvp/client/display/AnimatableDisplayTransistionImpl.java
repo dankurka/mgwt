@@ -15,10 +15,9 @@
  */
 package com.googlecode.mgwt.mvp.client.display;
 
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -33,7 +32,7 @@ import com.googlecode.mgwt.mvp.client.resources.TransistionCss;
 
 /**
  * Considered internal
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -49,16 +48,22 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 	protected final TransistionCss css;
 
 	/**
-	 * <p>Constructor for AnimatableDisplayTransistionImpl.</p>
+	 * <p>
+	 * Constructor for AnimatableDisplayTransistionImpl.
+	 * </p>
 	 */
 	public AnimatableDisplayTransistionImpl() {
 		this(AnimationSelector.getBundle().transitionCss());
 	}
 
 	/**
-	 * <p>Constructor for AnimatableDisplayTransistionImpl.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.mvp.client.resources.TransistionCss} object.
+	 * <p>
+	 * Constructor for AnimatableDisplayTransistionImpl.
+	 * </p>
+	 * 
+	 * @param css a
+	 *            {@link com.googlecode.mgwt.mvp.client.resources.TransistionCss}
+	 *            object.
 	 */
 	public AnimatableDisplayTransistionImpl(TransistionCss css) {
 
@@ -106,7 +111,9 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 	}
 
 	/**
-	 * <p>removeAllStyles</p>
+	 * <p>
+	 * removeAllStyles
+	 * </p>
 	 */
 	protected void removeAllStyles() {
 
@@ -148,7 +155,9 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 	protected AnimationEndCallback lastCallback;
 
 	/**
-	 * <p>blurBeforeAnimation</p>
+	 * <p>
+	 * blurBeforeAnimation
+	 * </p>
 	 */
 	protected native void blurBeforeAnimation() /*-{
 		var node = $doc.querySelector(":focus");
@@ -222,21 +231,24 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 		first.getElement().getStyle().setDisplay(Display.BLOCK);
 		second.getElement().getStyle().setDisplay(Display.BLOCK);
 
-		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+		new Timer() {
 
 			@Override
-			public void execute() {
+			public void run() {
 				first.removeStyleName(css.start());
 				second.removeStyleName(css.start());
 				first.addStyleName(css.end());
 				second.addStyleName(css.end());
+
 			}
-		});
+		}.schedule(10);
 
 	}
 
 	/**
-	 * <p>onAnimationEnd</p>
+	 * <p>
+	 * onAnimationEnd
+	 * </p>
 	 */
 	protected void onAnimationEnd() {
 		if (showFirst) {
