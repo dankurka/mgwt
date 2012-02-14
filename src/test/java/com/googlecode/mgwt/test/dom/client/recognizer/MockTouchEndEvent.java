@@ -22,9 +22,19 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 
 public class MockTouchEndEvent extends TouchEndEvent {
 
+	private LightArray<Touch> touches;
+
+	public MockTouchEndEvent() {
+		touches = CollectionFactory.constructArray();
+	}
+
+	public MockTouchEndEvent(LightArray<Touch> touches) {
+		this.touches = touches;
+	}
+
 	@Override
 	public LightArray<Touch> getTouches() {
-		return CollectionFactory.constructArray();
+		return touches;
 	}
 
 }

@@ -361,4 +361,67 @@ public class TestMutliTapRecognizer {
 
 	}
 
+	@Test
+	public void testTwoFingerDownOneUpAndDownAgain() {
+
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 2, 1, 10);
+
+		// first finger down
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		LightArray<Touch> touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		Assert.assertNull(hasHandlers.getEvent());
+
+		// second finger down and up
+		recognizer.onTouchStart(new MockTouchStartEvent(1, 3, 4));
+		recognizer.onTouchEnd(new MockTouchEndEvent(touches));
+
+		Assert.assertNull(hasHandlers.getEvent());
+
+		// second finger down again and up
+		recognizer.onTouchStart(new MockTouchStartEvent(2, 3, 4));
+		recognizer.onTouchEnd(new MockTouchEndEvent(touches));
+
+		Assert.assertNull(hasHandlers.getEvent());
+
+		// last finger up
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+		Assert.assertNull(hasHandlers.getEvent());
+
+		// lets test if we find a correct one now...
+		recognizer.onTouchStart(new MockTouchStartEvent(3, 10, 20));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(3, 11, 20));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		Assert.assertNull(hasHandlers.getEvent());
+
+		LightArray<Touch> touchStartArray = CollectionFactory.constructArray();
+		touchStartArray.push(new MockTouch(3, 11, 20));
+		touchStartArray.push(new MockTouch(4, 30, 40));
+
+		// second finger down and up
+		recognizer.onTouchStart(new MockMultiTouchStartEvent(touchStartArray));
+		recognizer.onTouchEnd(new MockTouchEndEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNotNull(hasHandlers.getEvent());
+		GwtEvent<?> event = hasHandlers.getEvent();
+
+		if (!(event instanceof MultiTapEvent)) {
+			Assert.fail("wrong event fired");
+		}
+		MultiTapEvent multiTapEvent = (MultiTapEvent) event;
+
+		Assert.assertEquals(2, multiTapEvent.getNumberOfFinders());
+		Assert.assertEquals(1, multiTapEvent.getNumberOfTabs());
+
+		Assert.assertEquals(10, multiTapEvent.getTouchStarts().get(0).get(0).getPageX());
+		Assert.assertEquals(20, multiTapEvent.getTouchStarts().get(0).get(0).getPageY());
+
+		Assert.assertEquals(30, multiTapEvent.getTouchStarts().get(0).get(1).getPageX());
+		Assert.assertEquals(40, multiTapEvent.getTouchStarts().get(0).get(1).getPageY());
+
+	}
+
 }

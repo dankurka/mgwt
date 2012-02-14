@@ -186,6 +186,7 @@ public class MultiTapRecognizer implements TouchHandler {
 			savedStartTouches = CollectionFactory.constructArray();
 			if (event.getTouches().length() == 0)
 				reset();
+			break;
 		default:
 			reset();
 			break;
