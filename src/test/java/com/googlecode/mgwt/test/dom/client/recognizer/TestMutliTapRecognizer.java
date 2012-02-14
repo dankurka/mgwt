@@ -328,4 +328,37 @@ public class TestMutliTapRecognizer {
 
 	}
 
+	@Test
+	public void testExceptionOnNullTimeProvider() {
+		MultiTapRecognizer multiTapRecognizer = new MultiTapRecognizer(hasHandlers, 1);
+		try {
+			multiTapRecognizer.setTimeProvider(null);
+			Assert.fail("expected excetion did not occur");
+		} catch (IllegalArgumentException e) {
+
+		}
+
+	}
+
+	@Test
+	public void testTwoTapsWithOneFingerInterrupedbyTouchcancel() {
+
+		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 2, 10);
+
+		recognizer.onTouchStart(new MockTouchStartEvent(0, 1, 2));
+		LightArray<Touch> touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(0, 2, 2));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchEnd(new MockTouchEndEvent());
+
+		Assert.assertNull(hasHandlers.getEvent());
+		recognizer.onTouchStart(new MockTouchStartEvent(1, 3, 4));
+		touches = CollectionFactory.constructArray();
+		touches.push(new MockTouch(1, 3 + MultiTapRecognizer.DEFAULT_DISTANCE + 1, 4 + MultiTapRecognizer.DEFAULT_DISTANCE + 1));
+		recognizer.onTouchMove(new MockMultiTouchMoveEvent(touches));
+		recognizer.onTouchCanceled(new MockTouchCancelEvent());
+		Assert.assertNull(hasHandlers.getEvent());
+
+	}
+
 }

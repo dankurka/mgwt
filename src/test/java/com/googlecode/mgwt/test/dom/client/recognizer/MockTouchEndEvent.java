@@ -15,8 +15,16 @@
  */
 package com.googlecode.mgwt.test.dom.client.recognizer;
 
+import com.googlecode.mgwt.collection.shared.CollectionFactory;
+import com.googlecode.mgwt.collection.shared.LightArray;
+import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 
 public class MockTouchEndEvent extends TouchEndEvent {
+
+	@Override
+	public LightArray<Touch> getTouches() {
+		return CollectionFactory.constructArray();
+	}
 
 }
