@@ -88,7 +88,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
-			setValueContrained(event.touches().get(0).getPageX());
+			setValueContrained(event.getTouches().get(0).getPageX());
 			if (MGWT.getOsDetection().isDesktop()) {
 				DOM.setCapture(getElement());
 			}
@@ -97,7 +97,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
 
-			setValueContrained(event.touches().get(0).getPageX());
+			setValueContrained(event.getTouches().get(0).getPageX());
 		}
 
 		@Override

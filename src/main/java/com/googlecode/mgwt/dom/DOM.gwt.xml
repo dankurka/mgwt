@@ -17,6 +17,7 @@
  -->
 <module>
     <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.googlecode.mgwt.collection.GwtCollections'/>
     
     <define-property name="mobile.user.agent" values="mobilesafari, not_mobile" />
 <property-provider name="mobile.user.agent"><![CDATA[

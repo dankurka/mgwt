@@ -19,8 +19,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
+import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
-import com.googlecode.mgwt.dom.client.event.tap.TapToNativeTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
@@ -31,19 +32,23 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 /**
  * Base class for all widgets that support touch events Childclasses are
  * responsible for setting the dom element
- *
+ * 
  * @author Daniel Kurka
- * @version $Id: $
  */
-public abstract class TouchWidget extends Widget implements HasTouchHandlers {
+
+public abstract class TouchWidget extends Widget implements HasTouchHandlers, HasTapHandlers {
 
 	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
 
+	protected final GestureUtility gestureUtility;
+
 	/**
-	 * <p>Constructor for TouchWidget.</p>
+	 * <p>
+	 * Constructor for TouchWidget.
+	 * </p>
 	 */
 	public TouchWidget() {
-
+		gestureUtility = new GestureUtility(this);
 	}
 
 	/*
@@ -107,21 +112,19 @@ public abstract class TouchWidget extends Widget implements HasTouchHandlers {
 	}
 
 	/**
-	 * <p>addTapHandler</p>
-	 *
-	 * @param handler a {@link com.googlecode.mgwt.dom.client.event.tap.TapHandler} object.
+	 * <p>
+	 * addTapHandler
+	 * </p>
+	 * 
+	 * @param handler a
+	 *            {@link com.googlecode.mgwt.dom.client.event.tap.TapHandler}
+	 *            object.
 	 * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
 	 */
-	protected HandlerRegistration addTapHandler(TapHandler handler) {
-		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);
 
-		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
-
-		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchMoveHandler(touchHandler));
-		return handlerRegistrationCollection;
+	public HandlerRegistration addTapHandler(TapHandler handler) {
+		gestureUtility.ensureTapRecognizer();
+		return addHandler(handler, TapEvent.getType());
 	}
 
 }

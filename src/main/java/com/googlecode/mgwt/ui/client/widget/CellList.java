@@ -112,7 +112,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
-			Touch touch = event.touches().get(0);
+			Touch touch = event.getTouches().get(0);
 			if (Math.abs(touch.getPageX() - x) > Tap.RADIUS || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
 				moved = true;
 			}
@@ -135,8 +135,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		public void onTouchStart(TouchStartEvent event) {
 			started = true;
 
-			x = event.touches().get(0).getPageX();
-			y = event.touches().get(0).getPageY();
+			x = event.getTouches().get(0).getPageX();
+			y = event.getTouches().get(0).getPageY();
 
 			if (node != null) {
 				node.removeClassName(css.selected());

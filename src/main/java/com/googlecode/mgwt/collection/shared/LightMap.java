@@ -13,16 +13,19 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.tap;
+package com.googlecode.mgwt.collection.shared;
 
-import com.google.gwt.event.shared.EventHandler;
+public interface LightMap<V> {
 
-/**
- * Handler for {@link TapEvent} events:
- * 
- * 
- * @author Daniel Kurka
- */
-public interface TapHandler extends EventHandler {
-	public void onTap(TapEvent event);
+	public void clear();
+
+	public boolean containsKey(String key);
+
+	public LightArray<String> getKeys();
+
+	public void remove(String key);
+
+	public V get(String key);
+
+	public void put(String key, V value);
 }

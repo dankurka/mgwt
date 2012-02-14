@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Daniel Kurka
+ * Copyright 2012 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,16 +13,13 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.tap;
+package com.googlecode.mgwt.dom.client.recognizer;
 
-import com.google.gwt.event.shared.EventHandler;
+public class SystemTimeProvider implements TimeProvider {
 
-/**
- * Handler for {@link TapEvent} events:
- * 
- * 
- * @author Daniel Kurka
- */
-public interface TapHandler extends EventHandler {
-	public void onTap(TapEvent event);
+	@Override
+	public long getTime() {
+		return System.currentTimeMillis();
+	}
+
 }

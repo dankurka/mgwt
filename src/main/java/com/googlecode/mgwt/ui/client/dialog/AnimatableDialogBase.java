@@ -21,6 +21,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -28,8 +29,8 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
-import com.googlecode.mgwt.dom.client.event.tap.TapToNativeTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
@@ -40,6 +41,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.dom.client.recognizer.TapRecognizer;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
@@ -48,7 +50,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
 /**
  * Baseclass for creating dialogs that are animated
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -122,8 +124,9 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * Create an instance of an animated dialog
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss} object.
+	 * 
+	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss}
+	 *            object.
 	 */
 	public AnimatableDialogBase(DialogCss css) {
 		this.css = css;
@@ -222,14 +225,12 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 */
 	/** {@inheritDoc} */
 	public HandlerRegistration addTapHandler(TapHandler handler) {
-		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);
-
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
+		TapRecognizer tapRecognizer = new TapRecognizer(display.asWidget());
 
-		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchMoveHandler(touchHandler));
+		handlerRegistrationCollection.addHandlerRegistration(addTouchHandler(tapRecognizer));
+		handlerRegistrationCollection.addHandlerRegistration(display.asWidget().addHandler(handler, TapEvent.getType()));
+
 		return handlerRegistrationCollection;
 	}
 
@@ -253,7 +254,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * get the panel that the dialog overlays
-	 *
+	 * 
 	 * @return the panel that is overlayed by this dialog
 	 */
 	public HasWidgets getPanelToOverlay() {
@@ -286,7 +287,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * Should the dialog hide itself if there is a tap outside the dialog
-	 *
+	 * 
 	 * @return true if the dialog automatically hides, otherwise false
 	 */
 	public boolean isHideOnBackgroundClick() {
@@ -315,7 +316,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * Should the content of the dialog be centered
-	 *
+	 * 
 	 * @param centerContent true to center content
 	 */
 	public void setCenterContent(boolean centerContent) {
@@ -324,7 +325,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * Should the dialog hide itself if there is a tap outside the dialog
-	 *
+	 * 
 	 * @param hideOnBackgroundClick true if the dialog automatically hides,
 	 *            otherwise false
 	 */
@@ -334,7 +335,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * set the panel that should be overlayed by the dialog
-	 *
+	 * 
 	 * @param panel the area to be overlayed
 	 */
 	public void setPanelToOverlay(HasWidgets panel) {
@@ -343,7 +344,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 	/**
 	 * should the dialog add a shadow over the area that it covers
-	 *
+	 * 
 	 * @param shadow true to add a shadow
 	 */
 	public void setShadow(boolean shadow) {
@@ -361,7 +362,9 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 * @see com.googlecode.mgwt.ui.client.dialog.Dialog#show()
 	 */
 	/**
-	 * <p>show</p>
+	 * <p>
+	 * show
+	 * </p>
 	 */
 	public void show() {
 		if (isVisible) {
@@ -394,26 +397,38 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	}
 
 	/**
-	 * <p>getShowAnimation</p>
-	 *
+	 * <p>
+	 * getShowAnimation
+	 * </p>
+	 * 
 	 * @return a {@link com.googlecode.mgwt.mvp.client.Animation} object.
 	 */
 	protected abstract Animation getShowAnimation();
 
 	/**
-	 * <p>getHideAnimation</p>
-	 *
+	 * <p>
+	 * getHideAnimation
+	 * </p>
+	 * 
 	 * @return a {@link com.googlecode.mgwt.mvp.client.Animation} object.
 	 */
 	protected abstract Animation getHideAnimation();
 
 	/**
-	 * <p>maybeHide</p>
+	 * <p>
+	 * maybeHide
+	 * </p>
 	 */
 	protected void maybeHide() {
 		if (hideOnBackgroundClick) {
 			hide();
 		}
+	}
+
+	@Override
+	public void fireEvent(GwtEvent<?> event) {
+		display.asWidget().fireEvent(event);
+
 	}
 
 }

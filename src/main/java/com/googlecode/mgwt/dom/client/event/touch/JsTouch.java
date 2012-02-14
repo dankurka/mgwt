@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Daniel Kurka
+ * Copyright 2012 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,27 +15,37 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
-/**
- * The touch object inside a {@link TouchEvent}
- * 
- * @author Daniel Kurka
- * @version $Id: $
- */
-public interface Touch {
+import com.google.gwt.core.client.JavaScriptObject;
+
+public final class JsTouch extends JavaScriptObject implements Touch {
+	/**
+	 * <p>
+	 * Constructor for Touch.
+	 * </p>
+	 */
+	protected JsTouch() {
+	}
 
 	/**
 	 * The X position of the touch within the current document
 	 * 
 	 * @return the current x position of the touch
 	 */
-	public int getPageX();
+	public final native int getPageX() /*-{
+		return this.pageX;
+	}-*/;
 
 	/**
 	 * The Y position of the touch within the current document
 	 * 
 	 * @return the current y position of the touch
 	 */
-	public int getPageY();
+	public final native int getPageY() /*-{
+		return this.pageY;
+	}-*/;
 
-	public int getIdentifier();
+	@Override
+	public native int getIdentifier() /*-{
+		return this.identifier;
+	}-*/;
 }

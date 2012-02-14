@@ -96,7 +96,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 			clearButton.addStyleName(css.clearActive());
 			moved = false;
 
-			Touch touch = event.touches().get(0);
+			Touch touch = event.getTouches().get(0);
 			x = touch.getPageX();
 			y = touch.getPageY();
 
@@ -110,7 +110,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		 */
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
-			Touch touch = event.touches().get(0);
+			Touch touch = event.getTouches().get(0);
 
 			if (Math.abs(touch.getPageX() - x) > Tap.RADIUS || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
 				moved = true;

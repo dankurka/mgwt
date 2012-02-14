@@ -18,6 +18,9 @@ package com.googlecode.mgwt.dom.client.event.mouse;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.googlecode.mgwt.collection.client.JsLightArray;
+import com.googlecode.mgwt.collection.shared.LightArray;
+import com.googlecode.mgwt.dom.client.event.touch.JsTouch;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 
@@ -37,8 +40,7 @@ public class SimulatedTouchEndEvent extends TouchEndEvent {
 	/**
 	 * Construct a simluated TouchEndEvent from a {@link MouseUpEvent}
 	 * 
-	 * @param mouseUpEvent
-	 *            the data for the simulated event;
+	 * @param mouseUpEvent the data for the simulated event;
 	 */
 	public SimulatedTouchEndEvent(MouseUpEvent mouseUpEvent) {
 		x = mouseUpEvent.getClientX();
@@ -47,9 +49,19 @@ public class SimulatedTouchEndEvent extends TouchEndEvent {
 		setSource(mouseUpEvent.getSource());
 	}
 
+	@Override
+	public LightArray<Touch> getTouches() {
+		return new JsLightArray<Touch>(touches(getNativeEvent()));
+	}
+
+	@Override
+	public LightArray<Touch> getChangedTouches() {
+		return new JsLightArray<Touch>(changedTouches(getNativeEvent()));
+	}
+
 	/** {@inheritDoc} */
 	@Override
-	protected native JsArray<Touch> touches(NativeEvent nativeEvent) /*-{
+	protected native JsArray<JsTouch> touches(NativeEvent nativeEvent) /*-{
 		var touch = {};
 
 		touch.pageX = this.@com.googlecode.mgwt.dom.client.event.mouse.SimulatedTouchEndEvent::x;
@@ -64,7 +76,7 @@ public class SimulatedTouchEndEvent extends TouchEndEvent {
 
 	/** {@inheritDoc} */
 	@Override
-	protected native JsArray<Touch> changedTouches(NativeEvent nativeEvent) /*-{
+	protected native JsArray<JsTouch> changedTouches(NativeEvent nativeEvent) /*-{
 		var touch = {};
 
 		touch.pageX = this.@com.googlecode.mgwt.dom.client.event.mouse.SimulatedTouchEndEvent::x;

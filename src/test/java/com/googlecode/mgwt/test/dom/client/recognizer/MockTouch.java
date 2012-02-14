@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Daniel Kurka
+ * Copyright 2012 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,16 +13,37 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.event.tap;
+package com.googlecode.mgwt.test.dom.client.recognizer;
 
-import com.google.gwt.event.shared.EventHandler;
+import com.googlecode.mgwt.dom.client.event.touch.Touch;
 
-/**
- * Handler for {@link TapEvent} events:
- * 
- * 
- * @author Daniel Kurka
- */
-public interface TapHandler extends EventHandler {
-	public void onTap(TapEvent event);
+public class MockTouch implements Touch {
+
+	private final int y;
+	private final int x;
+
+	private final int id;
+
+	public MockTouch(int id, int x, int y) {
+		this.id = id;
+		this.x = x;
+		this.y = y;
+
+	}
+
+	@Override
+	public int getPageX() {
+		return x;
+	}
+
+	@Override
+	public int getPageY() {
+		return y;
+	}
+
+	@Override
+	public int getIdentifier() {
+		return id;
+	}
+
 }

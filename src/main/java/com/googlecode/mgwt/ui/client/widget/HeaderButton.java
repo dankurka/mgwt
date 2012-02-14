@@ -17,10 +17,8 @@ package com.googlecode.mgwt.ui.client.widget;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.ParagraphElement;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
-import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
@@ -84,16 +82,6 @@ public class HeaderButton extends ButtonBase {
 		pElement.addClassName(css.headerButtonText());
 		getElement().appendChild(pElement);
 
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.ButtonBase#addTapHandler(com.googlecode.mgwt.dom.client.event.tap.TapHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addTapHandler(TapHandler handler) {
-		return super.addTapHandler(handler);
 	}
 
 	/*

@@ -20,8 +20,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
+import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
-import com.googlecode.mgwt.dom.client.event.tap.TapToNativeTouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
@@ -32,13 +32,20 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 
 /**
  * A simple panel that supports {@link TouchEvent}
- *
+ * 
  * @author Daniel Kurka
- * @version $Id: $
+ * 
  */
+
 public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHandlers {
 
 	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
+
+	protected final GestureUtility gestureUtility;
+
+	public TouchPanel() {
+		gestureUtility = new GestureUtility(this);
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -102,20 +109,12 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.tap.HasTapEvent#addTapHandler(com.googlecode.mgwt.dom.client.event.tap.TapHandler)
+	 * @see com.googlecode.mgwt.dom.client.recognizer.HasTapHandlers#addTapHandler(com.googlecode.mgwt.dom.client.recognizer.TapHandler)
 	 */
-	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTapHandler(TapHandler handler) {
-		TapToNativeTouchHandler touchHandler = new TapToNativeTouchHandler(handler);
-
-		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
-
-		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(touchHandler));
-		handlerRegistrationCollection.addHandlerRegistration(addTouchMoveHandler(touchHandler));
-		return handlerRegistrationCollection;
+		gestureUtility.ensureTapRecognizer();
+		return addHandler(handler, TapEvent.getType());
 	}
 
 }
