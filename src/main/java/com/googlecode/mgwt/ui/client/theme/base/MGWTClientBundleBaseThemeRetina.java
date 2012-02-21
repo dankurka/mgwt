@@ -188,6 +188,9 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 
 	@Source("resources/toolbar/locate_x2.png")
 	public ImageResource getButtonBarLocateImage();
+	
+	@Source("resources/toolbar/minus_x2.png")
+	public ImageResource getButtonBarMinusImage();
 
 	@Source("resources/toolbar/new_x2.png")
 	public ImageResource getButtonBarNewImage();

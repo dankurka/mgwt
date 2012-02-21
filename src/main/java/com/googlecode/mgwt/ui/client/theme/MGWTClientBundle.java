@@ -143,6 +143,8 @@ public interface MGWTClientBundle {
 	public ImageResource getButtonBarInfoImage();
 
 	public ImageResource getButtonBarLocateImage();
+	
+	public ImageResource getButtonBarMinusImage();
 
 	public ImageResource getButtonBarNewImage();
 

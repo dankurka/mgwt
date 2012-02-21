@@ -188,6 +188,9 @@ public interface MGWTClientBundleBaseThemeIPad extends ClientBundle, MGWTClientB
 
 	@Source("resources/toolbar/locate.png")
 	public ImageResource getButtonBarLocateImage();
+	
+	@Source("resources/toolbar/minus.png")
+	public ImageResource getButtonBarMinusImage();
 
 	@Source("resources/toolbar/new.png")
 	public ImageResource getButtonBarNewImage();
