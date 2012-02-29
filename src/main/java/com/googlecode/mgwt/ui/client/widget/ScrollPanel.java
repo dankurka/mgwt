@@ -218,4 +218,8 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	}
 
+	public void scrollTo(int x, int y) {
+		impl.scrollTo(x, y, 1);
+	}
+
 }
