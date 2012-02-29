@@ -3,7 +3,9 @@ package com.googlecode.mgwt.storage.client;
 /**
  * Interface for using LocalStorage & SessionStorage.
  * 
- * This exists for testing reasons and will use the GWT Standard Implementation if running inside a browser.
+ * This exists for testing reasons & use with dependency injection (GIN).
+ * 
+ * There is an implementation that just uses GWT Implementation of LocalStorage @see {@link LocalStorageGwtImpl} and another one that can be used for testing @see {@link LocalStorageImplForTests}
  * 
  * 
  * 
@@ -11,8 +13,6 @@ package com.googlecode.mgwt.storage.client;
  *
  */
 public interface Storage {
-
-
 
 	/**
 	 * Returns <code>true</code> if the Storage API (both localStorage and
