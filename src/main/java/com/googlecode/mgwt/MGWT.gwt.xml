@@ -18,6 +18,7 @@
 <module>
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.googlecode.mgwt.dom.DOM'/>
+    <inherits name='com.googlecode.mgwt.storage.Storage'/>
     <inherits name='com.googlecode.mgwt.ui.UI'/>
      <inherits name='com.googlecode.mgwt.mvp.MVP'/>
 </module>
