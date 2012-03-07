@@ -42,7 +42,7 @@ public class MDoubleBox extends MValueBoxBase<Double> {
 	 */
 	public MDoubleBox(InputCss css) {
 		super(css, new DoubleBox());
-		box.getElement().setPropertyString("type", "number");
+		impl.setType(box.getElement(), "number");
 		addStyleName(css.textBox());
 	}
 

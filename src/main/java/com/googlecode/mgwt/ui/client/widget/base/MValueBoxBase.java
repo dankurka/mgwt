@@ -17,6 +17,7 @@ package com.googlecode.mgwt.ui.client.widget.base;
 
 import java.text.ParseException;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.ui.client.adapters.ValueBoxEditor;
 import com.google.gwt.event.dom.client.BlurEvent;
@@ -36,6 +37,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.i18n.client.AutoDirectionHandler;
 import com.google.gwt.i18n.shared.DirectionEstimator;
 import com.google.gwt.i18n.shared.HasDirectionEstimator;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasName;
@@ -75,6 +77,33 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
  */
 public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator,
 		HasValue<T>, AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers, HasFocusHandlers {
+
+	
+	public interface MValueBoxBaseImpl {
+		public void setType(com.google.gwt.user.client.Element element, String type);
+	}
+	
+	public static class MValueBoxBaseDefaultImpl implements MValueBoxBaseImpl {
+
+		@Override
+		public void setType(Element element, String type) {
+			element.setPropertyString("type", "number");
+
+		}
+	}
+	
+	public static class MValueBoxBaseIE9Impl implements MValueBoxBaseImpl {
+
+		@Override
+		public void setType(Element element, String type) {
+			//no op ...
+
+		}
+	}
+	
+	protected static final MValueBoxBaseImpl impl = GWT.create(MValueBoxBaseImpl.class);
+	
+	
 
 	private TouchPanel main;
 	protected final ValueBoxBase<T> box;

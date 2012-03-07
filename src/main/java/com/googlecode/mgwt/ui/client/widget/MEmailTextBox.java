@@ -41,7 +41,7 @@ public class MEmailTextBox extends MTextBox {
 	 */
 	public MEmailTextBox(InputCss css) {
 		super(css);
-		box.getElement().setPropertyString("type", "email");
+		impl.setType(box.getElement(), "email");
 	}
 
 }

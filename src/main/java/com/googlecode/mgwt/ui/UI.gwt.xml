@@ -40,22 +40,39 @@ under * the License.
 		</all>
 	</replace-with>
 	
+		
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelTouchImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl" />
+	</replace-with>
+	
+	
+	
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelIE9Impl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl" />
+		 <all> 
+   			<when-property-is name="user.agent" value="ie9" />
+  		</all>
+		
+	</replace-with>
+	
+
+	
 	<replace-with class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelBlackberryImpl">
 		<when-type-is class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl" />
 		<all>
 			<when-property-is name="mgwt.os" value="blackberry" />
 		</all>
 	</replace-with>
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelTouchImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl" />
-		 <none> 
-   			<when-property-is name="mgwt.os" value="blackberry" />
-  		</none>
-		
-	</replace-with>
+
+
+	
+	
 	
 	
 	<!-- CSS UTIL -->
+	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.FailingImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />	
+	</replace-with>
 	
 	
 	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.WebkitCssUtilImpl">
@@ -74,14 +91,15 @@ under * the License.
 		
 	</replace-with>
 	
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.FailingImpl">
+	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.CssUtilIE9Impl">
 		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
-		 <none> 
-   			<when-property-is name="user.agent" value="gecko1_8" />
-   			<when-property-is name="user.agent" value="safari" />
-  		</none>
+		 <all> 
+   			<when-property-is name="user.agent" value="ie9" />
+  		</all>
 		
 	</replace-with>
+	
+	
 	
 	
 	<!-- Tabbar Buttons -->
@@ -108,7 +126,17 @@ under * the License.
 		<when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarButtonBase.IconHandler" />
 	</replace-with>
 	
+	<!-- value box base -->
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseDefaultImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
+	</replace-with>
 	
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseIE9Impl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
+		<all> 
+   			<when-property-is name="user.agent" value="ie9" />
+  		</all>
+	</replace-with>
 	
 
 	<source path="client" />

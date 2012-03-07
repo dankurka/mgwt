@@ -40,6 +40,6 @@ public class MUrlTextBox extends MTextBox {
 	 */
 	public MUrlTextBox(InputCss css) {
 		super(css);
-		box.getElement().setPropertyString("type", "url");
+		impl.setType(box.getElement(), "url");
 	}
 }

@@ -41,7 +41,7 @@ public class MPhoneNumberTextBox extends MTextBox {
 	 */
 	public MPhoneNumberTextBox(InputCss css) {
 		super(css);
-		box.getElement().setPropertyString("type", "tel");
+		impl.setType(box.getElement(), "tel");
 	}
 
 }

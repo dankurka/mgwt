@@ -42,7 +42,7 @@ public class MIntegerBox extends MValueBoxBase<Integer> {
 	 */
 	public MIntegerBox(InputCss css) {
 		super(css, new IntegerBox());
-		box.getElement().setPropertyString("type", "number");
+		impl.setType(box.getElement(), "number");
 		addStyleName(css.textBox());
 
 	}

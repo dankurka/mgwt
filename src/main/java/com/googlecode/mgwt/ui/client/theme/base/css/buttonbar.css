@@ -8,6 +8,8 @@
 	overflow:hidden;
 	width: 100%;
 	position: relative;
+	
+	
 }
 
 @if user.agent safari {
@@ -24,6 +26,14 @@
 	}
 }
 
+@if user.agent ie9 {
+	.mgwt-ButtonBar {
+		display: table;
+		
+	}
+}
+
+
 
 .mgwt-ButtonBar-text{
 	margin-top: 14px;
@@ -36,6 +46,13 @@
 	font-weight: bold;
 	text-shadow: 0px 1px 0px #333;
 	color: white;
+}
+
+@if user.agent ie9 {
+	.mgwt-ButtonBar-text{
+		display: table-cell;
+		vertical-align: middle;
+	}
 }
 
 
@@ -52,5 +69,13 @@
 @if user.agent safari {
 	.mgwt-ButtonBar-spacer{
 		\-webkit-box-flex: 1;
+	}
+}
+
+@if user.agent ie9 {
+	.mgwt-ButtonBar-spacer{
+		display: table-cell;
+		width: 50%;
+		
 	}
 }

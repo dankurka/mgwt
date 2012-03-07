@@ -73,8 +73,22 @@
 	}
 }
 
+@if user.agent ie9 {
+	.mgwt-HeaderButton-text {
+		border-radius: 4px;
+		background-origin: border-box;
+	}
+}
+
 .mgwt-HeaderButton-back .mgwt-HeaderButton-text {
 	border-left: none;
+}
+
+@if user.agent ie9 {
+	.mgwt-HeaderButton-back .mgwt-HeaderButton-text {
+		border: 1px solid rgba(0, 0, 0, 0.5);
+	}
+	
 }
 
 .mgwt-HeaderButton-back .mgwt-HeaderButton-border-container {
@@ -98,16 +112,16 @@
 	}
 }
 
+
+
 .mgwt-HeaderButton-back .mgwt-HeaderButton-border-content {
-	\-webkit-transform: skew(15deg);
 	display: block;
 	width: 17px;
 	height: 17px;
-	\-webkit-border-radius: 2px;
 	border: 1px solid rgba(0, 0, 0, 0.5);
 	border-right: none;
 	border-top: none;
-	\-webkit-border-radius: 4px;
+	
 }
 
 @if user.agent safari {
@@ -126,13 +140,38 @@
 	}
 }
 
+
+
+
 .mgwt-HeaderButton-forward .mgwt-HeaderButton-border-container {
 	position: absolute;
 	z-index: 1;
 	top: 4px;
 	right: -7px;
-	\-webkit-transform: rotate(51deg);
+	
 }
+
+@if user.agent safari {
+	.mgwt-HeaderButton-forward .mgwt-HeaderButton-border-container {
+		\-webkit-transform: rotate(51deg);
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton-forward .mgwt-HeaderButton-border-container {
+		\-moz-transform: rotate(51deg);
+	}
+}
+
+@if user.agent ie9 {
+	.mgwt-HeaderButton-forward .mgwt-HeaderButton-border-container {
+		
+	}
+}
+
+
+
+
 
 .mgwt-HeaderButton-round {
 	
@@ -220,6 +259,7 @@
 
 .mgwt-DropDownMenu .mgwt-HeaderButton-active .mgwt-HeaderButton-border-content {
 	background-image: literal('-webkit-gradient(linear, left top, right bottom, from(#5d626c),color-stop(0.5, #101729), color-stop(0.5, #00000e), to(#00000e))');
+	background-origin: border-box;
 }
 
 /* other browsers */

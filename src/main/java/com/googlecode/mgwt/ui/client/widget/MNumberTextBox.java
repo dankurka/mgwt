@@ -41,7 +41,8 @@ public class MNumberTextBox extends MTextBox {
 	 */
 	public MNumberTextBox(InputCss css) {
 		super(css);
-		box.getElement().setPropertyString("type", "number");
+		impl.setType(box.getElement(), "number");
+		
 	}
 
 }
