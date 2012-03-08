@@ -62,6 +62,12 @@
 	}
 }
 
+@if user.agent ie9 {
+	.mgwt-SearchBox-input {
+		top: 5px;
+	}
+}
+
 .mgwt-SearchBox-clear {
 	position: absolute;
 	top: -9px;

@@ -6,9 +6,13 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 
 	@Override
 	public void translate(Element el, int x, int y) {
-		String cssText = "translate( " + x + "px, " + y + "px )";
-
-		_translate(el, cssText);
+		//IE9 sucks really hard
+		//as soon as we get an whitespace into the translate it does not work anymore:
+		// translate(1px,2px) -> working
+		// translate(1px,2px ) -> NOT working
+		//please ms stop making browsers
+		el.getStyle().setProperty("msTransform", "translate(" + x + "px," + y + "px)");
+		
 
 	}
 
@@ -29,9 +33,7 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 
 	}-*/;
 
-	private native void _translate(Element el, String css)/*-{
-		el.style.msTransform = css;
-	}-*/;
+	
 
 	@Override
 	public void rotate(Element el, int degree) {

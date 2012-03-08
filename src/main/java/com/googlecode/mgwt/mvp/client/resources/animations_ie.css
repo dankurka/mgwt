@@ -1,3 +1,27 @@
+@if user.agent ie9 {
+	.displayContainer {
+ 		position: absolute;
+		width: 100%;
+		height: 100%;
+		overflow:hidden;
+	
+		
+	}
+ 
+	
+ 	
+ 	.display {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		overflow:hidden;
+			
+	}
+}
+
+
 .in{}
 .slide{}
 .display{}

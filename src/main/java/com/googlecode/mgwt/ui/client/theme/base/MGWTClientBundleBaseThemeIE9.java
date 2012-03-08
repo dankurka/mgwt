@@ -48,7 +48,7 @@ public interface MGWTClientBundleBaseThemeIE9 extends ClientBundle, MGWTClientBu
 	@Source({ "css/header.css", "css/ie9/header.css" })
 	HeaderCss getHeaderCss();
 
-	@Source({ "css/slider.css", "css/ipad/slider.css" })
+	@Source({ "css/slider.css", "css/ie9/slider.css" })
 	SliderCss getSliderCss();
 
 	@Source({ "css/list.css", "css/ie9/list.css" })
@@ -57,7 +57,7 @@ public interface MGWTClientBundleBaseThemeIE9 extends ClientBundle, MGWTClientBu
 	@Source("resources/list/arrow.png")
 	DataResource listArrow();
 
-	@Source({ "css/searchbox.css", "css/ipad/searchbox.css" })
+	@Source({ "css/searchbox.css", "css/ie9/searchbox.css" })
 	MSearchBoxCss getSearchBoxCss();
 
 	@Source("resources/search/glass.png")
