@@ -56,7 +56,7 @@ public class LongTapRecognizer implements TouchHandler {
 	}
 
 	public LongTapRecognizer(HasHandlers source, int numberOfFingers, int time) {
-		this(source, numberOfFingers, DEFAULT_WAIT_TIME_IN_MS, DEFAULT_MAX_DISTANCE);
+		this(source, numberOfFingers, time, DEFAULT_MAX_DISTANCE);
 	}
 
 	public LongTapRecognizer(HasHandlers source, int numberOfFingers, int time, int maxDistance) {
