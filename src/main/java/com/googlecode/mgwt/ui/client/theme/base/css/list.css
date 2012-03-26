@@ -1,6 +1,6 @@
 @url arrowImage listArrow;
 @if mgwt.css pretty {
-	@external mgwt-List, mgwt-List-selected, mgwt-List-group, mgwt-List-first, mgwt-List-last, mgwt-List-Header, mgwt-List-round;
+	@external mgwt-List, mgwt-List-selected, mgwt-List-group, mgwt-List-first, mgwt-List-last, mgwt-List-Header, mgwt-List-round,.mgwt-FormList-Element, .mgwt-FormList-Element-label, .mgwt-FormList-Element-container;
 }
 
 .mgwt-List {
@@ -29,6 +29,27 @@
 .mgwt-List-last {
 	
 }
+
+.mgwt-FormList-Element{
+	margin: -12px;
+	display: -webkit-box;
+	
+}
+	
+.mgwt-FormList-Element-label{
+	padding: 10px;
+	width: 30%;
+	overflow:hidden;
+	text-overflow: ellipsis;
+}
+	
+.mgwt-FormList-Element-container{
+	\-webkit-box-flex: 1;
+	display: -webkit-box;
+	padding: 10px;
+}
+	 
+
 
 /* other browsers */
 @if user.agent ie6 ie8 ie9 gecko opera {
