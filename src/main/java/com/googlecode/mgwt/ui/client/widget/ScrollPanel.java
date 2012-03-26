@@ -30,7 +30,7 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 import com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl;
 
 /**
- * A scroll pannel that can handle touch input and has momentum
+ * A scroll panel that can handle touch input and has momentum
  * 
  * 
  * <h2>Styling</h2>
