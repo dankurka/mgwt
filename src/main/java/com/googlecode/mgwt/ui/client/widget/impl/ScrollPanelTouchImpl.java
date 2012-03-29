@@ -403,6 +403,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 						if ("A".equals(nodeName)) {
 							return;
 						}
+						
+						if ("BUTTON".equals(nodeName)) {
+							return;
+						}
 
 					}
 				}
