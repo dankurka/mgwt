@@ -87,7 +87,7 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 
 		@Override
 		public void setType(Element element, String type) {
-			element.setPropertyString("type", "number");
+			element.setPropertyString("type", type);
 
 		}
 	}
