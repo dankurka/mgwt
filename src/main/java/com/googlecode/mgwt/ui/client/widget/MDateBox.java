@@ -19,11 +19,33 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
+/**
+ * A simple Date input widget. So far it uses &lt;input type="date" /> on iOS with a nice looking native date picker.
+ * 
+ * On other platforms it displays the pattern to use for date input (no picker so far).
+ * 
+ * <h2>Date format</h2>
+ * 
+ * For iOS there is no need to set a dateformat, since the iOS will automatically display the date formated according to the locale of the device, while
+ * we get the date in the W3C Format. 
+ * 
+ * On other platforms you can set the format to fit what you like.
+ * 
+ * 
+ * 
+ * @author Daniel Kurka
+ *
+ */
 public class MDateBox extends MValueBoxBase<Date> {
 
 	private static final DateTimeFormat DEFAULT_FORMAT = DateTimeFormat.getFormat("dd/mm/yy");
 	private static final DateTimeFormat W3C_FORMAT = DateTimeFormat.getFormat("yyyy-MM-dd");
 
+	/**
+	 * Using ValueBoxBase as a base class for our input element.
+	 * @author Daniel Kurka
+	 *
+	 */
 	public static class DateValueBoxBase extends ValueBoxBase<Date> {
 
 		private final DateRenderer dateRenderer;
@@ -100,11 +122,18 @@ public class MDateBox extends MValueBoxBase<Date> {
 	private Date lastValue;
 	private DateTimeFormat format;
 
+	/**
+	 * Construct a date box
+	 */
 	public MDateBox() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 	}
 	
 
+	/**
+	 * Construct a datebox using a customg css.
+	 * @param css
+	 */
 	public MDateBox(InputCss css) {
 		super(css, new DateValueBoxBase(new DateRenderer(), new DateParser()));
 
@@ -151,10 +180,13 @@ public class MDateBox extends MValueBoxBase<Date> {
 
 	}
 	
-	protected DateValueBoxBase getBox(){
-		return (DateValueBoxBase) box;
-	}
-
+	/**
+	 * set the format to use in the datebox.
+	 * Important: This should only be set on non iOS devices, since iOS handles locale on dates under the cover.
+	 * 
+	 * See: {@link MDateBox}
+	 * @param pattern
+	 */
 	public void setFormat(String pattern) {
 		format = DateTimeFormat.getFormat(pattern);
 
@@ -163,5 +195,10 @@ public class MDateBox extends MValueBoxBase<Date> {
 		}
 
 	}
+	
+	protected DateValueBoxBase getBox(){
+		return (DateValueBoxBase) box;
+	}
+
 
 }
