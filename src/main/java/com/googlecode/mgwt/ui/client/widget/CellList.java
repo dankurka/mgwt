@@ -36,6 +36,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
@@ -175,7 +176,13 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			if (idxString.length() > 0) {
 
 				try {
-					index = Integer.parseInt(idxString);
+					// see: http://code.google.com/p/mgwt/issues/detail?id=154
+					if (MGWT.getOsDetection().isBlackBerry()) {
+						index = (int) Long.parseLong(idxString);
+					} else {
+						index = Integer.parseInt(idxString);
+					}
+
 					node = target;
 					node.addClassName(css.selected());
 				} catch (Exception e) {
