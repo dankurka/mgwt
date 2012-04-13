@@ -8,6 +8,13 @@ import com.google.gwt.animation.client.AnimationScheduler.AnimationHandle;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.Style.Overflow;
+import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseWheelEvent;
+import com.google.gwt.event.dom.client.MouseWheelHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Timer;
@@ -18,8 +25,14 @@ import com.googlecode.mgwt.collection.shared.CollectionFactory;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
+import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
+import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
+import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
+import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
+import com.googlecode.mgwt.dom.client.event.touch.TouchEvent;
+import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
@@ -27,11 +40,40 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
+import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
 public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	private static double ZOOM_MIN = 1;
 	private static double ZOOM_MAX = 4;
+
+	private class TouchListener implements TouchHandler {
+
+		@Override
+		public void onTouchStart(TouchStartEvent event) {
+			start(event);
+
+		}
+
+		@Override
+		public void onTouchMove(TouchMoveEvent event) {
+			move(event);
+
+		}
+
+		@Override
+		public void onTouchEnd(TouchEndEvent event) {
+			end(event);
+
+		}
+
+		@Override
+		public void onTouchCanceled(TouchCancelEvent event) {
+			end(event);
+
+		}
+
+	}
 
 	private static class Step {
 		private final int x;
@@ -186,28 +228,31 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private int currPageX;
 	private int currPageY;
 	private String snapSelector;
+	private TouchListener touchListener;
+	private HandlerRegistration transistionEndRegistration;
 
 	public ScrollPanelNewPort() {
 
 		wrapper = new SimplePanel();
+
+		//TODO 
+		wrapper.getElement().getStyle().setOverflow(Overflow.HIDDEN);
+
 		initWidget(wrapper);
 
+		touchListener = new TouchListener();
+
 		enabled = true;
-		
-
 		steps = CollectionFactory.constructArray();
-
+		scale = 1.0;
 		currentPageX = 0;
 		currentPageY = 0;
-
 		pagesX = CollectionFactory.constructIntegerArray();
 		pagesY = CollectionFactory.constructIntegerArray();
-
-		
+		wheelZoomCount = 0;
 
 		//setup events!
 
-		
 		//setting standard options
 		this.hScroll = true;
 		this.vScroll = true;
@@ -217,23 +262,32 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		this.bounceLock = false;
 		this.momentum = true;
 		this.lockDirection = true;
-		this.useTransform = true;
-		this.useTransistion = false;
+		setUseTransform(true);
+		setUseTransistion(false);
 		this.topOffset = 0;
-		
+
 		//Zoom
-		this.zoom = false;
+		setZoom(false);
 		this.zoomMin = ZOOM_MIN;
 		this.zoomMax = ZOOM_MAX;
-		
+
 		//snap
 		this.snap = false;
 		this.snapSelector = null;
 		this.snapThreshold = 1;
-		
-		
-		
-		
+
+	}
+
+	public void setUseTransistion(boolean useTransistion) {
+		this.useTransistion = CssUtil.hasTransistionEndEvent() && useTransistion;
+	}
+
+	public void setUseTransform(boolean useTransform) {
+		this.useTransform = CssUtil.hasTransform() && useTransform;
+	}
+
+	public void setZoom(boolean zoom) {
+		this.zoom = zoom && useTransform;
 	}
 
 	private void checkDOMChanges() {
@@ -307,7 +361,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		LightArray<Touch> touches = event.getTouches();
 
-		if (zoom && touches.length() > 1) {
+		if (this.zoom && touches.length() > 1) {
 			int c1 = Math.abs(touches.get(0).getPageX() - touches.get(1).getPageX());
 			int c2 = Math.abs(touches.get(0).getPageY() - touches.get(1).getPageY());
 			this.touchesDistStart = Math.sqrt(c1 * c1 + c2 * c2);
@@ -318,21 +372,21 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			//call on zoom start
 		}
 
-		if (momentum) {
-			if (useTransform) {
-				x = 0; //TODO matrix
-				y = 0; //TODO matrix
-
+		if (this.momentum) {
+			if (this.useTransform) {
+				int[] pos = CssUtil.getPositionFromTransForm(scroller.getElement());
+				x = pos[0];
+				y = pos[1];
 			} else {
-				x = 0; //TODO matrix
-				y = 0; //TODO matrix
+				x = CssUtil.getLeftPositionFromCssPosition(scroller.getElement());
+				y = CssUtil.getTopPositionFromCssPosition(scroller.getElement());
 			}
 
 			if (x != this.x || y != this.y) {
-				if (useTransistion) {
-					//TODO unbind transistionend!
+				if (this.useTransistion) {
+					unbindTransistionEnd();
 				} else {
-					//TODO cancelFrame(this.an)
+					cancelAnimationFrame();
 				}
 				this.steps = CollectionFactory.constructArray();
 				pos(x, y);
@@ -351,7 +405,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		//fire on scrollStart event
 
-		//bind events
+		bindMoveEvent();
+		bindEndEvent();
+		bindCancelEvent();
 	}
 
 	private void move(TouchMoveEvent event) {
@@ -452,10 +508,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		//call on scroll move
 	}
 
-	private void end(final TouchEndEvent event) {
-		final LightArray<Touch> touches = event.getTouches();
-
-		if (touches.length() != 0) {
+	private void end(final TouchEvent<?> event) {
+		if (event != null && event.getTouches().length() != 0) {
 			return;
 		}
 
@@ -465,7 +519,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		Momentum momentumX = Momentum.ZERO_MOMENTUM;
 		Momentum momentumY = Momentum.ZERO_MOMENTUM;
 
-		//unbind events!
+		unbindMoveEvent();
+		unbindEndEvent();
+		unbindCancelEvent();
 
 		//fire on before scroll end
 
@@ -659,8 +715,35 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	}
 
-	private void mouseOut() {
-		//TODO
+	private void mouseOut(MouseOutEvent event) {
+		EventTarget relatedTarget = event.getRelatedTarget();
+
+		if (relatedTarget == null) {
+
+			end(null);
+			return;
+		}
+
+		Node tmp;
+
+		while (true) {
+			if (Node.is(relatedTarget)) {
+				Node n = relatedTarget.cast();
+				tmp = n.getParentNode();
+
+				if (tmp == this.wrapper.getElement()) {
+					return;
+				}
+
+				if (tmp == null) {
+					break;
+				}
+
+			}
+		}
+
+		this.end(null);
+
 	}
 
 	private void onTransistionEnd(TransitionEndEvent event) {
@@ -843,12 +926,24 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private void bindTransistionEndEvent() {
-		// TODO Auto-generated method stub
+		if (CssUtil.hasTransistionEndEvent()) {
+			transistionEndRegistration = scroller.addDomHandler(new TransitionEndHandler() {
+
+				@Override
+				public void onTransitionEnd(TransitionEndEvent event) {
+					onTransistionEnd(event);
+
+				}
+			}, TransitionEndEvent.getType());
+		}
 
 	}
 
 	private void unbindTransistionEnd() {
-		// TODO Auto-generated method stub
+		if (transistionEndRegistration != null) {
+			transistionEndRegistration.removeHandler();
+			transistionEndRegistration = null;
+		}
 
 	}
 
@@ -1013,7 +1108,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		resetPos(0);
 		this.enabled = false;
 
-		//TODO unbind events so that we do not receive any more events
+		unbindMoveEvent();
+		unbindEndEvent();
+		unbindCancelEvent();
 	}
 
 	public void enable() {
@@ -1066,11 +1163,10 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		return !this.moved && !this.zoomed && !this.animating;
 	}
 
-	
 	/*
 	 * Helpers!
 	 */
-	
+
 	//TODO move in util
 	private native int getClientHeight(Element element)/*-{
 		return element.clientHeight || 0;
@@ -1093,27 +1189,28 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	}
 
-	
 	/*
 	 * GWT stuff
 	 *  
 	 */
-	
+
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		setWidget(null);
 
 	}
 
 	@Override
 	public Iterator<Widget> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return wrapper.iterator();
 	}
 
 	@Override
 	public boolean remove(Widget w) {
-		// TODO Auto-generated method stub
+		if (w == scroller) {
+			scroller = null;
+			return wrapper.remove(w);
+		}
 		return false;
 	}
 
@@ -1137,7 +1234,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	@Override
 	public void setPosition(int newPosX, int newPosY) {
-		// TODO Auto-generated method stub
+		//TODO
 
 	}
 
@@ -1149,25 +1246,23 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	@Override
 	public boolean isScrollingEnabledX() {
-		// TODO Auto-generated method stub
-		return false;
+		return hScroll;
 	}
 
 	@Override
 	public void setScrollingEnabledX(boolean scrollingEnabledX) {
-		// TODO Auto-generated method stub
+		this.hScroll = scrollingEnabledX;
 
 	}
 
 	@Override
 	public boolean isScrollingEnabledY() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.vScroll;
 	}
 
 	@Override
 	public void setScrollingEnabledY(boolean scrollingEnabledY) {
-		// TODO Auto-generated method stub
+		this.vScroll = scrollingEnabledY;
 
 	}
 
@@ -1179,11 +1274,216 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	@Override
 	public void setWidget(IsWidget child) {
-		// TODO Auto-generated method stub
+		setWidget(child.asWidget() != null ? child.asWidget() : null);
 
 	}
+
+	private HandlerRegistration touchStartRegistration;
+	private HandlerRegistration orientationChangeRegistration;
+	private TouchDelegate touchDelegate;
+	private HandlerRegistration mouseOutRegistration;
+	private HandlerRegistration mouseWheelRegistration;
+	private HandlerRegistration touchCancelRegistration;
+	private HandlerRegistration touchEndRegistration;
+	private HandlerRegistration touchMoveRegistration;
 
 	public void setWidget(Widget w) {
 
+		//clear old event handlers
+		unbindStartEvent();
+		unbindResizeEvent();
+		if (MGWT.getOsDetection().isDesktop()) {
+			unbindMouseoutEvent();
+			unbindMouseWheelEvent();
+		}
+
+		if (scroller != null) {
+			//TODO clean up
+
+			remove(scroller);
+			touchDelegate = null;
+		}
+
+		scroller = w;
+
+		if (scroller != null) {
+			wrapper.setWidget(scroller);
+			touchDelegate = new TouchDelegate(scroller);
+
+			if (isAttached()) {
+				bindResizeEvent();
+				bindStartEvent();
+				if (MGWT.getOsDetection().isDesktop()) {
+					bindMouseoutEvent();
+					bindMouseWheelEvent();
+				}
+			}
+
+			updateDefaultStyles();
+		}
+
 	}
+
+	@Override
+	protected void onAttach() {
+		super.onAttach();
+
+		if (scroller != null) {
+			//bind events
+			bindResizeEvent();
+			bindStartEvent();
+			if (MGWT.getOsDetection().isDesktop()) {
+				bindMouseoutEvent();
+				bindMouseWheelEvent();
+			}
+		}
+
+	}
+
+	private void bindMouseWheelEvent() {
+		mouseWheelRegistration = scroller.addDomHandler(new MouseWheelHandler() {
+
+			@Override
+			public void onMouseWheel(MouseWheelEvent event) {
+				//TODO
+				//wheel(wheelDeltaX, wheelDeltaY, pageX, pageY)
+
+			}
+		}, MouseWheelEvent.getType());
+
+	}
+
+	private void unbindMouseWheelEvent() {
+		if (mouseWheelRegistration != null) {
+			mouseWheelRegistration.removeHandler();
+			mouseWheelRegistration = null;
+		}
+
+	}
+
+	private void bindMouseoutEvent() {
+		mouseOutRegistration = this.wrapper.addDomHandler(new MouseOutHandler() {
+
+			@Override
+			public void onMouseOut(MouseOutEvent event) {
+				mouseOut(event);
+
+			}
+		}, MouseOutEvent.getType());
+
+	}
+
+	private void unbindMouseoutEvent() {
+		if (mouseOutRegistration != null) {
+			mouseOutRegistration.removeHandler();
+			mouseOutRegistration = null;
+		}
+
+	}
+
+	private void bindStartEvent() {
+		touchStartRegistration = touchDelegate.addTouchStartHandler(touchListener);
+
+	}
+
+	private void unbindStartEvent() {
+		if (touchStartRegistration != null) {
+			touchStartRegistration.removeHandler();
+			touchStartRegistration = null;
+		}
+
+	}
+
+	private void bindCancelEvent() {
+		touchCancelRegistration = touchDelegate.addTouchCancelHandler(touchListener);
+
+	}
+
+	private void bindEndEvent() {
+		touchEndRegistration = touchDelegate.addTouchEndHandler(touchListener);
+
+	}
+
+	private void bindMoveEvent() {
+		touchMoveRegistration = touchDelegate.addTouchMoveHandler(touchListener);
+
+	}
+
+	private void unbindCancelEvent() {
+		if (touchCancelRegistration != null) {
+			touchCancelRegistration.removeHandler();
+			touchCancelRegistration = null;
+		}
+
+	}
+
+	private void unbindEndEvent() {
+		if (touchEndRegistration != null) {
+			touchEndRegistration.removeHandler();
+			touchEndRegistration = null;
+		}
+	}
+
+	private void unbindMoveEvent() {
+		if (touchMoveRegistration != null) {
+			touchMoveRegistration.removeHandler();
+			touchMoveRegistration = null;
+		}
+	}
+
+	/**
+	 * 
+	 */
+	private void bindResizeEvent() {
+		orientationChangeRegistration = MGWT.addOrientationChangeHandler(new OrientationChangeHandler() {
+
+			@Override
+			public void onOrientationChanged(OrientationChangeEvent event) {
+				resize();
+			}
+		});
+	}
+
+	private void unbindResizeEvent() {
+		if (orientationChangeRegistration != null) {
+			orientationChangeRegistration.removeHandler();
+			orientationChangeRegistration = null;
+		}
+	}
+
+	private void updateDefaultStyles() {
+		if (scroller != null) {
+
+			CssUtil.setTransistionProperty(scroller.getElement(), useTransform ? CssUtil.getTransformProperty() : "top left");
+			CssUtil.setTransitionDuration(scroller.getElement(), 0);
+			CssUtil.setTransFormOrigin(scroller.getElement(), 0, 0);
+			if (useTransistion) {
+				//TODO
+				CssUtil.setTransistionTimingFunction(scroller.getElement(), "cubic-bezier(0.33,0.66,0.66,1)");
+			}
+			if (useTransform) {
+				CssUtil.translate(scroller.getElement(), this.x, this.y);
+			} else {
+				scroller.getElement().getStyle().setPosition(Position.ABSOLUTE);
+				scroller.getElement().getStyle().setLeft(this.x, Unit.PX);
+				scroller.getElement().getStyle().setTop(this.y, Unit.PX);
+
+			}
+
+			if (useTransistion) {
+				//TODO fixed scrollbars!
+			}
+
+		}
+
+	}
+
+	private void cancelAnimationFrame() {
+		if (aniTime != null) {
+			aniTime.cancel();
+			aniTime = null;
+		}
+
+	}
+
 }

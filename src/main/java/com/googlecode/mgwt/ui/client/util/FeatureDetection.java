@@ -28,10 +28,10 @@ public class FeatureDetection {
 	private static boolean testedFor3d;
 
 	/**
-	 * <p>has3d</p>
-	 *
-	 * @return a boolean.
+	 * @deprecated use: {@link CssUtil#has3d()}
+	 * @return
 	 */
+	@Deprecated
 	public static boolean has3d() {
 		if (!testedFor3d) {
 

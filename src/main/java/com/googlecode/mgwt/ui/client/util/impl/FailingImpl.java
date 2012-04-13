@@ -38,4 +38,42 @@ public class FailingImpl implements CssUtilImpl {
 
 	}
 
+	@Override
+	public boolean hasTransform() {
+		return false;
+	}
+
+	@Override
+	public boolean hasTransistionEndEvent() {
+		return false;
+	}
+
+	@Override
+	public boolean has3d() {
+		return false;
+	}
+
+	@Override
+	public String getTransformProperty() {
+		return null;
+	}
+
+	@Override
+	public int[] getPositionFromTransForm(Element element) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getTopPositionFromCssPosition(Element element) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getLeftPositionFromCssPosition(Element element) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

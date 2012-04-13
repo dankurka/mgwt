@@ -51,4 +51,58 @@ public class CssUtil {
 		cssUtilImpl.rotate(element, degree);
 
 	}
+	
+	public static boolean hasTransform(){
+		return cssUtilImpl.hasTransform();
+	}
+	
+	public static boolean hasTransistionEndEvent(){
+		return cssUtilImpl.hasTransistionEndEvent();
+	}
+	
+	public static boolean has3d(){
+		return cssUtilImpl.has3d();
+	}
+
+	public static String getTransformProperty() {
+		return cssUtilImpl.getTransformProperty();
+	}
+
+	
+
+	public static void setTransistionProperty(Element element, String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void setTransFormOrigin(Element element, int i, int j) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void setTransistionTimingFunction(Element element, String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void setTransForm(Element element, int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	public static int[] getPositionFromTransForm(Element element) {
+		return cssUtilImpl.getPositionFromTransForm(element);
+	}
+
+	
+
+	public static int getLeftPositionFromCssPosition(Element element) {
+		return cssUtilImpl.getLeftPositionFromCssPosition(element);
+	}
+
+	public static int getTopPositionFromCssPosition(Element element) {
+		return cssUtilImpl.getTopPositionFromCssPosition(element);
+	}
 }

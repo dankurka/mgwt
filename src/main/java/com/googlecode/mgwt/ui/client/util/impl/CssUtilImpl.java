@@ -14,4 +14,20 @@ public interface CssUtilImpl {
 
 	public void rotate(Element element, int degree);
 
+	public boolean hasTransform();
+
+	public boolean hasTransistionEndEvent();
+
+	public boolean has3d();
+
+	public String getTransformProperty();
+
+	
+
+	public int[] getPositionFromTransForm(Element element);
+
+	public int getTopPositionFromCssPosition(Element element);
+
+	public int getLeftPositionFromCssPosition(Element element);
+
 }
