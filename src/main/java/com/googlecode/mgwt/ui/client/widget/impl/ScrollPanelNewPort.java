@@ -44,8 +44,8 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
 public class ScrollPanelNewPort extends ScrollPanelImpl {
-	
-	private static Logger logger = Logger.getLogger(ScrollPanelNewPort.class.getName()); 
+
+	private static Logger logger = Logger.getLogger(ScrollPanelNewPort.class.getName());
 
 	private static double ZOOM_MIN = 1;
 	private static double ZOOM_MAX = 4;
@@ -178,7 +178,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private int wrapperHeight;
 	private int wrapperWidth;
 
-	//offset from top
+	// offset from top
 	private int topOffset;
 	private int minScrollY;
 	private int scrollerWidth;
@@ -188,9 +188,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private int dirX;
 	private int dirY;
 
-	//enable disable horizontal scroll
+	// enable disable horizontal scroll
 	private boolean hScroll;
-	//enable disable vertical scroll
+	// enable disable vertical scroll
 	private boolean vScroll;
 	private boolean bounceLock;
 	private boolean hScrollbar;
@@ -237,13 +237,15 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	public ScrollPanelNewPort() {
 
 		wrapper = new SimplePanel();
+		touchDelegate = new TouchDelegate(wrapper);
 
-		//TODO 
+		touchListener = new TouchListener();
+		setupEvents();
+
+		// TODO
 		wrapper.getElement().getStyle().setOverflow(Overflow.HIDDEN);
 
 		initWidget(wrapper);
-
-		touchListener = new TouchListener();
 
 		enabled = true;
 		steps = CollectionFactory.constructArray();
@@ -254,27 +256,27 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		pagesY = CollectionFactory.constructIntegerArray();
 		wheelZoomCount = 0;
 
-		//setup events!
+		// setup events!
 
-		//setting standard options
+		// setting standard options
 		this.hScroll = true;
 		this.vScroll = true;
 		this.x = 0;
 		this.y = 0;
 		this.bounce = true;
 		this.bounceLock = false;
-		this.momentum = true;
+		this.momentum = false;
 		this.lockDirection = true;
 		setUseTransform(true);
 		setUseTransistion(false);
 		this.topOffset = 0;
 
-		//Zoom
+		// Zoom
 		setZoom(false);
 		this.zoomMin = ZOOM_MIN;
 		this.zoomMax = ZOOM_MAX;
 
-		//snap
+		// snap
 		this.snap = false;
 		this.snapSelector = null;
 		this.snapThreshold = 1;
@@ -302,7 +304,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private void scrollBar(int direction) {
-		//TODO
+		// TODO
 	}
 
 	private void resize() {
@@ -318,28 +320,34 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private void pos(int x, int y) {
-		x = hScroll ? x : 0;
-		y = vScroll ? y : 0;
+		System.out.println("set pos1 x: " + x + " y: " + y);
+		x = this.hScroll ? x : 0;
+		y = this.vScroll ? y : 0;
+
+		System.out.println("this.vScroll: " + this.vScroll);
+		System.out.println("hScroll: " + this.hScroll);
+
+		System.out.println("set pos2 x: " + x + " y: " + y);
 
 		if (useTransform) {
 			CssUtil.translate(scroller.getElement(), x, y);
 		} else {
-			//TODO
+			// TODO
 			scroller.getElement().getStyle().setLeft(x, Unit.PX);
 			scroller.getElement().getStyle().setTop(y, Unit.PX);
-			
+
 		}
 
 		this.x = x;
 		this.y = y;
 
-		//TODO
-		//update scrollerbars
+		// TODO
+		// update scrollerbars
 
 	}
 
 	private void scrollbarPos(String dir, boolean hidden) {
-		//TODO
+		// TODO
 	}
 
 	private void start(TouchStartEvent event) {
@@ -347,10 +355,10 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		if (!this.enabled) {
 			return;
 		}
-		
+
 		System.out.println("scrolling started");
-		
-		//TODO call onbefore scroll start
+
+		// TODO call onbefore scroll start
 
 		if (this.useTransistion || this.zoom) {
 			setTransistionTime(0);
@@ -376,7 +384,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			this.originX = Math.abs(touches.get(0).getPageX() + touches.get(1).getPageX() - this.wrapperOffsetLeft * 2 / 2 - this.x);
 			this.originY = Math.abs(touches.get(0).getPageY() + touches.get(1).getPageY() - this.wrapperOffsetTop * 2 / 2 - this.y);
 
-			//call on zoom start
+			// call on zoom start
 		}
 
 		if (this.momentum) {
@@ -410,7 +418,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		this.startTime = System.currentTimeMillis();
 
-		//fire on scrollStart event
+		// fire on scrollStart event
 
 		bindMoveEvent();
 		bindEndEvent();
@@ -419,7 +427,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	private void move(TouchMoveEvent event) {
 		System.out.println("touch move");
-		
+
 		LightArray<Touch> touches = event.getTouches();
 		int deltaX = touches.get(0).getPageX() - this.pointX;
 		int deltaY = touches.get(0).getPageY() - this.pointY;
@@ -427,7 +435,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		int newY = this.y = deltaY;
 		long timeStamp = System.currentTimeMillis();
 
-		//fire onbeforescroll event
+		// fire onbeforescroll event
 
 		if (zoom && touches.length() > 1) {
 			int c1 = Math.abs(touches.get(0).getPageX() - touches.get(1).getPageX());
@@ -448,18 +456,18 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			newX = (int) Math.round(this.originX - this.originX * this.lastScale + this.x);
 			newY = (int) Math.round(this.originY - this.originY * this.lastScale + this.y);
 
-			//update scroller
+			// update scroller
 
-			//call on zoom
+			// call on zoom
 			return;
 		}
 
 		this.pointX = touches.get(0).getPageX();
 		this.pointY = touches.get(0).getPageY();
-		
+
 		System.out.println("newX: " + newX + " newY " + newY);
 
-		//slower outside the bounds!
+		// slower outside the bounds!
 		if (newX > 0 || newX < this.maxScrollX) {
 			if (bounce) {
 				newX = this.x + deltaX / 2;
@@ -517,17 +525,16 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			this.startY = this.y;
 		}
 
-		//call on scroll move
+		// call on scroll move
 	}
 
 	private void end(final TouchEvent<?> event) {
 		System.out.println("touch end");
-		
+
 		if (event != null && event.getTouches().length() != 0) {
 			return;
 		}
 		System.out.println("touch end 0 ");
-		
 
 		long duration = System.currentTimeMillis() - this.startTime;
 		int newPosX = this.x;
@@ -539,7 +546,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		unbindEndEvent();
 		unbindCancelEvent();
 
-		//fire on before scroll end
+		// fire on before scroll end
 
 		if (zoomed) {
 			double scale = this.scale * this.lastScale;
@@ -550,12 +557,12 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			this.x = (int) Math.round(this.originX - this.originX * this.lastScale + this.x);
 			this.y = (int) Math.round(this.originY - this.originY * this.lastScale + this.y);
 
-			//update scrollbars
+			// update scrollbars
 
 			this.zoomed = false;
 			this.refresh();
 
-			//fire onzoomend
+			// fire onzoomend
 
 			return;
 
@@ -566,9 +573,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				doubleTapTimer.cancel();
 				doubleTapTimer = null;
 
-				//fire on zoom start
+				// fire on zoom start
 
-				//fire zoom end after duration
+				// fire zoom end after duration
 			} else {
 				this.doubleTapTimer = new Timer() {
 
@@ -576,7 +583,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 					public void run() {
 						doubleTapTimer = null;
 
-						//dispatch tap event
+						// dispatch tap event
 
 					}
 				};
@@ -585,7 +592,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 			resetPos(200);
 
-			//fire touchend!
+			// fire touchend!
 			return;
 		}
 
@@ -599,7 +606,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			}
 
 			newPosX = this.x + momentumX.getDist();
-			newPosY = this.y = momentumY.getDist();
+			newPosY = this.y + momentumY.getDist();
 
 			if ((this.x > 0 && newPosX > 0) || (this.x < this.maxScrollX && newPosX < this.maxScrollX)) {
 				momentumX = Momentum.ZERO_MOMENTUM;
@@ -615,6 +622,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		int distY = 0;
 
 		if (momentumX.getDist() != 0 || momentumY.getDist() != 0) {
+			System.out.println("momentum!");
 			int newDuration = Math.max(Math.max(momentumX.getTime(), momentumY.getTime()), 10);
 
 			if (this.snap) {
@@ -631,9 +639,10 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				}
 
 			}
+			System.out.println("momentumX: " + newPosX + " momentumY: " + newPosY + " newDur: " + newDuration);
 			scrollTo(newPosY, newPosY, newDuration);
 
-			//fire touch end!
+			// fire touch end!
 			return;
 		}
 
@@ -650,13 +659,13 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				}
 			}
 
-			//fire on touch end
+			// fire on touch end
 			return;
 
 		}
 
 		resetPos(200);
-		//fire on touch end
+		// fire on touch end
 
 	}
 
@@ -666,13 +675,16 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		int resetY = this.y >= this.minScrollY || this.maxScrollY > 0 ? this.minScrollY : this.y < this.maxScrollY ? this.maxScrollY : this.y;
 
+		System.out.println("resetX: " + resetX + " resetY: " + resetY);
+		System.out.println("x: " + this.x + " y: " + this.y);
+
 		if (resetX == this.x && resetY == this.y) {
 			if (this.moved) {
 				this.moved = false;
-				//fire on scroll end
+				// fire on scroll end
 			}
 
-			//update scrollbars
+			// update scrollbars
 
 			return;
 		}
@@ -692,7 +704,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 			if (deltaScale != this.scale) {
 				if (this.wheelZoomCount == 0) {
-					//TODO maybe fire on zoom start
+					// TODO maybe fire on zoom start
 				}
 				this.wheelZoomCount++;
 
@@ -704,7 +716,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 					public void run() {
 						ScrollPanelNewPort.this.wheelZoomCount--;
 						if (ScrollPanelNewPort.this.wheelZoomCount == 0) {
-							//TODO maybe fire zoom end
+							// TODO maybe fire zoom end
 						}
 
 					}
@@ -732,32 +744,35 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private void mouseOut(MouseOutEvent event) {
-		//TODO
-//		EventTarget relatedTarget = event.getRelatedTarget();
-//
-//		if (relatedTarget == null) {
-//
-//			end(null);
-//			return;
-//		}
-//
-//		Node tmp;
-//
-//		while (true) {
-//			if (Node.is(relatedTarget)) {
-//				Node n = relatedTarget.cast();
-//				tmp = n.getParentNode();
-//
-//				if (tmp == this.wrapper.getElement()) {
-//					return;
-//				}
-//
-//				if (tmp == null) {
-//					break;
-//				}
-//
-//			}
-//		}
+		// TODO
+		EventTarget relatedTarget = event.getRelatedTarget();
+
+		if (relatedTarget == null) {
+
+			end(null);
+			return;
+		}
+
+		if (!Node.is(relatedTarget)) {
+			end(null);
+			return;
+		}
+
+		Node tmp = relatedTarget.cast();
+
+		while (true) {
+
+			tmp = tmp.getParentNode();
+
+			if (tmp == this.wrapper.getElement()) {
+				return;
+			}
+
+			if (tmp == null) {
+				break;
+			}
+
+		}
 
 		this.end(null);
 
@@ -769,7 +784,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			if (Element.is(eventTarget)) {
 				Element target = eventTarget.cast();
 				Element scrollerElement = this.scroller.getElement();
-				//reference id should be okay according to http://google-web-toolkit.googlecode.com/svn/javadoc/latest/com/google/gwt/user/client/DOM.html#compare(com.google.gwt.user.client.Element, com.google.gwt.user.client.Element)
+				// reference id should be okay according to
+				// http://google-web-toolkit.googlecode.com/svn/javadoc/latest/com/google/gwt/user/client/DOM.html#compare(com.google.gwt.user.client.Element,
+				// com.google.gwt.user.client.Element)
 				if (target != scrollerElement) {
 					return;
 				}
@@ -788,7 +805,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			return;
 
 		System.out.println("start animating");
-		
+
 		final int startX = this.x;
 		final int startY = this.y;
 
@@ -828,7 +845,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				if (now >= startTime + step.getTime()) {
 					ScrollPanelNewPort.this.pos(step.x, step.y);
 					ScrollPanelNewPort.this.animating = false;
-					//TODO maybe fire animation end event...
+					// TODO maybe fire animation end event...
 					ScrollPanelNewPort.this.startAnimation();
 					return;
 				}
@@ -852,7 +869,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		CssUtil.setTransitionDuration(scroller.getElement(), time);
 
-		//TODO update scrollbars
+		// TODO update scrollbars
 
 	}
 
@@ -863,7 +880,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		double newTime = 0;
 		double outSideDist = 0;
 
-		// Proportinally reduce speed if we are outside of the boundaries 
+		// Proportinally reduce speed if we are outside of the boundaries
 		if (dist > 0 && newDist > maxDistUpper) {
 			outSideDist = size / (6 / (newDist / speed * deceleration));
 			maxDistUpper = (int) (maxDistUpper + outSideDist);
@@ -885,10 +902,10 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private int[] offSet(com.google.gwt.dom.client.Element el) {
 		int left = -el.getOffsetLeft();
 		int top = -el.getOffsetTop();
-		//TODO
-		com.google.gwt.dom.client.Element domElem = null;
+
+		com.google.gwt.dom.client.Element domElem = el;
 		while (true) {
-			domElem = el.getOffsetParent();
+			domElem = domElem.getOffsetParent();
 			if (domElem == null)
 				break;
 			left -= domElem.getOffsetLeft();
@@ -969,88 +986,104 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	@Override
 	public void refresh() {
 
-		if (scale < zoomMin) {
-			scale = zoomMin;
-		}
-		wrapperHeight = getClientHeight(wrapper.getElement());
-		if (wrapperHeight == 0) {
-			wrapperHeight = 1;
-		}
-		wrapperWidth = getClientWidth(wrapper.getElement());
-		if (wrapperWidth == 0) {
-			wrapperWidth = 1;
-		}
+		new Timer() {
 
-		minScrollY = -topOffset;
-
-		scrollerWidth = (int) Math.round(scroller.getOffsetWidth() * scale);
-		scrollerHeight = (int) Math.round((scroller.getOffsetHeight() + minScrollY) * scale);
-
-		maxScrollX = wrapperWidth - scrollerWidth;
-		maxScrollY = wrapperHeight - scrollerHeight + minScrollY;
-		dirX = 0;
-		dirY = 0;
-
-		//fire refresh event
-
-		hScroll = hScroll && maxScrollX < 0;
-		vScroll = vScroll && (!bounceLock && !hScroll || scrollerHeight > wrapperHeight);
-
-		hScrollbar = hScroll && hScrollbar;
-		vScrollbar = vScroll && vScrollbar && scrollerHeight > wrapperHeight;
-
-		int[] offSet = offSet(this.wrapper.getElement());
-
-		wrapperOffsetLeft = -offSet[0];
-		wrapperOffsetTop = -offSet[1];
-
-		//prep stuff
-		if (this.snapSelector != null) {
-			this.pagesX = CollectionFactory.constructIntegerArray();
-			this.pagesY = CollectionFactory.constructIntegerArray();
-
-			JsArray<com.google.gwt.dom.client.Element> elements = querySelectorAll(this.scroller.getElement(), snapSelector);
-
-			for (int i = 0; i < elements.length(); i++) {
-				int[] pos = offSet(elements.get(i));
-				int left = pos[0] + this.wrapperOffsetLeft;
-				int top = pos[1] + this.wrapperOffsetTop;
-				this.pagesX.push((int) (left < this.maxScrollX ? this.maxScrollX : left * this.scale));
-				this.pagesY.push((int) (top < this.maxScrollY ? this.maxScrollY : top * this.scale));
-			}
-		} else {
-			if (this.snap) {
-				int pos = 0;
-				int page = 0;
-				this.pagesX = CollectionFactory.constructIntegerArray();
-				while (pos >= this.maxScrollX) {
-					this.pagesX.set(page, pos);
-					pos = pos - this.wrapperWidth;
-					page++;
+			@Override
+			public void run() {
+				if (scale < zoomMin) {
+					scale = zoomMin;
 				}
-				if (this.maxScrollX % this.wrapperWidth != 0)
-					this.pagesX.set(this.pagesX.length(), this.maxScrollX - this.pagesX.get(this.pagesX.length() - 1) + this.pagesX.get(this.pagesX.length() - 1));
-
-				pos = 0;
-				page = 0;
-				this.pagesY = CollectionFactory.constructIntegerArray();
-				while (pos >= this.maxScrollY) {
-					this.pagesY.set(page, pos);
-					pos = pos - this.wrapperHeight;
-					page++;
+				wrapperHeight = getClientHeight(wrapper.getElement());
+				if (wrapperHeight == 0) {
+					wrapperHeight = 1;
 				}
-				if (this.maxScrollY % this.wrapperHeight != 0)
-					this.pagesY.set(this.pagesY.length(), this.maxScrollY - this.pagesY.get(this.pagesY.length() - 1) + this.pagesY.get(this.pagesY.length() - 1));
+				wrapperWidth = getClientWidth(wrapper.getElement());
+				if (wrapperWidth == 0) {
+					wrapperWidth = 1;
+				}
+
+				minScrollY = -topOffset;
+
+				scrollerWidth = (int) Math.round(scroller.getOffsetWidth() * scale);
+				scrollerHeight = (int) Math.round((scroller.getOffsetHeight() + minScrollY) * scale);
+
+				maxScrollX = wrapperWidth - scrollerWidth;
+
+				maxScrollY = wrapperHeight - scrollerHeight + minScrollY;
+				System.out.println("maxScrollX: " + maxScrollX + " maxscrollY: " + maxScrollY);
+
+				dirX = 0;
+				dirY = 0;
+
+				// fire refresh event
+
+				hScroll = hScroll && maxScrollX < 0;
+				vScroll = vScroll && (!bounceLock && !hScroll || scrollerHeight > wrapperHeight);
+
+				hScrollbar = hScroll && hScrollbar;
+				vScrollbar = vScroll && vScrollbar && scrollerHeight > wrapperHeight;
+
+				int[] offSet = offSet(ScrollPanelNewPort.this.wrapper.getElement());
+
+				wrapperOffsetLeft = -offSet[0];
+				wrapperOffsetTop = -offSet[1];
+
+				// prep stuff
+				if (ScrollPanelNewPort.this.snapSelector != null) {
+					ScrollPanelNewPort.this.pagesX = CollectionFactory.constructIntegerArray();
+					ScrollPanelNewPort.this.pagesY = CollectionFactory.constructIntegerArray();
+
+					JsArray<com.google.gwt.dom.client.Element> elements = querySelectorAll(ScrollPanelNewPort.this.scroller.getElement(), snapSelector);
+
+					for (int i = 0; i < elements.length(); i++) {
+						int[] pos = offSet(elements.get(i));
+						int left = pos[0] + ScrollPanelNewPort.this.wrapperOffsetLeft;
+						int top = pos[1] + ScrollPanelNewPort.this.wrapperOffsetTop;
+						ScrollPanelNewPort.this.pagesX.push((int) (left < ScrollPanelNewPort.this.maxScrollX ? ScrollPanelNewPort.this.maxScrollX : left * ScrollPanelNewPort.this.scale));
+						ScrollPanelNewPort.this.pagesY.push((int) (top < ScrollPanelNewPort.this.maxScrollY ? ScrollPanelNewPort.this.maxScrollY : top * ScrollPanelNewPort.this.scale));
+					}
+				} else {
+					if (ScrollPanelNewPort.this.snap) {
+						int pos = 0;
+						int page = 0;
+						ScrollPanelNewPort.this.pagesX = CollectionFactory.constructIntegerArray();
+						while (pos >= ScrollPanelNewPort.this.maxScrollX) {
+							ScrollPanelNewPort.this.pagesX.set(page, pos);
+							pos = pos - ScrollPanelNewPort.this.wrapperWidth;
+							page++;
+						}
+						if (ScrollPanelNewPort.this.maxScrollX % ScrollPanelNewPort.this.wrapperWidth != 0)
+							ScrollPanelNewPort.this.pagesX.set(
+									ScrollPanelNewPort.this.pagesX.length(),
+									ScrollPanelNewPort.this.maxScrollX - ScrollPanelNewPort.this.pagesX.get(ScrollPanelNewPort.this.pagesX.length() - 1)
+											+ ScrollPanelNewPort.this.pagesX.get(ScrollPanelNewPort.this.pagesX.length() - 1));
+
+						pos = 0;
+						page = 0;
+						ScrollPanelNewPort.this.pagesY = CollectionFactory.constructIntegerArray();
+						while (pos >= ScrollPanelNewPort.this.maxScrollY) {
+							ScrollPanelNewPort.this.pagesY.set(page, pos);
+							pos = pos - ScrollPanelNewPort.this.wrapperHeight;
+							page++;
+						}
+						if (ScrollPanelNewPort.this.maxScrollY % ScrollPanelNewPort.this.wrapperHeight != 0)
+							ScrollPanelNewPort.this.pagesY.set(
+									ScrollPanelNewPort.this.pagesY.length(),
+									ScrollPanelNewPort.this.maxScrollY - ScrollPanelNewPort.this.pagesY.get(ScrollPanelNewPort.this.pagesY.length() - 1)
+											+ ScrollPanelNewPort.this.pagesY.get(ScrollPanelNewPort.this.pagesY.length() - 1));
+					}
+				}
+
+				// TODO
+				// prep scrollbars
+
+				if (!ScrollPanelNewPort.this.zoomed) {
+					CssUtil.setTransitionDuration(ScrollPanelNewPort.this.scroller.getElement(), 0);
+					resetPos(200);
+				}
+
 			}
-		}
-
-		//TODO
-		//prep scrollbars
-
-		if (!this.zoomed) {
-			CssUtil.setTransitionDuration(this.scroller.getElement(), 0);
-			resetPos(200);
-		}
+		}.schedule(1);
 
 	}
 
@@ -1097,8 +1130,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	public void scrollToPage(int pageX, int pageY, int time) {
-		//TODO
-		//fire on scroll start
+		// TODO
+		// fire on scroll start
 		int x, y;
 		if (this.snap) {
 
@@ -1170,9 +1203,10 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		this.x = this.x > 0 ? 0 : this.x < this.maxScrollX ? this.maxScrollX : this.x;
 		this.y = this.y > this.minScrollY ? this.minScrollY : this.y < this.maxScrollY ? this.maxScrollY : this.y;
 
-		//TODO scroller zoom style!
-		//	that.scroller.style[vendor + 'TransitionDuration'] = time + 'ms';
-		//	that.scroller.style[vendor + 'Transform'] = trnOpen + that.x + 'px,' + that.y + 'px' + trnClose + ' scale(' + scale + ')';
+		// TODO scroller zoom style!
+		// that.scroller.style[vendor + 'TransitionDuration'] = time + 'ms';
+		// that.scroller.style[vendor + 'Transform'] = trnOpen + that.x + 'px,'
+		// + that.y + 'px' + trnClose + ' scale(' + scale + ')';
 
 		this.zoomed = true;
 
@@ -1186,7 +1220,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	 * Helpers!
 	 */
 
-	//TODO move in util
+	// TODO move in util
 	private native int getClientHeight(Element element)/*-{
 		return element.clientHeight || 0;
 	}-*/;
@@ -1253,7 +1287,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	@Override
 	public void setPosition(int newPosX, int newPosY) {
-		//TODO
+		// TODO
 
 	}
 
@@ -1308,7 +1342,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	public void setWidget(Widget w) {
 
-		//clear old event handlers
+		// clear old event handlers
 		unbindStartEvent();
 		unbindResizeEvent();
 		if (MGWT.getOsDetection().isDesktop()) {
@@ -1317,17 +1351,16 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		}
 
 		if (scroller != null) {
-			//TODO clean up
+			// TODO clean up
 
 			remove(scroller);
-			touchDelegate = null;
+
 		}
 
 		scroller = w;
 
 		if (scroller != null) {
 			wrapper.setWidget(scroller);
-			touchDelegate = new TouchDelegate(scroller);
 
 			if (isAttached()) {
 				bindResizeEvent();
@@ -1337,6 +1370,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 					bindMouseWheelEvent();
 				}
 			}
+
+			refresh();
 
 			updateDefaultStyles();
 		}
@@ -1348,14 +1383,25 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		super.onAttach();
 
 		if (scroller != null) {
-			//bind events
+
+			// bind events
 			bindResizeEvent();
 			bindStartEvent();
 			if (MGWT.getOsDetection().isDesktop()) {
 				bindMouseoutEvent();
 				bindMouseWheelEvent();
 			}
+
+			refresh();
 		}
+
+	}
+
+	private void setupEvents() {
+		touchMoveRegistration = touchDelegate.addTouchMoveHandler(touchListener);
+		touchStartRegistration = touchDelegate.addTouchStartHandler(touchListener);
+		touchCancelRegistration = touchDelegate.addTouchCancelHandler(touchListener);
+		touchEndRegistration = touchDelegate.addTouchEndHandler(touchListener);
 
 	}
 
@@ -1364,8 +1410,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 			@Override
 			public void onMouseWheel(MouseWheelEvent event) {
-				//TODO
-				//wheel(wheelDeltaX, wheelDeltaY, pageX, pageY)
+				// TODO
+				// wheel(wheelDeltaX, wheelDeltaY, pageX, pageY)
 
 			}
 		}, MouseWheelEvent.getType());
@@ -1401,60 +1447,56 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private void bindStartEvent() {
-		touchStartRegistration = touchDelegate.addTouchStartHandler(touchListener);
 
 	}
 
 	private void unbindStartEvent() {
-		if (touchStartRegistration != null) {
-			touchStartRegistration.removeHandler();
-			touchStartRegistration = null;
-		}
+		// if (touchStartRegistration != null) {
+		// touchStartRegistration.removeHandler();
+		// touchStartRegistration = null;
+		// }
 
 	}
 
 	private void bindCancelEvent() {
-		touchCancelRegistration = touchDelegate.addTouchCancelHandler(touchListener);
 
 	}
 
 	private void bindEndEvent() {
 		System.out.println("bind touch end");
-		touchEndRegistration = touchDelegate.addTouchEndHandler(touchListener);
 
 	}
 
 	private void bindMoveEvent() {
-		logger.info("bind move event");
-		System.out.println("bind move event");
-		touchMoveRegistration = touchDelegate.addTouchMoveHandler(touchListener);
 
 	}
 
 	private void unbindCancelEvent() {
-		if (touchCancelRegistration != null) {
-			touchCancelRegistration.removeHandler();
-			touchCancelRegistration = null;
-		}
+		// if (touchCancelRegistration != null) {
+		// touchCancelRegistration.removeHandler();
+		// touchCancelRegistration = null;
+		// }
 
 	}
 
 	private void unbindEndEvent() {
-		System.out.println("unbind touch end");
-		if (touchEndRegistration != null) {
-			touchEndRegistration.removeHandler();
-			touchEndRegistration = null;
-		}
+		// System.out.println("unbind touch end");
+		// if (touchEndRegistration != null) {
+		// touchEndRegistration.removeHandler();
+		// touchEndRegistration = null;
+		// }
 	}
 
 	private void unbindMoveEvent() {
-		System.out.println("unbind move event");
-		if (touchMoveRegistration != null) {
-			logger.info("unbind move event");
-			
-			touchMoveRegistration.removeHandler();
-			touchMoveRegistration = null;
-		}
+		// if (true)
+		// return;
+		// System.out.println("unbind move event");
+		// if (touchMoveRegistration != null) {
+		// logger.info("unbind move event");
+		//
+		// touchMoveRegistration.removeHandler();
+		// touchMoveRegistration = null;
+		// }
 	}
 
 	/**
@@ -1484,7 +1526,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			CssUtil.setTransitionDuration(scroller.getElement(), 0);
 			CssUtil.setTransFormOrigin(scroller.getElement(), 0, 0);
 			if (useTransistion) {
-				//TODO
+				// TODO
 				CssUtil.setTransistionTimingFunction(scroller.getElement(), "cubic-bezier(0.33,0.66,0.66,1)");
 			}
 			if (useTransform) {
@@ -1497,7 +1539,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			}
 
 			if (useTransistion) {
-				//TODO fixed scrollbars!
+				// TODO fixed scrollbars!
 			}
 
 		}
