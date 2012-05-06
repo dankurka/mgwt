@@ -107,6 +107,12 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			this.time = 0;
 
 		}
+
+		@Override
+		public String toString() {
+			return "Step [x=" + x + ", y=" + y + ", time=" + time + "]";
+		}
+
 	}
 
 	private static class Momentum {
@@ -260,12 +266,12 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		// setting standard options
 		this.hScroll = true;
-		this.vScroll = true;
+		this.vScroll = false;
 		this.x = 0;
 		this.y = 0;
 		this.bounce = true;
 		this.bounceLock = false;
-		this.momentum = false;
+		this.momentum = true;
 		this.lockDirection = true;
 		setUseTransform(true);
 		setUseTransistion(false);
@@ -432,7 +438,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		int deltaX = touches.get(0).getPageX() - this.pointX;
 		int deltaY = touches.get(0).getPageY() - this.pointY;
 		int newX = this.x + deltaX;
-		int newY = this.y = deltaY;
+		int newY = this.y + deltaY;
 		long timeStamp = System.currentTimeMillis();
 
 		// fire onbeforescroll event
@@ -479,6 +485,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				}
 			}
 		}
+		System.out.println("newY: " + newY + " minScrollY:" + minScrollY + " maxScrollY: " + maxScrollY);
+
 		if (newY > this.minScrollY || newY < this.maxScrollY) {
 			if (bounce) {
 				newY = this.y + deltaY / 2;
@@ -640,7 +648,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 			}
 			System.out.println("momentumX: " + newPosX + " momentumY: " + newPosY + " newDur: " + newDuration);
-			scrollTo(newPosY, newPosY, newDuration);
+			scrollTo(newPosX, newPosY, newDuration);
 
 			// fire touch end!
 			return;
@@ -815,6 +823,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		}
 
 		final Step step = this.steps.shift();
+
+		System.out.println("animating step" + step);
 
 		if (step.getX() == startX && step.getY() == startY) {
 			step.setTime(0);
@@ -1095,7 +1105,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	public void scrollTo(int x, int y, int time, boolean relative) {
 		stop();
-
+		System.out.println("scrollTo values x: " + x + " y: " + y);
 		int destX;
 		int destY;
 
@@ -1107,7 +1117,10 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			destY = y;
 		}
 
-		this.steps.push(new Step(destX, destY, time));
+		Step step = new Step(destX, destY, time);
+		System.out.println("step pushed: " + step);
+
+		this.steps.push(step);
 
 		startAnimation();
 
