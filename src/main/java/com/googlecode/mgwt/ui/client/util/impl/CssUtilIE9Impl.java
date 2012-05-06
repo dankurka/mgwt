@@ -6,13 +6,13 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 
 	@Override
 	public void translate(Element el, int x, int y) {
-		//IE9 sucks really hard
-		//as soon as we get an whitespace into the translate it does not work anymore:
+		// IE9 sucks really hard
+		// as soon as we get an whitespace into the translate it does not work
+		// anymore:
 		// translate(1px,2px) -> working
 		// translate(1px,2px ) -> NOT working
-		//please ms stop making browsers
+		// please ms stop making browsers
 		el.getStyle().setProperty("msTransform", "translate(" + x + "px," + y + "px)");
-		
 
 	}
 
@@ -33,8 +33,6 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 
 	}-*/;
 
-	
-
 	@Override
 	public void rotate(Element el, int degree) {
 
@@ -44,7 +42,7 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 
 	@Override
 	public boolean hasTransform() {
-		//TODO this is okay for IE9 review this for IE10
+		// TODO this is okay for IE9 review this for IE10
 		return false;
 	}
 
@@ -69,18 +67,23 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 	public int[] getPositionFromTransForm(Element element) {
 		throw new RuntimeException("no ie support!");
 	}
-	
-	
 
 	@Override
 	public native int getTopPositionFromCssPosition(Element element) /*-{
-		return getComputedStyle(that.scroller, null).top.replace(/[^0-9-]/g, '') * 1;
+		return getComputedStyle(that.scroller, null).top
+				.replace(/[^0-9-]/g, '') * 1;
 	}-*/;
 
 	@Override
 	public native int getLeftPositionFromCssPosition(Element element)/*-{
-		return getComputedStyle(that.scroller, null).left.replace(/[^0-9-]/g, '') * 1;
+		return getComputedStyle(that.scroller, null).left.replace(/[^0-9-]/g,
+				'') * 1;
 	}-*/;
 
+	@Override
+	public void resetTransform(Element element) {
+		element.getStyle().setProperty("msTransform", "");
+
+	}
 
 }

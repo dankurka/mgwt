@@ -17,6 +17,7 @@ import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseWheelEvent;
 import com.google.gwt.event.dom.client.MouseWheelHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -54,24 +55,32 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
+			if (!listenForStart)
+				return;
 			start(event);
 
 		}
 
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
+			if (!listenForMoveEvent)
+				return;
 			move(event);
 
 		}
 
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
+			if (!listenForEndEvent)
+				return;
 			end(event);
 
 		}
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
+			if (!listenForCancelEvent)
+				return;
 			end(event);
 
 		}
@@ -240,6 +249,12 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private TouchListener touchListener;
 	private HandlerRegistration transistionEndRegistration;
 
+	private boolean fixedScrollbar;
+
+	private boolean hideScrollBar;
+
+	private boolean fadeScrollBar;
+
 	public ScrollPanelNewPort() {
 
 		wrapper = new SimplePanel();
@@ -266,7 +281,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		// setting standard options
 		this.hScroll = true;
-		this.vScroll = false;
+		this.vScroll = true;
 		this.x = 0;
 		this.y = 0;
 		this.bounce = true;
@@ -286,6 +301,22 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		this.snap = false;
 		this.snapSelector = null;
 		this.snapThreshold = 1;
+
+		this.fixedScrollbar = MGWT.getOsDetection().isAndroid();
+		this.hideScrollBar = MGWT.getOsDetection().isIOs();
+		this.fadeScrollBar = MGWT.getOsDetection().isIOs() && CssUtil.has3d();
+
+		// array for scrollbars
+		this.scrollBar = new boolean[2];
+		this.scrollBarWrapper = new Element[2];
+		this.scrollBarIndicator = new Element[2];
+		this.scrollBarSize = new int[2];
+		this.scrollbarIndicatorSize = new int[2];
+		this.scrollbarMaxScroll = new int[2];
+		this.scrollbarProp = new double[2];
+
+		this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] = this.hScroll;
+		this.scrollBar[DIRECTION.VERTICAL.ordinal()] = this.vScroll;
 
 	}
 
@@ -309,9 +340,109 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		refresh();
 	}
 
-	private void scrollBar(int direction) {
-		// TODO
+	private enum DIRECTION {
+		HORIZONTAL, VERTICAL
+	};
+
+	private boolean[] scrollBar;
+	private Element[] scrollBarWrapper;
+	private Element[] scrollBarIndicator;
+
+	private int[] scrollBarSize;
+	private int[] scrollbarIndicatorSize;
+	private int[] scrollbarMaxScroll;
+	private double[] scrollbarProp;
+
+	private void scrollBar(DIRECTION direction) {
+		System.out.println("create scroll bar!!!");
+		int dir = direction.ordinal();
+
+		if (!scrollBar[dir]) {
+			if (scrollBarWrapper[dir] != null) {
+				if (CssUtil.hasTransform()) {
+					CssUtil.resetTransForm(scrollBarIndicator[dir]);
+
+				}
+				scrollBarWrapper[dir].getParentNode().removeChild(scrollBarWrapper[dir]);
+				scrollBarWrapper[dir] = null;
+				scrollBarIndicator[dir] = null;
+
+			}
+
+			return;
+		}
+
+		Element bar;
+
+		if (scrollBarWrapper[dir] == null) {
+			// Create the scrollbar wrapper
+			bar = DOM.createDiv();
+
+			// TODO classes
+			String cssText = "position:absolute;z-index:100;";
+			if (direction == DIRECTION.HORIZONTAL) {
+				cssText += "height:7px;bottom:1px;left:2px;right:" + (this.scrollBar[DIRECTION.VERTICAL.ordinal()] ? "7" : "2") + "px";
+			} else {
+				cssText += "width:7px;bottom:" + ((this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] ? "7" : "2") + "px;top:2px;right:1px");
+			}
+
+			cssText += ";pointer-events:none;-webkit-transition-property:opacity;-webkit-transition-duration:" + (this.fadeScrollBar ? "350ms" : "0") + ";overflow:hidden;opacity:"
+					+ (this.hideScrollBar ? "0" : "1");
+
+			applyStyle(bar, cssText);
+			this.wrapper.getElement().appendChild(bar);
+
+			this.scrollBarWrapper[dir] = bar;
+
+			// Create the scrollbar indicator
+			// TODO classes
+			bar = DOM.createDiv();
+
+			cssText = "position:absolute;z-index:100;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.9);-webkit-background-clip:padding-box;-webkit-box-sizing:border-box;"
+					+ (direction == DIRECTION.HORIZONTAL ? "height:100%" : "width:100%") + ";-webkit-border-radius:3px;border-radius:3px";
+
+			cssText += ";pointer-events:none;-webkit-transition-property:-webkit-transform;-webkit-transition-timing-function:cubic-bezier(0.33,0.66,0.66,1);-webkit-transition-duration:0;-webkit-transform: translate3d('0,0, 0')";
+			if (this.useTransistion)
+				cssText += ";-webkit-transition-timing-function:cubic-bezier(0.33,0.66,0.66,1)";
+			applyStyle(bar, cssText);
+			scrollBarWrapper[dir].appendChild(bar);
+			scrollBarIndicator[dir] = bar;
+
+		}
+
+		switch (direction) {
+		case HORIZONTAL:
+			this.scrollBarSize[dir] = this.scrollBarWrapper[dir].getClientWidth();
+			System.out.println("scrollbarsize: " + this.scrollBarSize[dir]);
+			this.scrollbarIndicatorSize[dir] = Math.max(Math.round(this.scrollBarSize[dir] * this.scrollBarSize[dir] / this.scrollerWidth), 8);
+			this.scrollBarIndicator[dir].getStyle().setWidth(this.scrollbarIndicatorSize[dir], Unit.PX);
+			System.out.println("this.scrollbarIndicatorSize: " + this.scrollbarIndicatorSize[dir]);
+
+			this.scrollbarMaxScroll[dir] = this.scrollBarSize[dir] - this.scrollbarIndicatorSize[dir];
+			this.scrollbarProp[dir] = ((double) (this.scrollbarMaxScroll[dir])) / this.maxScrollX;
+			System.out.println("prop prop: " + this.scrollbarProp[dir]);
+			break;
+		case VERTICAL:
+			this.scrollBarSize[dir] = this.scrollBarWrapper[dir].getClientHeight();
+			System.out.println("scrollbarsize: " + this.scrollBarSize[dir]);
+			this.scrollbarIndicatorSize[dir] = Math.max(Math.round(this.scrollBarSize[dir] * this.scrollBarSize[dir] / this.scrollerHeight), 8);
+			this.scrollBarIndicator[dir].getStyle().setHeight(this.scrollbarIndicatorSize[dir], Unit.PX);
+			this.scrollbarMaxScroll[dir] = this.scrollBarSize[dir] - this.scrollbarIndicatorSize[dir];
+			this.scrollbarProp[dir] = ((double) (this.scrollbarMaxScroll[dir])) / this.maxScrollY;
+			System.out.println("prop prop: " + this.scrollbarProp[dir]);
+			break;
+
+		default:
+			break;
+		}
+		// Reset position
+		scrollbarPos(direction, true);
+
 	}
+
+	private native void applyStyle(Element el, String styleText)/*-{
+		el.style.cssText = styleText;
+	}-*/;
 
 	private void resize() {
 		new Timer() {
@@ -347,13 +478,68 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		this.x = x;
 		this.y = y;
 
-		// TODO
-		// update scrollerbars
+		scrollbarPos(DIRECTION.HORIZONTAL, false);
+		scrollbarPos(DIRECTION.VERTICAL, false);
 
 	}
 
-	private void scrollbarPos(String dir, boolean hidden) {
-		// TODO
+	private void scrollbarPos(DIRECTION direction, boolean hidden) {
+
+		double pos = direction == DIRECTION.HORIZONTAL ? this.x : this.y;
+		int size;
+		int dir = direction.ordinal();
+
+		if (!this.scrollBar[dir]) {
+			return;
+		}
+		System.out.println("position before multiply: " + pos);
+		pos = this.scrollbarProp[dir] * pos;
+		System.out.println("position after multiply: " + pos);
+
+		if (pos < 0) {
+			if (!this.fixedScrollbar) {
+				size = (int) (this.scrollbarIndicatorSize[dir] + Math.round(pos * 3));
+				if (size < 8)
+					size = 8;
+				if (direction == DIRECTION.HORIZONTAL) {
+					this.scrollBarIndicator[dir].getStyle().setWidth(size, Unit.PX);
+				} else {
+					this.scrollBarIndicator[dir].getStyle().setHeight(size, Unit.PX);
+				}
+
+			}
+			pos = 0;
+		} else {
+			if (pos > this.scrollbarMaxScroll[dir]) {
+				if (!this.fixedScrollbar) {
+					size = (int) (this.scrollbarIndicatorSize[dir] - Math.round((pos - this.scrollbarMaxScroll[dir]) * 3));
+
+					if (size < 8)
+						size = 8;
+
+					if (direction == DIRECTION.HORIZONTAL) {
+						this.scrollBarIndicator[dir].getStyle().setWidth(size, Unit.PX);
+					} else {
+						this.scrollBarIndicator[dir].getStyle().setHeight(size, Unit.PX);
+					}
+					pos = this.scrollbarMaxScroll[dir] + (this.scrollbarIndicatorSize[dir] - size);
+
+				} else {
+					pos = this.scrollbarMaxScroll[dir];
+				}
+			}
+		}
+
+		CssUtil.setTransitionsDelay(this.scrollBarWrapper[dir], 0);
+		CssUtil.setOpacity(this.scrollBarWrapper[dir], hidden && this.hideScrollBar ? 0 : 1);
+		if (direction == DIRECTION.HORIZONTAL) {
+			System.out.println("translate scrollbar to " + pos);
+			CssUtil.translate(this.scrollBarIndicator[dir], (int) pos, 0);
+		} else {
+			CssUtil.translate(this.scrollBarIndicator[dir], 0, (int) pos);
+			System.out.println("translate scrollbar to " + pos);
+		}
+
 	}
 
 	private void start(TouchStartEvent event) {
@@ -692,7 +878,17 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				// fire on scroll end
 			}
 
-			// update scrollbars
+			if (this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] && this.hideScrollBar) {
+				CssUtil.setTransitionsDelay(this.scrollBarWrapper[DIRECTION.HORIZONTAL.ordinal()], 300);
+				CssUtil.setOpacity(this.scrollBarWrapper[DIRECTION.HORIZONTAL.ordinal()], 0);
+
+			}
+
+			if (this.scrollBar[DIRECTION.VERTICAL.ordinal()] && this.hideScrollBar) {
+				CssUtil.setTransitionsDelay(this.scrollBarWrapper[DIRECTION.VERTICAL.ordinal()], 300);
+				CssUtil.setOpacity(this.scrollBarWrapper[DIRECTION.VERTICAL.ordinal()], 0);
+
+			}
 
 			return;
 		}
@@ -752,7 +948,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private void mouseOut(MouseOutEvent event) {
-		// TODO
+
 		EventTarget relatedTarget = event.getRelatedTarget();
 
 		if (relatedTarget == null) {
@@ -879,12 +1075,18 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		CssUtil.setTransitionDuration(scroller.getElement(), time);
 
-		// TODO update scrollbars
+		if (vScrollbar) {
+			CssUtil.setTransitionDuration(this.scrollBarIndicator[DIRECTION.VERTICAL.ordinal()], time);
+		}
+
+		if (hScrollbar) {
+			CssUtil.setTransitionDuration(this.scrollBarIndicator[DIRECTION.HORIZONTAL.ordinal()], time);
+		}
 
 	}
 
 	private Momentum momentum(int dist, long time, int maxDistUpper, int maxDistLower, int size) {
-		double deceleration = 0.006;
+		double deceleration = 0.0006;
 		double speed = ((double) (Math.abs(dist))) / time;
 		double newDist = (speed * speed) / (2 * deceleration);
 		double newTime = 0;
@@ -1084,8 +1286,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 					}
 				}
 
-				// TODO
-				// prep scrollbars
+				scrollBar(DIRECTION.HORIZONTAL);
+				scrollBar(DIRECTION.VERTICAL);
 
 				if (!ScrollPanelNewPort.this.zoomed) {
 					CssUtil.setTransitionDuration(ScrollPanelNewPort.this.scroller.getElement(), 0);
@@ -1216,11 +1418,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		this.x = this.x > 0 ? 0 : this.x < this.maxScrollX ? this.maxScrollX : this.x;
 		this.y = this.y > this.minScrollY ? this.minScrollY : this.y < this.maxScrollY ? this.maxScrollY : this.y;
 
-		// TODO scroller zoom style!
-		// that.scroller.style[vendor + 'TransitionDuration'] = time + 'ms';
-		// that.scroller.style[vendor + 'Transform'] = trnOpen + that.x + 'px,'
-		// + that.y + 'px' + trnClose + ' scale(' + scale + ')';
-
+		CssUtil.setTransitionDuration(this.scroller.getElement(), time);
+		CssUtil.setTranslateAndZoom(this.scroller.getElement(), x, y, scale);
 		this.zoomed = true;
 
 	}
@@ -1300,14 +1499,13 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	@Override
 	public void setPosition(int newPosX, int newPosY) {
-		// TODO
+		pos(newPosX, newPosY);
 
 	}
 
 	@Override
 	public void setUsePos(boolean pos) {
-		// TODO Auto-generated method stub
-
+		this.useTransform = pos;
 	}
 
 	@Override
@@ -1318,6 +1516,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	@Override
 	public void setScrollingEnabledX(boolean scrollingEnabledX) {
 		this.hScroll = scrollingEnabledX;
+		this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] = scrollingEnabledX;
 
 	}
 
@@ -1329,7 +1528,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	@Override
 	public void setScrollingEnabledY(boolean scrollingEnabledY) {
 		this.vScroll = scrollingEnabledY;
-
+		this.scrollBar[DIRECTION.VERTICAL.ordinal()] = scrollingEnabledY;
 	}
 
 	@Override
@@ -1352,6 +1551,14 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private HandlerRegistration touchCancelRegistration;
 	private HandlerRegistration touchEndRegistration;
 	private HandlerRegistration touchMoveRegistration;
+
+	private boolean listenForStart;
+
+	private boolean listenForCancelEvent;
+
+	private boolean listenForEndEvent;
+
+	private boolean listenForMoveEvent;
 
 	public void setWidget(Widget w) {
 
@@ -1460,56 +1667,38 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private void bindStartEvent() {
-
+		listenForStart = true;
 	}
 
 	private void unbindStartEvent() {
-		// if (touchStartRegistration != null) {
-		// touchStartRegistration.removeHandler();
-		// touchStartRegistration = null;
-		// }
+		listenForStart = false;
 
 	}
 
 	private void bindCancelEvent() {
-
+		listenForCancelEvent = true;
 	}
 
 	private void bindEndEvent() {
-		System.out.println("bind touch end");
+		listenForEndEvent = true;
 
 	}
 
 	private void bindMoveEvent() {
-
+		listenForMoveEvent = true;
 	}
 
 	private void unbindCancelEvent() {
-		// if (touchCancelRegistration != null) {
-		// touchCancelRegistration.removeHandler();
-		// touchCancelRegistration = null;
-		// }
+		listenForCancelEvent = false;
 
 	}
 
 	private void unbindEndEvent() {
-		// System.out.println("unbind touch end");
-		// if (touchEndRegistration != null) {
-		// touchEndRegistration.removeHandler();
-		// touchEndRegistration = null;
-		// }
+		listenForEndEvent = false;
 	}
 
 	private void unbindMoveEvent() {
-		// if (true)
-		// return;
-		// System.out.println("unbind move event");
-		// if (touchMoveRegistration != null) {
-		// logger.info("unbind move event");
-		//
-		// touchMoveRegistration.removeHandler();
-		// touchMoveRegistration = null;
-		// }
+		listenForMoveEvent = false;
 	}
 
 	/**
@@ -1539,7 +1728,6 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			CssUtil.setTransitionDuration(scroller.getElement(), 0);
 			CssUtil.setTransFormOrigin(scroller.getElement(), 0, 0);
 			if (useTransistion) {
-				// TODO
 				CssUtil.setTransistionTimingFunction(scroller.getElement(), "cubic-bezier(0.33,0.66,0.66,1)");
 			}
 			if (useTransform) {
@@ -1552,7 +1740,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			}
 
 			if (useTransistion) {
-				// TODO fixed scrollbars!
+				this.fixedScrollbar = true;
 			}
 
 		}

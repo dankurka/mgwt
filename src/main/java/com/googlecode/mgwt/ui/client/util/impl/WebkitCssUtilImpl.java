@@ -50,10 +50,10 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 	public void rotate(Element el, int degree) {
 		if (MGWT.getOsDetection().isAndroid()) {
 			el.getStyle().setProperty("WebkitTransform", "rotate(" + degree + "deg)");
-			//_translate(el, );
+			// _translate(el, );
 		} else {
 			el.getStyle().setProperty("WebkitTransform", "rotate(" + degree + "deg) translateZ(0)");
-			//_translate(el,"rotate(" + degree + "deg) translateZ(0)");
+			// _translate(el,"rotate(" + degree + "deg) translateZ(0)");
 
 		}
 
@@ -61,7 +61,8 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 
 	@Override
 	public boolean hasTransform() {
-		//TODO maybe we need runtime checks for older devices, but for now this is okay!
+		// TODO maybe we need runtime checks for older devices, but for now this
+		// is okay!
 		return true;
 	}
 
@@ -71,13 +72,11 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 		// so we should be okay without a runtime check
 		return true;
 	}
-	
+
 	@Override
 	public boolean has3d() {
 		return has3d;
 	}
-	
-	
 
 	private static native boolean _has3d()/*-{
 		return ('WebKitCSSMatrix' in $wnd && 'm11' in new WebKitCSSMatrix())
@@ -91,14 +90,15 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 	@Override
 	public int[] getPositionFromTransForm(Element element) {
 		JsArrayInteger array = getPositionFromTransform(element);
-		return new int[]{array.get(0), array.get(1)};
+		return new int[] { array.get(0), array.get(1) };
 	}
-	
+
 	private native JsArrayInteger getPositionFromTransform(Element el)/*-{
-		var matrix = getComputedStyle(el, null)['webkitTransform'].replace(/[^0-9-.,]/g, '').split(',');
+		var matrix = getComputedStyle(el, null)['webkitTransform'].replace(
+				/[^0-9-.,]/g, '').split(',');
 		var x = matrix[4] * 1;
 		var y = matrix[5] * 1;
-		return [x, y];
+		return [ x, y ];
 	}-*/;
 
 	@Override
@@ -111,8 +111,9 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 		return getComputedStyle(element, null).left.replace(/[^0-9-]/g, '') * 1;
 	}-*/;
 
-	
-
-	
+	@Override
+	public native void resetTransform(Element el) /*-{
+		el.style.webkitTransform = "";
+	}-*/;
 
 }

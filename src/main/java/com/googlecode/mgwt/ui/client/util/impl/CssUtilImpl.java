@@ -22,12 +22,12 @@ public interface CssUtilImpl {
 
 	public String getTransformProperty();
 
-	
-
 	public int[] getPositionFromTransForm(Element element);
 
 	public int getTopPositionFromCssPosition(Element element);
 
 	public int getLeftPositionFromCssPosition(Element element);
+
+	public void resetTransform(Element element);
 
 }

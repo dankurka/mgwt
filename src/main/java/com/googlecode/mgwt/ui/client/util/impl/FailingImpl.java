@@ -76,4 +76,10 @@ public class FailingImpl implements CssUtilImpl {
 		return 0;
 	}
 
+	@Override
+	public void resetTransform(Element element) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
