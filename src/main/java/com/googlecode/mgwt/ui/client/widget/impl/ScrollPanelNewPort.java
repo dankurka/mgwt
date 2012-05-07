@@ -42,6 +42,12 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollStartEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
 public class ScrollPanelNewPort extends ScrollPanelImpl {
@@ -548,9 +554,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			return;
 		}
 
-		System.out.println("scrolling started");
-
-		// TODO call onbefore scroll start
+		fireEvent(new BeforeScrollStartEvent(event));
 
 		if (this.useTransistion || this.zoom) {
 			setTransistionTime(0);
@@ -576,7 +580,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			this.originX = Math.abs(touches.get(0).getPageX() + touches.get(1).getPageX() - this.wrapperOffsetLeft * 2 / 2 - this.x);
 			this.originY = Math.abs(touches.get(0).getPageY() + touches.get(1).getPageY() - this.wrapperOffsetTop * 2 / 2 - this.y);
 
-			// call on zoom start
+			// TODO call on zoom start
 		}
 
 		if (this.momentum) {
@@ -610,7 +614,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		this.startTime = System.currentTimeMillis();
 
-		// fire on scrollStart event
+		fireEvent(new ScrollStartEvent(event));
 
 		bindMoveEvent();
 		bindEndEvent();
@@ -628,6 +632,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		long timeStamp = System.currentTimeMillis();
 
 		// fire onbeforescroll event
+		fireEvent(new BeforeScrollMoveEvent(event));
 
 		if (zoom && touches.length() > 1) {
 			int c1 = Math.abs(touches.get(0).getPageX() - touches.get(1).getPageX());
@@ -648,9 +653,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			newX = (int) Math.round(this.originX - this.originX * this.lastScale + this.x);
 			newY = (int) Math.round(this.originY - this.originY * this.lastScale + this.y);
 
-			// update scroller
+			CssUtil.setTranslateAndZoom(this.scroller.getElement(), newX, newY, scale);
 
-			// call on zoom
+			// TODO call on zoom
 			return;
 		}
 
@@ -719,7 +724,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			this.startY = this.y;
 		}
 
-		// call on scroll move
+		fireEvent(new ScrollMoveEvent(event));
 	}
 
 	private void end(final TouchEvent<?> event) {
@@ -741,6 +746,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		unbindCancelEvent();
 
 		// fire on before scroll end
+		fireEvent(new BeforeScrollEndEvent(event));
 
 		if (zoomed) {
 			double scale = this.scale * this.lastScale;
@@ -751,12 +757,13 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			this.x = (int) Math.round(this.originX - this.originX * this.lastScale + this.x);
 			this.y = (int) Math.round(this.originY - this.originY * this.lastScale + this.y);
 
-			// update scrollbars
+			CssUtil.setTransitionDuration(this.scroller.getElement(), 200);
+			CssUtil.setTranslateAndZoom(this.scroller.getElement(), this.x, this.y, this.scale);
 
 			this.zoomed = false;
 			this.refresh();
 
-			// fire onzoomend
+			// TODO fire onzoomend
 
 			return;
 
@@ -767,9 +774,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				doubleTapTimer.cancel();
 				doubleTapTimer = null;
 
-				// fire on zoom start
+				// TODO fire on zoom start
 
-				// fire zoom end after duration
+				// TODO fire zoom end after duration
 			} else {
 				this.doubleTapTimer = new Timer() {
 
@@ -777,7 +784,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 					public void run() {
 						doubleTapTimer = null;
 
-						// dispatch tap event
+						// TODO dispatch tap event
 
 					}
 				};
@@ -786,7 +793,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 			resetPos(200);
 
-			// fire touchend!
+			// TODO fire touchend!
 			return;
 		}
 
@@ -836,7 +843,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			System.out.println("momentumX: " + newPosX + " momentumY: " + newPosY + " newDur: " + newDuration);
 			scrollTo(newPosX, newPosY, newDuration);
 
-			// fire touch end!
+			// TODO fire touch end!
 			return;
 		}
 
@@ -859,7 +866,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		}
 
 		resetPos(200);
-		// fire on touch end
+		// TODO fire on touch end
 
 	}
 
@@ -876,6 +883,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			if (this.moved) {
 				this.moved = false;
 				// fire on scroll end
+				fireEvent(new ScrollEndEvent());
 			}
 
 			if (this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] && this.hideScrollBar) {
@@ -1345,8 +1353,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	public void scrollToPage(int pageX, int pageY, int time) {
-		// TODO
-		// fire on scroll start
+
+		fireEvent(new ScrollStartEvent(null));
+
 		int x, y;
 		if (this.snap) {
 

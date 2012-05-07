@@ -17,6 +17,7 @@ package com.googlecode.mgwt.ui.client.widget.event.scroll;
 
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
+import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 
 public class BeforeScrollMoveEvent extends GwtEvent<BeforeScrollMoveEvent.Handler> {
 
@@ -25,6 +26,12 @@ public class BeforeScrollMoveEvent extends GwtEvent<BeforeScrollMoveEvent.Handle
 	}
 
 	private static GwtEvent.Type<BeforeScrollMoveEvent.Handler> TYPE = new Type<BeforeScrollMoveEvent.Handler>();
+	private final TouchMoveEvent event;
+
+	public BeforeScrollMoveEvent(TouchMoveEvent event) {
+		this.event = event;
+
+	}
 
 	public static GwtEvent.Type<BeforeScrollMoveEvent.Handler> getTYPE() {
 		return TYPE;
@@ -39,6 +46,10 @@ public class BeforeScrollMoveEvent extends GwtEvent<BeforeScrollMoveEvent.Handle
 	protected void dispatch(Handler handler) {
 		handler.onEvent(this);
 
+	}
+
+	public TouchMoveEvent getEvent() {
+		return event;
 	}
 
 }
