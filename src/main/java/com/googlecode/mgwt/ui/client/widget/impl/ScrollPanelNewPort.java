@@ -1323,6 +1323,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			resetPos(200);
 		}
 
+		updateDefaultStyles();
+
 	}
 
 	@Override
@@ -1553,12 +1555,6 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	@Override
-	public void setOffset(int offsetX, int offsetY) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void setWidget(IsWidget child) {
 		setWidget(child.asWidget() != null ? child.asWidget() : null);
 
@@ -1617,7 +1613,6 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				@Override
 				public void execute() {
 					refresh();
-					updateDefaultStyles();
 
 				}
 			});

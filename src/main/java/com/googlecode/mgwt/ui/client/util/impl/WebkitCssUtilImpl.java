@@ -116,4 +116,31 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 		el.style.webkitTransform = "";
 	}-*/;
 
+	@Override
+	public native void setTransistionProperty(Element element, String string) /*-{
+		element.webkitTransitionProperty = string;
+	}-*/;
+
+	@Override
+	public native void setTransFormOrigin(Element el, int x, int y) /*-{
+		el.webkitTransformOrigin = x + " " + y;
+	}-*/;
+
+	@Override
+	public native void setTransistionTimingFunction(Element element, String string) /*-{
+		el.webkitTransitionTimingFunction = string;
+	}-*/;
+
+	@Override
+	public void setTranslateAndZoom(Element el, int x, int y, double scale) {
+		String cssText = null;
+		if (MGWT.getOsDetection().isAndroid()) {
+			cssText = "translate( " + x + "px, " + y + "px ) scale( + " + scale + ")";
+		} else {
+			cssText = "translate3d(" + x + "px, " + y + "px, 0px) scale( + " + scale + ")";
+		}
+		el.getStyle().setProperty("WebkitTransform", cssText);
+
+	}
+
 }

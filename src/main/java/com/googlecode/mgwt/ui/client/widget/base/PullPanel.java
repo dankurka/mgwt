@@ -57,30 +57,24 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 		/**
 		 * called when a scroll starts
 		 * 
-		 * @param state
-		 *            the current state of the pull panel
+		 * @param state the current state of the pull panel
 		 */
 		public void scrollStart(State state);
 
 		/**
 		 * continously called when scrolling
 		 * 
-		 * @param state
-		 *            the state of the pull panel
-		 * @param positionY
-		 *            the current scroll position
+		 * @param state the state of the pull panel
+		 * @param positionY the current scroll position
 		 */
 		public void onScroll(State state, int positionY);
 
 		/**
 		 * called when a scroll ends
 		 * 
-		 * @param state
-		 *            the current state of the pull panel
-		 * @param positionY
-		 *            the end scroll position
-		 * @param duration
-		 *            the duration to scroll took
+		 * @param state the current state of the pull panel
+		 * @param positionY the end scroll position
+		 * @param duration the duration to scroll took
 		 */
 		void onScrollEnd(State state, int positionY, int duration);
 
@@ -101,8 +95,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 		/**
 		 * set the html of a pull header
 		 * 
-		 * @param html
-		 *            the html as String
+		 * @param html the html as String
 		 */
 		public void setHTML(String html);
 
@@ -121,13 +114,13 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 			if (getState() == State.PULL_RELEASE) {
 				event.preventDefault();
 
-				scroll.setOffset(0, 0);
+				scroll.setOffSetY(0);
 
 				startLoading();
 
 			} else {
 				if (isAutoHideHeader()) {
-					scroll.setOffset(0, -header.getHeight());
+					scroll.setOffSetY(-header.getHeight());
 				}
 
 			}
@@ -165,8 +158,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	/**
 	 * Construct a pull panel with a given header
 	 * 
-	 * @param pullHeader
-	 *            the header to use for this panel
+	 * @param pullHeader the header to use for this panel
 	 */
 	public PullPanel(PullHeader pullHeader) {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss(), pullHeader);
@@ -175,10 +167,8 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	/**
 	 * Construct a pull panel with a given header an css.
 	 * 
-	 * @param css
-	 *            the css to use
-	 * @param header
-	 *            the header to use for this panel
+	 * @param css the css to use
+	 * @param header the header to use for this panel
 	 */
 	public PullPanel(PullToRefreshCss css, PullHeader header) {
 		this.css = css;
@@ -193,14 +183,15 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 
 		FlowPanel main = new FlowPanel();
 		scroll.setWidget(main);
-		scroll.setOffset(0, -header.getHeight());
+		scroll.setOffSetY(-header.getHeight());
 		scroll.setScrollingEnabledX(false);
 		main.getElement().getStyle().setPosition(Position.RELATIVE);
 
 		scrollListener = new ScrollListener();
-		scroll.addScrollhandler(scrollListener);
-		scroll.addScrollEndHandler(scrollListener);
-		scroll.addScrollStartHandler(scrollListener);
+		// TODO fix this!
+		// scroll.addScrollhandler(scrollListener);
+		// scroll.addScrollEndHandler(scrollListener);
+		// scroll.addScrollStartHandler(scrollListener);
 
 		main.add(header);
 
@@ -299,14 +290,13 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	/**
 	 * show the header of the panel
 	 * 
-	 * @param show
-	 *            true to show otherwise hide
+	 * @param show true to show otherwise hide
 	 */
 	public void showHeader(boolean show) {
 		if (show) {
-			scroll.setOffset(0, 0);
+			scroll.setOffSetY(0);
 		} else {
-			scroll.setOffset(0, -header.getHeight());
+			scroll.setOffSetY(-header.getHeight());
 		}
 
 	}
@@ -316,8 +306,7 @@ public class PullPanel extends Composite implements HasWidgets, HasPullHandlers 
 	 * Setter for the field <code>state</code>.
 	 * </p>
 	 * 
-	 * @param state
-	 *            a
+	 * @param state a
 	 *            {@link com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State}
 	 *            object.
 	 */

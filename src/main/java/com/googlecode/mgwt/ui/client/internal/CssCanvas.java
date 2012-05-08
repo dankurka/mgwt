@@ -19,17 +19,20 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Considered internal
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
+@Deprecated
 public class CssCanvas {
 
 	private JavaScriptObject context;
 
 	/**
-	 * <p>Constructor for CssCanvas.</p>
-	 *
+	 * <p>
+	 * Constructor for CssCanvas.
+	 * </p>
+	 * 
 	 * @param contextType a {@link java.lang.String} object.
 	 * @param id a {@link java.lang.String} object.
 	 * @param width a int.
@@ -40,8 +43,10 @@ public class CssCanvas {
 	}
 
 	/**
-	 * <p>Getter for the field <code>context</code>.</p>
-	 *
+	 * <p>
+	 * Getter for the field <code>context</code>.
+	 * </p>
+	 * 
 	 * @param contextType a {@link java.lang.String} object.
 	 * @param id a {@link java.lang.String} object.
 	 * @param width a int.
@@ -53,13 +58,16 @@ public class CssCanvas {
 	}-*/;
 
 	/**
-	 * <p>getCssCanvasContext</p>
-	 *
+	 * <p>
+	 * getCssCanvasContext
+	 * </p>
+	 * 
 	 * @param contextType a {@link java.lang.String} object.
 	 * @param id a {@link java.lang.String} object.
 	 * @param width a int.
 	 * @param height a int.
-	 * @return a {@link com.googlecode.mgwt.ui.client.internal.CssCanvas} object.
+	 * @return a {@link com.googlecode.mgwt.ui.client.internal.CssCanvas}
+	 *         object.
 	 */
 	public static final CssCanvas getCssCanvasContext(String contextType, String id, int width, int height) {
 		return new CssCanvas(contextType, id, width, height);
@@ -71,8 +79,10 @@ public class CssCanvas {
 	}-*/;
 
 	/**
-	 * <p>setFillStyle</p>
-	 *
+	 * <p>
+	 * setFillStyle
+	 * </p>
+	 * 
 	 * @param style a {@link java.lang.String} object.
 	 */
 	public native void setFillStyle(String style)/*-{
@@ -80,7 +90,9 @@ public class CssCanvas {
 	}-*/;
 
 	/**
-	 * <p>beginPath</p>
+	 * <p>
+	 * beginPath
+	 * </p>
 	 */
 	public native void beginPath()/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context
@@ -88,8 +100,10 @@ public class CssCanvas {
 	}-*/;
 
 	/**
-	 * <p>arc</p>
-	 *
+	 * <p>
+	 * arc
+	 * </p>
+	 * 
 	 * @param x a double.
 	 * @param y a double.
 	 * @param radius a double.
@@ -103,8 +117,10 @@ public class CssCanvas {
 	}-*/;
 
 	/**
-	 * <p>lineTo</p>
-	 *
+	 * <p>
+	 * lineTo
+	 * </p>
+	 * 
 	 * @param x a double.
 	 * @param y a double.
 	 */
@@ -114,7 +130,9 @@ public class CssCanvas {
 	}-*/;
 
 	/**
-	 * <p>closePath</p>
+	 * <p>
+	 * closePath
+	 * </p>
 	 */
 	public native void closePath()/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context
@@ -122,7 +140,9 @@ public class CssCanvas {
 	}-*/;
 
 	/**
-	 * <p>fill</p>
+	 * <p>
+	 * fill
+	 * </p>
 	 */
 	public native void fill()/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.fill();

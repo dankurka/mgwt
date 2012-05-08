@@ -69,22 +69,17 @@ public class CssUtil {
 	}
 
 	public static void setTransistionProperty(Element element, String string) {
-		// TODO Auto-generated method stub
+		cssUtilImpl.setTransistionProperty(element, string);
 
 	}
 
-	public static void setTransFormOrigin(Element element, int i, int j) {
-		// TODO Auto-generated method stub
+	public static void setTransFormOrigin(Element element, int x, int y) {
+		cssUtilImpl.setTransFormOrigin(element, x, y);
 
 	}
 
 	public static void setTransistionTimingFunction(Element element, String string) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public static void setTransForm(Element element, int x, int y) {
-		// TODO Auto-generated method stub
+		cssUtilImpl.setTransistionTimingFunction(element, string);
 
 	}
 
@@ -106,7 +101,7 @@ public class CssUtil {
 	}
 
 	public static void setTranslateAndZoom(Element element, int x, int y, double scale) {
-		// TODO Auto-generated method stub
+		cssUtilImpl.setTranslateAndZoom(element, x, y, scale);
 
 	}
 }

@@ -82,4 +82,28 @@ public class FailingImpl implements CssUtilImpl {
 
 	}
 
+	@Override
+	public void setTransistionProperty(Element element, String string) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setTransFormOrigin(Element element, int x, int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setTransistionTimingFunction(Element element, String string) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setTranslateAndZoom(Element element, int x, int y, double scale) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

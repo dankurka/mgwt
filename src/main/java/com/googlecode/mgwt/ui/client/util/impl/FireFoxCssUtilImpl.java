@@ -93,4 +93,29 @@ public class FireFoxCssUtilImpl implements CssUtilImpl {
 
 	}
 
+	@Override
+	public native void setTransistionProperty(Element element, String string) /*-{
+		element.mozTransitionProperty = string;
+	}-*/;
+
+	@Override
+	public native void setTransFormOrigin(Element el, int x, int y) /*-{
+		el.mozTransformOrigin = x + " " + y;
+	}-*/;
+
+	@Override
+	public native void setTransistionTimingFunction(Element element, String string) /*-{
+		el.mozTransitionTimingFunction = string;
+	}-*/;
+
+	@Override
+	public void setTranslateAndZoom(Element el, int x, int y, double scale) {
+		String cssText = null;
+
+		cssText = "translate( " + x + "px, " + y + "px ) scale( + " + scale + ")";
+
+		el.getStyle().setProperty("MozTransform", cssText);
+
+	}
+
 }

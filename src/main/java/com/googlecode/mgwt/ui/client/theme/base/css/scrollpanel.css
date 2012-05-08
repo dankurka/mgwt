@@ -5,6 +5,7 @@
 .mgwt-ScrollPanel {
 	overflow: hidden;
 	position: relative;
+	z-index: 0;
 }
 
 @if user.agent safari {

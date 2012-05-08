@@ -30,4 +30,12 @@ public interface CssUtilImpl {
 
 	public void resetTransform(Element element);
 
+	public void setTransistionProperty(Element element, String string);
+
+	public void setTransFormOrigin(Element element, int x, int y);
+
+	public void setTransistionTimingFunction(Element element, String string);
+
+	public void setTranslateAndZoom(Element element, int x, int y, double scale);
+
 }

@@ -18,7 +18,16 @@ package com.googlecode.mgwt.ui.client.widget.impl;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollTouchEndEvent;
 
 /**
  * ScrollPanelImpl abstracts different implementations for scrolling behaviour
@@ -77,14 +86,6 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets, H
 	public abstract void setScrollingEnabledY(boolean scrollingEnabledY);
 
 	/**
-	 * set an offset to scrolling (hide part of the content)
-	 * 
-	 * @param offsetX the offset in the x-axis
-	 * @param offsetY the offset in the y-axis
-	 */
-	public abstract void setOffset(int offsetX, int offsetY);
-
-	/**
 	 * set the content of the scrollable area
 	 * 
 	 * @param child the content of the scrollable area
@@ -120,5 +121,37 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets, H
 	public abstract void setSnap(boolean snap);
 
 	public abstract void setSnapThreshold(int threshold);
+
+	public HandlerRegistration addBeforeScrollStartHandler(BeforeScrollStartEvent.Handler handler) {
+		return addHandler(handler, BeforeScrollStartEvent.getTYPE());
+	}
+
+	public HandlerRegistration addBeforeScrollMoveHandler(BeforeScrollMoveEvent.Handler handler) {
+		return addHandler(handler, BeforeScrollMoveEvent.getTYPE());
+	}
+
+	public HandlerRegistration addBeforeScrollEndHandler(BeforeScrollEndEvent.Handler handler) {
+		return addHandler(handler, BeforeScrollEndEvent.getTYPE());
+	}
+
+	public HandlerRegistration addScrollEndHandler(ScrollEndEvent.Handler handler) {
+		return addHandler(handler, ScrollEndEvent.getTYPE());
+	}
+
+	public HandlerRegistration addScrollStartHandler(ScrollStartEvent.Handler handler) {
+		return addHandler(handler, ScrollStartEvent.getTYPE());
+	}
+
+	public HandlerRegistration addScrollMoveHandler(ScrollMoveEvent.Handler handler) {
+		return addHandler(handler, ScrollMoveEvent.getTYPE());
+	}
+
+	public HandlerRegistration addScrollRefreshHandler(ScrollRefreshEvent.Handler handler) {
+		return addHandler(handler, ScrollRefreshEvent.getTYPE());
+	}
+
+	public HandlerRegistration addScrollTouchEndHandler(ScrollTouchEndEvent.Handler handler) {
+		return addHandler(handler, ScrollTouchEndEvent.getTYPE());
+	}
 
 }

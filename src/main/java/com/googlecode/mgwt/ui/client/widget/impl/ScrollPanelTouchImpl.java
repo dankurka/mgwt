@@ -62,6 +62,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
  * @author Daniel Kurka
  * 
  */
+@Deprecated
 public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 	private Widget widgetToScroll;

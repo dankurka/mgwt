@@ -197,16 +197,6 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setOffset(int, int)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public void setOffset(int offsetX, int offsetY) {
-
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setWidget(com.google.gwt.user.client.ui.IsWidget)
 	 */
 	/** {@inheritDoc} */

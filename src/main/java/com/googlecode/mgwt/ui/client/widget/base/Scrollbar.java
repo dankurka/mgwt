@@ -31,6 +31,7 @@ import com.googlecode.mgwt.ui.client.util.FeatureDetection;
  * @author Daniel Kurka
  * @version $Id: $
  */
+@Deprecated
 public class Scrollbar extends Widget {
 
 	private final Orientation orientation;
@@ -149,7 +150,7 @@ public class Scrollbar extends Widget {
 
 		DOM.appendChild(getElement(), bar);
 
-		//quick and dirty hack for ff
+		// quick and dirty hack for ff
 		if (!CssCanvas.isSupported())
 			return;
 
