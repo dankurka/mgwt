@@ -135,16 +135,6 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setPosition(int, int)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public void setPosition(int newPosX, int newPosY) {
-
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setUsePos(boolean)
 	 */
 	/** {@inheritDoc} */
@@ -233,6 +223,72 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	/** {@inheritDoc} */
 	@Override
 	public void refresh() {
+
+	}
+
+	@Override
+	public void setOffSetY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMaxScrollY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getMaxScrollY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setMinScrollY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getMinScrollY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void scrollTo(int x, int y, int time, boolean relative) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void scrollToPage(int pageX, int pageY, int time) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setBounce(boolean bounce) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMomentum(boolean momentum) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSnap(boolean snap) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSnapThreshold(int threshold) {
+		// TODO Auto-generated method stub
 
 	}
 

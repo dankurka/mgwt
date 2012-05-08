@@ -403,7 +403,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 						if ("A".equals(nodeName)) {
 							return;
 						}
-						
+
 						if ("BUTTON".equals(nodeName)) {
 							return;
 						}
@@ -674,7 +674,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	/**
 	 * 
 	 */
-	private int getMaxScrollY() {
+	public int getMaxScrollY() {
 		return getClientHeight(main.getElement()) - getWidgetToScrollHeight();
 
 	}
@@ -902,5 +902,65 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 		return top + bottom;
 	}-*/;
+
+	@Override
+	public void setOffSetY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMaxScrollY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMinScrollY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getMinScrollY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void scrollTo(int x, int y, int time, boolean relative) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void scrollToPage(int pageX, int pageY, int time) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setBounce(boolean bounce) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMomentum(boolean momentum) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSnap(boolean snap) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSnapThreshold(int threshold) {
+		// TODO Auto-generated method stub
+
+	}
 
 }

@@ -63,7 +63,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	// private boolean experimental = true;
 
-	//private boolean usePos = false;
+	// private boolean usePos = false;
 
 	private TouchObserver touchObserver;
 
@@ -308,7 +308,8 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 		if (widgetToScroll != null) {
 
 			updateScrollBars();
-			//transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
+			// transEndHandler = widgetToScroll.addDomHandler(new
+			// TransistionEndListener(), TransitionEndEvent.getType());
 
 			mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
 
@@ -559,7 +560,6 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	private void setTransistionTime(int milliseconds) {
 
-		
 		if (scrollingEnabledX && hScrollbar != null) {
 			hScrollbar.setTransitionTime(milliseconds);
 		}
@@ -569,9 +569,8 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	}
 
-	
 	public void setUsePos(boolean pos) {
-		
+
 	}
 
 	/*
@@ -637,7 +636,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 	/**
 	 * 
 	 */
-	private int getMaxScrollY() {
+	public int getMaxScrollY() {
 		return getClientHeight(main.getElement()) - getWidgetToScrollHeight();
 
 	}
@@ -865,5 +864,65 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 		return top + bottom;
 	}-*/;
+
+	@Override
+	public void setOffSetY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMaxScrollY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMinScrollY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getMinScrollY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void scrollTo(int x, int y, int time, boolean relative) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void scrollToPage(int pageX, int pageY, int time) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setBounce(boolean bounce) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMomentum(boolean momentum) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSnap(boolean snap) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSnapThreshold(int threshold) {
+		// TODO Auto-generated method stub
+
+	}
 
 }

@@ -165,10 +165,33 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 	 * 
 	 * @param x the offset in x-axis
 	 * @param y the offset in y-axis
+	 * 
+	 * @deprecated
 	 */
+	@Deprecated
 	public void setOffset(int x, int y) {
 		impl.setOffset(x, y);
 
+	}
+
+	public void setOffSetY(int y) {
+		impl.setOffSetY(y);
+	}
+
+	public void setMaxScrollY(int y) {
+		impl.setMaxScrollY(y);
+	}
+
+	public int getMaxScrollY() {
+		return impl.getMaxScrollY();
+	}
+
+	public void setMinScrollY(int y) {
+		impl.setMinScrollY(y);
+	}
+
+	public int getMinScrollY() {
+		return impl.getMinScrollY();
 	}
 
 	/**
@@ -220,6 +243,30 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	public void scrollTo(int x, int y) {
 		impl.scrollTo(x, y, 1);
+	}
+
+	public void scrollTo(int x, int y, int time, boolean relative) {
+		impl.scrollTo(x, y, time, relative);
+	}
+
+	public void scrollToPage(int pageX, int pageY, int time) {
+		impl.scrollToPage(pageX, pageY, time);
+	}
+
+	public void setBounce(boolean bounce) {
+		impl.setBounce(bounce);
+	}
+
+	public void setMomentum(boolean momentum) {
+		impl.setMomentum(momentum);
+	}
+
+	public void setSnap(boolean snap) {
+		impl.setSnap(snap);
+	}
+
+	public void setSnapThreshold(int threshold) {
+		impl.setSnapThreshold(threshold);
 	}
 
 }
