@@ -22,19 +22,18 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
-import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader;
-import com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State;
 
 /**
  * A header for a pull panel that shows an arrow
  * 
  * @author Daniel Kurka
- * @version $Id: $
+ * 
  */
-public class PullArrowHeader extends Composite implements PullHeader {
+public class PullArrowHeader extends Composite implements PullArrowWidget {
 
 	private FlowPanel main;
 
@@ -46,12 +45,10 @@ public class PullArrowHeader extends Composite implements PullHeader {
 
 	private final PullToRefreshCss css;
 
-	/**
-	 * Construct a {@link PullArrowHeader} with a given css
-	 * 
-	 * @param css
-	 *            the css to use
-	 */
+	public PullArrowHeader() {
+		this(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss());
+	}
+
 	public PullArrowHeader(PullToRefreshCss css) {
 
 		this.css = css;
@@ -88,7 +85,7 @@ public class PullArrowHeader extends Composite implements PullHeader {
 	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.Widget#asWidget()
 	 */
-	/** {@inheritDoc} */
+
 	@Override
 	public Widget asWidget() {
 		return this;
@@ -96,53 +93,16 @@ public class PullArrowHeader extends Composite implements PullHeader {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#scrollStart(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public void scrollStart(State state) {
-		removeStyles();
-
-		icon.addStyleName(css.arrow());
-		icon.setVisible(true);
-		indicator.setVisible(false);
-
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#onScroll(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State, int)
 	 */
-	/** {@inheritDoc} */
 	@Override
-	public void onScroll(State state, int positionY) {
+	public void onScroll(int positionY) {
 		int degree = getRotation(positionY);
 
 		CssUtil.rotate(icon.getElement(), degree);
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#onScrollEnd(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State, int, int)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public void onScrollEnd(State state, int positionY, int duration) {
-		icon.getElement().setAttribute("style", "");
-		if (state == State.PULL_RELEASE) {
-			showSpinner();
-		} else {
-
-		}
-
-	}
-
-	/**
-	 * <p>
-	 * showError
-	 * </p>
-	 */
 	public void showError() {
 		removeStyles();
 		icon.addStyleName(css.error());
@@ -194,12 +154,18 @@ public class PullArrowHeader extends Composite implements PullHeader {
 	 * showArrow
 	 * </p>
 	 */
-	protected void showArrow() {
+	public void showArrow() {
 		removeStyles();
 		icon.addStyleName(css.arrow());
 
 		icon.setVisible(true);
 		indicator.setVisible(false);
+	}
+
+	public void showLoadingIndicator() {
+		icon.getElement().setAttribute("style", "");
+		showSpinner();
+
 	}
 
 	/**
@@ -214,15 +180,6 @@ public class PullArrowHeader extends Composite implements PullHeader {
 
 	}
 
-	/**
-	 * <p>
-	 * getRotation
-	 * </p>
-	 * 
-	 * @param y
-	 *            a int.
-	 * @return a int.
-	 */
 	protected int getRotation(int y) {
 		int degree = (y - 30) * -10;
 		if (degree < -90)
@@ -234,21 +191,9 @@ public class PullArrowHeader extends Composite implements PullHeader {
 
 	}
 
-	/**
-	 * <p>
-	 * remoteStyles
-	 * </p>
-	 */
 	protected void removeStyles() {
 		icon.removeStyleName(css.arrow());
 		icon.removeStyleName(css.error());
-	}
-
-	public void showSuccess() {
-		removeStyles();
-
-		icon.setVisible(false);
-		indicator.setVisible(false);
 	}
 
 }

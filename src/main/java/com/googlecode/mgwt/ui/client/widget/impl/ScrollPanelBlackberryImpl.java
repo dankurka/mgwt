@@ -17,13 +17,9 @@ package com.googlecode.mgwt.ui.client.widget.impl;
 
 import java.util.Iterator;
 
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 
 /**
  * The blackberry implementation of scrollpanel lacks any scrolling capabilities
@@ -37,15 +33,6 @@ import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
  * @version $Id: $
  */
 public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
-
-	private static class NoopHandlerRegistration implements HandlerRegistration {
-
-		@Override
-		public void removeHandler() {
-
-		}
-
-	}
 
 	private SimplePanel main;
 	private boolean scrollingEnabledX;
@@ -101,36 +88,6 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	@Override
 	public boolean remove(Widget w) {
 		return main.remove(w);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollStartHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollStartHandler(ScrollStartHandler handler) {
-		return new NoopHandlerRegistration();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollhandler(com.googlecode.mgwt.ui.client.widget.event.ScrollHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler) {
-		return new NoopHandlerRegistration();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollEndHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollEndHandler(ScrollEndHandler handler) {
-		return new NoopHandlerRegistration();
 	}
 
 	/*
@@ -278,6 +235,24 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 
 	@Override
 	public void setSnapThreshold(int threshold) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setBounceFactor(double factor) {
 		// TODO Auto-generated method stub
 
 	}

@@ -259,4 +259,16 @@ public class ScrollPanel extends Composite implements HasWidgets {
 		return impl.addScrollTouchEndHandler(handler);
 	}
 
+	public int getY() {
+		return impl.getY();
+	}
+
+	public int getX() {
+		return impl.getX();
+	}
+
+	public void setBounceFactor(double bounceFactor) {
+		impl.setBounceFactor(bounceFactor);
+	}
+
 }

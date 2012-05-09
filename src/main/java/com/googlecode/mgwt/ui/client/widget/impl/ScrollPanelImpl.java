@@ -19,7 +19,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.web.bindery.event.shared.HandlerRegistration;
-import com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollStartEvent;
@@ -35,7 +34,7 @@ import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollTouchEndEvent;
  * @author Daniel Kurka
  * @version $Id: $
  */
-public abstract class ScrollPanelImpl extends Composite implements HasWidgets, HasScrollHandlers {
+public abstract class ScrollPanelImpl extends Composite implements HasWidgets {
 
 	/**
 	 * instruct the panel to use position absolute instead of translate3d
@@ -153,5 +152,11 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets, H
 	public HandlerRegistration addScrollTouchEndHandler(ScrollTouchEndEvent.Handler handler) {
 		return addHandler(handler, ScrollTouchEndEvent.getTYPE());
 	}
+
+	public abstract int getY();
+
+	public abstract int getX();
+
+	public abstract void setBounceFactor(double factor);
 
 }
