@@ -93,7 +93,7 @@ public class PullPanel extends Composite implements HasWidgets {
 		scrollPanel.addScrollRefreshHandler(new ScrollRefreshEvent.Handler() {
 
 			@Override
-			public void onEvent(ScrollRefreshEvent event) {
+			public void onScrollRefresh(ScrollRefreshEvent event) {
 				if (header != null) {
 
 					headerState = PullState.NORMAL;
@@ -105,7 +105,7 @@ public class PullPanel extends Composite implements HasWidgets {
 		scrollPanel.addScrollMoveHandler(new ScrollMoveEvent.Handler() {
 
 			@Override
-			public void onEvent(ScrollMoveEvent event) {
+			public void onScrollMove(ScrollMoveEvent event) {
 				int y = scrollPanel.getY();
 
 				if (header != null) {
@@ -137,7 +137,7 @@ public class PullPanel extends Composite implements HasWidgets {
 		scrollPanel.addScrollEndHandler(new ScrollEndEvent.Handler() {
 
 			@Override
-			public void onEvent(ScrollEndEvent event) {
+			public void onScrollEnd(ScrollEndEvent event) {
 
 				if (header != null) {
 					if (headerState == PullState.PULLED) {

@@ -22,7 +22,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 public class ScrollTouchEndEvent extends GwtEvent<ScrollTouchEndEvent.Handler> {
 
 	public interface Handler extends EventHandler {
-		public void onEvent(ScrollTouchEndEvent event);
+		public void onScrollTouchEnd(ScrollTouchEndEvent event);
 	}
 
 	private static GwtEvent.Type<ScrollTouchEndEvent.Handler> TYPE = new Type<ScrollTouchEndEvent.Handler>();
@@ -44,7 +44,7 @@ public class ScrollTouchEndEvent extends GwtEvent<ScrollTouchEndEvent.Handler> {
 
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onEvent(this);
+		handler.onScrollTouchEnd(this);
 
 	}
 

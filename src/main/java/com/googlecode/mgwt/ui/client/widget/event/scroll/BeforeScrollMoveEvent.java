@@ -22,7 +22,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 public class BeforeScrollMoveEvent extends GwtEvent<BeforeScrollMoveEvent.Handler> {
 
 	public interface Handler extends EventHandler {
-		public void onEvent(BeforeScrollMoveEvent event);
+		public void onBeforeScrollMove(BeforeScrollMoveEvent event);
 	}
 
 	private static GwtEvent.Type<BeforeScrollMoveEvent.Handler> TYPE = new Type<BeforeScrollMoveEvent.Handler>();
@@ -44,7 +44,7 @@ public class BeforeScrollMoveEvent extends GwtEvent<BeforeScrollMoveEvent.Handle
 
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onEvent(this);
+		handler.onBeforeScrollMove(this);
 
 	}
 

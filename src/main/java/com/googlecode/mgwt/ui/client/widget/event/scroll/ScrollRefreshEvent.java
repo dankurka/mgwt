@@ -21,7 +21,7 @@ import com.google.gwt.event.shared.GwtEvent;
 public class ScrollRefreshEvent extends GwtEvent<ScrollRefreshEvent.Handler> {
 
 	public interface Handler extends EventHandler {
-		public void onEvent(ScrollRefreshEvent event);
+		public void onScrollRefresh(ScrollRefreshEvent event);
 	}
 
 	private static GwtEvent.Type<ScrollRefreshEvent.Handler> TYPE = new Type<ScrollRefreshEvent.Handler>();
@@ -37,7 +37,7 @@ public class ScrollRefreshEvent extends GwtEvent<ScrollRefreshEvent.Handler> {
 
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onEvent(this);
+		handler.onScrollRefresh(this);
 
 	}
 

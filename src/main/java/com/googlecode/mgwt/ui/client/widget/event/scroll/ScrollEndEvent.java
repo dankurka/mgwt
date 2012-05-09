@@ -21,7 +21,7 @@ import com.google.gwt.event.shared.GwtEvent;
 public class ScrollEndEvent extends GwtEvent<ScrollEndEvent.Handler> {
 
 	public interface Handler extends EventHandler {
-		public void onEvent(ScrollEndEvent event);
+		public void onScrollEnd(ScrollEndEvent event);
 	}
 
 	private static GwtEvent.Type<ScrollEndEvent.Handler> TYPE = new Type<ScrollEndEvent.Handler>();
@@ -37,7 +37,7 @@ public class ScrollEndEvent extends GwtEvent<ScrollEndEvent.Handler> {
 
 	@Override
 	protected void dispatch(Handler handler) {
-		handler.onEvent(this);
+		handler.onScrollEnd(this);
 
 	}
 
