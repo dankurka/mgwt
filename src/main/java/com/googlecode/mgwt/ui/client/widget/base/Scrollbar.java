@@ -98,10 +98,10 @@ public class Scrollbar extends Widget {
 
 		switch (orientation) {
 		case HORIZONTAL:
-			addStyleName(css.horizontal());
+			addStyleName(css.scrollBarHorizontal());
 			break;
 		case VERTICAL:
-			addStyleName(css.vertical());
+			addStyleName(css.scrollBarVertical());
 
 		}
 
@@ -115,12 +115,12 @@ public class Scrollbar extends Widget {
 		switch (orientation) {
 		case HORIZONTAL:
 
-			bar.addClassName(css.horizontal());
+			bar.addClassName(css.scrollBarHorizontal());
 			break;
 
 		case VERTICAL:
 
-			bar.addClassName(css.vertical());
+			bar.addClassName(css.scrollBarVertical());
 			break;
 		default:
 			throw new RuntimeException("how did we get here?");

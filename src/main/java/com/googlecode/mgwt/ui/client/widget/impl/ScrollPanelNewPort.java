@@ -12,7 +12,6 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.dom.client.Node;
-import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.MouseOutEvent;
@@ -41,6 +40,8 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
 import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
@@ -264,6 +265,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	private boolean fadeScrollBar;
 
+	private ScrollPanelCss css;
+
 	public ScrollPanelNewPort() {
 
 		wrapper = new SimplePanel();
@@ -272,9 +275,14 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		touchListener = new TouchListener();
 		setupEvents();
 
+		css = MGWTStyle.getTheme().getMGWTClientBundle().getScrollPanelCss();
+		css.ensureInjected();
+
 		// TODO
-		wrapper.getElement().getStyle().setOverflow(Overflow.HIDDEN);
-		wrapper.getElement().getStyle().setPosition(Position.RELATIVE);
+		// wrapper.getElement().getStyle().setOverflow(Overflow.HIDDEN);
+		// wrapper.getElement().getStyle().setPosition(Position.RELATIVE);
+
+		wrapper.addStyleName(css.scrollPanel());
 
 		initWidget(wrapper);
 
@@ -392,34 +400,35 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			// Create the scrollbar wrapper
 			bar = DOM.createDiv();
 
-			// TODO classes
-			String cssText = "position:absolute;z-index:100;";
-			if (direction == DIRECTION.HORIZONTAL) {
-				cssText += "height:7px;bottom:1px;left:2px;right:" + (this.scrollBar[DIRECTION.VERTICAL.ordinal()] ? "7" : "2") + "px";
-			} else {
-				cssText += "width:7px;bottom:" + ((this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] ? "7" : "2") + "px;top:2px;right:1px");
-			}
-
-			cssText += ";pointer-events:none;-webkit-transition-property:opacity;-webkit-transition-duration:" + (this.fadeScrollBar ? "350ms" : "0") + ";overflow:hidden;opacity:"
-					+ (this.hideScrollBar ? "0" : "1");
-
-			applyStyle(bar, cssText);
+			CssUtil.setTransitionDuration(bar, (this.fadeScrollBar ? 350 : 0));
+			bar.getStyle().setOpacity(this.hideScrollBar ? 0 : 1);
 
 			this.scrollBarWrapper[dir] = bar;
+			this.scrollBarWrapper[dir].addClassName(css.scrollBar());
+			if (direction == DIRECTION.HORIZONTAL) {
+				this.scrollBarWrapper[dir].addClassName(css.scrollBarHorizontal());
+				this.scrollBarWrapper[dir].getStyle().setRight(this.scrollBar[DIRECTION.VERTICAL.ordinal()] ? 7 : 2, Unit.PX);
+			} else {
+				this.scrollBarWrapper[dir].addClassName(css.scrollBarVertical());
+				this.scrollBarWrapper[dir].getStyle().setBottom(this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] ? 7 : 2, Unit.PX);
+			}
 
 			// Create the scrollbar indicator
-			// TODO classes
 			bar = DOM.createDiv();
+			bar.addClassName(css.scrollBarBar());
 
-			cssText = "position:absolute;z-index:100;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.9);-webkit-background-clip:padding-box;-webkit-box-sizing:border-box;"
-					+ (direction == DIRECTION.HORIZONTAL ? "height:100%" : "width:100%") + ";-webkit-border-radius:3px;border-radius:3px";
+			if (direction == DIRECTION.HORIZONTAL) {
 
-			cssText += ";pointer-events:none;-webkit-transition-property:-webkit-transform;-webkit-transition-timing-function:cubic-bezier(0.33,0.66,0.66,1);-webkit-transition-duration:0;-webkit-transform: translate3d('0,0, 0')";
-			if (this.useTransistion)
-				cssText += ";-webkit-transition-timing-function:cubic-bezier(0.33,0.66,0.66,1)";
-			applyStyle(bar, cssText);
+				bar.getStyle().setHeight(100, Unit.PCT);
+
+			} else {
+
+				bar.getStyle().setWidth(100, Unit.PCT);
+			}
+
 			scrollBarWrapper[dir].appendChild(bar);
 			scrollBarIndicator[dir] = bar;
+			this.scrollBarIndicator[dir].addClassName(css.scrollBarBar());
 
 		}
 
@@ -466,10 +475,6 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		scrollbarPos(direction, true);
 
 	}
-
-	private native void applyStyle(Element el, String styleText)/*-{
-		el.style.cssText = styleText;
-	}-*/;
 
 	private void resize() {
 		new Timer() {
@@ -1243,8 +1248,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		minScrollY = -topOffset;
 
-		scrollerWidth = (int) Math.round(scroller.getOffsetWidth() * scale);
-		scrollerHeight = (int) Math.round((scroller.getOffsetHeight() + minScrollY) * scale);
+		scrollerWidth = (int) Math.round((scroller.getOffsetWidth() + getMarginWidth(scroller.getElement())) * scale);
+		scrollerHeight = (int) Math.round((scroller.getOffsetHeight() + minScrollY + +getMarginHeight(scroller.getElement())) * scale);
 
 		System.out.println("scoller height height height: " + scroller.getOffsetHeight());
 
@@ -1589,7 +1594,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		if (scroller != null) {
 			// TODO clean up
-
+			scroller.removeStyleName(css.container());
 			remove(scroller);
 
 		}
@@ -1598,7 +1603,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		if (scroller != null) {
 			wrapper.setWidget(scroller);
-
+			scroller.addStyleName(css.container());
 			if (isAttached()) {
 				bindResizeEvent();
 				bindStartEvent();
@@ -1855,5 +1860,28 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		this.snapThreshold = threshold;
 
 	}
+
+	private native int getMarginWidth(com.google.gwt.user.client.Element el)/*-{
+		var left = 0;
+		var right = 0;
+		var style = $wnd.getComputedStyle(el);
+
+		left = parseInt(style.marginLeft, 10) || 0;
+		right = parseInt(style.marginRight, 10) || 0;
+
+		return left + right;
+	}-*/;
+
+	private native int getMarginHeight(com.google.gwt.user.client.Element el)/*-{
+
+		var top = 0;
+		var bottom = 0;
+		var style = $wnd.getComputedStyle(el);
+
+		top = parseInt(style.marginTop, 10) || 0;
+		bottom = parseInt(style.marginBottom, 10) || 0;
+
+		return top + bottom;
+	}-*/;
 
 }

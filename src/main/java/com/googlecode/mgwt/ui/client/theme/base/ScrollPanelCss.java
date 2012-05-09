@@ -35,10 +35,10 @@ public interface ScrollPanelCss extends CssResource {
 	String scrollBar();
 
 	@ClassName("mgwt-Scrollbar-horizontal")
-	String horizontal();
+	String scrollBarHorizontal();
 
 	@ClassName("mgwt-Scrollbar-vertical")
-	String vertical();
+	String scrollBarVertical();
 
 	@ClassName("mgwt-Scrollbar-Bar")
 	String scrollBarBar();
