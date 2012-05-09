@@ -62,16 +62,7 @@ public class SimulatedTouchEndEvent extends TouchEndEvent {
 	/** {@inheritDoc} */
 	@Override
 	protected native JsArray<JsTouch> touches(NativeEvent nativeEvent) /*-{
-		var touch = {};
-
-		touch.pageX = this.@com.googlecode.mgwt.dom.client.event.mouse.SimulatedTouchEndEvent::x;
-		touch.pageY = this.@com.googlecode.mgwt.dom.client.event.mouse.SimulatedTouchEndEvent::y;
-
-		var toucharray = [];
-
-		toucharray.push(touch);
-
-		return toucharray;
+		return [];
 	}-*/;
 
 	/** {@inheritDoc} */

@@ -16,7 +16,6 @@
 package com.googlecode.mgwt.ui.client.theme.base;
 
 import com.google.gwt.resources.client.CssResource;
-import com.googlecode.mgwt.ui.client.widget.PullToRefresh;
 
 /**
  * The pull to refresh css interface

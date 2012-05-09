@@ -14,4 +14,28 @@ public interface CssUtilImpl {
 
 	public void rotate(Element element, int degree);
 
+	public boolean hasTransform();
+
+	public boolean hasTransistionEndEvent();
+
+	public boolean has3d();
+
+	public String getTransformProperty();
+
+	public int[] getPositionFromTransForm(Element element);
+
+	public int getTopPositionFromCssPosition(Element element);
+
+	public int getLeftPositionFromCssPosition(Element element);
+
+	public void resetTransform(Element element);
+
+	public void setTransistionProperty(Element element, String string);
+
+	public void setTransFormOrigin(Element element, int x, int y);
+
+	public void setTransistionTimingFunction(Element element, String string);
+
+	public void setTranslateAndZoom(Element element, int x, int y, double scale);
+
 }

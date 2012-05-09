@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 Daniel Kurka
+ * Copyright 2012 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,21 +13,15 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget.event;
+package com.googlecode.mgwt.ui.client.widget.base;
 
-import com.google.gwt.event.shared.EventHandler;
+import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullWidget;
 
-/**
- * A scroll end handlers handles {@link ScrollEndEvent} events.
- * 
- * @author Daniel Kurka
- */
-public interface ScrollEndHandler extends EventHandler {
-	/**
-	 * Called when a scroll event occurs
-	 * 
-	 * @param event
-	 *            the scroll end event
-	 */
-	public void onScrollEnd(ScrollEndEvent event);
+public interface PullArrowWidget extends PullWidget {
+
+	public void showArrow();
+
+	public void showLoadingIndicator();
+
+	public void showError();
 }

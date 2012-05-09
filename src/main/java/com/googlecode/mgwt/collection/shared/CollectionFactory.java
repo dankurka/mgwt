@@ -17,8 +17,10 @@ package com.googlecode.mgwt.collection.shared;
 
 import com.google.gwt.core.client.GWT;
 import com.googlecode.mgwt.collection.client.JsLightArray;
+import com.googlecode.mgwt.collection.client.JsLightArrayInteger;
 import com.googlecode.mgwt.collection.client.JsLightMap;
 import com.googlecode.mgwt.collection.shared.java.JavaLightArray;
+import com.googlecode.mgwt.collection.shared.java.JavaLightArrayInt;
 import com.googlecode.mgwt.collection.shared.java.JavaLightMap;
 
 public class CollectionFactory {
@@ -35,6 +37,14 @@ public class CollectionFactory {
 			return new JsLightArray<V>();
 		} else {
 			return new JavaLightArray<V>();
+		}
+	}
+	
+	public static LightArrayInt constructIntegerArray(){
+		if(GWT.isClient()){
+			return new JsLightArrayInteger();
+		}else{
+			return new JavaLightArrayInt();
 		}
 	}
 }

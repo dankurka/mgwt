@@ -18,15 +18,19 @@ package com.googlecode.mgwt.ui.client.widget;
 import java.util.Iterator;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
+import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollTouchEndEvent;
 import com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl;
 
 /**
@@ -55,7 +59,7 @@ import com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl;
  * @author Daniel Kurka
  * 
  */
-public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandlers {
+public class ScrollPanel extends Composite implements HasWidgets {
 
 	protected final ScrollPanelImpl impl = GWT.create(ScrollPanelImpl.class);
 
@@ -83,36 +87,6 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 	 */
 	public void setWidget(IsWidget w) {
 		impl.setWidget(w);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollStartHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollStartHandler(ScrollStartHandler handler) {
-		return impl.addScrollStartHandler(handler);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollhandler(com.googlecode.mgwt.ui.client.widget.event.ScrollHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler) {
-		return impl.addScrollhandler(scrollHandler);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollEndHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollEndHandler(ScrollEndHandler handler) {
-		return impl.addScrollEndHandler(handler);
 	}
 
 	/**
@@ -158,17 +132,24 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 		return impl.remove(w);
 	}
 
-	/**
-	 * Set the offset that the scroll panel should use
-	 * 
-	 * This is useful for hiding parts of the child widget
-	 * 
-	 * @param x the offset in x-axis
-	 * @param y the offset in y-axis
-	 */
-	public void setOffset(int x, int y) {
-		impl.setOffset(x, y);
+	public void setOffSetY(int y) {
+		impl.setOffSetY(y);
+	}
 
+	public void setMaxScrollY(int y) {
+		impl.setMaxScrollY(y);
+	}
+
+	public int getMaxScrollY() {
+		return impl.getMaxScrollY();
+	}
+
+	public void setMinScrollY(int y) {
+		impl.setMinScrollY(y);
+	}
+
+	public int getMinScrollY() {
+		return impl.getMinScrollY();
 	}
 
 	/**
@@ -220,6 +201,74 @@ public class ScrollPanel extends Composite implements HasWidgets, HasScrollHandl
 
 	public void scrollTo(int x, int y) {
 		impl.scrollTo(x, y, 1);
+	}
+
+	public void scrollTo(int x, int y, int time, boolean relative) {
+		impl.scrollTo(x, y, time, relative);
+	}
+
+	public void scrollToPage(int pageX, int pageY, int time) {
+		impl.scrollToPage(pageX, pageY, time);
+	}
+
+	public void setBounce(boolean bounce) {
+		impl.setBounce(bounce);
+	}
+
+	public void setMomentum(boolean momentum) {
+		impl.setMomentum(momentum);
+	}
+
+	public void setSnap(boolean snap) {
+		impl.setSnap(snap);
+	}
+
+	public void setSnapThreshold(int threshold) {
+		impl.setSnapThreshold(threshold);
+	}
+
+	public HandlerRegistration addBeforeScrollStartHandler(BeforeScrollStartEvent.Handler handler) {
+		return impl.addBeforeScrollStartHandler(handler);
+	}
+
+	public HandlerRegistration addBeforeScrollMoveHandler(BeforeScrollMoveEvent.Handler handler) {
+		return impl.addBeforeScrollMoveHandler(handler);
+	}
+
+	public HandlerRegistration addBeforeScrollEndHandler(BeforeScrollEndEvent.Handler handler) {
+		return impl.addBeforeScrollEndHandler(handler);
+	}
+
+	public HandlerRegistration addScrollEndHandler(ScrollEndEvent.Handler handler) {
+		return impl.addScrollEndHandler(handler);
+	}
+
+	public HandlerRegistration addScrollStartHandler(ScrollStartEvent.Handler handler) {
+		return impl.addScrollStartHandler(handler);
+	}
+
+	public HandlerRegistration addScrollMoveHandler(ScrollMoveEvent.Handler handler) {
+		return impl.addScrollMoveHandler(handler);
+	}
+
+	public HandlerRegistration addScrollRefreshHandler(ScrollRefreshEvent.Handler handler) {
+		return impl.addScrollRefreshHandler(handler);
+	}
+
+	public HandlerRegistration addScrollTouchEndHandler(ScrollTouchEndEvent.Handler handler) {
+		return impl.addScrollTouchEndHandler(handler);
+	}
+
+	public int getY() {
+		return impl.getY();
+	}
+
+	public int getX() {
+		return impl.getX();
+	}
+
+	public void setBounceFactor(double bounceFactor) {
+		impl.setBounceFactor(bounceFactor);
 	}
 
 }

@@ -20,9 +20,9 @@ import com.google.gwt.user.client.Element;
 import com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl;
 
 /**
- *
+ * 
  * Considered internal
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -49,6 +49,59 @@ public class CssUtil {
 
 	public static void rotate(Element element, int degree) {
 		cssUtilImpl.rotate(element, degree);
+
+	}
+
+	public static boolean hasTransform() {
+		return cssUtilImpl.hasTransform();
+	}
+
+	public static boolean hasTransistionEndEvent() {
+		return cssUtilImpl.hasTransistionEndEvent();
+	}
+
+	public static boolean has3d() {
+		return cssUtilImpl.has3d();
+	}
+
+	public static String getTransformProperty() {
+		return cssUtilImpl.getTransformProperty();
+	}
+
+	public static void setTransistionProperty(Element element, String string) {
+		cssUtilImpl.setTransistionProperty(element, string);
+
+	}
+
+	public static void setTransFormOrigin(Element element, int x, int y) {
+		cssUtilImpl.setTransFormOrigin(element, x, y);
+
+	}
+
+	public static void setTransistionTimingFunction(Element element, String string) {
+		cssUtilImpl.setTransistionTimingFunction(element, string);
+
+	}
+
+	public static int[] getPositionFromTransForm(Element element) {
+		return cssUtilImpl.getPositionFromTransForm(element);
+	}
+
+	public static int getLeftPositionFromCssPosition(Element element) {
+		return cssUtilImpl.getLeftPositionFromCssPosition(element);
+	}
+
+	public static int getTopPositionFromCssPosition(Element element) {
+		return cssUtilImpl.getTopPositionFromCssPosition(element);
+	}
+
+	public static void resetTransForm(Element element) {
+		cssUtilImpl.resetTransform(element);
+
+	}
+
+	public static void setTranslateAndZoom(Element element, int x, int y, double scale) {
+		cssUtilImpl.setTranslateAndZoom(element, x, y, scale);
 
 	}
 }

@@ -31,12 +31,6 @@ import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.util.FeatureDetection;
 import com.googlecode.mgwt.ui.client.widget.base.Scrollbar;
 import com.googlecode.mgwt.ui.client.widget.base.Scrollbar.Orientation;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollEndEvent;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollEvent;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollHandler;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollStartEvent;
-import com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 public class ScrollPanelIE9Impl extends ScrollPanelImpl {
@@ -63,7 +57,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	// private boolean experimental = true;
 
-	//private boolean usePos = false;
+	// private boolean usePos = false;
 
 	private TouchObserver touchObserver;
 
@@ -308,7 +302,8 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 		if (widgetToScroll != null) {
 
 			updateScrollBars();
-			//transEndHandler = widgetToScroll.addDomHandler(new TransistionEndListener(), TransitionEndEvent.getType());
+			// transEndHandler = widgetToScroll.addDomHandler(new
+			// TransistionEndListener(), TransitionEndEvent.getType());
 
 			mouseWheelHandlerRegistration = main.addDomHandler(new MouseWheelHandlerImplementation(), MouseWheelEvent.getType());
 
@@ -406,7 +401,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 			touchStartTime = System.currentTimeMillis();
 
-			fireEvent(new ScrollStartEvent(position_x, position_y));
+			// fireEvent(new ScrollStartEvent(position_x, position_y));
 
 		}
 
@@ -459,7 +454,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 				setPosition(newPosX, newPosY);
 				// fire scroll event to world
-				fireEvent(new ScrollEvent(newPosX, newPosY));
+				// fireEvent(new ScrollEvent(newPosX, newPosY));
 				moved = true;
 
 			}
@@ -480,8 +475,10 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 			currentlyScrolling = false;
 
 			if (!moved) {
-				ScrollEndEvent scrollEndEvent = new ScrollEndEvent(position_x, position_y, 1, position_x, position_y);
-				fireEvent(scrollEndEvent);
+				// ScrollEndEvent scrollEndEvent = new
+				// ScrollEndEvent(position_x, position_y, 1, position_x,
+				// position_y);
+				// fireEvent(scrollEndEvent);
 				resetPosition();
 
 				return;
@@ -512,8 +509,9 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 				}
 			}
 
-			ScrollEndEvent scrollEndEvent = new ScrollEndEvent(newPosX, newPosY, newDuration, position_x, position_y);
-			fireEvent(scrollEndEvent);
+			// ScrollEndEvent scrollEndEvent = new ScrollEndEvent(newPosX,
+			// newPosY, newDuration, position_x, position_y);
+			// fireEvent(scrollEndEvent);
 
 			scrollTo(newPosX, newPosY, newDuration);
 
@@ -559,7 +557,6 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	private void setTransistionTime(int milliseconds) {
 
-		
 		if (scrollingEnabledX && hScrollbar != null) {
 			hScrollbar.setTransitionTime(milliseconds);
 		}
@@ -569,9 +566,8 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	}
 
-	
 	public void setUsePos(boolean pos) {
-		
+
 	}
 
 	/*
@@ -637,7 +633,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 	/**
 	 * 
 	 */
-	private int getMaxScrollY() {
+	public int getMaxScrollY() {
 		return getClientHeight(main.getElement()) - getWidgetToScrollHeight();
 
 	}
@@ -755,16 +751,6 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	/*
 	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollhandler(com.googlecode.mgwt.ui.client.widget.event.ScrollHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollhandler(ScrollHandler scrollHandler) {
-		return addHandler(scrollHandler, ScrollEvent.getType());
-	}
-
-	/*
-	 * (non-Javadoc)
 	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
 	 */
 	/** {@inheritDoc} */
@@ -797,26 +783,6 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 			return main.remove(w);
 		}
 		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollEndHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollEndHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollEndHandler(ScrollEndHandler handler) {
-		return addHandler(handler, ScrollEndEvent.getType());
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.event.HasScrollHandlers#addScrollStartHandler(com.googlecode.mgwt.ui.client.widget.event.ScrollStartHandler)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public HandlerRegistration addScrollStartHandler(ScrollStartHandler handler) {
-		return addHandler(handler, ScrollStartEvent.getType());
 	}
 
 	/*
@@ -865,5 +831,83 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 		return top + bottom;
 	}-*/;
+
+	@Override
+	public void setOffSetY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMaxScrollY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMinScrollY(int y) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getMinScrollY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void scrollTo(int x, int y, int time, boolean relative) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void scrollToPage(int pageX, int pageY, int time) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setBounce(boolean bounce) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setMomentum(boolean momentum) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSnap(boolean snap) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setSnapThreshold(int threshold) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setBounceFactor(double factor) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
