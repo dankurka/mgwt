@@ -25,11 +25,11 @@ import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 
 public class AnimationHelper extends Composite {
 
-	private AnimatableDisplay display;
+	protected final AnimatableDisplay display;
 
-	private boolean isFirst;
+	protected boolean isFirst;
 
-	private boolean isAnimating;
+	protected boolean isAnimating;
 
 	public AnimationHelper() {
 		display = GWT.create(AnimatableDisplay.class);
