@@ -20,9 +20,20 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
+import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 
+/**
+ * A simple helper class to make the direct use of {@link AnimatableDisplay}
+ * easier.
+ * 
+ * For bigger apps in general you might want to be using an
+ * {@link AnimatingActivityManager}
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class AnimationHelper extends Composite {
 
 	protected final AnimatableDisplay display;
@@ -38,18 +49,36 @@ public class AnimationHelper extends Composite {
 		initWidget(display.asWidget());
 	}
 
+	/**
+	 * see: {@link #goTo(Widget, Animation, AnimationEndCallback)}
+	 */
 	public void goTo(IsWidget w, Animation animation) {
 		goTo(w, animation, null);
 	}
 
+	/**
+	 * see: {@link #goTo(Widget, Animation, AnimationEndCallback)}
+	 */
 	public void goTo(IsWidget w, Animation animation, AnimationEndCallback callback) {
 		goTo(w.asWidget(), animation, callback);
 	}
 
+	/**
+	 * see: {@link #goTo(Widget, Animation, AnimationEndCallback)}
+	 */
 	public void goTo(Widget w, Animation animation) {
 		goTo(w, animation, null);
 	}
 
+	/**
+	 * animate to a given widget. If this is called while an animation is
+	 * running this is a noop.
+	 * 
+	 * @param w the widget to animate to
+	 * @param animation the animation to use
+	 * @param callback a callback that will be called once the animation is
+	 *            finished
+	 */
 	public void goTo(Widget w, Animation animation, final AnimationEndCallback callback) {
 		if (isAnimating) {
 			return;
@@ -74,6 +103,15 @@ public class AnimationHelper extends Composite {
 
 		isFirst = !isFirst;
 
+	}
+
+	/**
+	 * Is there an animation running
+	 * 
+	 * @return true if there is an animation running
+	 */
+	public boolean isAnimating() {
+		return isAnimating;
 	}
 
 }
