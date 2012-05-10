@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.ui.client;
 
+import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
+
 /**
  * <p>
  * MGWTSettings class.
@@ -55,8 +57,7 @@ public class MGWTSettings {
 		/**
 		 * Set the width of the viewport
 		 * 
-		 * @param value
-		 *            the width in px
+		 * @param value the width in px
 		 * @return the viewport instance
 		 */
 		public ViewPort setWidth(int value) {
@@ -67,8 +68,7 @@ public class MGWTSettings {
 		/**
 		 * Set the height of the viewport
 		 * 
-		 * @param value
-		 *            the height in px
+		 * @param value the height in px
 		 * @return the viewport instance
 		 */
 		public ViewPort setHeight(int value) {
@@ -106,8 +106,7 @@ public class MGWTSettings {
 		 * set the target density in dpi
 		 * 
 		 * 
-		 * @param value
-		 *            the target density in dpi
+		 * @param value the target density in dpi
 		 * @return the viewport instance
 		 */
 		public ViewPort setTargetDensity(int value) {
@@ -122,8 +121,7 @@ public class MGWTSettings {
 		 * 
 		 * set the target density
 		 * 
-		 * @param d
-		 *            the density to use
+		 * @param d the density to use
 		 * @return the viewport instance
 		 */
 		public ViewPort setTargetDensity(DENSITY d) {
@@ -134,8 +132,7 @@ public class MGWTSettings {
 		/**
 		 * Should the viewport be scalable by the user
 		 * 
-		 * @param userScaleAble
-		 *            ture to allow scaling
+		 * @param userScaleAble ture to allow scaling
 		 * @return the viewport instance
 		 */
 		public ViewPort setUserScaleAble(boolean userScaleAble) {
@@ -146,8 +143,7 @@ public class MGWTSettings {
 		/**
 		 * set the minimum scaling of the viewport
 		 * 
-		 * @param minimumScale
-		 *            the scale to use
+		 * @param minimumScale the scale to use
 		 * @return the viewport instance
 		 */
 		public ViewPort setMinimumScale(double minimumScale) {
@@ -158,8 +154,7 @@ public class MGWTSettings {
 		/**
 		 * Set the maximum scale of the viewport
 		 * 
-		 * @param maximumScale
-		 *            the scale to use
+		 * @param maximumScale the scale to use
 		 * @return the viewport instance
 		 */
 		public ViewPort setMaximumScale(double maximumScale) {
@@ -170,8 +165,7 @@ public class MGWTSettings {
 		/**
 		 * set the initial scale of the viewport
 		 * 
-		 * @param initialScale
-		 *            the scale to use
+		 * @param initialScale the scale to use
 		 * @return the viewport instance
 		 */
 		public ViewPort setInitialScale(double initialScale) {
@@ -214,6 +208,25 @@ public class MGWTSettings {
 			return buffer.toString();
 		}
 
+	}
+
+	/**
+	 * the default setting for building an app
+	 * 
+	 * @return
+	 */
+	public static MGWTSettings getAppSetting() {
+		ViewPort viewPort = new MGWTSettings.ViewPort();
+		viewPort.setTargetDensity(DENSITY.MEDIUM);
+		viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
+
+		MGWTSettings settings = new MGWTSettings();
+		settings.setViewPort(viewPort);
+		settings.setAddGlosToIcon(true);
+		settings.setFullscreen(true);
+		settings.setPreventScrolling(true);
+
+		return settings;
 	}
 
 	/**
@@ -260,8 +273,7 @@ public class MGWTSettings {
 	/**
 	 * Set the viewport the the mgwt app
 	 * 
-	 * @param viewPort
-	 *            the viewport to use
+	 * @param viewPort the viewport to use
 	 */
 	public void setViewPort(ViewPort viewPort) {
 		this.viewPort = viewPort;
@@ -289,8 +301,7 @@ public class MGWTSettings {
 	 * only relevant on ios devices
 	 * </p>
 	 * 
-	 * @param gloss
-	 *            true if gloss should be added, otherwise false
+	 * @param gloss true if gloss should be added, otherwise false
 	 */
 	public void setAddGlosToIcon(boolean gloss) {
 		this.gloss = gloss;
@@ -308,8 +319,7 @@ public class MGWTSettings {
 	/**
 	 * Set the icon url to use on the home screen on ios
 	 * 
-	 * @param url
-	 *            the url of the icon to use
+	 * @param url the url of the icon to use
 	 */
 	public void setIconUrl(String url) {
 		this.iconUrl = url;
@@ -327,8 +337,7 @@ public class MGWTSettings {
 	/**
 	 * Set the url to the image to use at startup if running on home screen
 	 * 
-	 * @param startUrl
-	 *            the url to use
+	 * @param startUrl the url to use
 	 */
 	public void setStartUrl(String startUrl) {
 		this.startUrl = startUrl;
@@ -346,8 +355,7 @@ public class MGWTSettings {
 	/**
 	 * Can the app be used in full screen
 	 * 
-	 * @param fullscreen
-	 *            true if app can be run in full screen
+	 * @param fullscreen true if app can be run in full screen
 	 */
 	public void setFullscreen(boolean fullscreen) {
 		this.fullscreen = fullscreen;
@@ -369,8 +377,7 @@ public class MGWTSettings {
 	 * Setter for the field <code>statusBar</code>.
 	 * </p>
 	 * 
-	 * @param statusBar
-	 *            a {@link java.lang.String} object.
+	 * @param statusBar a {@link java.lang.String} object.
 	 */
 	public void setStatusBar(String statusBar) {
 		this.statusBar = statusBar;
@@ -388,8 +395,8 @@ public class MGWTSettings {
 	/**
 	 * Should mgwt prevent default scrolling behaviour
 	 * 
-	 * @param preventScrolling
-	 *            true if mgwt should prevent default scrolling behaviour
+	 * @param preventScrolling true if mgwt should prevent default scrolling
+	 *            behaviour
 	 */
 	public void setPreventScrolling(boolean preventScrolling) {
 		this.preventScrolling = preventScrolling;
@@ -401,8 +408,7 @@ public class MGWTSettings {
 	 * </p>
 	 * disable the auto dection of phonenumbers in your app
 	 * 
-	 * @param disablePhoneNumberDetection
-	 *            true to disable
+	 * @param disablePhoneNumberDetection true to disable
 	 */
 	public void setDisablePhoneNumberDetection(boolean disablePhoneNumberDetection) {
 		this.disablePhoneNumberDetection = disablePhoneNumberDetection;
@@ -428,8 +434,7 @@ public class MGWTSettings {
 	 * 
 	 * set the style of the status bar if the app is running in full screen
 	 * 
-	 * @param statusBarStyle
-	 *            the style to use
+	 * @param statusBarStyle the style to use
 	 */
 	public void setStatusBarStyle(StatusBarStyle statusBarStyle) {
 		this.statusBarStyle = statusBarStyle;
