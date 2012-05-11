@@ -15,16 +15,20 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import java.util.Iterator;
+
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHTML;
+import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
 
-public class FormListEntry extends Composite {
+public class FormListEntry extends Composite implements HasWidgets, HasHTML {
 	private FlowPanel main;
 	private HTML fieldLabel;
 	private SimplePanel widgetContainer;
@@ -63,6 +67,50 @@ public class FormListEntry extends Composite {
 
 		}
 		widgetContainer.setWidget(w);
+	}
+
+	@Override
+	public String getText() {
+		return fieldLabel.getText();
+	}
+
+	@Override
+	public void setText(String text) {
+		fieldLabel.setText(text);
+
+	}
+
+	@Override
+	public String getHTML() {
+		return fieldLabel.getHTML();
+	}
+
+	@Override
+	public void setHTML(String html) {
+		fieldLabel.setHTML(html);
+
+	}
+
+	// only for uibinder
+
+	public void add(Widget w) {
+		widgetContainer.setWidget(w);
+	}
+
+	@Override
+	public void clear() {
+		widgetContainer.clear();
+
+	}
+
+	@Override
+	public Iterator<Widget> iterator() {
+		return widgetContainer.iterator();
+	}
+
+	@Override
+	public boolean remove(Widget w) {
+		return widgetContainer.remove(w);
 	}
 
 }

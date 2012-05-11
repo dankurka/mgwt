@@ -15,7 +15,7 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 	@Override
 	public void translate(Element el, int x, int y) {
 		String cssText = null;
-		if (has3d()) {
+		if (has3d() && !MGWT.getOsDetection().isDesktop()) {
 			cssText = "translate3d(" + x + "px, " + y + "px, 0px)";
 		} else {
 			cssText = "translate( " + x + "px, " + y + "px )";
@@ -134,7 +134,7 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 	@Override
 	public void setTranslateAndZoom(Element el, int x, int y, double scale) {
 		String cssText = null;
-		if (MGWT.getOsDetection().isAndroid()) {
+		if (MGWT.getOsDetection().isAndroid() || MGWT.getOsDetection().isDesktop()) {
 			cssText = "translate( " + x + "px, " + y + "px ) scale( + " + scale + ")";
 		} else {
 			cssText = "translate3d(" + x + "px, " + y + "px, 0px) scale( + " + scale + ")";

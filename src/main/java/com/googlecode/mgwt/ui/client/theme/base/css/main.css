@@ -12,11 +12,19 @@
 		\-webkit-touch-callout: none;
 		\-webkit-text-size-adjust: none;
 	}
+	
+	input {
+		\-webkit-user-select: text;
+	}
 }
 
 @if user.agent gecko1_8 {
 	* {
 		\-moz-user-select: none;
+	}
+	
+	input {
+		\-moz-user-select: text;
 	}
 }
 
