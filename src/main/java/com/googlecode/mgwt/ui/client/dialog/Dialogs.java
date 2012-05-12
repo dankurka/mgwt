@@ -114,7 +114,7 @@ public class Dialogs {
 	 * @param options - text and type of the buttons to show
 	 * @param callback - the callback of the button that was selected
 	 */
-	public static void options(List<OptionsDialogOption> options, OptionCallback callback) {
+	public static void options(List<OptionsDialogEntry> options, OptionCallback callback) {
 
 		options(options, callback, RootPanel.get());
 	}
@@ -126,15 +126,15 @@ public class Dialogs {
 	 * @param callback - the callback of the button that was selected
 	 * @param widgetToCover - the widget that should be covered by the dialog
 	 */
-	public static void options(List<OptionsDialogOption> options, OptionCallback callback, HasWidgets widgetToCover) {
+	public static void options(List<OptionsDialogEntry> options, OptionCallback callback, HasWidgets widgetToCover) {
 
 		OptionsDialog optionsDialog = new OptionsDialog(MGWTStyle.getTheme().getMGWTClientBundle().getDialogCss());
 
 		int count = 0;
-		for (OptionsDialogOption optionsDialogOption : options) {
+		for (OptionsDialogEntry optionsDialogEntry : options) {
 			count++;
-			Button button = new Button(optionsDialogOption.getText());
-			switch (optionsDialogOption.getType()) {
+			Button button = new Button(optionsDialogEntry.getText());
+			switch (optionsDialogEntry.getType()) {
 			case NORMAL:
 				break;
 			case IMPORTANT:
@@ -176,14 +176,14 @@ public class Dialogs {
 	/**
 	 * Options for Options Dialog
 	 * 
-	 * @author kurt
+	 * @author Daniel Kurka
 	 * 
 	 */
-	public static class OptionsDialogOption {
+	public static class OptionsDialogEntry {
 		private final String text;
 		private final ButtonType type;
 
-		public OptionsDialogOption(String text, ButtonType type) {
+		public OptionsDialogEntry(String text, ButtonType type) {
 			this.text = text;
 			this.type = type;
 
