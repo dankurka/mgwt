@@ -66,6 +66,7 @@
 	.mgwt-RadioButton {
 		display: \-webkit-box;
 		-webkit-box-orient: horizontal;
+		\-webkit-box-flex: 1;
 	}
 	.mgwt-RadioButton>label {
 		display: \-webkit-box;
@@ -78,6 +79,7 @@
 		display: \-moz-box;
 		\-moz-box-orient: horizontal;
 		width: 100%;
+		\-moz-box-flex: 1;
 	}
 	.mgwt-RadioButton>label {
 		display: -moz-box;
