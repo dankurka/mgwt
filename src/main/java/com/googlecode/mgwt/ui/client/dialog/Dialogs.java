@@ -174,6 +174,22 @@ public class Dialogs {
 	};
 
 	/**
+	 * 
+	 * @author Daniel Kurka
+	 * 
+	 * @use {@link OptionsDialogEntry}
+	 * 
+	 */
+	@Deprecated
+	public static class OptionsDialogOption extends OptionsDialogEntry {
+
+		public OptionsDialogOption(String text, ButtonType type) {
+			super(text, type);
+		}
+
+	}
+
+	/**
 	 * Options for Options Dialog
 	 * 
 	 * @author Daniel Kurka
