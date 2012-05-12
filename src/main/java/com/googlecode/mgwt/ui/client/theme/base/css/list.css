@@ -42,13 +42,29 @@
 	overflow:hidden;
 	text-overflow: ellipsis;
 }
-	
+
+
 .mgwt-FormList-Element-container{
-	\-webkit-box-flex: 1;
-	display: -webkit-box;
 	padding: 10px;
 }
-	 
+
+@if user.agent safari {
+	.mgwt-FormList-Element-container{
+		\-webkit-box-flex: 1;
+		\-webkit-box-pack: end;
+		display: \-webkit-box;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-FormList-Element-container{
+		\-moz-box-flex: 1;
+		\-moz-box-pack: end;
+		display: \-moz-box;
+	}
+}
+
+ 
 
 
 /* other browsers */
