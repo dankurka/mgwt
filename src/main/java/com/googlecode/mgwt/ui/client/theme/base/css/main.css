@@ -13,7 +13,7 @@
 		\-webkit-text-size-adjust: none;
 	}
 	
-	input {
+	input , textarea{
 		\-webkit-user-select: text;
 	}
 }
@@ -23,7 +23,7 @@
 		\-moz-user-select: none;
 	}
 	
-	input {
+	input, textarea {
 		\-moz-user-select: text;
 	}
 }
