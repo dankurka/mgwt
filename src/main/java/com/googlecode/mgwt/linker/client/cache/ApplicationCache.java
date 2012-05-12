@@ -13,6 +13,8 @@ import com.googlecode.mgwt.linker.client.cache.event.UpdateReadyEvent;
 public interface ApplicationCache {
 	public ApplicationCacheStatus getStatus();
 
+	public void swapCache();
+
 	public HandlerRegistration addCheckingHandler(CheckingEvent.Handler handler);
 
 	public HandlerRegistration addCachedHandler(CachedEvent.Handler handler);

@@ -165,4 +165,10 @@ public class Html5ApplicationCache implements ApplicationCache {
 
 }-*/;
 
+	@Override
+	public native void swapCache() /*-{
+		$wnd.applicationCache.swapCache();
+		
+	}-*/;
+
 }
