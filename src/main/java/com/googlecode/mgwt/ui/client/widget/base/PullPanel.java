@@ -58,8 +58,19 @@ public class PullPanel extends Composite implements HasWidgets {
 	}
 
 	public interface Pullhandler {
+		/**
+		 * this method get called if the pull state of the panel changes
+		 * 
+		 * @param pullWidget the PullWidget set for the region (header, footer)
+		 * @param state the current state of the pull panel
+		 */
 		public void onPullStateChanged(PullWidget pullWidget, PullState state);
 
+		/**
+		 * called if a pull got executed
+		 * 
+		 * @param pullWidget the PullWidget set for the region (header, footer)
+		 */
 		public void onPullAction(PullWidget pullWidget);
 
 	}
