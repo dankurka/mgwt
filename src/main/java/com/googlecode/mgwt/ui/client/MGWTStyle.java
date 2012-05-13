@@ -1,5 +1,7 @@
 package com.googlecode.mgwt.ui.client;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.LinkElement;
@@ -68,12 +70,20 @@ public class MGWTStyle {
 		if (nodeList.getLength() != 1) {
 			throw new RuntimeException("can not find head element, does your html include a head section?");
 		}
-		Element head = nodeList.getItem(0);
-		LinkElement linkElement = Document.get().createLinkElement();
+		final Element head = nodeList.getItem(0);
+		final LinkElement linkElement = Document.get().createLinkElement();
 		linkElement.setRel("stylesheet");
 		linkElement.setType("text/css");
 		linkElement.setHref(url);
-		head.appendChild(linkElement);
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+
+			@Override
+			public void execute() {
+				head.appendChild(linkElement);
+
+			}
+		});
+
 	}
 
 	public native boolean matchMedia(String mediaQuery)/*-{
