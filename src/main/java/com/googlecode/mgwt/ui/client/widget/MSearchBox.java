@@ -26,7 +26,9 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.FormPanel;
+import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
+import com.google.gwt.user.client.ui.FormPanel.SubmitHandler;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
@@ -52,9 +54,9 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * 
  * <pre>
  * &lt;div class="mgwt-SearchBox">
- * 	&lt;div class="mgwt-SearchBox-round">
+ * 	&lt;form class="mgwt-SearchBox-round">
  * 		&lt;input class="mgwt-SearchBox-input" />
- * 	&lt;/div>
+ * 	&lt;/form>
  * 	&lt;div class="mgwt-SearchBox-clear"/>
  * &lt;/div>
  * </pre>
@@ -158,7 +160,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	private TouchWidget clearButton;
 	private HandlerRegistration clearButtonHandler;
 	private HandlerRegistration boxHandler;
-	private FlowPanel roundDiv;
+	private FormPanel roundDiv;
 	protected final MSearchBoxCss css;
 
 	/**
@@ -182,9 +184,19 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 
 		initWidget(main);
 
-		roundDiv = new FlowPanel();
+		// search box needs this on ios
+		roundDiv = new FormPanel("");
 		roundDiv.addStyleName(css.round());
 		main.add(roundDiv);
+
+		roundDiv.addSubmitHandler(new SubmitHandler() {
+
+			@Override
+			public void onSubmit(SubmitEvent event) {
+				event.cancel();
+
+			}
+		});
 
 		box = new TextBox();
 		box.addStyleName(css.input());
