@@ -26,9 +26,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FormPanel;
-import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
-import com.google.gwt.user.client.ui.FormPanel.SubmitHandler;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
@@ -160,7 +158,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	private TouchWidget clearButton;
 	private HandlerRegistration clearButtonHandler;
 	private HandlerRegistration boxHandler;
-	private FormPanel roundDiv;
+	private FlowPanel roundDiv;
 	protected final MSearchBoxCss css;
 
 	/**
@@ -185,18 +183,9 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 		initWidget(main);
 
 		// search box needs this on ios
-		roundDiv = new FormPanel("");
+		roundDiv = new FlowPanel();
 		roundDiv.addStyleName(css.round());
 		main.add(roundDiv);
-
-		roundDiv.addSubmitHandler(new SubmitHandler() {
-
-			@Override
-			public void onSubmit(SubmitEvent event) {
-				event.cancel();
-
-			}
-		});
 
 		box = new TextBox();
 		box.addStyleName(css.input());
