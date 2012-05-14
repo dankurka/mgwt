@@ -42,6 +42,7 @@
 	.mgwt-SearchBox-input {
 		background-color: transparent;
 		color: white;
+		\-webkit-user-modify: read-write-plaintext-only;
 	}
 }
 

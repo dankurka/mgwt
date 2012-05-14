@@ -18,7 +18,10 @@
 	\-webkit-user-select: text;
 	\-moz-user-select: text;
 	\-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	\-webkit-user-modify: read-write-plaintext-only;
 }
+
+
 
 
 @if user.agent safari {
