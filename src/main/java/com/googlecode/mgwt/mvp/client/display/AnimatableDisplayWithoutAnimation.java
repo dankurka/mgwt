@@ -15,39 +15,53 @@
  */
 package com.googlecode.mgwt.mvp.client.display;
 
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
+import com.googlecode.mgwt.mvp.client.resources.AnimationCss;
+import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 /**
  * Considered internal
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
-public class AnimatableDisplayWithoutAnimation extends AnimatableDisplayBaseImpl {
-	/**
-	 * <p>Constructor for AnimatableDisplayWithoutAnimation.</p>
-	 */
+public class AnimatableDisplayWithoutAnimation implements AnimatableDisplay {
+
+	private AnimationCss css;
+	private FlowPanel main;
+	private SimplePanel first;
+	private SimplePanel second;
+
 	public AnimatableDisplayWithoutAnimation() {
+		this(AnimationSelector.getBundle().animationCss());
+	}
+
+	public AnimatableDisplayWithoutAnimation(AnimationCss css) {
+		this.css = css;
+		css.ensureInjected();
+
+		main = new FlowPanel();
+
+		main.setStylePrimaryName(this.css.display());
+
+		first = new SimplePanel();
+		first.addStyleName(this.css.displayContainer());
+
+		second = new SimplePanel();
+		second.addStyleName(this.css.displayContainer());
 
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	protected void onAnimationEnd() {
-
-	}
-
-	/** {@inheritDoc} */
 	@Override
 	public void animate(Animation animation, boolean currentIsFirst, AnimationEndCallback callback) {
 
-		lastCallback = callback;
-		blurBeforeAnimation();
-
-		showFirst = currentIsFirst;
-
-		if (showFirst) {
+		if (currentIsFirst) {
 			second.removeFromParent();
 			main.add(first);
 
@@ -57,6 +71,35 @@ public class AnimatableDisplayWithoutAnimation extends AnimatableDisplayBaseImpl
 		}
 		callback.onAnimationEnd();
 		return;
+
+	}
+
+	@Override
+	public Widget asWidget() {
+		return main;
+	}
+
+	@Override
+	public void setFirstWidget(IsWidget w) {
+		first.setWidget(w);
+		if (w != null) {
+			main.remove(second);
+			main.add(first);
+		} else {
+			main.remove(first);
+		}
+
+	}
+
+	@Override
+	public void setSecondWidget(IsWidget w) {
+		second.setWidget(w);
+		if (w != null) {
+			main.add(second);
+			main.remove(first);
+		} else {
+			second.remove(first);
+		}
 
 	}
 
