@@ -21,6 +21,7 @@ import com.google.gwt.resources.client.TextResource;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
+import com.googlecode.mgwt.ui.client.theme.base.CarouselCss;
 import com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
@@ -88,6 +89,8 @@ public interface MGWTClientBundle {
 
 	TabBarCss getTabBarCss();
 
+	public CarouselCss getCarouselCss();
+
 	public ImageResource tabBarBookMarkImage();
 
 	public ImageResource tabBarContactsImage();
@@ -143,7 +146,7 @@ public interface MGWTClientBundle {
 	public ImageResource getButtonBarInfoImage();
 
 	public ImageResource getButtonBarLocateImage();
-	
+
 	public ImageResource getButtonBarMinusImage();
 
 	public ImageResource getButtonBarNewImage();

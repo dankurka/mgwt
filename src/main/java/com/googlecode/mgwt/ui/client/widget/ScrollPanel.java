@@ -271,4 +271,24 @@ public class ScrollPanel extends Composite implements HasWidgets {
 		impl.setBounceFactor(bounceFactor);
 	}
 
+	public void setShowScrollBarX(boolean b) {
+		impl.setShowScrollBarX(b);
+
+	}
+
+	public void setShowScrollBarY(boolean b) {
+		impl.setShowScrollBarY(b);
+
+	}
+
+	public int getCurrentPageX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getCurrentPageY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

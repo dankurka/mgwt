@@ -559,6 +559,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private void start(TouchStartEvent event) {
+
 		int x, y;
 		if (!this.enabled) {
 			return;
@@ -721,7 +722,6 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		}
 
 		this.moved = true;
-
 		pos(newX, newY);
 
 		this.dirX = deltaX > 0 ? -1 : deltaX < 0 ? 1 : 0;
@@ -1223,16 +1223,20 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		scrollerWidth = (int) Math.round((scroller.getOffsetWidth() + getMarginWidth(scroller.getElement())) * scale);
 		scrollerHeight = (int) Math.round((scroller.getOffsetHeight() + minScrollY + +getMarginHeight(scroller.getElement())) * scale);
 
+		System.out.println("wrapperWidth: " + wrapperWidth);
+
 		maxScrollX = wrapperWidth - scrollerWidth;
 
 		maxScrollY = wrapperHeight - scrollerHeight + minScrollY;
+
+		System.out.println("maxscroll: " + maxScrollX);
 
 		dirX = 0;
 		dirY = 0;
 
 		// fire refresh event
-
-		hScroll = hScroll && maxScrollX < 0;
+		// TODO
+		// hScroll = (hScroll && maxScrollX < 0) || true;
 		vScroll = vScroll && (!bounceLock && !hScroll || scrollerHeight > wrapperHeight);
 
 		hScrollbar = hScroll && hScrollbar;
@@ -1436,16 +1440,16 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	// TODO move in util
 	private native int getClientHeight(Element element)/*-{
-		return element.clientHeight || 0;
-	}-*/;
+														return element.clientHeight || 0;
+														}-*/;
 
 	private native int getClientWidth(Element element) /*-{
-		return element.clientWidth || 0;
-	}-*/;
+														return element.clientWidth || 0;
+														}-*/;
 
 	private native JsArray<com.google.gwt.dom.client.Element> querySelectorAll(Element el, String selector)/*-{
-		return el.querySelectorAll(selector);
-	}-*/;
+																											return el.querySelectorAll(selector);
+																											}-*/;
 
 	@Override
 	public void add(Widget w) {
@@ -1563,7 +1567,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				}
 
 			}
-
+			System.out.println("wrapper");
 			Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
 				@Override
@@ -1590,6 +1594,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				bindMouseoutEvent();
 				bindMouseWheelEvent();
 			}
+
+			System.out.println("on attach");
 			Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
 				@Override
@@ -1634,14 +1640,14 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private native int getMouseWheelVelocityX(NativeEvent evt)/*-{
-		return Math.round(-evt.wheelDeltaX) || 0;
-	}-*/;
+																return Math.round(-evt.wheelDeltaX) || 0;
+																}-*/;
 
 	private native int getMouseWheelVelocityY(NativeEvent evt)/*-{
 
-		var val = (evt.detail * 40) || -evt.wheelDeltaY || 0;
-		return Math.round(val);
-	}-*/;
+																var val = (evt.detail * 40) || -evt.wheelDeltaY || 0;
+																return Math.round(val);
+																}-*/;
 
 	private void unbindMouseWheelEvent() {
 		if (mouseWheelRegistration != null) {
@@ -1814,27 +1820,27 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private native int getMarginWidth(com.google.gwt.user.client.Element el)/*-{
-		var left = 0;
-		var right = 0;
-		var style = $wnd.getComputedStyle(el);
+																			var left = 0;
+																			var right = 0;
+																			var style = $wnd.getComputedStyle(el);
 
-		left = parseInt(style.marginLeft, 10) || 0;
-		right = parseInt(style.marginRight, 10) || 0;
+																			left = parseInt(style.marginLeft, 10) || 0;
+																			right = parseInt(style.marginRight, 10) || 0;
 
-		return left + right;
-	}-*/;
+																			return left + right;
+																			}-*/;
 
 	private native int getMarginHeight(com.google.gwt.user.client.Element el)/*-{
 
-		var top = 0;
-		var bottom = 0;
-		var style = $wnd.getComputedStyle(el);
+																				var top = 0;
+																				var bottom = 0;
+																				var style = $wnd.getComputedStyle(el);
 
-		top = parseInt(style.marginTop, 10) || 0;
-		bottom = parseInt(style.marginBottom, 10) || 0;
+																				top = parseInt(style.marginTop, 10) || 0;
+																				bottom = parseInt(style.marginBottom, 10) || 0;
 
-		return top + bottom;
-	}-*/;
+																				return top + bottom;
+																				}-*/;
 
 	@Override
 	public int getY() {
@@ -1849,6 +1855,19 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	@Override
 	public void setBounceFactor(double factor) {
 		this.bounceFactor = factor;
+
+	}
+
+	@Override
+	public void setShowScrollBarX(boolean b) {
+		this.hScrollbar = b;
+		scrollBar[DIRECTION.VERTICAL.ordinal()] = b;
+	}
+
+	@Override
+	public void setShowScrollBarY(boolean b) {
+		this.vScrollbar = b;
+		scrollBar[DIRECTION.HORIZONTAL.ordinal()] = b;
 
 	}
 

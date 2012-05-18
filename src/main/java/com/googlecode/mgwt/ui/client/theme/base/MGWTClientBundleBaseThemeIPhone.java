@@ -51,6 +51,9 @@ public interface MGWTClientBundleBaseThemeIPhone extends ClientBundle, MGWTClien
 	@Source({ "css/slider.css", "css/iphone/slider.css" })
 	SliderCss getSliderCss();
 
+	@Source({ "css/carousel.css", "css/iphone/carousel.css" })
+	CarouselCss getCarouselCss();
+
 	@Source({ "css/list.css", "css/iphone/list.css" })
 	ListCss getListCss();
 
@@ -188,7 +191,7 @@ public interface MGWTClientBundleBaseThemeIPhone extends ClientBundle, MGWTClien
 
 	@Source("resources/toolbar/locate.png")
 	public ImageResource getButtonBarLocateImage();
-	
+
 	@Source("resources/toolbar/minus.png")
 	public ImageResource getButtonBarMinusImage();
 

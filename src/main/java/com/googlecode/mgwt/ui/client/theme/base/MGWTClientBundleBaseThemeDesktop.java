@@ -51,6 +51,9 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 	@Source({ "css/slider.css", "css/ipad/slider.css" })
 	SliderCss getSliderCss();
 
+	@Source({ "css/carousel.css", "css/ipad/carousel.css" })
+	CarouselCss getCarouselCss();
+
 	@Source({ "css/list.css", "css/ipad/list.css" })
 	ListCss getListCss();
 
@@ -188,7 +191,7 @@ public interface MGWTClientBundleBaseThemeDesktop extends ClientBundle, MGWTClie
 
 	@Source("resources/toolbar/locate.png")
 	public ImageResource getButtonBarLocateImage();
-	
+
 	@Source("resources/toolbar/minus.png")
 	public ImageResource getButtonBarMinusImage();
 

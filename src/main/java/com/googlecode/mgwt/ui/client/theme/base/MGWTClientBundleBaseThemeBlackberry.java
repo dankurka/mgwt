@@ -51,6 +51,9 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	@Source({ "css/slider.css", "css/blackberry/slider.css" })
 	SliderCss getSliderCss();
 
+	@Source({ "css/carousel.css", "css/blackberry/carousel.css" })
+	CarouselCss getCarouselCss();
+
 	@Source({ "css/list.css", "css/blackberry/list.css" })
 	ListCss getListCss();
 
@@ -188,7 +191,7 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 
 	@Source("resources/toolbar/locate.png")
 	public ImageResource getButtonBarLocateImage();
-	
+
 	@Source("resources/toolbar/minus.png")
 	public ImageResource getButtonBarMinusImage();
 

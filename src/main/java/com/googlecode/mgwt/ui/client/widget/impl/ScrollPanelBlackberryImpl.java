@@ -257,4 +257,16 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 
 	}
 
+	@Override
+	public void setShowScrollBarX(boolean b) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setShowScrollBarY(boolean b) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

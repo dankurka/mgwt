@@ -51,6 +51,9 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	@Source({ "css/slider.css", "css/android/slider.css" })
 	SliderCss getSliderCss();
 
+	@Source({ "css/carousel.css", "css/android/carousel.css" })
+	CarouselCss getCarouselCss();
+
 	@Source({ "css/list.css", "css/android/list.css" })
 	ListCss getListCss();
 
@@ -188,7 +191,7 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 
 	@Source("resources/toolbar/locate.png")
 	public ImageResource getButtonBarLocateImage();
-	
+
 	@Source("resources/toolbar/minus.png")
 	public ImageResource getButtonBarMinusImage();
 

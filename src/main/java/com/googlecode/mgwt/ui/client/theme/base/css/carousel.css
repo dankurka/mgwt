@@ -1,0 +1,79 @@
+@if mgwt.css pretty {
+	@external mgwt-Carousel, mgwt-Carousel-Scroller, mgwt-Carousel-Container;
+}
+
+.mgwt-Carousel{
+	position: relative;
+}
+
+@if user.agent safari {
+	.mgwt-Carousel {
+		display: \-webkit-box;
+		\-webkit-box-flex : 1;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-Carousel {
+		display: \-moz-box;
+		\-moz-box-flex : 1;
+	}
+}
+
+.mgwt-Carousel-Scroller {
+}
+
+@if user.agent safari {
+	.mgwt-Carousel-Scroller {
+		\-webkit-box-flex : 1;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-Carousel-Scroller {
+		\-moz-box-flex : 1;
+	}
+}
+
+
+
+.mgwt-Carousel-Container{
+
+}
+
+@if user.agent safari {
+	.mgwt-Carousel-Container {
+		display: \-webkit-box;
+		\-webkit-box-flex : 1;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-Carousel-Container {
+		display: \-moz-box;
+		\-moz-box-flex : 1;
+	}
+}
+
+
+
+.indicatorHorizontal{
+
+}
+
+.vertical{
+
+}
+
+.horizontal{
+
+}
+
+.indicatorVertical{
+
+}
+
+.indicatorActive{
+
+}
+
