@@ -40,8 +40,6 @@ public class FireFoxCssUtilImpl implements CssUtilImpl {
 
 	@Override
 	public boolean hasTransform() {
-		// TODO maybe we need runtime checks for older devices, but for now this
-		// is okay!
 		return true;
 	}
 
@@ -68,8 +66,8 @@ public class FireFoxCssUtilImpl implements CssUtilImpl {
 	}
 
 	private native JsArrayInteger getPositionFromTransform(Element el)/*-{
-		var matrix = getComputedStyle(that.scroller, null)['mozTransform']
-				.replace(/[^0-9-.,]/g, '').split(',');
+		var matrix = getComputedStyle(el, null)['MozTransform'].replace(
+				/[^0-9-.,]/g, '').split(',');
 		var x = matrix[4] * 1;
 		var y = matrix[5] * 1;
 		return [ x, y ];
@@ -77,14 +75,12 @@ public class FireFoxCssUtilImpl implements CssUtilImpl {
 
 	@Override
 	public native int getTopPositionFromCssPosition(Element element) /*-{
-		return getComputedStyle(that.scroller, null).top
-				.replace(/[^0-9-]/g, '') * 1;
+		return getComputedStyle(element, null).top.replace(/[^0-9-]/g, '') * 1;
 	}-*/;
 
 	@Override
 	public native int getLeftPositionFromCssPosition(Element element)/*-{
-		return getComputedStyle(that.scroller, null).left.replace(/[^0-9-]/g,
-				'') * 1;
+		return getComputedStyle(element, null).left.replace(/[^0-9-]/g, '') * 1;
 	}-*/;
 
 	@Override
