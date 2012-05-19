@@ -202,7 +202,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
 			@Override
 			public void onSelection(SelectionEvent<Integer> event) {
-				System.out.println("selection event!");
+
 				carouselIndicatorContainer.setSelectedIndex(currentPage);
 
 			}

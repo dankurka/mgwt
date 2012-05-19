@@ -1227,13 +1227,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		scrollerWidth = (int) Math.round((scroller.getOffsetWidth() + getMarginWidth(scroller.getElement())) * scale);
 		scrollerHeight = (int) Math.round((scroller.getOffsetHeight() + minScrollY + +getMarginHeight(scroller.getElement())) * scale);
 
-		System.out.println("wrapperWidth: " + wrapperWidth);
-
 		maxScrollX = wrapperWidth - scrollerWidth;
 
 		maxScrollY = wrapperHeight - scrollerHeight + minScrollY;
-
-		System.out.println("maxscroll: " + maxScrollX);
 
 		dirX = 0;
 		dirY = 0;
@@ -1573,7 +1569,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				}
 
 			}
-			System.out.println("wrapper");
+
 			Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
 				@Override
@@ -1601,7 +1597,6 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				bindMouseWheelEvent();
 			}
 
-			System.out.println("on attach");
 			Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
 				@Override
