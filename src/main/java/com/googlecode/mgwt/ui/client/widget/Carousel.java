@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
@@ -133,6 +134,8 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
 	private Map<Widget, Widget> childToHolder;
 	private com.google.web.bindery.event.shared.HandlerRegistration refreshHandler;
+
+	private static final CarouselImpl IMPL = GWT.create(CarouselImpl.class);
 
 	public Carousel() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getCarouselCss());
@@ -271,15 +274,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
 	public void refresh() {
 
-		int widgetCount = container.getWidgetCount();
-
-		double sizeFactor = 100d / widgetCount;
-
-		for (int i = 0; i < widgetCount; i++) {
-			container.getWidget(i).setWidth(sizeFactor + "%");
-		}
-
-		container.setWidth((widgetCount * 100) + "%");
+		IMPL.adjust(main, container);
 
 		scrollPanel.setScrollingEnabledX(true);
 		scrollPanel.setScrollingEnabledY(false);
@@ -291,6 +286,8 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 			carouselIndicatorContainer.removeFromParent();
 
 		}
+
+		int widgetCount = container.getWidgetCount();
 
 		carouselIndicatorContainer = new CarouselIndicatorContainer(css, widgetCount);
 
@@ -321,6 +318,47 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 	@Override
 	public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
 		return addHandler(handler, SelectionEvent.getType());
+	}
+
+	public static interface CarouselImpl {
+
+		void adjust(FlowPanel main, FlowPanel container);
+
+	}
+
+	public static class CarouselImplSafari implements CarouselImpl {
+
+		@Override
+		public void adjust(FlowPanel main, FlowPanel container) {
+			int widgetCount = container.getWidgetCount();
+
+			double sizeFactor = 100d / widgetCount;
+
+			for (int i = 0; i < widgetCount; i++) {
+				container.getWidget(i).setWidth(sizeFactor + "%");
+			}
+
+			container.setWidth((widgetCount * 100) + "%");
+
+		}
+
+	}
+
+	public static class CarouselImplGecko implements CarouselImpl {
+
+		@Override
+		public void adjust(FlowPanel main, FlowPanel container) {
+			int widgetCount = container.getWidgetCount();
+			int offsetWidth = main.getOffsetWidth();
+
+			container.setWidth(widgetCount * offsetWidth + "px");
+
+			for (int i = 0; i < widgetCount; i++) {
+				container.getWidget(i).setWidth(offsetWidth + "px");
+			}
+
+		}
+
 	}
 
 }

@@ -138,6 +138,20 @@ under * the License.
   		</all>
 	</replace-with>
 	
+	<!-- Carousel -->
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.Carousel.CarouselSafariImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.Carousel.CarouselImpl" />
+	</replace-with>
+	
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.Carousel.CarouselImplGecko">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.Carousel.CarouselImpl" />
+		<all>
+			<when-property-is name="user.agent" value="gecko1_8" />
+		</all>
+	</replace-with>
+	
+	
+	
 
 	<source path="client" />
 </module>
