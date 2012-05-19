@@ -87,6 +87,9 @@ public class PullPanel extends Composite implements HasWidgets {
 
 	private Pullhandler headerPullhandler;
 
+	private Pullhandler footerPullhandler;
+	private PullState footerState = PullState.NORMAL;
+
 	public PullPanel() {
 		scrollPanel = new ScrollPanel();
 		initWidget(scrollPanel);
@@ -105,9 +108,15 @@ public class PullPanel extends Composite implements HasWidgets {
 
 			@Override
 			public void onScrollRefresh(ScrollRefreshEvent event) {
+
 				if (header != null) {
 
 					headerState = PullState.NORMAL;
+
+				}
+
+				if (footer != null) {
+					footerState = PullState.NORMAL;
 
 				}
 			}
@@ -142,6 +151,40 @@ public class PullPanel extends Composite implements HasWidgets {
 
 				}
 
+				int y_off = y;
+
+				// footer
+				if (footer != null) {
+
+					if (footerState == PullState.PULLED) {
+						y_off = y_off - footer.getHeight();
+					}
+
+					if (footerState == PullState.NORMAL) {
+						y_off = y_off + footer.getHeight();
+					}
+
+					if (y_off < (scrollPanel.getMaxScrollY() - footer.getStateSwitchPosition()) && footerState != PullState.PULLED) {
+						footerState = PullState.PULLED;
+
+						scrollPanel.setMaxScrollY(scrollPanel.getMaxScrollY() - footer.getHeight());
+
+						if (footerPullhandler != null) {
+							footerPullhandler.onPullStateChanged(footer, footerState);
+						}
+					} else {
+						if (y_off > (scrollPanel.getMaxScrollY() - footer.getStateSwitchPosition()) && footerState != PullState.NORMAL) {
+							footerState = PullState.NORMAL;
+							scrollPanel.setMaxScrollY(scrollPanel.getMaxScrollY() + footer.getHeight());
+							if (footerPullhandler != null) {
+								footerPullhandler.onPullStateChanged(footer, footerState);
+							}
+						}
+					}
+
+					footer.onScroll(y_off - scrollPanel.getMaxScrollY());
+				}
+
 			}
 		});
 
@@ -155,6 +198,15 @@ public class PullPanel extends Composite implements HasWidgets {
 						headerState = PullState.NORMAL;
 						if (headerPullhandler != null)
 							headerPullhandler.onPullAction(header);
+					}
+				}
+
+				if (footer != null) {
+					if (footerState == PullState.PULLED) {
+						footerState = PullState.NORMAL;
+
+						if (footerPullhandler != null)
+							footerPullhandler.onPullAction(footer);
 					}
 				}
 			}
@@ -176,12 +228,14 @@ public class PullPanel extends Composite implements HasWidgets {
 	}
 
 	public void setFooter(PullWidget footer) {
+
 		if (this.footer != null) {
 			this.main.remove(this.footer);
 		}
 		this.footer = footer;
 		if (this.footer != null) {
 			main.insert(this.footer, main.getWidgetCount());
+			scrollPanel.setOffSetMaxY(this.footer.getHeight());
 		}
 
 		scrollPanel.refresh();
@@ -222,6 +276,10 @@ public class PullPanel extends Composite implements HasWidgets {
 
 	public void setHeaderPullhandler(Pullhandler headerPullhandler) {
 		this.headerPullhandler = headerPullhandler;
+	}
+
+	public void setFooterPullHandler(Pullhandler headerPullhandler) {
+		this.footerPullhandler = headerPullhandler;
 	}
 
 }

@@ -287,4 +287,10 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 
 	}
 
+	@Override
+	public void setOffSetMaxY(int height) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

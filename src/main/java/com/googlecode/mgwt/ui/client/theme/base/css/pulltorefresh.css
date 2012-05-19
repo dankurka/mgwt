@@ -1,6 +1,7 @@
 @url error errorImage;
+
 @if mgwt.css pretty {
-	@external mgwt-PullToRefresh, mgwt-PullToRefresh-arrow, mgwt-PullToRefresh-spinner, mgwt-PullToRefresh-error, mgwt-PullToRefresh-text;
+	@external mgwt-PullToRefresh, mgwt-PullToRefresh-arrow, mgwt-PullToRefresh-spinner, mgwt-PullToRefresh-error, mgwt-PullToRefresh-text, .mgwt-PullToRefresh-arrowFooter;
 }
 
 .mgwt-PullToRefresh {
@@ -12,14 +13,14 @@
 }
 
 @sprite .mgwt-PullToRefresh-arrow {gwt-image: "getButtonBarNextSlideImage"; }
+@sprite .mgwt-PullToRefresh-arrowFooter {gwt-image: "getButtonBarNextSlideImage"; }
 
-.mgwt-PullToRefresh-arrow {
+.mgwt-PullToRefresh-arrow,  .mgwt-PullToRefresh-arrowFooter {
 	position: absolute;
 	margin-left: 50px;
 	top: 20px;
 	width: 40px;
 	height: 40px;
-	background-image: nextSlideImage;
 	background-repeat: no-repeat;
 }
 

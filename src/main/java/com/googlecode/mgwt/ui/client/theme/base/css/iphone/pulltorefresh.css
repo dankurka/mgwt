@@ -20,3 +20,25 @@
 	}
 }
 
+@if user.agent safari {
+	.mgwt-PullToRefresh-arrowFooter {
+		\-webkit-transform-origin: 12px 9px;
+		\-webkit-transform: rotate(-90deg) translateZ(0);
+	}
+	
+	
+	@if mgwt.os retina {
+		.mgwt-PullToRefresh-arrowFooter {
+			background-size: 23px 18px;
+		}
+	}
+	
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-PullToRefresh-arrowFooter {
+		\-moz-transform-origin: 12px 9px;
+		\-moz-transform: rotate(-90deg);
+	}
+}
+

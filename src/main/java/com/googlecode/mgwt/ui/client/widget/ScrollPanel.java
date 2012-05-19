@@ -293,4 +293,9 @@ public class ScrollPanel extends Composite implements HasWidgets {
 		impl.setAutoHandleResize(handle);
 	}
 
+	public void setOffSetMaxY(int height) {
+		impl.setOffSetMaxY(height);
+
+	}
+
 }

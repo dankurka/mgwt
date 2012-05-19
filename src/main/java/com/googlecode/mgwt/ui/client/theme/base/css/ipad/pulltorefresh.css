@@ -11,3 +11,17 @@
 		\-moz-transform: rotate(90deg);
 	}
 }
+
+@if user.agent safari {
+	.mgwt-PullToRefresh-arrowFooter {
+		\-webkit-transform-origin: 12px 9px;
+		\-webkit-transform: rotate(270deg) translateZ(0);
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-PullToRefresh-arrowFooter {
+		\-moz-transform-origin: 12px 9px;
+		\-moz-transform: rotate(270deg);
+	}
+}

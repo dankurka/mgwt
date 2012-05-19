@@ -940,4 +940,10 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	}
 
+	@Override
+	public void setOffSetMaxY(int height) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

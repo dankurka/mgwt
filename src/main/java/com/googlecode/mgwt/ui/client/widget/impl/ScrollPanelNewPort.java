@@ -298,6 +298,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		// setting standard options
 		this.hScroll = true;
 		this.vScroll = true;
+		this.hScrollDesired = true;
+		this.vScrollDesired = true;
 		this.x = 0;
 		this.y = 0;
 		this.bounce = true;
@@ -369,6 +371,10 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private int[] scrollbarIndicatorSize;
 	private int[] scrollbarMaxScroll;
 	private double[] scrollbarProp;
+
+	private boolean hScrollDesired;
+
+	private boolean vScrollDesired;
 
 	private void scrollBar(DIRECTION direction) {
 		int dir = direction.ordinal();
@@ -1229,14 +1235,13 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		maxScrollX = wrapperWidth - scrollerWidth;
 
-		maxScrollY = wrapperHeight - scrollerHeight + minScrollY;
+		maxScrollY = wrapperHeight - scrollerHeight + minScrollY + offsetMaxY;
 
 		dirX = 0;
 		dirY = 0;
 
-		// TODO
-		// hScroll = (hScroll && maxScrollX < 0) || true;
-		vScroll = vScroll && (!bounceLock && !hScroll || scrollerHeight > wrapperHeight);
+		hScroll = (hScrollDesired && maxScrollX < 0);
+		vScroll = vScrollDesired && (!bounceLock && !hScroll || scrollerHeight > wrapperHeight);
 
 		hScrollbar = hScroll && hScrollbar;
 		vScrollbar = vScroll && vScrollbar && scrollerHeight > wrapperHeight;
@@ -1499,8 +1504,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	@Override
 	public void setScrollingEnabledX(boolean scrollingEnabledX) {
-		this.hScroll = scrollingEnabledX;
-		this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] = scrollingEnabledX;
+		this.hScrollDesired = scrollingEnabledX;
+		// this.hScroll = scrollingEnabledX;
+		// this.scrollBar[DIRECTION.HORIZONTAL.ordinal()] = scrollingEnabledX;
 
 	}
 
@@ -1511,8 +1517,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	@Override
 	public void setScrollingEnabledY(boolean scrollingEnabledY) {
-		this.vScroll = scrollingEnabledY;
-		this.scrollBar[DIRECTION.VERTICAL.ordinal()] = scrollingEnabledY;
+		this.vScrollDesired = scrollingEnabledY;
+		// this.vScroll = scrollingEnabledY;
+		// this.scrollBar[DIRECTION.VERTICAL.ordinal()] = scrollingEnabledY;
 	}
 
 	@Override
@@ -1537,6 +1544,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private boolean listenForEndEvent;
 
 	private boolean listenForMoveEvent;
+
+	private int offsetMaxY;
 
 	public void setWidget(Widget w) {
 
@@ -1888,6 +1897,12 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	@Override
 	public void setAutoHandleResize(boolean handle) {
 		shouldHandleResize = handle;
+
+	}
+
+	@Override
+	public void setOffSetMaxY(int height) {
+		this.offsetMaxY = height;
 
 	}
 

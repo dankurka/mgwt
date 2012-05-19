@@ -169,4 +169,6 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets {
 
 	public abstract void setAutoHandleResize(boolean handle);
 
+	public abstract void setOffSetMaxY(int height);
+
 }
