@@ -48,6 +48,7 @@ import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollStartEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollStartEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
@@ -186,8 +187,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	private int x;
 	private int y;
 	private LightArray<Step> steps;
-	private int currentPageX;
-	private int currentPageY;
+
 	private LightArrayInt pagesX;
 	private LightArrayInt pagesY;
 
@@ -265,6 +265,8 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	private ScrollPanelCss css;
 
+	private boolean shouldHandleResize;
+
 	public ScrollPanelNewPort() {
 
 		wrapper = new SimplePanel();
@@ -280,11 +282,13 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 		initWidget(wrapper);
 
+		shouldHandleResize = true;
+
 		enabled = true;
 		steps = CollectionFactory.constructArray();
 		scale = 1.0;
-		currentPageX = 0;
-		currentPageY = 0;
+		currPageX = 0;
+		currPageY = 0;
 		pagesX = CollectionFactory.constructIntegerArray();
 		pagesY = CollectionFactory.constructIntegerArray();
 		wheelZoomCount = 0;
@@ -1234,7 +1238,6 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		dirX = 0;
 		dirY = 0;
 
-		// fire refresh event
 		// TODO
 		// hScroll = (hScroll && maxScrollX < 0) || true;
 		vScroll = vScroll && (!bounceLock && !hScroll || scrollerHeight > wrapperHeight);
@@ -1302,6 +1305,9 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		}
 
 		updateDefaultStyles();
+
+		// fire refresh event
+		fireEvent(new ScrollRefreshEvent());
 
 	}
 
@@ -1440,16 +1446,16 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 	// TODO move in util
 	private native int getClientHeight(Element element)/*-{
-														return element.clientHeight || 0;
-														}-*/;
+		return element.clientHeight || 0;
+	}-*/;
 
 	private native int getClientWidth(Element element) /*-{
-														return element.clientWidth || 0;
-														}-*/;
+		return element.clientWidth || 0;
+	}-*/;
 
 	private native JsArray<com.google.gwt.dom.client.Element> querySelectorAll(Element el, String selector)/*-{
-																											return el.querySelectorAll(selector);
-																											}-*/;
+		return el.querySelectorAll(selector);
+	}-*/;
 
 	@Override
 	public void add(Widget w) {
@@ -1640,14 +1646,14 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private native int getMouseWheelVelocityX(NativeEvent evt)/*-{
-																return Math.round(-evt.wheelDeltaX) || 0;
-																}-*/;
+		return Math.round(-evt.wheelDeltaX) || 0;
+	}-*/;
 
 	private native int getMouseWheelVelocityY(NativeEvent evt)/*-{
 
-																var val = (evt.detail * 40) || -evt.wheelDeltaY || 0;
-																return Math.round(val);
-																}-*/;
+		var val = (evt.detail * 40) || -evt.wheelDeltaY || 0;
+		return Math.round(val);
+	}-*/;
 
 	private void unbindMouseWheelEvent() {
 		if (mouseWheelRegistration != null) {
@@ -1720,7 +1726,10 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 
 			@Override
 			public void onOrientationChanged(OrientationChangeEvent event) {
-				resize();
+				if (shouldHandleResize) {
+					resize();
+				}
+
 			}
 		});
 	}
@@ -1820,27 +1829,27 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	}
 
 	private native int getMarginWidth(com.google.gwt.user.client.Element el)/*-{
-																			var left = 0;
-																			var right = 0;
-																			var style = $wnd.getComputedStyle(el);
+		var left = 0;
+		var right = 0;
+		var style = $wnd.getComputedStyle(el);
 
-																			left = parseInt(style.marginLeft, 10) || 0;
-																			right = parseInt(style.marginRight, 10) || 0;
+		left = parseInt(style.marginLeft, 10) || 0;
+		right = parseInt(style.marginRight, 10) || 0;
 
-																			return left + right;
-																			}-*/;
+		return left + right;
+	}-*/;
 
 	private native int getMarginHeight(com.google.gwt.user.client.Element el)/*-{
 
-																				var top = 0;
-																				var bottom = 0;
-																				var style = $wnd.getComputedStyle(el);
+		var top = 0;
+		var bottom = 0;
+		var style = $wnd.getComputedStyle(el);
 
-																				top = parseInt(style.marginTop, 10) || 0;
-																				bottom = parseInt(style.marginBottom, 10) || 0;
+		top = parseInt(style.marginTop, 10) || 0;
+		bottom = parseInt(style.marginBottom, 10) || 0;
 
-																				return top + bottom;
-																				}-*/;
+		return top + bottom;
+	}-*/;
 
 	@Override
 	public int getY() {
@@ -1868,6 +1877,22 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	public void setShowScrollBarY(boolean b) {
 		this.vScrollbar = b;
 		scrollBar[DIRECTION.HORIZONTAL.ordinal()] = b;
+
+	}
+
+	@Override
+	public int getCurrentPageX() {
+		return currPageX;
+	}
+
+	@Override
+	public int getCurrentPageY() {
+		return currPageY;
+	}
+
+	@Override
+	public void setAutoHandleResize(boolean handle) {
+		shouldHandleResize = handle;
 
 	}
 

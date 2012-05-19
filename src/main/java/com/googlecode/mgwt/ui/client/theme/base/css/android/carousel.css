@@ -1,0 +1,9 @@
+.mgwt-Carousel-Indicator {
+	
+	background-color: white;
+	
+}
+
+.mgwt-Carousel-Indicator-active {
+	background-color: rgb(82, 163, 196);
+}

@@ -282,13 +282,15 @@ public class ScrollPanel extends Composite implements HasWidgets {
 	}
 
 	public int getCurrentPageX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return impl.getCurrentPageX();
 	}
 
 	public int getCurrentPageY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return impl.getCurrentPageY();
+	}
+
+	public void setAutoHandleResize(boolean handle) {
+		impl.setAutoHandleResize(handle);
 	}
 
 }

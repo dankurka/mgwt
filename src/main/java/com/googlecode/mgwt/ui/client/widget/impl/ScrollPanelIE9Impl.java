@@ -922,4 +922,22 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
 	}
 
+	@Override
+	public int getCurrentPageX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getCurrentPageY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setAutoHandleResize(boolean handle) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
