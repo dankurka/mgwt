@@ -29,7 +29,7 @@ import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 
-public class PullPanel extends Composite implements HasWidgets {
+public class PullPanel extends Composite implements HasWidgets, HasRefresh {
 
 	public interface PullWidget extends IsWidget {
 
