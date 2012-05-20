@@ -24,16 +24,15 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor.CodeToRun;
 
 public class LongTapRecognizer implements TouchHandler {
 
 	public static final int DEFAULT_WAIT_TIME_IN_MS = 1500;
 	public static final int DEFAULT_MAX_DISTANCE = 15;
 
-	public static final TimeProvider defaultTimeProvder = new SystemTimeProvider();
-
 	protected enum State {
-		INVALID, READY, FINGERS_DOWN, FINGERS_UP
+		INVALID, READY, FINGERS_DOWN, FINGERS_UP, WAITING
 	};
 
 	protected State state;
@@ -45,7 +44,7 @@ public class LongTapRecognizer implements TouchHandler {
 	private int touchCount;
 	private final int distance;
 
-	private TimeProvider timeProvider = defaultTimeProvder;
+	private TimerExecutor timerExecutor;
 
 	public LongTapRecognizer(HasHandlers source) {
 		this(source, 1);
@@ -73,7 +72,7 @@ public class LongTapRecognizer implements TouchHandler {
 		}
 
 		if (maxDistance < 0) {
-			throw new IllegalArgumentException("time > 0");
+			throw new IllegalArgumentException("maxDistance > 0");
 		}
 
 		this.source = source;
@@ -111,6 +110,23 @@ public class LongTapRecognizer implements TouchHandler {
 			break;
 		}
 
+		if (touchCount == numberOfFingers) {
+			state = State.WAITING;
+			getTimerExecutor().execute(new CodeToRun() {
+
+				@Override
+				public void onExecution() {
+					if (state != State.WAITING) {
+						// something else happened forget it
+						return;
+					}
+
+					// fire long tap event
+
+				}
+			}, time);
+		}
+
 		if (touchCount > numberOfFingers) {
 			state = State.INVALID;
 		}
@@ -120,6 +136,7 @@ public class LongTapRecognizer implements TouchHandler {
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
 		switch (state) {
+		case WAITING:
 		case FINGERS_DOWN:
 		case FINGERS_UP:
 			// compare positions
@@ -153,6 +170,10 @@ public class LongTapRecognizer implements TouchHandler {
 	public void onTouchEnd(TouchEndEvent event) {
 		int currentTouches = event.getTouches().length();
 		switch (state) {
+		case WAITING:
+			state = State.INVALID;
+			break;
+
 		case FINGERS_DOWN:
 			state = State.FINGERS_UP;
 		case FINGERS_UP:
@@ -186,6 +207,18 @@ public class LongTapRecognizer implements TouchHandler {
 		int currentTouches = event.getTouches().length();
 		if (currentTouches == 0)
 			reset();
+	}
+
+	public TimerExecutor getTimerExecutor() {
+		if (timerExecutor == null) {
+			timerExecutor = new TimerExecturGwtTimerImpl();
+		}
+		return timerExecutor;
+	}
+
+	// for testing
+	public void setTimerExecutor(TimerExecutor timerExecutor) {
+		this.timerExecutor = timerExecutor;
 	}
 
 }

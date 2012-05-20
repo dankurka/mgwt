@@ -69,23 +69,32 @@ public class TestLongTapRecognizer {
 	}
 
 	@Test
+	public void testLongTapRecognizerHasHandlersIntInt2() {
+		try {
+			new LongTapRecognizer(handlers, 1, 1, 0);
+			Assert.fail("expected exception did not occur");
+		} catch (IllegalArgumentException e) {
+		}
+	}
+
+	@Test
 	public void testContruction() {
 		new LongTapRecognizer(handlers);
 	}
 
 	@Test
 	public void testOnTouchMove() {
-		
+
 	}
 
 	@Test
 	public void testOnTouchEnd() {
-		
+
 	}
 
 	@Test
 	public void testOnTouchCanceled() {
-		
+
 	}
 
 }
