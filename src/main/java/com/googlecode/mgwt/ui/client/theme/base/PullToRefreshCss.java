@@ -41,7 +41,4 @@ public interface PullToRefreshCss extends CssResource {
 	@ClassName("mgwt-PullToRefresh-error")
 	public String error();
 
-	@ClassName("mgwt-PullToRefresh-arrowFooter")
-	public String arrowFooter();
-
 }

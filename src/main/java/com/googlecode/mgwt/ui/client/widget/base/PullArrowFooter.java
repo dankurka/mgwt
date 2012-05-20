@@ -15,17 +15,8 @@
  */
 package com.googlecode.mgwt.ui.client.widget.base;
 
-import com.google.gwt.dom.client.Style.Display;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
-import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
-import com.googlecode.mgwt.ui.client.util.CssUtil;
-import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
 
 /**
  * A header for a pull panel that shows an arrow
@@ -33,169 +24,25 @@ import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
  * @author Daniel Kurka
  * 
  */
-public class PullArrowFooter extends Composite implements PullArrowWidget {
-
-	private FlowPanel main;
-
-	private FlowPanel icon;
-
-	private HTML textContainer;
-
-	private ProgressIndicator indicator;
-
-	private final PullToRefreshCss css;
+public class PullArrowFooter extends PullArrowBase {
 
 	public PullArrowFooter() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getPullToRefreshCss());
 	}
 
 	public PullArrowFooter(PullToRefreshCss css) {
-
-		this.css = css;
-		css.ensureInjected();
-		main = new FlowPanel();
-		main.addStyleName(css.pullToRefresh());
-		initWidget(main);
-
-		icon = new FlowPanel();
-		icon.addStyleName(css.arrowFooter());
-		main.add(icon);
-
-		indicator = new ProgressIndicator();
-		indicator.addStyleName(css.spinner());
-		indicator.getElement().getStyle().setDisplay(Display.NONE);
-		main.add(indicator);
-
-		textContainer = new HTML();
-		textContainer.addStyleName(css.text());
-		main.add(textContainer);
-
-		addDomHandler(new TransitionEndHandler() {
-
-			@Override
-			public void onTransitionEnd(TransitionEndEvent event) {
-				event.preventDefault();
-				event.stopPropagation();
-
-			}
-		}, TransitionEndEvent.getType());
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.Widget#asWidget()
-	 */
-
-	@Override
-	public Widget asWidget() {
-		return this;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#onScroll(com.googlecode.mgwt.ui.client.widget.event.PullStateChangedEvent.State, int)
-	 */
-	@Override
-	public void onScroll(int positionY) {
-		int degree = getRotation(positionY);
-
-		CssUtil.rotate(icon.getElement(), degree);
-
-	}
-
-	public void showError() {
-		removeStyles();
-		icon.addStyleName(css.error());
-
-		icon.setVisible(true);
-		indicator.setVisible(false);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#getHeight()
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public int getHeight() {
-		// TODO
-		return 70;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#getStateSwitchPosition()
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public int getStateSwitchPosition() {
-		// TODO
-		return 50;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullHeader#setHTML(java.lang.String)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public void setHTML(final String html) {
-		String htmlToSet = html;
-		if (html == null) {
-			htmlToSet = "";
-		}
-
-		textContainer.setHTML(htmlToSet);
-
-	}
-
-	/**
-	 * <p>
-	 * showArrow
-	 * </p>
-	 */
-	public void showArrow() {
-		removeStyles();
-		icon.addStyleName(css.arrowFooter());
-
-		icon.setVisible(true);
-		indicator.setVisible(false);
-	}
-
-	public void showLoadingIndicator() {
-		icon.getElement().setAttribute("style", "");
-		showSpinner();
-
-	}
-
-	/**
-	 * <p>
-	 * showSpinner
-	 * </p>
-	 */
-	protected void showSpinner() {
-		removeStyles();
-		icon.setVisible(false);
-		indicator.setVisible(true);
-
+		super(css);
 	}
 
 	protected int getRotation(int y) {
 		int degree = (y + 30) * -10;
-
-		if (degree > -90)
+		if (degree < -90)
 			degree = -90;
-		if (degree < -270) {
-			degree = -270;
+		if (degree > 90) {
+			degree = 90;
 		}
-
 		return degree;
 
-	}
-
-	protected void removeStyles() {
-		icon.removeStyleName(css.arrowFooter());
-		icon.removeStyleName(css.error());
 	}
 
 }

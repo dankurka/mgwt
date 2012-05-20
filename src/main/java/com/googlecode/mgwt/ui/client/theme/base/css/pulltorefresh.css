@@ -13,9 +13,8 @@
 }
 
 @sprite .mgwt-PullToRefresh-arrow {gwt-image: "getButtonBarNextSlideImage"; }
-@sprite .mgwt-PullToRefresh-arrowFooter {gwt-image: "getButtonBarNextSlideImage"; }
 
-.mgwt-PullToRefresh-arrow,  .mgwt-PullToRefresh-arrowFooter {
+.mgwt-PullToRefresh-arrow {
 	position: absolute;
 	margin-left: 50px;
 	top: 20px;
@@ -23,6 +22,23 @@
 	height: 40px;
 	background-repeat: no-repeat;
 }
+
+
+@if user.agent safari {
+	.mgwt-PullToRefresh-arrow {
+		\-webkit-transform-origin: 12px 9px;
+	
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-PullToRefresh-arrow {
+		\-moz-transform-origin: 12px 9px;
+	
+	}
+}
+
+
 
 .mgwt-PullToRefresh-spinner {
 	position: absolute;
