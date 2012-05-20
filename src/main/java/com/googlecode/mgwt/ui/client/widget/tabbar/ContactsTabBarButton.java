@@ -36,8 +36,8 @@ public class ContactsTabBarButton extends TabBarButton {
 		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarContactsImage() : null);
 
 		setText("Contacts");
-
-		text.getStyle().setPaddingTop(3, Unit.PX);
+		if (imageResource != null)
+			text.getStyle().setPaddingTop(3, Unit.PX);
 
 	}
 }
