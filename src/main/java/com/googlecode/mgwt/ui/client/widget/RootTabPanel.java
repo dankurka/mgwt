@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget.experimental;
+package com.googlecode.mgwt.ui.client.widget;
 
 import java.util.LinkedList;
 
@@ -30,41 +30,33 @@ import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
+import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
+import com.googlecode.mgwt.ui.client.animation.AnimationHelper;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
-import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase;
+import com.googlecode.mgwt.ui.client.widget.tabbar.TabPanel;
 
 /**
+ * This TabPanel has support for content that can be animated.
  * 
+ * This is intended to be used as a root element of an app where the content of
+ * the tab panel is switched according to state.
  * 
- * At the moment theres no support for custom parsers:
- * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461
+ * It does not store the content of all tabs in it like {@link TabPanel}. It
+ * only has a AnimateAble display that can change content with animations.
  * 
- * So if you want to use TabPanel in UIBinder its a bit choppy:
- * 
- * <pre>
- * &lt;mgwt:TabPanel>
- * 	&lt;mgwt:tabs>
- * 		&lt;mgwt:Tab>
- * 			&lt;mgwt:button>
- * 				&lt;mgwt:TabBarButtonBase type="download">&lt;/mgwt:TabBarButtonBase>
- * 			&lt;/mgwt:button>
- * 			&lt;mgwt:widget>
- * 				<!-- content for that tab -->
- * 			&lt;/mgwt:widget>
- * 		&lt;/mgwt:Tab>
- * 	&lt;/mgwt:tabs>
- * &lt;/mgwt:TabPanel>
- * </pre>
+ * You can use this panel with an {@link AnimatingActivityManager} or an
+ * {@link AnimationHelper}. Simply register for
+ * {@link #addSelectionHandler(SelectionHandler)} and trigger the animation you
+ * want
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
-public class TabPanel extends Composite implements HasSelectionHandlers<Integer> {
+public class RootTabPanel extends Composite implements HasSelectionHandlers<Integer> {
 
 	private LayoutPanel container;
 
@@ -78,24 +70,11 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 	private HandlerRegistration addDomHandler1;
 
-	/**
-	 * <p>
-	 * Constructor for TabPanel.
-	 * </p>
-	 */
-	public TabPanel() {
+	public RootTabPanel() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss(), (AnimatableDisplay) GWT.create(AnimatableDisplay.class));
 	}
 
-	/**
-	 * <p>
-	 * Constructor for TabPanel.
-	 * </p>
-	 * 
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.TabBarCss}
-	 *            object.
-	 */
-	public TabPanel(TabBarCss css, AnimatableDisplay display) {
+	public RootTabPanel(TabBarCss css, AnimatableDisplay display) {
 		this.animatableDisplay = display;
 		container = new LayoutPanel();
 		initWidget(container);
@@ -189,40 +168,16 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
 	}
 
-	/**
-	 * <p>
-	 * add
-	 * </p>
-	 * 
-	 * @param button a
-	 *            {@link com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase}
-	 *            object.
-	 * @param child a {@link com.google.gwt.user.client.ui.Widget} object.
-	 */
 	public void add(TabBarButtonBase button) {
 
 		tabBar.add(button);
 	}
 
-	/**
-	 * <p>
-	 * remove
-	 * </p>
-	 * 
-	 * @param index a int.
-	 */
 	public void remove(int index) {
 
 		tabBar.remove(index);
 	}
 
-	/**
-	 * <p>
-	 * remove
-	 * </p>
-	 * 
-	 * @param w a {@link com.google.gwt.user.client.ui.Widget} object.
-	 */
 	public void remove(TabBarButtonBase w) {
 		int childIndex = tabBar.getIndexForWidget(w);
 		tabBar.remove(childIndex);
