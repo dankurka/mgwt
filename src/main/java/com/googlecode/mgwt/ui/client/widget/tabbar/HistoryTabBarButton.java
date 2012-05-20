@@ -36,7 +36,8 @@ public class HistoryTabBarButton extends TabBarButton {
 		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarHistoryImage() : null);
 		setText("History");
 
-		text.getStyle().setPaddingTop(4, Unit.PX);
+		if (imageResource != null)
+			text.getStyle().setPaddingTop(4, Unit.PX);
 	}
 
 }

@@ -69,6 +69,7 @@ public class TabBarButtonBase extends ButtonBase {
 	protected final TabBarCss css;
 	protected Element icon;
 	protected Element text;
+	protected final ImageResource imageResource;
 
 	/**
 	 * <p>
@@ -83,6 +84,7 @@ public class TabBarButtonBase extends ButtonBase {
 	public TabBarButtonBase(TabBarCss css, ImageResource imageResource) {
 		super(css);
 		this.css = css;
+		this.imageResource = imageResource;
 		addStyleName(css.button());
 
 		icon = DOM.createDiv();
