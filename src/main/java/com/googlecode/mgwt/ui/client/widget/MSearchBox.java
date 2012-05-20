@@ -27,9 +27,13 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.FormPanel;
+import com.google.gwt.user.client.ui.FormPanel.SubmitEvent;
+import com.google.gwt.user.client.ui.FormPanel.SubmitHandler;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.googlecode.mgwt.dom.client.event.tap.Tap;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
@@ -42,7 +46,6 @@ import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss;
 import com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder;
-import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
@@ -176,7 +179,21 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	public MSearchBox(MSearchBoxCss css) {
 		this.css = css;
 		this.css.ensureInjected();
-		TouchPanel main = new TouchPanel();
+		Panel main = null;
+		if (MGWT.getOsDetection().isIOs()) {
+			FormPanel formPanel = new FormPanel();
+			formPanel.addSubmitHandler(new SubmitHandler() {
+
+				@Override
+				public void onSubmit(SubmitEvent event) {
+					event.cancel();
+
+				}
+			});
+			main = formPanel;
+		} else {
+			main = new FlowPanel();
+		}
 
 		main.addStyleName(css.searchBox());
 
