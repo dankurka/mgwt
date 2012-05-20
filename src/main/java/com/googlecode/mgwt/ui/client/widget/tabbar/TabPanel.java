@@ -88,7 +88,13 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			}
 		});
 
-		if (MGWT.getOsDetection().isAndroid()) {
+		setDisplayTabBarOnTop(MGWT.getOsDetection().isAndroid());
+
+	}
+
+	public void setDisplayTabBarOnTop(boolean top) {
+		container.clear();
+		if (top) {
 			container.add(tabBar);
 			container.add(tabContainer);
 
@@ -97,7 +103,6 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 			container.add(tabBar);
 
 		}
-
 	}
 
 	/**
