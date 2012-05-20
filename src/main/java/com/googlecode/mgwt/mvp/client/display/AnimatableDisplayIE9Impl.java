@@ -15,7 +15,7 @@ import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 import com.googlecode.mgwt.mvp.client.resources.AnimationCss;
 import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
-public class AnimatableDisplayIE9Impl implements AnimatableDisplay{
+public class AnimatableDisplayIE9Impl implements AnimatableDisplay {
 
 	protected FlowPanel main;
 
@@ -26,11 +26,11 @@ public class AnimatableDisplayIE9Impl implements AnimatableDisplay{
 	protected boolean lastDir;
 
 	private final AnimationCss css;
-	
+
 	public AnimatableDisplayIE9Impl() {
 		this(AnimationSelector.getBundle().animationCss());
 	}
-	
+
 	public AnimatableDisplayIE9Impl(AnimationCss css) {
 		this.css = css;
 		this.css.ensureInjected();
@@ -43,9 +43,6 @@ public class AnimatableDisplayIE9Impl implements AnimatableDisplay{
 		main.getElement().getStyle().setTop(0, Unit.PX);
 		main.getElement().getStyle().setRight(0, Unit.PX);
 		main.getElement().getStyle().setBottom(0, Unit.PX);
-		
-		
-	
 
 		first = new SimplePanel();
 		first.addStyleName(this.css.displayContainer());
@@ -64,50 +61,47 @@ public class AnimatableDisplayIE9Impl implements AnimatableDisplay{
 		second.setHeight("100%");
 		second.getElement().getStyle().setOverflow(Overflow.HIDDEN);
 		main.add(second);
-//		
-//		.displayContainer {
-//	 		position: absolute;
-//			width: 100%;
-//			height: 100%;
-//			overflow:hidden;
-//		
-//			background-color: red;
-//		}
-//	 
-//		
-//	 	
-//	 	.display {
-//			position: absolute;
-//			top: 0px;
-//			left: 0px;
-//			right: 0px;
-//			bottom: 0px;
-//			overflow:hidden;
-//			background-color: blue;
-//				
-//		}
+		//
+		// .displayContainer {
+		// position: absolute;
+		// width: 100%;
+		// height: 100%;
+		// overflow:hidden;
+		//
+		// background-color: red;
+		// }
+		//
+		//
+		//
+		// .display {
+		// position: absolute;
+		// top: 0px;
+		// left: 0px;
+		// right: 0px;
+		// bottom: 0px;
+		// overflow:hidden;
+		// background-color: blue;
+		//
+		// }
 
-		
 	}
-	
+
 	@Override
 	public Widget asWidget() {
 		return main;
 	}
 
-	
 	@Override
 	public void setFirstWidget(IsWidget w) {
 		first.setWidget(w);
 	}
 
-	
 	@Override
 	public void setSecondWidget(IsWidget w) {
 		second.setWidget(w);
 	}
-	
-	private class AnimationFrame implements AnimationCallback{
+
+	private class AnimationFrame implements AnimationCallback {
 
 		private final double endTime;
 		private final Animation animation;
@@ -121,66 +115,60 @@ public class AnimatableDisplayIE9Impl implements AnimatableDisplay{
 			this.animation = animation;
 			this.callback = callback;
 			this.animateToFirst = animateToFirst;
-			
-			if(animateToFirst){
+
+			if (animateToFirst) {
 				main.add(first);
-			}else{
+			} else {
 				main.add(second);
 			}
-			
-			
-//			int offsetWidth = main.getOffsetWidth();
-//			
-//			CssUtil.translate(first.getElement(), 0, 0);
-//			CssUtil.translate(second.getElement(), offsetWidth, 0);
-			
-		} 
-		
+
+			// int offsetWidth = main.getOffsetWidth();
+			//
+			// CssUtil.translate(first.getElement(), 0, 0);
+			// CssUtil.translate(second.getElement(), offsetWidth, 0);
+
+		}
+
 		@Override
 		public void execute(double timestamp) {
 			long now = System.currentTimeMillis();
-			if(now > endTime){
-				//render end position and quit
-				
-				if(animateToFirst){
+			if (now > endTime) {
+				// render end position and quit
+
+				if (animateToFirst) {
 					second.removeFromParent();
-				}else{
+				} else {
 					first.removeFromParent();
 				}
-				
-				//fire animation end
+
+				// fire animation end
 				callback.onAnimationEnd();
-				
-				
+
 				return;
 			}
-			
-			//render current step
-			
+
+			// render current step
+
 			int offsetWidth = main.getOffsetWidth();
-			
-			
-			int pos =  (int) (-offsetWidth *(now-startTime)/(endTime - startTime));
-			System.out.println("pos: " + pos);
-			
+
+			int pos = (int) (-offsetWidth * (now - startTime) / (endTime - startTime));
+
 			AnimationScheduler.get().requestAnimationFrame(this);
-			
-			
-//			CssUtil.translate(first.getElement(), 0, 0);
-//			CssUtil.translate(second.getElement(), 0, 0);
-			
-			
+
+			// CssUtil.translate(first.getElement(), 0, 0);
+			// CssUtil.translate(second.getElement(), 0, 0);
+
 		}
-		
+
 	}
 
 	@Override
 	public void animate(Animation animation, boolean animateToFirst, AnimationEndCallback callback) {
-		
+
 		AnimationFrame frame = new AnimationFrame(System.currentTimeMillis(), System.currentTimeMillis() + 300, animation, callback, animateToFirst);
-		
+
 		AnimationScheduler.get().requestAnimationFrame(frame);
-		
+
 	}
 
 }
