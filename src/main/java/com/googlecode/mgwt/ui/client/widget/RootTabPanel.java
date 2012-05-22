@@ -91,24 +91,7 @@ public class RootTabPanel extends Composite implements HasSelectionHandlers<Inte
 
 		tabBar = new TabBar(css);
 
-		tabBar.addSelectionHandler(new SelectionHandler<Integer>() {
-
-			@Override
-			public void onSelection(SelectionEvent<Integer> event) {
-				event.getSelectedItem();
-				// fire place event
-			}
-		});
-
-		if (MGWT.getOsDetection().isAndroid()) {
-			container.add(tabBar);
-			container.add(aniContainer);
-
-		} else {
-			container.add(aniContainer);
-			container.add(tabBar);
-
-		}
+		setDisplayTabBarOnTop(MGWT.getOsDetection().isAndroid());
 		tabBar.getElement().getStyle().setProperty("WebkitTransformProperty", "opacity");
 
 	}
@@ -187,6 +170,19 @@ public class RootTabPanel extends Composite implements HasSelectionHandlers<Inte
 	@Override
 	public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
 		return new HandlerRegistrationConverter(tabBar.addSelectionHandler(handler));
+	}
+
+	public void setDisplayTabBarOnTop(boolean top) {
+		container.clear();
+		if (top) {
+			container.add(tabBar);
+			container.add(aniContainer);
+
+		} else {
+			container.add(aniContainer);
+			container.add(tabBar);
+
+		}
 	}
 
 	public static class TabBar extends Composite implements HasSelectionHandlers<Integer> {
