@@ -29,7 +29,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
-import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
@@ -41,11 +40,11 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
-import com.googlecode.mgwt.dom.client.recognizer.TapRecognizer;
 import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
+import com.googlecode.mgwt.ui.client.widget.touch.GestureUtility;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
 /**
@@ -121,6 +120,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	private boolean hideOnBackgroundClick;
 	private boolean isVisible;
 	private TouchDelegate touchDelegate;
+	private GestureUtility gestureUtility;
 
 	/**
 	 * Create an instance of an animated dialog
@@ -225,13 +225,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	 */
 	/** {@inheritDoc} */
 	public HandlerRegistration addTapHandler(TapHandler handler) {
-		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
-		TapRecognizer tapRecognizer = new TapRecognizer(display.asWidget());
-
-		handlerRegistrationCollection.addHandlerRegistration(addTouchHandler(tapRecognizer));
-		handlerRegistrationCollection.addHandlerRegistration(display.asWidget().addHandler(handler, TapEvent.getType()));
-
-		return handlerRegistrationCollection;
+		return touchDelegate.addTapHandler(handler);
 	}
 
 	/**

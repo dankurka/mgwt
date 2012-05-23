@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.dom.client.recognizer;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HasHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
@@ -39,6 +40,10 @@ public class TapRecognizer implements TouchHandler {
 	private int start_y;
 
 	private final HasHandlers source;
+
+	private EventPropagator eventPropagator;
+
+	private static EventPropagator DEFAULT_EVENT_PROPAGATOR;
 
 	public TapRecognizer(HasHandlers source) {
 		this(source, DEFAULT_DISTANCE);
@@ -76,7 +81,7 @@ public class TapRecognizer implements TouchHandler {
 	public void onTouchEnd(TouchEndEvent event) {
 		if (!hasMoved && !touchCanceled) {
 			TapEvent tapEvent = new TapEvent(source, start_x, start_y);
-			source.fireEvent(tapEvent);
+			getEventPropagator().fireEvent(source, tapEvent);
 		}
 
 	}
@@ -89,6 +94,16 @@ public class TapRecognizer implements TouchHandler {
 
 	public int getDistance() {
 		return distance;
+	}
+
+	protected EventPropagator getEventPropagator() {
+		if (eventPropagator == null) {
+			if (DEFAULT_EVENT_PROPAGATOR == null) {
+				DEFAULT_EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
+			}
+			eventPropagator = DEFAULT_EVENT_PROPAGATOR;
+		}
+		return eventPropagator;
 	}
 
 }

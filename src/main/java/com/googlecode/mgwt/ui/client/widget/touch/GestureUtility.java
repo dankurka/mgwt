@@ -15,14 +15,15 @@
  */
 package com.googlecode.mgwt.ui.client.widget.touch;
 
+import com.google.gwt.event.shared.HasHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.recognizer.TapRecognizer;
 
 public class GestureUtility {
 	private TapRecognizer tapRecognizer;
-	private final HasTouchHandlers source;
+	private final HasHandlers source;
 
-	public GestureUtility(HasTouchHandlers source) {
+	public GestureUtility(HasHandlers source) {
 		this.source = source;
 
 	}
@@ -30,8 +31,10 @@ public class GestureUtility {
 	public void ensureTapRecognizer() {
 		if (tapRecognizer != null)
 			return;
+		if (!(source instanceof HasTouchHandlers)) {
+			throw new IllegalStateException("trying to add a touchhandler to a widget without touchsupport");
+		}
 		tapRecognizer = new TapRecognizer(source);
-		source.addTouchHandler(tapRecognizer);
+		((HasTouchHandlers) source).addTouchHandler(tapRecognizer);
 	}
-
 }
