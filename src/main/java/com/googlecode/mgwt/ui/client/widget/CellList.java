@@ -36,6 +36,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
@@ -79,6 +80,8 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * @author Daniel Kurka
  */
 public class CellList<T> extends Composite implements HasCellSelectedHandler {
+
+	protected static final EventPropagator EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
 
 	public interface Template extends SafeHtmlTemplates {
 		@SafeHtmlTemplates.Template("<li __idx=\"{0}\" class=\"{1}\">{2}</li>")
@@ -362,7 +365,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 	}
 
 	private void fireSelectionAtIndex(int index) {
-		fireEvent(new CellSelectedEvent(index));
+		EVENT_PROPAGATOR.fireEvent(this, new CellSelectedEvent(index));
 	}
 
 }
