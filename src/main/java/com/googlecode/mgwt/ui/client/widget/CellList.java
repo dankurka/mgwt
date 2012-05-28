@@ -119,6 +119,9 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 			Touch touch = event.getTouches().get(0);
 			if (Math.abs(touch.getPageX() - x) > Tap.RADIUS || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
 				moved = true;
+				//deselect
+				if (node != null)
+					node.removeClassName(css.selected());
 			}
 
 		}
