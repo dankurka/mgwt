@@ -24,15 +24,16 @@ import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.LayoutCss;
+import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellListComposite;
 
 /**
  * A layout panel can resize children to take up remaining space on the screen
- *
+ * 
  * This is done automatically for {@link ScrollPanel}
- *
+ * 
  * Other children that want to fill space should add the style
  * {@link LayoutCss#fillPanelExpandChild()}
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -42,7 +43,7 @@ public class LayoutPanel extends Composite implements HasWidgets, InsertPanel {
 
 	/**
 	 * Construct a layout panel with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public LayoutPanel(LayoutCss css) {
@@ -69,7 +70,8 @@ public class LayoutPanel extends Composite implements HasWidgets, InsertPanel {
 	@Override
 	public void add(Widget w) {
 
-		if (w instanceof ScrollPanel) {
+		//TODO markup interface?
+		if (w instanceof ScrollPanel || w instanceof GroupingCellListComposite) {
 			w.addStyleName(css.fillPanelExpandChild());
 		}
 
@@ -78,9 +80,9 @@ public class LayoutPanel extends Composite implements HasWidgets, InsertPanel {
 
 	/**
 	 * Layout children horizontally
-	 *
+	 * 
 	 * default: false
-	 *
+	 * 
 	 * @param horiontal true to layout children horizontally
 	 */
 	public void setHorizontal(boolean horiontal) {
