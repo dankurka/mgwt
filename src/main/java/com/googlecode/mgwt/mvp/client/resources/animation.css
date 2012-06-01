@@ -62,12 +62,17 @@
 	}
  	
 
- 	@if mgwt.os iphone ipad retina {
+ 	@if mgwt.os iphone ipad retina ipad_retina {
 		 .display {
-			\-webkit-perspective: 800;
 		    \-webkit-transform-style: preserve-3d;
 		    \-webkit-backface-visibility: hidden;
 		    \-webkit-transform: translate3d(0,0,0) rotate(0) scale(1);
+		}
+	}
+	
+	@if mgwt.os iphone ipad retina {
+		 .display {
+			\-webkit-perspective: 800;
 		}
 	}
 	

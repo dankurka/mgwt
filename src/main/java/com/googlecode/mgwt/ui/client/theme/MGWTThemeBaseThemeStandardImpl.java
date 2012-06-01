@@ -7,6 +7,7 @@ import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeAndroid
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeBlackberry;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeDesktop;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeIPad;
+import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeIPadRetina;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeIPhone;
 import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeRetina;
 
@@ -33,14 +34,18 @@ public class MGWTThemeBaseThemeStandardImpl implements MGWTTheme {
 		}
 
 		if (MGWT.getOsDetection().isIPad()) {
-			bundle = GWT.create(MGWTClientBundleBaseThemeIPad.class);
+			if (MGWT.getOsDetection().isIPadRetina()) {
+				bundle = GWT.create(MGWTClientBundleBaseThemeIPadRetina.class);
+			} else {
+				bundle = GWT.create(MGWTClientBundleBaseThemeIPad.class);
+			}
+
 		}
 
 		if (MGWT.getOsDetection().isBlackBerry()) {
 			bundle = GWT.create(MGWTClientBundleBaseThemeBlackberry.class);
 		}
 
-		
 		if (MGWT.getOsDetection().isDesktop()) {
 			bundle = GWT.create(MGWTClientBundleBaseThemeDesktop.class);
 		}

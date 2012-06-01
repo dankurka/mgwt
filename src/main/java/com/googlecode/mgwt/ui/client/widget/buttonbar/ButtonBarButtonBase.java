@@ -71,7 +71,7 @@ public class ButtonBarButtonBase extends ButtonBase {
 			if (!active) {
 				element.getStyle().setBackgroundImage("url(" + icon.getSafeUri().asString() + ")");
 
-				if (MGWT.getOsDetection().isRetina()) {
+				if (MGWT.getOsDetection().isRetina() || MGWT.getOsDetection().isIPadRetina()) {
 					element.getStyle().setProperty("backgroundSize", (icon.getWidth() / 2) + "px " + (icon.getHeight() / 2) + "px");
 				}
 			} else {
@@ -82,7 +82,7 @@ public class ButtonBarButtonBase extends ButtonBase {
 				}
 
 				element.getStyle().setBackgroundImage("url(" + highlight.getSafeUri().asString() + "), url(" + icon.getSafeUri().asString() + ")");
-				if (MGWT.getOsDetection().isRetina()) {
+				if (MGWT.getOsDetection().isRetina() || MGWT.getOsDetection().isIPadRetina()) {
 					element.getStyle().setProperty("backgroundSize", (highlight.getWidth()) + "px " + (highlight.getHeight()) + "px, " + (icon.getWidth() / 2) + "px " + (icon.getHeight() / 2) + "px");
 				}
 			}

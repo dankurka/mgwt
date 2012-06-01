@@ -74,7 +74,7 @@
     </replace-with>
 
 
-    <define-property name="mgwt.os" values="iphone, ipad, retina, android, android_tablet, blackberry, desktop" />
+    <define-property name="mgwt.os" values="iphone, ipad, retina, ipad_retina, android, android_tablet, blackberry, desktop" />
 	<property-provider name="mgwt.os"><![CDATA[
   	{
 	    
@@ -93,6 +93,10 @@
 	    
 	    if(ua.indexOf('ipad') != -1)
 	    {
+	    	if(window.devicePixelRatio >= 2)
+	    	{
+	    		return "ipad_retina";
+	    	}
 	    	return "ipad";
 	    }
 	    

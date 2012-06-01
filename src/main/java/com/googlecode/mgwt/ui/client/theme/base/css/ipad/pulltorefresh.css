@@ -1,2 +1,9 @@
-
-
+@if user.agent safari {
+	
+	@if mgwt.os ipad_retina {
+		.mgwt-PullToRefresh-arrow {
+			background-size: 23px 18px;
+		}
+	}
+	
+}

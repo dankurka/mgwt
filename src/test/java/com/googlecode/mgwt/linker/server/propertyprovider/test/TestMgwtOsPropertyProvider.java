@@ -70,7 +70,37 @@ public class TestMgwtOsPropertyProvider {
 
 		String propertyValue = provider.getPropertyValue(mockServletRequest);
 
+		Assert.assertEquals("ipad_undefined", propertyValue);
+
+	}
+
+	@Test
+	public void testGetPropertyValueIpadNonRetina() throws PropertyProviderException {
+		MockServletRequest mockServletRequest = new MockServletRequest();
+		mockServletRequest.setUserAgent(UserAgents.IPAD_IOS5_USER_AGENT);
+
+		Cookie[] cookies = new Cookie[1];
+		cookies[0] = new Cookie("mgwt_ios_retina", "0");
+		mockServletRequest.setCookies(cookies);
+
+		String propertyValue = provider.getPropertyValue(mockServletRequest);
+
 		Assert.assertEquals("ipad", propertyValue);
+
+	}
+
+	@Test
+	public void testGetPropertyValueIpadRetina() throws PropertyProviderException {
+		MockServletRequest mockServletRequest = new MockServletRequest();
+		mockServletRequest.setUserAgent(UserAgents.IPAD_IOS5_USER_AGENT);
+
+		Cookie[] cookies = new Cookie[1];
+		cookies[0] = new Cookie("mgwt_ios_retina", "1");
+		mockServletRequest.setCookies(cookies);
+
+		String propertyValue = provider.getPropertyValue(mockServletRequest);
+
+		Assert.assertEquals("ipad_retina", propertyValue);
 
 	}
 
