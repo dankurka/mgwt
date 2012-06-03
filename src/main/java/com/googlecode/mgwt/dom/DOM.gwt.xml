@@ -26,6 +26,7 @@
     	var ua = window.navigator.userAgent.toLowerCase();
     	if (ua.indexOf('android') != -1) { return 'mobilesafari'; }
     	if (ua.indexOf('iphone') != -1) { return 'mobilesafari'; }
+    	if (ua.indexOf('ipod') != -1) { return 'mobilesafari'; }
      	if (ua.indexOf('ipad') != -1) { return 'mobilesafari'; }
      	if (ua.indexOf('blackberry') != -1) { return 'not_mobile'; }
     	return 'not_mobile';
@@ -100,7 +101,7 @@
 	    	return "ipad";
 	    }
 	    
-	    if(ua.indexOf('iphone') != -1)
+	    if(ua.indexOf('iphone') != -1 || ua.indexOf('ipod') != -1)
 	    {
 	    	if(window.devicePixelRatio >= 2)
 	    	{
