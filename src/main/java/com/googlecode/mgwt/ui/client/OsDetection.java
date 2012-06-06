@@ -82,6 +82,13 @@ public interface OsDetection {
 	public boolean isRetina();
 
 	/**
+	 * Are we running on an iPad with a retina display
+	 * 
+	 * @return true if runnning on retina display
+	 */
+	public boolean isIPadRetina();
+
+	/**
 	 * Are we running in a desktop browser (chrome, safari or similiar)
 	 * 
 	 * @return true if running on desktop browser
@@ -124,4 +131,5 @@ public interface OsDetection {
 	 * @return true if running on a blackberry device, otherwise false
 	 */
 	public boolean isBlackBerry();
+
 }

@@ -16,12 +16,15 @@
 package com.googlecode.mgwt.mvp.client;
 
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.ResettableEventBus;
 import com.google.gwt.event.shared.UmbrellaException;
@@ -35,10 +38,10 @@ import com.google.web.bindery.event.shared.EventBus;
 /**
  * This is a fork of @link {@link ActivityManager} that has the same features,
  * but also adds animations to the lifecycle of Activities.
- *
+ * 
  * It can be used as a replacement for {@link ActivityManager}, but requires an
  * instance of {@link AnimationMapper} to work properly
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -94,15 +97,20 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	private HandlerRegistration handlerRegistration;
 
 	private final AnimationMapper animationMapper;
+	private boolean listeningForAnimationEnd = false;
+	private boolean ignorePlaceChange = false;
+	private boolean fireAnimationEvents;
+	private LinkedList<PlaceChangeEvent> placeChangeStack = new LinkedList<PlaceChangeEvent>();
 
 	/**
 	 * Create an ActivityManager. Next call {@link #setDisplay}.
-	 *
+	 * 
 	 * @param mapper finds the {@link Activity} for a given
 	 *            {@link com.google.gwt.place.shared.Place}
 	 * @param eventBus source of {@link PlaceChangeEvent} and
 	 *            {@link PlaceChangeRequestEvent} events.
-	 * @param animationMapper a {@link com.googlecode.mgwt.mvp.client.AnimationMapper} object.
+	 * @param animationMapper a
+	 *            {@link com.googlecode.mgwt.mvp.client.AnimationMapper} object.
 	 */
 	public AnimatingActivityManager(ActivityMapper mapper, AnimationMapper animationMapper, EventBus eventBus) {
 		this.mapper = mapper;
@@ -113,7 +121,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * Deactivate the current activity, find the next one from our
 	 * ActivityMapper, and start it.
 	 * <p>
@@ -122,11 +130,15 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	 * be minimized by decent caching. Perenially slow activities might mitigate
 	 * this by providing a widget immediately, with some kind of "loading"
 	 * treatment.
+	 * 
 	 * @see com.google.gwt.place.shared.PlaceChangeEvent.Handler#onPlaceChange(PlaceChangeEvent)
 	 */
 	public void onPlaceChange(PlaceChangeEvent event) {
-		if (ignorePlaceChange)
+		if (ignorePlaceChange) {
+			//remember the place change event to be executed after the current one is done
+			placeChangeStack.add(event);
 			return;
+		}
 
 		Activity nextActivity = getNextActivity(event);
 		Animation animation = getAnimation(event);
@@ -202,23 +214,16 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 			throw new UmbrellaException(causes);
 		}
 
-		if (animation != null) {
-			// animate
-			animate(animation);
-
-		}
+		// animate
+		animate(animation);
 
 	}
 
-	private boolean listeningForAnimationEnd = false;
-
-	private boolean ignorePlaceChange = false;
-
-	private boolean fireAnimationEvents;
-
 	/**
-	 * <p>Setter for the field <code>fireAnimationEvents</code>.</p>
-	 *
+	 * <p>
+	 * Setter for the field <code>fireAnimationEvents</code>.
+	 * </p>
+	 * 
 	 * @param fireAnimationEvents a boolean.
 	 */
 	public void setFireAnimationEvents(boolean fireAnimationEvents) {
@@ -226,8 +231,10 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	}
 
 	/**
-	 * <p>isFireAnimationEvents</p>
-	 *
+	 * <p>
+	 * isFireAnimationEvents
+	 * </p>
+	 * 
 	 * @return a boolean.
 	 */
 	public boolean isFireAnimationEvents() {
@@ -236,9 +243,26 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	private void onAnimationEnd() {
 		if (listeningForAnimationEnd) {
-			ignorePlaceChange = false;
+
 			if (fireAnimationEvents) {
 				eventBus.fireEvent(new MGWTAnimationEndEvent());
+			}
+
+			if (!placeChangeStack.isEmpty()) {
+				//execute deffered so that animation end will fire!
+				Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+
+					@Override
+					public void execute() {
+						ignorePlaceChange = false;
+						PlaceChangeEvent poll = placeChangeStack.poll();
+						onPlaceChange(poll);
+
+					}
+				});
+
+			} else {
+				ignorePlaceChange = false;
 			}
 		}
 	}
@@ -250,10 +274,16 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	private void animate(Animation animation) {
 
 		listeningForAnimationEnd = true;
+		System.out.println("ignore place change");
 		ignorePlaceChange = true;
 
 		if (fireAnimationEvents) {
 			eventBus.fireEvent(new MGWTAnimationStartEvent());
+		}
+
+		if (animation == null) {
+			AnimatingActivityManager.this.onAnimationEnd();
+			return;
 		}
 
 		display.animate(animation, currentIsFirst, new AnimationEndCallback() {
@@ -278,8 +308,9 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	/**
 	 * {@inheritDoc}
-	 *
+	 * 
 	 * Reject the place change if the current activity is not willing to stop.
+	 * 
 	 * @see com.google.gwt.place.shared.PlaceChangeRequestEvent.Handler#onPlaceChangeRequest(PlaceChangeRequestEvent)
 	 */
 	public void onPlaceChangeRequest(PlaceChangeRequestEvent event) {
@@ -295,7 +326,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	 * If you are disposing of an ActivityManager, it is important to call
 	 * setDisplay(null) to get it to deregister from the event bus, so that it
 	 * can be garbage collected.
-	 *
+	 * 
 	 * @param display an instance of AcceptsOneWidget
 	 */
 	public void setDisplay(AnimatableDisplay display) {

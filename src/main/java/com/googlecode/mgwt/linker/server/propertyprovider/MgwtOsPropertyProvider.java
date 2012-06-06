@@ -11,6 +11,10 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 	public static final BindingProperty retina = new BindingProperty("mgwt.os", "retina");
 	public static final BindingProperty iPhone_undefined = new BindingProperty("mgwt.os", "iphone_undefined");
 
+	public static final BindingProperty iPad = new BindingProperty("mgwt.os", "ipad");
+	public static final BindingProperty iPad_retina = new BindingProperty("mgwt.os", "ipad_retina");
+	public static final BindingProperty iPad_undefined = new BindingProperty("mgwt.os", "ipad_undefined");
+
 	@Override
 	public String getPropertyName() {
 		return "mgwt.os";
@@ -31,7 +35,19 @@ public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 		}
 
 		if (userAgent.contains("ipad")) {
-			return "ipad";
+			String value = getRetinaCookieValue(req);
+			if (value == null) {
+				return "ipad_undefined";
+			}
+
+			if ("0".equals(value)) {
+				return "ipad";
+			}
+
+			if ("1".equals(value)) {
+				return "ipad_retina";
+			}
+
 		}
 
 		if (userAgent.contains("iphone")) {

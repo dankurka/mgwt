@@ -69,23 +69,36 @@ public class Html5ManifestServletBase extends HttpServlet {
 			serveStringManifest(req, resp, manifest);
 			return;
 		}
-		if (isIphoneWithoutCookie(computedBindings)) {
-			computedBindings.remove(MgwtOsPropertyProvider.iPhone_undefined);
 
-			Set<BindingProperty> iphoneMatch = new HashSet<BindingProperty>();
-			iphoneMatch.add(MgwtOsPropertyProvider.iPhone);
-			iphoneMatch.addAll(computedBindings);
+		boolean isIPhoneWithoutCookie = isIphoneWithoutCookie(computedBindings);
+		boolean isIPadWithoutCookie = isIpadWithoutCookie(computedBindings);
+
+		if (isIPhoneWithoutCookie || isIPadWithoutCookie) {
+			Set<BindingProperty> nonRetinaMatch = new HashSet<BindingProperty>();
 			Set<BindingProperty> retinaMatch = new HashSet<BindingProperty>();
-			retinaMatch.add(MgwtOsPropertyProvider.retina);
+
+			if (isIPhoneWithoutCookie) {
+				computedBindings.remove(MgwtOsPropertyProvider.iPhone_undefined);
+				nonRetinaMatch.add(MgwtOsPropertyProvider.iPhone);
+				retinaMatch.add(MgwtOsPropertyProvider.retina);
+			}
+
+			if (isIPadWithoutCookie) {
+				computedBindings.remove(MgwtOsPropertyProvider.iPad_undefined);
+				nonRetinaMatch.add(MgwtOsPropertyProvider.iPad);
+				retinaMatch.add(MgwtOsPropertyProvider.iPad_retina);
+			}
+
+			nonRetinaMatch.addAll(computedBindings);
 			retinaMatch.addAll(computedBindings);
 
-			String moduleNameIphone = getPermutationStrongName(baseUrl, moduleName, iphoneMatch);
+			String moduleNameNonRetina = getPermutationStrongName(baseUrl, moduleName, nonRetinaMatch);
 			String moduleNameRetina = getPermutationStrongName(baseUrl, moduleName, retinaMatch);
 
-			if (moduleNameIphone != null && moduleNameRetina != null) {
+			if (moduleNameNonRetina != null && moduleNameRetina != null) {
 
 				// load files for both permutations
-				Set<String> filesForPermutation = getFilesForPermutation(baseUrl, moduleName, moduleNameIphone);
+				Set<String> filesForPermutation = getFilesForPermutation(baseUrl, moduleName, moduleNameNonRetina);
 				filesForPermutation.addAll(getFilesForPermutation(baseUrl, moduleName, moduleNameRetina));
 
 				// dynamically write a new manifest..
@@ -94,7 +107,6 @@ public class Html5ManifestServletBase extends HttpServlet {
 				serveStringManifest(req, resp, writeManifest);
 				return;
 			}
-
 		}
 
 		// if we got here we just don`t know the device react with 500 -> no
@@ -115,6 +127,23 @@ public class Html5ManifestServletBase extends HttpServlet {
 			if ("mgwt.os".equals(bp.getName())) {
 				if ("iphone_undefined".equals(bp.getValue())) {
 					// oh shit this is an iphone
+					// so now we need to serve two manifests
+					// retina...
+					// non retina
+
+					return true;
+
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean isIpadWithoutCookie(Set<BindingProperty> bps) {
+		for (BindingProperty bp : bps) {
+			if ("mgwt.os".equals(bp.getName())) {
+				if ("ipad_undefined".equals(bp.getValue())) {
+					// oh shit this is an ipad
 					// so now we need to serve two manifests
 					// retina...
 					// non retina

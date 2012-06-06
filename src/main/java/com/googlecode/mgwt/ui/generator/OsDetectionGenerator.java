@@ -84,7 +84,7 @@ public class OsDetectionGenerator extends Generator {
 		writer.println("}");
 
 		writer.println("public boolean isIPad() {");
-		writer.println("return " + mgwtProperty.equals("ipad") + ";");
+		writer.println("return " + mgwtProperty.equals("ipad") + " || " + mgwtProperty.equals("ipad_retina") + ";");
 		writer.println("}");
 
 		writer.println("public boolean isIOs() {");
@@ -117,6 +117,10 @@ public class OsDetectionGenerator extends Generator {
 
 		writer.println("public boolean isRetina() {");
 		writer.println("return " + mgwtProperty.equals("retina") + ";");
+		writer.println("}");
+
+		writer.println("public boolean isIPadRetina() {");
+		writer.println("return " + mgwtProperty.equals("ipad_retina") + ";");
 		writer.println("}");
 
 		writer.commit(logger);
