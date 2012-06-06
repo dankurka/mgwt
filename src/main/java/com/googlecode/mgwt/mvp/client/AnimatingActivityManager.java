@@ -274,7 +274,6 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	private void animate(Animation animation) {
 
 		listeningForAnimationEnd = true;
-		System.out.println("ignore place change");
 		ignorePlaceChange = true;
 
 		if (fireAnimationEvents) {
