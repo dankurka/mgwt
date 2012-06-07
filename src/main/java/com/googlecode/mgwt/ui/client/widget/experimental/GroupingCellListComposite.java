@@ -34,6 +34,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.GroupingList;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
@@ -76,6 +77,9 @@ public class GroupingCellListComposite<G, T> extends Composite {
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
 			calculateSelection(event.getTouches().get(0).getPageY());
+			if (MGWT.getOsDetection().isAndroid()) {
+				event.preventDefault();
+			}
 		}
 
 		@Override

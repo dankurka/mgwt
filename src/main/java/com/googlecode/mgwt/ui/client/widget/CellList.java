@@ -367,7 +367,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		}.schedule(100);
 	}
 
-	private void fireSelectionAtIndex(int index) {
+	protected void fireSelectionAtIndex(int index) {
 		EVENT_PROPAGATOR.fireEvent(this, new CellSelectedEvent(index));
 	}
 

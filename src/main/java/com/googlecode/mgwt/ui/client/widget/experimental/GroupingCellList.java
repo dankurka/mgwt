@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.HasSelectionHandlers;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
@@ -13,10 +17,11 @@ import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.CellList;
 import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
 
-public class GroupingCellList<G, T> extends CellList<T> {
+public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionHandlers<T> {
 
 	private final Cell<G> header;
 	private final Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+	private final Map<Integer, T> modelMap = new HashMap<Integer, T>();
 
 	public interface CellGroup<G, T> {
 		public String getKey();
@@ -49,6 +54,7 @@ public class GroupingCellList<G, T> extends CellList<T> {
 		int count = 0;
 
 		map.clear();
+		modelMap.clear();
 
 		int groupCounter = 0;
 		int renderedGroups = 0;
@@ -79,6 +85,9 @@ public class GroupingCellList<G, T> extends CellList<T> {
 				cell.render(cellBuilder, model);
 
 				sb.append(LI_TEMPLATE.li(count, clazz, cellBuilder.toSafeHtml()));
+
+				modelMap.put(count, model);
+
 				count++;
 			}
 
@@ -118,5 +127,18 @@ public class GroupingCellList<G, T> extends CellList<T> {
 		SafeHtmlBuilder headerBuilder = new SafeHtmlBuilder();
 		header.render(headerBuilder, group);
 		return headerBuilder.toSafeHtml().asString();
+	}
+
+	@Override
+	protected void fireSelectionAtIndex(int index) {
+		T t = modelMap.get(index);
+		if (t != null) {
+			SelectionEvent.fire(this, t);
+		}
+	}
+
+	@Override
+	public HandlerRegistration addSelectionHandler(SelectionHandler<T> handler) {
+		return addHandler(handler, SelectionEvent.getType());
 	}
 }
