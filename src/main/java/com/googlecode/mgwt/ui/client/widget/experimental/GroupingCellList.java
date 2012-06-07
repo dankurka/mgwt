@@ -8,6 +8,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.CellList;
 import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
@@ -32,6 +33,10 @@ public class GroupingCellList<G, T> extends CellList<T> {
 	}
 
 	protected static final HeaderTemplate HEADER_LI_TEMPLATE = GWT.create(HeaderTemplate.class);
+
+	public GroupingCellList(Cell<T> cell, Cell<G> header) {
+		this(cell, header, MGWTStyle.getTheme().getMGWTClientBundle().getListCss());
+	}
 
 	public GroupingCellList(Cell<T> cell, Cell<G> header, ListCss css) {
 		super(cell, css);

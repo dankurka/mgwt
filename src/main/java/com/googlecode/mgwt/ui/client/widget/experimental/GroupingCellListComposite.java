@@ -164,6 +164,10 @@ public class GroupingCellListComposite<G, T> extends Composite {
 	private int currentPage;
 	private final GroupingCellList<G, T> cellList;
 
+	public GroupingCellListComposite(GroupingCellList<G, T> cellList) {
+		this(cellList, MGWTStyle.getTheme().getMGWTClientBundle().getGroupingList());
+	}
+
 	public GroupingCellListComposite(GroupingCellList<G, T> cellList, GroupingList css) {
 
 		this.cellList = cellList;
