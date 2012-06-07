@@ -19,9 +19,14 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationStartEvent.Handler;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
@@ -153,6 +158,18 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets {
 		return addHandler(handler, ScrollTouchEndEvent.getTYPE());
 	}
 
+	public HandlerRegistration addScrollAnimationStartHandler(Handler handler) {
+		return addHandler(handler, ScrollAnimationStartEvent.getTYPE());
+	}
+
+	public HandlerRegistration addScrollAnimationMoveHandler(ScrollAnimationMoveEvent.Handler handler) {
+		return addHandler(handler, ScrollAnimationMoveEvent.getTYPE());
+	}
+
+	public HandlerRegistration addScrollAnimationEndHandler(ScrollAnimationEndEvent.Handler handler) {
+		return addHandler(handler, ScrollAnimationEndEvent.getTYPE());
+	}
+
 	public abstract int getY();
 
 	public abstract int getX();
@@ -170,5 +187,11 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets {
 	public abstract void setAutoHandleResize(boolean handle);
 
 	public abstract void setOffSetMaxY(int height);
+
+	public abstract void setSnapSelector(String selector);
+
+	public abstract LightArrayInt getPagesY();
+
+	public abstract LightArrayInt getPagesX();
 
 }

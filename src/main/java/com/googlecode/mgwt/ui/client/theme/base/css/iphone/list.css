@@ -67,3 +67,15 @@
 	margin: 10px 20px 5px;
 	text-shadow: rgba(255, 255, 255, 0.19);
 }
+
+
+.mgwt-List-Head-Element, .mgwt-List > .mgwt-List-Head-Element {
+	padding: 0px;
+	padding-left:12px;
+	font-size:19px; 
+	font-weight:bold;
+	color:#fff;
+	border-bottom:1px solid #989ea5;
+	background: literal('-webkit-gradient(linear, left top, left bottom, color-stop(0%,#cdd5df), color-stop(2%,#b0bccd), color-stop(14%,#a9b7c8), color-stop(48%,#8b9db5), color-stop(50%,#889bb3), color-stop(52%,#8195af), color-stop(81%,#7389a6), color-stop(100%,#6d84a2))');
+	border: none;
+}

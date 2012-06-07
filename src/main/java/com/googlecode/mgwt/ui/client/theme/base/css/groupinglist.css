@@ -1,0 +1,87 @@
+
+@if mgwt.css pretty {
+	@external mgwt-GroupingList, mgwt-GroupingList-Moving-Header, mgwt-GroupingList-Selection-Bar, mgwt-GroupingList-Selection-Bar-active ;
+}
+
+.mgwt-GroupingList {
+	position: relative;
+	overflow: hidden;
+	
+	
+}
+
+@if user.agent safari {
+	.mgwt-GroupingList {
+		display: \-webkit-box;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-GroupingList {
+		display: \-moz-box;
+	}
+}
+
+.mgwt-GroupingList-Moving-Header {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	
+}
+
+.mgwt-GroupingList-Selection-Bar {
+	position: absolute;
+	top: 20px;
+	right: 5px;
+	bottom: 20px;
+	z-index: 1;
+	padding: 5px;
+	
+}
+
+@if user.agent safari {
+	.mgwt-GroupingList-Selection-Bar {
+		display: \-webkit-box;
+		\-webkit-box-orient: vertical;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-GroupingList-Selection-Bar {
+		display: \-moz-box;
+		\-moz-box-orient: vertical;
+	}
+}
+
+.mgwt-GroupingList-Selection-Bar > li {
+	list-style-type: none;
+	font-size: 8pt;
+	font-weight: bolder;
+	color: #555
+}
+
+@if user.agent safari {
+	.mgwt-GroupingList-Selection-Bar > li{
+		\-webkit-box-flex: 1;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-GroupingList-Selection-Bar > li{
+		\-moz-box-flex: 1;
+	}
+}
+
+
+
+
+
+.mgwt-GroupingList-Selection-Bar-active{
+	border-radius: 10px;
+	background: rgba(100, 100, 100, 0.5);
+}
+
+
+ 
+

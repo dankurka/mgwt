@@ -61,4 +61,7 @@ public interface ListCss extends CssResource {
 	@ClassName("mgwt-FormList-Element-container")
 	public String formListElementContainer();
 
+	@ClassName("mgwt-List-Head-Element")
+	public String listHeadElement();
+
 }

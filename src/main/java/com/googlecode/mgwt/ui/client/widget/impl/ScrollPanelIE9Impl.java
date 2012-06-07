@@ -15,6 +15,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
@@ -944,6 +945,24 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 	public void setOffSetMaxY(int height) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void setSnapSelector(String selector) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public LightArrayInt getPagesY() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LightArrayInt getPagesX() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

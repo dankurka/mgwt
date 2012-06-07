@@ -29,6 +29,9 @@ import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
  */
 public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTClientBundle {
 
+	@Source({ "css/groupinglist.css", "css/blackberry/groupinglist.css" })
+	GroupingList getGroupingList();
+
 	@Source({ "css/progressbar.css", "css/blackberry/progressbar.css" })
 	ProgressBarCss getProgressBarCss();
 

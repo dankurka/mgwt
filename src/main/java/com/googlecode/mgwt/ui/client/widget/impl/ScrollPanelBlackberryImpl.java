@@ -20,6 +20,7 @@ import java.util.Iterator;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.collection.shared.LightArrayInt;
 
 /**
  * The blackberry implementation of scrollpanel lacks any scrolling capabilities
@@ -291,6 +292,24 @@ public class ScrollPanelBlackberryImpl extends ScrollPanelImpl {
 	public void setOffSetMaxY(int height) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void setSnapSelector(String selector) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public LightArrayInt getPagesY() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public LightArrayInt getPagesX() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

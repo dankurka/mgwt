@@ -23,9 +23,13 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationStartEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
@@ -259,6 +263,18 @@ public class ScrollPanel extends Composite implements HasWidgets {
 		return impl.addScrollTouchEndHandler(handler);
 	}
 
+	public HandlerRegistration addScrollAnimationStartHandler(ScrollAnimationStartEvent.Handler handler) {
+		return impl.addScrollAnimationStartHandler(handler);
+	}
+
+	public HandlerRegistration addScrollAnimationMoveHandler(ScrollAnimationMoveEvent.Handler handler) {
+		return impl.addScrollAnimationMoveHandler(handler);
+	}
+
+	public HandlerRegistration addScrollAnimationEndHandler(ScrollAnimationEndEvent.Handler handler) {
+		return impl.addScrollAnimationEndHandler(handler);
+	}
+
 	public int getY() {
 		return impl.getY();
 	}
@@ -296,6 +312,19 @@ public class ScrollPanel extends Composite implements HasWidgets {
 	public void setOffSetMaxY(int height) {
 		impl.setOffSetMaxY(height);
 
+	}
+
+	public void setSnapSelector(String selector) {
+		impl.setSnapSelector(selector);
+
+	}
+
+	public LightArrayInt getPagesY() {
+		return impl.getPagesY();
+	}
+
+	public LightArrayInt getPagesX() {
+		return impl.getPagesX();
 	}
 
 }

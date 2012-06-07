@@ -24,6 +24,7 @@ import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
 import com.googlecode.mgwt.ui.client.theme.base.CarouselCss;
 import com.googlecode.mgwt.ui.client.theme.base.CheckBoxCss;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
+import com.googlecode.mgwt.ui.client.theme.base.GroupingList;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.theme.base.LayoutCss;
@@ -88,6 +89,8 @@ public interface MGWTClientBundle {
 	PullToRefreshCss getPullToRefreshCss();
 
 	TabBarCss getTabBarCss();
+
+	GroupingList getGroupingList();
 
 	public CarouselCss getCarouselCss();
 

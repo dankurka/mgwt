@@ -46,6 +46,9 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.BeforeScrollStartEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationEndEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationMoveEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationStartEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
@@ -1037,7 +1040,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 			resetPos(400);
 			return;
 		}
-
+		fireEvent(new ScrollAnimationStartEvent());
 		final Step step = this.steps.shift();
 
 		if (step.getX() == startX && step.getY() == startY) {
@@ -1069,7 +1072,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				if (now >= startTime + step.getTime()) {
 					ScrollPanelNewPort.this.pos(step.x, step.y);
 					ScrollPanelNewPort.this.animating = false;
-					// TODO maybe fire animation end event...
+					fireEvent(new ScrollAnimationEndEvent());
 					ScrollPanelNewPort.this.startAnimation();
 					return;
 				}
@@ -1079,6 +1082,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 				int newX = (int) Math.round((step.getX() - startX) * easeOut + startX);
 				int newY = (int) Math.round((step.getY() - startY) * easeOut + startY);
 				ScrollPanelNewPort.this.pos(newX, newY);
+				fireEvent(new ScrollAnimationMoveEvent());
 				if (ScrollPanelNewPort.this.animating)
 					ScrollPanelNewPort.this.aniTime = AnimationScheduler.get().requestAnimationFrame(this);
 
@@ -1361,7 +1365,7 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 		fireEvent(new ScrollStartEvent(null));
 
 		int x, y;
-		if (this.snap) {
+		if (this.snap || snapSelector != null) {
 
 			pageX = pageX < 0 ? 0 : pageX > this.pagesX.length() - 1 ? this.pagesX.length() - 1 : pageX;
 			pageY = pageY < 0 ? 0 : pageY > this.pagesY.length() - 1 ? this.pagesY.length() - 1 : pageY;
@@ -1904,6 +1908,22 @@ public class ScrollPanelNewPort extends ScrollPanelImpl {
 	public void setOffSetMaxY(int height) {
 		this.offsetMaxY = height;
 
+	}
+
+	@Override
+	public void setSnapSelector(String selector) {
+		this.snapSelector = selector;
+
+	}
+
+	@Override
+	public LightArrayInt getPagesY() {
+		return this.pagesY;
+	}
+
+	@Override
+	public LightArrayInt getPagesX() {
+		return this.pagesX;
 	}
 
 }

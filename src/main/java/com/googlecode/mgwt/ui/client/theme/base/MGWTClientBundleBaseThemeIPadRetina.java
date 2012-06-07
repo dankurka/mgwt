@@ -29,6 +29,9 @@ import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
  */
 public interface MGWTClientBundleBaseThemeIPadRetina extends ClientBundle, MGWTClientBundle {
 
+	@Source({ "css/groupinglist.css", "css/ipad/groupinglist.css" })
+	GroupingList getGroupingList();
+
 	@Source({ "css/progressbar.css", "css/ipad/progressbar.css" })
 	ProgressBarCss getProgressBarCss();
 
