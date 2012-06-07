@@ -37,8 +37,8 @@
 	padding-left:12px;
 	font-size:19px; 
 	font-weight:bold;
-	color:#fff;
+	color:white;
 	border-bottom:1px solid #989ea5;
-	background-color: blue;
+	background-color: rgb(50, 50, 50);
 	border: none;
 }

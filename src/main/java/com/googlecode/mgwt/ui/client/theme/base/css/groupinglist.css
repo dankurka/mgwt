@@ -58,7 +58,6 @@
 	list-style-type: none;
 	font-size: 8pt;
 	font-weight: bolder;
-	color: #555
 }
 
 @if user.agent safari {
