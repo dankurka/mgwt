@@ -1,6 +1,6 @@
 @url arrowImage listArrow;
 @if mgwt.css pretty {
-	@external mgwt-List, mgwt-List-selected, mgwt-List-group, mgwt-List-first, mgwt-List-last, mgwt-List-Header, mgwt-List-round,mgwt-FormList-Element, mgwt-FormList-Element-label, mgwt-FormList-Element-container, mgwt-List-Head-Element;
+	@external mgwt-List, mgwt-List-selected, mgwt-List-group, mgwt-List-first, mgwt-List-last, mgwt-List-Header, mgwt-List-round,mgwt-FormList-Element, mgwt-FormList-Element-label, mgwt-FormList-Element-container, mgwt-List-Head-Element, mgwt-List-canbeSelected;
 }
 
 .mgwt-List {
@@ -93,5 +93,8 @@
 	
 	.mgwt-List-Head-Element{
 	
+	}
+	
+	.mgwt-List-canbeSelected{
 	}
 }

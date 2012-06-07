@@ -46,6 +46,8 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 	public GroupingCellList(Cell<T> cell, Cell<G> header, ListCss css) {
 		super(cell, css);
 		this.header = header;
+
+		setGroup(false);
 	}
 
 	public void renderGroup(List<CellGroup<G, T>> groups) {
@@ -79,6 +81,10 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
 				String clazz = "";
 				if (cell.canBeSelected(model)) {
+					clazz = css.canbeSelected() + " ";
+				}
+
+				if (isGroup()) {
 					clazz = css.group() + " ";
 				}
 

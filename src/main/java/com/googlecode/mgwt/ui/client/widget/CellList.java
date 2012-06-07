@@ -207,6 +207,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 	protected final Cell<T> cell;
 	protected final ListCss css;
 
+	private boolean group = true;
+
 	/**
 	 * Construct a CellList
 	 * 
@@ -307,8 +309,13 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 			String clazz = "";
 			if (cell.canBeSelected(model)) {
-				clazz = css.group() + " ";
+				clazz = css.canbeSelected() + " ";
 			}
+
+			if (group) {
+				clazz += css.group() + " ";
+			}
+
 			if (i == 0) {
 				clazz += css.first() + " ";
 			}
@@ -349,6 +356,14 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		} else {
 			li.removeClassName(css.selected());
 		}
+	}
+
+	public void setGroup(boolean group) {
+		this.group = group;
+	}
+
+	public boolean isGroup() {
+		return group;
 	}
 
 	protected void fixBug(final String html) {

@@ -34,6 +34,19 @@
 }
 
 
+.mgwt-List-canbeSelected.mgwt-List-selected {
+	font-weight: bold;
+	color: white;
+	background-repeat: no-repeat, repeat;
+	background-position: 100% 50%, 0 0;
+}
+
+@if user.agent safari {
+	.mgwt-List-canbeSelected.mgwt-List-selected {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)), to(rgb(1, 95, 230)) )');
+	}
+}
+
 
 .mgwt-List-group {
 	background-image: arrowImage;

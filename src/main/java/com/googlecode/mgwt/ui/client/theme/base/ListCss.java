@@ -64,4 +64,7 @@ public interface ListCss extends CssResource {
 	@ClassName("mgwt-List-Head-Element")
 	public String listHeadElement();
 
+	@ClassName("mgwt-List-canbeSelected")
+	public String canbeSelected();
+
 }
