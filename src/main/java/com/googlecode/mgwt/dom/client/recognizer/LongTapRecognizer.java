@@ -26,7 +26,6 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor.CodeToRun;
-import com.googlecode.mgwt.test.dom.client.recognizer.EventPropagatorForTests;
 
 public class LongTapRecognizer implements TouchHandler {
 
@@ -237,7 +236,7 @@ public class LongTapRecognizer implements TouchHandler {
 		return eventPropagator;
 	}
 
-	public void setEventPropagator(EventPropagatorForTests eventPropagator) {
+	public void setEventPropagator(EventPropagator eventPropagator) {
 		this.eventPropagator = eventPropagator;
 
 	}
