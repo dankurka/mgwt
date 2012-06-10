@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.dom.client.recognizer;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HasHandlers;
 import com.googlecode.mgwt.collection.shared.CollectionFactory;
 import com.googlecode.mgwt.collection.shared.LightArray;
@@ -25,6 +26,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor.CodeToRun;
+import com.googlecode.mgwt.test.dom.client.recognizer.EventPropagatorForTests;
 
 public class LongTapRecognizer implements TouchHandler {
 
@@ -45,6 +47,10 @@ public class LongTapRecognizer implements TouchHandler {
 	private final int distance;
 
 	private TimerExecutor timerExecutor;
+
+	private EventPropagator eventPropagator;
+
+	private static EventPropagator DEFAULT_EVENT_PROPAGATOR;
 
 	public LongTapRecognizer(HasHandlers source) {
 		this(source, 1);
@@ -96,11 +102,11 @@ public class LongTapRecognizer implements TouchHandler {
 		case INVALID:
 			break;
 		case READY:
-			touches.push(touches.get(touchCount - 1));
+			startPositions.push(touches.get(touchCount - 1));
 			state = State.FINGERS_DOWN;
 			break;
 		case FINGERS_DOWN:
-			touches.push(touches.get(touchCount - 1));
+			startPositions.push(touches.get(touchCount - 1));
 			break;
 		case FINGERS_UP:
 			state = State.INVALID;
@@ -121,7 +127,7 @@ public class LongTapRecognizer implements TouchHandler {
 						return;
 					}
 
-					// fire long tap event
+					getEventPropagator().fireEvent(source, new LongTapEvent(source, numberOfFingers, time, startPositions));
 
 				}
 			}, time);
@@ -219,6 +225,21 @@ public class LongTapRecognizer implements TouchHandler {
 	// for testing
 	public void setTimerExecutor(TimerExecutor timerExecutor) {
 		this.timerExecutor = timerExecutor;
+	}
+
+	protected EventPropagator getEventPropagator() {
+		if (eventPropagator == null) {
+			if (DEFAULT_EVENT_PROPAGATOR == null) {
+				DEFAULT_EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
+			}
+			eventPropagator = DEFAULT_EVENT_PROPAGATOR;
+		}
+		return eventPropagator;
+	}
+
+	public void setEventPropagator(EventPropagatorForTests eventPropagator) {
+		this.eventPropagator = eventPropagator;
+
 	}
 
 }

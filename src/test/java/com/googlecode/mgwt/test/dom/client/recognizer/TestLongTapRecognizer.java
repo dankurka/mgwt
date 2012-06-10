@@ -19,15 +19,25 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.gwt.event.shared.GwtEvent;
+import com.googlecode.mgwt.collection.shared.LightArray;
+import com.googlecode.mgwt.collection.shared.java.JavaLightArray;
+import com.googlecode.mgwt.dom.client.event.touch.Touch;
+import com.googlecode.mgwt.dom.client.recognizer.LongTapEvent;
 import com.googlecode.mgwt.dom.client.recognizer.LongTapRecognizer;
+import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor;
+import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor.CodeToRun;
 
 public class TestLongTapRecognizer {
 
 	private MockHasHandlers handlers;
+	private LongTapRecognizer longTapRecognizer;
 
 	@Before
 	public void before() {
 		handlers = new MockHasHandlers();
+		longTapRecognizer = new LongTapRecognizer(handlers);
+		longTapRecognizer.setEventPropagator(new EventPropagatorForTests());
 	}
 
 	@Test
@@ -82,18 +92,109 @@ public class TestLongTapRecognizer {
 		new LongTapRecognizer(handlers);
 	}
 
+	private CodeToRun codeToRun;
+
 	@Test
-	public void testOnTouchMove() {
+	public void testSimpleLongTouch() {
+
+		longTapRecognizer.setTimerExecutor(new TimerExecutor() {
+
+			@Override
+			public void execute(CodeToRun codeToRun, int time) {
+				TestLongTapRecognizer.this.codeToRun = codeToRun;
+
+			}
+		});
+
+		longTapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2, 3));
+
+		//simulate wait...
+		codeToRun.onExecution();
+
+		GwtEvent<?> event = handlers.getEvent();
+
+		if (!(event instanceof LongTapEvent)) {
+			Assert.fail("no longtap recognized");
+		}
+		LongTapEvent tapEvent = (LongTapEvent) event;
+
+		Assert.assertEquals(2, tapEvent.getStartPositions().get(0).getPageX());
+		Assert.assertEquals(3, tapEvent.getStartPositions().get(0).getPageY());
+
+		Assert.assertSame(handlers, tapEvent.getSource());
 
 	}
 
 	@Test
-	public void testOnTouchEnd() {
+	public void testSimpleLongTouchWithTwoFingers() {
+
+		LongTapRecognizer longTapRecognizer2 = new LongTapRecognizer(handlers, 2);
+		longTapRecognizer2.setEventPropagator(new EventPropagatorForTests());
+
+		longTapRecognizer2.setTimerExecutor(new TimerExecutor() {
+
+			@Override
+			public void execute(CodeToRun codeToRun, int time) {
+				TestLongTapRecognizer.this.codeToRun = codeToRun;
+
+			}
+		});
+
+		longTapRecognizer2.onTouchStart(new MockTouchStartEvent(1, 2, 3));
+		longTapRecognizer2.onTouchStart(new MockTouchStartEvent(2, 4, 5) {
+			@Override
+			public LightArray<Touch> getTouches() {
+				JavaLightArray<Touch> array = new JavaLightArray<Touch>();
+
+				array.push(new MockTouch(1, 2, 3));
+				array.push(new MockTouch(2, 4, 5));
+
+				return array;
+			}
+		});
+
+		//simulate wait...
+		codeToRun.onExecution();
+
+		GwtEvent<?> event = handlers.getEvent();
+
+		if (!(event instanceof LongTapEvent)) {
+			Assert.fail("no longtap recognized");
+		}
+		LongTapEvent tapEvent = (LongTapEvent) event;
+
+		Assert.assertEquals(2, tapEvent.getStartPositions().get(0).getPageX());
+		Assert.assertEquals(3, tapEvent.getStartPositions().get(0).getPageY());
+
+		Assert.assertEquals(4, tapEvent.getStartPositions().get(1).getPageX());
+		Assert.assertEquals(5, tapEvent.getStartPositions().get(1).getPageY());
+
+		Assert.assertSame(handlers, tapEvent.getSource());
 
 	}
 
 	@Test
-	public void testOnTouchCanceled() {
+	public void testSimpleLongTouchWithBigMoveNotFiring() {
+
+		longTapRecognizer.setTimerExecutor(new TimerExecutor() {
+
+			@Override
+			public void execute(CodeToRun codeToRun, int time) {
+				TestLongTapRecognizer.this.codeToRun = codeToRun;
+
+			}
+		});
+
+		longTapRecognizer.onTouchStart(new MockTouchStartEvent(1, 2, 3));
+
+		longTapRecognizer.onTouchMove(new MockTouchMoveEvent(1, 20, 50));
+
+		//simulate wait...
+		codeToRun.onExecution();
+
+		GwtEvent<?> event = handlers.getEvent();
+
+		Assert.assertNull(event);
 
 	}
 

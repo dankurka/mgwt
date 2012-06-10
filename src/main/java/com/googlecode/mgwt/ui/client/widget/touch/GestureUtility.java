@@ -15,26 +15,35 @@
  */
 package com.googlecode.mgwt.ui.client.widget.touch;
 
-import com.google.gwt.event.shared.HasHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
+import com.googlecode.mgwt.dom.client.recognizer.LongTapRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.TapRecognizer;
 
 public class GestureUtility {
 	private TapRecognizer tapRecognizer;
-	private final HasHandlers source;
+	private final HasTouchHandlers source;
+	private LongTapRecognizer longTapRecognizer;
 
-	public GestureUtility(HasHandlers source) {
+	public GestureUtility(HasTouchHandlers source) {
+		assert source != null;
 		this.source = source;
-
 	}
 
 	public void ensureTapRecognizer() {
 		if (tapRecognizer != null)
 			return;
-		if (!(source instanceof HasTouchHandlers)) {
-			throw new IllegalStateException("trying to add a touchhandler to a widget without touchsupport");
-		}
+
 		tapRecognizer = new TapRecognizer(source);
-		((HasTouchHandlers) source).addTouchHandler(tapRecognizer);
+		source.addTouchHandler(tapRecognizer);
+	}
+
+	public void ensureLongTapRecognizer() {
+		if (longTapRecognizer != null) {
+			return;
+		}
+
+		longTapRecognizer = new LongTapRecognizer(source);
+		source.addTouchHandler(longTapRecognizer);
+
 	}
 }
