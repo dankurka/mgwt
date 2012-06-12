@@ -2,7 +2,7 @@
 @url androidCheckChecked android_check_checked;
 @url androidCheckNotChecked android_check_not_checked;
 @if mgwt.css pretty {
-	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, mgwt-InputBox-box, mgwt-RadioButton, mgwt-InputBox-disabled;
+	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, mgwt-InputBox-box, mgwt-RadioButton, mgwt-InputBox-disabled, mgwt-ListBox;
 }
 
 .mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox .mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
@@ -101,10 +101,25 @@
 	border: 0;
 	font: normal 17px Helvetica;
 	padding: 0;
-	display: inline-block;
 	margin-left: 0px;
 	width: 100%;
 	height: 100%;
-	\-webkit-appearance: none;
-	\-webkit-user-select: text;
+	
+}
+
+
+@if user.agent safari {
+	.mgwt-ListBox {
+		display: -webkit-box;
+		\-webkit-appearance: none;
+		\-webkit-user-select: text;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-ListBox {
+		display: -moz-box;
+		\-moz-appearance: none;
+		\-moz-user-select: text;
+	}
 }
