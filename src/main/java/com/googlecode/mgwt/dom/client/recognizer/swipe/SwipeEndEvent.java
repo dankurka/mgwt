@@ -19,11 +19,11 @@ import com.google.gwt.event.shared.GwtEvent;
 
 public class SwipeEndEvent extends SwipeEvent<SwipeEndHandler> {
 
-	private final GwtEvent.Type<SwipeEndHandler> TYPE = new Type<SwipeEndHandler>();
+	private final static GwtEvent.Type<SwipeEndHandler> TYPE = new Type<SwipeEndHandler>();
 	private final boolean distanceReached;
 	private final int distance;
 
-	public GwtEvent.Type<SwipeEndHandler> getTYPE() {
+	public static GwtEvent.Type<SwipeEndHandler> getType() {
 		return TYPE;
 	}
 

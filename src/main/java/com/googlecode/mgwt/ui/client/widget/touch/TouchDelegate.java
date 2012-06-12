@@ -29,6 +29,12 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
 
 /**
  * A TouchDelegate can be used to source touch events from a widget that does
@@ -118,6 +124,21 @@ public class TouchDelegate implements HasTouchHandlers, HasTapHandlers {
 	public void fireEvent(GwtEvent<?> event) {
 		w.fireEvent(event);
 
+	}
+
+	public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return w.addHandler(handler, SwipeStartEvent.getType());
+	}
+
+	public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return w.addHandler(handler, SwipeMoveEvent.getType());
+	}
+
+	public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return w.addHandler(handler, SwipeEndEvent.getType());
 	}
 
 }

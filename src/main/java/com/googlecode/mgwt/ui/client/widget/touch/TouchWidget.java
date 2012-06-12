@@ -28,6 +28,13 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.HasSwipeHandlers;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
 
 /**
  * Base class for all widgets that support touch events Childclasses are
@@ -36,7 +43,7 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
  * @author Daniel Kurka
  */
 
-public abstract class TouchWidget extends Widget implements HasTouchHandlers, HasTapHandlers {
+public abstract class TouchWidget extends Widget implements HasTouchHandlers, HasTapHandlers, HasSwipeHandlers {
 
 	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
 
@@ -125,6 +132,21 @@ public abstract class TouchWidget extends Widget implements HasTouchHandlers, Ha
 	public HandlerRegistration addTapHandler(TapHandler handler) {
 		gestureUtility.ensureTapRecognizer();
 		return addHandler(handler, TapEvent.getType());
+	}
+
+	public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return addHandler(handler, SwipeStartEvent.getType());
+	}
+
+	public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return addHandler(handler, SwipeMoveEvent.getType());
+	}
+
+	public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return addHandler(handler, SwipeEndEvent.getType());
 	}
 
 }

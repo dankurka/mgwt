@@ -18,11 +18,13 @@ package com.googlecode.mgwt.ui.client.widget.touch;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.recognizer.LongTapRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.TapRecognizer;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeRecognizer;
 
 public class GestureUtility {
 	private TapRecognizer tapRecognizer;
 	private final HasTouchHandlers source;
 	private LongTapRecognizer longTapRecognizer;
+	private SwipeRecognizer swipeRecognizer;
 
 	public GestureUtility(HasTouchHandlers source) {
 		assert source != null;
@@ -44,6 +46,16 @@ public class GestureUtility {
 
 		longTapRecognizer = new LongTapRecognizer(source);
 		source.addTouchHandler(longTapRecognizer);
+
+	}
+	
+	public void ensureSwipeRecognizer() {
+		if (swipeRecognizer != null) {
+			return;
+		}
+
+		swipeRecognizer = new SwipeRecognizer(source);
+		source.addTouchHandler(swipeRecognizer);
 
 	}
 }

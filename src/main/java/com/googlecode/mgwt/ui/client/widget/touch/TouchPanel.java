@@ -29,6 +29,12 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartEvent;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
 
 /**
  * A simple panel that supports {@link TouchEvent}
@@ -115,6 +121,21 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	public HandlerRegistration addTapHandler(TapHandler handler) {
 		gestureUtility.ensureTapRecognizer();
 		return addHandler(handler, TapEvent.getType());
+	}
+
+	public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return addHandler(handler, SwipeStartEvent.getType());
+	}
+
+	public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return addHandler(handler, SwipeMoveEvent.getType());
+	}
+
+	public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
+		gestureUtility.ensureSwipeRecognizer();
+		return addHandler(handler, SwipeEndEvent.getType());
 	}
 
 }
