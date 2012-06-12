@@ -29,7 +29,7 @@ import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 /**
  * Considered internal
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
@@ -46,23 +46,34 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	protected final AnimationCss css;
 
 	/**
-	 * <p>Constructor for AnimatableDisplayBaseImpl.</p>
+	 * <p>
+	 * Constructor for AnimatableDisplayBaseImpl.
+	 * </p>
 	 */
 	public AnimatableDisplayBaseImpl() {
 		this(AnimationSelector.getBundle().animationCss());
 	}
 
 	/**
-	 * <p>Constructor for AnimatableDisplayBaseImpl.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.mvp.client.resources.AnimationCss} object.
+	 * <p>
+	 * Constructor for AnimatableDisplayBaseImpl.
+	 * </p>
+	 * 
+	 * @param css a
+	 *            {@link com.googlecode.mgwt.mvp.client.resources.AnimationCss}
+	 *            object.
 	 */
 	public AnimatableDisplayBaseImpl(AnimationCss css) {
 
 		this.css = css;
 		css.ensureInjected();
 
-		main = new FlowPanel();
+		main = new FlowPanel() {
+			protected void onDetach() {
+				super.onDetach();
+
+			};
+		};
 
 		main.setStylePrimaryName(this.css.display());
 
@@ -99,7 +110,9 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	}
 
 	/**
-	 * <p>removeAllStyles</p>
+	 * <p>
+	 * removeAllStyles
+	 * </p>
 	 */
 	protected void removeAllStyles() {
 
@@ -130,7 +143,9 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	}
 
 	/**
-	 * <p>onAnimationEnd</p>
+	 * <p>
+	 * onAnimationEnd
+	 * </p>
 	 */
 	protected abstract void onAnimationEnd();
 
@@ -142,7 +157,9 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	protected AnimationEndCallback lastCallback;
 
 	/**
-	 * <p>blurBeforeAnimation</p>
+	 * <p>
+	 * blurBeforeAnimation
+	 * </p>
 	 */
 	protected native void blurBeforeAnimation() /*-{
 		var node = $doc.querySelector(":focus");
@@ -163,5 +180,7 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 	public Widget asWidget() {
 		return main;
 	}
+
+	abstract protected void onDeattach();
 
 }

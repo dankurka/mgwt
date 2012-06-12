@@ -70,7 +70,12 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 		this.css = css;
 		css.ensureInjected();
 
-		main = new FlowPanel();
+		main = new FlowPanel() {
+			protected void onDetach() {
+				super.onDetach();
+				AnimatableDisplayTransistionImpl.this.onDetach();
+			};
+		};
 
 		main.setStylePrimaryName(this.css.display());
 
@@ -85,6 +90,13 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 		main.add(first);
 
 		main.add(second);
+
+	}
+
+	protected void onDetach() {
+		if (animationRunning) {
+			onAnimationEnd();
+		}
 
 	}
 
@@ -154,6 +166,8 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 
 	protected AnimationEndCallback lastCallback;
 
+	private boolean animationRunning;
+
 	/**
 	 * <p>
 	 * blurBeforeAnimation
@@ -195,6 +209,8 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 			onAnimationEnd();
 			return;
 		}
+
+		animationRunning = true;
 
 		String type = animation.getCssName();
 
@@ -251,6 +267,7 @@ public class AnimatableDisplayTransistionImpl implements AnimatableDisplay {
 	 * </p>
 	 */
 	protected void onAnimationEnd() {
+		animationRunning = false;
 		if (showFirst) {
 
 			second.getElement().getStyle().setDisplay(Display.NONE);

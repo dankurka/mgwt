@@ -22,13 +22,17 @@ import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 
 /**
  * Considered internal
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
 public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
+	private boolean animationRunning;
+
 	/**
-	 * <p>Constructor for AnimatableDisplayIpadImpl.</p>
+	 * <p>
+	 * Constructor for AnimatableDisplayIpadImpl.
+	 * </p>
 	 */
 	public AnimatableDisplayIpadImpl() {
 		main.add(first);
@@ -39,6 +43,7 @@ public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 	/** {@inheritDoc} */
 	@Override
 	protected void onAnimationEnd() {
+		animationRunning = false;
 
 		if (showFirst) {
 
@@ -95,6 +100,8 @@ public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 			return;
 		}
 
+		animationRunning = true;
+
 		String type = animation.getCssName();
 
 		if (animationEnd != null) {
@@ -138,6 +145,14 @@ public class AnimatableDisplayIpadImpl extends AnimatableDisplayBaseImpl {
 
 		first.getElement().getStyle().setDisplay(Display.BLOCK);
 		second.getElement().getStyle().setDisplay(Display.BLOCK);
+
+	}
+
+	@Override
+	protected void onDeattach() {
+		if (animationRunning) {
+			onAnimationEnd();
+		}
 
 	}
 }
