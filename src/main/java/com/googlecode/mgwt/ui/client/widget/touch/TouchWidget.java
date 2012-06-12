@@ -28,6 +28,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.dom.client.recognizer.pinch.HasPinchHandlers;
+import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchEvent;
+import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchHandler;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.HasSwipeHandlers;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndEvent;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndHandler;
@@ -43,7 +46,7 @@ import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
  * @author Daniel Kurka
  */
 
-public abstract class TouchWidget extends Widget implements HasTouchHandlers, HasTapHandlers, HasSwipeHandlers {
+public abstract class TouchWidget extends Widget implements HasTouchHandlers, HasTapHandlers, HasSwipeHandlers, HasPinchHandlers {
 
 	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
 
@@ -134,19 +137,28 @@ public abstract class TouchWidget extends Widget implements HasTouchHandlers, Ha
 		return addHandler(handler, TapEvent.getType());
 	}
 
+	@Override
 	public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return addHandler(handler, SwipeStartEvent.getType());
 	}
 
+	@Override
 	public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return addHandler(handler, SwipeMoveEvent.getType());
 	}
 
+	@Override
 	public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return addHandler(handler, SwipeEndEvent.getType());
+	}
+
+	@Override
+	public HandlerRegistration addPinchHandler(PinchHandler handler) {
+		gestureUtility.ensurePinchRecognizer(this);
+		return addHandler(handler, PinchEvent.getType());
 	}
 
 }

@@ -15,9 +15,12 @@
  */
 package com.googlecode.mgwt.ui.client.widget.touch;
 
+import com.google.gwt.user.client.ui.UIObject;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.recognizer.LongTapRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.TapRecognizer;
+import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchRecognizer;
+import com.googlecode.mgwt.dom.client.recognizer.pinch.UIObjectToOffsetProvider;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeRecognizer;
 
 public class GestureUtility {
@@ -25,6 +28,7 @@ public class GestureUtility {
 	private final HasTouchHandlers source;
 	private LongTapRecognizer longTapRecognizer;
 	private SwipeRecognizer swipeRecognizer;
+	private PinchRecognizer pinchRecognizer;
 
 	public GestureUtility(HasTouchHandlers source) {
 		assert source != null;
@@ -48,7 +52,7 @@ public class GestureUtility {
 		source.addTouchHandler(longTapRecognizer);
 
 	}
-	
+
 	public void ensureSwipeRecognizer() {
 		if (swipeRecognizer != null) {
 			return;
@@ -56,6 +60,16 @@ public class GestureUtility {
 
 		swipeRecognizer = new SwipeRecognizer(source);
 		source.addTouchHandler(swipeRecognizer);
+
+	}
+
+	public void ensurePinchRecognizer(UIObject object) {
+		if (pinchRecognizer != null) {
+			return;
+		}
+
+		pinchRecognizer = new PinchRecognizer(source, new UIObjectToOffsetProvider(object));
+		source.addTouchHandler(pinchRecognizer);
 
 	}
 }

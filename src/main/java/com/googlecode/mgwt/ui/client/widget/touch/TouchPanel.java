@@ -29,6 +29,10 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.dom.client.recognizer.pinch.HasPinchHandlers;
+import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchEvent;
+import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchHandler;
+import com.googlecode.mgwt.dom.client.recognizer.swipe.HasSwipeHandlers;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndEvent;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndHandler;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveEvent;
@@ -43,7 +47,7 @@ import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
  * 
  */
 
-public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHandlers {
+public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHandlers, HasPinchHandlers, HasSwipeHandlers {
 
 	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
 
@@ -136,6 +140,12 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return addHandler(handler, SwipeEndEvent.getType());
+	}
+
+	@Override
+	public HandlerRegistration addPinchHandler(PinchHandler handler) {
+		gestureUtility.ensurePinchRecognizer(this);
+		return addHandler(handler, PinchEvent.getType());
 	}
 
 }
