@@ -15,17 +15,34 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 
 /**
  * An input element that can handle passwords
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
 public class MPasswordTextBox extends MTextBox {
+
+	private static class SPasswordTextBox extends PasswordTextBox implements HasSource {
+		private Object source;
+
+		@Override
+		public void setSource(Object source) {
+			this.source = source;
+
+		}
+
+		@Override
+		protected HandlerManager createHandlerManager() {
+			return new HandlerManager(source);
+		}
+
+	}
 
 	/**
 	 * Construct a password text box
@@ -36,11 +53,12 @@ public class MPasswordTextBox extends MTextBox {
 
 	/**
 	 * Construct a password text box with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MPasswordTextBox(InputCss css) {
-		super(css, new PasswordTextBox());
+		super(css, new SPasswordTextBox());
+		setup(this);
 		addStyleName(css.passwordBox());
 	}
 }

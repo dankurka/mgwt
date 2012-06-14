@@ -16,6 +16,7 @@
 package com.googlecode.mgwt.ui.client.widget;
 
 import com.google.gwt.dom.client.InputElement;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.TextBox;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
@@ -28,6 +29,22 @@ import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
  * @version $Id: $
  */
 public class MTextBox extends MTextBoxBase {
+
+	private static class STextBox extends TextBox implements HasSource {
+		private Object source;
+
+		@Override
+		public void setSource(Object source) {
+			this.source = source;
+
+		}
+
+		@Override
+		protected HandlerManager createHandlerManager() {
+			return new HandlerManager(source);
+		}
+
+	}
 
 	/**
 	 * Construct a text box
@@ -43,7 +60,7 @@ public class MTextBox extends MTextBoxBase {
 	 * @param css the css to use
 	 */
 	public MTextBox(InputCss css) {
-		this(css, new TextBox());
+		this(css, new STextBox());
 
 	}
 
@@ -56,6 +73,7 @@ public class MTextBox extends MTextBoxBase {
 	 */
 	public MTextBox(InputCss css, TextBox textBox) {
 		super(css, textBox);
+		setup(this);
 		addStyleName(css.textBox());
 	}
 

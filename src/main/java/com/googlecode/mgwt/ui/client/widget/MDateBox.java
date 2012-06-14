@@ -9,6 +9,7 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.text.shared.Parser;
 import com.google.gwt.text.shared.Renderer;
@@ -20,21 +21,24 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
 /**
- * A simple Date input widget. So far it uses &lt;input type="date" /> on iOS with a nice looking native date picker.
+ * A simple Date input widget. So far it uses &lt;input type="date" /> on iOS
+ * with a nice looking native date picker.
  * 
- * On other platforms it displays the pattern to use for date input (no picker so far).
+ * On other platforms it displays the pattern to use for date input (no picker
+ * so far).
  * 
  * <h2>Date format</h2>
  * 
- * For iOS there is no need to set a dateformat, since the iOS will automatically display the date formated according to the locale of the device, while
- * we get the date in the W3C Format. 
+ * For iOS there is no need to set a dateformat, since the iOS will
+ * automatically display the date formated according to the locale of the
+ * device, while we get the date in the W3C Format.
  * 
  * On other platforms you can set the format to fit what you like.
  * 
  * 
  * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class MDateBox extends MValueBoxBase<Date> {
 
@@ -43,27 +47,37 @@ public class MDateBox extends MValueBoxBase<Date> {
 
 	/**
 	 * Using ValueBoxBase as a base class for our input element.
+	 * 
 	 * @author Daniel Kurka
-	 *
+	 * 
 	 */
-	public static class DateValueBoxBase extends ValueBoxBase<Date> {
+	public static class DateValueBoxBase extends ValueBoxBase<Date> implements HasSource {
 
 		private final DateRenderer dateRenderer;
 		private final DateParser dateParser;
+		private Object source;
 
 		protected DateValueBoxBase(DateRenderer dateRenderer, DateParser dateParser) {
 			super(DOM.createInputText(), dateRenderer, dateParser);
 			this.dateRenderer = dateRenderer;
 			this.dateParser = dateParser;
-
 		}
-		
+
 		public DateParser getDateParser() {
 			return dateParser;
 		}
-		
+
 		public DateRenderer getDateRenderer() {
 			return dateRenderer;
+		}
+
+		@Override
+		protected HandlerManager createHandlerManager() {
+			return new HandlerManager(source);
+		}
+
+		public void setSource(Object source) {
+			this.source = source;
 		}
 
 	}
@@ -71,7 +85,7 @@ public class MDateBox extends MValueBoxBase<Date> {
 	public static class DateRenderer implements Renderer<Date> {
 
 		private DateTimeFormat format;
-		
+
 		public DateRenderer() {
 			setFormat(DEFAULT_FORMAT);
 		}
@@ -97,7 +111,7 @@ public class MDateBox extends MValueBoxBase<Date> {
 		public DateParser() {
 			setFormat(DEFAULT_FORMAT);
 		}
-		
+
 		private DateTimeFormat format;
 
 		public void setFormat(DateTimeFormat format) {
@@ -108,12 +122,11 @@ public class MDateBox extends MValueBoxBase<Date> {
 		public Date parse(CharSequence text) throws ParseException {
 
 			String string = text.toString();
-			try{
+			try {
 				return format.parse(string);
-			}catch (Exception e) {
+			} catch (Exception e) {
 				return null;
 			}
-			
 
 		}
 
@@ -128,17 +141,15 @@ public class MDateBox extends MValueBoxBase<Date> {
 	public MDateBox() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
 	}
-	
 
 	/**
 	 * Construct a datebox using a customg css.
+	 * 
 	 * @param css
 	 */
 	public MDateBox(InputCss css) {
 		super(css, new DateValueBoxBase(new DateRenderer(), new DateParser()));
-
-		
-		
+		setup(this);
 		format = DEFAULT_FORMAT;
 		setPlaceHolder(DEFAULT_FORMAT.getPattern());
 
@@ -152,7 +163,7 @@ public class MDateBox extends MValueBoxBase<Date> {
 			//use w3c format
 			format = W3C_FORMAT;
 		}
-		
+
 		//apply format to parsers
 		getBox().getDateParser().setFormat(format);
 		getBox().getDateRenderer().setFormat(format);
@@ -179,12 +190,13 @@ public class MDateBox extends MValueBoxBase<Date> {
 		}
 
 	}
-	
+
 	/**
-	 * set the format to use in the datebox.
-	 * Important: This should only be set on non iOS devices, since iOS handles locale on dates under the cover.
+	 * set the format to use in the datebox. Important: This should only be set
+	 * on non iOS devices, since iOS handles locale on dates under the cover.
 	 * 
 	 * See: {@link MDateBox}
+	 * 
 	 * @param pattern
 	 */
 	public void setFormat(String pattern) {
@@ -195,10 +207,9 @@ public class MDateBox extends MValueBoxBase<Date> {
 		}
 
 	}
-	
-	protected DateValueBoxBase getBox(){
+
+	protected DateValueBoxBase getBox() {
 		return (DateValueBoxBase) box;
 	}
-
 
 }

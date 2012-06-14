@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.LongBox;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
@@ -22,11 +23,27 @@ import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
 /**
  * An input element that handles longs
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
 public class MLongBox extends MValueBoxBase<Long> {
+
+	private static class SLongBox extends LongBox implements HasSource {
+		private Object source;
+
+		@Override
+		public void setSource(Object source) {
+			this.source = source;
+
+		}
+
+		@Override
+		protected HandlerManager createHandlerManager() {
+			return new HandlerManager(source);
+		}
+
+	}
 
 	/**
 	 * Construct a long box
@@ -37,11 +54,12 @@ public class MLongBox extends MValueBoxBase<Long> {
 
 	/**
 	 * Construct a long box with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MLongBox(InputCss css) {
-		super(css, new LongBox());
+		super(css, new SLongBox());
+		setup(this);
 		impl.setType(box.getElement(), "number");
 		addStyleName(css.textBox());
 	}

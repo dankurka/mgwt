@@ -16,6 +16,7 @@
 package com.googlecode.mgwt.ui.client.widget;
 
 import com.google.gwt.dom.client.TextAreaElement;
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.TextArea;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
@@ -23,11 +24,27 @@ import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
 
 /**
  * A simple text area
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
 public class MTextArea extends MTextBoxBase {
+
+	private static class STextArea extends TextArea implements HasSource {
+		private Object source;
+
+		@Override
+		public void setSource(Object source) {
+			this.source = source;
+
+		}
+
+		@Override
+		protected HandlerManager createHandlerManager() {
+			return new HandlerManager(source);
+		}
+
+	}
 
 	/**
 	 * Construct a text area
@@ -38,17 +55,18 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * Construct a text area with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MTextArea(InputCss css) {
-		super(css, new TextArea());
+		super(css, new STextArea());
+		setup(this);
 		addStyleName(css.textArea());
 	}
 
 	/**
 	 * get the number of character per line
-	 *
+	 * 
 	 * @return the number of characters per line
 	 */
 	public int getCharacterWidth() {
@@ -57,7 +75,7 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * get the number of visible lines
-	 *
+	 * 
 	 * @return the number of visible lines
 	 */
 	public int getVisibleLines() {
@@ -66,7 +84,7 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * set the number of characters per line
-	 *
+	 * 
 	 * @param width the number of characters per line
 	 */
 	public void setCharacterWidth(int width) {
@@ -75,7 +93,7 @@ public class MTextArea extends MTextBoxBase {
 
 	/**
 	 * Set the number of visible lines
-	 *
+	 * 
 	 * @param lines the number of visible lines
 	 */
 	public void setVisibleLines(int lines) {

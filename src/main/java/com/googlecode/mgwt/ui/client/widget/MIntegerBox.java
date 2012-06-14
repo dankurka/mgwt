@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
@@ -22,11 +23,28 @@ import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
 /**
  * An input element that handles integers
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
 public class MIntegerBox extends MValueBoxBase<Integer> {
+
+	public static class SIntegerBox extends IntegerBox implements HasSource {
+
+		private Object source;
+
+		@Override
+		protected HandlerManager createHandlerManager() {
+			return new HandlerManager(source);
+		}
+
+		@Override
+		public void setSource(Object source) {
+			this.source = source;
+
+		}
+
+	}
 
 	/**
 	 * Construct an integer box
@@ -37,11 +55,12 @@ public class MIntegerBox extends MValueBoxBase<Integer> {
 
 	/**
 	 * Construct an integer box with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MIntegerBox(InputCss css) {
-		super(css, new IntegerBox());
+		super(css, new SIntegerBox());
+		setup(this);
 		impl.setType(box.getElement(), "number");
 		addStyleName(css.textBox());
 

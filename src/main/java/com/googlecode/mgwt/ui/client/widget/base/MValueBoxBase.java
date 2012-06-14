@@ -78,11 +78,14 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator,
 		HasValue<T>, AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers, HasFocusHandlers {
 
-	
+	public interface HasSource {
+		public void setSource(Object source);
+	}
+
 	public interface MValueBoxBaseImpl {
 		public void setType(com.google.gwt.user.client.Element element, String type);
 	}
-	
+
 	public static class MValueBoxBaseDefaultImpl implements MValueBoxBaseImpl {
 
 		@Override
@@ -91,7 +94,7 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 
 		}
 	}
-	
+
 	public static class MValueBoxBaseIE9Impl implements MValueBoxBaseImpl {
 
 		@Override
@@ -100,10 +103,8 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 
 		}
 	}
-	
+
 	protected static final MValueBoxBaseImpl impl = GWT.create(MValueBoxBaseImpl.class);
-	
-	
 
 	private TouchPanel main;
 	protected final ValueBoxBase<T> box;
@@ -118,6 +119,9 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 	 * @param box a {@link com.google.gwt.user.client.ui.ValueBoxBase} object.
 	 */
 	public MValueBoxBase(InputCss css, final ValueBoxBase<T> box) {
+		if (!(box instanceof HasSource)) {
+			throw new IllegalStateException("box must implement HasSource..");
+		}
 		this.box = box;
 
 		box.addStyleName(css.box());
@@ -128,6 +132,10 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 
 		main.add(box);
 
+	}
+
+	protected void setup(Object source) {
+		((HasSource) box).setSource(source);
 		box.addBlurHandler(new BlurHandler() {
 
 			@Override

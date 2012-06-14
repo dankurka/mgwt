@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.user.client.ui.DoubleBox;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.InputCss;
@@ -22,11 +23,25 @@ import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
 /**
  * A input box that accepts doubles
- *
+ * 
  * @author Daniel Kurka
  * @version $Id: $
  */
 public class MDoubleBox extends MValueBoxBase<Double> {
+
+	private static class SDoubleBox extends DoubleBox implements HasSource {
+
+		private Object source;
+
+		@Override
+		protected HandlerManager createHandlerManager() {
+			return new HandlerManager(source);
+		}
+
+		public void setSource(Object source) {
+			this.source = source;
+		}
+	}
 
 	/**
 	 * Construct a double box
@@ -37,11 +52,12 @@ public class MDoubleBox extends MValueBoxBase<Double> {
 
 	/**
 	 * Construct a double box with a given css
-	 *
+	 * 
 	 * @param css the css to use
 	 */
 	public MDoubleBox(InputCss css) {
-		super(css, new DoubleBox());
+		super(css, new SDoubleBox());
+		setup(this);
 		impl.setType(box.getElement(), "number");
 		addStyleName(css.textBox());
 	}
