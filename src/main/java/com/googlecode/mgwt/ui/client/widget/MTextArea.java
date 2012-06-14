@@ -60,7 +60,6 @@ public class MTextArea extends MTextBoxBase {
 	 */
 	public MTextArea(InputCss css) {
 		super(css, new STextArea());
-		setup(this);
 		addStyleName(css.textArea());
 	}
 

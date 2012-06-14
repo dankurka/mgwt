@@ -59,7 +59,6 @@ public class MLongBox extends MValueBoxBase<Long> {
 	 */
 	public MLongBox(InputCss css) {
 		super(css, new SLongBox());
-		setup(this);
 		impl.setType(box.getElement(), "number");
 		addStyleName(css.textBox());
 	}

@@ -57,7 +57,6 @@ public class MDoubleBox extends MValueBoxBase<Double> {
 	 */
 	public MDoubleBox(InputCss css) {
 		super(css, new SDoubleBox());
-		setup(this);
 		impl.setType(box.getElement(), "number");
 		addStyleName(css.textBox());
 	}

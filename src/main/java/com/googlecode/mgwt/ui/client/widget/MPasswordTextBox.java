@@ -58,7 +58,6 @@ public class MPasswordTextBox extends MTextBox {
 	 */
 	public MPasswordTextBox(InputCss css) {
 		super(css, new SPasswordTextBox());
-		setup(this);
 		addStyleName(css.passwordBox());
 	}
 }

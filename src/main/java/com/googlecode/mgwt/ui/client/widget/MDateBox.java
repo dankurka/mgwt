@@ -51,7 +51,7 @@ public class MDateBox extends MValueBoxBase<Date> {
 	 * @author Daniel Kurka
 	 * 
 	 */
-	public static class DateValueBoxBase extends ValueBoxBase<Date> implements HasSource {
+	private static class DateValueBoxBase extends ValueBoxBase<Date> implements HasSource {
 
 		private final DateRenderer dateRenderer;
 		private final DateParser dateParser;
@@ -149,7 +149,6 @@ public class MDateBox extends MValueBoxBase<Date> {
 	 */
 	public MDateBox(InputCss css) {
 		super(css, new DateValueBoxBase(new DateRenderer(), new DateParser()));
-		setup(this);
 		format = DEFAULT_FORMAT;
 		setPlaceHolder(DEFAULT_FORMAT.getPattern());
 

@@ -29,7 +29,7 @@ import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
  */
 public class MIntegerBox extends MValueBoxBase<Integer> {
 
-	public static class SIntegerBox extends IntegerBox implements HasSource {
+	private static class SIntegerBox extends IntegerBox implements HasSource {
 
 		private Object source;
 
@@ -60,7 +60,6 @@ public class MIntegerBox extends MValueBoxBase<Integer> {
 	 */
 	public MIntegerBox(InputCss css) {
 		super(css, new SIntegerBox());
-		setup(this);
 		impl.setType(box.getElement(), "number");
 		addStyleName(css.textBox());
 

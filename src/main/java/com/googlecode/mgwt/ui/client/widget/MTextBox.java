@@ -71,9 +71,8 @@ public class MTextBox extends MTextBoxBase {
 	 * @param css the css to use
 	 * @param textBox the text box to use
 	 */
-	public MTextBox(InputCss css, TextBox textBox) {
+	protected MTextBox(InputCss css, TextBox textBox) {
 		super(css, textBox);
-		setup(this);
 		addStyleName(css.textBox());
 	}
 

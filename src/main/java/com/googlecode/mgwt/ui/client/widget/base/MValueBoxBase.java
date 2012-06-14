@@ -132,10 +132,7 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 
 		main.add(box);
 
-	}
-
-	protected void setup(Object source) {
-		((HasSource) box).setSource(source);
+		((HasSource) box).setSource(this);
 		box.addBlurHandler(new BlurHandler() {
 
 			@Override
