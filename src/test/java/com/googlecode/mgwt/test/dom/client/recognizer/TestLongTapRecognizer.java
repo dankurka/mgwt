@@ -20,9 +20,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.shared.HasHandlers;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.collection.shared.java.JavaLightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
+import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor;
 import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor.CodeToRun;
 import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapEvent;
@@ -30,13 +32,36 @@ import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapRecognizer;
 
 public class TestLongTapRecognizer {
 
+	private static class LongTapRecognizerForTest extends LongTapRecognizer {
+
+		public LongTapRecognizerForTest(HasHandlers source) {
+			super(source);
+
+		}
+
+		public LongTapRecognizerForTest(HasHandlers source, int fingers) {
+			super(source, fingers);
+		}
+
+		@Override
+		public void setEventPropagator(EventPropagator eventPropagator) {
+			super.setEventPropagator(eventPropagator);
+		}
+
+		@Override
+		public void setTimerExecutor(TimerExecutor timerExecutor) {
+			super.setTimerExecutor(timerExecutor);
+		}
+
+	}
+
 	private MockHasHandlers handlers;
-	private LongTapRecognizer longTapRecognizer;
+	private LongTapRecognizerForTest longTapRecognizer;
 
 	@Before
 	public void before() {
 		handlers = new MockHasHandlers();
-		longTapRecognizer = new LongTapRecognizer(handlers);
+		longTapRecognizer = new LongTapRecognizerForTest(handlers);
 		longTapRecognizer.setEventPropagator(new EventPropagatorForTests());
 	}
 
@@ -128,7 +153,7 @@ public class TestLongTapRecognizer {
 	@Test
 	public void testSimpleLongTouchWithTwoFingers() {
 
-		LongTapRecognizer longTapRecognizer2 = new LongTapRecognizer(handlers, 2);
+		LongTapRecognizerForTest longTapRecognizer2 = new LongTapRecognizerForTest(handlers, 2);
 		longTapRecognizer2.setEventPropagator(new EventPropagatorForTests());
 
 		longTapRecognizer2.setTimerExecutor(new TimerExecutor() {

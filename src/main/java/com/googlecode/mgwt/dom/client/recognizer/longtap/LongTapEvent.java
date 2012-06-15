@@ -30,6 +30,11 @@ public class LongTapEvent extends GwtEvent<LongTapHandler> {
 
 	private static final Type<LongTapHandler> TYPE = new Type<LongTapHandler>();
 
+	/**
+	 * Returns the type of the event
+	 * 
+	 * @return the type of the event
+	 */
 	public static Type<LongTapHandler> getType() {
 		return TYPE;
 	}
@@ -38,6 +43,14 @@ public class LongTapEvent extends GwtEvent<LongTapHandler> {
 	private final int numberOfFingers;
 	private final int time;
 
+	/**
+	 * Construct a LongTapEvent
+	 * 
+	 * @param source - the source of the event
+	 * @param numberOfFingers the number of fingers used
+	 * @param time the time the fingers where touching
+	 * @param startPositions the start position of each finger
+	 */
 	public LongTapEvent(Object source, int numberOfFingers, int time, LightArray<Touch> startPositions) {
 		this.numberOfFingers = numberOfFingers;
 		this.time = time;
@@ -46,11 +59,19 @@ public class LongTapEvent extends GwtEvent<LongTapHandler> {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
+	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<LongTapHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
+	 */
 	@Override
 	protected void dispatch(LongTapHandler handler) {
 		handler.onLongTap(this);

@@ -60,18 +60,45 @@ public class LongTapRecognizer implements TouchHandler {
 
 	private static EventPropagator DEFAULT_EVENT_PROPAGATOR;
 
+	/**
+	 * Construct a LongTapRecognizer with that fires on one finger after 1.5s
+	 * 
+	 * @param source the source on which to fire events on
+	 */
 	public LongTapRecognizer(HasHandlers source) {
 		this(source, 1);
 	}
 
+	/**
+	 * 
+	 * Construct a LongTapRecognizer with that after 1.5s
+	 * 
+	 * @param source source the source on which to fire events on
+	 * @param numberOfFingers the number of fingers to detect
+	 */
 	public LongTapRecognizer(HasHandlers source, int numberOfFingers) {
 		this(source, numberOfFingers, DEFAULT_WAIT_TIME_IN_MS);
 	}
 
+	/**
+	 * Construct a LongTapRecognizer
+	 * 
+	 * @param source the source on which to fire events on
+	 * @param numberOfFingers the number of fingers that should be detected
+	 * @param time the time the fingers need to touch
+	 */
 	public LongTapRecognizer(HasHandlers source, int numberOfFingers, int time) {
 		this(source, numberOfFingers, time, DEFAULT_MAX_DISTANCE);
 	}
 
+	/**
+	 * Construct a LongTapRecognizer
+	 * 
+	 * @param source the source on which to fire events on
+	 * @param numberOfFingers the number of fingers that should be detected
+	 * @param time the time the fingers need to touch
+	 * @param maxDistance the maximum distance each finger is allowed to move
+	 */
 	public LongTapRecognizer(HasHandlers source, int numberOfFingers, int time, int maxDistance) {
 
 		if (source == null) {
@@ -100,6 +127,10 @@ public class LongTapRecognizer implements TouchHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler#onTouchStart(com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent)
+	 */
 	@Override
 	public void onTouchStart(TouchStartEvent event) {
 
@@ -145,6 +176,10 @@ public class LongTapRecognizer implements TouchHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler#onTouchMove(com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent)
+	 */
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
 		switch (state) {
@@ -178,6 +213,10 @@ public class LongTapRecognizer implements TouchHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler#onTouchEnd(com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent)
+	 */
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
 		int currentTouches = event.getTouches().length();
@@ -207,10 +246,10 @@ public class LongTapRecognizer implements TouchHandler {
 
 	}
 
-	protected void reset() {
-		state = State.READY;
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler#onTouchCanceled(com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent)
+	 */
 	@Override
 	public void onTouchCanceled(TouchCancelEvent event) {
 		state = State.INVALID;
@@ -219,16 +258,35 @@ public class LongTapRecognizer implements TouchHandler {
 			reset();
 	}
 
-	public TimerExecutor getTimerExecutor() {
+	/**
+	 * set the timer executor - used for testing...
+	 * 
+	 * @param timerExecutor the timer executor to use
+	 */
+	protected void setTimerExecutor(TimerExecutor timerExecutor) {
+		this.timerExecutor = timerExecutor;
+	}
+
+	/**
+	 * set the event propagator that is used by the recognizer - used for
+	 * testing
+	 * 
+	 * @param eventPropagator
+	 */
+	protected void setEventPropagator(EventPropagator eventPropagator) {
+		this.eventPropagator = eventPropagator;
+
+	}
+
+	protected TimerExecutor getTimerExecutor() {
 		if (timerExecutor == null) {
 			timerExecutor = new TimerExecturGwtTimerImpl();
 		}
 		return timerExecutor;
 	}
 
-	// for testing
-	public void setTimerExecutor(TimerExecutor timerExecutor) {
-		this.timerExecutor = timerExecutor;
+	protected void reset() {
+		state = State.READY;
 	}
 
 	protected EventPropagator getEventPropagator() {
@@ -239,11 +297,6 @@ public class LongTapRecognizer implements TouchHandler {
 			eventPropagator = DEFAULT_EVENT_PROPAGATOR;
 		}
 		return eventPropagator;
-	}
-
-	public void setEventPropagator(EventPropagator eventPropagator) {
-		this.eventPropagator = eventPropagator;
-
 	}
 
 }
