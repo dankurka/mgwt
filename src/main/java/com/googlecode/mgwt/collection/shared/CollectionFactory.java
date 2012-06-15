@@ -25,7 +25,7 @@ import com.googlecode.mgwt.collection.shared.java.JavaLightMap;
 
 public class CollectionFactory {
 	public static <V> LightMap<V> constructMap() {
-		if (GWT.isClient()) {
+		if (GWT.isProdMode()) {
 			return new JsLightMap<V>();
 		} else {
 			return new JavaLightMap<V>();
@@ -33,17 +33,17 @@ public class CollectionFactory {
 	}
 
 	public static <V> LightArray<V> constructArray() {
-		if (GWT.isClient()) {
+		if (GWT.isProdMode()) {
 			return new JsLightArray<V>();
 		} else {
 			return new JavaLightArray<V>();
 		}
 	}
-	
-	public static LightArrayInt constructIntegerArray(){
-		if(GWT.isClient()){
+
+	public static LightArrayInt constructIntegerArray() {
+		if (GWT.isProdMode()) {
 			return new JsLightArrayInteger();
-		}else{
+		} else {
 			return new JavaLightArrayInt();
 		}
 	}

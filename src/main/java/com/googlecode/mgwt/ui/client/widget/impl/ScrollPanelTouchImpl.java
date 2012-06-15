@@ -1284,6 +1284,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 				int pos = 0;
 				int page = 0;
 				ScrollPanelTouchImpl.this.pagesX = CollectionFactory.constructIntegerArray();
+
 				while (pos >= ScrollPanelTouchImpl.this.maxScrollX) {
 					ScrollPanelTouchImpl.this.pagesX.set(page, pos);
 					pos = pos - ScrollPanelTouchImpl.this.wrapperWidth;
@@ -1308,6 +1309,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 							ScrollPanelTouchImpl.this.pagesY.length(),
 							ScrollPanelTouchImpl.this.maxScrollY - ScrollPanelTouchImpl.this.pagesY.get(ScrollPanelTouchImpl.this.pagesY.length() - 1)
 									+ ScrollPanelTouchImpl.this.pagesY.get(ScrollPanelTouchImpl.this.pagesY.length() - 1));
+
+				ScrollPanelTouchImpl.this.pagesActualX = this.pagesX;
+				ScrollPanelTouchImpl.this.pagesActualY = this.pagesY;
 			}
 		}
 
