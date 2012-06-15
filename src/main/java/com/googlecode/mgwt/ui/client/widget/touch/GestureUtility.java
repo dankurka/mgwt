@@ -17,8 +17,8 @@ package com.googlecode.mgwt.ui.client.widget.touch;
 
 import com.google.gwt.user.client.ui.UIObject;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
-import com.googlecode.mgwt.dom.client.recognizer.LongTapRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.TapRecognizer;
+import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.UIObjectToOffsetProvider;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeRecognizer;

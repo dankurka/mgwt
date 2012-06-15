@@ -13,15 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.dom.client.recognizer;
+package com.googlecode.mgwt.dom.client.recognizer.longtap;
 
-/**
- * A simple interface for making classes testable that depend on
- * System.currentTimeMillis
- * 
- * @author Daniel Kurka
- * 
- */
-public interface TimeProvider {
-	public long getTime();
+import com.google.gwt.event.shared.EventHandler;
+
+public interface LongTapHandler extends EventHandler {
+	public void onLongTap(LongTapEvent event);
 }

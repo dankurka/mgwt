@@ -179,7 +179,7 @@
     </replace-with>
     
     <!-- event propagator -->
-     <replace-with class="com.googlecode.mgwt.dom.client.recognizer.EventPropagatorDesktopImpl">
+     <replace-with class="com.googlecode.mgwt.dom.client.recognizer.EventPropagatorStandardImpl">
         <when-type-is class="com.googlecode.mgwt.dom.client.recognizer.EventPropagator"/>
     </replace-with>
     

@@ -15,6 +15,12 @@
  */
 package com.googlecode.mgwt.dom.client.recognizer;
 
+/**
+ * A simple interface to make classes testable that require timed code execution
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface TimerExecutor {
 
 	public void execute(CodeToRun codeToRun, int time);

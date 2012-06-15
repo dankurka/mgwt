@@ -15,6 +15,12 @@
  */
 package com.googlecode.mgwt.dom.client.recognizer;
 
+/**
+ * A time provider that uses System.currentTimeMillis
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class SystemTimeProvider implements TimeProvider {
 
 	@Override

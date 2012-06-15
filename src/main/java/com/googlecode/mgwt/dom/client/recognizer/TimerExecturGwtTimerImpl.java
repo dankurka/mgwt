@@ -17,6 +17,12 @@ package com.googlecode.mgwt.dom.client.recognizer;
 
 import com.google.gwt.user.client.Timer;
 
+/**
+ * Execute code with a GWT timer
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class TimerExecturGwtTimerImpl implements TimerExecutor {
 
 	private static class InternalTimer extends Timer {

@@ -21,7 +21,7 @@ import org.junit.Test;
 
 import com.google.gwt.event.shared.GwtEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
-import com.googlecode.mgwt.dom.client.recognizer.EventPropagatorDesktopImpl;
+import com.googlecode.mgwt.dom.client.recognizer.EventPropagatorStandardImpl;
 import com.googlecode.mgwt.dom.client.recognizer.TapRecognizer;
 
 public class TapRecognizerTest {
@@ -34,7 +34,7 @@ public class TapRecognizerTest {
 		mockHasHandlers = new MockHasHandlers();
 		tapRecognizer = new TapRecognizer(mockHasHandlers, distance) {
 			protected com.googlecode.mgwt.dom.client.recognizer.EventPropagator getEventPropagator() {
-				return new EventPropagatorDesktopImpl();
+				return new EventPropagatorStandardImpl();
 
 			}
 		};

@@ -23,10 +23,10 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.collection.shared.java.JavaLightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.recognizer.LongTapEvent;
-import com.googlecode.mgwt.dom.client.recognizer.LongTapRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor;
 import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor.CodeToRun;
+import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapEvent;
+import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapRecognizer;
 
 public class TestLongTapRecognizer {
 

@@ -18,6 +18,18 @@ package com.googlecode.mgwt.dom.client.recognizer;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HasHandlers;
 
+/**
+ * Propagate events
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface EventPropagator {
+	/**
+	 * fire the given event on the given source
+	 * 
+	 * @param source the source to fire the event on
+	 * @param event the event to fire
+	 */
 	public void fireEvent(HasHandlers source, GwtEvent<?> event);
 }

@@ -23,9 +23,9 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.googlecode.mgwt.collection.shared.CollectionFactory;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.recognizer.MultiTapEvent;
-import com.googlecode.mgwt.dom.client.recognizer.MultiTapRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.TimeProvider;
+import com.googlecode.mgwt.dom.client.recognizer.tap.MultiTapEvent;
+import com.googlecode.mgwt.dom.client.recognizer.tap.MultiTapRecognizer;
 
 public class TestMutliTapRecognizer {
 

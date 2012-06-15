@@ -25,6 +25,14 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 
+/**
+ * A recognizer that recognizes Tap events
+ * 
+ * A Tap is the mobile equivalent of a click
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class TapRecognizer implements TouchHandler {
 
 	public static final int DEFAULT_DISTANCE = 15;
