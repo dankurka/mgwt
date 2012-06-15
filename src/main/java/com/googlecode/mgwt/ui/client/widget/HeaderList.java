@@ -45,6 +45,19 @@ import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
+/**
+ * This widget uses a {@link GroupingCellList} to render children withing
+ * groups. On top of that it provides a fast selection through a bar on the
+ * right by displaying symbols for group names.
+ * 
+ * It also animates a header group so that the user can always see which group
+ * he is currently scrolling in.
+ * 
+ * @author Daniel Kurka
+ * 
+ * @param <G> type of the group
+ * @param <T> type of the children
+ */
 public class HeaderList<G, T> extends Composite {
 
 	private static class SelectionBar<G, T> extends TouchWidget implements TouchHandler, HasSelectionHandlers<Integer> {
@@ -167,10 +180,31 @@ public class HeaderList<G, T> extends Composite {
 	private int currentPage;
 	private final GroupingCellList<G, T> cellList;
 
+	private boolean needReset = false;
+
+	private int lastPage = -1;
+	private SelectionBar<G, T> selectionBar;
+	private List<CellGroup<G, T>> list;
+
+	private boolean headerVisible = true;
+
+	/**
+	 * Construct a HeaderList
+	 * 
+	 * @param cellList the cell list that renders its children inside this
+	 *            widget.
+	 */
 	public HeaderList(GroupingCellList<G, T> cellList) {
 		this(cellList, MGWTStyle.getTheme().getMGWTClientBundle().getGroupingList());
 	}
 
+	/**
+	 * Construct a cell list with a given cell list and css
+	 * 
+	 * @param cellList the cell list that renders its children inside this
+	 *            widget
+	 * @param css the css to use
+	 */
 	public HeaderList(GroupingCellList<G, T> cellList, GroupingList css) {
 
 		this.cellList = cellList;
@@ -240,6 +274,15 @@ public class HeaderList<G, T> extends Composite {
 		});
 	}
 
+	public void render(List<CellGroup<G, T>> list) {
+		this.list = list;
+		selectionBar.render(list);
+		cellList.renderGroup(list);
+
+		scrollPanel.refresh();
+
+	}
+
 	private void updateCurrentPage(int y) {
 		int i;
 		for (i = 0; i < pagesY.length(); i++) {
@@ -253,16 +296,11 @@ public class HeaderList<G, T> extends Composite {
 
 		if (currentPage < 0)
 			currentPage = 0;
+		if (currentPage > pagesY.length() - 1) {
+			currentPage = pagesY.length() - 1;
+		}
 
 	}
-
-	private boolean needReset = false;
-
-	private int lastPage = -1;
-	private SelectionBar<G, T> selectionBar;
-	private List<CellGroup<G, T>> list;
-
-	private boolean headerVisible = true;
 
 	private void updateHeaderPositionAndTitle(int y) {
 
@@ -305,18 +343,7 @@ public class HeaderList<G, T> extends Composite {
 				}
 
 			}
-		} else {
-			System.out.println("why are we here?");
 		}
-	}
-
-	public void render(List<CellGroup<G, T>> list) {
-		this.list = list;
-		selectionBar.render(list);
-		cellList.renderGroup(list);
-
-		scrollPanel.refresh();
-
 	}
 
 }
