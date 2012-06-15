@@ -25,6 +25,13 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 
+/**
+ * A PinchRecognizer tracks two finger on a screen that perform a zooming /
+ * pinching action
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class PinchRecognizer implements TouchHandler {
 
 	private static EventPropagator DEFAULT_EVENT_PROPAGATOR;
@@ -47,6 +54,12 @@ public class PinchRecognizer implements TouchHandler {
 
 	private final OffsetProvider offsetProvider;
 
+	/**
+	 * Construct a {@link PinchRecognizer}
+	 * 
+	 * @param source the source to fire events on
+	 * @param offsetProvider the offset provider
+	 */
 	public PinchRecognizer(HasHandlers source, OffsetProvider offsetProvider) {
 
 		if (source == null) {
@@ -62,6 +75,10 @@ public class PinchRecognizer implements TouchHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler#onTouchStart(com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent)
+	 */
 	@Override
 	public void onTouchStart(TouchStartEvent event) {
 		touchCount++;
@@ -83,6 +100,10 @@ public class PinchRecognizer implements TouchHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler#onTouchMove(com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent)
+	 */
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
 		switch (state) {
@@ -115,6 +136,10 @@ public class PinchRecognizer implements TouchHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler#onTouchEnd(com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent)
+	 */
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
 		touchCount--;
@@ -132,12 +157,10 @@ public class PinchRecognizer implements TouchHandler {
 
 	}
 
-	private void reset() {
-		touchCount = 0;
-		state = State.READY;
-
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler#onTouchCanceled(com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent)
+	 */
 	@Override
 	public void onTouchCanceled(TouchCancelEvent event) {
 		touchCount--;
@@ -164,8 +187,14 @@ public class PinchRecognizer implements TouchHandler {
 		return eventPropagator;
 	}
 
-	public void setEventPropagator(EventPropagator eventPropagator) {
+	protected void setEventPropagator(EventPropagator eventPropagator) {
 		this.eventPropagator = eventPropagator;
+
+	}
+
+	private void reset() {
+		touchCount = 0;
+		state = State.READY;
 
 	}
 

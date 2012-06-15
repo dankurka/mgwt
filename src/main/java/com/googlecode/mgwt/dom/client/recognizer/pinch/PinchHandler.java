@@ -17,8 +17,19 @@ package com.googlecode.mgwt.dom.client.recognizer.pinch;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * A Handler that receives {@link PinchEvent}s
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface PinchHandler extends EventHandler {
 
+	/**
+	 * Called if a {@link PinchEvent} occurs
+	 * 
+	 * @param event the {@link PinchEvent}
+	 */
 	public void onPinch(PinchEvent event);
 
 }

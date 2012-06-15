@@ -17,6 +17,12 @@ package com.googlecode.mgwt.dom.client.recognizer.pinch;
 
 import com.google.gwt.user.client.ui.UIObject;
 
+/**
+ * Brigde from widget / UIObject to Offsetprovider
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class UIObjectToOffsetProvider implements OffsetProvider {
 
 	private final UIObject uiObject;

@@ -17,6 +17,18 @@ package com.googlecode.mgwt.dom.client.recognizer.pinch;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 
+/**
+ * A widget that implements this interface fires {@link PinchEvent}s
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface HasPinchHandlers {
+	/**
+	 * register for {@link PinchEvent}s
+	 * 
+	 * @param handler the handler to register
+	 * @return the handler registration
+	 */
 	public HandlerRegistration addPinchHandler(PinchHandler handler);
 }

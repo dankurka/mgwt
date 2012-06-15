@@ -20,23 +20,38 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.shared.HasHandlers;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.collection.shared.java.JavaLightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
+import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.OffsetProvider;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchEvent;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchRecognizer;
 
 public class TestPinchRecognizer {
 
+	private static class PinchRecognizerForTest extends PinchRecognizer {
+
+		public PinchRecognizerForTest(HasHandlers source, OffsetProvider offsetProvider) {
+			super(source, offsetProvider);
+		}
+
+		@Override
+		public void setEventPropagator(EventPropagator eventPropagator) {
+			super.setEventPropagator(eventPropagator);
+		}
+
+	}
+
 	private MockHasHandlers hasHandlers;
-	private PinchRecognizer pinchRecognizer;
+	private PinchRecognizerForTest pinchRecognizer;
 
 	@Before
 	public void setUp() throws Exception {
 		hasHandlers = new MockHasHandlers();
 
-		pinchRecognizer = new PinchRecognizer(hasHandlers, new OffsetProvider() {
+		pinchRecognizer = new PinchRecognizerForTest(hasHandlers, new OffsetProvider() {
 
 			@Override
 			public int getTop() {

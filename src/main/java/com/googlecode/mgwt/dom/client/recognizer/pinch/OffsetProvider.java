@@ -15,8 +15,26 @@
  */
 package com.googlecode.mgwt.dom.client.recognizer.pinch;
 
+/**
+ * {@link PinchRecognizer} needs to know about display settings to calculate a
+ * pinch properly, but it should not know about widgets. THis is an abstraction
+ * interface to encapsulate that knowledge
+ * 
+ * @author Daniel
+ * 
+ */
 public interface OffsetProvider {
+	/**
+	 * the upper left corner of the widget
+	 * 
+	 * @return the upper left corner in px
+	 */
 	public int getLeft();
 
+	/**
+	 * the upper left corner of the widget
+	 * 
+	 * @return the upper left corner in px
+	 */
 	public int getTop();
 }
