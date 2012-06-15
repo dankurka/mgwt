@@ -20,6 +20,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.shared.HasHandlers;
+import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndEvent;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEvent.DIRECTION;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveEvent;
@@ -28,14 +30,27 @@ import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartEvent;
 
 public class TestSwipeRecognizer {
 
+	private static class SwipeRecognizerForTest extends SwipeRecognizer {
+
+		public SwipeRecognizerForTest(HasHandlers source) {
+			super(source);
+		}
+
+		@Override
+		public void setEventPropagator(EventPropagator eventPropagator) {
+			super.setEventPropagator(eventPropagator);
+		}
+
+	}
+
 	private MockHasHandlers hasHandlers;
-	private SwipeRecognizer swipeRecognizer;
+	private SwipeRecognizerForTest swipeRecognizer;
 
 	@Before
 	public void setUp() throws Exception {
 		hasHandlers = new MockHasHandlers();
 
-		swipeRecognizer = new SwipeRecognizer(hasHandlers);
+		swipeRecognizer = new SwipeRecognizerForTest(hasHandlers);
 		swipeRecognizer.setEventPropagator(new EventPropagatorForTests());
 	}
 

@@ -17,6 +17,12 @@ package com.googlecode.mgwt.dom.client.recognizer.swipe;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * A {@link SwipeEndEvent} occurs when the user lifts his finger of the display
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class SwipeEndEvent extends SwipeEvent<SwipeEndHandler> {
 
 	private final static GwtEvent.Type<SwipeEndHandler> TYPE = new Type<SwipeEndHandler>();
@@ -27,27 +33,52 @@ public class SwipeEndEvent extends SwipeEvent<SwipeEndHandler> {
 		return TYPE;
 	}
 
+	/**
+	 * Construct a swipe end event
+	 * 
+	 * @param distanceReached was the minumum distance reached
+	 * @param distance the distance that was covered by the finger
+	 * @param direction the direction of the swipe
+	 */
 	public SwipeEndEvent(boolean distanceReached, int distance, SwipeEvent.DIRECTION direction) {
 		super(direction);
 		this.distanceReached = distanceReached;
 		this.distance = distance;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
+	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<SwipeEndHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
+	 */
 	@Override
 	protected void dispatch(SwipeEndHandler handler) {
 		handler.onSwipeEnd(this);
 
 	}
 
+	/**
+	 * the distance the finger has covered in px
+	 * 
+	 * @return the distance in px
+	 */
 	public int getDistance() {
 		return distance;
 	}
 
+	/**
+	 * is the minimum distance reached by this swipe
+	 * 
+	 * @return true if minimum distance was reached
+	 */
 	public boolean isDistanceReached() {
 		return distanceReached;
 	}

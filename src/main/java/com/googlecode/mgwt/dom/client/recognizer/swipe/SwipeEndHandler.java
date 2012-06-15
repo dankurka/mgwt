@@ -17,6 +17,17 @@ package com.googlecode.mgwt.dom.client.recognizer.swipe;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * A {@link SwipeEndHandler} receives {@link SwipeEndEvent}s
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface SwipeEndHandler extends EventHandler {
+	/**
+	 * Called when a {@link SwipeEndEvent} occurs
+	 * 
+	 * @param event the event
+	 */
 	public void onSwipeEnd(SwipeEndEvent event);
 }

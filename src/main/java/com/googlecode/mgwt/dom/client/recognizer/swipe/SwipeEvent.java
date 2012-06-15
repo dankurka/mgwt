@@ -18,6 +18,13 @@ package com.googlecode.mgwt.dom.client.recognizer.swipe;
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 
+/**
+ * base class for all swipte events
+ * 
+ * @author Daniel Kurka
+ * 
+ * @param <H> Handler type of the event
+ */
 public abstract class SwipeEvent<H extends EventHandler> extends GwtEvent<H> {
 
 	public enum DIRECTION {
@@ -26,11 +33,21 @@ public abstract class SwipeEvent<H extends EventHandler> extends GwtEvent<H> {
 
 	private final DIRECTION direction;
 
+	/**
+	 * Construct a swipe event with a given direction
+	 * 
+	 * @param direction the direction to use
+	 */
 	public SwipeEvent(DIRECTION direction) {
 		this.direction = direction;
 
 	}
 
+	/**
+	 * the direction of the event
+	 * 
+	 * @return the direction
+	 */
 	public DIRECTION getDirection() {
 		return direction;
 	}

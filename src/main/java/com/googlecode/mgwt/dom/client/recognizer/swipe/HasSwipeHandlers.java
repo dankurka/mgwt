@@ -17,10 +17,35 @@ package com.googlecode.mgwt.dom.client.recognizer.swipe;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 
+/**
+ * A widget that implements this interface sources {@link SwipeStartEvent}s,
+ * {@link SwipeMoveEvent}s and {@link SwipeEndEvent}s
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface HasSwipeHandlers {
+	/**
+	 * register for a {@link SwipeStartEvent}
+	 * 
+	 * @param handler the handler to register
+	 * @return the {@link HandlerRegistration}
+	 */
 	public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler);
 
+	/**
+	 * register for a {@link SwipeMoveHandler}
+	 * 
+	 * @param handler the handler to register
+	 * @return the {@link HandlerRegistration}
+	 */
 	public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler);
 
+	/**
+	 * register for a {@link SwipeEndHandler}
+	 * 
+	 * @param handler the handler to register
+	 * @return the {@link HandlerRegistration}
+	 */
 	public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler);
 }

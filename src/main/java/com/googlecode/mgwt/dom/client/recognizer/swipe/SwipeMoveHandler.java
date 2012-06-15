@@ -17,6 +17,17 @@ package com.googlecode.mgwt.dom.client.recognizer.swipe;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * A {@link SwipeMoveHandler} receives {@link SwipeMoveEvent}s
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface SwipeMoveHandler extends EventHandler {
+	/**
+	 * called when a {@link SwipeMoveEvent} occurs
+	 * 
+	 * @param event the event
+	 */
 	public void onSwipeMove(SwipeMoveEvent event);
 }
