@@ -33,7 +33,7 @@ import com.googlecode.mgwt.linker.server.BindingProperty;
 
 public class TestPermutationMapLinker {
 
-	private class MockLinkerContext implements LinkerContext {
+	private static class MockLinkerContext implements LinkerContext {
 
 		private String moduleName;
 		private SortedSet<ConfigurationProperty> configurationProperties = new TreeSet<ConfigurationProperty>();
@@ -165,7 +165,7 @@ public class TestPermutationMapLinker {
 
 	}
 
-	private class MockConfigurationProperty implements ConfigurationProperty {
+	private static class MockConfigurationProperty implements ConfigurationProperty {
 
 		private final String name;
 		private final List<String> list;

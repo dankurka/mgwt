@@ -19,6 +19,11 @@ import javax.servlet.http.HttpServletRequest;
 
 public class PhoneGapPropertyProvider implements PropertyProvider {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -411058962729141969L;
+
 	@Override
 	public String getPropertyName() {
 		return "phonegap.env";

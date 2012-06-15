@@ -15,7 +15,7 @@ public class TestManifestWriter {
 	private ManifestWriter writer;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setup() throws Exception {
 		writer = new ManifestWriter();
 	}
 

@@ -61,7 +61,7 @@ public class FailingImpl implements CssUtilImpl {
 	@Override
 	public int[] getPositionFromTransForm(Element element) {
 		// TODO Auto-generated method stub
-		return null;
+		return new int[0];
 	}
 
 	@Override

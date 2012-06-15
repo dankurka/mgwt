@@ -2,7 +2,12 @@ package com.googlecode.mgwt.linker.server.propertyprovider;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class UserAgentPropertyProvider extends PropertyProviderBaseImpl implements PropertyProvider {
+public class UserAgentPropertyProvider extends PropertyProviderBaseImpl {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7773351123106881463L;
 
 	@Override
 	public String getPropertyValue(HttpServletRequest req) throws PropertyProviderException {

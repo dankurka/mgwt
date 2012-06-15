@@ -2,6 +2,7 @@ package com.googlecode.mgwt.linker.linker;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +34,11 @@ import org.xml.sax.SAXException;
 
 import com.googlecode.mgwt.linker.server.BindingProperty;
 
-public class XMLPermutationProvider {
+public class XMLPermutationProvider implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8892369911664489332L;
 	private static final String PERMUTATION_NODE = "permutation";
 	private static final String PERMUTATION_NAME = "name";
 	private static final String PERMUTATIONS = "permutations";

@@ -1,8 +1,10 @@
 package com.googlecode.mgwt.linker.server.propertyprovider;
 
+import java.io.Serializable;
+
 import javax.servlet.http.HttpServletRequest;
 
-public interface PropertyProvider {
+public interface PropertyProvider extends Serializable {
 
 	public String getPropertyName();
 

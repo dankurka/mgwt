@@ -29,23 +29,22 @@ public class Html5HistorianImpl implements Html5Historian {
 
 	private native void bind() /*-{
 		var that = this;
-		$wnd
-				.addEventListener(
-						'popstate',
-						function(event) {
 
-							var data = "";
+		var f = function(event) {
+			var data = "";
+			if (event.state != null) {
+				data = event.state;
+			}
+			that.@com.googlecode.mgwt.mvp.client.history.Html5HistorianImpl::onPopState(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(data, event.title, event.url);
 
-							if (event.state != null) {
-								data = event.state;
-							}
-							that.@com.googlecode.mgwt.mvp.client.history.Html5HistorianImpl::onPopState(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(data, event.title, event.url);
+		};
 
-						});
+		$wnd.addEventListener('popstate', $entry(f));
 
 	}-*/;
 
-	private void onPopState(String data, String title, String url) {
+	//called from js
+	protected void onPopState(String data, String title, String url) {
 		eventBus.fireEvent(new PopStateEvent(data, title, url));
 	}
 

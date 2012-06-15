@@ -1,6 +1,12 @@
 package com.googlecode.mgwt.linker.server;
 
-public class BindingProperty {
+import java.io.Serializable;
+
+public class BindingProperty implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4176373787349662615L;
 	private final String name;
 	private final String value;
 

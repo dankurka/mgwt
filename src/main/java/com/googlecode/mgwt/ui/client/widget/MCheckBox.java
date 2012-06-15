@@ -81,7 +81,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 		@Override
 		public void onTouchCanceled(TouchCancelEvent event) {
-			if (isReadonly()) {
+			if (isReadOnly()) {
 				return;
 			}
 			event.stopPropagation();
@@ -94,7 +94,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
-			if (isReadonly()) {
+			if (isReadOnly()) {
 				return;
 			}
 
@@ -113,7 +113,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 		@Override
 		public void onTouchMove(TouchMoveEvent event) {
-			if (isReadonly()) {
+			if (isReadOnly()) {
 				return;
 			}
 			event.stopPropagation();
@@ -145,7 +145,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 		@Override
 		public void onTouchStart(TouchStartEvent event) {
-			if (isReadonly()) {
+			if (isReadOnly()) {
 				return;
 			}
 			event.stopPropagation();
@@ -322,7 +322,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	 * 
 	 * @return
 	 */
-	public boolean isReadonly() {
+	public boolean isReadOnly() {
 		return readonly;
 	}
 

@@ -22,18 +22,28 @@ import com.google.gwt.event.shared.HasHandlers;
 
 public class EventPropagatorMobileImpl implements EventPropagator {
 
+	private static class SCommand implements ScheduledCommand {
+		private final HasHandlers source;
+		private final GwtEvent<?> event;
+
+		public SCommand(HasHandlers source, GwtEvent<?> event) {
+			this.source = source;
+			this.event = event;
+		}
+
+		@Override
+		public void execute() {
+			source.fireEvent(event);
+
+		}
+
+	}
+
 	@Override
 	public void fireEvent(final HasHandlers source, final GwtEvent<?> event) {
 		// see issue 135
 		// http://code.google.com/p/mgwt/issues/detail?id=135
-		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-
-			@Override
-			public void execute() {
-				source.fireEvent(event);
-
-			}
-		});
+		Scheduler.get().scheduleDeferred(new SCommand(source, event));
 
 	}
 

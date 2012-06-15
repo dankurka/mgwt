@@ -44,7 +44,6 @@ import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.mvp.client.Animation;
 import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
 import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
-import com.googlecode.mgwt.ui.client.widget.touch.GestureUtility;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
 /**
@@ -120,7 +119,6 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 	private boolean hideOnBackgroundClick;
 	private boolean isVisible;
 	private TouchDelegate touchDelegate;
-	private GestureUtility gestureUtility;
 
 	/**
 	 * Create an instance of an animated dialog

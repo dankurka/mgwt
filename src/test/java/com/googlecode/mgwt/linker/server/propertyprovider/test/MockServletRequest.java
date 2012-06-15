@@ -113,7 +113,7 @@ public class MockServletRequest implements HttpServletRequest {
 	@Override
 	public String[] getParameterValues(String arg0) {
 
-		return null;
+		return new String[0];
 	}
 
 	@Override

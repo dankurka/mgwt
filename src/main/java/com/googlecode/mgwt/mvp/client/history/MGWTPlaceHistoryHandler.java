@@ -61,7 +61,7 @@ public class MGWTPlaceHistoryHandler {
 
 	}
 
-	protected static Logger log = Logger.getLogger(MGWTPlaceHistoryHandler.class.getName());
+	protected final static Logger log = Logger.getLogger(MGWTPlaceHistoryHandler.class.getName());
 
 	private EventBus eventBus;
 

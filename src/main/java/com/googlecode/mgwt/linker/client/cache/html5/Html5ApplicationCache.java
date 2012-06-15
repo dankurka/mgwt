@@ -17,7 +17,7 @@ import com.googlecode.mgwt.linker.client.cache.event.UpdateReadyEvent;
 
 public class Html5ApplicationCache implements ApplicationCache {
 
-	public static final ApplicationCacheStatus[] STATUS_MAPPING = new ApplicationCacheStatus[] { ApplicationCacheStatus.UNCACHED, ApplicationCacheStatus.IDLE, ApplicationCacheStatus.CHECKING,
+	protected static final ApplicationCacheStatus[] STATUS_MAPPING = new ApplicationCacheStatus[] { ApplicationCacheStatus.UNCACHED, ApplicationCacheStatus.IDLE, ApplicationCacheStatus.CHECKING,
 			ApplicationCacheStatus.DOWNLOADING, ApplicationCacheStatus.UPDATEREADY, ApplicationCacheStatus.OBSOLTE };
 
 	public static Html5ApplicationCache createIfSupported() {
@@ -120,55 +120,72 @@ public class Html5ApplicationCache implements ApplicationCache {
 	}
 
 	protected native void initialize() /*-{
-	var that = this;
-	
-	$wnd.applicationCache.addEventListener("checking", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onChecking()();
-		}));
+		var that = this;
 
-	
-	$wnd.applicationCache.addEventListener("onerror", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onError()();
-		
-	}));
+		$wnd.applicationCache
+				.addEventListener(
+						"checking",
+						$entry(function() {
+							that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onChecking()();
+						}));
 
-	
-	$wnd.applicationCache.addEventListener("onnoupdate", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onNoUpdate()();
-		
-	}));
+		$wnd.applicationCache
+				.addEventListener(
+						"onerror",
+						$entry(function() {
+							that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onError()();
 
-	
-	$wnd.applicationCache.addEventListener("ondownloading", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onDownloading()();
-	}));
+						}));
 
-	
-	$wnd.applicationCache.addEventListener("onprogress", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onProgress()();
-	}));
+		$wnd.applicationCache
+				.addEventListener(
+						"onnoupdate",
+						$entry(function() {
+							that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onNoUpdate()();
 
-	
-	$wnd.applicationCache.addEventListener("onupdateready", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onUpdateReady()();
-	}));
-	
-	
-	$wnd.applicationCache.addEventListener("oncached", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onCached()();
-	}));
-	
-	
-	$wnd.applicationCache.addEventListener("onobsolete", $entry(function() {
-		that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onObsolete()();
-	}));
+						}));
 
-}-*/;
+		$wnd.applicationCache
+				.addEventListener(
+						"ondownloading",
+						$entry(function() {
+							that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onDownloading()();
+						}));
+
+		$wnd.applicationCache
+				.addEventListener(
+						"onprogress",
+						$entry(function() {
+							that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onProgress()();
+						}));
+
+		$wnd.applicationCache
+				.addEventListener(
+						"onupdateready",
+						$entry(function() {
+							that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onUpdateReady()();
+						}));
+
+		$wnd.applicationCache
+				.addEventListener(
+						"oncached",
+						$entry(function() {
+							that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onCached()();
+						}));
+
+		$wnd.applicationCache
+				.addEventListener(
+						"onobsolete",
+						$entry(function() {
+							that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onObsolete()();
+						}));
+
+	}-*/;
 
 	@Override
 	public native void swapCache() /*-{
 		$wnd.applicationCache.swapCache();
-		
+
 	}-*/;
 
 }

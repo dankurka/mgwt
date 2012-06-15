@@ -355,7 +355,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	}
 
 	private void checkDOMChanges() {
-		if (moved || zoomed || animating || (scrollerWidth == scroller.getOffsetWidth() * scale && scrollerHeight == scroller.getOffsetHeight() * scale)) {
+		if (moved || zoomed || animating || (Math.abs(scrollerWidth - scroller.getOffsetWidth() * scale) < 0.01 && Math.abs(scrollerHeight - scroller.getOffsetHeight() * scale) < 0.01)) {
 			return;
 		}
 
@@ -935,7 +935,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			if (deltaScale > this.zoomMax)
 				deltaScale = this.zoomMax;
 
-			if (deltaScale != this.scale) {
+			if (Math.abs(deltaScale - this.scale) < 0.00001) {
 				if (this.wheelZoomCount == 0) {
 					// TODO maybe fire on zoom start
 				}
@@ -1191,7 +1191,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		this.currPageY = page;
 
 		// Snap with constant speed (proportional duration)
-		int time = Math.round(Math.max(sizeX, sizeY));
+		int time = Math.max(sizeX, sizeY);
 		if (time == 0)
 			time = 200;
 

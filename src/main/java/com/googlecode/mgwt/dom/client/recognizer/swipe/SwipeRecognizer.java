@@ -93,8 +93,6 @@ public class SwipeRecognizer implements TouchHandler {
 			break;
 
 		case FINDER_DOWN:
-			state = State.INVALID;
-
 		default:
 			state = State.INVALID;
 			break;

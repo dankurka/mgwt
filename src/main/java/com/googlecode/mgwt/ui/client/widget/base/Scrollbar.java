@@ -102,7 +102,9 @@ public class Scrollbar extends Widget {
 			break;
 		case VERTICAL:
 			addStyleName(css.scrollBarVertical());
-
+			break;
+		default:
+			throw new RuntimeException("how did we get here?");
 		}
 
 		applyStyle(getElement(), "-webkit-mask:-webkit-canvas(scrollbar" + uuid + ");");

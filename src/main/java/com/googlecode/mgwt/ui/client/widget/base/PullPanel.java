@@ -265,7 +265,7 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
 
 	@Override
 	public boolean remove(Widget w) {
-		return remove(container);
+		return container.remove(w);
 	}
 
 	@Override

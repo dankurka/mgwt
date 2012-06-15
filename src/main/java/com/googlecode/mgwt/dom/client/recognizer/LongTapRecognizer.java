@@ -108,8 +108,6 @@ public class LongTapRecognizer implements TouchHandler {
 			startPositions.push(touches.get(touchCount - 1));
 			break;
 		case FINGERS_UP:
-			state = State.INVALID;
-			break;
 		default:
 			state = State.INVALID;
 			break;
@@ -181,6 +179,7 @@ public class LongTapRecognizer implements TouchHandler {
 
 		case FINGERS_DOWN:
 			state = State.FINGERS_UP;
+			break;
 		case FINGERS_UP:
 			// are we ready?
 			if (currentTouches == 0 && touchCount == numberOfFingers) {
@@ -191,9 +190,6 @@ public class LongTapRecognizer implements TouchHandler {
 			break;
 
 		case INVALID:
-			if (currentTouches == 0)
-				reset();
-			break;
 		default:
 			if (currentTouches == 0)
 				reset();

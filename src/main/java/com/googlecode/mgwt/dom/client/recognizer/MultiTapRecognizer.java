@@ -121,8 +121,6 @@ public class MultiTapRecognizer implements TouchHandler {
 			break;
 
 		case FINGERS_GOING_UP:
-			state = State.INVALID;
-			break;
 		default:
 			state = State.INVALID;
 			break;

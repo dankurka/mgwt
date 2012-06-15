@@ -7,6 +7,10 @@ import com.googlecode.mgwt.linker.server.BindingProperty;
 
 public class MgwtOsPropertyProvider extends PropertyProviderBaseImpl {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3624651858511204668L;
 	public static final BindingProperty iPhone = new BindingProperty("mgwt.os", "iphone");
 	public static final BindingProperty retina = new BindingProperty("mgwt.os", "retina");
 	public static final BindingProperty iPhone_undefined = new BindingProperty("mgwt.os", "iphone_undefined");

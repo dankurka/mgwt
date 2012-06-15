@@ -4,6 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 
 public class MobileUserAgentProvider extends PropertyProviderBaseImpl {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7478122098836802106L;
+
 	@Override
 	public String getPropertyName() {
 		return "mobile.user.agent";
