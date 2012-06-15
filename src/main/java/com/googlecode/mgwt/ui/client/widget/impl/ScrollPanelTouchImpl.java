@@ -379,6 +379,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 	private boolean vScrollDesired;
 
+	private LightArrayInt pagesActualX;
+
+	private LightArrayInt pagesActualY;
+
 	private void scrollBar(DIRECTION direction) {
 		int dir = direction.ordinal();
 
@@ -1260,6 +1264,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 			ScrollPanelTouchImpl.this.pagesX = CollectionFactory.constructIntegerArray();
 			ScrollPanelTouchImpl.this.pagesY = CollectionFactory.constructIntegerArray();
 
+			ScrollPanelTouchImpl.this.pagesActualX = CollectionFactory.constructIntegerArray();
+			ScrollPanelTouchImpl.this.pagesActualY = CollectionFactory.constructIntegerArray();
+
 			JsArray<com.google.gwt.dom.client.Element> elements = querySelectorAll(ScrollPanelTouchImpl.this.scroller.getElement(), snapSelector);
 
 			for (int i = 0; i < elements.length(); i++) {
@@ -1268,6 +1275,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 				int top = pos[1] + ScrollPanelTouchImpl.this.wrapperOffsetTop;
 				ScrollPanelTouchImpl.this.pagesX.push((int) (left < ScrollPanelTouchImpl.this.maxScrollX ? ScrollPanelTouchImpl.this.maxScrollX : left * ScrollPanelTouchImpl.this.scale));
 				ScrollPanelTouchImpl.this.pagesY.push((int) (top < ScrollPanelTouchImpl.this.maxScrollY ? ScrollPanelTouchImpl.this.maxScrollY : top * ScrollPanelTouchImpl.this.scale));
+
+				ScrollPanelTouchImpl.this.pagesActualX.push((int) (left * ScrollPanelTouchImpl.this.scale));
+				ScrollPanelTouchImpl.this.pagesActualY.push((int) (top * ScrollPanelTouchImpl.this.scale));
 			}
 		} else {
 			if (ScrollPanelTouchImpl.this.snap) {
@@ -1918,12 +1928,12 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
 	@Override
 	public LightArrayInt getPagesY() {
-		return this.pagesY;
+		return this.pagesActualY;
 	}
 
 	@Override
 	public LightArrayInt getPagesX() {
-		return this.pagesX;
+		return this.pagesActualX;
 	}
 
 }

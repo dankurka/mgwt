@@ -214,6 +214,7 @@ public class GroupingCellListComposite<G, T> extends Composite {
 
 				scrollPanel.scrollToPage(0, event.getSelectedItem(), 0);
 				currentPage = event.getSelectedItem();
+				updateCurrentPage(scrollPanel.getY());
 				updateHeaderPositionAndTitle(scrollPanel.getY());
 
 			}
@@ -225,6 +226,7 @@ public class GroupingCellListComposite<G, T> extends Composite {
 			public void onScrollMove(ScrollMoveEvent event) {
 				updateCurrentPage(scrollPanel.getY());
 				updateHeaderPositionAndTitle(scrollPanel.getY());
+
 			}
 		});
 
@@ -234,6 +236,7 @@ public class GroupingCellListComposite<G, T> extends Composite {
 			public void onScrollAnimationMove(ScrollAnimationMoveEvent event) {
 				updateCurrentPage(scrollPanel.getY());
 				updateHeaderPositionAndTitle(scrollPanel.getY());
+
 			}
 		});
 	}
@@ -248,6 +251,7 @@ public class GroupingCellListComposite<G, T> extends Composite {
 		}
 
 		currentPage = i - 1;
+
 		if (currentPage < 0)
 			currentPage = 0;
 
@@ -258,6 +262,8 @@ public class GroupingCellListComposite<G, T> extends Composite {
 	private int lastPage = -1;
 	private SelectionBar<G, T> selectionBar;
 	private List<CellGroup<G, T>> list;
+
+	private boolean headerVisible = true;
 
 	private void updateHeaderPositionAndTitle(int y) {
 
@@ -270,10 +276,18 @@ public class GroupingCellListComposite<G, T> extends Composite {
 		}
 
 		if (y > 0) {
-			movingHeader.setVisible(false);
+			if (headerVisible) {
+				headerVisible = false;
+				movingHeader.setVisible(false);
+			}
+
 			return;
 		} else {
-			movingHeader.setVisible(true);
+			if (!headerVisible) {
+				headerVisible = true;
+				movingHeader.setVisible(true);
+			}
+
 		}
 
 		if (currentPage + 1 < pagesY.length()) {
@@ -292,6 +306,8 @@ public class GroupingCellListComposite<G, T> extends Composite {
 				}
 
 			}
+		} else {
+			System.out.println("why are we here?");
 		}
 	}
 
