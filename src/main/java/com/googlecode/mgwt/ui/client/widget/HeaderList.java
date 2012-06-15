@@ -46,9 +46,9 @@ import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
- * This widget uses a {@link GroupingCellList} to render children withing
- * groups. On top of that it provides a fast selection through a bar on the
- * right by displaying symbols for group names.
+ * This widget uses a {@link GroupingCellList} to render children within groups.
+ * On top of that it provides a fast selection through a bar on the right by
+ * displaying symbols for group names.
  * 
  * It also animates a header group so that the user can always see which group
  * he is currently scrolling in.
