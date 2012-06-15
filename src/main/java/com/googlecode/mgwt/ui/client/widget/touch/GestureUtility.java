@@ -72,4 +72,14 @@ public class GestureUtility {
 		source.addTouchHandler(pinchRecognizer);
 
 	}
+
+	public void ensureLongTapHandler() {
+		if (longTapRecognizer != null) {
+			return;
+		}
+
+		longTapRecognizer = new LongTapRecognizer(source);
+		source.addTouchHandler(longTapRecognizer);
+
+	}
 }

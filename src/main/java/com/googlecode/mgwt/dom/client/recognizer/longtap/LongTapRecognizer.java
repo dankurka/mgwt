@@ -30,6 +30,12 @@ import com.googlecode.mgwt.dom.client.recognizer.TimerExecturGwtTimerImpl;
 import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor;
 import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor.CodeToRun;
 
+/**
+ * This class can recognize long taps
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class LongTapRecognizer implements TouchHandler {
 
 	public static final int DEFAULT_WAIT_TIME_IN_MS = 1500;

@@ -15,19 +15,21 @@
  */
 package com.googlecode.mgwt.dom.client.recognizer.longtap;
 
-import com.google.gwt.event.shared.EventHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 
 /**
- * A Handler for {@link LongTapEvent}s
+ * A widget that implements this interface provides support for registering for
+ * {@link LongTapEvent}s
  * 
  * @author Daniel Kurka
  * 
  */
-public interface LongTapHandler extends EventHandler {
+public interface HasLongTapHandlers {
 	/**
-	 * Called when an event is fired
+	 * Register for a {@link LongTapEvent}
 	 * 
-	 * @param event the event
+	 * @param handler the handler to register
+	 * @return the handler registration
 	 */
-	public void onLongTap(LongTapEvent event);
+	public HandlerRegistration addLongTapHandler(LongTapHandler handler);
 }

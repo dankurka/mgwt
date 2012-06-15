@@ -29,6 +29,9 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.dom.client.recognizer.longtap.HasLongTapHandlers;
+import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapEvent;
+import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapHandler;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.HasPinchHandlers;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchEvent;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchHandler;
@@ -48,7 +51,7 @@ import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
  * @version $Id: $
  */
 
-public class TouchDelegate implements HasTouchHandlers, HasTapHandlers, HasSwipeHandlers, HasPinchHandlers {
+public class TouchDelegate implements HasTouchHandlers, HasTapHandlers, HasSwipeHandlers, HasPinchHandlers, HasLongTapHandlers {
 
 	protected final GestureUtility gestureUtility;
 	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
@@ -149,6 +152,12 @@ public class TouchDelegate implements HasTouchHandlers, HasTapHandlers, HasSwipe
 	public HandlerRegistration addPinchHandler(PinchHandler handler) {
 		gestureUtility.ensurePinchRecognizer(w);
 		return w.addHandler(handler, PinchEvent.getType());
+	}
+
+	@Override
+	public HandlerRegistration addLongTapHandler(LongTapHandler handler) {
+		gestureUtility.ensureLongTapHandler();
+		return w.addHandler(handler, LongTapEvent.getType());
 	}
 
 }

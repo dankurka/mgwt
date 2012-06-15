@@ -19,9 +19,21 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 
+/**
+ * A long tap event is produced if the user touches an area of the display for a
+ * given time without moving his finger(s)
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class LongTapEvent extends GwtEvent<LongTapHandler> {
 
 	private static final Type<LongTapHandler> TYPE = new Type<LongTapHandler>();
+
+	public static Type<LongTapHandler> getType() {
+		return TYPE;
+	}
+
 	private final LightArray<Touch> startPositions;
 	private final int numberOfFingers;
 	private final int time;
@@ -45,18 +57,29 @@ public class LongTapEvent extends GwtEvent<LongTapHandler> {
 
 	}
 
-	public static Type<LongTapHandler> getType() {
-		return TYPE;
-	}
-
+	/**
+	 * the number of fingers that created this event
+	 * 
+	 * @return
+	 */
 	public int getNumberOfFingers() {
 		return numberOfFingers;
 	}
 
+	/**
+	 * the start position of all fingers
+	 * 
+	 * @return the array of start positions
+	 */
 	public LightArray<Touch> getStartPositions() {
 		return startPositions;
 	}
 
+	/**
+	 * the time the user held the fingers
+	 * 
+	 * @return the time in milliseconds
+	 */
 	public int getTime() {
 		return time;
 	}
