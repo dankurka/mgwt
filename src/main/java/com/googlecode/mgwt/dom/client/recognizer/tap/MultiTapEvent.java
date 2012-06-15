@@ -19,6 +19,12 @@ import com.google.gwt.event.shared.GwtEvent;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 
+/**
+ * A {@link MultiTapEvent} occurs if the taps multiple times on the screen
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class MultiTapEvent extends GwtEvent<MultiTapHandler> {
 
 	private static final GwtEvent.Type<MultiTapHandler> TYPE = new Type<MultiTapHandler>();
