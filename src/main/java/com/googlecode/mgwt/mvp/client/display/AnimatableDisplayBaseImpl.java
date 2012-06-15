@@ -70,7 +70,7 @@ public abstract class AnimatableDisplayBaseImpl implements AnimatableDisplay {
 
 		main = new FlowPanel() {
 			protected void onDetach() {
-				super.onDetach();
+				onDeattach();
 
 			};
 		};
