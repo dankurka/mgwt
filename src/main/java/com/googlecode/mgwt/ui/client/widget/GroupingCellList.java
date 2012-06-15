@@ -1,4 +1,4 @@
-package com.googlecode.mgwt.ui.client.widget.experimental;
+package com.googlecode.mgwt.ui.client.widget;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,6 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
-import com.googlecode.mgwt.ui.client.widget.CellList;
 import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
 
 public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionHandlers<T> {

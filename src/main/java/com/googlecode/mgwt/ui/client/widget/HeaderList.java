@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget.experimental;
+package com.googlecode.mgwt.ui.client.widget;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,14 +39,13 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.GroupingList;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
+import com.googlecode.mgwt.ui.client.widget.GroupingCellList.CellGroup;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollAnimationMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
-import com.googlecode.mgwt.ui.client.widget.experimental.GroupingCellList.CellGroup;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
-public class GroupingCellListComposite<G, T> extends Composite {
+public class HeaderList<G, T> extends Composite {
 
 	private static class SelectionBar<G, T> extends TouchWidget implements TouchHandler, HasSelectionHandlers<Integer> {
 
@@ -168,11 +167,11 @@ public class GroupingCellListComposite<G, T> extends Composite {
 	private int currentPage;
 	private final GroupingCellList<G, T> cellList;
 
-	public GroupingCellListComposite(GroupingCellList<G, T> cellList) {
+	public HeaderList(GroupingCellList<G, T> cellList) {
 		this(cellList, MGWTStyle.getTheme().getMGWTClientBundle().getGroupingList());
 	}
 
-	public GroupingCellListComposite(GroupingCellList<G, T> cellList, GroupingList css) {
+	public HeaderList(GroupingCellList<G, T> cellList, GroupingList css) {
 
 		this.cellList = cellList;
 
