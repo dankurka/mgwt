@@ -20,6 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.shared.HasHandlers;
 import com.googlecode.mgwt.collection.shared.CollectionFactory;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
@@ -28,6 +29,22 @@ import com.googlecode.mgwt.dom.client.recognizer.tap.MultiTapEvent;
 import com.googlecode.mgwt.dom.client.recognizer.tap.MultiTapRecognizer;
 
 public class TestMutliTapRecognizer {
+
+	private static class MultiTapRecognizerForTests extends MultiTapRecognizer {
+
+		public MultiTapRecognizerForTests(HasHandlers source, int numberOfFingers, int numberOfTabs, int distance) {
+			super(source, numberOfFingers, numberOfTabs, distance);
+		}
+
+		public MultiTapRecognizerForTests(MockHasHandlers hasHandlers, int i) {
+			super(hasHandlers, i);
+		}
+
+		public void setTimeProvider(TimeProvider timeProvider) {
+			super.setTimeProvider(timeProvider);
+		}
+
+	}
 
 	private MockHasHandlers hasHandlers;
 
@@ -296,7 +313,7 @@ public class TestMutliTapRecognizer {
 
 	@Test
 	public void testTimeoutWithTwoSingleFingerTaps() {
-		MultiTapRecognizer recognizer = new MultiTapRecognizer(hasHandlers, 1, 2, 10);
+		MultiTapRecognizerForTests recognizer = new MultiTapRecognizerForTests(hasHandlers, 1, 2, 10);
 
 		recognizer.setTimeProvider(new TimeProvider() {
 
@@ -330,7 +347,7 @@ public class TestMutliTapRecognizer {
 
 	@Test
 	public void testExceptionOnNullTimeProvider() {
-		MultiTapRecognizer multiTapRecognizer = new MultiTapRecognizer(hasHandlers, 1);
+		MultiTapRecognizerForTests multiTapRecognizer = new MultiTapRecognizerForTests(hasHandlers, 1);
 		try {
 			multiTapRecognizer.setTimeProvider(null);
 			Assert.fail("expected excetion did not occur");

@@ -17,6 +17,17 @@ package com.googlecode.mgwt.dom.client.recognizer.tap;
 
 import com.google.gwt.event.shared.EventHandler;
 
+/**
+ * A {@link MultiTapHandler} receives {@link MultiTapEvent}s
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface MultiTapHandler extends EventHandler {
+	/**
+	 * called when an {@link MultiTapEvent} occurs.
+	 * 
+	 * @param event the event
+	 */
 	public void onMultiTap(MultiTapEvent event);
 }

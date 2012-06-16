@@ -37,29 +37,59 @@ public class MultiTapEvent extends GwtEvent<MultiTapHandler> {
 	private final LightArray<LightArray<Touch>> touchStarts;
 	private final int numberOfTaps;
 
+	/**
+	 * Construct a Multitap event
+	 * 
+	 * @param numberOfFingers the number of fingers that tapped on the screen
+	 * @param numberOfTaps the number of times the screen was tapped
+	 * @param touchStarts the position of the fingers that started the taps
+	 */
 	public MultiTapEvent(int numberOfFingers, int numberOfTaps, LightArray<LightArray<Touch>> touchStarts) {
 		this.numberOfFingers = numberOfFingers;
 		this.numberOfTaps = numberOfTaps;
 		this.touchStarts = touchStarts;
 	}
 
+	/**
+	 * get the number of fingers that tapped on the screen
+	 * 
+	 * @return the number of fingers that tapped on the screen
+	 */
 	public int getNumberOfFinders() {
 		return numberOfFingers;
 	}
 
+	/**
+	 * get the position of the fingers that started the taps
+	 * 
+	 * @return the position of the fingers that started the taps
+	 */
 	public LightArray<LightArray<Touch>> getTouchStarts() {
 		return touchStarts;
 	}
 
+	/**
+	 * get the number of times the screen was tapped
+	 * 
+	 * @return the number of times the screen was tapped
+	 */
 	public int getNumberOfTabs() {
 		return numberOfTaps;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
+	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<MultiTapHandler> getAssociatedType() {
 		return TYPE;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
+	 */
 	@Override
 	protected void dispatch(MultiTapHandler handler) {
 		handler.onMultiTap(this);

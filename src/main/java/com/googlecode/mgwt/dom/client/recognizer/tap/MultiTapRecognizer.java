@@ -27,6 +27,13 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.recognizer.SystemTimeProvider;
 import com.googlecode.mgwt.dom.client.recognizer.TimeProvider;
 
+/**
+ * A {@link MultiTapRecognizer} recognizes multiple taps with multiple fingers
+ * on the screen
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class MultiTapRecognizer implements TouchHandler {
 
 	public static final int DEFAULT_DISTANCE = 15;
@@ -55,18 +62,51 @@ public class MultiTapRecognizer implements TouchHandler {
 
 	private LightArray<LightArray<Touch>> savedStartTouches;
 
+	/**
+	 * Construct a {@link MultiTapRecognizer}
+	 * 
+	 * @param source the source on which behalf to fire events on
+	 * @param numberOfFingers the number of fingers needed for a tap
+	 */
 	public MultiTapRecognizer(HasHandlers source, int numberOfFingers) {
 		this(source, numberOfFingers, 1, DEFAULT_DISTANCE, DEFAULT_TIME_IN_MS);
 	}
 
+	/**
+	 * Construct a {@link MultiTapRecognizer}
+	 * 
+	 * @param source the source on which behalf to fire events on
+	 * @param numberOfFingers the number of fingers needed for a tap
+	 * @param numberOfTabs the number of times all fingers have to touch and
+	 *            leave the display
+	 */
 	public MultiTapRecognizer(HasHandlers source, int numberOfFingers, int numberOfTabs) {
 		this(source, numberOfFingers, numberOfTabs, DEFAULT_DISTANCE, DEFAULT_TIME_IN_MS);
 	}
 
+	/**
+	 * Construct a {@link MultiTapRecognizer}
+	 * 
+	 * @param source the source on which behalf to fire events on
+	 * @param numberOfFingers the number of fingers needed for a tap
+	 * @param numberOfTabs the number of times all fingers have to touch and
+	 *            leave the display
+	 * @param distance the maximum distance a finger can move on the display
+	 */
 	public MultiTapRecognizer(HasHandlers source, int numberOfFingers, int numberOfTabs, int distance) {
 		this(source, numberOfFingers, numberOfTabs, distance, DEFAULT_TIME_IN_MS);
 	}
 
+	/**
+	 * Construct a {@link MultiTapRecognizer}
+	 * 
+	 * @param source the source on which behalf to fire events on
+	 * @param numberOfFingers the number of fingers needed for a tap
+	 * @param numberOfTabs the number of times all fingers have to touch and
+	 *            leave the display
+	 * @param distance the maximum distance a finger can move on the display
+	 * @param time the maximum amount of time for the gesture to happen
+	 */
 	public MultiTapRecognizer(HasHandlers source, int numberOfFingers, int numberOfTabs, int distance, int time) {
 
 		if (source == null)
@@ -100,13 +140,10 @@ public class MultiTapRecognizer implements TouchHandler {
 
 	}
 
-	public void setTimeProvider(TimeProvider timeProvider) {
-		if (timeProvider == null) {
-			throw new IllegalArgumentException("timeprovider can not be null");
-		}
-		this.timeProvider = timeProvider;
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler#onTouchStart(com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent)
+	 */
 	@Override
 	public void onTouchStart(TouchStartEvent event) {
 		touchCount++;
@@ -134,6 +171,10 @@ public class MultiTapRecognizer implements TouchHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler#onTouchMove(com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent)
+	 */
 	@Override
 	public void onTouchMove(TouchMoveEvent event) {
 		switch (state) {
@@ -165,6 +206,10 @@ public class MultiTapRecognizer implements TouchHandler {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler#onTouchEnd(com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent)
+	 */
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
 
@@ -191,6 +236,17 @@ public class MultiTapRecognizer implements TouchHandler {
 			reset();
 			break;
 		}
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler#onTouchCanceled(com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent)
+	 */
+	@Override
+	public void onTouchCanceled(TouchCancelEvent event) {
+		state = State.INVALID;
+		reset();
 
 	}
 
@@ -225,18 +281,18 @@ public class MultiTapRecognizer implements TouchHandler {
 		}
 	}
 
-	@Override
-	public void onTouchCanceled(TouchCancelEvent event) {
-		state = State.INVALID;
-		reset();
-
-	}
-
 	protected void reset() {
 		touchCount = 0;
 		foundTaps = 0;
 		touches = CollectionFactory.constructArray();
 		state = State.READY;
+	}
+
+	protected void setTimeProvider(TimeProvider timeProvider) {
+		if (timeProvider == null) {
+			throw new IllegalArgumentException("timeprovider can not be null");
+		}
+		this.timeProvider = timeProvider;
 	}
 
 }
