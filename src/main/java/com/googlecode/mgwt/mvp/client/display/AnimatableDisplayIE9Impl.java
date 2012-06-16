@@ -104,15 +104,15 @@ public class AnimatableDisplayIE9Impl implements AnimatableDisplay {
 	private class AnimationFrame implements AnimationCallback {
 
 		private final double endTime;
-		private final Animation animation;
-		private double startTime;
+		//		private final Animation animation;
+		//		private double startTime;
 		private final AnimationEndCallback callback;
 		private final boolean animateToFirst;
 
 		public AnimationFrame(long startTime, long endTime, Animation animation, AnimationEndCallback callback, boolean animateToFirst) {
 			this.endTime = endTime;
-			this.startTime = startTime;
-			this.animation = animation;
+			//			this.startTime = startTime;
+			//			this.animation = animation;
 			this.callback = callback;
 			this.animateToFirst = animateToFirst;
 
@@ -149,9 +149,9 @@ public class AnimatableDisplayIE9Impl implements AnimatableDisplay {
 
 			// render current step
 
-			int offsetWidth = main.getOffsetWidth();
+			//			int offsetWidth = main.getOffsetWidth();
 
-			int pos = (int) (-offsetWidth * (now - startTime) / (endTime - startTime));
+			//			int pos = (int) (-offsetWidth * (now - startTime) / (endTime - startTime));
 
 			AnimationScheduler.get().requestAnimationFrame(this);
 

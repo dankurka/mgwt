@@ -3,7 +3,22 @@ package com.googlecode.mgwt.linker.linker;
 import java.util.Date;
 import java.util.Set;
 
+/**
+ * Writing a manifest file from a given set of resources
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class ManifestWriter {
+	/**
+	 * Write a manifest file for the given set of artifacts and return it as a
+	 * string
+	 * 
+	 * @param staticResources - the static resources of the app, such as
+	 *            index.html file
+	 * @param cacheResources the gwt output artifacts like cache.html files
+	 * @return the manifest as a string
+	 */
 	public String writeManifest(Set<String> staticResources, Set<String> cacheResources) {
 		if (staticResources == null)
 			throw new IllegalArgumentException("staticResources can not be null");
