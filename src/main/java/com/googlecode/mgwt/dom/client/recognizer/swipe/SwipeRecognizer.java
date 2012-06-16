@@ -147,7 +147,7 @@ public class SwipeRecognizer implements TouchHandler {
 
 				direction = touch.getPageX() - touchStart.getPageX() > 0 ? DIRECTION.LEFT_TO_RIGHT : DIRECTION.RIGHT_TO_LEFT;
 
-				SwipeStartEvent swipeStartEvent = new SwipeStartEvent(touch.getPageX() - touchStart.getPageX(), direction);
+				SwipeStartEvent swipeStartEvent = new SwipeStartEvent(touch, touch.getPageX() - touchStart.getPageX(), direction);
 
 				getEventPropagator().fireEvent(source, swipeStartEvent);
 
@@ -157,7 +157,7 @@ public class SwipeRecognizer implements TouchHandler {
 
 					direction = touch.getPageY() - touchStart.getPageY() > 0 ? DIRECTION.TOP_TO_BOTTOM : DIRECTION.BOTTOM_TO_TOP;
 
-					SwipeStartEvent swipeStartEvent = new SwipeStartEvent(touch.getPageY() - touchStart.getPageY(), direction);
+					SwipeStartEvent swipeStartEvent = new SwipeStartEvent(touch, touch.getPageY() - touchStart.getPageY(), direction);
 
 					getEventPropagator().fireEvent(source, swipeStartEvent);
 
@@ -172,13 +172,13 @@ public class SwipeRecognizer implements TouchHandler {
 			case TOP_TO_BOTTOM:
 			case BOTTOM_TO_TOP:
 				lastDistance = Math.abs(touch.getPageY() - touchStart.getPageY());
-				getEventPropagator().fireEvent(source, new SwipeMoveEvent(lastDistance > minDistance, lastDistance, direction));
+				getEventPropagator().fireEvent(source, new SwipeMoveEvent(touch, lastDistance > minDistance, lastDistance, direction));
 				break;
 
 			case LEFT_TO_RIGHT:
 			case RIGHT_TO_LEFT:
 				lastDistance = Math.abs(touch.getPageX() - touchStart.getPageX());
-				getEventPropagator().fireEvent(source, new SwipeMoveEvent(lastDistance > minDistance, lastDistance, direction));
+				getEventPropagator().fireEvent(source, new SwipeMoveEvent(touch, lastDistance > minDistance, lastDistance, direction));
 
 				break;
 

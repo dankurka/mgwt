@@ -16,6 +16,7 @@
 package com.googlecode.mgwt.dom.client.recognizer.swipe;
 
 import com.google.gwt.event.shared.GwtEvent;
+import com.googlecode.mgwt.dom.client.event.touch.Touch;
 
 /**
  * A {@link SwipeMoveEvent} occurs when the user moves his finger over the
@@ -29,6 +30,7 @@ public class SwipeMoveEvent extends SwipeEvent<SwipeMoveHandler> {
 	private final static GwtEvent.Type<SwipeMoveHandler> TYPE = new Type<SwipeMoveHandler>();
 	private final boolean distanceReached;
 	private final int distance;
+	private final Touch touch;
 
 	public static GwtEvent.Type<SwipeMoveHandler> getType() {
 		return TYPE;
@@ -37,12 +39,15 @@ public class SwipeMoveEvent extends SwipeEvent<SwipeMoveHandler> {
 	/**
 	 * Construct a {@link SwipeMoveEvent}
 	 * 
+	 * @param touch
+	 * 
 	 * @param distanceReached is the minimum distance reached for this swipe
 	 * @param distance the distance in px
 	 * @param direction the direction of the swipe
 	 */
-	public SwipeMoveEvent(boolean distanceReached, int distance, SwipeEvent.DIRECTION direction) {
+	public SwipeMoveEvent(Touch touch, boolean distanceReached, int distance, SwipeEvent.DIRECTION direction) {
 		super(direction);
+		this.touch = touch;
 		this.distanceReached = distanceReached;
 		this.distance = distance;
 	}
@@ -82,6 +87,10 @@ public class SwipeMoveEvent extends SwipeEvent<SwipeMoveHandler> {
 	 */
 	public boolean isDistanceReached() {
 		return distanceReached;
+	}
+
+	public Touch getTouch() {
+		return touch;
 	}
 
 }
