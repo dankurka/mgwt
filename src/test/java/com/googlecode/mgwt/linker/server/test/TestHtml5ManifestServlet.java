@@ -192,7 +192,7 @@ public class TestHtml5ManifestServlet {
 	@Test
 	public void testGetModuleNameWithInvalidURI() throws ServletException {
 		MockServletRequest mockServletRequest = new MockServletRequest();
-		mockServletRequest.setRequestURI("test");
+		mockServletRequest.setServletPath("test");
 
 		servlet.init(new MockServletConfig());
 		try {
@@ -206,7 +206,7 @@ public class TestHtml5ManifestServlet {
 	@Test
 	public void testGetModuleNameWithValidURI() throws ServletException {
 		MockServletRequest mockServletRequest = new MockServletRequest();
-		mockServletRequest.setRequestURI("/test.manifest");
+		mockServletRequest.setServletPath("/test.manifest");
 
 		servlet.init(new MockServletConfig());
 

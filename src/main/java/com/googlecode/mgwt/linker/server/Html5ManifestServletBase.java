@@ -117,7 +117,7 @@ public class Html5ManifestServletBase extends HttpServlet {
 	}
 
 	protected String getBaseUrl(HttpServletRequest req) {
-		String base = req.getRequestURI();
+		String base = req.getServletPath();
 		// cut off module
 		return base.substring(0, base.lastIndexOf("/") + 1);
 	}
@@ -298,10 +298,10 @@ public class Html5ManifestServletBase extends HttpServlet {
 		// request url should be something like .../modulename.manifest" within
 		// the same folder of your host page...
 		Pattern pattern = Pattern.compile("/([a-zA-Z0-9]+)\\.manifest$");
-		Matcher matcher = pattern.matcher(req.getRequestURI());
+		Matcher matcher = pattern.matcher(req.getServletPath());
 		if (!matcher.find()) {
-			log("can not calculate module base from url: '" + req.getRequestURI() + "'");
-			throw new ServletException("can not calculate module base from url: '" + req.getRequestURI() + "'");
+			log("can not calculate module base from url: '" + req.getServletPath() + "'");
+			throw new ServletException("can not calculate module base from url: '" + req.getServletPath() + "'");
 		}
 
 		String module = matcher.group(1);

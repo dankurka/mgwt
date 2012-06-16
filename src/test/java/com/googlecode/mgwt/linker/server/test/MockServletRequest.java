@@ -266,6 +266,7 @@ public class MockServletRequest implements HttpServletRequest {
 	}
 
 	private String requestURI;
+	private String servletPath;
 
 	@Override
 	public String getRequestURI() {
@@ -292,7 +293,7 @@ public class MockServletRequest implements HttpServletRequest {
 	@Override
 	public String getServletPath() {
 
-		return null;
+		return servletPath;
 	}
 
 	@Override
@@ -341,6 +342,11 @@ public class MockServletRequest implements HttpServletRequest {
 	public boolean isUserInRole(String arg0) {
 
 		return false;
+	}
+
+	public void setServletPath(String servletPath) {
+		this.servletPath = servletPath;
+
 	}
 
 }
