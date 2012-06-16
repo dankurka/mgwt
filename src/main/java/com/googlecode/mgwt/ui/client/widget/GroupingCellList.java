@@ -30,6 +30,35 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 		public List<T> getMember();
 	}
 
+	public static class StandardCellGroup<G, T> implements CellGroup<G, T> {
+
+		protected final String key;
+		protected final G group;
+		protected final List<T> member;
+
+		public StandardCellGroup(String key, G group, List<T> member) {
+			this.key = key;
+			this.group = group;
+			this.member = member;
+		}
+
+		@Override
+		public String getKey() {
+			return key;
+		}
+
+		@Override
+		public G getGroup() {
+			return group;
+		}
+
+		@Override
+		public List<T> getMember() {
+			return member;
+		}
+
+	}
+
 	interface HeaderTemplate extends SafeHtmlTemplates {
 		@SafeHtmlTemplates.Template("<li class=\"{1}\" >{0}</li>")
 		SafeHtml li(SafeHtml cellContents, String classes);
