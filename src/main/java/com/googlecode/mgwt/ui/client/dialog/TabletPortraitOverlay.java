@@ -82,6 +82,11 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
 		}
 
+    /**
+     * get the body of the menu
+     * 
+     * @return the body of the menu
+     */
 		public FlowPanel getBody() {
 			return content;
 		}

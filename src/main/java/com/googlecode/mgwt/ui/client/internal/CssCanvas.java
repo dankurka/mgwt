@@ -55,7 +55,7 @@ public class CssCanvas {
 	 */
 	protected native JavaScriptObject getContext(String contextType, String id, int width, int height)/*-{
 		return $doc.getCSSCanvasContext(contextType, id, width, height);
-	}-*/;
+  }-*/;
 
 	/**
 	 * <p>
@@ -73,10 +73,14 @@ public class CssCanvas {
 		return new CssCanvas(contextType, id, width, height);
 	}
 
+  /**
+   * 
+   * @return true if we have support for css canvas
+   */
 	public native static final boolean isSupported()/*-{
 		return typeof ($doc.getCSSCanvasContext) != "undefined";
 
-	}-*/;
+  }-*/;
 
 	/**
 	 * <p>
@@ -87,7 +91,7 @@ public class CssCanvas {
 	 */
 	public native void setFillStyle(String style)/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.fillStyle = style;
-	}-*/;
+  }-*/;
 
 	/**
 	 * <p>
@@ -97,7 +101,7 @@ public class CssCanvas {
 	public native void beginPath()/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context
 				.beginPath();
-	}-*/;
+  }-*/;
 
 	/**
 	 * <p>
@@ -114,7 +118,7 @@ public class CssCanvas {
 	public native void arc(double x, double y, double radius, double startAngle, double endAngle, boolean antiClockwise)/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.arc(x,
 				y, radius, startAngle, endAngle, antiClockwise);
-	}-*/;
+  }-*/;
 
 	/**
 	 * <p>
@@ -127,7 +131,7 @@ public class CssCanvas {
 	public native void lineTo(double x, double y)/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.lineTo(
 				x, y);
-	}-*/;
+  }-*/;
 
 	/**
 	 * <p>
@@ -137,7 +141,7 @@ public class CssCanvas {
 	public native void closePath()/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context
 				.closePath();
-	}-*/;
+  }-*/;
 
 	/**
 	 * <p>
@@ -146,6 +150,6 @@ public class CssCanvas {
 	 */
 	public native void fill()/*-{
 		this.@com.googlecode.mgwt.ui.client.internal.CssCanvas::context.fill();
-	}-*/;
+  }-*/;
 
 }
