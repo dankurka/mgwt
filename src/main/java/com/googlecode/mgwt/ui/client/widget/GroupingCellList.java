@@ -16,26 +16,72 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.celllist.Cell;
 
+/**
+ * A grouping cell list renders a number of groups with their children
+ * 
+ * @author Daniel Kurka
+ * 
+ * @param <G> the type of the model for the header
+ * @param <T> the type if the model for the content
+ */
 public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionHandlers<T> {
 
 	private final Cell<G> header;
 	private final Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 	private final Map<Integer, T> modelMap = new HashMap<Integer, T>();
 
+  /**
+   * The cellgroup interface
+   * 
+   * @author Daniel Kurka
+   * 
+   * @param <G> the type of the model for the header
+   * @param <T> the type if the model for the content
+   */
 	public interface CellGroup<G, T> {
+    /**
+     * get the name of the group
+     * 
+     * @return the name of the group
+     */
 		public String getKey();
 
+    /**
+     * get the group header model
+     * 
+     * @return the group header model
+     */
 		public G getGroup();
 
+    /**
+     * get the group content models
+     * 
+     * @return the group content models
+     */
 		public List<T> getMember();
 	}
 
+  /**
+   * The standard implementation of {@link GroupingCellList.CellGroup}
+   * 
+   * @author Daniel Kurka
+   * 
+   * @param <G> the type of the model for the header
+   * @param <T> the type if the model for the content
+   */
 	public static class StandardCellGroup<G, T> implements CellGroup<G, T> {
 
 		protected final String key;
 		protected final G group;
 		protected final List<T> member;
 
+    /**
+     * Construct a {@link GroupingCellList.StandardCellGroup}
+     * 
+     * @param key the key to use
+     * @param group the group model to use
+     * @param member the list of content models for this group
+     */
 		public StandardCellGroup(String key, G group, List<T> member) {
 			this.key = key;
 			this.group = group;
@@ -67,10 +113,23 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
 	protected static final HeaderTemplate HEADER_LI_TEMPLATE = GWT.create(HeaderTemplate.class);
 
+  /**
+   * Construct a cell list with a given cell for content and for the header
+   * 
+   * @param cell the cell for content
+   * @param header the cell for the headers
+   */
 	public GroupingCellList(Cell<T> cell, Cell<G> header) {
 		this(cell, header, MGWTStyle.getTheme().getMGWTClientBundle().getListCss());
 	}
 
+  /**
+   * Construct a cell list with a given cell for content, for the header and a given css
+   * 
+   * @param cell the cell for content
+   * @param header the cell for the headers
+   * @param css the css to use
+   */
 	public GroupingCellList(Cell<T> cell, Cell<G> header, ListCss css) {
 		super(cell, css);
 		this.header = header;
@@ -78,6 +137,11 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 		setGroup(false);
 	}
 
+  /**
+   * render a given set of models
+   * 
+   * @param groups the model to render
+   */
 	public void renderGroup(List<CellGroup<G, T>> groups) {
 		SafeHtmlBuilder sb = new SafeHtmlBuilder();
 
@@ -144,19 +208,40 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 		}
 	}
 
+  /**
+   * get the css selector for header elements
+   * 
+   * @return the css selector for header elements
+   */
 	public String getHeaderSelector() {
 		return "li." + css.listHeadElement();
 	}
 
+  /**
+   * get the css used by this {@link GroupingCellList}
+   * 
+   * @return the css used by this {@link GroupingCellList}
+   */
 	public ListCss getListCss() {
 		return css;
 
 	}
 
+  /**
+   * get the mapping of index to content
+   * 
+   * @return the mapping of index to content
+   */
 	public Map<Integer, Integer> getMapping() {
 		return map;
 	}
 
+  /**
+   * render a header and return the value as html
+   * 
+   * @param group the header to render
+   * @return the string value
+   */
 	public String renderGroupHeader(G group) {
 		SafeHtmlBuilder headerBuilder = new SafeHtmlBuilder();
 		header.render(headerBuilder, group);

@@ -274,6 +274,11 @@ public class HeaderList<G, T> extends Composite {
 		});
 	}
 
+  /**
+   * Render the list of models
+   * 
+   * @param list the models to render
+   */
 	public void render(List<CellGroup<G, T>> list) {
 		this.list = list;
 		selectionBar.render(list);
