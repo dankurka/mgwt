@@ -317,11 +317,11 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		this.readonly = readonly;
 	}
 
-	/**
-	 * Is the checkbox currently read only?
-	 * 
-	 * @return
-	 */
+  /**
+   * Is the checkbox currently read only?
+   * 
+   * @return true if the checkbox is readonly
+   */
 	public boolean isReadOnly() {
 		return readonly;
 	}

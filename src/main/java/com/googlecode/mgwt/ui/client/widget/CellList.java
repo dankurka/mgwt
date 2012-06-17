@@ -50,8 +50,8 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * 
  * A widget that renders its children as a list
  * 
- * You can control the markup of the children by using the Cell interface,
- * therefore you can render any kind of arbitrary markup
+ * You can control the markup of the children by using the Cell interface, therefore you can render
+ * any kind of arbitrary markup
  * 
  * <h2>Styling</h2> The DOM will look like this:
  * 
@@ -73,22 +73,39 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * These styles will be applied to one or more of the li elements:
  * <ul>
  * <li>.mgwt-List-selected - if the li got selected</li>
- * <li>.mgwt-List-group - if the element should be rendered as selectable (is
- * has more content)</li>
+ * <li>.mgwt-List-group - if the element should be rendered as selectable (is has more content)</li>
  * </ul>
  * 
  * @author Daniel Kurka
+ * @param <T> the type of the model to render
  */
 public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
 	protected static final EventPropagator EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
 
+  /**
+   * Standard li template
+   * 
+   * @author Daniel Kurka
+   * 
+   */
 	public interface Template extends SafeHtmlTemplates {
+    /**
+     * get the template
+     * 
+     * @param idx
+     * @param classes
+     * @param cellContents
+     * @return the safe html with values
+     */
 		@SafeHtmlTemplates.Template("<li __idx=\"{0}\" class=\"{1}\">{2}</li>")
 		SafeHtml li(int idx, String classes, SafeHtml cellContents);
 
 	}
 
+  /**
+   * the li template instance
+   */
 	public static final Template LI_TEMPLATE = GWT.create(Template.class);
 
 	private static class UlTouchWidget extends TouchWidget {
@@ -358,10 +375,20 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 		}
 	}
 
+  /**
+   * set this widget a group (by default rendered with an arrow)
+   * 
+   * @param group
+   */
 	public void setGroup(boolean group) {
 		this.group = group;
 	}
 
+  /**
+   * set this widget a group (by default rendered with an arrow)
+   * 
+   * @return group
+   */
 	public boolean isGroup() {
 		return group;
 	}

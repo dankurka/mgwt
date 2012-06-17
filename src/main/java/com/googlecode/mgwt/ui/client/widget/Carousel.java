@@ -45,6 +45,13 @@ import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
+/**
+ * the carousel widget renders its children in a horizontal row. users can select a different child
+ * by swiping between them
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class Carousel extends Composite implements HasWidgets, HasSelectionHandlers<Integer> {
 
 	private static class CarouselIndicatorContainer extends Composite {
@@ -137,10 +144,18 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
 	private static final CarouselImpl IMPL = GWT.create(CarouselImpl.class);
 
+  /**
+   * Construct a carousel widget with the default css
+   */
 	public Carousel() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getCarouselCss());
 	}
 
+  /**
+   * Construct a carousel widget with a given css
+   * 
+   * @param css the css to use
+   */
 	public Carousel(CarouselCss css) {
 		this.css = css;
 		this.css.ensureInjected();
@@ -272,6 +287,9 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 		refresh();
 	}
 
+  /**
+   * refresh the carousel widget, this is necessary after changing child elements
+   */
 	public void refresh() {
 
 		IMPL.adjust(main, container);
@@ -320,12 +338,27 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 		return addHandler(handler, SelectionEvent.getType());
 	}
 
+  /**
+   * 
+   * @author Daniel Kurka
+   * 
+   */
 	public static interface CarouselImpl {
 
+    /**
+     * 
+     * @param main
+     * @param container
+     */
 		void adjust(FlowPanel main, FlowPanel container);
 
 	}
 
+  /**
+   * 
+   * @author Daniel Kurka
+   * 
+   */
 	public static class CarouselImplSafari implements CarouselImpl {
 
 		@Override
@@ -344,6 +377,11 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
 	}
 
+  /**
+   * 
+   * @author Daniel Kurka
+   * 
+   */
 	public static class CarouselImplGecko implements CarouselImpl {
 
 		@Override

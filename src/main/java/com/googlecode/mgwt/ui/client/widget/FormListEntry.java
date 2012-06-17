@@ -28,20 +28,42 @@ import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
 
+/**
+ * A {@link FormListEntry} entry renders a widget together with a describing label
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class FormListEntry extends Composite implements HasWidgets, HasHTML {
 	private FlowPanel main;
 	private HTML fieldLabel;
 	private SimplePanel widgetContainer;
 
+  /**
+   * Construct an empty {@link FormListEntry}
+   */
 	public FormListEntry() {
 		this("", null);
 
 	}
 
+  /**
+   * Construct a {@link FormListEntry} with a label and a widget
+   * 
+   * @param fieldName the text of the label
+   * @param w the widget
+   */
 	public FormListEntry(String fieldName, Widget w) {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getListCss(), fieldName, w);
 	}
 
+  /**
+   * Construct a {@link FormListEntry} with a label, a widget and a given css
+   * 
+   * @param fieldName the text of the label
+   * @param w the widget
+   * @param listCss the css to use
+   */
 	public FormListEntry(ListCss listCss, String fieldName, Widget w) {
 		listCss.ensureInjected();
 		main = new FlowPanel();
@@ -61,6 +83,12 @@ public class FormListEntry extends Composite implements HasWidgets, HasHTML {
 		setWidget(fieldName, w);
 	}
 
+  /**
+   * set the label and the widget
+   * 
+   * @param fieldName the text of the label
+   * @param w the widget
+   */
 	public void setWidget(String fieldName, Widget w) {
 		fieldLabel.setHTML(fieldName);
 		if (w instanceof MTextBoxBase) {
