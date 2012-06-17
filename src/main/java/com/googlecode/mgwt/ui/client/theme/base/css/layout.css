@@ -55,6 +55,11 @@
 		\-moz-box-flex: 1;
 		overflow: hidden;
 	} 
+	.fillPanelExpandChild {
+		\-moz-box-flex: 1;
+	} 
+	
+	
 }
 
 
