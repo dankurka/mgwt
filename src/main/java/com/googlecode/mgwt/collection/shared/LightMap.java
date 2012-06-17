@@ -15,17 +15,56 @@
  */
 package com.googlecode.mgwt.collection.shared;
 
+/**
+ * 
+ * A lightmap is a key value store that uses a native implementation if available.
+ * 
+ * @author Daniel Kurka
+ * 
+ * @param <V> the type of object to store
+ */
 public interface LightMap<V> {
 
+  /**
+   * remove all objects from this map
+   */
 	public void clear();
 
+  /**
+   * does the map contain a key
+   * 
+   * @param key the key to test for
+   * @return true if the key is part of the map
+   */
 	public boolean containsKey(String key);
 
+  /**
+   * get all keys for this map
+   * 
+   * @return the keys of this map
+   */
 	public LightArray<String> getKeys();
 
+  /**
+   * remove a value from the map
+   * 
+   * @param key
+   */
 	public void remove(String key);
 
+  /**
+   * get a value from the map
+   * 
+   * @param key the key to use
+   * @return the value
+   */
 	public V get(String key);
 
+  /**
+   * put a value into the map
+   * 
+   * @param key the key
+   * @param value the value
+   */
 	public void put(String key, V value);
 }
