@@ -15,16 +15,54 @@
  */
 package com.googlecode.mgwt.collection.shared;
 
+/**
+ * An array that can store primitive ints
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface LightArrayInt {
-	public int shift();
+  /**
+   * pop a value from the array
+   * 
+   * @return the value
+   */
+  public int shift();
 
+  /**
+   * get the object at a specific index
+   * 
+   * @param index the index
+   * @return the object or null
+   */
 	public int get(int index);
 
+  /**
+   * put an object to a given index. the array autoexpands and fills up missing values with null
+   * 
+   * @param index the index
+   * @param value the value to store
+   */
 	public void set(int index, int value);
 
+  /**
+   * the length of the array
+   * 
+   * @return the length of the array
+   */
 	public int length();
 
+  /**
+   * push a value onto the array
+   * 
+   * @param value to push
+   */
 	public void unshift(int value);
 
-	void push(int value);
+  /**
+   * push a value on to the array
+   * 
+   * @param value
+   */
+  public void push(int value);
 }

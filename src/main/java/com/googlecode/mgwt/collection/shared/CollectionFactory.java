@@ -23,7 +23,22 @@ import com.googlecode.mgwt.collection.shared.java.JavaLightArray;
 import com.googlecode.mgwt.collection.shared.java.JavaLightArrayInt;
 import com.googlecode.mgwt.collection.shared.java.JavaLightMap;
 
+/**
+ * A factory to create instances of the light collections api.
+ * 
+ * If this is run in production code javascript objects are used to speed up collections. If run
+ * inside a JVM / dev mode the java implementation is used
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class CollectionFactory {
+  /**
+   * Construct a LightMap
+   * 
+   * @param <V> the type of the map
+   * @return the map
+   */
 	public static <V> LightMap<V> constructMap() {
 		if (GWT.isProdMode()) {
 			return new JsLightMap<V>();
@@ -32,6 +47,12 @@ public class CollectionFactory {
 		}
 	}
 
+  /**
+   * Construct a {@link LightArray}
+   * 
+   * @param <V> the type of objects that go into the array
+   * @return the array
+   */
 	public static <V> LightArray<V> constructArray() {
 		if (GWT.isProdMode()) {
 			return new JsLightArray<V>();
@@ -40,6 +61,11 @@ public class CollectionFactory {
 		}
 	}
 
+  /**
+   * Construct an array of integers
+   * 
+   * @return the array
+   */
 	public static LightArrayInt constructIntegerArray() {
 		if (GWT.isProdMode()) {
 			return new JsLightArrayInteger();

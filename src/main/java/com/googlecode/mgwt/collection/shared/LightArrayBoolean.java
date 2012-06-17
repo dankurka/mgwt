@@ -15,16 +15,54 @@
  */
 package com.googlecode.mgwt.collection.shared;
 
+/**
+ * A light array implements the same interface as a javascript array.
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface LightArrayBoolean {
-	public boolean shift();
+  /**
+   * pop a value from the array
+   * 
+   * @return the value
+   */
+  public boolean shift();
 
+  /**
+   * get the object at a specific index
+   * 
+   * @param index the index
+   * @return the object or null
+   */
 	public boolean get(int index);
 
+  /**
+   * put an object to a given index. the array autoexpands and fills up missing values with null
+   * 
+   * @param index the index
+   * @param value the value to store
+   */
 	public void set(int index, boolean value);
 
+  /**
+   * the length of the array
+   * 
+   * @return the length of the array
+   */
 	public int length();
 
+  /**
+   * push a value onto the array
+   * 
+   * @param value to push
+   */
 	public void unshift(boolean value);
 
-	void push(boolean value);
+  /**
+   * push a value on to the array
+   * 
+   * @param value
+   */
+  public void push(boolean value);
 }
