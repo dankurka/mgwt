@@ -159,6 +159,11 @@ public class Dialogs {
 	 * 
 	 */
 	public interface OptionCallback {
+    /**
+     * called when an option gets selected
+     * 
+     * @param index the index of the selected button
+     */
 		public void onOptionSelected(int index);
 	}
 
@@ -169,7 +174,16 @@ public class Dialogs {
 	 * 
 	 */
 	public enum ButtonType {
-		NORMAL, IMPORTANT, CONFIRM
+    /**
+     * normal button
+     */
+    NORMAL, /**
+     * important button
+     */
+    IMPORTANT, /**
+     * confirm button
+     */
+    CONFIRM
 	};
 
 	/**
@@ -182,16 +196,32 @@ public class Dialogs {
 		private final String text;
 		private final ButtonType type;
 
+    /**
+     * Construct an {@link OptionsDialogEntry}
+     * 
+     * @param text the text to display
+     * @param type the type of button to use
+     */
 		public OptionsDialogEntry(String text, ButtonType type) {
 			this.text = text;
 			this.type = type;
 
 		}
 
+    /**
+     * get the text of the button
+     * 
+     * @return the text of the button
+     */
 		public String getText() {
 			return text;
 		}
 
+    /**
+     * get the type of the button
+     * 
+     * @return the type of the button
+     */
 		public ButtonType getType() {
 			return type;
 		}

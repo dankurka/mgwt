@@ -37,6 +37,12 @@ import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
  */
 public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
+  /**
+   * The menu of an ipad overlay
+   * 
+   * @author Daniel Kurka
+   * 
+   */
 	public static class IpadMenu extends Composite {
 
 		private FlowPanel main;
@@ -45,10 +51,18 @@ public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 
 		private FlowPanel content;
 
+    /**
+     * Construct an {@link IpadMenu}
+     */
 		public IpadMenu() {
 			this(MGWTStyle.getTheme().getMGWTClientBundle().getHeaderCss());
 		}
 
+    /**
+     * Construct an {@link IpadMenu} with a given css
+     * 
+     * @param css the css to use
+     */
 		public IpadMenu(HeaderCss css) {
 			main = new FlowPanel();
 			css.ensureInjected();
