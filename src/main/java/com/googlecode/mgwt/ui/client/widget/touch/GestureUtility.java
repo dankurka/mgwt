@@ -23,6 +23,12 @@ import com.googlecode.mgwt.dom.client.recognizer.pinch.PinchRecognizer;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.UIObjectToOffsetProvider;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeRecognizer;
 
+/**
+ * {@link GestureUtility} is a utility class for adding standard recognizers to a widget
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class GestureUtility {
 	private TapRecognizer tapRecognizer;
 	private final HasTouchHandlers source;
@@ -30,11 +36,19 @@ public class GestureUtility {
 	private SwipeRecognizer swipeRecognizer;
 	private PinchRecognizer pinchRecognizer;
 
+  /**
+   * Construct a {@link GestureUtility} for a given source
+   * 
+   * @param source the source to use
+   */
 	public GestureUtility(HasTouchHandlers source) {
 		assert source != null;
 		this.source = source;
 	}
 
+  /**
+   * ensure that there is a registered {@link TapRecognizer} on the source
+   */
 	public void ensureTapRecognizer() {
 		if (tapRecognizer != null)
 			return;
@@ -43,6 +57,9 @@ public class GestureUtility {
 		source.addTouchHandler(tapRecognizer);
 	}
 
+  /**
+   * ensure that there is a registered {@link LongTapRecognizer} on the source
+   */
 	public void ensureLongTapRecognizer() {
 		if (longTapRecognizer != null) {
 			return;
@@ -53,6 +70,9 @@ public class GestureUtility {
 
 	}
 
+  /**
+   * ensure that there is a registered {@link SwipeRecognizer} on the source
+   */
 	public void ensureSwipeRecognizer() {
 		if (swipeRecognizer != null) {
 			return;
@@ -63,6 +83,12 @@ public class GestureUtility {
 
 	}
 
+  /**
+   * ensure that there is a registered {@link PinchRecognizer} on the source
+   * 
+   * @param object the {@link UIObject} that is used for offset
+   * 
+   */
 	public void ensurePinchRecognizer(UIObject object) {
 		if (pinchRecognizer != null) {
 			return;
@@ -73,6 +99,9 @@ public class GestureUtility {
 
 	}
 
+  /**
+   * ensure that there is a registered {@link LongTapRecognizer} on the source
+   */
 	public void ensureLongTapHandler() {
 		if (longTapRecognizer != null) {
 			return;

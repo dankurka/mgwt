@@ -56,6 +56,9 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 
 	protected final GestureUtility gestureUtility;
 
+  /**
+   * Construct a touch panel
+   */
 	public TouchPanel() {
 		gestureUtility = new GestureUtility(this);
 	}
