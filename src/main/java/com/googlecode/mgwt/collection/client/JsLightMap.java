@@ -19,13 +19,28 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.collection.shared.LightMap;
 
+/**
+ * An implementation of {@link LightMap} that uses native javascript objects as dictionaries
+ * 
+ * @author Daniel Kurka
+ * 
+ * @param <V> the tyope of object to store
+ */
 public class JsLightMap<V> implements LightMap<V> {
 	private JavaScriptObject map;
 
+  /**
+   * Construct a {@link JsLightMap}
+   */
 	public JsLightMap() {
 		this(JavaScriptObject.createObject());
 	}
 
+  /**
+   * Construct a {@link JsLightMap} using a given javascript object
+   * 
+   * @param data the javascript object to use
+   */
 	public JsLightMap(JavaScriptObject data) {
 		if (data == null) {
 			throw new IllegalArgumentException("data must not be null");
@@ -40,12 +55,12 @@ public class JsLightMap<V> implements LightMap<V> {
 
 	private final native void clearData() /*-{
 		this.@com.googlecode.mgwt.collection.client.JsLightMap::map = {};
-	}-*/;
+  }-*/;
 
 	@Override
 	public final native boolean containsKey(String key) /*-{
 		return (this.@com.googlecode.mgwt.collection.client.JsLightMap::map)[key] != null;
-	}-*/;
+  }-*/;
 
 	@Override
 	public void remove(String key) {
@@ -54,7 +69,7 @@ public class JsLightMap<V> implements LightMap<V> {
 
 	private native V nativeDelete(String key) /*-{
 		delete (this.@com.googlecode.mgwt.collection.client.JsLightMap::map)[key];
-	}-*/;
+  }-*/;
 
 	@Override
 	public V get(String key) {
@@ -63,7 +78,7 @@ public class JsLightMap<V> implements LightMap<V> {
 
 	private native V nativeGet(String key) /*-{
 		return (this.@com.googlecode.mgwt.collection.client.JsLightMap::map)[key];
-	}-*/;
+  }-*/;
 
 	@Override
 	public void put(String key, V value) {
@@ -73,7 +88,7 @@ public class JsLightMap<V> implements LightMap<V> {
 
 	private native V nativePut(String key, V value) /*-{
 		(this.@com.googlecode.mgwt.collection.client.JsLightMap::map)[key] = value;
-	}-*/;
+  }-*/;
 
 	@Override
 	public LightArray<String> getKeys() {
@@ -87,8 +102,13 @@ public class JsLightMap<V> implements LightMap<V> {
 			array.push(key);
 		}
 		return array;
-	}-*/;
+  }-*/;
 
+  /**
+   * get the underlying javascript object
+   * 
+   * @return the underlying javascript object
+   */
 	public JavaScriptObject getMap() {
 		return map;
 	}
