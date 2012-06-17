@@ -18,14 +18,29 @@ package com.googlecode.mgwt.collection.client;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
 
+/**
+ * An implementation of {@link LightArrayInt} that uses native javascript arrays
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class JsLightArrayInteger implements LightArrayInt {
 
 	private JavaScriptObject array;
 
+  /**
+   * Construct a {@link JsLightArrayInteger}
+   */
 	public JsLightArrayInteger() {
 		this(JavaScriptObject.createArray());
 	}
 
+  /**
+   * Construct a {@link JsLightArrayInteger} with a given javascript array
+   * 
+   * @param array the array to use
+   * 
+   */
 	public JsLightArrayInteger(JavaScriptObject array) {
 		this.array = array;
 	}
@@ -33,35 +48,40 @@ public class JsLightArrayInteger implements LightArrayInt {
 	@Override
 	public native void push(int value)/*-{
 		this.@com.googlecode.mgwt.collection.client.JsLightArrayInteger::array[this.@com.googlecode.mgwt.collection.client.JsLightArrayInteger::array.length] = value;
-	}-*/;
+  }-*/;
 
 	@Override
 	public native int shift() /*-{
 		return this.@com.googlecode.mgwt.collection.client.JsLightArrayInteger::array
 				.shift();
-	}-*/;
+  }-*/;
 
 	@Override
 	public native int get(int index) /*-{
 		return this.@com.googlecode.mgwt.collection.client.JsLightArrayInteger::array[index];
-	}-*/;
+  }-*/;
 
 	@Override
 	public native void set(int index, int value) /*-{
 		this.@com.googlecode.mgwt.collection.client.JsLightArrayInteger::array[index] = value;
-	}-*/;
+  }-*/;
 
 	@Override
 	public native int length()/*-{
 		return this.@com.googlecode.mgwt.collection.client.JsLightArrayInteger::array.length;
-	}-*/;
+  }-*/;
 
 	@Override
 	public native void unshift(int value)/*-{
 		this.@com.googlecode.mgwt.collection.client.JsLightArrayInteger::array
 				.unshift(value);
-	}-*/;
+  }-*/;
 
+  /**
+   * get the underlying javascript array
+   * 
+   * @return the underlying javascript array
+   */
 	public JavaScriptObject getArray() {
 		return array;
 	}
