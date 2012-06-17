@@ -17,10 +17,19 @@ package com.googlecode.mgwt.collection.shared.java;
 
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
 
+/**
+ * Java implemntation of {@link LightArrayInt}
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class JavaLightArrayInt implements LightArrayInt {
 
 	private JavaLightArray<Integer> array;
 
+  /**
+   * Construct a {@link JavaLightArray}
+   */
 	public JavaLightArrayInt() {
 		array = new JavaLightArray<Integer>();
 	}

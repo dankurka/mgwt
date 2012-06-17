@@ -17,10 +17,20 @@ package com.googlecode.mgwt.collection.shared.java;
 
 import com.googlecode.mgwt.collection.shared.LightArrayBoolean;
 
+/**
+ * 
+ * Implementation of {@link LightArrayBoolean} for java environments
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class JavaLightArrayBoolean implements LightArrayBoolean {
 
 	private JavaLightArray<Boolean> array;
 
+  /**
+   * Construct a {@link JavaLightArrayBoolean}
+   */
 	public JavaLightArrayBoolean() {
 		array = new JavaLightArray<Boolean>();
 	}

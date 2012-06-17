@@ -20,10 +20,20 @@ import java.util.Set;
 
 import com.googlecode.mgwt.collection.shared.LightArray;
 
+/**
+ * An implementation of {@link LightArray} used on the jvm
+ * 
+ * @author Daniel Kurka
+ * 
+ * @param <T>
+ */
 public class JavaLightArray<T> implements LightArray<T> {
 
 	private ArrayList<T> list;
 
+  /**
+   * Construct a {@link JavaLightArray}
+   */
 	public JavaLightArray() {
 		list = new ArrayList<T>();
 	}
@@ -74,6 +84,13 @@ public class JavaLightArray<T> implements LightArray<T> {
 
 	}
 
+  /**
+   * Construct a {@link JavaLightArray} from a set
+   * 
+   * @param <T> the types to store in the array
+   * @param set the set with the initial values
+   * @return the new array
+   */
 	public static <T> JavaLightArray<T> fromSet(Set<T> set) {
 		JavaLightArray<T> array = new JavaLightArray<T>();
 		for (T t : set) {

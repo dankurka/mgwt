@@ -21,10 +21,20 @@ import java.util.Set;
 import com.googlecode.mgwt.collection.shared.LightArray;
 import com.googlecode.mgwt.collection.shared.LightMap;
 
+/**
+ * Java implementation of {@link LightMap}
+ * 
+ * @author Daniel Kurka
+ * 
+ * @param <V> type of objects to store
+ */
 public class JavaLightMap<V> implements LightMap<V> {
 
 	private HashMap<String, V> map;
 
+  /**
+   * Construct a {@link JavaLightMap}
+   */
 	public JavaLightMap() {
 		map = new HashMap<String, V>();
 	}
