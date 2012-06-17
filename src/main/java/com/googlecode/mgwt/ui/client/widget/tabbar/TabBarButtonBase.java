@@ -33,7 +33,18 @@ public class TabBarButtonBase extends ButtonBase {
 
 	protected final TabBarButtonStylerHandler tabBarButtonStylerHandler = GWT.create(TabBarButtonStylerHandler.class);
 
+  /**
+   * 
+   * @author Daniel Kurka
+   * 
+   */
 	public interface TabBarButtonStylerHandler {
+    /**
+     * set an image as background
+     * 
+     * @param element the element to set the image on
+     * @param imageResource the image to use
+     */
 		public void applyImage(Element element, ImageResource imageResource);
 	}
 
@@ -71,16 +82,12 @@ public class TabBarButtonBase extends ButtonBase {
 	protected Element text;
 	protected final ImageResource imageResource;
 
-	/**
-	 * <p>
-	 * Constructor for TabBarButtonBase.
-	 * </p>
-	 * 
-	 * @param css a
-	 *            {@link com.googlecode.mgwt.ui.client.theme.base.TabBarButtonCss}
-	 *            object.
-	 * @param imageResource
-	 */
+  /**
+   * Construct
+   * 
+   * @param css
+   * @param imageResource
+   */
 	public TabBarButtonBase(TabBarCss css, ImageResource imageResource) {
 		super(css);
 		this.css = css;

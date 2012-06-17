@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget;
+package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import java.util.LinkedList;
 
@@ -37,8 +37,7 @@ import com.googlecode.mgwt.ui.client.animation.AnimationHelper;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
-import com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase;
-import com.googlecode.mgwt.ui.client.widget.tabbar.TabPanel;
+import com.googlecode.mgwt.ui.client.widget.LayoutPanel;
 
 /**
  * This TabPanel has support for content that can be animated.

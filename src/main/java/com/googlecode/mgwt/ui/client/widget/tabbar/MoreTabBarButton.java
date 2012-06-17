@@ -28,11 +28,19 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  * 
  */
 public class MoreTabBarButton extends TabBarButton {
-
+  /**
+   * Construct a BookmarkTabBarButton
+   * 
+   */
 	public MoreTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
+  /**
+   * Construct a BookmarkTabBarButton with a given css
+   * 
+   * @param css the css to use
+   */
 	public MoreTabBarButton(TabBarCss css) {
 		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMoreImage() : null);
 

@@ -27,10 +27,19 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  */
 public class FavoritesTabBarButton extends TabBarButton {
 
+  /**
+   * Construct a BookmarkTabBarButton
+   * 
+   */
 	public FavoritesTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
+  /**
+   * Construct a BookmarkTabBarButton with a given css
+   * 
+   * @param css the css to use
+   */
 	public FavoritesTabBarButton(TabBarCss css) {
 		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarFavoritesImage() : null);
 		setText("Favorites");

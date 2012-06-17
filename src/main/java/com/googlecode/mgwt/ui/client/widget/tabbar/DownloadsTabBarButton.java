@@ -27,10 +27,19 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  */
 public class DownloadsTabBarButton extends TabBarButton {
 
+  /**
+   * Construct a BookmarkTabBarButton
+   * 
+   */
 	public DownloadsTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
+  /**
+   * Construct a BookmarkTabBarButton with a given css
+   * 
+   * @param css the css to use
+   */
 	public DownloadsTabBarButton(TabBarCss css) {
 		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarDownloadsImage() : null);
 		setText("Downloads");

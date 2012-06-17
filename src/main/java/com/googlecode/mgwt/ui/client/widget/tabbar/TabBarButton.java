@@ -26,11 +26,21 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  * </ul>
  */
 public class TabBarButton extends TabBarButtonBase {
-
+  /**
+   * Construct a BookmarkTabBarButton
+   * 
+   * @param imageResource the image to use
+   */
 	public TabBarButton(ImageResource imageResource) {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss(), imageResource);
 	}
 
+  /**
+   * Construct a BookmarkTabBarButton with a given css
+   * 
+   * @param css the css to use
+   * @param imageResource the image to use
+   */
 	public TabBarButton(TabBarCss css, ImageResource imageResource) {
 		super(css, imageResource);
 

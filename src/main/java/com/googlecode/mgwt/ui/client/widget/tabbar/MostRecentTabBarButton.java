@@ -26,11 +26,18 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  * 
  */
 public class MostRecentTabBarButton extends TabBarButton {
-
+  /**
+   * Construct a BookmarkTabBarButton
+   */
 	public MostRecentTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
+  /**
+   * Construct a BookmarkTabBarButton with a given css
+   * 
+   * @param css the css to use
+   */
 	public MostRecentTabBarButton(TabBarCss css) {
 		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMostRecentImage() : null);
 		setText("Most Recent");
