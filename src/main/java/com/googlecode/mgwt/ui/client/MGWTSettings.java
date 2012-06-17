@@ -18,12 +18,11 @@ package com.googlecode.mgwt.ui.client;
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
 
 /**
- * <p>
- * MGWTSettings class.
- * </p>
+ * This class acts as a container for all settings for an mgwt app.
+ * 
+ * Those include things like the viewport, icons and scrolling behaviour.
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class MGWTSettings {
 

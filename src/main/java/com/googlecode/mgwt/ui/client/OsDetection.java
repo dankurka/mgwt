@@ -43,7 +43,6 @@ package com.googlecode.mgwt.ui.client;
  * 
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface OsDetection {
 	/**

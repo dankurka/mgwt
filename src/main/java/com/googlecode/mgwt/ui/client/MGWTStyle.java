@@ -27,7 +27,6 @@ import com.googlecode.mgwt.ui.client.theme.MGWTThemeBaseThemeStandardImpl;
  * 
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class MGWTStyle {
 

@@ -56,7 +56,6 @@ import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
  * 
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class MGWT {
 	private static final Logger logger = Logger.getLogger("MGWT");
