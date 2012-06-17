@@ -28,12 +28,21 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  */
 public class BookmarkTabBarButton extends TabBarButton {
 
+  /**
+   * Construct a BookmarkTabBarButton
+   */
 	public BookmarkTabBarButton() {
 		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
 	}
 
-	public BookmarkTabBarButton(TabBarCss tabBarButtonCss) {
-		super(tabBarButtonCss, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarBookMarkImage() : null);
+  /**
+   * Construct a BookmarkTabBarButton with a given css
+   * 
+   * @param css the css to use
+   */
+  public BookmarkTabBarButton(TabBarCss css) {
+    super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle
+        .getTheme().getMGWTClientBundle().tabBarBookMarkImage() : null);
 		setText("Bookmarks");
 	}
 }
