@@ -39,6 +39,7 @@
 	.mgwt-Slider-pointer {
 		\-moz-tap-highlight-color: transparent;
 		\-moz-border-radius: 15px;
+		border-radius: 15px;
 		background-image: literal('-moz-radial-gradient(radial, 50% 50%, 0, circle closest-side , rgb(146, 199, 0), rgb(146, 199, 0) 10% , rgba(126, 179, 0, 0.7) 11%,  rgba(255, 255, 255, 1) 15%  , rgba(126, 179, 0, 0.3) 16%, rgba(126, 179, 0, 0.4))');
 	}
 }

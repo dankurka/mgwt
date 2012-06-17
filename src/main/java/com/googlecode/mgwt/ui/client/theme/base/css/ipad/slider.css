@@ -18,6 +18,7 @@
 		\-moz-box-sizing: padding-box;
 		\-moz-box-shadow: 2px 2px 4px #666666;
 		\-moz-border-radius: 4px;
+		border-radius: 4px;
 		background-image: literal('-moz-linear-gradient(top, #0a3b87 , #4c8de7 50%, #6babf5 95%, #0a3b87 96%), -moz-linear-gradient(top, #929292, #f0f0f0 50%, #fff 51%, #fff 95%, #929292 100%)');
 	}
 }
@@ -53,6 +54,7 @@
 		\-moz-tap-highlight-color: transparent;
 		\-moz-box-shadow: 2px 2px 3px #666666;
 		\-moz-border-radius: 10px;
+		border-radius: 10px;
 		background-image: literal('-moz-linear-gradient(top, #aaaaaa,  #eeeeee 50%, #cccccc)');
 	}
 }

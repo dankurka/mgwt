@@ -69,6 +69,7 @@
 @if user.agent gecko1_8 {
 	.mgwt-HeaderButton-text {
 		\-moz-border-radius: 4px;
+		border-radius: 4px;
 		\-moz-background-origin: border-box;
 	}
 }
@@ -135,8 +136,8 @@
 @if user.agent gecko1_8 {
 	.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content {
 		\-moz-transform: skew(15deg);
-		\-moz-border-radius: 2px;
 		\-moz-border-radius: 4px;
+		border-radius: 4px;
 	}
 }
 
