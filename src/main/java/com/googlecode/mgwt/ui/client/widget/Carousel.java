@@ -34,6 +34,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
@@ -330,6 +331,15 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
       }
     });
 
+  }
+
+  public void setSelectedPage(int index) {
+    LightArrayInt pagesX = scrollPanel.getPagesX();
+    if (index < 0 || index >= pagesX.length()) {
+      throw new IllegalArgumentException("invalid value for index: " + index);
+    }
+    currentPage = index;
+    scrollPanel.scrollToPage(index, 0, 300);
   }
 
   @Override
