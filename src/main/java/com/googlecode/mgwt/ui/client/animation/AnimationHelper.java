@@ -42,10 +42,18 @@ public class AnimationHelper extends Composite {
 
 	protected boolean isAnimating;
 
+	/**
+	 * Construct an animation helper
+	 */
 	public AnimationHelper() {
 		this((AnimatableDisplay) GWT.create(AnimatableDisplay.class));
 	}
 
+	/**
+	 * Construct an animation helper with a given display
+	 * 
+	 * @param display the display to use
+	 */
 	public AnimationHelper(AnimatableDisplay display) {
 		this.display = display;
 		isFirst = true;
