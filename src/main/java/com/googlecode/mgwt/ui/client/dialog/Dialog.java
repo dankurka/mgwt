@@ -17,9 +17,8 @@ package com.googlecode.mgwt.ui.client.dialog;
 
 /**
  * Simple interface implemented by all dialogs
- *
+ * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface Dialog {
 

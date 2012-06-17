@@ -29,7 +29,6 @@ import com.googlecode.mgwt.ui.client.widget.Button;
  * Utility class to use the most common dialog classes
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class Dialogs {
 

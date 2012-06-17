@@ -50,7 +50,6 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
  * Baseclass for creating dialogs that are animated
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers, HasTapHandlers, Dialog {
 

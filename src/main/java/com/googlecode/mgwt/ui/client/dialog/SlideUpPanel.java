@@ -23,7 +23,6 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
  * A dialog panel that slides up into view
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class SlideUpPanel extends AnimatableDialogBase {
 

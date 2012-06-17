@@ -23,7 +23,6 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
  * A dialog that pops into view
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class PopinDialog extends AnimatableDialogBase {
 

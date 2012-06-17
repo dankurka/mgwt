@@ -34,7 +34,6 @@ import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
  * the content of the overlay is only visible in portrait mode
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class TabletPortraitOverlay implements HasOneWidget, Dialog {
 

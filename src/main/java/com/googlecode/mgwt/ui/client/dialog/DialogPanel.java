@@ -29,7 +29,6 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
  * A dialog panel with title, text, ok and cancel button
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class DialogPanel extends Composite {
 	private static class CancelButton extends ButtonBase {

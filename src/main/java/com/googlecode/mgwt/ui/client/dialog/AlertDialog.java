@@ -28,7 +28,6 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
  * A simple alert dialog with an ok button.
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialog {
 

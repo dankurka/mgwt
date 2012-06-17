@@ -26,7 +26,6 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
  * A simple confirm dialog with ok and cancel buttons
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class ConfirmDialog implements HasText, HasTitleText, Dialog {
 	/**

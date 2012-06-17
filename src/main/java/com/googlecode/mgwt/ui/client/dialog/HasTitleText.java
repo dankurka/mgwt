@@ -17,21 +17,20 @@ package com.googlecode.mgwt.ui.client.dialog;
 
 /**
  * Widgets that implement this interface have a title
- *
+ * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface HasTitleText {
 	/**
 	 * set the title of the widget
-	 *
+	 * 
 	 * @param title the title to set
 	 */
 	public void setTitleText(String title);
 
 	/**
 	 * get the current title
-	 *
+	 * 
 	 * @return the current title of the widget
 	 */
 	public String getTitleText();
