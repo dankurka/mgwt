@@ -61,23 +61,33 @@ public class AnimationHelper extends Composite {
 		initWidget(display.asWidget());
 	}
 
-	/**
-	 * see: {@link #goTo(Widget, Animation, AnimationEndCallback)}
-	 */
+  /**
+   * animate to a given widget. If this is called while an animation is running this is a noop.
+   * 
+   * @param w the widget to animate to
+   * @param animation the animation to use
+   */
 	public void goTo(IsWidget w, Animation animation) {
 		goTo(w, animation, null);
 	}
 
-	/**
-	 * see: {@link #goTo(Widget, Animation, AnimationEndCallback)}
-	 */
+  /**
+   * animate to a given widget. If this is called while an animation is running this is a noop.
+   * 
+   * @param w the widget to animate to
+   * @param animation the animation to use
+   * @param callback a callback that will be called once the animation is finished
+   */
 	public void goTo(IsWidget w, Animation animation, AnimationEndCallback callback) {
 		goTo(w.asWidget(), animation, callback);
 	}
 
-	/**
-	 * see: {@link #goTo(Widget, Animation, AnimationEndCallback)}
-	 */
+  /**
+   * animate to a given widget. If this is called while an animation is running this is a noop.
+   * 
+   * @param w the widget to animate to
+   * @param animation the animation to use
+   */
 	public void goTo(Widget w, Animation animation) {
 		goTo(w, animation, null);
 	}
