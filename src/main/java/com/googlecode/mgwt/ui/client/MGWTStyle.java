@@ -46,16 +46,16 @@ public class MGWTStyle {
 		return theme;
 	}
 
-	/**
-	 * Set the default bundle of this mgwt app
-	 * 
-	 * <p>
-	 * can only be called once at startup
-	 * <p>
-	 * 
-	 * 
-	 * @param bundle the default bundle to use
-	 */
+  /**
+   * Set the default bundle of this mgwt app
+   * 
+   * <p>
+   * can only be called once at startup
+   * <p>
+   * 
+   * 
+   * @param newTheme the default bundle to use
+   */
 	public static final void setTheme(MGWTTheme newTheme) {
 		if (theme != null) {
 			throw new IllegalStateException("can not change default theme if theres already an instance...");
@@ -64,6 +64,11 @@ public class MGWTStyle {
 		theme.getMGWTClientBundle().getMainCss().ensureInjected();
 	}
 
+  /**
+   * Inject a given css file at the end of the head
+   * 
+   * @param url the url of the css file
+   */
 	public static void injectStyleSheet(String url) {
 		NodeList<Element> nodeList = Document.get().getElementsByTagName("head");
 		if (nodeList.getLength() != 1) {
@@ -85,7 +90,13 @@ public class MGWTStyle {
 
 	}
 
+  /**
+   * this routine provides access to match media from java
+   * 
+   * @param mediaQuery the query to perform
+   * @return true if the query matches otherwise false
+   */
 	public native boolean matchMedia(String mediaQuery)/*-{
 		return $wnd.matchMedia(mediaQuery);
-	}-*/;
+  }-*/;
 }

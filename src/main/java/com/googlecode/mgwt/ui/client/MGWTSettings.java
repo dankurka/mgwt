@@ -26,10 +26,37 @@ import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
  */
 public class MGWTSettings {
 
+  /**
+   * This class represents the mobile viewport
+   * 
+   * @author Daniel Kurka
+   * 
+   */
 	public static class ViewPort {
 
+    /**
+     * densities of the viewport
+     * 
+     * @author Daniel Kurka
+     * 
+     */
 		public enum DENSITY {
-			LOW("low-dpi"), MEDIUM("medium-dpi"), HIGH("high-dpi"), DEVICE("device-dpi");
+      /**
+       * low density
+       */
+      LOW("low-dpi"),
+      /**
+       * medium density
+       */
+      MEDIUM("medium-dpi"),
+      /**
+       * high density
+       */
+      HIGH("high-dpi"),
+      /**
+       * devive dpi
+       */
+      DEVICE("device-dpi");
 
 			private final String value;
 
@@ -38,6 +65,11 @@ public class MGWTSettings {
 
 			}
 
+      /**
+       * get the value of density
+       * 
+       * @return the value of density
+       */
 			public String getValue() {
 				return value;
 			}
@@ -209,11 +241,11 @@ public class MGWTSettings {
 
 	}
 
-	/**
-	 * the default setting for building an app
-	 * 
-	 * @return
-	 */
+  /**
+   * get the default setting for building an app
+   * 
+   * @return the default setting for building an app
+   */
 	public static MGWTSettings getAppSetting() {
 		ViewPort viewPort = new MGWTSettings.ViewPort();
 		viewPort.setTargetDensity(DENSITY.MEDIUM);
@@ -239,7 +271,18 @@ public class MGWTSettings {
 	 * 
 	 */
 	public enum StatusBarStyle {
-		DEFAULT, BLACK, BLACK_TRANSLUCENT;
+    /**
+     * leave the status bar as is
+     */
+    DEFAULT,
+    /**
+     * render a black status bar
+     */
+    BLACK,
+    /**
+     * render a black translucent status bar
+     */
+    BLACK_TRANSLUCENT;
 	};
 
 	private ViewPort viewPort;

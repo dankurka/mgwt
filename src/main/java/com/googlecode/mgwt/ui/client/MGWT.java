@@ -201,7 +201,7 @@ public class MGWT {
 			return true;
 		}
 		return false;
-	}-*/;
+  }-*/;
 
 	/**
 	 * 
@@ -320,7 +320,7 @@ public class MGWT {
 		}
 
 		return $wnd.orientation;
-	}-*/;
+  }-*/;
 
 	private static void onorientationChange(int orientation) {
 
@@ -378,7 +378,7 @@ public class MGWT {
 		}
 
 		return false;
-	}-*/;
+  }-*/;
 
 	private static void setupOrientation() {
 
@@ -416,12 +416,12 @@ public class MGWT {
 		$doc.body.onorientationchange = func;
 		$doc.addEventListener("orientationChanged", func);
 		return func;
-	}-*/;
+  }-*/;
 
 	private static native void destroyOrientation(JavaScriptObject o)/*-{
 		$doc.body.onorientationchange = null;
 		$doc.removeEventListener("orientationChanged", o);
-	}-*/;
+  }-*/;
 
 	private static native void setupPreventScrolling(Element el)/*-{
 		var func = function(event) {
@@ -431,8 +431,11 @@ public class MGWT {
 
 		el.ontouchmove = func;
 
-	}-*/;
+  }-*/;
 
+  /**
+   * A utility method to hide the soft keyboard
+   */
 	public static void hideKeyBoard() {
 		final Anchor anchor = new Anchor(" ");
 
