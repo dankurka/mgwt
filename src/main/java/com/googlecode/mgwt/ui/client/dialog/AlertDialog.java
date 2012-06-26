@@ -60,6 +60,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
    * @param css - the css to use
    * @param title - the title of the dialog
    * @param text - the text of the dialog
+   * @param okButtonText the text of the button of the dialog
    */
   public AlertDialog(DialogCss css, String title, String text, String okButtonText) {
     css.ensureInjected();
