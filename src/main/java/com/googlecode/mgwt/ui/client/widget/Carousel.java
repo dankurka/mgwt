@@ -83,6 +83,10 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
     }
 
     public void setSelectedIndex(int index) {
+      if (indicators.isEmpty()) {
+        selectedIndex = -1;
+        return;
+      }
       if (selectedIndex != -1) {
         indicators.get(selectedIndex).setActive(false);
       }
