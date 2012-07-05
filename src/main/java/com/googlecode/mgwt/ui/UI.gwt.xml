@@ -150,7 +150,16 @@ under * the License.
 		</all>
 	</replace-with>
 	
+	<!-- super dev mode -->
+	<define-configuration-property name="mgwt.superdevmode" is-multi-valued="false" />
+	<set-configuration-property name="mgwt.superdevmode" value="off" />
 	
+	<define-configuration-property name="mgwt.superdevmode_host" is-multi-valued="false" />
+	
+	<!-- generater to build util! -->
+	<generate-with class="com.googlecode.mgwt.ui.generator.SuperDevModeGenerator">
+		<when-type-assignable class="com.googlecode.mgwt.ui.client.util.impl.SuperDevModeHelper" />
+	</generate-with>
 	
 
 	<source path="client" />
