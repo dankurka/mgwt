@@ -93,8 +93,7 @@ public abstract class MGWTAbstractActivity extends AbstractActivity {
     start(panel, (com.google.web.bindery.event.shared.EventBus) eventBus);
   }
 
-  public void start(AcceptsOneWidget panel, com.google.web.bindery.event.shared.EventBus eventBus) {
-
-  }
+  public abstract void start(AcceptsOneWidget panel,
+      com.google.web.bindery.event.shared.EventBus eventBus);
 
 }
