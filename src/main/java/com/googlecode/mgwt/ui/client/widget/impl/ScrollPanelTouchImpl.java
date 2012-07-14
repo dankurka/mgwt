@@ -18,10 +18,13 @@ import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseWheelEvent;
 import com.google.gwt.event.dom.client.MouseWheelHandler;
+import com.google.gwt.event.logical.shared.ResizeEvent;
+import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -1651,6 +1654,12 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   @Override
+  protected void onDetach() {
+    super.onDetach();
+    unbindResizeEvent();
+  }
+
+  @Override
   protected void onAttach() {
     super.onAttach();
 
@@ -1784,17 +1793,31 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 * 
 	 */
   private void bindResizeEvent() {
-    orientationChangeRegistration =
-        MGWT.addOrientationChangeHandler(new OrientationChangeHandler() {
+    if (!MGWT.getOsDetection().isDesktop()) {
+      orientationChangeRegistration =
+          MGWT.addOrientationChangeHandler(new OrientationChangeHandler() {
 
-          @Override
-          public void onOrientationChanged(OrientationChangeEvent event) {
-            if (shouldHandleResize) {
-              resize();
+            @Override
+            public void onOrientationChanged(OrientationChangeEvent event) {
+              if (shouldHandleResize) {
+                resize();
+              }
+
             }
+          });
+    } else {
+      orientationChangeRegistration = Window.addResizeHandler(new ResizeHandler() {
 
+        @Override
+        public void onResize(ResizeEvent event) {
+          if (shouldHandleResize) {
+            resize();
           }
-        });
+
+        }
+      });
+    }
+
   }
 
   private void unbindResizeEvent() {
