@@ -123,6 +123,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
     private int x;
     private int y;
     private boolean started;
+    private Element originalElement;
 
     @Override
     public void onTouchCanceled(TouchCancelEvent event) {
@@ -132,8 +133,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
     @Override
     public void onTouchMove(TouchMoveEvent event) {
       Touch touch = event.getTouches().get(0);
-      if (Math.abs(touch.getPageX() - x) > Tap.RADIUS
-          || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
+      if (Math.abs(touch.getPageX() - x) > Tap.RADIUS || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
         moved = true;
         // deselect
         if (node != null) {
@@ -150,7 +150,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
       if (node != null)
         node.removeClassName(css.selected());
       if (started && !moved && index != -1) {
-        fireSelectionAtIndex(index);
+        fireSelectionAtIndex(index, originalElement);
       }
       node = null;
       started = false;
@@ -191,6 +191,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
         return;
       }
       Element target = eventTarget.cast();
+
+      originalElement = target;
 
       // Find cell
       String idxString = "";
@@ -417,8 +419,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
     }.schedule(100);
   }
 
-  protected void fireSelectionAtIndex(int index) {
-    EVENT_PROPAGATOR.fireEvent(this, new CellSelectedEvent(index));
+  protected void fireSelectionAtIndex(int index, Element element) {
+    EVENT_PROPAGATOR.fireEvent(this, new CellSelectedEvent(index, element));
   }
 
   protected void startTimer(final Element node) {
