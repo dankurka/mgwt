@@ -28,7 +28,7 @@ public class AddressBarUtilIphoneImpl implements AddressBarUtil {
   private static HandlerRegistration resizeHandler;
 
   public AddressBarUtilIphoneImpl() {
-    Window.alert("iphone address bar util");
+
   }
 
   @Override
