@@ -131,10 +131,16 @@ under * the License.
 		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
 	</replace-with>
 	
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseIE9Impl">
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
 		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
 		<all> 
    			<when-property-is name="user.agent" value="ie9" />
+  		</all>
+	</replace-with>
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
+		<all> 
+   			<when-property-is name="mobile.user.agent" value="not_mobile" />
   		</all>
 	</replace-with>
 	

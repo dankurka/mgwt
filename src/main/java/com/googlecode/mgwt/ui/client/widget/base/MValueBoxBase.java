@@ -95,7 +95,7 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 		}
 	}
 
-	public static class MValueBoxBaseIE9Impl implements MValueBoxBaseImpl {
+	public static class MValueBoxBaseNoOpImpl implements MValueBoxBaseImpl {
 
 		@Override
 		public void setType(Element element, String type) {
