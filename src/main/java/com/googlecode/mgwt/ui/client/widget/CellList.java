@@ -1,16 +1,14 @@
 /*
  * Copyright 2010 Daniel Kurka
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
 package com.googlecode.mgwt.ui.client.widget;
@@ -81,7 +79,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  */
 public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
-	protected static final EventPropagator EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
+  protected static final EventPropagator EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
 
   /**
    * Standard li template
@@ -89,7 +87,7 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
    * @author Daniel Kurka
    * 
    */
-	public interface Template extends SafeHtmlTemplates {
+  public interface Template extends SafeHtmlTemplates {
     /**
      * get the template
      * 
@@ -98,319 +96,354 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
      * @param cellContents
      * @return the safe html with values
      */
-		@SafeHtmlTemplates.Template("<li __idx=\"{0}\" class=\"{1}\">{2}</li>")
-		SafeHtml li(int idx, String classes, SafeHtml cellContents);
+    @SafeHtmlTemplates.Template("<li __idx=\"{0}\" class=\"{1}\">{2}</li>")
+    SafeHtml li(int idx, String classes, SafeHtml cellContents);
 
-	}
+  }
 
   /**
    * the li template instance
    */
-	public static final Template LI_TEMPLATE = GWT.create(Template.class);
+  public static final Template LI_TEMPLATE = GWT.create(Template.class);
 
-	private static class UlTouchWidget extends TouchWidget {
+  private static class UlTouchWidget extends TouchWidget {
 
-		public UlTouchWidget() {
-			super();
-			setElement(Document.get().createULElement());
-		}
+    public UlTouchWidget() {
+      super();
+      setElement(Document.get().createULElement());
+    }
 
-	}
+  }
 
-	private class InternalTouchHandler implements TouchHandler {
+  private class InternalTouchHandler implements TouchHandler {
 
-		private boolean moved;
-		private int index;
-		private Element node;
-		private int x;
-		private int y;
-		private boolean started;
+    private boolean moved;
+    private int index;
+    private Element node;
+    private int x;
+    private int y;
+    private boolean started;
 
-		@Override
-		public void onTouchCanceled(TouchCancelEvent event) {
+    @Override
+    public void onTouchCanceled(TouchCancelEvent event) {
 
-		}
+    }
 
-		@Override
-		public void onTouchMove(TouchMoveEvent event) {
-			Touch touch = event.getTouches().get(0);
-			if (Math.abs(touch.getPageX() - x) > Tap.RADIUS || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
-				moved = true;
-				//deselect
-				if (node != null)
-					node.removeClassName(css.selected());
-			}
+    @Override
+    public void onTouchMove(TouchMoveEvent event) {
+      Touch touch = event.getTouches().get(0);
+      if (Math.abs(touch.getPageX() - x) > Tap.RADIUS
+          || Math.abs(touch.getPageY() - y) > Tap.RADIUS) {
+        moved = true;
+        // deselect
+        if (node != null) {
+          node.removeClassName(css.selected());
+          stopTimer();
+        }
 
-		}
+      }
 
-		@Override
-		public void onTouchEnd(TouchEndEvent event) {
-			if (node != null)
-				node.removeClassName(css.selected());
-			if (started && !moved && index != -1) {
-				fireSelectionAtIndex(index);
-			}
-			node = null;
-			started = false;
+    }
 
-		}
+    @Override
+    public void onTouchEnd(TouchEndEvent event) {
+      if (node != null)
+        node.removeClassName(css.selected());
+      if (started && !moved && index != -1) {
+        fireSelectionAtIndex(index);
+      }
+      node = null;
+      started = false;
 
-		@Override
-		public void onTouchStart(TouchStartEvent event) {
-			started = true;
+    }
 
-			x = event.getTouches().get(0).getPageX();
-			y = event.getTouches().get(0).getPageY();
+    @Override
+    public void onTouchStart(TouchStartEvent event) {
+      started = true;
 
-			if (node != null) {
-				node.removeClassName(css.selected());
-			}
-			moved = false;
-			index = -1;
-			// Get the event target.
-			EventTarget eventTarget = event.getNativeEvent().getEventTarget();
-			if (eventTarget == null) {
-				return;
-			}
+      x = event.getTouches().get(0).getPageX();
+      y = event.getTouches().get(0).getPageY();
 
-			// no textnode or element node
-			if (!Node.is(eventTarget) && !Element.is(eventTarget)) {
-				return;
-			}
+      if (node != null) {
+        node.removeClassName(css.selected());
+      }
+      moved = false;
+      index = -1;
+      // Get the event target.
+      EventTarget eventTarget = event.getNativeEvent().getEventTarget();
+      if (eventTarget == null) {
+        return;
+      }
 
-			// text node use the parent..
-			if (Node.is(eventTarget) && !Element.is(eventTarget)) {
-				Node target = Node.as(eventTarget);
-				eventTarget = target.getParentElement().cast();
-			}
+      // no textnode or element node
+      if (!Node.is(eventTarget) && !Element.is(eventTarget)) {
+        return;
+      }
 
-			// no element
-			if (!Element.is(eventTarget)) {
-				return;
-			}
-			Element target = eventTarget.cast();
+      // text node use the parent..
+      if (Node.is(eventTarget) && !Element.is(eventTarget)) {
+        Node target = Node.as(eventTarget);
+        eventTarget = target.getParentElement().cast();
+      }
 
-			// Find cell
-			String idxString = "";
-			while ((target != null) && ((idxString = target.getAttribute("__idx")).length() == 0)) {
+      // no element
+      if (!Element.is(eventTarget)) {
+        return;
+      }
+      Element target = eventTarget.cast();
 
-				target = target.getParentElement();
-			}
-			if (idxString.length() > 0) {
+      // Find cell
+      String idxString = "";
+      while ((target != null) && ((idxString = target.getAttribute("__idx")).length() == 0)) {
 
-				try {
-					// see: http://code.google.com/p/mgwt/issues/detail?id=154
-					if (MGWT.getOsDetection().isBlackBerry()) {
-						index = (int) Long.parseLong(idxString);
-					} else {
-						index = Integer.parseInt(idxString);
-					}
+        target = target.getParentElement();
+      }
+      if (idxString.length() > 0) {
 
-					node = target;
-					node.addClassName(css.selected());
-				} catch (Exception e) {
+        try {
+          // see: http://code.google.com/p/mgwt/issues/detail?id=154
+          if (MGWT.getOsDetection().isBlackBerry()) {
+            index = (int) Long.parseLong(idxString);
+          } else {
+            index = Integer.parseInt(idxString);
+          }
 
-				}
+          node = target;
+          startTimer(node);
+        } catch (Exception e) {
 
-			}
+        }
 
-		}
-	}
+      }
 
-	private UlTouchWidget main;
-	private InternalTouchHandler internalTouchHandler;
+    }
+  }
 
-	private LinkedList<HandlerRegistration> handlers = new LinkedList<HandlerRegistration>();
-	protected final Cell<T> cell;
-	protected final ListCss css;
+  private UlTouchWidget main;
+  private InternalTouchHandler internalTouchHandler;
 
-	private boolean group = true;
+  private LinkedList<HandlerRegistration> handlers = new LinkedList<HandlerRegistration>();
+  protected final Cell<T> cell;
+  protected final ListCss css;
 
-	/**
-	 * Construct a CellList
-	 * 
-	 * @param cell the cell to use
-	 */
-	public CellList(Cell<T> cell) {
-		this(cell, MGWTStyle.getTheme().getMGWTClientBundle().getListCss());
-	}
+  private boolean group = true;
+  protected Timer timer;
 
-	/**
-	 * Construct a celllist with a given cell and css
-	 * 
-	 * @param cell the cell to use
-	 * @param css the css to use
-	 */
-	public CellList(Cell<T> cell, ListCss css) {
-		css.ensureInjected();
-		this.cell = cell;
-		this.css = css;
-		main = new UlTouchWidget();
+  /**
+   * Construct a CellList
+   * 
+   * @param cell the cell to use
+   */
+  public CellList(Cell<T> cell) {
+    this(cell, MGWTStyle.getTheme().getMGWTClientBundle().getListCss());
+  }
 
-		initWidget(main);
+  protected void stopTimer() {
+    if (timer != null) {
+      timer.cancel();
+      timer = null;
+    }
 
-		internalTouchHandler = new InternalTouchHandler();
+  }
 
-		setStylePrimaryName(css.listCss());
-	}
+  protected void startTimer(final Element node) {
+    if (timer != null) {
+      timer.cancel();
+      timer = null;
+    }
 
-	/**
-	 * Should the CellList be rendered with rounded corners
-	 * 
-	 * @param round true to render with rounded corners, otherwise false
-	 */
-	public void setRound(boolean round) {
-		if (round) {
-			addStyleName(css.round());
-		} else {
-			removeStyleName(css.round());
-		}
-	}
+    timer = new Timer() {
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler#addCellSelectedHandler(com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler)
-	 */
-	/** {@inheritDoc} */
-	public HandlerRegistration addCellSelectedHandler(CellSelectedHandler cellSelectedHandler) {
-		return addHandler(cellSelectedHandler, CellSelectedEvent.getType());
-	}
+      @Override
+      public void run() {
+        node.addClassName(css.selected());
+      }
+    };
+    timer.schedule(150);
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.Composite#onAttach()
-	 */
-	/** {@inheritDoc} */
-	@Override
-	protected void onAttach() {
+  }
 
-		super.onAttach();
+  /**
+   * Construct a celllist with a given cell and css
+   * 
+   * @param cell the cell to use
+   * @param css the css to use
+   */
+  public CellList(Cell<T> cell, ListCss css) {
+    css.ensureInjected();
+    this.cell = cell;
+    this.css = css;
+    main = new UlTouchWidget();
 
-		handlers.add(main.addTouchCancelHandler(internalTouchHandler));
-		handlers.add(main.addTouchEndHandler(internalTouchHandler));
-		handlers.add(main.addTouchStartHandler(internalTouchHandler));
-		handlers.add(main.addTouchMoveHandler(internalTouchHandler));
+    initWidget(main);
 
-	}
+    internalTouchHandler = new InternalTouchHandler();
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.Composite#onDetach()
-	 */
-	/** {@inheritDoc} */
-	@Override
-	protected void onDetach() {
+    setStylePrimaryName(css.listCss());
+  }
 
-		super.onDetach();
+  /**
+   * Should the CellList be rendered with rounded corners
+   * 
+   * @param round true to render with rounded corners, otherwise false
+   */
+  public void setRound(boolean round) {
+    if (round) {
+      addStyleName(css.round());
+    } else {
+      removeStyleName(css.round());
+    }
+  }
 
-		for (HandlerRegistration reg : handlers) {
-			reg.removeHandler();
-		}
-		handlers.clear();
-	}
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.googlecode.mgwt.ui.client.widget.celllist.HasCellSelectedHandler#addCellSelectedHandler
+   * (com.googlecode.mgwt.ui.client.widget.celllist.CellSelectedHandler)
+   */
+  /** {@inheritDoc} */
+  public HandlerRegistration addCellSelectedHandler(CellSelectedHandler cellSelectedHandler) {
+    return addHandler(cellSelectedHandler, CellSelectedEvent.getType());
+  }
 
-	/**
-	 * Render a List of models in this cell list
-	 * 
-	 * @param models the list of models to render
-	 */
-	public void render(List<T> models) {
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.google.gwt.user.client.ui.Composite#onAttach()
+   */
+  /** {@inheritDoc} */
+  @Override
+  protected void onAttach() {
 
-		SafeHtmlBuilder sb = new SafeHtmlBuilder();
+    super.onAttach();
 
-		for (int i = 0; i < models.size(); i++) {
+    handlers.add(main.addTouchCancelHandler(internalTouchHandler));
+    handlers.add(main.addTouchEndHandler(internalTouchHandler));
+    handlers.add(main.addTouchStartHandler(internalTouchHandler));
+    handlers.add(main.addTouchMoveHandler(internalTouchHandler));
 
-			T model = models.get(i);
+  }
 
-			SafeHtmlBuilder cellBuilder = new SafeHtmlBuilder();
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.google.gwt.user.client.ui.Composite#onDetach()
+   */
+  /** {@inheritDoc} */
+  @Override
+  protected void onDetach() {
 
-			String clazz = "";
-			if (cell.canBeSelected(model)) {
-				clazz = css.canbeSelected() + " ";
-			}
+    super.onDetach();
 
-			if (group) {
-				clazz += css.group() + " ";
-			}
+    for (HandlerRegistration reg : handlers) {
+      reg.removeHandler();
+    }
+    handlers.clear();
+  }
 
-			if (i == 0) {
-				clazz += css.first() + " ";
-			}
+  /**
+   * Render a List of models in this cell list
+   * 
+   * @param models the list of models to render
+   */
+  public void render(List<T> models) {
 
-			if (models.size() - 1 == i) {
-				clazz += css.last() + " ";
-			}
+    SafeHtmlBuilder sb = new SafeHtmlBuilder();
 
-			cell.render(cellBuilder, model);
+    for (int i = 0; i < models.size(); i++) {
 
-			sb.append(LI_TEMPLATE.li(i, clazz, cellBuilder.toSafeHtml()));
-		}
+      T model = models.get(i);
 
-		final String html = sb.toSafeHtml().asString();
+      SafeHtmlBuilder cellBuilder = new SafeHtmlBuilder();
 
-		getElement().setInnerHTML(html);
+      String clazz = "";
+      if (cell.canBeSelected(model)) {
+        clazz = css.canbeSelected() + " ";
+      }
 
-		if (models.size() > 0) {
-			String innerHTML = getElement().getInnerHTML();
-			if ("".equals(innerHTML.trim())) {
-				fixBug(html);
-			}
-		}
+      if (group) {
+        clazz += css.group() + " ";
+      }
 
-	}
+      if (i == 0) {
+        clazz += css.first() + " ";
+      }
 
-	/**
-	 * Set a selected element in the celllist
-	 * 
-	 * @param index the index of the element
-	 * @param selected true to select the element, false to deselect
-	 */
-	public void setSelectedIndex(int index, boolean selected) {
-		Node node = getElement().getChild(index);
-		Element li = Element.as(node);
-		if (selected) {
-			li.addClassName(css.selected());
-		} else {
-			li.removeClassName(css.selected());
-		}
-	}
+      if (models.size() - 1 == i) {
+        clazz += css.last() + " ";
+      }
+
+      cell.render(cellBuilder, model);
+
+      sb.append(LI_TEMPLATE.li(i, clazz, cellBuilder.toSafeHtml()));
+    }
+
+    final String html = sb.toSafeHtml().asString();
+
+    getElement().setInnerHTML(html);
+
+    if (models.size() > 0) {
+      String innerHTML = getElement().getInnerHTML();
+      if ("".equals(innerHTML.trim())) {
+        fixBug(html);
+      }
+    }
+
+  }
+
+  /**
+   * Set a selected element in the celllist
+   * 
+   * @param index the index of the element
+   * @param selected true to select the element, false to deselect
+   */
+  public void setSelectedIndex(int index, boolean selected) {
+    Node node = getElement().getChild(index);
+    Element li = Element.as(node);
+    if (selected) {
+      li.addClassName(css.selected());
+    } else {
+      li.removeClassName(css.selected());
+    }
+  }
 
   /**
    * set this widget a group (by default rendered with an arrow)
    * 
    * @param group
    */
-	public void setGroup(boolean group) {
-		this.group = group;
-	}
+  public void setGroup(boolean group) {
+    this.group = group;
+  }
 
   /**
    * set this widget a group (by default rendered with an arrow)
    * 
    * @return group
    */
-	public boolean isGroup() {
-		return group;
-	}
+  public boolean isGroup() {
+    return group;
+  }
 
-	protected void fixBug(final String html) {
-		new Timer() {
+  protected void fixBug(final String html) {
+    new Timer() {
 
-			@Override
-			public void run() {
-				getElement().setInnerHTML(html);
-				String innerHTML = getElement().getInnerHTML();
-				if ("".equals(innerHTML.trim())) {
-					fixBug(html);
+      @Override
+      public void run() {
+        getElement().setInnerHTML(html);
+        String innerHTML = getElement().getInnerHTML();
+        if ("".equals(innerHTML.trim())) {
+          fixBug(html);
 
-				}
+        }
 
-			}
-		}.schedule(100);
-	}
+      }
+    }.schedule(100);
+  }
 
-	protected void fireSelectionAtIndex(int index) {
-		EVENT_PROPAGATOR.fireEvent(this, new CellSelectedEvent(index));
-	}
+  protected void fireSelectionAtIndex(int index) {
+    EVENT_PROPAGATOR.fireEvent(this, new CellSelectedEvent(index));
+  }
 
 }
