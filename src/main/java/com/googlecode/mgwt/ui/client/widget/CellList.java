@@ -238,31 +238,6 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
     this(cell, MGWTStyle.getTheme().getMGWTClientBundle().getListCss());
   }
 
-  protected void stopTimer() {
-    if (timer != null) {
-      timer.cancel();
-      timer = null;
-    }
-
-  }
-
-  protected void startTimer(final Element node) {
-    if (timer != null) {
-      timer.cancel();
-      timer = null;
-    }
-
-    timer = new Timer() {
-
-      @Override
-      public void run() {
-        node.addClassName(css.selected());
-      }
-    };
-    timer.schedule(150);
-
-  }
-
   /**
    * Construct a celllist with a given cell and css
    * 
@@ -444,6 +419,31 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
   protected void fireSelectionAtIndex(int index) {
     EVENT_PROPAGATOR.fireEvent(this, new CellSelectedEvent(index));
+  }
+
+  protected void startTimer(final Element node) {
+    if (timer != null) {
+      timer.cancel();
+      timer = null;
+    }
+
+    timer = new Timer() {
+
+      @Override
+      public void run() {
+        node.addClassName(css.selected());
+      }
+    };
+    timer.schedule(150);
+
+  }
+
+  protected void stopTimer() {
+    if (timer != null) {
+      timer.cancel();
+      timer = null;
+    }
+
   }
 
 }
