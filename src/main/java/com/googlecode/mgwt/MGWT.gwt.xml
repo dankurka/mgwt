@@ -16,9 +16,33 @@
  */
  -->
 <module>
-    <inherits name='com.google.gwt.user.User'/>
-    <inherits name='com.googlecode.mgwt.dom.DOM'/>
-    <inherits name='com.googlecode.mgwt.storage.Storage'/>
-    <inherits name='com.googlecode.mgwt.ui.UI'/>
-     <inherits name='com.googlecode.mgwt.mvp.MVP'/>
+
+    <!--
+       This module includes all the stuff necessary to use mgwt.
+       
+       Here, we reset the mobile.user.agent property and define a property-provider
+       for it, so as we can test specific mobile stuff, like themes, in desktop browsers.
+       To do that, just set the property value of mgwt.os to only one option in your 
+       module, for instance:
+          <set-property name="mgwt.os" value="iphone" />
+       
+       Notice that this generates more permutations than including the MGWTMin module.
+       @see http://code.google.com/p/mgwt/issues/detail?id=215
+    -->
+
+    <inherits name='com.googlecode.mgwt.MGWTMin'/>
+
+    <set-property name="mobile.user.agent" value="mobilesafari,not_mobile" />
+    <set-property name="mobile.user.agent" value="not_mobile" >
+      <none>
+        <when-property-is name="user.agent" value="safari" />
+      </none>
+    </set-property>
+    <property-provider name="mobile.user.agent">
+      <![CDATA[
+        return /(android|iphone|ipod|ipad)/i.test(window.navigator.userAgent) 
+          ? 'mobilesafari': 'not_mobile';
+      ]]>
+    </property-provider>
+
 </module>
