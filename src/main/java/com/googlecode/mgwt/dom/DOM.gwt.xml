@@ -19,36 +19,67 @@
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.googlecode.mgwt.collection.GwtCollections'/>
     
-    <define-property name="mobile.user.agent" values="mobilesafari, not_mobile" />
-<property-provider name="mobile.user.agent"><![CDATA[
-  {
-    var user_agent = (function(){
-    	var ua = window.navigator.userAgent.toLowerCase();
-    	if (ua.indexOf('android') != -1) { return 'mobilesafari'; }
-    	if (ua.indexOf('iphone') != -1) { return 'mobilesafari'; }
-    	if (ua.indexOf('ipod') != -1) { return 'mobilesafari'; }
-     	if (ua.indexOf('ipad') != -1) { return 'mobilesafari'; }
-     	if (ua.indexOf('blackberry') != -1) { return 'not_mobile'; }
-    	return 'not_mobile';
-    })();
+    <define-property name="mgwt.os" values="iphone, ipad, retina, ipad_retina, android, android_tablet, blackberry, desktop" />
+    <property-provider name="mgwt.os"><![CDATA[
+    {
+      var mgwt_os = (function(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        
+        if(ua.indexOf('android') != -1) {
+          if(ua.indexOf('mobile') != -1) {
+            return "android";
+          } else {
+            return "android_tablet";
+          }
+        }
+        
+        if(ua.indexOf('ipad') != -1) {
+          if(window.devicePixelRatio >= 2) {
+            return "ipad_retina";
+          }
+          return "ipad";
+        }
+        
+        if(ua.indexOf('iphone') != -1 || ua.indexOf('ipod') != -1) {
+          if(window.devicePixelRatio >= 2) {
+            return "retina";
+          }
+          return "iphone";
+        }
+        
+        if(ua.indexOf('blackberry') != -1) {
+          return "blackberry";
+        }
     
-    return user_agent;
-  }
-]]></property-provider>
+        return "desktop";
+      
+      })();
+      
+      return mgwt_os;
+    }
+    ]]></property-provider>
 
+    <!-- non-safari browsers are always desktop -->
+    <set-property name="mgwt.os" value="desktop" >
+      <none>
+        <when-property-is name="user.agent" value="safari" />
+      </none>
+    </set-property>
+    
+    <!--  derived property, so as we do not add permutations unless we define 
+          a property-provider for it -->
+    <define-property name="mobile.user.agent" values="mobilesafari,not_mobile" />
+    <!-- default -->
+    <set-property name="mobile.user.agent" value="mobilesafari" />
+    <!-- not mobile -->
+    <set-property name="mobile.user.agent" value="not_mobile" >
+      <any>
+        <when-property-is name="mgwt.os" value="desktop" />
+        <when-property-is name="mgwt.os" value="blackberry" />
+      </any>
+    </set-property>
 
-
-
-
-<!-- Constrain the value for non-webkit browsers -->
-<set-property name="mobile.user.agent" value="not_mobile" >
-  <none> <!-- Actually means NOR, in this case "not safari" -->
-    <when-property-is name="user.agent" value="safari" />
-  </none>
-</set-property>
-
-
- <replace-with class="com.google.gwt.user.client.impl.DOMImplMobileSafari">
+    <replace-with class="com.google.gwt.user.client.impl.DOMImplMobileSafari">
         <when-type-is class="com.google.gwt.user.client.impl.DOMImpl"/>
         <all>
             <when-property-is name="user.agent" value="safari"/>
@@ -65,8 +96,6 @@
     </replace-with>
     
     
-
-    
      <replace-with class="com.google.gwt.user.client.impl.DOMImplMozillaWithTransistions">
         <when-type-is class="com.google.gwt.user.client.impl.DOMImpl"/>
         <all>
@@ -74,92 +103,6 @@
         </all>
     </replace-with>
 
-
-    <define-property name="mgwt.os" values="iphone, ipad, retina, ipad_retina, android, android_tablet, blackberry, desktop" />
-	<property-provider name="mgwt.os"><![CDATA[
-  	{
-	    
-	    var mgwt_os = (function(){
-	    var ua = window.navigator.userAgent.toLowerCase();
-	    
-	    if(ua.indexOf('android') != -1)
-	    {
-	    	if(ua.indexOf('mobile') != -1){
-	    		return "android";
-	    	}else{
-	    		return "android_tablet";
-	    	}
-	    		
-	    }
-	    
-	    if(ua.indexOf('ipad') != -1)
-	    {
-	    	if(window.devicePixelRatio >= 2)
-	    	{
-	    		return "ipad_retina";
-	    	}
-	    	return "ipad";
-	    }
-	    
-	    if(ua.indexOf('iphone') != -1 || ua.indexOf('ipod') != -1)
-	    {
-	    	if(window.devicePixelRatio >= 2)
-	    	{
-	    		return "retina";
-	    	}
-	    	return "iphone";
-	    }
-	    
-	     if(ua.indexOf('blackberry') != -1)
-	    {
-	    	return "blackberry";
-	    }
-	
-	    return "desktop";
-	    
-	    })();
-	    
-	  
-	    
-	    return mgwt_os;
-  	}
-]]></property-provider>
-
-	<set-property name="mgwt.os" value="desktop" >
-        <all>
-            <when-property-is name="user.agent" value="gecko1_8" />
-            <when-property-is name="mobile.user.agent" value="not_mobile" />
-        </all>
-    </set-property>
-    
-    <set-property name="mgwt.os" value="desktop" >
-        <all>
-            <when-property-is name="user.agent" value="opera" />
-            <when-property-is name="mobile.user.agent" value="not_mobile" />
-        </all>
-    </set-property>
-    
-    <set-property name="mgwt.os" value="desktop" >
-        <all>
-            <when-property-is name="user.agent" value="ie6" />
-            <when-property-is name="mobile.user.agent" value="not_mobile" />
-        </all>
-    </set-property>
-    
-    <set-property name="mgwt.os" value="desktop" >
-        <all>
-            <when-property-is name="user.agent" value="ie8" />
-            <when-property-is name="mobile.user.agent" value="not_mobile" />
-        </all>
-    </set-property>
-    
-    <set-property name="mgwt.os" value="desktop" >
-        <all>
-            <when-property-is name="user.agent" value="ie9" />
-            <when-property-is name="mobile.user.agent" value="not_mobile" />
-        </all>
-    </set-property>
-    
     <replace-with class="com.googlecode.mgwt.dom.client.event.EventTypesDefault">
         <when-type-is class="com.googlecode.mgwt.dom.client.event.EventTypes"/>
     </replace-with>
@@ -189,9 +132,5 @@
             <when-property-is name="mobile.user.agent" value="mobilesafari"/>
         </all>
     </replace-with>
-    
-
-    
-<source path="client"/>
     
 </module>
