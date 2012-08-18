@@ -17,6 +17,7 @@ package com.googlecode.mgwt.dom.client.recognizer;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HasHandlers;
+import com.google.gwt.user.client.Element;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
@@ -46,6 +47,8 @@ public class TapRecognizer implements TouchHandler {
 	private int start_x;
 
 	private int start_y;
+	
+	private Element targetElement;
 
 	private final HasHandlers source;
 
@@ -71,9 +74,9 @@ public class TapRecognizer implements TouchHandler {
 	public void onTouchStart(TouchStartEvent event) {
 		touchCanceled = false;
 		hasMoved = false;
+		targetElement = event.getNativeEvent().getEventTarget().<Element>cast();
 		start_x = event.getTouches().get(0).getPageX();
 		start_y = event.getTouches().get(0).getPageY();
-
 	}
 
 	@Override
@@ -88,7 +91,7 @@ public class TapRecognizer implements TouchHandler {
 	@Override
 	public void onTouchEnd(TouchEndEvent event) {
 		if (!hasMoved && !touchCanceled) {
-			TapEvent tapEvent = new TapEvent(source, start_x, start_y);
+			TapEvent tapEvent = new TapEvent(source, targetElement, start_x, start_y);
 			getEventPropagator().fireEvent(source, tapEvent);
 		}
 
@@ -112,6 +115,10 @@ public class TapRecognizer implements TouchHandler {
 			eventPropagator = DEFAULT_EVENT_PROPAGATOR;
 		}
 		return eventPropagator;
+	}
+	
+	public Element getTargetElement() {
+	  return targetElement;
 	}
 
 }
