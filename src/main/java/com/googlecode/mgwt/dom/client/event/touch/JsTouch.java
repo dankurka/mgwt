@@ -46,6 +46,6 @@ public final class JsTouch extends JavaScriptObject implements Touch {
 
 	@Override
 	public native int getIdentifier() /*-{
-		return this.identifier;
+		return this.identifier|| -1;
 	}-*/;
 }

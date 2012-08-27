@@ -165,6 +165,7 @@ public class LongTapRecognizer implements TouchHandler {
 					}
 
 					getEventPropagator().fireEvent(source, new LongTapEvent(source, numberOfFingers, time, startPositions));
+					reset();
 
 				}
 			}, time);
@@ -287,6 +288,7 @@ public class LongTapRecognizer implements TouchHandler {
 
 	protected void reset() {
 		state = State.READY;
+		touchCount = 0;
 	}
 
 	protected EventPropagator getEventPropagator() {
