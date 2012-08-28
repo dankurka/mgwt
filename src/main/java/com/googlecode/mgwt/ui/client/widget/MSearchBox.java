@@ -259,7 +259,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	}
 
 	private void clearSearchField() {
-		box.setValue("");
+		box.setValue("",true);
 		roundDiv.remove(clearButton);
 
 	}
