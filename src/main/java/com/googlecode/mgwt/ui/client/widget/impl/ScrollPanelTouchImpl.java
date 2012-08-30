@@ -1841,7 +1841,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
       if (useTransform) {
         CssUtil.translate(scroller.getElement(), this.x, this.y);
       } else {
-        scroller.getElement().getStyle().setWidth(100, Unit.PCT);
         scroller.getElement().getStyle().setPosition(Position.ABSOLUTE);
         scroller.getElement().getStyle().setLeft(this.x, Unit.PX);
         scroller.getElement().getStyle().setTop(this.y, Unit.PX);
