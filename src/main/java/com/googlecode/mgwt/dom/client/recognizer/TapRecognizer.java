@@ -74,7 +74,12 @@ public class TapRecognizer implements TouchHandler {
 	public void onTouchStart(TouchStartEvent event) {
 		touchCanceled = false;
 		hasMoved = false;
-		targetElement = event.getNativeEvent().getEventTarget().<Element>cast();
+		if(event.getNativeEvent() != null){
+			targetElement = event.getNativeEvent().getEventTarget().<Element>cast();
+		}else {
+			targetElement = null;
+		}
+			
 		start_x = event.getTouches().get(0).getPageX();
 		start_y = event.getTouches().get(0).getPageY();
 	}
