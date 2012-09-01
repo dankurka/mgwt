@@ -128,8 +128,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
     public void add(Widget w) {
       super.add(w);
       if (w instanceof ScrollPanel) {
-        w.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss()
-            .fillPanelExpandChild());
+        w.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
       }
     }
 
@@ -349,6 +348,10 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   @Override
   public HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
     return addHandler(handler, SelectionEvent.getType());
+  }
+
+  public ScrollPanel getScrollPanel() {
+    return scrollPanel;
   }
 
   /**
