@@ -47,8 +47,7 @@ public abstract class MGWTAbstractActivity extends AbstractActivity {
    * 
    * @param handlerRegistration a {@link com.google.gwt.event.shared.HandlerRegistration} object.
    */
-  protected void addHandlerRegistration(
-      com.google.web.bindery.event.shared.HandlerRegistration handlerRegistration) {
+  protected void addHandlerRegistration(com.google.web.bindery.event.shared.HandlerRegistration handlerRegistration) {
     handlers.add(handlerRegistration);
   }
 
@@ -93,7 +92,8 @@ public abstract class MGWTAbstractActivity extends AbstractActivity {
     start(panel, (com.google.web.bindery.event.shared.EventBus) eventBus);
   }
 
-  public abstract void start(AcceptsOneWidget panel,
-      com.google.web.bindery.event.shared.EventBus eventBus);
+  public void start(AcceptsOneWidget panel, com.google.web.bindery.event.shared.EventBus eventBus) {
+
+  }
 
 }
