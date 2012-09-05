@@ -21,17 +21,15 @@ import com.googlecode.mgwt.ui.client.theme.base.InputCss;
 import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
 
 /**
- * A simple Date input widget. So far it uses &lt;input type="date" /> on iOS
- * with a nice looking native date picker.
+ * A simple Date input widget. So far it uses &lt;input type="date" /> on iOS with a nice looking
+ * native date picker.
  * 
- * On other platforms it displays the pattern to use for date input (no picker
- * so far).
+ * On other platforms it displays the pattern to use for date input (no picker so far).
  * 
  * <h2>Date format</h2>
  * 
- * For iOS there is no need to set a dateformat, since the iOS will
- * automatically display the date formated according to the locale of the
- * device, while we get the date in the W3C Format.
+ * For iOS there is no need to set a dateformat, since the iOS will automatically display the date
+ * formated according to the locale of the device, while we get the date in the W3C Format.
  * 
  * On other platforms you can set the format to fit what you like.
  * 
@@ -42,173 +40,176 @@ import com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase;
  */
 public class MDateBox extends MValueBoxBase<Date> {
 
-	private static final DateTimeFormat DEFAULT_FORMAT = DateTimeFormat.getFormat("dd/mm/yy");
-	private static final DateTimeFormat W3C_FORMAT = DateTimeFormat.getFormat("yyyy-MM-dd");
+  private static final DateTimeFormat DEFAULT_FORMAT = DateTimeFormat.getFormat("dd/MM/yy");
+  private static final DateTimeFormat W3C_FORMAT = DateTimeFormat.getFormat("yyyy-MM-dd");
 
-	/**
-	 * Using ValueBoxBase as a base class for our input element.
-	 * 
-	 * @author Daniel Kurka
-	 * 
-	 */
-	private static class DateValueBoxBase extends ValueBoxBase<Date> implements HasSource {
+  /**
+   * Using ValueBoxBase as a base class for our input element.
+   * 
+   * @author Daniel Kurka
+   * 
+   */
+  private static class DateValueBoxBase extends ValueBoxBase<Date> implements HasSource {
 
-		private final DateRenderer dateRenderer;
-		private final DateParser dateParser;
-		private Object source;
+    private final DateRenderer dateRenderer;
+    private final DateParser dateParser;
+    private Object source;
 
-		protected DateValueBoxBase(DateRenderer dateRenderer, DateParser dateParser) {
-			super(DOM.createInputText(), dateRenderer, dateParser);
-			this.dateRenderer = dateRenderer;
-			this.dateParser = dateParser;
-		}
+    protected DateValueBoxBase(DateRenderer dateRenderer, DateParser dateParser) {
+      super(DOM.createInputText(), dateRenderer, dateParser);
+      this.dateRenderer = dateRenderer;
+      this.dateParser = dateParser;
+    }
 
-		public DateParser getDateParser() {
-			return dateParser;
-		}
+    public DateParser getDateParser() {
+      return dateParser;
+    }
 
-		public DateRenderer getDateRenderer() {
-			return dateRenderer;
-		}
+    public DateRenderer getDateRenderer() {
+      return dateRenderer;
+    }
 
-		@Override
-		protected HandlerManager createHandlerManager() {
-			return new HandlerManager(source);
-		}
+    @Override
+    protected HandlerManager createHandlerManager() {
+      return new HandlerManager(source);
+    }
 
-		public void setSource(Object source) {
-			this.source = source;
-		}
+    public void setSource(Object source) {
+      this.source = source;
+    }
 
-	}
+  }
 
-	public static class DateRenderer implements Renderer<Date> {
+  public static class DateRenderer implements Renderer<Date> {
 
-		private DateTimeFormat format;
+    private DateTimeFormat format;
 
-		public DateRenderer() {
-			setFormat(DEFAULT_FORMAT);
-		}
+    public DateRenderer() {
+      setFormat(DEFAULT_FORMAT);
+    }
 
-		public void setFormat(DateTimeFormat format) {
-			this.format = format;
-		}
+    public void setFormat(DateTimeFormat format) {
+      this.format = format;
+    }
 
-		@Override
-		public String render(Date object) {
-			return format.format(object);
-		}
+    @Override
+    public String render(Date object) {
+      return format.format(object);
+    }
 
-		@Override
-		public void render(Date object, Appendable appendable) throws IOException {
-			appendable.append(format.format(object));
+    @Override
+    public void render(Date object, Appendable appendable) throws IOException {
+      appendable.append(format.format(object));
 
-		}
-	}
+    }
+  }
 
-	public static class DateParser implements Parser<Date> {
+  public static class DateParser implements Parser<Date> {
 
-		public DateParser() {
-			setFormat(DEFAULT_FORMAT);
-		}
+    public DateParser() {
+      setFormat(DEFAULT_FORMAT);
+    }
 
-		private DateTimeFormat format;
+    private DateTimeFormat format;
 
-		public void setFormat(DateTimeFormat format) {
-			this.format = format;
-		}
+    public void setFormat(DateTimeFormat format) {
+      this.format = format;
+    }
 
-		@Override
-		public Date parse(CharSequence text) throws ParseException {
+    @Override
+    public Date parse(CharSequence text) throws ParseException {
 
-			String string = text.toString();
-			try {
-				return format.parse(string);
-			} catch (Exception e) {
-				return null;
-			}
+      String string = text.toString();
+      try {
+        return format.parse(string);
+      } catch (Exception e) {
+        return null;
+      }
 
-		}
+    }
 
-	}
+  }
 
-	private Date lastValue;
-	private DateTimeFormat format;
+  private Date lastValue;
+  private DateTimeFormat format;
 
-	/**
-	 * Construct a date box
-	 */
-	public MDateBox() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
-	}
+  /**
+   * Construct a date box
+   */
+  public MDateBox() {
+    this(MGWTStyle.getTheme().getMGWTClientBundle().getInputCss());
+  }
 
-	/**
-	 * Construct a datebox using a customg css.
-	 * 
-	 * @param css
-	 */
-	public MDateBox(InputCss css) {
-		super(css, new DateValueBoxBase(new DateRenderer(), new DateParser()));
-		format = DEFAULT_FORMAT;
-		setPlaceHolder(DEFAULT_FORMAT.getPattern());
+  /**
+   * Construct a datebox using a customg css.
+   * 
+   * @param css
+   */
+  public MDateBox(InputCss css) {
+    super(css, new DateValueBoxBase(new DateRenderer(), new DateParser()));
+    format = DEFAULT_FORMAT;
+    setPlaceHolder(DEFAULT_FORMAT.getPattern());
 
-		addStyleName(css.textBox());
+    addStyleName(css.textBox());
 
-		//fix ios issue with onchange event
+    // fix ios issue with onchange event
 
-		if (MGWT.getOsDetection().isIOs()) {
-			//only set input type to date if there is a native picker iOS >= 5
-			impl.setType(box.getElement(), "date");
-			//use w3c format
-			format = W3C_FORMAT;
-		}
+    if (MGWT.getOsDetection().isIOs()) {
+      // only set input type to date if there is a native picker iOS >= 5
+      impl.setType(box.getElement(), "date");
+      // use w3c format
+      format = W3C_FORMAT;
+    }
 
-		//apply format to parsers
-		getBox().getDateParser().setFormat(format);
-		getBox().getDateRenderer().setFormat(format);
+    // apply format to parsers
+    getBox().getDateParser().setFormat(format);
+    getBox().getDateRenderer().setFormat(format);
 
-		if (MGWT.getOsDetection().isIOs()) {
-			addBlurHandler(new BlurHandler() {
+    if (MGWT.getOsDetection().isIOs()) {
+      addBlurHandler(new BlurHandler() {
 
-				@Override
-				public void onBlur(BlurEvent event) {
-					Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+        @Override
+        public void onBlur(BlurEvent event) {
+          Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
-						@Override
-						public void execute() {
-							Date value = box.getValue();
-							ValueChangeEvent.fireIfNotEqual(box, lastValue, value);
-							lastValue = value;
+            @Override
+            public void execute() {
+              Date value = box.getValue();
+              ValueChangeEvent.fireIfNotEqual(box, lastValue, value);
+              lastValue = value;
 
-						}
-					});
+            }
+          });
 
-				}
-			});
-			lastValue = null;
-		}
+        }
+      });
+      lastValue = null;
+    }
 
-	}
+  }
 
-	/**
-	 * set the format to use in the datebox. Important: This should only be set
-	 * on non iOS devices, since iOS handles locale on dates under the cover.
-	 * 
-	 * See: {@link MDateBox}
-	 * 
-	 * @param pattern
-	 */
-	public void setFormat(String pattern) {
-		format = DateTimeFormat.getFormat(pattern);
+  /**
+   * set the format to use in the datebox. Important: This should only be set on non iOS devices,
+   * since iOS handles locale on dates under the cover.
+   * 
+   * See: {@link MDateBox}
+   * 
+   * @param pattern
+   */
+  public void setFormat(String pattern) {
+    format = DateTimeFormat.getFormat(pattern);
 
-		if (!MGWT.getOsDetection().isIOs()) {
-			setPlaceHolder(pattern);
-		}
+    if (!MGWT.getOsDetection().isIOs()) {
+      setPlaceHolder(pattern);
+    }
 
-	}
+    getBox().getDateParser().setFormat(format);
+    getBox().getDateRenderer().setFormat(format);
 
-	protected DateValueBoxBase getBox() {
-		return (DateValueBoxBase) box;
-	}
+  }
+
+  protected DateValueBoxBase getBox() {
+    return (DateValueBoxBase) box;
+  }
 
 }
