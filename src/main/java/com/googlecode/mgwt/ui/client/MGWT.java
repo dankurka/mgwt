@@ -58,13 +58,6 @@ import com.googlecode.mgwt.ui.client.util.AddressBarUtil;
 public class MGWT {
   private static final Logger logger = Logger.getLogger("MGWT");
 
-  static {
-    if (GWT.isClient()) {
-      setupOrientation();
-    }
-
-  }
-
   private static final OsDetection OS_DETECTION = GWT.create(OsDetection.class);
 
   private final static EventBus manager = new SimpleEventBus();
@@ -85,6 +78,7 @@ public class MGWT {
    * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
    */
   public static HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
+    maybeSetupOrientation();
     return manager.addHandler(OrientationChangeEvent.getType(), handler);
   }
 
@@ -379,7 +373,14 @@ public class MGWT {
 		return false;
   }-*/;
 
-  private static void setupOrientation() {
+  private static boolean orientationInitialized;
+
+  private static void maybeSetupOrientation() {
+    if (orientationInitialized)
+      return;
+    if (!GWT.isClient()) {
+      return;
+    }
 
     if (!orientationSupport()) {
       Window.addResizeHandler(new ResizeHandler() {
