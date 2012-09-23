@@ -90,6 +90,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
         DOM.setCapture(getElement());
       }
       event.stopPropagation();
+      event.preventDefault();
     }
 
     @Override
@@ -97,6 +98,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
       setValueContrained(event.getTouches().get(0).getPageX());
       event.stopPropagation();
+      event.preventDefault();
     }
 
     @Override
@@ -105,6 +107,7 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
         DOM.releaseCapture(getElement());
       }
       event.stopPropagation();
+      event.preventDefault();
     }
 
     @Override
