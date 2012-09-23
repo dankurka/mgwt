@@ -38,6 +38,7 @@
 	width: 20px;
 	left: -10px;
 	top: -6px;
+	border-radius: 10px;
 }
 
 @if user.agent safari {
