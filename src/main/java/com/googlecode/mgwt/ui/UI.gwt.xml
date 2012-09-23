@@ -99,6 +99,13 @@ under * the License.
 		
 	</replace-with>
 	
+	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.OperaCssUtilImpl">
+		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
+		<all>
+			<when-property-is name="user.agent" value="opera" />
+		</all>
+	</replace-with>
+	
 	
 	
 	
