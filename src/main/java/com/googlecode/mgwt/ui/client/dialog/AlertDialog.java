@@ -14,8 +14,9 @@
 package com.googlecode.mgwt.ui.client.dialog;
 
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.Label;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
@@ -27,9 +28,9 @@ import com.googlecode.mgwt.ui.client.theme.base.DialogCss;
  * 
  * @author Daniel Kurka
  */
-public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialog {
+public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialog, HasHTML {
 
-  private Label textLabel;
+  private HTML textLabel;
   private PopinDialog popinDialog;
   private DialogPanel dialogPanel1;
 
@@ -69,7 +70,7 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
     dialogPanel1.showCancelButton(false);
     dialogPanel1.showOkButton(true);
 
-    textLabel = new Label();
+    textLabel = new HTML();
     dialogPanel1.getContent().add(textLabel);
     popinDialog.add(dialogPanel1);
 
@@ -159,6 +160,17 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
   @Override
   public HandlerRegistration addTapHandler(TapHandler handler) {
     return dialogPanel1.getOkButton().addTapHandler(handler);
+  }
+
+  @Override
+  public String getHTML() {
+    return textLabel.getHTML();
+  }
+
+  @Override
+  public void setHTML(String html) {
+    textLabel.setHTML(html);
+
   }
 
 }
