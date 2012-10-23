@@ -95,8 +95,7 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
     main = new FlowPanel();
     scrollPanel.setWidget(main);
 
-    scrollPanel.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss()
-        .fillPanelExpandChild());
+    scrollPanel.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
 
     container = new FlowPanel();
     main.add(container);
@@ -163,8 +162,7 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
             y_off = y_off + footer.getHeight();
           }
 
-          if (y_off < (scrollPanel.getMaxScrollY() - footer.getStateSwitchPosition())
-              && footerState != PullState.PULLED) {
+          if (y_off < (scrollPanel.getMaxScrollY() - footer.getStateSwitchPosition()) && footerState != PullState.PULLED) {
             footerState = PullState.PULLED;
 
             scrollPanel.setMaxScrollY(scrollPanel.getMaxScrollY() - footer.getHeight());
@@ -173,8 +171,7 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
               footerPullhandler.onPullStateChanged(footer, footerState);
             }
           } else {
-            if (y_off > (scrollPanel.getMaxScrollY() - footer.getStateSwitchPosition())
-                && footerState != PullState.NORMAL) {
+            if (y_off > (scrollPanel.getMaxScrollY() - footer.getStateSwitchPosition()) && footerState != PullState.NORMAL) {
               footerState = PullState.NORMAL;
               scrollPanel.setMaxScrollY(scrollPanel.getMaxScrollY() + footer.getHeight());
               if (footerPullhandler != null) {
@@ -281,6 +278,10 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
 
   public void setFooterPullHandler(Pullhandler headerPullhandler) {
     this.footerPullhandler = headerPullhandler;
+  }
+
+  public ScrollPanel getScrollPanel() {
+    return scrollPanel;
   }
 
 }
