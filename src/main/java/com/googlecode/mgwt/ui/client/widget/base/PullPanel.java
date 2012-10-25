@@ -152,7 +152,7 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
         int y_off = y;
 
         // footer
-        if (footer != null) {
+        if (footer != null && y < -footer.getHeight()) {
 
           if (footerState == PullState.PULLED) {
             y_off = y_off - footer.getHeight();
