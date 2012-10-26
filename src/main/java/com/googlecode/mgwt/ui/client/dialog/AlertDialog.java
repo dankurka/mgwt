@@ -173,4 +173,10 @@ public class AlertDialog implements HasText, HasTitleText, HasTapHandlers, Dialo
 
   }
 
+  @Override
+  public void hide() {
+    popinDialog.hide();
+
+  }
+
 }

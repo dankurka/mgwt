@@ -80,8 +80,7 @@ public class ConfirmDialog implements HasText, HasTitleText, Dialog {
    * @param text - the text of the dialog
    * @param callback - the callback used when a button of the dialog is taped
    */
-  public ConfirmDialog(DialogCss css, String title, String text, ConfirmCallback callback,
-      String okButtonText, String cancelButtonText) {
+  public ConfirmDialog(DialogCss css, String title, String text, ConfirmCallback callback, String okButtonText, String cancelButtonText) {
     this.callback = callback;
     popinDialog = new PopinDialog(css);
     dialogPanel1 = new DialogPanel();
@@ -177,6 +176,12 @@ public class ConfirmDialog implements HasText, HasTitleText, Dialog {
    */
   public void show() {
     popinDialog.center();
+  }
+
+  @Override
+  public void hide() {
+    popinDialog.hide();
+
   }
 
 }
