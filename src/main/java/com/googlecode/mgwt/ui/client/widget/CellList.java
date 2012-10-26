@@ -147,10 +147,10 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
 
     @Override
     public void onTouchEnd(TouchEndEvent event) {
-			if (node != null) {
+      if (node != null) {
         node.removeClassName(css.selected());
-				stopTimer();
-			}
+        stopTimer();
+      }
       if (started && !moved && index != -1) {
         fireSelectionAtIndex(index, originalElement);
       }
@@ -181,6 +181,8 @@ public class CellList<T> extends Composite implements HasCellSelectedHandler {
       if (!Node.is(eventTarget) && !Element.is(eventTarget)) {
         return;
       }
+
+      event.preventDefault();
 
       // text node use the parent..
       if (Node.is(eventTarget) && !Element.is(eventTarget)) {
