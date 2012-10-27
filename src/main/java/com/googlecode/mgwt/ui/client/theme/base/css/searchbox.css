@@ -7,6 +7,7 @@
 
 .mgwt-SearchBox {
 	height: 44px;
+	width: 100%;
 	padding-left: 5px;
 	padding-right: 5px;
 	position: relative;
@@ -17,13 +18,13 @@
 	background-image: searchImage;
 	background-repeat: no-repeat;
 	background-position: 10px 50%;
-	width: 100%;
 	height: 24px;
 	display: block;
 	position: relative;
 	top: 10px;
 	margin: 0px;
 	padding: 0px;
+	margin-right: 10px;
 }
 
 .mgwt-SearchBox-input {
