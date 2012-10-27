@@ -31,16 +31,41 @@
 }
 
 .mgwt-FormList-Element{
-	margin: -12px;
-	display: -webkit-box;
-	
+	margin: -12px;	
 }
+
+
+@if user.agent safari {
+	.mgwt-FormList-Element{
+		display: \-webkit-box;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-FormList-Element{
+		width: 100%;
+	}
+}
+
 	
 .mgwt-FormList-Element-label{
 	padding: 10px;
-	width: 30%;
+	
 	overflow:hidden;
 	text-overflow: ellipsis;
+}
+
+@if user.agent safari {
+	.mgwt-FormList-Element-label{
+		width: 30%;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-FormList-Element-label{
+		width: 30%;
+		display: \-moz-box;
+	}
 }
 
 
