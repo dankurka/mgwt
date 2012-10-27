@@ -476,8 +476,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
           case VERTICAL:
             ScrollPanelTouchImpl.this.scrollBarSize[dir] = ScrollPanelTouchImpl.this.scrollBarWrapper[dir].getClientHeight();
 
-            System.out.println(ScrollPanelTouchImpl.this.scrollerHeight);
-            System.out.println("sbs: " + ScrollPanelTouchImpl.this.scrollBarSize[dir]);
             ScrollPanelTouchImpl.this.scrollbarIndicatorSize[dir] =
                 (int) Math.max(Math.round((double) (ScrollPanelTouchImpl.this.scrollBarSize[dir] * ScrollPanelTouchImpl.this.scrollBarSize[dir]) / ScrollPanelTouchImpl.this.scrollerHeight), 8);
             ScrollPanelTouchImpl.this.scrollBarIndicator[dir].getStyle().setHeight(ScrollPanelTouchImpl.this.scrollbarIndicatorSize[dir], Unit.PX);
