@@ -192,9 +192,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
       @Override
       public void onScrollEnd(ScrollEndEvent event) {
-        int page;
-
-        page = scrollPanel.getCurrentPageX();
+        int page = scrollPanel.getCurrentPageX();
 
         carouselIndicatorContainer.setSelectedIndex(page);
         currentPage = page;

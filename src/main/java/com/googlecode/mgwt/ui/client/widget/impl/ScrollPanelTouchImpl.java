@@ -1235,6 +1235,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
   @Override
   public void refresh() {
+    if (!isAttached())
+      return;
 
     if (scale < zoomMin) {
       scale = zoomMin;
