@@ -13,8 +13,6 @@
  */
 package com.googlecode.mgwt.ui.client;
 
-import java.util.logging.Logger;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.Scheduler;
@@ -56,11 +54,10 @@ import com.googlecode.mgwt.ui.client.util.AddressBarUtil;
  * @author Daniel Kurka
  */
 public class MGWT {
-  private static final Logger logger = Logger.getLogger("MGWT");
 
-  private static final OsDetection OS_DETECTION = GWT.create(OsDetection.class);
+  private static OsDetection OS_DETECTION;
 
-  private final static EventBus manager = new SimpleEventBus();
+  private static EventBus manager;
 
   private static ORIENTATION currentOrientation;
   private static Timer timer;
@@ -79,7 +76,7 @@ public class MGWT {
    */
   public static HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
     maybeSetupOrientation();
-    return manager.addHandler(OrientationChangeEvent.getType(), handler);
+    return getManager().addHandler(OrientationChangeEvent.getType(), handler);
   }
 
   /**
@@ -249,6 +246,9 @@ public class MGWT {
    * @return a {@link com.googlecode.mgwt.ui.client.OsDetection} object.
    */
   public static OsDetection getOsDetection() {
+    if (OS_DETECTION == null) {
+      OS_DETECTION = GWT.create(OsDetection.class);
+    }
     return OS_DETECTION;
   }
 
@@ -295,7 +295,7 @@ public class MGWT {
 
   private static void fireOrientationChangedEvent(ORIENTATION orientation) {
     setClasses(orientation);
-    manager.fireEvent(new OrientationChangeEvent(orientation));
+    getManager().fireEvent(new OrientationChangeEvent(orientation));
   }
 
   private static Element getHead() {
@@ -331,7 +331,6 @@ public class MGWT {
         break;
 
       default:
-        logger.warning("on orientation changed called with invalid value: '" + orientation + "' - defaulting to Portrait");
         o = ORIENTATION.PORTRAIT;
         break;
     }
@@ -472,6 +471,13 @@ public class MGWT {
       addressBarUtil = GWT.create(AddressBarUtil.class);
     }
     return addressBarUtil;
+  }
+
+  private static EventBus getManager() {
+    if (manager == null) {
+      manager = new SimpleEventBus();
+    }
+    return manager;
   }
 
 }
