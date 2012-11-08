@@ -1,6 +1,5 @@
 package com.googlecode.mgwt.ui.client.widget.impl;
 
-import java.awt.Scrollbar;
 import java.util.Iterator;
 
 import com.google.gwt.core.client.Scheduler;
@@ -30,7 +29,6 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
-import com.googlecode.mgwt.ui.client.util.FeatureDetection;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
 
 public class ScrollPanelIE9Impl extends ScrollPanelImpl {
@@ -77,10 +75,6 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   private boolean has3d;
 
-  private Scrollbar hScrollbar;
-
-  private Scrollbar vScrollbar;
-
   private HandlerRegistration transEndHandler;
 
   protected final ScrollPanelCss css;
@@ -119,7 +113,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
     touchObserver = new TouchObserver();
 
-    has3d = FeatureDetection.has3d();
+    has3d = false;
 
   }
 
@@ -630,12 +624,12 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
     if (resetX != position_x || resetY != position_y) {
       scrollTo(resetX, resetY, 300);
     } else {
-      if (scrollingEnabledX && hScrollbar != null) {
-        hScrollbar.hide();
-      }
-      if (scrollingEnabledY && vScrollbar != null) {
-        vScrollbar.hide();
-      }
+      // if (scrollingEnabledX && hScrollbar != null) {
+      // hScrollbar.hide();
+      // }
+      // if (scrollingEnabledY && vScrollbar != null) {
+      // vScrollbar.hide();
+      // }
 
     }
 
