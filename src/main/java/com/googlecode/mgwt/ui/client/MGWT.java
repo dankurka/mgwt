@@ -203,6 +203,7 @@ public class MGWT {
    * fixIOSScrollIssueBlur
    * </p>
    */
+  @edu.umd.cs.findbugs.annotations.SuppressWarnings(value = "LI_LAZY_INIT_UPDATE_STATIC", justification = "no multithreading in gwt code")
   public static void fixIOSScrollIssueBlur() {
     if (!scrollingDisabled) {
       return;

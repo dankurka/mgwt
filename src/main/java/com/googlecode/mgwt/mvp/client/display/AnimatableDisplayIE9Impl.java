@@ -17,158 +17,156 @@ import com.googlecode.mgwt.mvp.client.resources.AnimationSelector;
 
 public class AnimatableDisplayIE9Impl implements AnimatableDisplay {
 
-	protected FlowPanel main;
+  protected FlowPanel main;
 
-	protected SimplePanel first;
+  protected SimplePanel first;
 
-	protected SimplePanel second;
+  protected SimplePanel second;
 
-	protected boolean lastDir;
+  private final AnimationCss css;
 
-	private final AnimationCss css;
+  public AnimatableDisplayIE9Impl() {
+    this(AnimationSelector.getBundle().animationCss());
+  }
 
-	public AnimatableDisplayIE9Impl() {
-		this(AnimationSelector.getBundle().animationCss());
-	}
+  public AnimatableDisplayIE9Impl(AnimationCss css) {
+    this.css = css;
+    this.css.ensureInjected();
+    main = new FlowPanel();
 
-	public AnimatableDisplayIE9Impl(AnimationCss css) {
-		this.css = css;
-		this.css.ensureInjected();
-		main = new FlowPanel();
+    main.setStylePrimaryName(this.css.display());
+    main.getElement().getStyle().setPosition(Position.ABSOLUTE);
+    main.getElement().getStyle().setOverflow(Overflow.HIDDEN);
+    main.getElement().getStyle().setLeft(0, Unit.PX);
+    main.getElement().getStyle().setTop(0, Unit.PX);
+    main.getElement().getStyle().setRight(0, Unit.PX);
+    main.getElement().getStyle().setBottom(0, Unit.PX);
 
-		main.setStylePrimaryName(this.css.display());
-		main.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		main.getElement().getStyle().setOverflow(Overflow.HIDDEN);
-		main.getElement().getStyle().setLeft(0, Unit.PX);
-		main.getElement().getStyle().setTop(0, Unit.PX);
-		main.getElement().getStyle().setRight(0, Unit.PX);
-		main.getElement().getStyle().setBottom(0, Unit.PX);
+    first = new SimplePanel();
+    first.addStyleName(this.css.displayContainer());
+    first.getElement().getStyle().setBackgroundColor("blue");
+    first.getElement().getStyle().setPosition(Position.ABSOLUTE);
+    first.setWidth("100%");
+    first.setHeight("100%");
+    first.getElement().getStyle().setOverflow(Overflow.HIDDEN);
+    main.add(first);
 
-		first = new SimplePanel();
-		first.addStyleName(this.css.displayContainer());
-		first.getElement().getStyle().setBackgroundColor("blue");
-		first.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		first.setWidth("100%");
-		first.setHeight("100%");
-		first.getElement().getStyle().setOverflow(Overflow.HIDDEN);
-		main.add(first);
+    second = new SimplePanel();
+    second.addStyleName(this.css.displayContainer());
+    second.getElement().getStyle().setBackgroundColor("blue");
+    second.getElement().getStyle().setPosition(Position.ABSOLUTE);
+    second.setWidth("100%");
+    second.setHeight("100%");
+    second.getElement().getStyle().setOverflow(Overflow.HIDDEN);
+    main.add(second);
+    //
+    // .displayContainer {
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
+    // overflow:hidden;
+    //
+    // background-color: red;
+    // }
+    //
+    //
+    //
+    // .display {
+    // position: absolute;
+    // top: 0px;
+    // left: 0px;
+    // right: 0px;
+    // bottom: 0px;
+    // overflow:hidden;
+    // background-color: blue;
+    //
+    // }
 
-		second = new SimplePanel();
-		second.addStyleName(this.css.displayContainer());
-		second.getElement().getStyle().setBackgroundColor("blue");
-		second.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		second.setWidth("100%");
-		second.setHeight("100%");
-		second.getElement().getStyle().setOverflow(Overflow.HIDDEN);
-		main.add(second);
-		//
-		// .displayContainer {
-		// position: absolute;
-		// width: 100%;
-		// height: 100%;
-		// overflow:hidden;
-		//
-		// background-color: red;
-		// }
-		//
-		//
-		//
-		// .display {
-		// position: absolute;
-		// top: 0px;
-		// left: 0px;
-		// right: 0px;
-		// bottom: 0px;
-		// overflow:hidden;
-		// background-color: blue;
-		//
-		// }
+  }
 
-	}
+  @Override
+  public Widget asWidget() {
+    return main;
+  }
 
-	@Override
-	public Widget asWidget() {
-		return main;
-	}
+  @Override
+  public void setFirstWidget(IsWidget w) {
+    first.setWidget(w);
+  }
 
-	@Override
-	public void setFirstWidget(IsWidget w) {
-		first.setWidget(w);
-	}
+  @Override
+  public void setSecondWidget(IsWidget w) {
+    second.setWidget(w);
+  }
 
-	@Override
-	public void setSecondWidget(IsWidget w) {
-		second.setWidget(w);
-	}
+  private class AnimationFrame implements AnimationCallback {
 
-	private class AnimationFrame implements AnimationCallback {
+    private final double endTime;
+    // private final Animation animation;
+    // private double startTime;
+    private final AnimationEndCallback callback;
+    private final boolean animateToFirst;
 
-		private final double endTime;
-		//		private final Animation animation;
-		//		private double startTime;
-		private final AnimationEndCallback callback;
-		private final boolean animateToFirst;
+    public AnimationFrame(long startTime, long endTime, Animation animation, AnimationEndCallback callback, boolean animateToFirst) {
+      this.endTime = endTime;
+      // this.startTime = startTime;
+      // this.animation = animation;
+      this.callback = callback;
+      this.animateToFirst = animateToFirst;
 
-		public AnimationFrame(long startTime, long endTime, Animation animation, AnimationEndCallback callback, boolean animateToFirst) {
-			this.endTime = endTime;
-			//			this.startTime = startTime;
-			//			this.animation = animation;
-			this.callback = callback;
-			this.animateToFirst = animateToFirst;
+      if (animateToFirst) {
+        main.add(first);
+      } else {
+        main.add(second);
+      }
 
-			if (animateToFirst) {
-				main.add(first);
-			} else {
-				main.add(second);
-			}
+      // int offsetWidth = main.getOffsetWidth();
+      //
+      // CssUtil.translate(first.getElement(), 0, 0);
+      // CssUtil.translate(second.getElement(), offsetWidth, 0);
 
-			// int offsetWidth = main.getOffsetWidth();
-			//
-			// CssUtil.translate(first.getElement(), 0, 0);
-			// CssUtil.translate(second.getElement(), offsetWidth, 0);
+    }
 
-		}
+    @Override
+    public void execute(double timestamp) {
+      long now = System.currentTimeMillis();
+      if (now > endTime) {
+        // render end position and quit
 
-		@Override
-		public void execute(double timestamp) {
-			long now = System.currentTimeMillis();
-			if (now > endTime) {
-				// render end position and quit
+        if (animateToFirst) {
+          second.removeFromParent();
+        } else {
+          first.removeFromParent();
+        }
 
-				if (animateToFirst) {
-					second.removeFromParent();
-				} else {
-					first.removeFromParent();
-				}
+        // fire animation end
+        callback.onAnimationEnd();
 
-				// fire animation end
-				callback.onAnimationEnd();
+        return;
+      }
 
-				return;
-			}
+      // render current step
 
-			// render current step
+      // int offsetWidth = main.getOffsetWidth();
 
-			//			int offsetWidth = main.getOffsetWidth();
+      // int pos = (int) (-offsetWidth * (now - startTime) / (endTime - startTime));
 
-			//			int pos = (int) (-offsetWidth * (now - startTime) / (endTime - startTime));
+      AnimationScheduler.get().requestAnimationFrame(this);
 
-			AnimationScheduler.get().requestAnimationFrame(this);
+      // CssUtil.translate(first.getElement(), 0, 0);
+      // CssUtil.translate(second.getElement(), 0, 0);
 
-			// CssUtil.translate(first.getElement(), 0, 0);
-			// CssUtil.translate(second.getElement(), 0, 0);
+    }
 
-		}
+  }
 
-	}
+  @Override
+  public void animate(Animation animation, boolean animateToFirst, AnimationEndCallback callback) {
 
-	@Override
-	public void animate(Animation animation, boolean animateToFirst, AnimationEndCallback callback) {
+    AnimationFrame frame = new AnimationFrame(System.currentTimeMillis(), System.currentTimeMillis() + 300, animation, callback, animateToFirst);
 
-		AnimationFrame frame = new AnimationFrame(System.currentTimeMillis(), System.currentTimeMillis() + 300, animation, callback, animateToFirst);
+    AnimationScheduler.get().requestAnimationFrame(frame);
 
-		AnimationScheduler.get().requestAnimationFrame(frame);
-
-	}
+  }
 
 }

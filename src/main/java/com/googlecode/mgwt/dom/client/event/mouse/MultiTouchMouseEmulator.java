@@ -23,6 +23,7 @@ public class MultiTouchMouseEmulator {
     hasValues = true;
   }
 
+  @edu.umd.cs.findbugs.annotations.SuppressWarnings(value = "MS_EXPOSE_REP", justification = "we need this for testing")
   public static int[] getTouchStart() {
     return coordinates;
   }

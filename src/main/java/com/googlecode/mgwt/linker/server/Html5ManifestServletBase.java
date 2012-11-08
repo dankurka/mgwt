@@ -5,9 +5,9 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
@@ -160,9 +160,10 @@ public class Html5ManifestServletBase extends HttpServlet {
     String fileName = baseUrl + moduleName + "/" + permutation + PermutationMapLinker.PERMUTATION_FILE_ENDING;
     XMLPermutationProvider xmlPermutationProvider = new XMLPermutationProvider();
 
+    InputStream inputStream = null;
     try {
       File file = new File(getServletContext().getRealPath(fileName));
-      InputStream inputStream = new FileInputStream(file);
+      inputStream = new FileInputStream(file);
       return xmlPermutationProvider.getPermutationFiles(inputStream);
     } catch (XMLPermutationProviderException e) {
       log("can not read permutation file");
@@ -170,6 +171,14 @@ public class Html5ManifestServletBase extends HttpServlet {
     } catch (FileNotFoundException e) {
       log("can not read permutation file");
       throw new ServletException("can not read permutation file", e);
+    } finally {
+      if (inputStream != null) {
+        try {
+          inputStream.close();
+        } catch (IOException e) {
+
+        }
+      }
     }
   }
 
@@ -179,7 +188,8 @@ public class Html5ManifestServletBase extends HttpServlet {
     StringWriter manifestWriter = new StringWriter();
     BufferedReader br = null;
     try {
-      br = new BufferedReader(new FileReader(manifestFile));
+      br = new BufferedReader(new InputStreamReader(new FileInputStream(manifestFile), "UTF-8"));
+
       String line = null;
 
       while ((line = br.readLine()) != null) {
@@ -268,9 +278,10 @@ public class Html5ManifestServletBase extends HttpServlet {
 
     String realPath = getServletContext().getRealPath(baseUrl + moduleName + "/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME);
 
+    FileInputStream fileInputStream = null;
     try {
 
-      FileInputStream fileInputStream = new FileInputStream(realPath);
+      fileInputStream = new FileInputStream(realPath);
 
       Map<String, List<BindingProperty>> map = permutationProvider.getBindingProperties(fileInputStream);
       for (Entry<String, List<BindingProperty>> entry : map.entrySet()) {
@@ -286,6 +297,14 @@ public class Html5ManifestServletBase extends HttpServlet {
     } catch (XMLPermutationProviderException e) {
       log("can not read xml file", e);
       throw new ServletException("can not read permutation information", e);
+    } finally {
+      if (fileInputStream != null) {
+        try {
+          fileInputStream.close();
+        } catch (IOException e) {
+
+        }
+      }
     }
 
   }
