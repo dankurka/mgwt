@@ -272,8 +272,13 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
 
   }
 
-  public void setHeaderPullhandler(Pullhandler headerPullhandler) {
+  public void setHeaderPullHandler(Pullhandler headerPullhandler) {
     this.headerPullhandler = headerPullhandler;
+  }
+
+  @Deprecated
+  public void setHeaderPullhandler(Pullhandler headerPullhandler) {
+    setHeaderPullHandler(headerPullhandler);
   }
 
   public void setFooterPullHandler(Pullhandler headerPullhandler) {
