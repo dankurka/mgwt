@@ -44,4 +44,7 @@ public interface ButtonCss extends ButtonBaseCss {
 
 	@ClassName("mgwt-Button-confirm")
 	public String confirm();
+	
+	@ClassName("mgwt-Button-disabled")
+   public String disabled();
 }

@@ -82,3 +82,7 @@
 	border-top-left-radius: 16px 16px;
 	border-top-right-radius: 16px 16px;
 }
+
+.mgwt-Button-disabled {   
+   color: #808080;   
+}
