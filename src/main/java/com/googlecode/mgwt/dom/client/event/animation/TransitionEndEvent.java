@@ -14,6 +14,7 @@
 package com.googlecode.mgwt.dom.client.event.animation;
 
 import com.google.gwt.event.dom.client.DomEvent;
+
 import com.googlecode.mgwt.dom.client.event.EventTypesHolder;
 
 /**
@@ -25,7 +26,6 @@ import com.googlecode.mgwt.dom.client.event.EventTypesHolder;
  */
 public class TransitionEndEvent extends DomEvent<TransitionEndHandler> {
 
-  @edu.umd.cs.findbugs.annotations.SuppressWarnings(value = "MS_PKGPROTECT", justification = "we need this for testing")
   protected static Type<TransitionEndHandler> TYPE;
 
   /**

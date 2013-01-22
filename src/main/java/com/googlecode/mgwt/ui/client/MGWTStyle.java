@@ -6,6 +6,7 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.LinkElement;
 import com.google.gwt.dom.client.NodeList;
+
 import com.googlecode.mgwt.ui.client.theme.MGWTTheme;
 import com.googlecode.mgwt.ui.client.theme.MGWTThemeBaseThemeStandardImpl;
 
@@ -34,7 +35,6 @@ public class MGWTStyle {
    * 
    * @return the default bundle
    */
-  @edu.umd.cs.findbugs.annotations.SuppressWarnings(value = "LI_LAZY_INIT_UPDATE_STATIC", justification = "no multithreading in gwt code")
   public static final MGWTTheme getTheme() {
     if (theme == null) {
       theme = new MGWTThemeBaseThemeStandardImpl();
