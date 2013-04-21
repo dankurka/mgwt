@@ -1,5 +1,5 @@
 @if mgwt.css pretty {
-	@external mgwt-Button, mgwt-Button-active, mgwt-Button-small, mgwt-Button-round, mgwt-Button-important, mgwt-Button-confirm;
+	@external mgwt-Button, mgwt-Button-active, mgwt-Button-small, mgwt-Button-round, mgwt-Button-important, mgwt-Button-confirm, mgwt-Button-disabled;
 }
 
 .mgwt-Button {

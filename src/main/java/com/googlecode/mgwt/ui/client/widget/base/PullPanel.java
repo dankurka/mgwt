@@ -26,6 +26,7 @@ import com.googlecode.mgwt.ui.client.widget.base.PullPanel.PullWidget.PullState;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
+import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollStartEvent;
 
 public class PullPanel extends Composite implements HasWidgets, HasRefresh {
 
@@ -116,6 +117,21 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
         if (footer != null) {
           footerState = PullState.NORMAL;
 
+        }
+      }
+    });
+
+    scrollPanel.addScrollStartHandler(new ScrollStartEvent.Handler() {
+      @Override
+      public void onScrollStart(ScrollStartEvent event) {
+        if (header != null && headerPullhandler != null) {
+          headerState = PullState.NORMAL;
+          headerPullhandler.onPullStateChanged(header, headerState);
+        }
+
+        if (footer != null && footerPullhandler != null) {
+          footerState = PullState.NORMAL;
+          footerPullhandler.onPullStateChanged(footer, footerState);
         }
       }
     });
@@ -220,6 +236,8 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
     if (this.header != null) {
       main.insert(this.header, 0);
       scrollPanel.setOffSetY(this.header.getHeight());
+    } else {
+      scrollPanel.setOffSetY(0);
     }
 
     scrollPanel.refresh();
@@ -234,6 +252,8 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
     if (this.footer != null) {
       main.insert(this.footer, main.getWidgetCount());
       scrollPanel.setOffSetMaxY(this.footer.getHeight());
+    } else {
+      scrollPanel.setOffSetMaxY(0);
     }
 
     scrollPanel.refresh();
@@ -272,8 +292,13 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh {
 
   }
 
-  public void setHeaderPullhandler(Pullhandler headerPullhandler) {
+  public void setHeaderPullHandler(Pullhandler headerPullhandler) {
     this.headerPullhandler = headerPullhandler;
+  }
+
+  @Deprecated
+  public void setHeaderPullhandler(Pullhandler headerPullhandler) {
+    setHeaderPullHandler(headerPullhandler);
   }
 
   public void setFooterPullHandler(Pullhandler headerPullhandler) {

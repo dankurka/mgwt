@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.event.shared.GwtEvent;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
@@ -141,6 +142,7 @@ public class Button extends ButtonBase {
 	}
 
 	private boolean important;
+   private boolean disabled;
 
 	/**
 	 * Should the button be rendered as important
@@ -189,5 +191,30 @@ public class Button extends ButtonBase {
 			removeStyleName(css.confirm());
 		}
 		this.confirm = confirm;
+	}
+	
+	/**
+	 * Should the button be disabled. By default, the button will be grayed out. 
+	 * 
+	 * @param disabled true if the button should be disabled, otherwise false
+	 */
+	public void setDisabled(boolean disabled) {
+	   if (disabled) {
+         addStyleName(css.disabled());
+      } else {
+         removeStyleName(css.disabled());
+      }
+	   this.disabled = disabled;
+	}
+	
+	/**
+	 * @see com.google.gwt.user.client.ui.Widget#fireEvent(com.google.gwt.event.shared.GwtEvent)
+	 */
+	@Override
+	public void fireEvent(GwtEvent<?> event) {
+	   if(!disabled) {
+	      // only fire events if the button is currently enabled
+	      super.fireEvent(event);
+	   }
 	}
 }

@@ -139,6 +139,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   private ScrollPanel scrollPanel;
   private FlowPanel container;
   private CarouselIndicatorContainer carouselIndicatorContainer;
+  private boolean isVisibleCarouselIndicator = true;
 
   private int currentPage;
 
@@ -310,7 +311,9 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
     carouselIndicatorContainer = new CarouselIndicatorContainer(css, widgetCount);
 
-    main.add(carouselIndicatorContainer);
+    if(isVisibleCarouselIndicator){
+      main.add(carouselIndicatorContainer);
+    }
 
     if (currentPage >= widgetCount) {
       currentPage = widgetCount - 1;
@@ -413,4 +416,14 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
   }
 
+  /**
+   * Set if carousel indicator is displayed.
+   */
+  public void setShowCarouselIndicator(boolean isVisibleCarouselIndicator) {
+    if (!isVisibleCarouselIndicator && carouselIndicatorContainer != null) {
+      carouselIndicatorContainer.removeFromParent();
+    }
+
+    this.isVisibleCarouselIndicator = isVisibleCarouselIndicator;
+  }
 }
