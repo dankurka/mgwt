@@ -247,7 +247,7 @@ public class MGWTSettings {
   public static MGWTSettings getAppSetting() {
     ViewPort viewPort = new MGWTSettings.ViewPort();
     viewPort.setTargetDensity(DENSITY.MEDIUM);
-    viewPort.setUserScaleAble(false).setMinimumScale(1.0).setMinimumScale(1.0).setMaximumScale(1.0);
+    viewPort.setUserScaleAble(false).setMinimumScale(1.0).setInitialScale(1.0).setMaximumScale(1.0);
 
     MGWTSettings settings = new MGWTSettings();
     settings.setViewPort(viewPort);
