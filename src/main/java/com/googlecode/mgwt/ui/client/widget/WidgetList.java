@@ -210,7 +210,7 @@ public class WidgetList extends Composite implements HasWidgets {
       }
     }
     childCount--;
-    children.remove(w);
+    children.remove(entry);
     return container.remove(entry);
 
   }
