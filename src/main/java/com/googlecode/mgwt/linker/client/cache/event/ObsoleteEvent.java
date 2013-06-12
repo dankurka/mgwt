@@ -25,9 +25,9 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author Daniel Kurka
  * 
  */
-public class ObsoluteEvent extends GwtEvent<ObsoluteEvent.Handler> {
+public class ObsoleteEvent extends GwtEvent<ObsoleteEvent.Handler> {
 	public interface Handler extends EventHandler {
-		public void onObsoluteEvent(ObsoluteEvent event);
+		public void onObsoluteEvent(ObsoleteEvent event);
 	}
 
 	private static final GwtEvent.Type<Handler> TYPE = new Type<Handler>();
