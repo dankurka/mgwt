@@ -19,7 +19,7 @@ public class Html5ApplicationCache implements ApplicationCache {
 
   private static final ApplicationCacheStatus[] STATUS_MAPPING = new ApplicationCacheStatus[] {
       ApplicationCacheStatus.UNCACHED, ApplicationCacheStatus.IDLE, ApplicationCacheStatus.CHECKING, ApplicationCacheStatus.DOWNLOADING, ApplicationCacheStatus.UPDATEREADY,
-      ApplicationCacheStatus.OBSOLTE};
+      ApplicationCacheStatus.OBSOLETE};
 
   public static Html5ApplicationCache createIfSupported() {
     if (!isSupported()) {
