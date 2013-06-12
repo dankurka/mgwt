@@ -15,6 +15,8 @@ public interface ApplicationCache {
 
 	public void swapCache();
 
+	public void update();
+
 	public HandlerRegistration addCheckingHandler(CheckingEvent.Handler handler);
 
 	public HandlerRegistration addCachedHandler(CachedEvent.Handler handler);
