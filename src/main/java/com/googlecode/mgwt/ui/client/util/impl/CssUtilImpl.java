@@ -38,4 +38,6 @@ public interface CssUtilImpl {
 
 	public void setTranslateAndZoom(Element element, int x, int y, double scale);
 
+  public void translatePercent(Element el, double x, double y);
+
 }

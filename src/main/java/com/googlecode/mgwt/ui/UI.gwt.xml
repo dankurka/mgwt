@@ -194,6 +194,10 @@ under * the License.
 		</all>
 	</replace-with>
 	
+	
+	<replace-with class="com.googlecode.mgwt.ui.client.widget.menu.DefaultSwipeMenuAppearance">
+		<when-type-is class="com.googlecode.mgwt.ui.client.widget.menu.SwipeMenuAppearance" />
+	</replace-with>
 
 	<source path="client" />
 </module>

@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with field="appearance" type="com.googlecode.mgwt.ui.client.widget.menu.SwipeMenuAppearance"></ui:with>
+	<g:FlowPanel ui:field="main" styleName="{appearance.css.main}">
+	    <g:FlowPanel ui:field="wrap" styleName="{appearance.css.wrap}">
+	        <g:SimplePanel ui:field="menu" styleName="{appearance.css.menu}"></g:SimplePanel>
+	        <g:SimplePanel ui:field="content" styleName="{appearance.css.content}"></g:SimplePanel>
+	    </g:FlowPanel>
+	</g:FlowPanel>
+</ui:UiBinder> 

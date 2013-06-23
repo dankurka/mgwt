@@ -15,12 +15,14 @@ package com.googlecode.mgwt.dom.client.recognizer.swipe;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HasHandlers;
+
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
+import com.googlecode.mgwt.dom.client.event.touch.TouchUtil;
 import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEvent.DIRECTION;
 
@@ -155,7 +157,8 @@ public class SwipeRecognizer implements TouchHandler {
 
           direction = touch.getPageX() - x > 0 ? DIRECTION.LEFT_TO_RIGHT : DIRECTION.RIGHT_TO_LEFT;
 
-          SwipeStartEvent swipeStartEvent = new SwipeStartEvent(touch, touch.getPageX() - x, direction);
+          SwipeStartEvent swipeStartEvent =
+              new SwipeStartEvent(TouchUtil.cloneTouch(touch), touch.getPageX() - x, direction);
 
           getEventPropagator().fireEvent(source, swipeStartEvent);
 
@@ -165,7 +168,8 @@ public class SwipeRecognizer implements TouchHandler {
 
             direction = touch.getPageY() - y > 0 ? DIRECTION.TOP_TO_BOTTOM : DIRECTION.BOTTOM_TO_TOP;
 
-            SwipeStartEvent swipeStartEvent = new SwipeStartEvent(touch, touch.getPageY() - y, direction);
+            SwipeStartEvent swipeStartEvent =
+                new SwipeStartEvent(TouchUtil.cloneTouch(touch), touch.getPageY() - y, direction);
 
             getEventPropagator().fireEvent(source, swipeStartEvent);
 
@@ -180,13 +184,19 @@ public class SwipeRecognizer implements TouchHandler {
           case TOP_TO_BOTTOM:
           case BOTTOM_TO_TOP:
             lastDistance = Math.abs(touch.getPageY() - y);
-            getEventPropagator().fireEvent(source, new SwipeMoveEvent(touch, lastDistance > minDistance, lastDistance, direction));
+            getEventPropagator().fireEvent(
+                source,
+                new SwipeMoveEvent(TouchUtil.cloneTouch(touch), lastDistance > minDistance,
+                    lastDistance, direction));
             break;
 
           case LEFT_TO_RIGHT:
           case RIGHT_TO_LEFT:
             lastDistance = Math.abs(touch.getPageX() - x);
-            getEventPropagator().fireEvent(source, new SwipeMoveEvent(touch, lastDistance > minDistance, lastDistance, direction));
+            getEventPropagator().fireEvent(
+                source,
+                new SwipeMoveEvent(TouchUtil.cloneTouch(touch), lastDistance > minDistance,
+                    lastDistance, direction));
 
             break;
 

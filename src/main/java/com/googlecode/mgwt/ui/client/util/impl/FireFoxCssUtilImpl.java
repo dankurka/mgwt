@@ -71,17 +71,17 @@ public class FireFoxCssUtilImpl implements CssUtilImpl {
 		var x = matrix[4] * 1;
 		var y = matrix[5] * 1;
 		return [ x, y ];
-	}-*/;
+  }-*/;
 
 	@Override
 	public native int getTopPositionFromCssPosition(Element element) /*-{
 		return getComputedStyle(element, null).top.replace(/[^0-9-]/g, '') * 1;
-	}-*/;
+  }-*/;
 
 	@Override
 	public native int getLeftPositionFromCssPosition(Element element)/*-{
 		return getComputedStyle(element, null).left.replace(/[^0-9-]/g, '') * 1;
-	}-*/;
+  }-*/;
 
 	@Override
 	public void resetTransform(Element element) {
@@ -92,17 +92,17 @@ public class FireFoxCssUtilImpl implements CssUtilImpl {
 	@Override
 	public native void setTransistionProperty(Element element, String string) /*-{
 		element.mozTransitionProperty = string;
-	}-*/;
+  }-*/;
 
 	@Override
 	public native void setTransFormOrigin(Element el, int x, int y) /*-{
 		el.mozTransformOrigin = x + " " + y;
-	}-*/;
+  }-*/;
 
 	@Override
 	public native void setTransistionTimingFunction(Element element, String string) /*-{
 		el.mozTransitionTimingFunction = string;
-	}-*/;
+  }-*/;
 
 	@Override
 	public void setTranslateAndZoom(Element el, int x, int y, double scale) {
@@ -113,5 +113,12 @@ public class FireFoxCssUtilImpl implements CssUtilImpl {
 		el.getStyle().setProperty("MozTransform", cssText);
 
 	}
+
+  @Override
+  public void translatePercent(Element el, double x, double y) {
+
+    el.getStyle().setProperty("MozTransform", "translate( " + x + "%, " + y + "% )");
+
+  }
 
 }

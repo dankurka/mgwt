@@ -121,4 +121,10 @@ public class OperaCssUtilImpl implements CssUtilImpl {
     el.getStyle().setProperty("oTransform", cssText);
 
   }
+
+  @Override
+  public void translatePercent(Element el, double x, double y) {
+    // TODO Auto-generated method stub
+
+  }
 }

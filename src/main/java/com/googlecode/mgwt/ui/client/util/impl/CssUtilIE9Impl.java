@@ -19,19 +19,19 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 	@Override
 	public native void setDelay(Element el, int milliseconds) /*-{
 		el.style.msTransitionDelay = milliseconds + "ms";
-	}-*/;
+  }-*/;
 
 	@Override
 	public native void setOpacity(Element el, double opacity) /*-{
 		el.style.opacity = opacity;
 
-	}-*/;
+  }-*/;
 
 	@Override
 	public native void setDuration(Element el, int time) /*-{
 		el.style.msTransitionDuration = time + "ms";
 
-	}-*/;
+  }-*/;
 
 	@Override
 	public void rotate(Element el, int degree) {
@@ -72,13 +72,13 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 	public native int getTopPositionFromCssPosition(Element element) /*-{
 		return getComputedStyle(that.scroller, null).top
 				.replace(/[^0-9-]/g, '') * 1;
-	}-*/;
+  }-*/;
 
 	@Override
 	public native int getLeftPositionFromCssPosition(Element element)/*-{
 		return getComputedStyle(that.scroller, null).left.replace(/[^0-9-]/g,
 				'') * 1;
-	}-*/;
+  }-*/;
 
 	@Override
 	public void resetTransform(Element element) {
@@ -109,5 +109,10 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 		// TODO Auto-generated method stub
 
 	}
+
+  @Override
+  public void translatePercent(Element el, double x, double y) {
+    el.getStyle().setProperty("msTransform", "translate(" + x + "%," + y + "%)");
+  }
 
 }

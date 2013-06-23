@@ -17,6 +17,7 @@ package com.googlecode.mgwt.ui.client.util;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Element;
+
 import com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl;
 
 /**
@@ -32,8 +33,11 @@ public class CssUtil {
 
 	public static void translate(Element el, int x, int y) {
 		cssUtilImpl.translate(el, x, y);
-
 	}
+
+  public static void translatePercent(Element el, double x, double y) {
+    cssUtilImpl.translatePercent(el, x, y);
+  }
 
 	public static void setTransitionsDelay(Element el, int milliseconds) {
 		cssUtilImpl.setDelay(el, milliseconds);

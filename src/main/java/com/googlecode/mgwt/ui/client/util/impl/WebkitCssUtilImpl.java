@@ -144,4 +144,17 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
 
   }
 
+  @Override
+  public void translatePercent(Element el, double x, double y) {
+    String cssText = null;
+    if (has3d() && !MGWT.getOsDetection().isDesktop()) {
+      cssText = "translate3d(" + x + "%, " + y + "%, 0px)";
+    } else {
+      cssText = "translate( " + x + "%, " + y + "% )";
+    }
+
+    _translate(el, cssText);
+
+  }
+
 }

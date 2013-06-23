@@ -106,4 +106,10 @@ public class FailingImpl implements CssUtilImpl {
 
 	}
 
+  @Override
+  public void translatePercent(Element el, double x, double y) {
+    // TODO Auto-generated method stub
+
+  }
+
 }
