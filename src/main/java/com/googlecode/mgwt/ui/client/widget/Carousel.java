@@ -13,12 +13,6 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
@@ -34,6 +28,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
@@ -43,6 +38,12 @@ import com.googlecode.mgwt.ui.client.theme.base.CarouselCss;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * the carousel widget renders its children in a horizontal row. users can select a different child
@@ -344,6 +345,10 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
     }
     currentPage = index;
     scrollPanel.scrollToPage(index, 0, 300);
+  }
+
+  public int getSelectedPage() {
+    return currentPage;
   }
 
   @Override
