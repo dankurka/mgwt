@@ -132,38 +132,38 @@ public class Html5ApplicationCache implements ApplicationCache {
 			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onError()();
 
 		});
-		$wnd.applicationCache.addEventListener("onerror", onError);
+		$wnd.applicationCache.addEventListener("error", onError);
 
 		var onUpdate = $entry(function() {
 			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onNoUpdate()();
 
 		});
-		$wnd.applicationCache.addEventListener("onnoupdate", onUpdate);
+		$wnd.applicationCache.addEventListener("noupdate", onUpdate);
 
 		var ondownloading = $entry(function() {
 			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onDownloading()();
 		});
-		$wnd.applicationCache.addEventListener("ondownloading", ondownloading);
+		$wnd.applicationCache.addEventListener("downloading", ondownloading);
 
 		var onprogress = $entry(function() {
 			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onProgress()();
 		});
-		$wnd.applicationCache.addEventListener("onprogress", onprogress);
+		$wnd.applicationCache.addEventListener("progress", onprogress);
 
 		var onupdateReady = $entry(function() {
 			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onUpdateReady()();
 		});
-		$wnd.applicationCache.addEventListener("onupdateready", onupdateReady);
+		$wnd.applicationCache.addEventListener("updateready", onupdateReady);
 
 		var oncached = $entry(function() {
 			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onCached()();
 		});
-		$wnd.applicationCache.addEventListener("oncached", oncached);
+		$wnd.applicationCache.addEventListener("cached", oncached);
 
 		var onobsolete = $entry(function() {
 			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onObsolete()();
 		});
-		$wnd.applicationCache.addEventListener("onobsolete", onobsolete);
+		$wnd.applicationCache.addEventListener("obsolete", onobsolete);
 
   }-*/;
 
