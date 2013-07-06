@@ -10,8 +10,8 @@ import com.googlecode.mgwt.linker.client.cache.event.CheckingEvent;
 import com.googlecode.mgwt.linker.client.cache.event.CheckingEvent.Handler;
 import com.googlecode.mgwt.linker.client.cache.event.DownloadingEvent;
 import com.googlecode.mgwt.linker.client.cache.event.ErrorEvent;
-import com.googlecode.mgwt.linker.client.cache.event.NoUpadateEvent;
-import com.googlecode.mgwt.linker.client.cache.event.ObsoluteEvent;
+import com.googlecode.mgwt.linker.client.cache.event.NoUpdateEvent;
+import com.googlecode.mgwt.linker.client.cache.event.ObsoleteEvent;
 import com.googlecode.mgwt.linker.client.cache.event.ProgressEvent;
 import com.googlecode.mgwt.linker.client.cache.event.UpdateReadyEvent;
 
@@ -19,7 +19,7 @@ public class Html5ApplicationCache implements ApplicationCache {
 
   private static final ApplicationCacheStatus[] STATUS_MAPPING = new ApplicationCacheStatus[] {
       ApplicationCacheStatus.UNCACHED, ApplicationCacheStatus.IDLE, ApplicationCacheStatus.CHECKING, ApplicationCacheStatus.DOWNLOADING, ApplicationCacheStatus.UPDATEREADY,
-      ApplicationCacheStatus.OBSOLTE};
+      ApplicationCacheStatus.OBSOLETE};
 
   public static Html5ApplicationCache createIfSupported() {
     if (!isSupported()) {
@@ -65,13 +65,13 @@ public class Html5ApplicationCache implements ApplicationCache {
   }
 
   @Override
-  public HandlerRegistration addNoUpdateHandler(com.googlecode.mgwt.linker.client.cache.event.NoUpadateEvent.Handler handler) {
-    return eventBus.addHandler(NoUpadateEvent.getType(), handler);
+  public HandlerRegistration addNoUpdateHandler(com.googlecode.mgwt.linker.client.cache.event.NoUpdateEvent.Handler handler) {
+    return eventBus.addHandler(NoUpdateEvent.getType(), handler);
   }
 
   @Override
-  public HandlerRegistration addObsoluteHandler(com.googlecode.mgwt.linker.client.cache.event.ObsoluteEvent.Handler handler) {
-    return eventBus.addHandler(ObsoluteEvent.getType(), handler);
+  public HandlerRegistration addObsoleteHandler(com.googlecode.mgwt.linker.client.cache.event.ObsoleteEvent.Handler handler) {
+    return eventBus.addHandler(ObsoleteEvent.getType(), handler);
   }
 
   @Override
@@ -97,7 +97,7 @@ public class Html5ApplicationCache implements ApplicationCache {
   }
 
   protected void onNoUpdate() {
-    eventBus.fireEventFromSource(new NoUpadateEvent(), this);
+    eventBus.fireEventFromSource(new NoUpdateEvent(), this);
   }
 
   protected void onDownloading() {
@@ -117,7 +117,7 @@ public class Html5ApplicationCache implements ApplicationCache {
   }
 
   protected void onObsolete() {
-    eventBus.fireEventFromSource(new ObsoluteEvent(), this);
+    eventBus.fireEventFromSource(new ObsoleteEvent(), this);
   }
 
   protected native void initialize() /*-{
@@ -170,7 +170,6 @@ public class Html5ApplicationCache implements ApplicationCache {
   @Override
   public native void swapCache() /*-{
 		$wnd.applicationCache.swapCache();
-
   }-*/;
 
 }
