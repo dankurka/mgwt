@@ -122,13 +122,13 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
   }
 
   public void open(boolean animate) {
+    OpenEvent.fire(this, this);
     // TODO deal with animating
     if (animate) {
       openMenuWithAnimation(200);
     } else {
       state = STATE.OPEN;
       openMenu();
-      OpenEvent.fire(this, this);
     }
   }
 
@@ -137,13 +137,13 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
   }
 
   public void close(boolean animate) {
+    CloseEvent.fire(this, this);
     // TODO deal with animating
     if (animate) {
       closeMenuWithAnimation(200);
     } else {
       state = STATE.CLOSED;
       closeMenu();
-      CloseEvent.fire(this, this);
     }
   }
 
@@ -351,12 +351,10 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
       case ANIMATING_TO_CLOSE:
         state = STATE.CLOSED;
         CssUtil.setTransitionDuration(wrap.getElement(), 0);
-        CloseEvent.fire(this, this);
         break;
       case ANIMATING_TO_OPEN:
         state = STATE.OPEN;
         CssUtil.setTransitionDuration(wrap.getElement(), 0);
-        OpenEvent.fire(this, this);
         break;
 
       default:
