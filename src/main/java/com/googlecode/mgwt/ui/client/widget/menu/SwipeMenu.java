@@ -122,7 +122,6 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
   }
 
   public void open(boolean animate) {
-    OpenEvent.fire(this, this);
     // TODO deal with animating
     if (animate) {
       openMenuWithAnimation(200);
@@ -137,7 +136,6 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
   }
 
   public void close(boolean animate) {
-    CloseEvent.fire(this, this);
     // TODO deal with animating
     if (animate) {
       closeMenuWithAnimation(200);
@@ -228,12 +226,14 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
   }
 
   private void closeMenu() {
+    CloseEvent.fire(this, this);
     wrap.addStyleName(appearance.css().closed());
     wrap.removeStyleName(appearance.css().opened());
     CssUtil.resetTransForm(wrap.getElement());
   }
 
   private void openMenu() {
+    OpenEvent.fire(this, this);
     wrap.removeStyleName(appearance.css().closed());
     wrap.addStyleName(appearance.css().opened());
     CssUtil.resetTransForm(wrap.getElement());
