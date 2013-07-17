@@ -128,7 +128,6 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
     } else {
       state = STATE.OPEN;
       openMenu();
-      OpenEvent.fire(this, this);
     }
   }
 
@@ -143,7 +142,6 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
     } else {
       state = STATE.CLOSED;
       closeMenu();
-      CloseEvent.fire(this, this);
     }
   }
 
@@ -228,12 +226,14 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
   }
 
   private void closeMenu() {
+    CloseEvent.fire(this, this);
     wrap.addStyleName(appearance.css().closed());
     wrap.removeStyleName(appearance.css().opened());
     CssUtil.resetTransForm(wrap.getElement());
   }
 
   private void openMenu() {
+    OpenEvent.fire(this, this);
     wrap.removeStyleName(appearance.css().closed());
     wrap.addStyleName(appearance.css().opened());
     CssUtil.resetTransForm(wrap.getElement());
@@ -351,12 +351,10 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
       case ANIMATING_TO_CLOSE:
         state = STATE.CLOSED;
         CssUtil.setTransitionDuration(wrap.getElement(), 0);
-        CloseEvent.fire(this, this);
         break;
       case ANIMATING_TO_OPEN:
         state = STATE.OPEN;
         CssUtil.setTransitionDuration(wrap.getElement(), 0);
-        OpenEvent.fire(this, this);
         break;
 
       default:
