@@ -17,10 +17,13 @@ package com.googlecode.mgwt.ui.client.widget.touch;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+
+import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
+import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
@@ -73,5 +76,15 @@ public class TouchWidgetMobileImpl implements TouchWidgetImpl {
 	public HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler) {
 		return w.addDomHandler(handler, TouchEndEvent.getType());
 	}
+
+  @Override
+  public HandlerRegistration addTouchHandler(Widget w, TouchHandler handler) {
+    HandlerRegistrationCollection hrc = new HandlerRegistrationCollection();
+    hrc.addHandlerRegistration(addTouchStartHandler(w, handler));
+    hrc.addHandlerRegistration(addTouchMoveHandler(w, handler));
+    hrc.addHandlerRegistration(addTouchEndHandler(w, handler));
+    hrc.addHandlerRegistration(addTouchCancelHandler(w, handler));
+    return hrc;
+  }
 
 }

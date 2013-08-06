@@ -15,9 +15,9 @@
  */
 package com.googlecode.mgwt.dom.client.event.mouse;
 
-import java.util.LinkedList;
-
 import com.google.gwt.event.shared.HandlerRegistration;
+
+import java.util.LinkedList;
 
 /**
  * A collection of HandlerRegistrations which behaves like a single
@@ -26,7 +26,8 @@ import com.google.gwt.event.shared.HandlerRegistration;
  * @author Daniel Kurka
  * @version $Id: $
  */
-public class HandlerRegistrationCollection implements HandlerRegistration, com.google.web.bindery.event.shared.HandlerRegistration {
+public class HandlerRegistrationCollection implements HandlerRegistration,
+    com.google.web.bindery.event.shared.HandlerRegistration {
 
 	private LinkedList<com.google.web.bindery.event.shared.HandlerRegistration> collectedHandlers = new LinkedList<com.google.web.bindery.event.shared.HandlerRegistration>();
 
@@ -61,7 +62,6 @@ public class HandlerRegistrationCollection implements HandlerRegistration, com.g
 			handlerRegistration.removeHandler();
 		}
 		collectedHandlers.clear();
-
 	}
 
 }

@@ -17,8 +17,10 @@ package com.googlecode.mgwt.ui.client.widget.touch;
 
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
+import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 
@@ -65,5 +67,7 @@ public interface TouchWidgetImpl {
 	 * @return the handlerregistration
 	 */
 	public HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler);
+
+  public HandlerRegistration addTouchHandler(Widget w, TouchHandler handler);
 
 }

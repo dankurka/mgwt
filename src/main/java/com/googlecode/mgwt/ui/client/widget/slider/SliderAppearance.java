@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 Daniel Kurka
+ * Copyright 2013 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,26 +13,31 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.theme.base;
+package com.googlecode.mgwt.ui.client.widget.slider;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.CssResource;
-import com.googlecode.mgwt.ui.client.widget.MSlider;
+import com.google.gwt.uibinder.client.UiBinder;
 
-/**
- * The css interface for the mgwt slider
- * 
- * For style explanation @see {@link MSlider}
- * 
- * @author Daniel Kurka
- * 
- */
-public interface SliderCss extends CssResource {
-	@ClassName("mgwt-Slider")
-	public String slider();
 
-	@ClassName("mgwt-Slider-pointer")
-	public String pointer();
+public interface SliderAppearance {
+  /**
+   * The CSS resource for the mgwt pointer
+   * 
+   * @author Daniel Kurka
+   */
+  interface SliderCss extends CssResource {
+    @ClassName("mgwt-Slider")
+    public String slider();
 
-	@ClassName("mgwt-Slider-bar")
-	public String bar();
+    @ClassName("mgwt-Slider-pointer")
+    public String pointer();
+
+    @ClassName("mgwt-Slider-bar")
+    public String bar();
+  }
+
+  SliderCss css();
+
+  UiBinder<? extends Element, Slider> uiBinder();
 }

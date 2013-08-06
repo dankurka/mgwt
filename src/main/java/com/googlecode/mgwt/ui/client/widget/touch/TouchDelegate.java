@@ -19,6 +19,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
@@ -117,7 +118,8 @@ public class TouchDelegate implements HasTouchHandlers, HasTapHandlers, HasSwipe
 		return w.addHandler(handler, TapEvent.getType());
 	}
 
-	public HandlerRegistration addTouchHandler(TouchHandler handler) {
+  @Override
+  public HandlerRegistration addTouchHandler(TouchHandler handler) {
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
 
 		handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(handler));
@@ -133,17 +135,20 @@ public class TouchDelegate implements HasTouchHandlers, HasTapHandlers, HasSwipe
 
 	}
 
-	public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler) {
+  @Override
+  public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return w.addHandler(handler, SwipeStartEvent.getType());
 	}
 
-	public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler) {
+  @Override
+  public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return w.addHandler(handler, SwipeMoveEvent.getType());
 	}
 
-	public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
+  @Override
+  public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return w.addHandler(handler, SwipeEndEvent.getType());
 	}

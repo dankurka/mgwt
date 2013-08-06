@@ -18,6 +18,7 @@ package com.googlecode.mgwt.ui.client.widget.touch;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
+
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
@@ -63,55 +64,30 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 		gestureUtility = new GestureUtility(this);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchStartHandler(com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler)
-	 */
-	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
 		return impl.addTouchStartHandler(this, handler);
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchMoveHandler(com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler)
-	 */
-	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
 		return impl.addTouchMoveHandler(this, handler);
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchCancelHandler(com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler)
-	 */
-	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
 		return impl.addTouchCancelHandler(this, handler);
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchEndHandler(com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler)
-	 */
-	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
 		return impl.addTouchEndHandler(this, handler);
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers#addTouchHandler(com.googlecode.mgwt.dom.client.event.touch.TouchHandler)
-	 */
-	/** {@inheritDoc} */
 	@Override
 	public HandlerRegistration addTouchHandler(TouchHandler handler) {
 		HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
@@ -123,27 +99,26 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 		return handlerRegistrationCollection;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.recognizer.HasTapHandlers#addTapHandler(com.googlecode.mgwt.dom.client.recognizer.TapHandler)
-	 */
 	@Override
 	public HandlerRegistration addTapHandler(TapHandler handler) {
 		gestureUtility.ensureTapRecognizer();
 		return addHandler(handler, TapEvent.getType());
 	}
 
-	public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler) {
+  @Override
+  public HandlerRegistration addSwipeStartHandler(SwipeStartHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return addHandler(handler, SwipeStartEvent.getType());
 	}
 
-	public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler) {
+  @Override
+  public HandlerRegistration addSwipeMoveHandler(SwipeMoveHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return addHandler(handler, SwipeMoveEvent.getType());
 	}
 
-	public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
+  @Override
+  public HandlerRegistration addSwipeEndHandler(SwipeEndHandler handler) {
 		gestureUtility.ensureSwipeRecognizer();
 		return addHandler(handler, SwipeEndEvent.getType());
 	}

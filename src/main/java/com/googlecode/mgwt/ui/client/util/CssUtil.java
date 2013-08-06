@@ -16,7 +16,7 @@
 package com.googlecode.mgwt.ui.client.util;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 
 import com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl;
 

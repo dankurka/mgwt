@@ -20,12 +20,14 @@ import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.mouse.TouchEndToMouseUpHandler;
 import com.googlecode.mgwt.dom.client.event.mouse.TouchMoveToMouseMoveHandler;
 import com.googlecode.mgwt.dom.client.event.mouse.TouchStartToMouseDownHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
+import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 import com.googlecode.mgwt.ui.client.util.NoopHandlerRegistration;
@@ -83,4 +85,13 @@ public class TouchWidgetDesktopImpl implements TouchWidgetImpl {
 		return w.addDomHandler(new TouchEndToMouseUpHandler(handler), MouseUpEvent.getType());
 	}
 
+  @Override
+  public HandlerRegistration addTouchHandler(Widget w, TouchHandler handler) {
+    HandlerRegistrationCollection hrc = new HandlerRegistrationCollection();
+    hrc.addHandlerRegistration(addTouchStartHandler(w, handler));
+    hrc.addHandlerRegistration(addTouchMoveHandler(w, handler));
+    hrc.addHandlerRegistration(addTouchEndHandler(w, handler));
+    hrc.addHandlerRegistration(addTouchCancelHandler(w, handler));
+    return hrc;
+  }
 }

@@ -19,6 +19,7 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
+
 import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
 
 /**
@@ -50,9 +51,6 @@ public interface MGWTClientBundleBaseThemeIPhone extends ClientBundle, MGWTClien
 
 	@Source({ "css/header.css", "css/iphone/header.css" })
 	HeaderCss getHeaderCss();
-
-	@Source({ "css/slider.css", "css/iphone/slider.css" })
-	SliderCss getSliderCss();
 
 	@Source({ "css/carousel.css", "css/iphone/carousel.css" })
 	CarouselCss getCarouselCss();

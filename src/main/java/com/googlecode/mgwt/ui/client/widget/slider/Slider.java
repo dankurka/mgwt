@@ -11,31 +11,32 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget;
+package com.googlecode.mgwt.ui.client.widget.slider;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
-import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
+import com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl;
 
 /**
- * <h1>The mgwt slider widget</h1>
+ * <h1>The mgwt pointer widget</h1>
  * 
  * 
  * <h2>Styling</h2>
@@ -56,30 +57,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * 
  * @author Daniel Kurka
  */
-public class MSlider extends Composite implements HasValue<Integer>, LeafValueEditor<Integer> {
-
-  private static class SliderWidget extends TouchWidget {
-
-    private Element slider;
-    private Element bar;
-
-    public SliderWidget(SliderCss css) {
-      setElement(DOM.createDiv());
-      bar = DOM.createDiv();
-      bar.setClassName(css.bar());
-
-      slider = DOM.createDiv();
-      slider.setClassName(css.pointer());
-      bar.appendChild(slider);
-
-      getElement().appendChild(bar);
-
-    }
-
-    public void setPos(int x) {
-      CssUtil.translate(slider, x, 0);
-    }
-  }
+public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor<Integer> {
 
   private class SliderTouchHandler implements TouchHandler {
 
@@ -119,49 +97,45 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
   }
 
+  private static final SliderAppearance DEFAULT_APPEARANCE = GWT.create(SliderAppearance.class);
+
+  private static final TouchWidgetImpl TOUCH_WIDGET_IMPL = GWT.create(TouchWidgetImpl.class);
+
   private int value;
-  private SliderWidget sliderWidget;
   private int max;
+  private final SliderAppearance apperance;
+
+  @UiField
+  protected Element pointer;
+  @UiField
+  protected Element bar;
 
   /**
-   * Construct a slider
+   * Construct a pointer
    */
-  public MSlider() {
-    this(MGWTStyle.getTheme().getMGWTClientBundle().getSliderCss());
+  public Slider() {
+    this(DEFAULT_APPEARANCE);
   }
 
-  /**
-   * Construct a slider with a given css
-   * 
-   * @param css the css to use
-   */
-  public MSlider(SliderCss css) {
-    css.ensureInjected();
-    sliderWidget = new SliderWidget(css);
-    initWidget(sliderWidget);
-    setStylePrimaryName(css.slider());
+  public Slider(SliderAppearance apperance) {
 
-    sliderWidget.addTouchHandler(new SliderTouchHandler());
+    this.apperance = apperance;
+
+    setElement(this.apperance.uiBinder().createAndBindUi(this));
+
+    TOUCH_WIDGET_IMPL.addTouchHandler(this, new SliderTouchHandler());
 
     max = 100;
     value = 0;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.google.gwt.event.logical.shared.HasValueChangeHandlers#addValueChangeHandler(com.google
-   * .gwt.event.logical.shared.ValueChangeHandler)
-   */
-  /** {@inheritDoc} */
   @Override
   public HandlerRegistration addValueChangeHandler(ValueChangeHandler<Integer> handler) {
     return addHandler(handler, ValueChangeEvent.getType());
   }
 
   /**
-   * Set the maximum of the slider
+   * Set the maximum of the pointer
    * 
    * @param max the maximum to use
    */
@@ -173,43 +147,25 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
   }
 
   /**
-   * get the maximum of the slider
+   * get the maximum of the pointer
    * 
-   * @return the maximum of the slider
+   * @return the maximum of the pointer
    */
   public int getMax() {
     return max;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.HasValue#getValue()
-   */
-  /** {@inheritDoc} */
   @Override
   public Integer getValue() {
     return value;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object)
-   */
-  /** {@inheritDoc} */
   @Override
   public void setValue(Integer value) {
     setValue(value, true);
 
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.Composite#onAttach()
-   */
-  /** {@inheritDoc} */
   @Override
   protected void onAttach() {
     super.onAttach();
@@ -224,12 +180,6 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
 
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.HasValue#setValue(java.lang.Object, boolean)
-   */
-  /** {@inheritDoc} */
   @Override
   public void setValue(Integer value, boolean fireEvents) {
     setValue(value, fireEvents, true);
@@ -267,15 +217,15 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
       return;
     }
 
-    int width = sliderWidget.getOffsetWidth();
+    int width = bar.getOffsetWidth();
     int sliderPos = value * width / max;
-    sliderWidget.setPos(sliderPos);
+    setPos(sliderPos);
 
   }
 
   private void setValueContrained(int x) {
-    x = x - MSlider.this.getAbsoluteLeft();
-    int width = sliderWidget.getOffsetWidth();
+    x = x - Slider.this.getAbsoluteLeft();
+    int width = bar.getOffsetWidth();
 
     if (x < 0) {
       x = 0;
@@ -289,7 +239,11 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
     int componentValue = x * max / width;
     setValue(componentValue, true, false);
 
-    sliderWidget.setPos(x);
+    setPos(x);
+  }
+
+  private void setPos(int x) {
+    CssUtil.translate(pointer, x, 0);
   }
 
 }

@@ -16,7 +16,6 @@ import com.googlecode.mgwt.ui.client.theme.base.ProgressBarCss;
 import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
-import com.googlecode.mgwt.ui.client.theme.base.SliderCss;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 public interface MGWTColorBundleRetina extends MGWTClientBundleBaseThemeRetina {
@@ -28,9 +27,6 @@ public interface MGWTColorBundleRetina extends MGWTClientBundleBaseThemeRetina {
 
 	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/header.css", "css/header.css" })
 	HeaderCss getHeaderCss();
-
-	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/slider.css", "css/slider.css" })
-	SliderCss getSliderCss();
 
 	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/list.css", "css/list.css" })
 	ListCss getListCss();

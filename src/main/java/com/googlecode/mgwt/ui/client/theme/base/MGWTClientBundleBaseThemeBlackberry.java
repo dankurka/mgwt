@@ -19,6 +19,7 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
+
 import com.googlecode.mgwt.ui.client.theme.MGWTClientBundle;
 
 /**
@@ -50,9 +51,6 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 
 	@Source({ "css/header.css", "css/blackberry/header.css" })
 	HeaderCss getHeaderCss();
-
-	@Source({ "css/slider.css", "css/blackberry/slider.css" })
-	SliderCss getSliderCss();
 
 	@Source({ "css/carousel.css", "css/blackberry/carousel.css" })
 	CarouselCss getCarouselCss();
