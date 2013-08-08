@@ -79,10 +79,18 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
   private TouchDelegate touchContainer;
 
   public SwipeMenu() {
-    this(APPEARANCE);
+    this(APPEARANCE, /*allowSwipe*/ true);
+  }
+  
+  public SwipeMenu(boolean allowSwipe) {
+    this(APPEARANCE, allowSwipe);
   }
 
   public SwipeMenu(SwipeMenuAppearance appearance) {
+    this(appearance, /*allowSwipe*/ true);
+  }
+  
+  public SwipeMenu(SwipeMenuAppearance appearance, boolean allowSwipe) {
 
     this.appearance = appearance;
     state = STATE.CLOSED;
@@ -91,7 +99,7 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
 
     touchContainer = new TouchDelegate(main);
 
-    initHandlers();
+    initHandlers(allowSwipe);
 
   }
 
@@ -145,35 +153,37 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
     }
   }
 
-  private void initHandlers() {
-    touchContainer.addSwipeStartHandler(new SwipeStartHandler() {
+  private void initHandlers(boolean allowSwipe) {
+    if (allowSwipe) {
+      touchContainer.addSwipeStartHandler(new SwipeStartHandler() {
 
-      @Override
-      public void onSwipeStart(SwipeStartEvent event) {
+        @Override
+        public void onSwipeStart(SwipeStartEvent event) {
 
-        handleSwipeStart(event);
+          handleSwipeStart(event);
 
-      }
-    });
+        }
+      });
 
-    touchContainer.addSwipeMoveHandler(new SwipeMoveHandler() {
+      touchContainer.addSwipeMoveHandler(new SwipeMoveHandler() {
 
-      @Override
-      public void onSwipeMove(SwipeMoveEvent event) {
+        @Override
+        public void onSwipeMove(SwipeMoveEvent event) {
 
-        handleSwipeMove(event);
+          handleSwipeMove(event);
 
-      }
-    });
+        }
+      });
 
-    touchContainer.addSwipeEndHandler(new SwipeEndHandler() {
+      touchContainer.addSwipeEndHandler(new SwipeEndHandler() {
 
-      @Override
-      public void onSwipeEnd(SwipeEndEvent event) {
-        handleSwipeEnd(event);
+        @Override
+        public void onSwipeEnd(SwipeEndEvent event) {
+          handleSwipeEnd(event);
 
-      }
-    });
+        }
+      });
+    }
 
     touchContainer.addTapHandler(new TapHandler() {
 
