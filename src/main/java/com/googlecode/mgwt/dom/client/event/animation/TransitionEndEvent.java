@@ -15,8 +15,6 @@ package com.googlecode.mgwt.dom.client.event.animation;
 
 import com.google.gwt.event.dom.client.DomEvent;
 
-import com.googlecode.mgwt.dom.client.event.EventTypesHolder;
-
 /**
  * 
  * Represent a native transition end event
@@ -26,7 +24,9 @@ import com.googlecode.mgwt.dom.client.event.EventTypesHolder;
  */
 public class TransitionEndEvent extends DomEvent<TransitionEndHandler> {
 
-  protected static Type<TransitionEndHandler> TYPE;
+  protected static Type<TransitionEndHandler> TYPE =
+      new Type<TransitionEndHandler>(SupportDetector.getEventNameForTransistionEnd(),
+      new TransitionEndEvent());
 
   /**
    * <p>
@@ -36,9 +36,6 @@ public class TransitionEndEvent extends DomEvent<TransitionEndHandler> {
    * @return a Type object.
    */
   public static Type<TransitionEndHandler> getType() {
-    if (TYPE == null) {
-      TYPE = new Type<TransitionEndHandler>(EventTypesHolder.EVENT_TYPES.getTransistionEnd(), new TransitionEndEvent());
-    }
     return TYPE;
   }
 
@@ -49,9 +46,6 @@ public class TransitionEndEvent extends DomEvent<TransitionEndHandler> {
    */
   @Override
   public com.google.gwt.event.dom.client.DomEvent.Type<TransitionEndHandler> getAssociatedType() {
-    if (TYPE == null) {
-      TYPE = new Type<TransitionEndHandler>(EventTypesHolder.EVENT_TYPES.getTransistionEnd(), new TransitionEndEvent());
-    }
     return TYPE;
   }
 

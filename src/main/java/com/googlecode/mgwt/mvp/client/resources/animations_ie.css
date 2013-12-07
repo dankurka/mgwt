@@ -1,4 +1,4 @@
-@if user.agent ie9 {
+@if user.agent ie9 ie10 {
 	.displayContainer {
  		position: absolute;
 		width: 100%;

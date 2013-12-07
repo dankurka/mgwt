@@ -15,9 +15,6 @@ under * the License.
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.googlecode.mgwt.dom.DOM' />
 	
-	<!-- need to remove ie6 (causing bugs with clientbundle inlining images) -->
-	<set-property name="user.agent" value="safari,gecko1_8,opera,ie9,ie8" />
-
 	<define-configuration-property name="mgwt.css" is-multi-valued="false" />
 	<set-configuration-property name="mgwt.css" value="obf" />
 
@@ -49,9 +46,10 @@ under * the License.
 	
 	<replace-with class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelIE9Impl">
 		<when-type-is class="com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl" />
-		 <all> 
+		 <any> 
    			<when-property-is name="user.agent" value="ie9" />
-  		</all>
+			<when-property-is name="user.agent" value="ie10" />
+  		</any>
 		
 	</replace-with>
 	
@@ -93,9 +91,10 @@ under * the License.
 	
 	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.CssUtilIE9Impl">
 		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
-		 <all> 
+		 <any> 
    			<when-property-is name="user.agent" value="ie9" />
-  		</all>
+			<when-property-is name="user.agent" value="ie10" />
+  		</any>
 		
 	</replace-with>
 	
@@ -140,9 +139,10 @@ under * the License.
 	
 	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
 		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
-		<all> 
+		<any> 
    			<when-property-is name="user.agent" value="ie9" />
-  		</all>
+			<when-property-is name="user.agent" value="ie10" />
+  		</any>
 	</replace-with>
 	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
 		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />

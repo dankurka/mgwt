@@ -15,8 +15,6 @@ package com.googlecode.mgwt.dom.client.event.animation;
 
 import com.google.gwt.event.dom.client.DomEvent;
 
-import com.googlecode.mgwt.dom.client.event.EventTypesHolder;
-
 /**
  * 
  * Represent a native animation end event
@@ -29,7 +27,9 @@ public class AnimationEndEvent extends DomEvent<AnimationEndHandler> {
   /**
    * Event type for animation end events.
    */
-  protected static Type<AnimationEndHandler> TYPE;
+  protected static Type<AnimationEndHandler> TYPE =
+      new Type<AnimationEndHandler>(SupportDetector.getEventNameForAnimationEnd(),
+      new AnimationEndEvent());
 
   /**
    * <p>
@@ -39,9 +39,6 @@ public class AnimationEndEvent extends DomEvent<AnimationEndHandler> {
    * @return a Type object.
    */
   public static Type<AnimationEndHandler> getType() {
-    if (TYPE == null) {
-      TYPE = new Type<AnimationEndHandler>(EventTypesHolder.EVENT_TYPES.getAnimationEnd(), new AnimationEndEvent());
-    }
     return TYPE;
   }
 
@@ -52,9 +49,6 @@ public class AnimationEndEvent extends DomEvent<AnimationEndHandler> {
    */
   @Override
   public com.google.gwt.event.dom.client.DomEvent.Type<AnimationEndHandler> getAssociatedType() {
-    if (TYPE == null) {
-      TYPE = new Type<AnimationEndHandler>(EventTypesHolder.EVENT_TYPES.getAnimationEnd(), new AnimationEndEvent());
-    }
     return TYPE;
   }
 
