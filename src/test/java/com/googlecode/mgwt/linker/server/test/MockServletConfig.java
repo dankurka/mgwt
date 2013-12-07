@@ -20,7 +20,7 @@ public class MockServletConfig implements ServletConfig {
 	}
 
 	@Override
-	public Enumeration<?> getInitParameterNames() {
+	public Enumeration<String> getInitParameterNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}
