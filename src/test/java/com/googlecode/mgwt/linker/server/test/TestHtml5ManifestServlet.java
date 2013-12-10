@@ -1,5 +1,19 @@
 package com.googlecode.mgwt.linker.server.test;
 
+import com.googlecode.mgwt.linker.linker.PermutationMapLinker;
+import com.googlecode.mgwt.linker.server.BindingProperty;
+import com.googlecode.mgwt.linker.server.Html5ManifestServletBase;
+import com.googlecode.mgwt.linker.server.MGWTHtml5ManifestServlet;
+import com.googlecode.mgwt.linker.server.propertyprovider.test.UserAgents;
+
+import junit.framework.Assert;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -9,17 +23,7 @@ import java.util.Set;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-
-import junit.framework.Assert;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import com.googlecode.mgwt.linker.linker.PermutationMapLinker;
-import com.googlecode.mgwt.linker.server.BindingProperty;
-import com.googlecode.mgwt.linker.server.Html5ManifestServletBase;
-import com.googlecode.mgwt.linker.server.MGWTHtml5ManifestServlet;
-import com.googlecode.mgwt.linker.server.propertyprovider.test.UserAgents;
+import javax.servlet.http.HttpServletRequest;
 
 public class TestHtml5ManifestServlet {
 
@@ -64,8 +68,9 @@ public class TestHtml5ManifestServlet {
 
   @Test
   public void testCalculateBindinPropertiesForClient() throws ServletException {
-    com.googlecode.mgwt.linker.server.propertyprovider.test.MockServletRequest mockServletRequest = new com.googlecode.mgwt.linker.server.propertyprovider.test.MockServletRequest();
-    mockServletRequest.setUserAgent(UserAgents.BLACKBERRY_USER_AGENT);
+    
+    HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
+    Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn(UserAgents.BLACKBERRY_USER_AGENT);
 
     Set<BindingProperty> bindinPropertiesForClient = servlet.calculateBindinPropertiesForClient(mockServletRequest);
 
@@ -109,30 +114,34 @@ public class TestHtml5ManifestServlet {
 
     }
   }
+  
+  private Answer<String> getRealPathAnswer() {
+    return new Answer<String>() {
+      @Override
+      public String answer(InvocationOnMock invocation) throws Throwable {
+        String arg = (String) invocation.getArguments()[0];
+        
+        Assert.assertEquals("asdf/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME, arg);
+        URL url = TestHtml5ManifestServlet.class.getResource("/com/googlecode/mgwt/linker/server/test/resources/example.manifestmap.xml");
+        try {
+          return url.toURI().toString().substring("file:".length());
+        } catch (URISyntaxException e) {
+          Assert.fail("should not happen");
+          return "asdf";
+        }
+        
+      }
+  };
+}
 
   @Test
   public void testGetPermutationStrongName() throws ServletException, FileNotFoundException {
-
-    ServletConfig config = new MockServletConfig() {
-
-      @Override
-      public ServletContext getServletContext() {
-        return new MockServletContext() {
-          @Override
-          public String getRealPath(String arg0) {
-            Assert.assertEquals("asdf/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME, arg0);
-            URL url = TestHtml5ManifestServlet.class.getResource("/com/googlecode/mgwt/linker/server/test/resources/example.manifestmap.xml");
-            try {
-              return url.toURI().toString().substring("file:".length());
-            } catch (URISyntaxException e) {
-              Assert.fail("should not happen");
-              return "asdf";
-            }
-          }
-        };
-      }
-    };
-
+    
+    ServletContext context = Mockito.mock(ServletContext.class);
+    Mockito.when(context.getRealPath(Mockito.anyString())).then(getRealPathAnswer());    
+    ServletConfig config = Mockito.mock(ServletConfig.class);
+    Mockito.when(config.getServletContext()).thenReturn(context);
+    
     servlet.init(config);
 
     HashSet<BindingProperty> set = new HashSet<BindingProperty>();
@@ -147,25 +156,10 @@ public class TestHtml5ManifestServlet {
   @Test
   public void testGetPermutationStrongName1() throws ServletException, FileNotFoundException {
 
-    ServletConfig config = new MockServletConfig() {
-
-      @Override
-      public ServletContext getServletContext() {
-        return new MockServletContext() {
-          @Override
-          public String getRealPath(String arg0) {
-            Assert.assertEquals("asdf/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME, arg0);
-            URL url = TestHtml5ManifestServlet.class.getResource("/com/googlecode/mgwt/linker/server/test/resources/example.manifestmap.xml");
-            try {
-              return url.toURI().toString().substring("file:".length());
-            } catch (URISyntaxException e) {
-              Assert.fail("should not happen");
-              return "asdf";
-            }
-          }
-        };
-      }
-    };
+    ServletContext context = Mockito.mock(ServletContext.class);
+    Mockito.when(context.getRealPath(Mockito.anyString())).then(getRealPathAnswer());    
+    ServletConfig config = Mockito.mock(ServletConfig.class);
+    Mockito.when(config.getServletContext()).thenReturn(context);
 
     servlet.init(config);
 
@@ -191,36 +185,47 @@ public class TestHtml5ManifestServlet {
 
   @Test
   public void testGetModuleNameWithInvalidURI() throws ServletException {
-    MockServletRequest mockServletRequest = new MockServletRequest();
-    mockServletRequest.setServletPath("test");
-
-    servlet.init(new MockServletConfig());
+    HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
+    
+    Mockito.when(mockServletRequest.getServletPath()).thenReturn("test");
+    
+    ServletConfig servletConfig = Mockito.mock(ServletConfig.class);
+    Mockito.when(servletConfig.getServletContext()).thenReturn(Mockito.mock(ServletContext.class));
+    
+    servlet.init(servletConfig);
     try {
       servlet.getModuleName(mockServletRequest);
       Assert.fail("expected exception did not occur");
-    } catch (ServletException e) {
-
+    } catch (ServletException ignored) {
     }
   }
 
   @Test
   public void testGetModuleNameWithValidURI() throws ServletException {
-    MockServletRequest mockServletRequest = new MockServletRequest();
-    mockServletRequest.setServletPath("/test.manifest");
+    HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
+    
+    Mockito.when(mockServletRequest.getServletPath()).thenReturn("/test.manifest");
 
-    servlet.init(new MockServletConfig());
+    ServletConfig servletConfig = Mockito.mock(ServletConfig.class);
+    Mockito.when(servletConfig.getServletContext()).thenReturn(Mockito.mock(ServletContext.class));
+    
+    servlet.init(servletConfig);
 
     String moduleName = servlet.getModuleName(mockServletRequest);
     Assert.assertEquals("test", moduleName);
-
   }
 
   @Test
   public void testGetModuleNameWithValidURIWithUnderScoreInit() throws ServletException {
-    MockServletRequest mockServletRequest = new MockServletRequest();
-    mockServletRequest.setServletPath("/test_bla.manifest");
+    
+    HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
+    
+    Mockito.when(mockServletRequest.getServletPath()).thenReturn("/test_bla.manifest");
 
-    servlet.init(new MockServletConfig());
+    ServletConfig servletConfig = Mockito.mock(ServletConfig.class);
+    Mockito.when(servletConfig.getServletContext()).thenReturn(Mockito.mock(ServletContext.class));
+    
+    servlet.init(servletConfig);
 
     String moduleName = servlet.getModuleName(mockServletRequest);
     Assert.assertEquals("test_bla", moduleName);
