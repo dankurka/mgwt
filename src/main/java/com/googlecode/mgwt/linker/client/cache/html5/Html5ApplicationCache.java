@@ -104,8 +104,8 @@ public class Html5ApplicationCache implements ApplicationCache {
     eventBus.fireEventFromSource(new DownloadingEvent(), this);
   }
 
-  protected void onProgress() {
-    eventBus.fireEventFromSource(new ProgressEvent(), this);
+  protected void onProgress(boolean lengthComputable, int loaded, int total) {
+    eventBus.fireEventFromSource(new ProgressEvent(lengthComputable, loaded, total), this);
   }
 
   protected void onUpdateReady() {
@@ -145,8 +145,8 @@ public class Html5ApplicationCache implements ApplicationCache {
 		});
 		$wnd.applicationCache.addEventListener("downloading", ondownloading);
 
-		var onprogress = $entry(function() {
-			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onProgress()();
+		var onprogress = $entry(function(event) {
+			that.@com.googlecode.mgwt.linker.client.cache.html5.Html5ApplicationCache::onProgress(ZII)(event.lengthComputable, event.loaded, event.total);
 		});
 		$wnd.applicationCache.addEventListener("progress", onprogress);
 
