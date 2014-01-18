@@ -15,13 +15,15 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.HasValue;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
@@ -196,17 +198,17 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	public MCheckBox(CheckBoxCss css) {
 		this.css = css;
 		css.ensureInjected();
-		setElement(DOM.createDiv());
+		setElement(Document.get().createDivElement());
 		addStyleName(css.checkBox());
 
-		onDiv = DOM.createDiv();
+		onDiv = Document.get().createDivElement();
 		onDiv.setClassName(css.on());
 		onDiv.setInnerText("I");
 		getElement().appendChild(onDiv);
 
-		middleDiv = DOM.createDiv();
+		middleDiv = Document.get().createDivElement();
 		middleDiv.setClassName(css.middle());
-		Element middleContent = DOM.createDiv();
+		DivElement middleContent = Document.get().createDivElement();
 		middleContent.setClassName(css.content());
 		middleDiv.appendChild(middleContent);
 		getElement().appendChild(middleDiv);

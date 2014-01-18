@@ -16,9 +16,8 @@
 package com.googlecode.mgwt.ui.client.widget;
 
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.ParagraphElement;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.HeaderCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
@@ -71,9 +70,9 @@ public class HeaderButton extends ButtonBase {
 		this.headerCss = css;
 		addStyleName(css.headerButton());
 
-		Element pointDiv = DOM.createDiv();
+		Element pointDiv = Document.get().createDivElement();
 		pointDiv.addClassName(css.headerButtonBorderContainer());
-		Element pointSpan = DOM.createSpan();
+		Element pointSpan = Document.get().createSpanElement();
 		pointSpan.addClassName(css.headerButtonBorderContent());
 		pointDiv.appendChild(pointSpan);
 		getElement().appendChild(pointDiv);

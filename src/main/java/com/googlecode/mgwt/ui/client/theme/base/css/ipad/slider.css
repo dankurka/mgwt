@@ -23,7 +23,7 @@
 	}
 }
 
-@if user.agent ie9 {
+@if user.agent ie9 ie10 {
 	.mgwt-Slider-bar {
 		\-ms-box-sizing: padding-box;
 		\-ms-box-shadow: 2px 2px 4px #666666;
@@ -60,7 +60,7 @@
 	}
 }
 
-@if user.agent ie9 {
+@if user.agent ie9 ie10 {
 	.mgwt-Slider-pointer {
 		
 		\-ms-box-shadow: 2px 2px 3px #666666;

@@ -16,10 +16,10 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
@@ -94,11 +94,11 @@ public class TabBarButtonBase extends ButtonBase {
 		this.imageResource = imageResource;
 		addStyleName(css.button());
 
-		icon = DOM.createDiv();
+		icon = Document.get().createDivElement();
 		icon.addClassName(css.icon());
 		getElement().appendChild(icon);
 
-		text = DOM.createDiv();
+		text = Document.get().createDivElement();
 		text.addClassName(css.text());
 		getElement().appendChild(text);
 

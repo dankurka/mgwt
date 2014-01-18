@@ -9,6 +9,7 @@ import com.google.gwt.animation.client.AnimationScheduler.AnimationHandle;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.dom.client.Node;
@@ -22,7 +23,6 @@ import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -1877,7 +1877,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
   }
 
-  private native int getMarginWidth(com.google.gwt.user.client.Element el)/*-{
+  private native int getMarginWidth(Element el)/*-{
 		var left = 0;
 		var right = 0;
 		var style = $wnd.getComputedStyle(el);
@@ -1888,7 +1888,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 		return left + right;
   }-*/;
 
-  private native int getMarginHeight(com.google.gwt.user.client.Element el)/*-{
+  private native int getMarginHeight(Element el)/*-{
 
 		var top = 0;
 		var bottom = 0;

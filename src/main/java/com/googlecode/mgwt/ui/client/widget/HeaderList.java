@@ -24,7 +24,6 @@ import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -160,7 +159,7 @@ public class HeaderList<G, T> extends Composite {
 
 		public MovingHeader(ListCss listCss, GroupingList css) {
 
-			setElement(DOM.createDiv());
+			setElement(Document.get().createDivElement());
 			addStyleName(listCss.listHeadElement());
 			addStyleName(css.movingHeader());
 

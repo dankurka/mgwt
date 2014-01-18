@@ -118,13 +118,9 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
   }
 
   public Slider(SliderAppearance apperance) {
-
     this.apperance = apperance;
-
     setElement(this.apperance.uiBinder().createAndBindUi(this));
-
     TOUCH_WIDGET_IMPL.addTouchHandler(this, new SliderTouchHandler());
-
     max = 100;
     value = 0;
   }
@@ -163,27 +159,22 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
   @Override
   public void setValue(Integer value) {
     setValue(value, true);
-
   }
 
   @Override
   protected void onAttach() {
     super.onAttach();
     Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-
       @Override
       public void execute() {
         setSliderPos(value);
-
       }
     });
-
   }
 
   @Override
   public void setValue(Integer value, boolean fireEvents) {
     setValue(value, fireEvents, true);
-
   }
 
   protected void setValue(Integer value, boolean fireEvents, boolean updateSlider) {
@@ -208,7 +199,6 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
     if (fireEvents) {
       ValueChangeEvent.fireIfNotEqual(this, oldValue, value);
     }
-
   }
 
   private void setSliderPos(int value) {
@@ -245,5 +235,4 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
   private void setPos(int x) {
     CssUtil.translate(pointer, x, 0);
   }
-
 }

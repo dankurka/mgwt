@@ -19,6 +19,7 @@
 	width: 40%;
 	height: 100%;
 	overflow: hidden;
+	vertical-align: top;
 }
 
 .content {
@@ -27,6 +28,7 @@
 	width: 50%;
 	height: 100%;
 	overflow: hidden;
+	vertical-align: top;
 }
 
 @if user.agent safari {

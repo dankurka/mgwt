@@ -52,7 +52,7 @@
 }
 
 /* other browsers */
-@if user.agent ie6 ie8 ie9 gecko opera {
+@if user.agent ie6 ie8 ie9 ie10 gecko opera {
 	.mgwt-DialogAnimationContainer {
 		
 	}

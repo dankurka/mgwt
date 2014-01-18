@@ -26,7 +26,7 @@
 	}
 }
 
-@if user.agent ie9 {
+@if user.agent ie9 ie10 {
 	.mgwt-ButtonBar {
 		display: table;
 		
@@ -48,7 +48,7 @@
 	color: white;
 }
 
-@if user.agent ie9 {
+@if user.agent ie9 ie10 {
 	.mgwt-ButtonBar-text{
 		display: table-cell;
 		vertical-align: middle;
@@ -72,7 +72,7 @@
 	}
 }
 
-@if user.agent ie9 {
+@if user.agent ie9 ie10 {
 	.mgwt-ButtonBar-spacer{
 		display: table-cell;
 		width: 50%;

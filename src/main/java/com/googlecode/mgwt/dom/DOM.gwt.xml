@@ -79,48 +79,6 @@
       </any>
     </set-property>
 
-    <replace-with class="com.google.gwt.user.client.impl.DOMImplMobileSafari">
-        <when-type-is class="com.google.gwt.user.client.impl.DOMImpl"/>
-        <all>
-            <when-property-is name="user.agent" value="safari"/>
-            <when-property-is name="mobile.user.agent" value="mobilesafari"/>
-        </all>
-    </replace-with>
-    
-     <replace-with class="com.google.gwt.user.client.impl.DOMImplSafariWithTransistion">
-        <when-type-is class="com.google.gwt.user.client.impl.DOMImpl"/>
-        <all>
-            <when-property-is name="user.agent" value="safari"/>
-            <when-property-is name="mobile.user.agent" value="not_mobile"/>
-        </all>
-    </replace-with>
-    
-    
-     <replace-with class="com.google.gwt.user.client.impl.DOMImplMozillaWithTransistions">
-        <when-type-is class="com.google.gwt.user.client.impl.DOMImpl"/>
-        <all>
-            <when-property-is name="user.agent" value="gecko1_8"/>
-        </all>
-    </replace-with>
-
-    <replace-with class="com.googlecode.mgwt.dom.client.event.EventTypesDefault">
-        <when-type-is class="com.googlecode.mgwt.dom.client.event.EventTypes"/>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.dom.client.event.MozEventTypes">
-        <when-type-is class="com.googlecode.mgwt.dom.client.event.EventTypes"/>
-        <all>
-            <when-property-is name="user.agent" value="gecko1_8"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.dom.client.event.SafariEventTypes">
-        <when-type-is class="com.googlecode.mgwt.dom.client.event.EventTypes"/>
-        <all>
-            <when-property-is name="user.agent" value="safari"/>
-        </all>
-    </replace-with>
-    
     <!-- event propagator -->
      <replace-with class="com.googlecode.mgwt.dom.client.recognizer.EventPropagatorStandardImpl">
         <when-type-is class="com.googlecode.mgwt.dom.client.recognizer.EventPropagator"/>

@@ -26,24 +26,24 @@ import com.google.gwt.event.shared.GwtEvent;
  */
 public class NoUpdateEvent extends GwtEvent<NoUpdateEvent.Handler> {
 
-	public interface Handler extends EventHandler {
-		public void onNoUpdateEvent(NoUpdateEvent event);
-	}
+  public interface Handler extends EventHandler {
+    public void onNoUpdateEvent(NoUpdateEvent event);
+  }
 
-	private static final GwtEvent.Type<Handler> TYPE = new Type<Handler>();
+  private static final GwtEvent.Type<Handler> TYPE = new Type<Handler>();
 
-	public static GwtEvent.Type<Handler> getType() {
-		return TYPE;
-	}
+  public static GwtEvent.Type<Handler> getType() {
+    return TYPE;
+  }
 
-	@Override
-	public com.google.gwt.event.shared.GwtEvent.Type<Handler> getAssociatedType() {
-		return TYPE;
-	}
+  @Override
+  public com.google.gwt.event.shared.GwtEvent.Type<Handler> getAssociatedType() {
+    return TYPE;
+  }
 
-	@Override
-	protected void dispatch(Handler handler) {
-		handler.onNoUpdateEvent(this);
-	}
+  @Override
+  protected void dispatch(Handler handler) {
+    handler.onNoUpdateEvent(this);
+  }
 
 }

@@ -15,8 +15,8 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.uibinder.client.UiChild;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -36,7 +36,7 @@ public class Tab extends Widget {
 	 * <p>Constructor for Tab.</p>
 	 */
 	public Tab() {
-		setElement(DOM.createDiv());
+		setElement(Document.get().createDivElement());
 	}
 
 	/**

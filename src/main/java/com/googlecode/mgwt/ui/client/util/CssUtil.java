@@ -74,17 +74,14 @@ public class CssUtil {
 
 	public static void setTransistionProperty(Element element, String string) {
 		cssUtilImpl.setTransistionProperty(element, string);
-
 	}
 
 	public static void setTransFormOrigin(Element element, int x, int y) {
 		cssUtilImpl.setTransFormOrigin(element, x, y);
-
 	}
 
 	public static void setTransistionTimingFunction(Element element, String string) {
 		cssUtilImpl.setTransistionTimingFunction(element, string);
-
 	}
 
 	public static int[] getPositionFromTransForm(Element element) {
@@ -101,11 +98,9 @@ public class CssUtil {
 
 	public static void resetTransForm(Element element) {
 		cssUtilImpl.resetTransform(element);
-
 	}
 
 	public static void setTranslateAndZoom(Element element, int x, int y, double scale) {
 		cssUtilImpl.setTranslateAndZoom(element, x, y, scale);
-
 	}
 }

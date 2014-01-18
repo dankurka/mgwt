@@ -15,7 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
@@ -45,7 +45,7 @@ public class ProgressIndicator extends Widget {
 	public ProgressIndicator(ProgressIndicatorCss css) {
 		this.css = css;
 
-		setElement(DOM.createDiv());
+		setElement(Document.get().createDivElement());
 
 		this.css.ensureInjected();
 		setStylePrimaryName(this.css.progressIndicator());
