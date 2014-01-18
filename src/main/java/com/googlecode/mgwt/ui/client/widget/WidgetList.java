@@ -14,12 +14,12 @@
 package com.googlecode.mgwt.ui.client.widget;
 
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 
@@ -55,7 +55,7 @@ public class WidgetList extends Composite implements HasWidgets {
 
       @Override
       public void add(Widget w) {
-        add(w, getElement());
+        add(w, getElement().<Element>cast());
       }
     }
 
@@ -98,7 +98,7 @@ public class WidgetList extends Composite implements HasWidgets {
 
     @Override
     public void add(Widget w) {
-      add(w, getElement());
+      add(w, getElement().<Element>cast());
     }
   }
 

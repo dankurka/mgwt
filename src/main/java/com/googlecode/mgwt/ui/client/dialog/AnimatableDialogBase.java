@@ -55,10 +55,10 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandlers, HasTapHandlers, Dialog {
 
 	private final class InternalTouchHandler implements TouchHandler {
-		private final com.google.gwt.user.client.Element shadow;
+		private final Element shadow;
 		private Element startTarget;
 
-		private InternalTouchHandler(com.google.gwt.user.client.Element shadow) {
+		private InternalTouchHandler(Element shadow) {
 			this.shadow = shadow;
 		}
 
@@ -140,7 +140,7 @@ public abstract class AnimatableDialogBase implements HasWidgets, HasTouchHandle
 
 		container.addStyleName(css.animationContainer());
 
-		final com.google.gwt.user.client.Element shadow = container.getElement();
+		Element shadow = container.getElement();
 
 		addTouchHandler(new InternalTouchHandler(shadow));
 

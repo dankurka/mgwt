@@ -1,6 +1,7 @@
 package com.googlecode.mgwt.ui.client.util.impl;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
+
 
 public class FailingImpl implements CssUtilImpl {
 

@@ -16,8 +16,8 @@
 package com.googlecode.mgwt.dom.client.recognizer;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.HasHandlers;
-import com.google.gwt.user.client.Element;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;

@@ -1,8 +1,7 @@
 package com.googlecode.mgwt.ui.client.util.impl;
 
 import com.google.gwt.core.client.JsArrayInteger;
-import com.google.gwt.user.client.Element;
-
+import com.google.gwt.dom.client.Element;
 import com.googlecode.mgwt.ui.client.MGWT;
 
 public class WebkitCssUtilImpl implements CssUtilImpl {

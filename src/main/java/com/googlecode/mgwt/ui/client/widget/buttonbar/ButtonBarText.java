@@ -1,6 +1,6 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
@@ -19,7 +19,7 @@ public class ButtonBarText extends TouchWidget implements HasHTML {
 
 	public ButtonBarText(ButtonBarCss css, String html) {
 		this.css = css;
-		setElement(DOM.createDiv());
+		setElement(Document.get().createDivElement());
 
 		this.css.ensureInjected();
 

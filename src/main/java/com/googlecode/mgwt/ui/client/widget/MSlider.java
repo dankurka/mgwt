@@ -15,12 +15,13 @@ package com.googlecode.mgwt.ui.client.widget;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasValue;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
@@ -64,11 +65,11 @@ public class MSlider extends Composite implements HasValue<Integer>, LeafValueEd
     private Element bar;
 
     public SliderWidget(SliderCss css) {
-      setElement(DOM.createDiv());
-      bar = DOM.createDiv();
+      setElement(Document.get().createDivElement());
+      bar = Document.get().createDivElement();
       bar.setClassName(css.bar());
 
-      slider = DOM.createDiv();
+      slider = Document.get().createDivElement();
       slider.setClassName(css.pointer());
       bar.appendChild(slider);
 

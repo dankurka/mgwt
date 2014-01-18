@@ -822,7 +822,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
     // getMarginWidth(widgetToScroll.getElement());
   }
 
-  private native int getMarginWidth(com.google.gwt.user.client.Element el)/*-{
+  private native int getMarginWidth(Element el)/*-{
 		var left = 0;
 		var right = 0;
 		var style = $wnd.getComputedStyle(el);
@@ -833,7 +833,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 		return left + right;
   }-*/;
 
-  private native int getMarginHeight(com.google.gwt.user.client.Element el)/*-{
+  private native int getMarginHeight(Element el)/*-{
 
 		var top = 0;
 		var bottom = 0;

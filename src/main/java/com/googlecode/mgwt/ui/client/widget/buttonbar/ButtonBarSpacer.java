@@ -1,6 +1,6 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Document;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
@@ -14,7 +14,7 @@ public class ButtonBarSpacer extends TouchWidget {
 	}
 
 	public ButtonBarSpacer(ButtonBarCss css) {
-		setElement(DOM.createDiv());
+		setElement(Document.get().createDivElement());
 		this.css = css;
 
 		this.css.ensureInjected();

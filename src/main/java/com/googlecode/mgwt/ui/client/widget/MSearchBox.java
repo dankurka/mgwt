@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.HasAllKeyHandlers;
 import com.google.gwt.event.dom.client.HasChangeHandlers;
@@ -24,7 +25,6 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FormPanel;
@@ -153,7 +153,7 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	private static class ClearButton extends TouchWidget {
 
 		public ClearButton() {
-			setElement(DOM.createDiv());
+			setElement(Document.get().createDivElement());
 		}
 	}
 

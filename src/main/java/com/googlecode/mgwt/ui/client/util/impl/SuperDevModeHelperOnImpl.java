@@ -17,14 +17,11 @@ public abstract class SuperDevModeHelperOnImpl implements SuperDevModeHelper {
 
 	@Override
 	public void showDevMode() {
-
-
-		
-		final com.google.gwt.user.client.Element overlayDiv =  (com.google.gwt.user.client.Element) com.google.gwt.user.client.Element.as(Document.get().createDivElement());
-		final com.google.gwt.user.client.Element dialog =  (com.google.gwt.user.client.Element) com.google.gwt.user.client.Element.as(Document.get().createDivElement());
-		final com.google.gwt.user.client.Element onButton = createButton("Super Dev Mode On");
-		final com.google.gwt.user.client.Element offButton = createButton("Super Dev Mode Off");
-		final com.google.gwt.user.client.Element closeButton = createButton("Close Dialog");
+		final Element overlayDiv =  Document.get().createDivElement();
+		final Element dialog =  Document.get().createDivElement();
+		final Element onButton = createButton("Super Dev Mode On");
+		final Element offButton = createButton("Super Dev Mode Off");
+		final Element closeButton = createButton("Close Dialog");
 		
 		overlayDiv.getStyle().setZIndex(1000);
 		overlayDiv.getStyle().setPosition(Position.ABSOLUTE);
@@ -37,24 +34,18 @@ public abstract class SuperDevModeHelperOnImpl implements SuperDevModeHelper {
 		
 		Document.get().getBody().appendChild(overlayDiv);
 		
-		
-		com.google.gwt.user.client.Element el = (com.google.gwt.user.client.Element) com.google.gwt.user.client.Element.as(overlayDiv);
-		
-		DOM.sinkEvents(el, Event.ONCLICK);
-		DOM.setEventListener(el, new EventListener() {
+		DOM.sinkEvents(overlayDiv, Event.ONCLICK);
+		DOM.setEventListener(overlayDiv, new EventListener() {
 			
 			@Override
 			public void onBrowserEvent(Event event) {
 				switch (event.getTypeInt()) {
 				case Event.ONCLICK:
 					cleanUp(overlayDiv, dialog, onButton, offButton, closeButton);
-					
 					break;
-
 				default:
 					break;
 				}
-				
 			}
 		});
 		
@@ -71,9 +62,6 @@ public abstract class SuperDevModeHelperOnImpl implements SuperDevModeHelper {
 		dialog.getStyle().setPadding(1, Unit.EM);
 		
 		Document.get().getBody().appendChild(dialog);
-		
-		
-		
 		
 		
 		DOM.sinkEvents(onButton, Event.ONCLICK);
@@ -120,20 +108,7 @@ public abstract class SuperDevModeHelperOnImpl implements SuperDevModeHelper {
 			}
 		});
 		
-		dialog.appendChild(closeButton);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		
+		dialog.appendChild(closeButton);		
 
 	}
 	
@@ -169,7 +144,7 @@ public abstract class SuperDevModeHelperOnImpl implements SuperDevModeHelper {
 		
 	}
 
-	protected void cleanUp(com.google.gwt.user.client.Element overlayDiv, com.google.gwt.user.client.Element dialog, com.google.gwt.user.client.Element onButton, com.google.gwt.user.client.Element offButton, com.google.gwt.user.client.Element closeButton) {
+	protected void cleanUp(Element overlayDiv, Element dialog, Element onButton, Element offButton, Element closeButton) {
 		DOM.setEventListener(offButton, null);
 		DOM.setEventListener(onButton, null);
 		DOM.setEventListener(overlayDiv, null);
@@ -179,7 +154,7 @@ public abstract class SuperDevModeHelperOnImpl implements SuperDevModeHelper {
 		
 	}
 
-	protected com.google.gwt.user.client.Element createButton(String text){
+	protected Element createButton(String text){
 		AnchorElement buttonElement = Document.get().createAnchorElement();
 		buttonElement.getStyle().setFontSize(12, Unit.PT);
 		buttonElement.getStyle().setColor("#000");
@@ -194,7 +169,7 @@ public abstract class SuperDevModeHelperOnImpl implements SuperDevModeHelper {
 		buttonElement.setHref("#");
 		
 		buttonElement.setInnerText(text);
-		return (com.google.gwt.user.client.Element) com.google.gwt.user.client.Element.as(buttonElement);
+		return buttonElement;
 	}
 	
 	

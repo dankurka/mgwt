@@ -13,22 +13,27 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
@@ -38,12 +43,6 @@ import com.googlecode.mgwt.ui.client.theme.base.CarouselCss;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.event.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * the carousel widget renders its children in a horizontal row. users can select a different child
@@ -104,7 +103,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
     public CarouselIndicator(CarouselCss css) {
       this.css = css;
-      setElement(DOM.createDiv());
+      setElement(Document.get().createDivElement());
 
       addStyleName(css.indicator());
 

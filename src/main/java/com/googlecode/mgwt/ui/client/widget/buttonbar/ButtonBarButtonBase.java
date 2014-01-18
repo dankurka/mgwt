@@ -16,8 +16,8 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.client.Element;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;

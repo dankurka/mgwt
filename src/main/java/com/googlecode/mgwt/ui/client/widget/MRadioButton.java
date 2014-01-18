@@ -13,6 +13,8 @@
  */
 package com.googlecode.mgwt.ui.client.widget;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.LabelElement;
@@ -27,7 +29,6 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.EventListener;
 import com.google.gwt.user.client.ui.HasEnabled;
@@ -78,7 +79,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
   public MRadioButton(InputCss css, String name) {
     this.css = css;
     css.ensureInjected();
-    setElement(DOM.createSpan());
+    setElement(Document.get().createSpanElement());
 
     sinkEvents(Event.ONCHANGE);
 
@@ -298,19 +299,13 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.HasName#setName(java.lang.String)
-   */
-  /** {@inheritDoc} */
   @Override
   public void setName(String name) {
     replaceInputElement(DOM.createInputRadio(name));
 
   }
 
-  private void replaceInputElement(com.google.gwt.user.client.Element elem) {
+  private void replaceInputElement(Element elem) {
     InputElement newInputElem = InputElement.as(elem);
     // Collect information we need to set
 
@@ -322,7 +317,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
     int sunkEvents = Event.getEventsSunk(inputRadio);
 
     // Clear out the old input element
-    setEventListener(asOld(inputRadio), null);
+    setEventListener(inputRadio, null);
 
     getElement().replaceChild(newInputElem, inputRadio);
 
@@ -344,7 +339,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
     // Set the event listener
     if (isAttached()) {
-      setEventListener(asOld(inputRadio), this);
+      setEventListener(inputRadio, this);
     }
 
   }
@@ -359,34 +354,16 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
 
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.HasName#getName()
-   */
-  /** {@inheritDoc} */
   @Override
   public String getName() {
     return inputRadio.getName();
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.HasEnabled#isEnabled()
-   */
-  /** {@inheritDoc} */
   @Override
   public boolean isEnabled() {
     return !inputRadio.isDisabled();
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.HasEnabled#setEnabled(boolean)
-   */
-  /** {@inheritDoc} */
   @Override
   public void setEnabled(boolean enabled) {
     inputRadio.setDisabled(!enabled);
@@ -395,7 +372,6 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
     } else {
       addStyleDependentName(css.disabled());
     }
-
   }
 
   /**
@@ -407,13 +383,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled, Ha
     return inputRadio.getValue();
   }
 
-  private Element asOld(com.google.gwt.dom.client.Element elem) {
-    Element oldSchool = elem.cast();
-    return oldSchool;
+  private void setEventListener(Element e, EventListener listener) {
+    DOM.setEventListener(e, listener);
   }
-
-  private void setEventListener(com.google.gwt.dom.client.Element e, EventListener listener) {
-    DOM.setEventListener(asOld(e), listener);
-  }
-
 }
