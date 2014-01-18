@@ -1,5 +1,25 @@
 package com.googlecode.mgwt.linker.linker.test;
 
+import com.google.gwt.core.ext.LinkerContext;
+import com.google.gwt.core.ext.TreeLogger;
+import com.google.gwt.core.ext.UnableToCompleteException;
+import com.google.gwt.core.ext.linker.ArtifactSet;
+import com.google.gwt.core.ext.linker.ConfigurationProperty;
+import com.google.gwt.core.ext.linker.SelectionProperty;
+import com.google.gwt.core.ext.linker.SyntheticArtifact;
+import com.google.gwt.core.ext.linker.impl.SelectionInformation;
+import com.google.gwt.dev.util.log.PrintWriterTreeLogger;
+
+import com.googlecode.mgwt.linker.linker.PermutationArtifact;
+import com.googlecode.mgwt.linker.linker.PermutationMapLinker;
+import com.googlecode.mgwt.linker.server.BindingProperty;
+
+import junit.framework.Assert;
+
+import org.apache.commons.io.IOUtils;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -11,25 +31,6 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeMap;
 import java.util.TreeSet;
-
-import junit.framework.Assert;
-
-import org.apache.commons.io.IOUtils;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.google.gwt.core.ext.LinkerContext;
-import com.google.gwt.core.ext.TreeLogger;
-import com.google.gwt.core.ext.UnableToCompleteException;
-import com.google.gwt.core.ext.linker.ArtifactSet;
-import com.google.gwt.core.ext.linker.ConfigurationProperty;
-import com.google.gwt.core.ext.linker.SelectionProperty;
-import com.google.gwt.core.ext.linker.SyntheticArtifact;
-import com.google.gwt.core.ext.linker.impl.SelectionInformation;
-import com.google.gwt.dev.util.log.PrintWriterTreeLogger;
-import com.googlecode.mgwt.linker.linker.PermutationArtifact;
-import com.googlecode.mgwt.linker.linker.PermutationMapLinker;
-import com.googlecode.mgwt.linker.server.BindingProperty;
 
 public class TestPermutationMapLinker {
 
@@ -165,7 +166,8 @@ public class TestPermutationMapLinker {
 
 	}
 
-	private static class MockConfigurationProperty implements ConfigurationProperty {
+  private static class MockConfigurationProperty implements ConfigurationProperty,
+      Comparable<ConfigurationProperty> {
 
 		private final String name;
 		private final List<String> list;
@@ -195,6 +197,11 @@ public class TestPermutationMapLinker {
 		public boolean hasMultipleValues() {
 			return list.size() > 1;
 		}
+
+    @Override
+    public int compareTo(ConfigurationProperty o) {
+      return name.compareTo(o.getName());
+    }
 
 	}
 
