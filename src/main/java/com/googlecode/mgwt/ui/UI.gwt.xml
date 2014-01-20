@@ -16,12 +16,11 @@ under * the License.
 	<inherits name='com.googlecode.mgwt.dom.DOM' />
 	
 	<inherits name='com.googlecode.mgwt.ui.client.widget.slider.Slider' />
+	<inherits name='com.googlecode.mgwt.ui.client.widget.progress.Progress' />
 	<define-configuration-property name="mgwt.css" is-multi-valued="false" />
 	<set-configuration-property name="mgwt.css" value="obf" />
 
-
-	<generate-with
-		class="com.googlecode.mgwt.ui.generator.OsDetectionGenerator">
+	<generate-with class="com.googlecode.mgwt.ui.generator.OsDetectionGenerator">
 		<when-type-assignable class="com.googlecode.mgwt.ui.client.OsDetection" />
 	</generate-with>
 

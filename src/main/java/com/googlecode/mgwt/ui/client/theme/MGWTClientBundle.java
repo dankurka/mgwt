@@ -33,8 +33,6 @@ import com.googlecode.mgwt.ui.client.theme.base.ListCss;
 import com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss;
 import com.googlecode.mgwt.ui.client.theme.base.MainCss;
 import com.googlecode.mgwt.ui.client.theme.base.PanelCss;
-import com.googlecode.mgwt.ui.client.theme.base.ProgressBarCss;
-import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
@@ -42,13 +40,9 @@ import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
 
 public interface MGWTClientBundle {
 
-	ProgressBarCss getProgressBarCss();
-
 	UtilCss getUtilCss();
 
 	TextResource utilTextResource();
-
-	ProgressIndicatorCss getProgressIndicatorCss();
 
 	HeaderCss getHeaderCss();
 

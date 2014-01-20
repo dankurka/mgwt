@@ -110,9 +110,6 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
   @UiField
   protected Element bar;
 
-  /**
-   * Construct a pointer
-   */
   public Slider() {
     this(DEFAULT_APPEARANCE);
   }

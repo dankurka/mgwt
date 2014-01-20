@@ -33,9 +33,6 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	@Source({ "css/groupinglist.css", "css/iphone/groupinglist.css" })
 	GroupingList getGroupingList();
 
-	@Source({ "css/progressbar.css", "css/iphone/progressbar.css" })
-	ProgressBarCss getProgressBarCss();
-
 	// This is a very nasty workaround because GWT CssResource does not support
 	// @media correctly!
 	@Source("css/util_fake.css")
@@ -45,9 +42,6 @@ public interface MGWTClientBundleBaseThemeRetina extends ClientBundle, MGWTClien
 	// @media correctly!
 	@Source("css/util.css")
 	TextResource utilTextResource();
-
-	@Source({ "css/progressindicator.css", "css/iphone/progressindicator.css" })
-	ProgressIndicatorCss getProgressIndicatorCss();
 
 	@Source({ "css/header.css", "css/iphone/header.css" })
 	HeaderCss getHeaderCss();

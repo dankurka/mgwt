@@ -33,9 +33,6 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	@Source({ "css/groupinglist.css", "css/android/groupinglist.css" })
 	GroupingList getGroupingList();
 
-	@Source({ "css/progressbar.css", "css/android/progressbar.css" })
-	ProgressBarCss getProgressBarCss();
-
 	// This is a very nasty workaround because GWT CssResource does not support
 	// @media correctly!
 	@Source("css/util_fake.css")
@@ -45,9 +42,6 @@ public interface MGWTClientBundleBaseThemeAndroidTablet extends ClientBundle, MG
 	// @media correctly!
 	@Source("css/util.css")
 	TextResource utilTextResource();
-
-	@Source({ "css/progressindicator.css", "css/android/progressindicator.css" })
-	ProgressIndicatorCss getProgressIndicatorCss();
 
 	@Source({ "css/header.css", "css/android/header.css" })
 	HeaderCss getHeaderCss();

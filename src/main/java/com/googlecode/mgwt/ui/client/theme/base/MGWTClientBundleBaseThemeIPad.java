@@ -33,9 +33,6 @@ public interface MGWTClientBundleBaseThemeIPad extends ClientBundle, MGWTClientB
 	@Source({ "css/groupinglist.css", "css/ipad/groupinglist.css" })
 	GroupingList getGroupingList();
 
-	@Source({ "css/progressbar.css", "css/ipad/progressbar.css" })
-	ProgressBarCss getProgressBarCss();
-
 	// This is a very nasty workaround because GWT CssResource does not support
 	// @media correctly!
 	@Source("css/util_fake.css")
@@ -45,9 +42,6 @@ public interface MGWTClientBundleBaseThemeIPad extends ClientBundle, MGWTClientB
 	// @media correctly!
 	@Source("css/util.css")
 	TextResource utilTextResource();
-
-	@Source({ "css/progressindicator.css", "css/ipad/progressindicator.css" })
-	ProgressIndicatorCss getProgressIndicatorCss();
 
 	@Source({ "css/header.css", "css/ipad/header.css" })
 	HeaderCss getHeaderCss();

@@ -33,9 +33,6 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	@Source({ "css/groupinglist.css", "css/blackberry/groupinglist.css" })
 	GroupingList getGroupingList();
 
-	@Source({ "css/progressbar.css", "css/blackberry/progressbar.css" })
-	ProgressBarCss getProgressBarCss();
-
 	// This is a very nasty workaround because GWT CssResource does not support
 	// @media correctly!
 	@Source("css/util_fake.css")
@@ -45,9 +42,6 @@ public interface MGWTClientBundleBaseThemeBlackberry extends ClientBundle, MGWTC
 	// @media correctly!
 	@Source("css/util.css")
 	TextResource utilTextResource();
-
-	@Source({ "css/progressindicator.css", "css/blackberry/progressindicator.css" })
-	ProgressIndicatorCss getProgressIndicatorCss();
 
 	@Source({ "css/header.css", "css/blackberry/header.css" })
 	HeaderCss getHeaderCss();

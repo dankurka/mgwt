@@ -25,7 +25,7 @@ import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.ui.client.MGWTStyle;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
-import com.googlecode.mgwt.ui.client.widget.ProgressIndicator;
+import com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicator;
 
 /**
  * A header for a pull panel that shows an arrow

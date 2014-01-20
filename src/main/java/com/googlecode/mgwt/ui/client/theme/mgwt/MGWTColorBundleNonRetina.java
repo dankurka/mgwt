@@ -27,19 +27,11 @@ import com.googlecode.mgwt.ui.client.theme.base.MGWTClientBundleBaseThemeIPhone;
 import com.googlecode.mgwt.ui.client.theme.base.MSearchBoxCss;
 import com.googlecode.mgwt.ui.client.theme.base.MainCss;
 import com.googlecode.mgwt.ui.client.theme.base.PanelCss;
-import com.googlecode.mgwt.ui.client.theme.base.ProgressBarCss;
-import com.googlecode.mgwt.ui.client.theme.base.ProgressIndicatorCss;
 import com.googlecode.mgwt.ui.client.theme.base.PullToRefreshCss;
 import com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss;
 import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 public interface MGWTColorBundleNonRetina extends MGWTClientBundleBaseThemeIPhone {
-
-	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/progressbar.css", "css/progressbar.css" })
-	ProgressBarCss getProgressBarCss();
-
-	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/progressindicator.css" })
-	ProgressIndicatorCss getProgressIndicatorCss();
 
 	@Source({ "color.css", "com/googlecode/mgwt/ui/client/theme/base/css/header.css", "css/header.css" })
 	HeaderCss getHeaderCss();
