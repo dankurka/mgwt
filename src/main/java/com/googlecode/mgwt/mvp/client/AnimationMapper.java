@@ -17,6 +17,8 @@ package com.googlecode.mgwt.mvp.client;
 
 import com.google.gwt.place.shared.Place;
 
+import com.googlecode.mgwt.ui.client.widget.animation.Animation;
+
 /**
  * An animation mapper provides the animation to be executed when switching from
  * one place to another.
@@ -24,7 +26,6 @@ import com.google.gwt.place.shared.Place;
  * The {@link AnimatingActivityManager} needs an instance of this interface
  *
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface AnimationMapper {
 	/**

@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class InfoButton extends ButtonBarButtonBase {
 
-	public InfoButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarInfoImage());
-	}
-
+  public InfoButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().infoImage());
+  }
 }

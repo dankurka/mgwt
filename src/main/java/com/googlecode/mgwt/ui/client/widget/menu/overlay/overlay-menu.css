@@ -1,0 +1,38 @@
+@if mgwt.css pretty {
+	@external mgwt-OverlayMenu, mgwt-OverlayMenu-nav, mgwt-OverlayMenu-animation, mgwt-OverlayMenu-main;
+}
+
+.mgwt-OverlayMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+}
+
+.mgwt-OverlayMenu-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom:0;
+  width: 300px;
+  border-right: 1px solid black;
+}
+
+.mgwt-OverlayMenu-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  overflow: hidden;
+}
+
+.mgwt-OverlayMenu-main {
+  position: absolute;
+  top: 0;
+  left: 300px;
+  right: 0px;
+  bottom:0;
+  border-left: 1px solid black;
+}

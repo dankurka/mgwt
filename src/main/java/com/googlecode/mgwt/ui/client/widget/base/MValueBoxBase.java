@@ -15,8 +15,6 @@
  */
 package com.googlecode.mgwt.ui.client.widget.base;
 
-import java.text.ParseException;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.editor.client.IsEditor;
@@ -44,6 +42,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase;
 import com.google.gwt.user.client.ui.ValueBoxBase.TextAlignment;
+
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
@@ -51,8 +50,10 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.theme.base.InputCss;
+import com.googlecode.mgwt.ui.client.widget.input.InputAppearance;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
+
+import java.text.ParseException;
 
 /**
  * Base class for all input boxes
@@ -118,17 +119,15 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 	 *            object.
 	 * @param box a {@link com.google.gwt.user.client.ui.ValueBoxBase} object.
 	 */
-	public MValueBoxBase(InputCss css, final ValueBoxBase<T> box) {
+	public MValueBoxBase(InputAppearance appearance, final ValueBoxBase<T> box) {
 		if (!(box instanceof HasSource)) {
 			throw new IllegalStateException("box must implement HasSource..");
 		}
 		this.box = box;
 
-		box.addStyleName(css.box());
+		box.addStyleName(appearance.css().box());
 		main = new TouchPanel();
 		initWidget(main);
-
-		css.ensureInjected();
 
 		main.add(box);
 
@@ -153,11 +152,7 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.HasPlaceHolder#setPlaceHolder(java.lang.String)
-	 */
-	/** {@inheritDoc} */
+
 	public void setPlaceHolder(String value) {
 		box.getElement().setAttribute("placeholder", value);
 	}

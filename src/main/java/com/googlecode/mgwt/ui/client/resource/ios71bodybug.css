@@ -1,0 +1,8 @@
+@media (orientation:landscape) {
+  .__fixIOS7BodyBug {
+    position: fixed;
+    bottom: 0;
+    width:100%;
+    height: 672px !important;
+  }
+}

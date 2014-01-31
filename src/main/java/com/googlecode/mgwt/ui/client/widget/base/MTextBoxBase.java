@@ -16,29 +16,23 @@
 package com.googlecode.mgwt.ui.client.widget.base;
 
 import com.google.gwt.user.client.ui.ValueBoxBase;
-import com.googlecode.mgwt.ui.client.theme.base.InputCss;
+
+import com.googlecode.mgwt.ui.client.widget.input.InputAppearance;
 
 /**
  * BaseClass for textboxes
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class MTextBoxBase extends MValueBoxBase<String> {
 
-	protected MTextBoxBase(InputCss css, ValueBoxBase<String> box) {
-		super(css, box);
-	}
+  protected MTextBoxBase(InputAppearance appearance, ValueBoxBase<String> box) {
+    super(appearance, box);
+  }
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase#getValue()
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public String getValue() {
-		String raw = super.getValue();
-		return raw == null ? "" : raw;
-	}
-
+  @Override
+  public String getValue() {
+    String raw = super.getValue();
+    return raw == null ? "" : raw;
+  }
 }

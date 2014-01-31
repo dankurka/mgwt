@@ -276,8 +276,9 @@ public class MultiTapRecognizer implements TouchHandler {
 
       if (foundTaps == numberOfTabs) {
 
-        MultiTapEvent multiTapEvent = new MultiTapEvent(touchMax, numberOfTabs, savedStartTouches);
-        source.fireEvent(multiTapEvent);
+        fireEvent(new MultiTapEvent(touchMax, numberOfTabs, savedStartTouches));
+        
+        
         savedStartTouches = CollectionFactory.constructArray();
         reset();
       } else {
@@ -286,6 +287,10 @@ public class MultiTapRecognizer implements TouchHandler {
       }
 
     }
+  }
+
+  protected void fireEvent(MultiTapEvent multiTapEvent) {
+    source.fireEvent(multiTapEvent);
   }
 
   protected void reset() {

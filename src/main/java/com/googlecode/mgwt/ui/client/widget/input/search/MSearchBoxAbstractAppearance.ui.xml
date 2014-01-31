@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.googlecode.mgwt.ui.client.widget">
+	<ui:with field="appearance" type="com.googlecode.mgwt.ui.client.widget.input.search.MSearchBoxAppearance"></ui:with>
+	
+	<g:FormPanel ui:field="form" styleName="{appearance.css.searchBox}">
+		<g:FlowPanel styleName="{appearance.css.round}">
+		  <g:TextBox ui:field="textBox" styleName="{appearance.css.input}"></g:TextBox>
+		  <m:input.search.MSearchBox.MSearchBoxButton ui:field="clearButton"/>
+		</g:FlowPanel>
+	</g:FormPanel>
+</ui:UiBinder> 

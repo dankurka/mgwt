@@ -1,0 +1,5 @@
+<module>
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.menu.swipe.DefaultSwipeMenuAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.menu.swipe.SwipeMenuAppearance" />
+  </replace-with>  
+</module>

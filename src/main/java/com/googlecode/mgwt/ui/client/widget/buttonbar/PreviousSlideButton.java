@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class PreviousSlideButton extends ButtonBarButtonBase {
 
-	public PreviousSlideButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarPreviousSlideImage());
-	}
-
+  public PreviousSlideButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().previousSlideImage());
+  }
 }

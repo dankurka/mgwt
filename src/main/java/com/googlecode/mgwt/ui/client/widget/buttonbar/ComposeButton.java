@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class ComposeButton extends ButtonBarButtonBase {
 
-	public ComposeButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarComposeImage());
-	}
-
+  public ComposeButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().composeImage());
+  }
 }

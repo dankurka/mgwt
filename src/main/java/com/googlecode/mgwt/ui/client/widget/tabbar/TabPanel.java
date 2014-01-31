@@ -15,24 +15,26 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
-import java.util.LinkedList;
-
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
-import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
-import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
+import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * 
@@ -61,328 +63,268 @@ import com.googlecode.mgwt.ui.client.widget.ScrollPanel;
  */
 public class TabPanel extends Composite implements HasSelectionHandlers<Integer> {
 
-	private FlowPanel container;
-	private TabContainer tabContainer;
-	private TabBar tabBar;
+  public static class TabBar extends Composite implements HasSelectionHandlers<Integer> {
 
-	public TabPanel() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
-	}
+    private class InternalTouchHandler implements TapHandler {
 
-	public TabPanel(TabBarCss css) {
-		container = new FlowPanel();
-		initWidget(container);
-		container.addStyleName(css.tabPanel());
+      private final TabBarButtonBase button;
 
-		tabContainer = new TabContainer();
-		tabContainer.addStyleName(css.tabPanelContainer());
+      public InternalTouchHandler(TabBarButtonBase button) {
+        this.button = button;
+      }
 
-		tabBar = new TabBar(css);
+      @Override
+      public void onTap(TapEvent event) {
+        setSelectedButton(getIndexForWidget(button));
+      }
+    }
 
-		tabBar.addSelectionHandler(new SelectionHandler<Integer>() {
+    @UiField
+    protected FlowPanel container;
+    private List<TabBarButtonBase> children = new ArrayList<TabBarButtonBase>();;
+    private List<HandlerRegistration> handlers = new ArrayList<HandlerRegistration>();
 
-			@Override
-			public void onSelection(SelectionEvent<Integer> event) {
-				tabContainer.setSelectedChild(event.getSelectedItem());
+    public TabBar(TabBarAppearance appearance) {
+      initWidget(appearance.barBinder().createAndBindUi(this));
+    }
 
-			}
-		});
+    public void add(TabBarButtonBase w) {
+      if (children.size() == 0) {
+        w.setSelected(true);
+      }
+      container.add(w);
+      children.add(w);
+      handlers.add(w.addTapHandler(new InternalTouchHandler(w)));
+    }
 
-		setDisplayTabBarOnTop(MGWT.getOsDetection().isAndroid());
+    public void clear() {
+      container.clear();
+      children.clear();
+      handlers.clear();
+    }
 
-	}
+    int getIndexForWidget(TabBarButtonBase w) {
+      return children.indexOf(w);
+    }
 
-	public void setDisplayTabBarOnTop(boolean top) {
-		container.clear();
-		if (top) {
-			container.add(tabBar);
-			container.add(tabContainer);
+    public boolean remove(TabBarButtonBase w) {
+      int indexForWidget = getIndexForWidget(w);
+      children.remove(w);
+      if (indexForWidget != -1) {
+        handlers.get(indexForWidget).removeHandler();
+        handlers.remove(indexForWidget);
+      }
 
-		} else {
-			container.add(tabContainer);
-			container.add(tabBar);
+      return container.remove(w);
+    }
 
-		}
-	}
+    public void setSelectedButton(int index) {
+      setSelectedButton(index, false);
+    }
 
-	/**
-	 * <p>
-	 * setSelectedChild
-	 * </p>
-	 * 
-	 * @param index a int.
-	 */
-	public void setSelectedChild(int index) {
-		tabBar.setSelectedButton(index, true);
-		tabContainer.setSelectedChild(index);
-	}
+    public void setSelectedButton(int index, boolean suppressEvent) {
+      if (index < 0) {
+        throw new IllegalArgumentException("invalud index");
+      }
 
-	/**
-	 * <p>
-	 * add
-	 * </p>
-	 * 
-	 * @param button a
-	 *            {@link com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase}
-	 *            object.
-	 * @param child a {@link com.google.gwt.user.client.ui.Widget} object.
-	 */
-	public void add(TabBarButtonBase button, Widget child) {
-		tabContainer.add(child);
-		tabBar.add(button);
-	}
+      if (index >= children.size()) {
+        throw new IllegalArgumentException("invalud index");
+      }
+      int count = 0;
+      for (TabBarButtonBase button : children) {
+        if (count == index) {
+          button.setSelected(true);
+        } else {
+          button.setSelected(false);
+        }
+        count++;
+      }
+      if (!suppressEvent)
+        SelectionEvent.fire(this, Integer.valueOf(index));
+    }
 
-	/**
-	 * at the moment there is no support for custom parsers:
-	 * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461 this is
-	 * a workaround to allow use with UIBinder
-	 * 
-	 * {@link TabPanel#add(TabBarButtonBase, Widget)} if you are writing java
-	 * code
-	 * 
-	 * @param b the tab to add
-	 */
-	@UiChild(tagname = "tabs")
-	public void addTab(Tab b) {
-		Widget w = b.getWidget();
-		TabBarButtonBase button = b.getButton();
+    @Override
+    public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(
+        SelectionHandler<Integer> handler) {
+      return addHandler(handler, SelectionEvent.getType());
+    }
 
-		if (button == null) {
-			throw new IllegalArgumentException("button can not be null");
-		}
+    public void remove(int index) {
+      TabBarButtonBase w = getWidgetForIndex(index);
+      remove(w);
+    }
 
-		if (w == null) {
-			throw new IllegalArgumentException("widget can not be null");
-		}
-		add(button, w);
-	}
+    private TabBarButtonBase getWidgetForIndex(int index) {
+      return children.get(index);
+    }
 
-	/**
-	 * <p>
-	 * remove
-	 * </p>
-	 * 
-	 * @param index a int.
-	 */
-	public void remove(int index) {
-		tabContainer.remove(index);
-		tabBar.remove(index);
-	}
+  }
 
-	/**
-	 * <p>
-	 * remove
-	 * </p>
-	 * 
-	 * @param w a {@link com.google.gwt.user.client.ui.Widget} object.
-	 */
-	public void remove(Widget w) {
-		int childIndex = tabContainer.getChildIndex(w);
-		tabContainer.remove(childIndex);
-		tabBar.remove(childIndex);
-	}
+  public static class TabContainer extends Composite {
 
-	/** {@inheritDoc} */
-	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
-		return new HandlerRegistrationConverter(tabBar.addSelectionHandler(handler));
-	}
+    @UiField
+    protected SimplePanel container;
+    private LinkedList<Widget> children = new LinkedList<Widget>();
+    private Widget activeWidget;
+    private TabBarAppearance appearance;
 
-	public static class TabBar extends Composite implements HasSelectionHandlers<Integer> {
+    public TabContainer(TabBarAppearance appearance) {
+      this.appearance = appearance;
+      initWidget(this.appearance.containerBinder().createAndBindUi(this));
+    }
 
-		private FlowPanel container;
-		private LinkedList<TabBarButtonBase> children;
-		private LinkedList<HandlerRegistration> handlers = new LinkedList<HandlerRegistration>();
-		protected final TabBarCss css;
+    public void add(Widget w) {
+      if (children.size() == 0) {
+        container.setWidget(w);
+        activeWidget = w;
+        if (activeWidget instanceof ScrollPanel) {
+          // TODO
+//          activeWidget.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss()
+//              .fillPanelExpandChild());
+        }
+      }
+      children.add(w);
 
-		public TabBar() {
-			this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
-		}
+    }
 
-		public TabBar(TabBarCss css) {
-			this.css = css;
-			css.ensureInjected();
-			children = new LinkedList<TabBarButtonBase>();
-			container = new FlowPanel();
-			container.setStylePrimaryName(css.tabbar());
-			initWidget(container);
-		}
+    public void clear() {
+      children.clear();
+      container.setWidget(null);
+      activeWidget = null;
 
-		private class InternalTouchHandler implements TapHandler {
+    }
 
-			private final TabBarButtonBase button;
+    public void setSelectedChild(int index) {
+      activeWidget = children.get(index);
+      if (activeWidget instanceof ScrollPanel) {
+        // TODO
+//        activeWidget.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss()
+//            .fillPanelExpandChild());
+      }
+      container.setWidget(activeWidget);
+    }
 
-			public InternalTouchHandler(TabBarButtonBase button) {
-				this.button = button;
+    public boolean remove(Widget w) {
+      int index = getChildIndex(w);
+      boolean remove = children.remove(w);
+      if (w == activeWidget) {
+        if (activeWidget instanceof ScrollPanel) {
+          //TODO
+//          activeWidget.removeStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss()
+//              .fillPanelExpandChild());
+        }
+        activeWidget = null;
+        if (index - 1 >= 0) {
+          setSelectedChild(index);
+        }
+      }
 
-			}
+      return remove;
+    }
 
-			@Override
-			public void onTap(TapEvent event) {
-				setSelectedButton(getIndexForWidget(button));
-			}
+    public int getChildIndex(Widget w) {
+      return children.indexOf(w);
+    }
 
-		}
+    public void remove(int childIndex) {
+      Widget w = getWidgetForIndex(childIndex);
+      remove(w);
+    }
 
-		public void add(TabBarButtonBase w) {
-			if (children.size() == 0) {
-				w.setSelected(true);
-			}
-			container.add(w);
-			children.add(w);
-			handlers.add(w.addTapHandler(new InternalTouchHandler(w)));
+    private Widget getWidgetForIndex(int childIndex) {
+      return children.get(childIndex);
+    }
+  }
 
-		}
+  public static final TabBarAppearance DEFAULT_APPEARANCE = GWT.create(TabBarAppearance.class);
 
-		public void clear() {
-			container.clear();
-			children.clear();
-			handlers.clear();
+  @UiField
+  protected FlowPanel container;
 
-		}
+  @UiField(provided=true)
+  protected TabContainer tabContainer;
 
-		private int getIndexForWidget(TabBarButtonBase w) {
-			return children.indexOf(w);
-		}
+  @UiField(provided=true)
+  protected TabBar tabBar;
 
-		public boolean remove(TabBarButtonBase w) {
-			int indexForWidget = getIndexForWidget(w);
-			children.remove(w);
-			if (indexForWidget != -1) {
-				handlers.get(indexForWidget).removeHandler();
-				handlers.remove(indexForWidget);
-			}
+  protected TabBarAppearance appearance;
 
-			return container.remove(w);
+  public TabPanel() {
+    this(DEFAULT_APPEARANCE);
+  }
 
-		}
+  public TabPanel(TabBarAppearance appearance) {
+    this.appearance = appearance;
+    tabContainer = new TabContainer(appearance);
 
-		public void setSelectedButton(int index) {
-			setSelectedButton(index, false);
-		}
+    tabBar = new TabBar(appearance);
+    
+//    container = new FlowPanel();
+    initWidget(appearance.panelBinder().createAndBindUi(this));
 
-		public void setSelectedButton(int index, boolean suppressEvent) {
-			if (index < 0) {
-				throw new IllegalArgumentException("invalud index");
-			}
 
-			if (index >= children.size()) {
-				throw new IllegalArgumentException("invalud index");
-			}
-			int count = 0;
-			for (TabBarButtonBase button : children) {
-				if (count == index) {
-					button.setSelected(true);
-				} else {
-					button.setSelected(false);
-				}
-				count++;
-			}
-			if (!suppressEvent)
-				SelectionEvent.fire(this, Integer.valueOf(index));
-		}
 
-		@Override
-		public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
-			return addHandler(handler, SelectionEvent.getType());
-		}
+    tabBar.addSelectionHandler(new SelectionHandler<Integer>() {
 
-		/**
-		 * @param index
-		 */
-		public void remove(int index) {
-			TabBarButtonBase w = getWidgetForIndex(index);
-			remove(w);
-		}
+      @Override
+      public void onSelection(SelectionEvent<Integer> event) {
+        tabContainer.setSelectedChild(event.getSelectedItem());
 
-		/**
-		 * @param index
-		 * @return
-		 */
-		private TabBarButtonBase getWidgetForIndex(int index) {
-			return children.get(index);
-		}
+      }
+    });
 
-	}
+    //setDisplayTabBarOnTop(MGWT.getOsDetection().isAndroid());
 
-	public static class TabContainer extends Composite {
+  }
 
-		private SimplePanel container;
-		private LinkedList<Widget> children = new LinkedList<Widget>();
-		private Widget activeWidget;
+  public void setSelectedChild(int index) {
+    tabBar.setSelectedButton(index, true);
+    tabContainer.setSelectedChild(index);
+  }
 
-		public TabContainer() {
-			container = new SimplePanel();
-			initWidget(container);
+  public void add(TabBarButtonBase button, Widget child) {
+    tabContainer.add(child);
+    tabBar.add(button);
+  }
 
-		}
+  /**
+   * at the moment there is no support for custom parsers:
+   * http://code.google.com/p/google-web-toolkit/issues/detail?id=4461 this is a workaround to allow
+   * use with UIBinder
+   * 
+   * {@link TabPanel#add(TabBarButtonBase, Widget)} if you are writing java code
+   * 
+   * @param b the tab to add
+   */
+  @UiChild(tagname = "tabs")
+  public void addTab(Tab b) {
+    Widget w = b.getWidget();
+    TabBarButtonBase button = b.getButton();
 
-		public void add(Widget w) {
-			if (children.size() == 0) {
-				container.setWidget(w);
-				activeWidget = w;
-				if (activeWidget instanceof ScrollPanel) {
-					activeWidget.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
-				}
-			}
-			children.add(w);
+    if (button == null) {
+      throw new IllegalArgumentException("button can not be null");
+    }
 
-		}
+    if (w == null) {
+      throw new IllegalArgumentException("widget can not be null");
+    }
+    add(button, w);
+  }
 
-		public void clear() {
-			children.clear();
-			container.setWidget(null);
-			activeWidget = null;
+  public void remove(int index) {
+    tabContainer.remove(index);
+    tabBar.remove(index);
+  }
 
-		}
+  public void remove(Widget w) {
+    int childIndex = tabContainer.getChildIndex(w);
+    tabContainer.remove(childIndex);
+    tabBar.remove(childIndex);
+  }
 
-		public void setSelectedChild(int index) {
-			activeWidget = children.get(index);
-			if (activeWidget instanceof ScrollPanel) {
-				activeWidget.addStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
-			}
-			container.setWidget(activeWidget);
-		}
-
-		public boolean remove(Widget w) {
-			int index = getChildIndex(w);
-			boolean remove = children.remove(w);
-			if (w == activeWidget) {
-				if (activeWidget instanceof ScrollPanel) {
-					activeWidget.removeStyleName(MGWTStyle.getTheme().getMGWTClientBundle().getLayoutCss().fillPanelExpandChild());
-				}
-				activeWidget = null;
-				if (index - 1 >= 0) {
-					setSelectedChild(index);
-				}
-			}
-
-			return remove;
-		}
-
-		/**
-		 * @param w
-		 */
-		public int getChildIndex(Widget w) {
-
-			return children.indexOf(w);
-
-		}
-
-		/**
-		 * @param childIndex
-		 */
-		public void remove(int childIndex) {
-			Widget w = getWidgetForIndex(childIndex);
-			remove(w);
-		}
-
-		/**
-		 * @param childIndex
-		 * @return
-		 */
-		private Widget getWidgetForIndex(int childIndex) {
-			return children.get(childIndex);
-		}
-	}
+  @Override
+  public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(
+      SelectionHandler<Integer> handler) {
+    return new HandlerRegistrationConverter(tabBar.addSelectionHandler(handler));
+  }
 }

@@ -1,9 +1,9 @@
 package com.googlecode.mgwt.ui.client.layout;
 
 import com.google.web.bindery.event.shared.EventBus;
-import com.googlecode.mgwt.ui.client.dialog.Dialog;
 import com.googlecode.mgwt.ui.client.event.ShowMasterEvent;
 import com.googlecode.mgwt.ui.client.event.ShowMasterHandler;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialog;
 
 /**
  * <p>MasterRegionHandler class.</p>
@@ -22,7 +22,7 @@ public class MasterRegionHandler {
 	 *
 	 * @param eventBus a {@link com.google.web.bindery.event.shared.EventBus} object.
 	 * @param id a {@link java.lang.String} object.
-	 * @param dialog a {@link com.googlecode.mgwt.ui.client.dialog.Dialog} object.
+	 * @param dialog a {@link com.googlecode.mgwt.ui.client.widget.dialog.Dialog} object.
 	 */
 	public MasterRegionHandler(EventBus eventBus, String id, Dialog dialog) {
 		this.eventBus = eventBus;

@@ -21,7 +21,6 @@ import com.google.gwt.event.shared.EventHandler;
  * Handler for {@link MGWTAnimationEndEvent} events:
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface MGWTAnimationEndHandler extends EventHandler {
 	/**

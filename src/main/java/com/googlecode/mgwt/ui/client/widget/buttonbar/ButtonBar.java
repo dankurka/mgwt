@@ -15,84 +15,55 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import java.util.Iterator;
-
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss;
+
+import java.util.Iterator;
 
 
 /**
- * <p>ButtonBar class.</p>
- *
- * @author Daniel Kurka
- * @version $Id: $
+ * 
  */
 public class ButtonBar extends Composite implements HasWidgets {
 
-	private FlowPanel main;
-	protected final ButtonBarCss css;
+  protected static final ButtonBarAppearance DEFAULT_APPEARANCE = GWT
+      .create(ButtonBarAppearance.class);
 
-	/**
-	 * <p>Constructor for ButtonBar.</p>
-	 */
-	public ButtonBar() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarCss());
-	}
+  @UiField
+  protected Panel main;
 
-	/**
-	 * <p>Constructor for ButtonBar.</p>
-	 *
-	 * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ButtonBarCss} object.
-	 */
-	public ButtonBar(ButtonBarCss css) {
-		this.css = css;
-		css.ensureInjected();
-		main = new FlowPanel();
-		initWidget(main);
+  protected ButtonBarAppearance appearance;
 
-		setStylePrimaryName(this.css.buttonBar());
-	}
+  public ButtonBar() {
+    this(DEFAULT_APPEARANCE);
+  }
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public void add(Widget w) {
-		main.add(w);
+  public ButtonBar(ButtonBarAppearance appearance) {
+    this.appearance = appearance;
+    initWidget(appearance.barBinder().createAndBindUi(this));
+  }
 
-	}
+  @Override
+  public void add(Widget w) {
+    main.add(w);
+  }
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.HasWidgets#clear()
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public void clear() {
-		main.clear();
+  @Override
+  public void clear() {
+    main.clear();
+  }
 
-	}
+  @Override
+  public Iterator<Widget> iterator() {
+    return main.iterator();
+  }
 
-	/* (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public Iterator<Widget> iterator() {
-		return main.iterator();
-	}
-
-	/* (non-Javadoc)
-	 * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
-	 */
-	/** {@inheritDoc} */
-	@Override
-	public boolean remove(Widget w) {
-		return main.remove(w);
-	}
-
+  @Override
+  public boolean remove(Widget w) {
+    return main.remove(w);
+  }
 }

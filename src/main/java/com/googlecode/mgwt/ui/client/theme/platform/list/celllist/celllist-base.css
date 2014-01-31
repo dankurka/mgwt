@@ -1,0 +1,64 @@
+@url arrowImage listArrow;
+@if mgwt.css pretty {
+	@external mgwt-List, mgwt-List-selected, mgwt-List-group, mgwt-List-first, mgwt-List-last, mgwt-List-Header, mgwt-List-round,mgwt-FormList-Element, mgwt-FormList-Element-label, mgwt-FormList-Element-container, mgwt-List-Head-Element, mgwt-List-canbeSelected;
+}
+
+.mgwt-List {
+	position: relative;
+	list-style: none;
+	border-collapse: collapse;
+}
+
+.mgwt-List>li {
+	position: relative;
+	list-style-type: none;
+	display: block;
+	overflow: hidden;
+	width: auto;
+	padding: 12px;
+}
+
+.mgwt-List-round {
+	padding: 10px;
+}
+
+.mgwt-List-first {
+	
+}
+
+.mgwt-List-last {
+	
+}
+
+
+/* other browsers */
+@if user.agent ie6 ie8 ie9 ie10 gecko opera {
+	.mgwt-List-selected {
+		
+	}
+	.mgwt-List-first {
+		
+	}
+	.mgwt-List-last {
+		
+	}
+	.mgwt-List {
+		
+	}
+	.mgwt-List-Header {
+		
+	}
+	.mgwt-List-round {
+		
+	}
+	.mgwt-List-group {
+		
+	}
+	
+	.mgwt-List-Head-Element{
+	
+	}
+	
+	.mgwt-List-canbeSelected{
+	}
+}

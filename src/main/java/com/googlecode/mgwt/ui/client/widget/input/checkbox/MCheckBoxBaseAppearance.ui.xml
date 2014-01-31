@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
+
+  <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.input.checkbox.MCheckBoxAppearance" />
+    
+  <div ui:field="wrap" class="{apperance.css.checkBox}">
+    <div ui:field="on" class="{apperance.css.on}">I</div>
+    <div ui:field="middle" class="{apperance.css.middle}">
+      <div class="{apperance.css.content}"/>
+    </div>
+    <div ui:field="off" class="{apperance.css.off}">O</div>
+	</div>
+</ui:UiBinder>

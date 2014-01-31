@@ -16,106 +16,32 @@
  */
  -->
 <module>
-    <inherits name='com.google.gwt.user.User'/>
-    <inherits name='com.googlecode.mgwt.dom.DOM'/>
-	<inherits name="com.google.gwt.activity.Activity" />
-    
-    
-    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIphoneImpl">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-        	
-            <when-property-is name="mgwt.os" value="iphone"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIphoneImpl">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-            <when-property-is name="mgwt.os" value="retina"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIpadImpl">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-            <when-property-is name="mgwt.os" value="ipad"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIpadImpl">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-            <when-property-is name="mgwt.os" value="ipad_retina"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayTransistionImpl">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-            <when-property-is name="mgwt.os" value="android"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayTransistionImpl">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-            <when-property-is name="mgwt.os" value="android_tablet"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayIphoneImpl">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-            <when-property-is name="mgwt.os" value="desktop"/>
-        </all>
-    </replace-with>
-    
-     <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayWithoutAnimation">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-            <when-property-is name="mgwt.os" value="blackberry"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.mvp.client.display.AnimatableDisplayWithoutAnimation">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.AnimatableDisplay"/>
-        <all>
-            <when-property-is name="user.agent" value="ie9"/>
-        </all>
-    </replace-with>
-    
-    
-    
-    
-     <replace-with class="com.googlecode.mgwt.mvp.client.history.Html5HistorianImpl">
-        <when-type-is class="com.googlecode.mgwt.mvp.client.history.Html5Historian"/>
-       
-    </replace-with>
-    
-    
-    <!-- History Legacy for android -->
-    
-	<replace-with class="com.googlecode.mgwt.mvp.client.history.HistoryImplMGWTAndroid">
-		<when-type-is class="com.google.gwt.user.client.impl.HistoryImpl"/>
-		<all>
-			<when-property-is name="user.agent" value="safari"/>
-			<when-property-is name="mgwt.os" value="android"></when-property-is>
-			 <when-property-is name="mobile.user.agent" value="mobilesafari"/>
-		</all>
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.mvp.client.history.HistoryImplMGWTAndroid">
-		<when-type-is class="com.google.gwt.user.client.impl.HistoryImpl"/>
-		<all>
-			<when-property-is name="user.agent" value="safari"/>
-			<when-property-is name="mgwt.os" value="android_tablet"></when-property-is>
-			 <when-property-is name="mobile.user.agent" value="mobilesafari"/>
-		</all>
-	</replace-with>
-    
-    
-    
-    
-  	<source path="client"/>
+  <inherits name='com.google.gwt.user.User'/>
+  <inherits name='com.googlecode.mgwt.dom.DOM'/>
+  <inherits name="com.google.gwt.activity.Activity" />
+
+  <replace-with class="com.googlecode.mgwt.mvp.client.history.Html5HistorianImpl">
+    <when-type-is class="com.googlecode.mgwt.mvp.client.history.Html5Historian"/>
+  </replace-with>
+
+  <!-- History Legacy for android -->
+  <replace-with class="com.googlecode.mgwt.mvp.client.history.HistoryImplMGWTAndroid">
+    <when-type-is class="com.google.gwt.user.client.impl.HistoryImpl"/>
+    <all>
+      <when-property-is name="user.agent" value="safari"/>
+      <when-property-is name="mgwt.os" value="android"></when-property-is>
+      <when-property-is name="mobile.user.agent" value="mobilesafari"/>
+    </all>
+  </replace-with>
+
+  <replace-with class="com.googlecode.mgwt.mvp.client.history.HistoryImplMGWTAndroid">
+    <when-type-is class="com.google.gwt.user.client.impl.HistoryImpl"/>
+    <all>
+      <when-property-is name="user.agent" value="safari"/>
+      <when-property-is name="mgwt.os" value="android_tablet"></when-property-is>
+      <when-property-is name="mobile.user.agent" value="mobilesafari"/>
+    </all>
+  </replace-with>
+
+  <source path="client"/>
 </module>

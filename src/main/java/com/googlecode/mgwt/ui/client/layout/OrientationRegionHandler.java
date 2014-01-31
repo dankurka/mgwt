@@ -4,16 +4,11 @@ import com.google.gwt.user.client.ui.HasOneWidget;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
-import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
 import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.widget.animation.AnimatableDisplay;
 
 /**
- * <p>
- * OrientationRegionHandler class.
- * </p>
- * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class OrientationRegionHandler {
 	private final HasOneWidget landscapeDisplay;

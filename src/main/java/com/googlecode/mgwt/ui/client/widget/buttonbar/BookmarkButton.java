@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class BookmarkButton extends ButtonBarButtonBase {
 
-	public BookmarkButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarBookmarkImage());
-	}
-
+  public BookmarkButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().bookmarkImage());
+  }
 }

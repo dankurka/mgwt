@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
+
+  <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.input.radio.MRadioButtonAppearance" />
+
+  <span class="{apperance.css.radio}">
+    <label ui:field="labelElement" class="{apperance.css.label}"></label>
+    <input ui:field="inputRadio" type="radio" value="on" class="{apperance.css.input}"></input>
+  </span>
+</ui:UiBinder>

@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
+import com.google.gwt.dom.client.NativeEvent;
+
 /**
  * This represents a native touchCanvel Event
  *
@@ -25,6 +27,12 @@ public class TouchCancelEvent extends TouchEvent<TouchCancelHandler> {
 
 	private static final Type<TouchCancelHandler> TYPE = new Type<TouchCancelHandler>("touchcancel", new TouchCancelEvent());
 
+  public static TouchCancelEvent from(NativeEvent nativeEvent) {
+    TouchCancelEvent touchCancelEvent = new TouchCancelEvent();
+    touchCancelEvent.setNativeEvent(nativeEvent);
+    return touchCancelEvent;
+  }
+	
 	/**
 	 * <p>getType</p>
 	 *
@@ -57,5 +65,7 @@ public class TouchCancelEvent extends TouchEvent<TouchCancelHandler> {
 		handler.onTouchCanceled(this);
 
 	}
+
+
 
 }

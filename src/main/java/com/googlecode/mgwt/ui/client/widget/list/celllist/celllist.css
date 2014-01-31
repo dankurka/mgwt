@@ -1,0 +1,112 @@
+@url arrowImage listArrow;
+@if mgwt.css pretty {
+	@external mgwt-List, mgwt-List-selected, mgwt-List-group, mgwt-List-first, mgwt-List-last, mgwt-List-Header, mgwt-List-round,mgwt-FormList-Element, mgwt-FormList-Element-label, mgwt-FormList-Element-container, mgwt-List-Head-Element, mgwt-List-canbeSelected;
+}
+
+.mgwt-List {
+	position: relative;
+	list-style: none;
+	border-collapse: collapse;
+	border-top: 1px solid #9daca9;
+    background-color: #e5e9e8;
+    color: #454545;
+}
+
+.mgwt-List>li {
+	position: relative;
+	list-style-type: none;
+	display: block;
+	overflow: hidden;
+	width: auto;
+	padding: 12px;
+}
+
+.mgwt-List-round {
+	padding: 0 10px 0 10px;
+}
+
+
+
+.mgwt-List-last {
+	
+}
+
+.mgwt-List > li {
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #9daca9;
+}
+.mgwt-List > li.mgwt-List-first {
+	border-top: 1px solid #d6dcdb;
+}
+
+.mgwt-List-round > .mgwt-List-first {
+
+}
+
+.mgwt-List-round > .mgwt-List-last {
+
+}
+
+.mgwt-List-canbeSelected.mgwt-List-selected {
+	font-weight: bold;
+	color: white;
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+
+
+	.mgwt-List-canbeSelected.mgwt-List-selected {
+		background-color: #288ede;
+	}
+
+
+
+.mgwt-List-group {
+	background-image: arrowImage;
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+
+.mgwt-List-group.mgwt-List-selected {
+	font-weight: bold;
+	color: white;
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+
+
+	.mgwt-List-group.mgwt-List-selected {
+		background-color: #288ede;
+	}
+
+
+.mgwt-List-Header {
+	color: black;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 10px 20px 5px;
+	text-shadow: rgba(255, 255, 255, 0.19);
+}
+
+
+.mgwt-List-Head-Element, .mgwt-List > .mgwt-List-Head-Element {
+	padding: 0px;
+	padding-left:12px;
+	font-size:19px; 
+	font-weight:bold;
+	color:#fff;
+	border-bottom:1px solid #9daca9;
+	border: none;
+}
+
+@if user.agent safari {
+	.mgwt-List-Head-Element, .mgwt-List > .mgwt-List-Head-Element {
+		background-color: #288ede;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-List-Head-Element, .mgwt-List > .mgwt-List-Head-Element {
+		background-color: #288ede;
+	}
+}

@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class MinusButton extends ButtonBarButtonBase {
 
-	public MinusButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarMinusImage());
-	}
-
+  public MinusButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().minusImage());
+  }
 }

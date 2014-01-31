@@ -4,7 +4,7 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 
-public class ProgressIndicatorBlackberryAppearance extends ProgressBarBaseAppearance {
+public class ProgressIndicatorBlackberryAppearance extends ProgressBarAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();

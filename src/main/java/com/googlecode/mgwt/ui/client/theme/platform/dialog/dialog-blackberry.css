@@ -1,0 +1,39 @@
+.mgwt-DialogPanel {
+	border: solid 5px rgba(49, 69, 107, 0.7);
+	\-webkit-box-shadow: 0px 0px 10px rgba(49, 69, 107, 0.7);
+	padding: 0px;
+	opacity: 1;
+	\-webkit-border-radius: 4px;
+	background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgba(0, 15, 70, 0.5) ), to(rgba(0, 0, 70, 0.5) ) )');
+}
+
+.mgwt-DialogPanel .container {
+	color: #ffffff;
+	text-shadow: 0px -1px 1px #000000;
+	border: solid 2px rgb(49, 69, 107);
+	padding: 5px;
+	background: black;
+}
+
+.mgwt-DialogPanel .title {
+	color: #ffffff;
+	border: none;
+	font-size: 19px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid rgb(82, 163, 196);
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.mgwt-DialogPanel .content {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.mgwt-DialogPanel .footer {
+	\-webkit-box-pack: justify;
+	margin-top: 10px;
+	display: -webkit-box;
+	\-webkit-box-orient: horizontal;
+	\-webkit-box-sizing: border-box;
+}

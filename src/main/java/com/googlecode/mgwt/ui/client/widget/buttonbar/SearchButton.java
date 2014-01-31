@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class SearchButton extends ButtonBarButtonBase {
 
-	public SearchButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarSearchImage());
-	}
-
+  public SearchButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().searchImage());
+  }
 }

@@ -20,7 +20,6 @@ package com.googlecode.mgwt.ui.client.widget.base;
  * text set
  *
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface HasPlaceHolder {
 

@@ -16,8 +16,6 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * A simple feature tab bar button.
@@ -31,7 +29,7 @@ public class FeaturedTabBarButton extends TabBarButton {
    * 
    */
 	public FeaturedTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
+		this(TabPanel.DEFAULT_APPEARANCE);
 	}
 
   /**
@@ -39,8 +37,8 @@ public class FeaturedTabBarButton extends TabBarButton {
    * 
    * @param css the css to use
    */
-	public FeaturedTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarFeaturedImage() : null);
+	public FeaturedTabBarButton(TabBarAppearance appearance) {
+		super(appearance, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? appearance.icons().featuredImage() : null);
 
 		setText("Featured");
 	}

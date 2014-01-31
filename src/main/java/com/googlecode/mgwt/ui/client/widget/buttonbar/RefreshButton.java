@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class RefreshButton extends ButtonBarButtonBase {
 
-	public RefreshButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarRefreshImage());
-	}
-
+  public RefreshButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().refreshImage());
+  }
 }

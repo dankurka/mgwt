@@ -19,7 +19,6 @@ package com.googlecode.mgwt.ui.client.widget.base;
  * Widgets that implement this interface can capitalize the beginning of words
  *
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface HasAutoCapitalize {
 	/**

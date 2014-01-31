@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class ArrowLeftButton extends ButtonBarButtonBase {
 
-	public ArrowLeftButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarArrowLeftImage());
-	}
-
+  public ArrowLeftButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().arrowLeftImage());
+  }
 }

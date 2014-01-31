@@ -1,0 +1,36 @@
+.in, .out {
+	\-webkit-animation-timing-function: ease-in-out;
+	\-webkit-animation-duration: 300ms;
+	\-webkit-animation-fill-mode: both;
+}
+
+
+.in {
+	z-index: 10;
+	\-webkit-animation-name: dissolve;
+}
+
+.out {
+	z-index: 1;
+	\-webkit-animation-name: donothing;	
+}
+
+.in.reverse {
+	z-index: 1;
+	\-webkit-animation-name: donothing;
+}
+
+.out.reverse {
+	z-index: 10;
+	\-webkit-animation-name: dissolve;	
+}
+
+@-webkit-keyframes dissolve {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@-webkit-keyframes donothing {
+    from { opacity: 1; }
+    to { opacity: 1; }
+}

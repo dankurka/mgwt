@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class FastForwardButton extends ButtonBarButtonBase {
 
-	public FastForwardButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarFastForwardImage());
-	}
-
+  public FastForwardButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().fastForwardImage());
+  }
 }

@@ -1,0 +1,87 @@
+.mgwt-List > li {
+	background-color: white;
+	border: 1px solid rgb(171, 173, 176);
+	border-bottom: none;
+}
+
+
+.mgwt-List-round > .mgwt-List-first {
+	border-top-left-radius: 8px 8px;
+	border-top-right-radius: 8px 8px;
+}
+
+.mgwt-List-round > .mgwt-List-last {
+	border-bottom-left-radius: 8px 8px;
+	border-bottom-right-radius: 8px 8px;
+	border-bottom: 1px solid rgb(171, 173, 176);
+}
+
+.mgwt-List-canbeSelected.mgwt-List-selected {
+	font-weight: bold;
+	color: white;
+	background-repeat: no-repeat, repeat;
+	background-position: 100% 50%, 0 0;
+}
+
+@if user.agent safari {
+	.mgwt-List-canbeSelected.mgwt-List-selected {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)), to(rgb(1, 95, 230)) )');
+	}
+}
+
+
+.mgwt-List-group {
+	background-image: arrowImage;
+	background-repeat: no-repeat;
+	background-position: 100% 50%;
+}
+
+.mgwt-List-group.mgwt-List-selected {
+	font-weight: bold;
+	color: white;
+	background-repeat: no-repeat, repeat;
+	background-position: 100% 50%, 0 0;
+}
+
+@if user.agent safari {
+	.mgwt-List-group.mgwt-List-selected {
+		background-image: arrowImage, literal('-webkit-gradient(linear, left top, left bottom, from(rgb(5, 140, 245)), to(rgb(1, 95, 230)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-List-group.mgwt-List-selected {
+		background-image: arrowImage, literal('-moz-linear-gradient(ltop, rgb(5, 140, 245), rgb(1, 95, 230))');
+	}
+}
+
+.mgwt-List-Header {
+	color: black;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 10px 20px 5px;
+	text-shadow: rgba(255, 255, 255, 0.19);
+}
+
+
+.mgwt-List-Head-Element, .mgwt-List > .mgwt-List-Head-Element {
+	padding: 0px;
+	padding-left:12px;
+	font-size:19px; 
+	font-weight:bold;
+	color:#fff;
+	border-bottom:1px solid #989ea5;
+	border: none;
+}
+
+@if user.agent safari {
+	.mgwt-List-Head-Element, .mgwt-List > .mgwt-List-Head-Element {
+		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 50%, from(rgba(176, 188, 205, 1)), to(rgba(129, 149, 175, 1)))');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-List-Head-Element, .mgwt-List > .mgwt-List-Head-Element {
+		background-image: literal('-moz-linear-gradient(top, rgba(176, 188, 205, 1), rgba(129, 149, 175, 1))');
+	}
+}

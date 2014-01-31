@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class OrganizeButton extends ButtonBarButtonBase {
 
-	public OrganizeButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarOrganizeImage());
-	}
-
+  public OrganizeButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().organizeImage());
+  }
 }

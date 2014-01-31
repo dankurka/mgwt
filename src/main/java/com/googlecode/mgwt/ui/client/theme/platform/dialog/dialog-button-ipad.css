@@ -1,0 +1,50 @@
+
+.okbutton, .cancelbutton {
+	display: block;
+	font-size: 17px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 10px;
+	margin-right: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	min-width: 40px;
+	height: 32px;
+	line-height: 32px;
+	text-shadow: 0px -2px 1px #000000;
+}
+
+@if user.agent safari {
+	.okbutton, .cancelbutton {
+		\-webkit-box-flex: 2;
+		\-webkit-border-radius: 8px;
+	}
+	.okbutton {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#b0b5c5),color-stop(0.5, #7a839b), color-stop(0.5, #515d7c), to(#636e8a) )');
+	}
+	.cancelbutton {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#828ba3), color-stop(0.5, #4c5a7c), color-stop(0.5, #27375f), to(#2e3d64) )');
+	}
+	.cancelbutton.active,.okbutton.active {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(#70747f), color-stop(0.5, #424857), color-stop(0.5, #171e30), to(#222839) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.okbutton,.cancelbutton {
+		\-moz-box-flex: 2;
+		\-moz-border-radius: 8px;
+		border-radius: 8px;
+	}
+	.okbutton {
+		background-image: literal('-moz-linear-gradient(top, #b0b5c5,#7a839b 50%, #515d7c 51%, #636e8a)');
+	}
+	.cancelbutton {
+		background-image: literal('-moz-linear-gradient(top, #828ba3, #4c5a7c 50%, #27375f 51%, #2e3d64 )');
+	}
+	.cancelbutton.active,.okbutton.active {
+		background-image: literal('-moz-linear-gradient(top, #70747f, #424857 50%, #171e30 51%, #222839)');
+	}
+}
+
+.active{}

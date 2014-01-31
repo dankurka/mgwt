@@ -18,15 +18,14 @@ package com.googlecode.mgwt.ui.client.widget.buttonbar;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.ImageResource;
+
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.ButtonBarButtonCss;
-import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
+import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
 
 /**
  * <h1>Base class for all buttons in the button bar</h1>
@@ -54,8 +53,6 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
  * 
  */
 public class ButtonBarButtonBase extends ButtonBase {
-
-	protected final static IconHandler ICON_HANDLER = GWT.create(IconHandler.class);
 
 	public interface IconHandler {
 		public void setIcons(Element element, ImageResource icon, ImageResource highlight, boolean active);
@@ -90,18 +87,24 @@ public class ButtonBarButtonBase extends ButtonBase {
 		}
 	}
 
+  protected static final IconHandler ICON_HANDLER = GWT.create(IconHandler.class);
+  
+  protected final ButtonBarAppearance appearance;
+
+
 	public ButtonBarButtonBase(ImageResource icon) {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarButtonCss(), icon, MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarHighlightImage());
+		this(ButtonBar.DEFAULT_APPEARANCE, icon, ButtonBar.DEFAULT_APPEARANCE.icons().highlightImage());
 	}
 
 	public ButtonBarButtonBase(ImageResource icon, ImageResource highlight) {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarButtonCss(), icon, highlight);
+		this(ButtonBar.DEFAULT_APPEARANCE, icon, highlight);
 	}
 
-	public ButtonBarButtonBase(ButtonBarButtonCss css, final ImageResource icon, final ImageResource highlight) {
-		super(css);
+	public ButtonBarButtonBase(ButtonBarAppearance appearance, final ImageResource icon, final ImageResource highlight) {
+		super(appearance);
+		this.appearance = appearance;
+		setElement(appearance.uiBinder().createAndBindUi(this));
 		ICON_HANDLER.setIcons(getElement(), icon, highlight, false);
-		addStyleName(css.barButton());
 
 		addTouchHandler(new TouchHandler() {
 

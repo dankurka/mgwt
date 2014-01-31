@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
+import com.google.gwt.dom.client.NativeEvent;
+
 /**
  * This represents a native touch move Event
  *
@@ -25,6 +27,14 @@ public class TouchMoveEvent extends TouchEvent<TouchMoveHandler> {
 
 	private static final Type<TouchMoveHandler> TYPE = new Type<TouchMoveHandler>("touchmove", new TouchMoveEvent());
 
+	
+
+  public static TouchMoveEvent from(NativeEvent nativeEvent) {
+    TouchMoveEvent touchMoveEvent = new TouchMoveEvent();
+    touchMoveEvent.setNativeEvent(nativeEvent);
+    return touchMoveEvent;
+  }
+	
 	/**
 	 * <p>getType</p>
 	 *
@@ -57,5 +67,6 @@ public class TouchMoveEvent extends TouchEvent<TouchMoveHandler> {
 		handler.onTouchMove(this);
 
 	}
+
 
 }

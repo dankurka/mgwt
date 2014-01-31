@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class NewIconButton extends ButtonBarButtonBase {
 
-	public NewIconButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarNewImage());
-	}
-
+  public NewIconButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().newImage());
+  }
 }

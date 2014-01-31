@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class ReplyButton extends ButtonBarButtonBase {
 
-	public ReplyButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarReplyImage());
-	}
-
+  public ReplyButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().replyImage());
+  }
 }

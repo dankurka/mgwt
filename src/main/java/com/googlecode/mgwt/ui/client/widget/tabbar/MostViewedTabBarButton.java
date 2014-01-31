@@ -16,8 +16,6 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * A simple most viewed tab bar button.
@@ -26,21 +24,13 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  * 
  */
 public class MostViewedTabBarButton extends TabBarButton {
-  /**
-   * Construct a BookmarkTabBarButton
-   */
+
 	public MostViewedTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
+		this(TabPanel.DEFAULT_APPEARANCE);
 	}
 
-  /**
-   * Construct a BookmarkTabBarButton with a given css
-   * 
-   * @param css the css to use
-   */
-	public MostViewedTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMostViewedImage() : null);
+	public MostViewedTabBarButton(TabBarAppearance appearance) {
+		super(appearance, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? appearance.icons().mostViewedImage() : null);
 		setText("Most Viewed");
 	}
-
 }

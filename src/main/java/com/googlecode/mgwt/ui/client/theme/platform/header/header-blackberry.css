@@ -1,0 +1,33 @@
+.mgwt-HeaderPanel {
+	height: 40px;
+	background-color: black;
+	background-image: none;
+	border-bottom: 2px solid rgb(0, 92, 176);
+}
+
+.mgwt-HeaderPanel-left {
+	top: 0px;
+	left: 6px;
+}
+
+.mgwt-HeaderPanel-right {
+	top: 0px;
+	right: 6px;
+}
+
+.mgwt-HeaderPanel-center {
+	left: 50%;
+	height: 31px;
+	width: 310px;
+	opacity: 1;
+	margin-top: 6px;
+	margin-left: -150px;
+	margin-right: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
+	font-size: 16pt;
+	font-weight: bold;
+	color: white;
+}

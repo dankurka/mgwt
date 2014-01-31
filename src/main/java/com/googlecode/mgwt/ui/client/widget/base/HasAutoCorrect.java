@@ -19,7 +19,6 @@ package com.googlecode.mgwt.ui.client.widget.base;
  * Widgets that implement this interface can autocorrect every word on input
  *
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface HasAutoCorrect {
 	/**

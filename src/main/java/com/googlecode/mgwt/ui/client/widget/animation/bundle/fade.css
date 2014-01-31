@@ -1,0 +1,32 @@
+.in, .out {
+	\-webkit-animation-timing-function: ease-in-out;
+	\-webkit-animation-duration: 300ms;
+	\-webkit-animation-fill-mode: both;
+}
+
+.in {
+	z-index: 10;
+	\-webkit-animation-name: fadein;
+}
+.out {
+	z-index: 8;
+	\-webkit-animation-name: fadeout;
+}
+
+.in.reverse {
+	\-webkit-animation-name: fadeout;
+}
+
+.out.reverse {
+	\-webkit-animation-name: fadein;	
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

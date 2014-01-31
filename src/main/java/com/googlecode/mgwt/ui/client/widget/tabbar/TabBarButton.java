@@ -1,8 +1,6 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.google.gwt.resources.client.ImageResource;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * <h1>A tab bar button</h1>
@@ -26,24 +24,11 @@ import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
  * </ul>
  */
 public class TabBarButton extends TabBarButtonBase {
-  /**
-   * Construct a BookmarkTabBarButton
-   * 
-   * @param imageResource the image to use
-   */
-	public TabBarButton(ImageResource imageResource) {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss(), imageResource);
-	}
+  public TabBarButton(ImageResource imageResource) {
+    this(TabPanel.DEFAULT_APPEARANCE, imageResource);
+  }
 
-  /**
-   * Construct a BookmarkTabBarButton with a given css
-   * 
-   * @param css the css to use
-   * @param imageResource the image to use
-   */
-	public TabBarButton(TabBarCss css, ImageResource imageResource) {
-		super(css, imageResource);
-
-	}
-
+  public TabBarButton(TabBarAppearance appearance, ImageResource imageResource) {
+    super(appearance, imageResource);
+  }
 }

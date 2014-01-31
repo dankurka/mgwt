@@ -16,9 +16,8 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.google.gwt.dom.client.Style.Unit;
+
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * A simple Contacts Button for a tab bar.
@@ -33,7 +32,7 @@ public class ContactsTabBarButton extends TabBarButton {
    * 
    */
 	public ContactsTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
+		this(TabPanel.DEFAULT_APPEARANCE);
 	}
 
   /**
@@ -41,8 +40,8 @@ public class ContactsTabBarButton extends TabBarButton {
    * 
    * @param css the css to use
    */
-	public ContactsTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarContactsImage() : null);
+	public ContactsTabBarButton(TabBarAppearance appearance) {
+		super(appearance, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? appearance.icons().contactsImage() : null);
 
 		setText("Contacts");
 		if (imageResource != null)

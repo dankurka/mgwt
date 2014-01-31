@@ -1,0 +1,36 @@
+.mgwt-HeaderButton .mgwt-HeaderButton-text {
+	color: white;
+	border: 2px solid #ccc;
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-text {
+		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-text {
+		background-image: literal('-moz-linear-gradient(top, rgb(0, 92, 176), rgb(0, 72, 156))');
+	}
+}
+
+.mgwt-HeaderButton-back .mgwt-HeaderButton-border-content {
+	border: 2px solid #ccc;
+	border-right: none;
+	border-top: none;
+}
+
+@if user.agent safari {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-border-content {
+		background-image: literal('-webkit-gradient(linear, left top, right bottom, from(rgb(0, 92, 176)), to(rgb(0, 72, 156)) )');
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-HeaderButton-active .mgwt-HeaderButton-border-content {
+		background-image: literal('-moz-linear-gradient(top, rgb(0, 92, 176), rgb(0, 72, 156))');
+	}
+}
+
+.mgwt-HeaderButton-active{}

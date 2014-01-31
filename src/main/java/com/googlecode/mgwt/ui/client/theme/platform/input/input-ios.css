@@ -1,0 +1,66 @@
+@if mgwt.css pretty {
+	@external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea, mgwt-InputBox-box, mgwt-InputBox-disabled;
+}
+
+.mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox .mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
+	color: #777;
+	border: 0;
+	font: normal 17px Helvetica;
+	padding: 0;
+	display: inline-block;
+	margin-left: 0px;
+	
+	\-webkit-appearance: none;
+	\-moz-appearance: none;
+	\-webkit-user-select: text;
+	\-moz-user-select: text;
+	\-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	\-webkit-user-modify: read-write-plaintext-only;
+}
+
+
+
+
+@if user.agent safari {
+	.mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox .mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
+		display: -webkit-box;
+		\-webkit-box-flex: 1;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox .mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
+		display: -moz-box;
+		\-moz-box-flex: 1;
+	}
+}
+
+
+
+.mgwt-TextBox,.mgwt-PasswordTextBox,.mgwt-TextArea {
+	position: relative;
+}
+
+
+@if user.agent safari {
+	.mgwt-TextBox,.mgwt-PasswordTextBox,.mgwt-TextArea {
+		display: -webkit-box;
+		\-webkit-box-flex: 1;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-TextBox,.mgwt-PasswordTextBox,.mgwt-TextArea {
+		display: -moz-box;
+		\-moz-box-flex: 1;
+	}
+}
+
+
+
+/*todo*/
+.mgwt-InputBox-disabled {
+	
+}
+
+

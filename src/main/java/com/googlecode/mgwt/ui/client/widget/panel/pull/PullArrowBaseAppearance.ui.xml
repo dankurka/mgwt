@@ -1,0 +1,14 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g='urn:import:com.google.gwt.user.client.ui'
+	xmlns:mgwt='urn:import:com.googlecode.mgwt.ui.client.widget'>
+	<ui:with field="appearance" type="com.googlecode.mgwt.ui.client.widget.panel.pull.PullPanelAppearance" />
+	
+   <g:FlowPanel ui:field="main" styleName="{appearance.css.pullToRefresh}">
+        <g:FlowPanel ui:field="icon" styleName="{appearance.css.arrow}"/>
+		<mgwt:progress.ProgressIndicator ui:field="indicator" styleName="{appearance.css.spinner}" />     
+     <g:HTML ui:field="textContainer" styleName="{appearance.css.text}" />
+   
+   </g:FlowPanel>
+	 
+</ui:UiBinder>

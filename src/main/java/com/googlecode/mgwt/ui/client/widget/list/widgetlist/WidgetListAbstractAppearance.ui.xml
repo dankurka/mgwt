@@ -1,0 +1,10 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.googlecode.mgwt.ui.client.widget">
+	<ui:with field="appearance" type="com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetListAppearance"></ui:with>
+	<g:FlowPanel>
+	  <g:FlowPanel ui:field="headerContainer" styleName="{appearance.css.headerContainer}"></g:FlowPanel>  
+	  <m:base.ElementPanel.ULFlowPanel ui:field="container" styleName="{appearance.css.widgetList}"/>
+	</g:FlowPanel>
+</ui:UiBinder>

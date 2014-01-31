@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
+  <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.header.HeaderAppearance" />
+
+  <div class="{apperance.css.button}">
+    <div ui:field="bar" class="{apperance.css.buttonBorderContainer}">
+      <span class="{apperance.css.buttonBorderContent}"/>
+    </div>
+    <p ui:field="text" class="{apperance.css.buttonText}" />
+  </div>
+</ui:UiBinder>

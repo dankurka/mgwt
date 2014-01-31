@@ -1,0 +1,13 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:mgwt="urn:import:com.googlecode.mgwt.ui.client.widget">
+	<ui:with field="appearance" type="com.googlecode.mgwt.ui.client.widget.menu.overlay.OverlayMenuAppearance"></ui:with>
+	
+	<g:FlowPanel ui:field="container" styleName="{appearance.css.container}">
+	    <g:FlowPanel ui:field="nav" styleName="{appearance.css.nav}">
+	        <mgwt:animation.AnimationWidget ui:field="animationWidget" styleName="{appearance.css.animationWidget}"/>
+	    </g:FlowPanel>
+	    <g:FlowPanel ui:field="main" styleName="{appearance.css.main}" />
+	</g:FlowPanel>
+</ui:UiBinder> 

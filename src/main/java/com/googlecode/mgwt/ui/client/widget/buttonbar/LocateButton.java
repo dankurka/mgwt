@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class LocateButton extends ButtonBarButtonBase {
 
-	public LocateButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarLocateImage());
-	}
-
+  public LocateButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().locateImage());
+  }
 }

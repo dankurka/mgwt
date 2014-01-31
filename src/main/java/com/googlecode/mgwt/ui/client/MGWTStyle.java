@@ -7,9 +7,6 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.LinkElement;
 import com.google.gwt.dom.client.NodeList;
 
-import com.googlecode.mgwt.ui.client.theme.MGWTTheme;
-import com.googlecode.mgwt.ui.client.theme.MGWTThemeBaseThemeStandardImpl;
-
 /**
  * The {@link MGWTStyle} class provides an easy access to the default theme of every gwt app.
  * 
@@ -28,39 +25,6 @@ import com.googlecode.mgwt.ui.client.theme.MGWTThemeBaseThemeStandardImpl;
  */
 public class MGWTStyle {
 
-  private static MGWTTheme theme;
-
-  /**
-   * get the default bundle of this mgwt app
-   * 
-   * @return the default bundle
-   */
-  public static final MGWTTheme getTheme() {
-    if (theme == null) {
-      theme = new MGWTThemeBaseThemeStandardImpl();
-      theme.getMGWTClientBundle().getMainCss().ensureInjected();
-
-    }
-    return theme;
-  }
-
-  /**
-   * Set the default bundle of this mgwt app
-   * 
-   * <p>
-   * can only be called once at startup
-   * <p>
-   * 
-   * 
-   * @param newTheme the default bundle to use
-   */
-  public static final void setTheme(MGWTTheme newTheme) {
-    if (theme != null) {
-      throw new IllegalStateException("can not change default theme if theres already an instance...");
-    }
-    theme = newTheme;
-    theme.getMGWTClientBundle().getMainCss().ensureInjected();
-  }
 
   /**
    * Inject a given css file at the end of the head

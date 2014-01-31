@@ -254,6 +254,7 @@ public class MGWTSettings {
     settings.setAddGlosToIcon(true);
     settings.setFullscreen(true);
     settings.setPreventScrolling(true);
+    settings.setFixIOS71BodyBug(true);
 
     return settings;
   }
@@ -300,6 +301,8 @@ public class MGWTSettings {
   private boolean disablePhoneNumberDetection;
 
   private StatusBarStyle statusBarStyle;
+  
+  private boolean fixIOS71BodyBug = true;
 
   /**
    * Get the viewport for the mgwt app
@@ -490,5 +493,13 @@ public class MGWTSettings {
    */
   public StatusBarStyle getStatusBarStyle() {
     return statusBarStyle;
+  }
+
+  public boolean fixIOS71BodyBug() {
+    return fixIOS71BodyBug;
+  }
+  
+  public void setFixIOS71BodyBug(boolean fix) {
+    this.fixIOS71BodyBug = fix;
   }
 }

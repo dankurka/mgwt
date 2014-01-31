@@ -16,12 +16,12 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.resources.client.ImageResource;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
-import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
+import com.google.gwt.uibinder.client.UiField;
+
+import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
 
 /**
  * The base class for all tab bar buttonss
@@ -31,109 +31,84 @@ import com.googlecode.mgwt.ui.client.widget.base.ButtonBase;
 
 public class TabBarButtonBase extends ButtonBase {
 
-	protected final TabBarButtonStylerHandler tabBarButtonStylerHandler = GWT.create(TabBarButtonStylerHandler.class);
-
   /**
    * 
    * @author Daniel Kurka
    * 
    */
-	public interface TabBarButtonStylerHandler {
+  public interface TabBarButtonStylerHandler {
     /**
      * set an image as background
      * 
      * @param element the element to set the image on
      * @param imageResource the image to use
      */
-		public void applyImage(Element element, ImageResource imageResource);
-	}
+    public void applyImage(Element element, ImageResource imageResource);
+  }
 
-	// used by deferred binding...
-	@SuppressWarnings("unused")
-	private static class TabBarButtonStylerHandlerWebkit implements TabBarButtonStylerHandler {
+  // used by deferred binding...
+  @SuppressWarnings("unused")
+  private static class TabBarButtonStylerHandlerWebkit implements TabBarButtonStylerHandler {
 
-		@Override
-		public void applyImage(Element element, ImageResource imageResource) {
-			if (imageResource == null)
-				return;
-			element.getStyle().setProperty("WebkitMaskBoxImage", "url(" + imageResource.getSafeUri().asString() + ")");
-			element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
-			element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);
-		}
+    @Override
+    public void applyImage(Element element, ImageResource imageResource) {
+      if (imageResource == null)
+        return;
+      element.getStyle().setProperty("WebkitMaskBoxImage",
+          "url(" + imageResource.getSafeUri().asString() + ")");
+      element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
+      element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);
+    }
+  }
 
-	}
+  @SuppressWarnings("unused")
+  private static class TabBarButtonStylerHandlerBackground implements TabBarButtonStylerHandler {
 
-	@SuppressWarnings("unused")
-	private static class TabBarButtonStylerHandlerBackground implements TabBarButtonStylerHandler {
+    @Override
+    public void applyImage(Element element, ImageResource imageResource) {
+      if (imageResource == null)
+        return;
+      element.getStyle().setBackgroundImage("url(" + imageResource.getSafeUri().asString() + ")");
+      element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
+      element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);
+    }
+  }
 
-		@Override
-		public void applyImage(Element element, ImageResource imageResource) {
-			if (imageResource == null)
-				return;
-			element.getStyle().setBackgroundImage("url(" + imageResource.getSafeUri().asString() + ")");
-			element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
-			element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);
-		}
+  protected static final TabBarButtonStylerHandler tabBarButtonStylerHandler = GWT
+      .create(TabBarButtonStylerHandler.class);
 
-	}
+  @UiField
+  protected Element icon;
+  @UiField
+  protected Element text;
 
-	protected final TabBarCss css;
-	protected Element icon;
-	protected Element text;
-	protected final ImageResource imageResource;
+  protected final ImageResource imageResource;
+  private TabBarAppearance appearance;
 
-  /**
-   * Construct
-   * 
-   * @param css
-   * @param imageResource
-   */
-	public TabBarButtonBase(TabBarCss css, ImageResource imageResource) {
-		super(css);
-		this.css = css;
-		this.imageResource = imageResource;
-		addStyleName(css.button());
+  public TabBarButtonBase(TabBarAppearance appearance, ImageResource imageResource) {
+    super(appearance);
+    this.appearance = appearance;
+    setElement(this.appearance.uiBinder().createAndBindUi(this));
+    this.imageResource = imageResource;
 
-		icon = Document.get().createDivElement();
-		icon.addClassName(css.icon());
-		getElement().appendChild(icon);
+    tabBarButtonStylerHandler.applyImage(icon, imageResource);
+  }
 
-		text = Document.get().createDivElement();
-		text.addClassName(css.text());
-		getElement().appendChild(text);
+  public void setSelected(boolean selected) {
+    if (selected) {
+      addStyleName(this.appearance.css().selected());
+    } else {
+      removeStyleName(this.appearance.css().selected());
+    }
+  }
 
-		tabBarButtonStylerHandler.applyImage(icon, imageResource);
-	}
+  @Override
+  public String getText() {
+    return icon.getInnerText();
+  }
 
-	/**
-	 * <p>
-	 * setSelected
-	 * </p>
-	 * 
-	 * @param selected a boolean.
-	 */
-	public void setSelected(boolean selected) {
-		if (selected) {
-			addStyleName(css.selected());
-		} else {
-			removeStyleName(css.selected());
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public String getText() {
-		return icon.getInnerText();
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void setText(String newText) {
-		text.setInnerText(newText);
-	}
-
+  @Override
+  public void setText(String newText) {
+    text.setInnerText(newText);
+  }
 }

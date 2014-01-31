@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class PauseButton extends ButtonBarButtonBase {
 
-	public PauseButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarPauseImage());
-	}
-
+  public PauseButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().pauseImage());
+  }
 }

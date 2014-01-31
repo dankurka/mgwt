@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class PlayButton extends ButtonBarButtonBase {
 
-	public PlayButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarPlayImage());
-	}
-
+  public PlayButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().playImage());
+  }
 }

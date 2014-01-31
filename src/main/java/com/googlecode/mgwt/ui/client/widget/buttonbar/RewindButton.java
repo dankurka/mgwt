@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class RewindButton extends ButtonBarButtonBase {
 
-	public RewindButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarRewindImage());
-	}
-
+  public RewindButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().rewindImage());
+  }
 }

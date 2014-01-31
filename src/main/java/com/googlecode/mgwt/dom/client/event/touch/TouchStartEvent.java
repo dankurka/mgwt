@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.dom.client.event.touch;
 
+import com.google.gwt.dom.client.NativeEvent;
+
 /**
  * This represents a native touch start Event
  *
@@ -25,6 +27,12 @@ public class TouchStartEvent extends TouchEvent<TouchStartHandler> {
 
 	private static final Type<TouchStartHandler> TYPE = new Type<TouchStartHandler>("touchstart", new TouchStartEvent());
 
+	public static TouchStartEvent from(NativeEvent e) {
+	  TouchStartEvent startEvent = new TouchStartEvent();
+	  startEvent.setNativeEvent(e);
+	  return startEvent;
+	}
+	
 	/**
 	 * <p>getType</p>
 	 *

@@ -15,12 +15,10 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class TrashButton extends ButtonBarButtonBase {
 
-	public TrashButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarTrashImage());
-	}
-
+  public TrashButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().trashImage());
+  }
 }

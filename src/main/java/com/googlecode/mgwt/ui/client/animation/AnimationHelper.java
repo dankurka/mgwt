@@ -19,10 +19,12 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.mgwt.mvp.client.AnimatableDisplay;
+
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
-import com.googlecode.mgwt.mvp.client.Animation;
-import com.googlecode.mgwt.mvp.client.AnimationEndCallback;
+import com.googlecode.mgwt.ui.client.widget.animation.AnimatableDisplay;
+import com.googlecode.mgwt.ui.client.widget.animation.Animation;
+import com.googlecode.mgwt.ui.client.widget.animation.AnimationEndCallback;
+
 
 /**
  * A simple helper class to make the direct use of {@link AnimatableDisplay}

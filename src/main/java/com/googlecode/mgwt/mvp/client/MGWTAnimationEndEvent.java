@@ -23,7 +23,6 @@ import com.google.gwt.event.shared.GwtEvent;
  * {@link AnimatingActivityManager#setFireAnimationEvents(boolean)})
  *
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class MGWTAnimationEndEvent extends GwtEvent<MGWTAnimationEndHandler> {
 

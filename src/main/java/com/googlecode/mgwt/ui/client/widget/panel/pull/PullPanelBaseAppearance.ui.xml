@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g='urn:import:com.google.gwt.user.client.ui' xmlns:mgwt='urn:import:com.googlecode.mgwt.ui.client.widget'>
+	<ui:with field="apperance"
+		type="com.googlecode.mgwt.ui.client.widget.panel.pull.PullPanelAppearance" />
+	<mgwt:panel.scroll.ScrollPanel ui:field="scrollPanel" styleName="{apperance.css.pullPanel}">
+		<g:FlowPanel ui:field="main" styleName="{apperance.css.pullPanelMain}">
+			<g:FlowPanel ui:field="container" styleName="{apperance.css.pullPanelContainer}" />
+		</g:FlowPanel>
+	</mgwt:panel.scroll.ScrollPanel>
+</ui:UiBinder>

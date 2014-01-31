@@ -16,8 +16,6 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * A simple most recent tab bar button.
@@ -30,7 +28,7 @@ public class MostRecentTabBarButton extends TabBarButton {
    * Construct a BookmarkTabBarButton
    */
 	public MostRecentTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
+		this(TabPanel.DEFAULT_APPEARANCE);
 	}
 
   /**
@@ -38,8 +36,8 @@ public class MostRecentTabBarButton extends TabBarButton {
    * 
    * @param css the css to use
    */
-	public MostRecentTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarMostRecentImage() : null);
+	public MostRecentTabBarButton(TabBarAppearance appearance) {
+		super(appearance, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? appearance.icons().mostRecentImage() : null);
 		setText("Most Recent");
 	}
 

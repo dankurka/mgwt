@@ -3,7 +3,7 @@ package com.googlecode.mgwt.ui.client.widget.progress;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
-public class ProgressBarIOSAppearance extends ProgressBarBaseAppearance {
+public class ProgressBarIOSAppearance extends ProgressBarAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();

@@ -25,7 +25,6 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
  * them when the activity is stopped.
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public abstract class MGWTAbstractActivity extends AbstractActivity {
 

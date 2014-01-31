@@ -16,8 +16,6 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.googlecode.mgwt.ui.client.MGWT;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.theme.base.TabBarCss;
 
 /**
  * A downloads tab bar button.
@@ -32,7 +30,7 @@ public class DownloadsTabBarButton extends TabBarButton {
    * 
    */
 	public DownloadsTabBarButton() {
-		this(MGWTStyle.getTheme().getMGWTClientBundle().getTabBarCss());
+		this(TabPanel.DEFAULT_APPEARANCE);
 	}
 
   /**
@@ -40,8 +38,8 @@ public class DownloadsTabBarButton extends TabBarButton {
    * 
    * @param css the css to use
    */
-	public DownloadsTabBarButton(TabBarCss css) {
-		super(css, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? MGWTStyle.getTheme().getMGWTClientBundle().tabBarDownloadsImage() : null);
+	public DownloadsTabBarButton(TabBarAppearance appearance) {
+		super(appearance, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop() ? appearance.icons().downloadsImage() : null);
 		setText("Downloads");
 	}
 

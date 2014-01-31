@@ -35,6 +35,10 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.web.bindery.event.shared.EventBus;
 
+import com.googlecode.mgwt.ui.client.widget.animation.AnimatableDisplay;
+import com.googlecode.mgwt.ui.client.widget.animation.Animation;
+import com.googlecode.mgwt.ui.client.widget.animation.AnimationEndCallback;
+
 /**
  * This is a fork of @link {@link ActivityManager} that has the same features,
  * but also adds animations to the lifecycle of Activities.
@@ -43,7 +47,6 @@ import com.google.web.bindery.event.shared.EventBus;
  * instance of {@link AnimationMapper} to work properly
  * 
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class AnimatingActivityManager implements PlaceChangeEvent.Handler, PlaceChangeRequestEvent.Handler {
 

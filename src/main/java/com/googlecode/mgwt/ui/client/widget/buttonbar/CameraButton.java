@@ -15,12 +15,11 @@
  */
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
-import com.googlecode.mgwt.ui.client.MGWTStyle;
 
 public class CameraButton extends ButtonBarButtonBase {
 
-	public CameraButton() {
-		super(MGWTStyle.getTheme().getMGWTClientBundle().getButtonBarCameraImage());
-	}
+  public CameraButton() {
+    super(ButtonBar.DEFAULT_APPEARANCE.icons().cameraImage());
+  }
 
 }

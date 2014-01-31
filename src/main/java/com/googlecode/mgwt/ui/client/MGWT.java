@@ -26,11 +26,6 @@ import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Float;
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.dom.client.StyleInjector;
-import com.google.gwt.event.logical.shared.CloseEvent;
-import com.google.gwt.event.logical.shared.CloseHandler;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -38,11 +33,13 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.RootPanel;
+
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
-import com.googlecode.mgwt.ui.client.theme.base.UtilCss;
+import com.googlecode.mgwt.ui.client.resource.IOS7BodyBug;
+import com.googlecode.mgwt.ui.client.resource.MainResourceHolder;
 import com.googlecode.mgwt.ui.client.util.AddressBarUtil;
 import com.googlecode.mgwt.ui.client.util.OrientationHandler;
 
@@ -102,11 +99,8 @@ public class MGWT {
    */
   public static void applySettings(MGWTSettings settings) {
 
-    // This is a very nasty workaround because GWT CssResource does not
-    // support @media correctly!
-    StyleInjector.inject(MGWTStyle.getTheme().getMGWTClientBundle().utilTextResource().getText());
-
     Element head = getHead();
+    MainResourceHolder.inject();
 
     if (settings.getIconUrl() != null) {
 
@@ -189,6 +183,9 @@ public class MGWT {
       head.appendChild(statusBarTag);
     }
 
+    if(settings.fixIOS71BodyBug()) {
+      IOS7BodyBug.applyWorkaround();
+    }
   }
 
   /**

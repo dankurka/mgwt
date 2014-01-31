@@ -21,7 +21,6 @@ import com.google.gwt.event.shared.EventHandler;
  * Handler for {@link MGWTAnimationStartEvent} events:
  *
  * @author Daniel Kurka
- * @version $Id: $
  */
 public interface MGWTAnimationStartHandler extends EventHandler {
 	/**
