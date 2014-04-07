@@ -14,6 +14,7 @@
 package com.googlecode.mgwt.ui.client.widget.list.widgetlist;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.Composite;
@@ -21,7 +22,6 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList;
 
 import java.util.ArrayList;
@@ -181,5 +181,10 @@ public class WidgetList extends Composite implements HasWidgets {
   public void setHeader(Widget header) {
     headerContainer.clear();
     headerContainer.add(header);
+  }
+
+  @UiFactory
+  protected WidgetListAppearance getAppearance() {
+	return appearance;
   }
 }

@@ -14,12 +14,12 @@
 package com.googlecode.mgwt.ui.client.widget.panel.pull;
 
 import com.google.gwt.dom.client.Style.Display;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
@@ -145,5 +145,10 @@ public class PullArrowBase extends Composite implements PullArrowWidget {
   protected void removeStyles() {
     icon.removeStyleName(appearance.css().arrow());
     icon.removeStyleName(appearance.css().error());
+  }
+
+  @UiFactory
+  protected PullPanelAppearance getAppearance() {
+	return appearance;
   }
 }

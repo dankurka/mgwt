@@ -1,5 +1,6 @@
 package com.googlecode.mgwt.ui.client.widget.dialog;
 
+import com.google.gwt.uibinder.client.UiFactory;
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
 
 public class DialogButton extends ButtonBase {
@@ -24,6 +25,11 @@ public class DialogButton extends ButtonBase {
     if (ok) {
       addStyleName(appearance.css().okbutton());
     }
+  }
+
+  @UiFactory
+  protected DialogAppearance getAppearance() {
+	return appearance;
   }
 
   private void removeStyleNames() {

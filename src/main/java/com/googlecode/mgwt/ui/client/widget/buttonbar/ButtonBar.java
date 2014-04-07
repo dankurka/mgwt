@@ -16,6 +16,7 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -65,5 +66,10 @@ public class ButtonBar extends Composite implements HasWidgets {
   @Override
   public boolean remove(Widget w) {
     return main.remove(w);
+  }
+
+  @UiFactory
+  protected ButtonBarAppearance getAppearance() {
+	return appearance;
   }
 }

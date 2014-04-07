@@ -17,6 +17,7 @@ package com.googlecode.mgwt.ui.client.widget.header;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.uibinder.client.UiChild;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -143,5 +144,10 @@ public class HeaderPanel extends Composite {
       right.addStyleName(appearance.cssPanel().right());
       container.add(right);
     }
+  }
+
+  @UiFactory
+  protected HeaderAppearance getAppearance() {
+	return appearance;
   }
 }

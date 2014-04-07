@@ -16,9 +16,10 @@
 package com.googlecode.mgwt.ui.client.widget.header;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
-
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
+import com.googlecode.mgwt.ui.client.widget.form.FormAppearance;
 
 /**
  * A Button that can be used inside a {@link HeaderPanel}
@@ -106,6 +107,11 @@ public class HeaderButton extends ButtonBase {
     if (round) {
       addStyleName(appearance.css().round());
     }
+  }
+
+  @UiFactory
+  protected HeaderAppearance getAppearance() {
+	return appearance;
   }
 
   protected void removeStyles() {

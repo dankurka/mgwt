@@ -23,12 +23,12 @@ import com.google.gwt.event.logical.shared.HasOpenHandlers;
 import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
@@ -151,6 +151,11 @@ public class SwipeMenu extends Composite implements HasOpenHandlers<SwipeMenu>,
       state = STATE.CLOSED;
       closeMenu();
     }
+  }
+
+  @UiFactory
+  protected static SwipeMenuAppearance getAppearance() {
+	return APPEARANCE;
   }
 
   private void initHandlers(boolean allowSwipe) {

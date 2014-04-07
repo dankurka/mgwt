@@ -25,6 +25,7 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FormPanel;
@@ -34,7 +35,6 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.TextBox;
-
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
@@ -222,5 +222,10 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
 	@Override
 	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return textBox.addKeyPressHandler(handler);
+	}
+
+	@UiFactory
+	protected MSearchBoxAppearance getAppearance() {
+		return appearance;
 	}
 }
