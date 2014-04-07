@@ -40,6 +40,6 @@ public class ProgressIndicator extends Widget {
 
   @UiFactory
   protected ProgressIndicatorAppearance getAppearance() {
-	return appearance;
+	  return appearance;
   }
 }
