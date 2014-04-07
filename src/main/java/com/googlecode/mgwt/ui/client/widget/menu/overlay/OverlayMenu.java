@@ -15,11 +15,11 @@ package com.googlecode.mgwt.ui.client.widget.menu.overlay;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
@@ -88,5 +88,10 @@ public class OverlayMenu extends Composite {
         main.getElement().getStyle().setLeft(150, Unit.PX);
         break;
     }
+  }
+
+  @UiFactory
+  protected static OverlayMenuAppearance getAppearance() {
+	return APPEARANCE;
   }
 }

@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget.form;
 
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
@@ -22,7 +23,6 @@ import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
 
 import java.util.Iterator;
@@ -139,5 +139,10 @@ public class FormEntry extends Composite implements HasWidgets, HasHTML {
 
   public boolean isValid() {
     return valid;
+  }
+
+  @UiFactory
+  protected FormAppearance getAppearance() {
+	return appearance;
   }
 }

@@ -17,6 +17,7 @@ package com.googlecode.mgwt.ui.client.widget.button;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.uibinder.client.UiFactory;
 
 /**
  * <h1>A simple button class</h1> This is a simple class for rendering button in mgwt.
@@ -182,5 +183,10 @@ public class Button extends ButtonBase {
       // only fire events if the button is currently enabled
       super.fireEvent(event);
     }
+  }
+
+  @UiFactory
+  protected ButtonAppearance getAppearance() {
+	return appearance;
   }
 }

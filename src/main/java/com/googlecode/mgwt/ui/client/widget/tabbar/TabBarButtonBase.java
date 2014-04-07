@@ -19,8 +19,8 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
-
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
 
 /**
@@ -110,5 +110,10 @@ public class TabBarButtonBase extends ButtonBase {
   @Override
   public void setText(String newText) {
     text.setInnerText(newText);
+  }
+
+  @UiFactory
+  protected TabBarAppearance getAppearance() {
+	return appearance;
   }
 }

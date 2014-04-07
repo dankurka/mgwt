@@ -13,16 +13,17 @@
  */
 package com.googlecode.mgwt.ui.client.widget.form;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class Form extends Composite implements HasWidgets {
 
@@ -128,5 +129,10 @@ public class Form extends Composite implements HasWidgets {
     if (header != null) {
       headerContainer.add(header);
     }
+  }
+
+  @UiFactory
+  protected FormAppearance getAppearance() {
+	return appearance;
   }
 }

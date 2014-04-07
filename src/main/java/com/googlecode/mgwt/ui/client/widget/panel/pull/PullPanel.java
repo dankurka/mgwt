@@ -14,13 +14,13 @@
 package com.googlecode.mgwt.ui.client.widget.panel.pull;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.ui.client.widget.base.HasRefresh;
 import com.googlecode.mgwt.ui.client.widget.layout.IsFlexible;
 import com.googlecode.mgwt.ui.client.widget.panel.pull.PullPanel.PullWidget.PullState;
@@ -311,5 +311,10 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh, IsFl
 
   public ScrollPanel getScrollPanel() {
     return scrollPanel;
+  }
+
+  @UiFactory
+  protected PullPanelAppearance getApperance() {
+	return apperance;
   }
 }

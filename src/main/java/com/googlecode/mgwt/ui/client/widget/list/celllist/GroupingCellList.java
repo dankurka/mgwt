@@ -8,7 +8,7 @@ import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-
+import com.google.gwt.uibinder.client.UiFactory;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellListAppearance.CellListCss;
 
 import java.util.HashMap;
@@ -258,6 +258,12 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
     if (t != null) {
       SelectionEvent.fire(this, t);
     }
+  }
+
+  @Override
+  @UiFactory
+  protected CellListAppearance getAppearance() {
+	return super.getAppearance();
   }
 
   @Override

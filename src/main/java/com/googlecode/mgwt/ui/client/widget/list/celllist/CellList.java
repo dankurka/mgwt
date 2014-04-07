@@ -20,10 +20,10 @@ import com.google.gwt.dom.client.Node;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.dom.client.event.tap.Tap;
 import com.googlecode.mgwt.dom.client.event.touch.Touch;
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
@@ -352,6 +352,11 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   protected void fireSelectionAtIndex(int index, Element element) {
     EVENT_PROPAGATOR.fireEvent(this, new CellSelectedEvent(index, element));
+  }
+
+  @UiFactory
+  protected CellListAppearance getAppearance() {
+	return appearance;
   }
 
   protected void startTimer(final Element node) {

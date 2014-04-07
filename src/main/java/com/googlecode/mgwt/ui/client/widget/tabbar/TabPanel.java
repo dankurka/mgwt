@@ -21,12 +21,12 @@ import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
@@ -326,5 +326,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
   public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(
       SelectionHandler<Integer> handler) {
     return new HandlerRegistrationConverter(tabBar.addSelectionHandler(handler));
+  }
+
+  @UiFactory
+  protected TabBarAppearance getAppearance() {
+	return appearance;
   }
 }

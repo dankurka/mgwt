@@ -14,13 +14,13 @@
 package com.googlecode.mgwt.ui.client.widget.layout;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.ui.client.widget.layout.LayoutAppearance.LayoutCss;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 
@@ -131,5 +131,10 @@ public class LayoutPanel extends Composite implements HasWidgets.ForIsWidget, Ha
     } else {
       container.removeStyleName(appearance.css().centerVertically());
     }
+  }
+
+  @UiFactory
+  protected LayoutAppearance getAppearance() {
+	return appearance;
   }
 }

@@ -16,6 +16,7 @@
 package com.googlecode.mgwt.ui.client.widget.progress;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -35,5 +36,10 @@ public class ProgressIndicator extends Widget {
   public ProgressIndicator(ProgressIndicatorAppearance appearance) {
     this.appearance = appearance;
     setElement(this.appearance.uiBinder().createAndBindUi(this));
-	}
+  }
+
+  @UiFactory
+  protected ProgressIndicatorAppearance getAppearance() {
+	return appearance;
+  }
 }

@@ -2,12 +2,12 @@ package com.googlecode.mgwt.ui.client.widget.panel;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
@@ -151,5 +151,10 @@ public class Panel extends Composite implements HasTouchHandlers, HasTapHandlers
   @Override
   public void insert(IsWidget w, int beforeIndex) {
     container.insert(w, beforeIndex);
+  }
+
+  @UiFactory
+  protected PanelAppearance getApperance() {
+	return apperance;
   }
 }

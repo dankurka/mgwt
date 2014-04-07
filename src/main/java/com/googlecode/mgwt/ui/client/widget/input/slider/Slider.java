@@ -21,11 +21,11 @@ import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
@@ -172,6 +172,11 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
   @Override
   public void setValue(Integer value, boolean fireEvents) {
     setValue(value, fireEvents, true);
+  }
+
+  @UiFactory
+  protected SliderAppearance getApperance() {
+	return apperance;
   }
 
   protected void setValue(Integer value, boolean fireEvents, boolean updateSlider) {
