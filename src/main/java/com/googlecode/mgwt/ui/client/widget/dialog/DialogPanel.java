@@ -13,13 +13,13 @@
  */
 package com.googlecode.mgwt.ui.client.widget.dialog;
 
-import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasWidgets;
+
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 
 /**
@@ -135,10 +135,5 @@ public class DialogPanel extends Composite {
    */
   public HasHTML getDialogTitle() {
     return title;
-  }
-
-  @UiFactory
-  protected DialogAppearance getAppearance() {
-	return appearance;
   }
 }

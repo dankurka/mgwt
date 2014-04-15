@@ -1,10 +1,12 @@
-package com.googlecode.mgwt.ui.client.widget.progress;
+package com.googlecode.mgwt.ui.client.theme.platform.progress;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 
-public class ProgressIndicatorIOSAppearance extends ProgressIndicatorAbstractAppearance {
+import com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicatorAbstractAppearance;
+
+public class ProgressIndicatorAndroidAppearance extends ProgressIndicatorAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();
@@ -14,14 +16,13 @@ public class ProgressIndicatorIOSAppearance extends ProgressIndicatorAbstractApp
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"progressindicator-base.css", "progressindicator-ios.css"})
+    @Source({"progressindicator-base.css", "progressindicator-android.css"})
     ProgressIndicatorCss css();
 
-    @Source("spinner.png")
+    @Source("spinner_white.png")
     DataResource spinnerImage();
   }
-
-
+  
   @Override
   public ProgressIndicatorCss css() {
     return Resources.INSTANCE.css();

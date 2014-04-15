@@ -2,9 +2,8 @@ package com.googlecode.mgwt.ui.client.widget.progress;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.DataResource;
 
-public class ProgressIndicatorBlackberryAppearance extends ProgressBarAbstractAppearance {
+public class ProgressIndicatorDefaultAppearance extends ProgressIndicatorAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();
@@ -14,15 +13,13 @@ public class ProgressIndicatorBlackberryAppearance extends ProgressBarAbstractAp
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"progressbar-base.css", "progressbar-android.css"})
-    ProgressBarCss css();
-
-    @Source("spinner_white.png")
-    DataResource spinnerImage();
+    @Source({"progressindicator.css"})
+    ProgressIndicatorCss css();
   }
 
+
   @Override
-  public ProgressBarCss css() {
+  public ProgressIndicatorCss css() {
     return Resources.INSTANCE.css();
   }
 }

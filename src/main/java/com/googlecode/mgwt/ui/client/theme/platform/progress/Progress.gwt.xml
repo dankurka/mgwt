@@ -13,7 +13,7 @@ under the License.
 -->
 
 <module>
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.progress.ProgressBarIOSAppearance">
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.progress.ProgressBarIOSAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.progress.ProgressBarAppearance" />
       <any>
 	    <when-property-is name="mgwt.os" value="iphone" />
@@ -24,7 +24,7 @@ under the License.
      </any>
   </replace-with>
 
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.progress.ProgressBarAndroidAppearance">
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.progress.ProgressBarAndroidAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.progress.ProgressBarAppearance" />
       <any>
         <when-property-is name="mgwt.os" value="android" />
@@ -32,15 +32,36 @@ under the License.
      </any>
   </replace-with>
 
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.progress.ProgressBarBlackberryAppearance">
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.progress.ProgressBarBlackberryAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.progress.ProgressBarAppearance" />
 	  <any>
         <when-property-is name="mgwt.os" value="blackberry" />
       </any>
   </replace-with>
   
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicatorDefaultAppearance">
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.progress.ProgressIndicatorIOSAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicatorAppearance" />
+      <any>
+	    <when-property-is name="mgwt.os" value="iphone" />
+	    <when-property-is name="mgwt.os" value="ipad" />
+        <when-property-is name="mgwt.os" value="retina" />
+        <when-property-is name="mgwt.os" value="ipad_retina" />
+        <when-property-is name="mgwt.os" value="desktop" />
+     </any>
   </replace-with>
 
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.progress.ProgressIndicatorAndroidAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicatorAppearance" />
+      <any>
+        <when-property-is name="mgwt.os" value="android" />
+        <when-property-is name="mgwt.os" value="android_tablet" />
+     </any>
+  </replace-with>
+
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.progress.ProgressIndicatorBlackberryAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicatorAppearance" />
+	  <any>
+        <when-property-is name="mgwt.os" value="blackberry" />
+      </any>
+  </replace-with>
 </module>
