@@ -15,15 +15,14 @@
  */
 package com.googlecode.mgwt.ui.client.animation;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.mvp.client.AnimatingActivityManager;
 import com.googlecode.mgwt.ui.client.widget.animation.AnimatableDisplay;
 import com.googlecode.mgwt.ui.client.widget.animation.Animation;
 import com.googlecode.mgwt.ui.client.widget.animation.AnimationEndCallback;
+import com.googlecode.mgwt.ui.client.widget.animation.AnimationWidget;
 
 
 /**
@@ -48,7 +47,7 @@ public class AnimationHelper extends Composite {
 	 * Construct an animation helper
 	 */
 	public AnimationHelper() {
-		this((AnimatableDisplay) GWT.create(AnimatableDisplay.class));
+		this(new AnimationWidget());
 	}
 
 	/**
