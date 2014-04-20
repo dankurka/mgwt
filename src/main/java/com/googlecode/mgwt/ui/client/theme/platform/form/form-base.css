@@ -86,3 +86,9 @@
 }
 
 .mgwt-Form-Entry-invalid{}
+
+.mgwt-Form-Header {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 4px 10px;
+}

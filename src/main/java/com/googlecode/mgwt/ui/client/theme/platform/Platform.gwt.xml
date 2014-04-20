@@ -15,6 +15,7 @@ under the License.
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.main.MainResource" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.button.Button" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.dialog.Dialog" />
+  <inherits name="com.googlecode.mgwt.ui.client.theme.platform.form.Form" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.header.Header" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.Input" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.checkbox.MCheckbox" />
