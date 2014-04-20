@@ -2,6 +2,7 @@ package com.googlecode.mgwt.ui.client.theme.platform.input;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
+import com.googlecode.mgwt.ui.client.widget.input.InputAppearance;
 
 public class InputIOSAppearance implements InputAppearance {
 
