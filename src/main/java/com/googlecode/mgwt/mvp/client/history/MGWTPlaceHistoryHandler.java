@@ -24,6 +24,7 @@ import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler.DefaultHistorian;
 import com.google.gwt.place.shared.PlaceHistoryHandler.Historian;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
@@ -161,14 +162,14 @@ public class MGWTPlaceHistoryHandler {
 
 	protected void replaceToken(String token) {
 		if (token.length() > 0) {
-			historian.replaceState(token, Window.getTitle(), "#" + token);
+			historian.replaceState(token, Window.getTitle(), "#" + History.encodeHistoryToken(token));
 		} else {
 			historian.replaceState(token, Window.getTitle(), "");
 		}
 	}
 
 	protected void pushToken(String token) {
-		historian.pushState(token, Window.getTitle(), "#" + token);
+		historian.pushState(token, Window.getTitle(), "#" + History.encodeHistoryToken(token));
 	}
 
 	public void handleCurrentHistory() {
