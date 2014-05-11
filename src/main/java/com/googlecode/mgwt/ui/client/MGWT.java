@@ -99,6 +99,9 @@ public class MGWT {
   public static void applySettings(MGWTSettings settings) {
 
     Element head = getHead();
+    // You can disable injection of default resources
+    // by putting this in your gwt.xml
+    // <set-property name="mgwt.mainresource.inject" value="no" />
     MainResourceHolder.inject();
 
     if (settings.getIconUrl() != null) {
