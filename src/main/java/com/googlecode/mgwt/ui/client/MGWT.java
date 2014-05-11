@@ -102,17 +102,10 @@ public class MGWT {
     MainResourceHolder.inject();
 
     if (settings.getIconUrl() != null) {
-
       LinkElement iconUrlLinkElement = Document.get().createLinkElement();
-      if (settings.isAddGlosToIcon()) {
-        iconUrlLinkElement.setRel("apple-touch-startup-image");
-      } else {
-        iconUrlLinkElement.setRel("apple-touch-startup-image-precomposed");
-      }
-
+      iconUrlLinkElement.setRel("apple-touch-icon");
       iconUrlLinkElement.setHref(settings.getIconUrl());
       head.appendChild(iconUrlLinkElement);
-
     }
 
     if (settings.getStartUrl() != null) {

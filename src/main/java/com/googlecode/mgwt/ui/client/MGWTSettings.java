@@ -252,7 +252,6 @@ public class MGWTSettings {
 
     MGWTSettings settings = new MGWTSettings();
     settings.setViewPort(viewPort);
-    settings.setAddGlosToIcon(true);
     settings.setFullscreen(true);
     settings.setPreventScrolling(true);
     settings.setFixIOS71BodyBug(true);
@@ -287,8 +286,6 @@ public class MGWTSettings {
 
   private ViewPort viewPort;
 
-  private boolean gloss;
-
   private String iconUrl;
 
   private String startUrl;
@@ -321,34 +318,6 @@ public class MGWTSettings {
    */
   public void setViewPort(ViewPort viewPort) {
     this.viewPort = viewPort;
-  }
-
-  /**
-   * If the app is added to the home screen on an ios device we can select if we like a gloss added
-   * to the icon of the app
-   * 
-   * <p>
-   * only relevant on ios devices
-   * </p>
-   * 
-   * @return true if gloss should be added, otherwise false
-   */
-  public boolean isAddGlosToIcon() {
-    return gloss;
-  }
-
-  /**
-   * If the app is added to the home screen on an ios device we can select if we like a gloss added
-   * to the icon of the app
-   * 
-   * <p>
-   * only relevant on ios devices
-   * </p>
-   * 
-   * @param gloss true if gloss should be added, otherwise false
-   */
-  public void setAddGlosToIcon(boolean gloss) {
-    this.gloss = gloss;
   }
 
   /**
