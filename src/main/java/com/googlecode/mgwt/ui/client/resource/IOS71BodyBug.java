@@ -8,7 +8,14 @@ import com.google.gwt.resources.client.TextResource;
 
 import com.googlecode.mgwt.ui.client.MGWT;
 
-public class IOS7BodyBug {
+/**
+ * This class fixes an iPad bug on iOS7.1.
+ * <p>
+ * On iPads with iOS 7.1 in landscape using a body height of 100% results in a
+ * 20px white stripe on the bottom of screen, since the iPad reports its screen to be 20px less
+ * in height. Fixed by applying a special CSS to iPdas in landscape mode.
+ */
+public class IOS71BodyBug {
 
   interface Resources extends ClientBundle {
 

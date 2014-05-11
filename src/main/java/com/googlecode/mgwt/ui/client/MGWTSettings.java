@@ -14,6 +14,7 @@
 package com.googlecode.mgwt.ui.client;
 
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
+import com.googlecode.mgwt.ui.client.resource.IOS71BodyBug;
 
 /**
  * This class acts as a container for all settings for an mgwt app.
@@ -495,10 +496,20 @@ public class MGWTSettings {
     return statusBarStyle;
   }
 
+  /**
+   * Should we fix the iOS 7.1 landscape body bug?
+   *
+   * @see IOS71BodyBug
+   */
   public boolean fixIOS71BodyBug() {
     return fixIOS71BodyBug;
   }
-  
+
+  /**
+   * Set whether we should fix the iOS 7.1 landscape body bug.
+   *
+   * @see IOS71BodyBug
+   */
   public void setFixIOS71BodyBug(boolean fix) {
     this.fixIOS71BodyBug = fix;
   }
