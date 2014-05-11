@@ -415,25 +415,14 @@ public class MGWTSettings {
   }
 
   /**
-   * <p>
-   * ios only
-   * </p>
-   * disable the auto dection of phonenumbers in your app
-   * 
-   * @param disablePhoneNumberDetection true to disable
+   * Disables the auto detection of phone numbers in apps.
    */
   public void setDisablePhoneNumberDetection(boolean disablePhoneNumberDetection) {
     this.disablePhoneNumberDetection = disablePhoneNumberDetection;
   }
 
   /**
-   * 
-   * <p>
-   * ios only
-   * </p>
-   * disable the auto dection of phonenumbers in your app
-   * 
-   * @return true to disable
+   * Should auto detection of phone numbers be disabled in apps.
    */
   public boolean isDisablePhoneNumberDetection() {
     return disablePhoneNumberDetection;
