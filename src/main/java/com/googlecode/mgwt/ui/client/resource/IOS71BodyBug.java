@@ -36,6 +36,6 @@ public class IOS71BodyBug {
   }
 
   private native static boolean isIOS71() /*-{
-		return $wnd.navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i);
+		return !!$wnd.navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i);
   }-*/;
 }
