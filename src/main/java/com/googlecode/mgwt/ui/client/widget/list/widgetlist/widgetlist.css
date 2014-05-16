@@ -1,5 +1,5 @@
 @if mgwt.css pretty {
-	@external mgwt-WidgetList, mgwt-WidgetList-Entry-first, mgwt-WidgetList-Entry-last, mgwt-WidgetList-round,mgwt-WidgetList-Entry;
+	@external mgwt-WidgetList, mgwt-WidgetList-Entry-first, mgwt-WidgetList-Entry-last, mgwt-WidgetList-round,mgwt-WidgetList-Entry, mgwt-WidgetList-headerContainer;
 }
 
 .mgwt-WidgetList {
