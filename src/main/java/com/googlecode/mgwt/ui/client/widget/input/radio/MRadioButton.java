@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -48,7 +48,7 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
  * A touch enabled radio button implementation
- * 
+ *
  * @author Daniel Kurka
  */
 public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
@@ -66,7 +66,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
 
   /**
    * Construct a radio button
-   * 
+   *
    * @param name the name of the group
    */
   @UiConstructor
@@ -76,7 +76,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
 
   /**
    * Construct a radio button
-   * 
+   *
    * @param appearance the apperance to use
    * @param name the group name to use
    */
@@ -84,6 +84,8 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
     this.appearance = appearance;
     setElement(appearance.uiBinder().createAndBindUi(this));
     inputRadio.setName(name);
+
+    sinkEvents(Event.ONCHANGE);
 
     addTouchHandler(new TouchHandler() {
 
@@ -113,7 +115,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
         if (Math.abs(last_x - start_x) < Tap.RADIUS && Math.abs(last_y - start_y) < Tap.RADIUS) {
           if (labelOrContainer) {
             inputRadio.setChecked(true);
-            ValueChangeEvent.fire(MRadioButton.this, true);
+            setValue(true, true);
           }
         }
 
@@ -164,8 +166,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
 
       @Override
       public void onChange(ChangeEvent event) {
-        ValueChangeEvent.fire(MRadioButton.this, true);
-
+        setValue(true, true);
       }
     }, ChangeEvent.getType());
   }
@@ -220,19 +221,16 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
   @Override
   public void setValue(Boolean value, boolean fireEvents) {
     if (value == null) {
-      value = Boolean.FALSE;
+      value = false;
     }
 
-    Boolean oldValue = getValue();
+    boolean oldValue = getValue();
     inputRadio.setChecked(value);
     inputRadio.setDefaultChecked(value);
-    if (value.equals(oldValue)) {
-      return;
-    }
-    if (fireEvents) {
-      ValueChangeEvent.fire(this, value);
-    }
 
+    if (fireEvents) {
+      ValueChangeEvent.fireIfNotEqual(this, oldValue, value);
+    }
   }
 
   @Override
@@ -282,7 +280,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
 
   /**
    * set the formvalue of this radio button
-   * 
+   *
    * @param formValue the formvalue that would be sent to a server
    */
   public void setFormValue(String formValue) {
@@ -312,7 +310,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
 
   /**
    * get the form value of the input element
-   * 
+   *
    * @return the form value
    */
   public String getFormValue() {
