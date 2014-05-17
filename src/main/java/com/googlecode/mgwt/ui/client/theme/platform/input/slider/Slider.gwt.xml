@@ -13,7 +13,7 @@ under * the License.
 
 <module>
 	<replace-with class="com.googlecode.mgwt.ui.client.theme.platform.input.slider.SliderIOSAppearance">
-	    <when-type-is class="com.googlecode.mgwt.ui.client.widget.slider.SliderAppearance" />
+	    <when-type-is class="com.googlecode.mgwt.ui.client.widget.input.slider.SliderAppearance" />
 		<any>
 			<when-property-is name="mgwt.os" value="iphone" />
 			<when-property-is name="mgwt.os" value="ipad" />
@@ -24,7 +24,7 @@ under * the License.
 	</replace-with>
 	
 	<replace-with class="com.googlecode.mgwt.ui.client.theme.platform.input.slider.SliderAndroidAppearance">
-	    <when-type-is class="com.googlecode.mgwt.ui.client.widget.slider.SliderAppearance" />
+	    <when-type-is class="com.googlecode.mgwt.ui.client.widget.input.slider.SliderAppearance" />
 		<any>
 			<when-property-is name="mgwt.os" value="android" />
 			<when-property-is name="mgwt.os" value="android_tablet" />
@@ -32,7 +32,7 @@ under * the License.
 	</replace-with>
 	
 		<replace-with class="com.googlecode.mgwt.ui.client.theme.platform.input.slider.SliderBlackberryAppearance">
-	    <when-type-is class="com.googlecode.mgwt.ui.client.widget.slider.SliderAppearance" />
+	    <when-type-is class="com.googlecode.mgwt.ui.client.widget.input.slider.SliderAppearance" />
 		<any>
 			<when-property-is name="mgwt.os" value="blackberry" />
 		</any>
