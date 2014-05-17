@@ -1,15 +1,14 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
-
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBaseAppearance;
 
 public interface TabBarAppearance extends ButtonBaseAppearance {
-  interface TabBarCss extends CssResource {
+  interface TabBarCss extends MGWTCssResource {
 
     @ClassName("mgwt-TabPanel")
     public String tabPanel();
@@ -21,7 +20,7 @@ public interface TabBarAppearance extends ButtonBaseAppearance {
     public String tabbar();
 
   }
-  
+
   interface TabBarButtonCss extends ButtonBaseAppearance.ButtonBaseCss {
     @Override
     @ClassName("mgwt-TabBar-Button")
@@ -40,7 +39,7 @@ public interface TabBarAppearance extends ButtonBaseAppearance {
     @ClassName("mgwt-TabBar-Button-text")
     public String text();
   }
-  
+
   interface TabBarIcons {
     ImageResource bookMarkImage();
 
@@ -62,20 +61,20 @@ public interface TabBarAppearance extends ButtonBaseAppearance {
 
     ImageResource searchImage();
   }
-  
+
   @Override
   TabBarButtonCss css();
-  
+
   @Override
   UiBinder<? extends Element, TabBarButtonBase> uiBinder();
-  
+
   TabBarCss barCss();
-  
+
   UiBinder<Widget, TabPanel> panelBinder();
-  
+
   TabBarIcons icons();
 
   UiBinder<Widget, TabPanel.TabContainer> containerBinder();
-  
+
   UiBinder<Widget, TabPanel.TabBar> barBinder();
 }

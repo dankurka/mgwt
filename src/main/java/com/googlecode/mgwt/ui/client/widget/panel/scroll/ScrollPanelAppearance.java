@@ -1,9 +1,9 @@
 package com.googlecode.mgwt.ui.client.widget.panel.scroll;
 
-import com.google.gwt.resources.client.CssResource;
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 
 public interface ScrollPanelAppearance {
-  public interface ScrollPanelCss extends CssResource {
+  public interface ScrollPanelCss extends MGWTCssResource {
 
     @ClassName("mgwt-ScrollPanel")
     String scrollPanel();
@@ -24,6 +24,6 @@ public interface ScrollPanelAppearance {
     String scrollBarBar();
 
   }
-  
+
   ScrollPanelCss css();
 }

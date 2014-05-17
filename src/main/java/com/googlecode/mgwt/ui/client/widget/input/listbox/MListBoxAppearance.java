@@ -1,11 +1,11 @@
 package com.googlecode.mgwt.ui.client.widget.input.listbox;
 
-import com.google.gwt.resources.client.CssResource;
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 
 public interface MListBoxAppearance {
-  public interface MListBoxCss extends CssResource {
+  public interface MListBoxCss extends MGWTCssResource {
     @ClassName("mgwt-ListBox")
-    String listBox(); 
+    String listBox();
   }
   MListBoxCss css();
 }

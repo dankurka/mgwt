@@ -1,21 +1,20 @@
 package com.googlecode.mgwt.ui.client.widget.list.widgetlist;
 
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
-
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 import com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetList.WidgetListEntry;
 
 public interface WidgetListAppearance {
-  
-  public interface WidgetListCss extends CssResource {
+
+  public interface WidgetListCss extends MGWTCssResource {
 
     @ClassName("mgwt-WidgetList")
     String widgetList();
-    
+
     @ClassName("mgwt-WidgetList-headerContainer")
     String headerContainer();
-    
+
     @ClassName("mgwt-WidgetList-Entry-first")
     String widgetListEntryFirstChild();
 
@@ -24,7 +23,7 @@ public interface WidgetListAppearance {
 
     @ClassName("mgwt-WidgetList-round")
     String round();
-    
+
     @ClassName("mgwt-WidgetList-Entry")
     String widgetListEntry();
 
@@ -33,7 +32,7 @@ public interface WidgetListAppearance {
   }
 
   WidgetListCss css();
-  
+
   UiBinder<Widget, WidgetList> uiBinder();
 
   UiBinder<Widget, WidgetListEntry> uiBinderEntry();

@@ -1,11 +1,10 @@
 package com.googlecode.mgwt.ui.client.widget.buttonbar;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Panel;
-
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBaseAppearance;
 
 public interface ButtonBarAppearance extends ButtonBaseAppearance {
@@ -73,8 +72,8 @@ public interface ButtonBarAppearance extends ButtonBaseAppearance {
     ImageResource trashImage();
 
   }
-  
-  public interface ButtonBarCss extends CssResource {
+
+  public interface ButtonBarCss extends MGWTCssResource {
 
     @ClassName("mgwt-ButtonBar")
     public String buttonBar();
@@ -85,21 +84,21 @@ public interface ButtonBarAppearance extends ButtonBaseAppearance {
     @ClassName("mgwt-ButtonBar-text")
     public String text();
   }
-  
+
   @Override
   ButtonBarButtonCss css();
-  
+
   ButtonBarCss barCss();
 
   ButtonBarIcons icons();
-  
+
   @Override
   UiBinder<? extends Element, ButtonBarButtonBase> uiBinder();
 
   UiBinder<? extends Panel, ButtonBar> barBinder();
-  
+
   UiBinder<? extends Element, ButtonBarSpacer> barSpacer();
-  
+
   UiBinder<? extends Element, ButtonBarText> barText();
-  
+
 }

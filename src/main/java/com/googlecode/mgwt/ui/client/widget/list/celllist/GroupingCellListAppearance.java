@@ -1,11 +1,10 @@
 package com.googlecode.mgwt.ui.client.widget.list.celllist;
 
-import com.google.gwt.resources.client.CssResource;
-
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList.HeaderTemplate;
 
 public interface GroupingCellListAppearance extends CellListAppearance {
-  public interface GroupingListCss extends CssResource {
+  public interface GroupingListCss extends MGWTCssResource {
 
     @ClassName("mgwt-GroupingList")
     public String groupingHeaderList();
@@ -21,6 +20,6 @@ public interface GroupingCellListAppearance extends CellListAppearance {
   }
 
   GroupingListCss groupCss();
-  
+
   HeaderTemplate getHeaderTemplate();
 }

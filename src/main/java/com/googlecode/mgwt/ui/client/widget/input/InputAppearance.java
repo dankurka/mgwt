@@ -1,9 +1,9 @@
 package com.googlecode.mgwt.ui.client.widget.input;
 
-import com.google.gwt.resources.client.CssResource;
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 
 public interface InputAppearance {
-  public interface InputCss extends CssResource {
+  public interface InputCss extends MGWTCssResource {
 
     @ClassName("mgwt-TextBox")
     String textBox();
@@ -20,6 +20,6 @@ public interface InputAppearance {
     @ClassName("mgwt-InputBox-disabled")
     String disabled();
   }
-  
+
   InputCss css();
 }

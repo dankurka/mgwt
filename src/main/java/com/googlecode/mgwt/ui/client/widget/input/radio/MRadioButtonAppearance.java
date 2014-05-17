@@ -1,11 +1,11 @@
 package com.googlecode.mgwt.ui.client.widget.input.radio;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 
 public interface MRadioButtonAppearance {
-  public interface MRadioButtonCss extends CssResource {
+  public interface MRadioButtonCss extends MGWTCssResource {
     @ClassName("mgwt-RadioButton-disabled")
     String disabled();
     @ClassName("mgwt-RadioButton")
@@ -17,6 +17,6 @@ public interface MRadioButtonAppearance {
   }
 
   MRadioButtonCss css();
-  
+
   UiBinder<? extends Element, MRadioButton> uiBinder();
 }

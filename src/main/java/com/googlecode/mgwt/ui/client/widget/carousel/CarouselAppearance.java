@@ -1,9 +1,9 @@
 package com.googlecode.mgwt.ui.client.widget.carousel;
 
-import com.google.gwt.resources.client.CssResource;
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 
 public interface CarouselAppearance {
-  public interface CarouselCss extends CssResource {
+  public interface CarouselCss extends MGWTCssResource {
 
     @ClassName("mgwt-Carousel")
     String carousel();
@@ -25,8 +25,7 @@ public interface CarouselAppearance {
 
     @ClassName("mgwt-Carousel-Holder")
     String carouselHolder();
-
   }
-  
+
   CarouselCss css();
 }

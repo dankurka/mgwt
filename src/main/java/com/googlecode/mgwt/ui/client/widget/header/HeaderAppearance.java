@@ -1,15 +1,14 @@
 package com.googlecode.mgwt.ui.client.widget.header;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
-
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBaseAppearance;
 
 public interface HeaderAppearance extends ButtonBaseAppearance {
 
-  interface HeaderButtonCss extends CssResource, ButtonBaseCss {
+  interface HeaderButtonCss extends MGWTCssResource, ButtonBaseCss {
     @ClassName("mgwt-HeaderButton")
     public String button();
     @Override
@@ -34,8 +33,8 @@ public interface HeaderAppearance extends ButtonBaseAppearance {
     @ClassName("mgwt-HeaderButton-border-content")
     public String buttonBorderContent();
   }
-  
-  interface HeaderPanelCss extends CssResource {
+
+  interface HeaderPanelCss extends MGWTCssResource {
     @ClassName("mgwt-HeaderPanel")
     String panel();
 

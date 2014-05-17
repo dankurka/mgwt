@@ -1,11 +1,11 @@
 package com.googlecode.mgwt.ui.client.widget.layout;
 
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Panel;
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 
 public interface LayoutAppearance {
-  public interface LayoutCss extends CssResource {
+  public interface LayoutCss extends MGWTCssResource {
 
     @ClassName("mgwt-LayoutPanel")
     String layoutPanel();
