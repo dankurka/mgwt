@@ -18,8 +18,8 @@ under the License.
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.form.Form" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.header.Header" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.Input" />
-  <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.checkbox.MCheckbox" />
-  <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.listbox.MListbox" />
+  <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.checkbox.MCheckBox" />
+  <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.listbox.MListBox" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.radio.MRadioButton" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.search.MSearchBox" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.input.slider.Slider" />
