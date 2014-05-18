@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -15,14 +15,12 @@
  */
 package com.googlecode.mgwt.ui.client.widget.input.search;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.event.dom.client.HasAllKeyHandlers;
-import com.google.gwt.event.dom.client.HasChangeHandlers;
-import com.google.gwt.event.dom.client.KeyDownHandler;
-import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiFactory;
@@ -43,9 +41,9 @@ import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
 
 /**
  * A search widget
- * 
+ *
  * <h2>Styling</h2> The DOM structure looks like:
- * 
+ *
  * <pre>
  * &lt;div class="mgwt-SearchBox">
  * 	&lt;form class="mgwt-SearchBox-round">
@@ -54,61 +52,63 @@ import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
  * 	&lt;div class="mgwt-SearchBox-clear"/>
  * &lt;/div>
  * </pre>
- * 
- * 
- * 
+ *
+ *
+ *
  * If the clear element is touched its class is changed to
  * .mgwt-SearchBox-clear-active
- * 
+ *
  * @author Daniel Kurka Date: 30.05.2010
- * 
+ *
  */
 
-public class MSearchBox extends Composite implements HasChangeHandlers, HasText, HasName, HasValue<String>, HasPlaceHolder, HasAllKeyHandlers {
+public class MSearchBox extends Composite implements
+    HasText, HasName, HasValue<String>, HasPlaceHolder {
+
   public static class MSearchBoxButton extends ButtonBase {
     public MSearchBoxButton() {
       this(DEFAULT_APPEARANCE);
     }
-    
+
     public MSearchBoxButton(MSearchBoxAppearance appearance) {
       super(appearance);
       setElement(appearance.uiBinder().createAndBindUi(this));
     }
   }
-  
+
   private class SearchBoxChangeHandler implements KeyUpHandler {
 
-		@Override
-		public void onKeyUp(KeyUpEvent event) {
-			if (!MGWT.getOsDetection().isDesktop()) {
-				if (textBox.getValue().length() > 0) {
-					clearButton.setVisible(true);
-				} else {
-				  clearButton.setVisible(false);
-				}
-			}
-		}
-	}
+    @Override
+    public void onKeyUp(KeyUpEvent event) {
+      if (!MGWT.getOsDetection().isDesktop()) {
+        if (textBox.getValue().length() > 0) {
+          clearButton.setVisible(true);
+        } else {
+          clearButton.setVisible(false);
+        }
+      }
+    }
+  }
 
-	private static final MSearchBoxAppearance DEFAULT_APPEARANCE = GWT.create(MSearchBoxAppearance.class);
-	
-	@UiField
-	protected TextBox textBox;
-	
-	@UiField
-	protected ButtonBase clearButton;
-	
-	@UiField
-	protected FormPanel form;
-	
-	private HandlerRegistration clearButtonHandler;
-	private HandlerRegistration boxHandler;
+  private static final MSearchBoxAppearance DEFAULT_APPEARANCE = GWT
+      .create(MSearchBoxAppearance.class);
+
+  @UiField
+  protected TextBox textBox;
+
+  @UiField
+  protected ButtonBase clearButton;
+
+  @UiField
+  protected FormPanel form;
+
+  private HandlerRegistration clearButtonHandler;
+  private HandlerRegistration boxHandler;
   private MSearchBoxAppearance appearance;
-	
 
-	public MSearchBox() {
-		this(DEFAULT_APPEARANCE);
-	}
+  public MSearchBox() {
+    this(DEFAULT_APPEARANCE);
+  }
 
   public MSearchBox(MSearchBoxAppearance appearance) {
     this.appearance = appearance;
@@ -125,107 +125,122 @@ public class MSearchBox extends Composite implements HasChangeHandlers, HasText,
     textBox.getElement().setAttribute("autocorrect", "off");
     textBox.getElement().setAttribute("type", "search");
     setPlaceHolder("Search");
+
+    textBox.addValueChangeHandler(new ValueChangeHandler<String>() {
+
+      @Override
+      public void onValueChange(ValueChangeEvent<String> event) {
+        fireEvent(new SearchSubmitEvent(event.getValue()));
+      }
+    });
+
+    textBox.addKeyUpHandler(new KeyUpHandler() {
+
+      @Override
+      public void onKeyUp(KeyUpEvent event) {
+        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+
+          @Override
+          public void execute() {
+            ValueChangeEvent.fire(MSearchBox.this, getValue());          }
+        });
+      }
+    });
   }
 
-	@Override
-	protected void onAttach() {
-		super.onAttach();
+  public HandlerRegistration addSearchSubmitHandler(SearchSubmitHandler handler) {
+    return addHandler(handler, SearchSubmitEvent.getType());
+  }
 
-		clearButtonHandler = clearButton.addTapHandler(new TapHandler() {
-      
+  public HandlerRegistration addSearchClearHandler(SearchClearHandler handler) {
+    return addHandler(handler, SearchClearEvent.getType());
+  }
+
+  @Override
+  protected void onAttach() {
+    super.onAttach();
+
+    clearButtonHandler = clearButton.addTapHandler(new TapHandler() {
+
       @Override
       public void onTap(TapEvent event) {
         clearSearchField();
       }
     });
 
-		boxHandler = textBox.addKeyUpHandler(new SearchBoxChangeHandler());
-	}
+    boxHandler = textBox.addKeyUpHandler(new SearchBoxChangeHandler());
+  }
 
-	@Override
-	protected void onDetach() {
-		super.onDetach();
-		clearButtonHandler.removeHandler();
-		boxHandler.removeHandler();
-	}
+  @Override
+  protected void onDetach() {
+    super.onDetach();
+    clearButtonHandler.removeHandler();
+    boxHandler.removeHandler();
+  }
 
-	@Override
-	public void setPlaceHolder(String text) {
-		textBox.getElement().setAttribute("placeholder", text);
-	}
+  @Override
+  public void setPlaceHolder(String text) {
+    textBox.getElement().setAttribute("placeholder", text);
+  }
 
-	private void clearSearchField() {
-		textBox.setValue("",true);
-		clearButton.setVisible(false);
-	}
+  private void clearSearchField() {
+    textBox.setValue("", false);
+    clearButton.setVisible(false);
+    fireEvent(new SearchClearEvent());
+    ValueChangeEvent.fire(this, "");
+  }
 
-	@Override
-	public String getPlaceHolder() {
-		return textBox.getElement().getAttribute("placeholder");
-	}
+  @Override
+  public String getPlaceHolder() {
+    return textBox.getElement().getAttribute("placeholder");
+  }
 
-	@Override
-	public String getText() {
-		return textBox.getText();
-	}
+  @Override
+  public String getText() {
+    return textBox.getText();
+  }
 
-	@Override
-	public void setText(String text) {
-		textBox.setText(text);
-	}
+  @Override
+  public void setText(String text) {
+    textBox.setText(text);
+  }
 
-	@Override
-	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<String> stringValueChangeHandler) {
-		return textBox.addValueChangeHandler(stringValueChangeHandler);
-	}
+  @Override
+  public HandlerRegistration addValueChangeHandler( ValueChangeHandler<String> handler) {
+    return addHandler(handler, ValueChangeEvent.getType());
+  }
 
-	@Override
-	public void setName(String name) {
-		textBox.setName(name);
-	}
+  @Override
+  public void setName(String name) {
+    textBox.setName(name);
+  }
 
-	@Override
-	public String getName() {
-		return textBox.getName();
-	}
+  @Override
+  public String getName() {
+    return textBox.getName();
+  }
 
-	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addChangeHandler(ChangeHandler handler) {
-		return textBox.addChangeHandler(handler);
-	}
+  @Override
+  public String getValue() {
+    return textBox.getValue();
+  }
 
-	@Override
-	public String getValue() {
-		return textBox.getValue();
-	}
+  @Override
+  public void setValue(String value) {
+    setValue(value, false);
+  }
 
-	@Override
-	public void setValue(String value) {
-		textBox.setValue(value);
-	}
+  @Override
+  public void setValue(String value, boolean fireEvents) {
+    textBox.setValue(value, false);
 
-	@Override
-	public void setValue(String value, boolean fireEvents) {
-		textBox.setValue(value, fireEvents);
-	}
+    if (fireEvents) {
+      ValueChangeEvent.fire(this, getValue());
+    }
+  }
 
-	@Override
-	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
-		return textBox.addKeyUpHandler(handler);
-	}
-
-	@Override
-	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
-		return textBox.addKeyDownHandler(handler);
-	}
-
-	@Override
-	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
-		return textBox.addKeyPressHandler(handler);
-	}
-
-	@UiFactory
-	protected MSearchBoxAppearance getAppearance() {
-		return appearance;
-	}
+  @UiFactory
+  protected MSearchBoxAppearance getAppearance() {
+    return appearance;
+  }
 }
