@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
-import com.googlecode.mgwt.ui.client.widget.layout.IsFlexible;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.IsFlexible;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelImpl;
 
 /**

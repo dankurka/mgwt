@@ -34,7 +34,7 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.carousel.CarouselAppearance.CarouselCss;
-import com.googlecode.mgwt.ui.client.widget.layout.LayoutPanel;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollRefreshEvent;
@@ -237,7 +237,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   @Override
   public void add(Widget w) {
 
-    LayoutPanel widgetHolder = new LayoutPanel();
+    FlexPanel widgetHolder = new FlexPanel();
     widgetHolder.addStyleName(this.appearance.css().carouselHolder());
     widgetHolder.add(w);
 

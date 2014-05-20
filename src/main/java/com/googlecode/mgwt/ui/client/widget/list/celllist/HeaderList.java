@@ -31,11 +31,11 @@ import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
-import com.googlecode.mgwt.ui.client.widget.layout.IsFlexible;
-import com.googlecode.mgwt.ui.client.widget.layout.LayoutPanel;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellListAppearance.CellListCss;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList.CellGroup;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellListAppearance.GroupingListCss;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.IsFlexible;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollAnimationMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
@@ -173,7 +173,7 @@ public class HeaderList<G, T> extends Composite implements IsFlexible {
 		}
 	}
 
-	private LayoutPanel main;
+	private FlexPanel main;
 	private ScrollPanel scrollPanel;
 	private MovingHeader movingHeader;
 	private LightArrayInt pagesY;
@@ -213,7 +213,7 @@ public class HeaderList<G, T> extends Composite implements IsFlexible {
 		this.css = appearance.groupCss();
 
 		css.ensureInjected();
-		main = new LayoutPanel();
+		main = new FlexPanel();
 		initWidget(main);
 
 		main.addStyleName(css.groupingHeaderList());

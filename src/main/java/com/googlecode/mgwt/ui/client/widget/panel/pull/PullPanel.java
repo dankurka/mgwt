@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.widget.base.HasRefresh;
-import com.googlecode.mgwt.ui.client.widget.layout.IsFlexible;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.IsFlexible;
 import com.googlecode.mgwt.ui.client.widget.panel.pull.PullPanel.PullWidget.PullState;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollMoveEvent;

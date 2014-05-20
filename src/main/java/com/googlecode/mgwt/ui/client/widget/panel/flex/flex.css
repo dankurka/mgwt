@@ -1,4 +1,4 @@
-.mgwt-LayoutPanel {
+.mgwt-FlexPanel {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -8,7 +8,7 @@
   flex-flow: column;
 }
 
-.mgwt-RootLayoutPanel {
+.mgwt-RootFlexPanel {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -23,39 +23,8 @@
   flex-flow: column;
 }
 
-.mgwt-LayoutPanel-flex {
+.mgwt-FlexPanel-flex {
+  -moz-flex: 1;
   -webkit-flex: 1;
   flex: 1;
-}
-
-
-
-
-/* .mgwt-LayoutPanel-flex-flow-row { */
-/*   flex-flow: row; */
-/* } */
-
-/* .mgwt-LayoutPanel-flex-flow-column { */
-/*   flex-flow: column; */
-/* } */
-
-
-
-
-
-/* .mgwt-LayoutPanel-align { */
-/*   flex-flow: column; */
-/* } */
-
-
-.mgwt-LayoutPanel-vertical-fill {
-  
-}
-
-.mgwt-LayoutPanel-horizontal-fill {
-	
-}
-
-.mgwt-LayoutPanel-fill-parent {
-  
 }

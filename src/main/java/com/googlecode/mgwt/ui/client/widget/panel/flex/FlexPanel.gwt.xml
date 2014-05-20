@@ -12,7 +12,7 @@ under * the License.
 -->
 
 <module>
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.layout.LayoutDefaultAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.layout.LayoutAppearance" />
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanelDefaultAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanelAppearance" />
   </replace-with>
 </module>
