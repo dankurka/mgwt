@@ -8,8 +8,13 @@ import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.dom.client.Touch;
 import com.google.gwt.event.dom.client.MouseWheelEvent;
 import com.google.gwt.event.dom.client.MouseWheelHandler;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -20,12 +25,7 @@ import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
-import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanelAppearance;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanelAppearance.ScrollPanelCss;
@@ -105,7 +105,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
    * <p>
    * Constructor for ScrollPanelTouchImpl.
    * </p>
-   * 
+   *
    * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.ScrollPanelCss} object.
    */
   public ScrollPanelIE9Impl(ScrollPanelCss css) {
@@ -164,12 +164,6 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.HasWidgets#add(com.google.gwt.user.client.ui.Widget)
-   */
-  /** {@inheritDoc} */
   @Override
   public void add(Widget w) {
     if (widgetToScroll != null) {
@@ -178,40 +172,16 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
     setWidget(w);
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setWidget(com.google.gwt.user.client
-   * .ui.IsWidget)
-   */
-  /** {@inheritDoc} */
   @Override
   public void setWidget(IsWidget child) {
     setWidget(child.asWidget());
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.Composite#getWidget()
-   */
-  /** {@inheritDoc} */
   @Override
   public Widget getWidget() {
     return widgetToScroll;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#refresh()
-   */
-  /**
-   * <p>
-   * refresh
-   * </p>
-   */
   public void refresh() {
     updateScrollBars();
     if (widgetToScroll == null) {
@@ -220,12 +190,6 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
     resetPosition();
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.google.gwt.user.client.ui.Composite#setWidget(com.google.gwt.user.client.ui.Widget)
-   */
-  /** {@inheritDoc} */
   @Override
   public void setWidget(Widget w) {
     if (widgetToScroll != null) {
@@ -535,18 +499,11 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
     }
 
     @Override
-    public void onTouchCanceled(TouchCancelEvent event) {
+    public void onTouchCancel(TouchCancelEvent event) {
       currentlyScrolling = false;
     }
-
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setPosition(int, int)
-   */
-  /** {@inheritDoc} */
   public void setPosition(int newPosX, int newPosY) {
     position_x = newPosX;
     position_y = newPosY;
@@ -590,7 +547,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#scrollTo(int, int, int)
    */
   /** {@inheritDoc} */
@@ -650,7 +607,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
   }
 
   /**
-	 * 
+	 *
 	 */
   public int getMaxScrollY() {
     return getClientHeight(main.getElement()) - getWidgetToScrollHeight();
@@ -658,7 +615,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
   }
 
   /**
-	 * 
+	 *
 	 */
   private int getMaxScrollX() {
     return getClientWidth(main.getElement()) - getWidgetToScrollWidth() - offsetX;
@@ -678,7 +635,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
     private final int dist;
 
     /**
-		 * 
+		 *
 		 */
     public Momentum(int dist, int time) {
       this.dist = dist;
@@ -722,14 +679,14 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#isScrollingEnabledX()
    */
   /**
    * <p>
    * isScrollingEnabledX
    * </p>
-   * 
+   *
    * @return a boolean.
    */
   public boolean isScrollingEnabledX() {
@@ -738,7 +695,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setScrollingEnabledX(boolean)
    */
   /** {@inheritDoc} */
@@ -748,14 +705,14 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#isScrollingEnabledY()
    */
   /**
    * <p>
    * isScrollingEnabledY
    * </p>
-   * 
+   *
    * @return a boolean.
    */
   public boolean isScrollingEnabledY() {
@@ -764,7 +721,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setScrollingEnabledY(boolean)
    */
   /** {@inheritDoc} */
@@ -774,7 +731,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.google.gwt.user.client.ui.HasWidgets#clear()
    */
   /** {@inheritDoc} */
@@ -787,7 +744,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.google.gwt.user.client.ui.HasWidgets#iterator()
    */
   /** {@inheritDoc} */
@@ -798,7 +755,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.google.gwt.user.client.ui.HasWidgets#remove(com.google.gwt.user.client.ui.Widget)
    */
   /** {@inheritDoc} */
@@ -813,7 +770,7 @@ public class ScrollPanelIE9Impl extends ScrollPanelImpl {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.googlecode.mgwt.ui.client.widget.impl.ScrollPanelImpl#setOffset(int, int)
    */
   /** {@inheritDoc} */

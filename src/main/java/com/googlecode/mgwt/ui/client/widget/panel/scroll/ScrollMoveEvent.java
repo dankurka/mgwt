@@ -1,12 +1,12 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -15,9 +15,9 @@
  */
 package com.googlecode.mgwt.ui.client.widget.panel.scroll;
 
+import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
 
 public class ScrollMoveEvent extends GwtEvent<ScrollMoveEvent.Handler> {
 
@@ -44,11 +44,9 @@ public class ScrollMoveEvent extends GwtEvent<ScrollMoveEvent.Handler> {
 	@Override
 	protected void dispatch(Handler handler) {
 		handler.onScrollMove(this);
-
 	}
 
 	public TouchMoveEvent getEvent() {
 		return event;
 	}
-
 }

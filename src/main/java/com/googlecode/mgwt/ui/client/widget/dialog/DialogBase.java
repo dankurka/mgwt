@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -16,6 +16,14 @@ package com.googlecode.mgwt.ui.client.widget.dialog;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchCancelHandler;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
+import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -27,15 +35,7 @@ import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 import com.googlecode.mgwt.ui.client.util.MGWTUtil;
 import com.googlecode.mgwt.ui.client.widget.animation.Animation;
 import com.googlecode.mgwt.ui.client.widget.animation.AnimationEndCallback;
@@ -46,7 +46,7 @@ import java.util.Iterator;
 
 /**
  * Baseclass for creating dialogs that are animated
- * 
+ *
  * @author Daniel Kurka
  */
 public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTapHandlers,
@@ -61,9 +61,8 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
     }
 
     @Override
-    public void onTouchCanceled(TouchCancelEvent event) {
+    public void onTouchCancel(TouchCancelEvent event) {
       startTarget = null;
-
     }
 
     @Override
@@ -116,7 +115,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
 
   /**
    * Create an instance of an animated dialog
-   * 
+   *
    * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss} object.
    */
   public DialogBase(DialogAppearance appearance) {
@@ -194,7 +193,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
 
   /**
    * get the panel that the dialog overlays
-   * 
+   *
    * @return the panel that is overlayed by this dialog
    */
   public HasWidgets getPanelToOverlay() {
@@ -229,7 +228,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
 
   /**
    * Should the dialog hide itself if there is a tap outside the dialog
-   * 
+   *
    * @return true if the dialog automatically hides, otherwise false
    */
   public boolean isHideOnBackgroundClick() {
@@ -248,7 +247,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
 
   /**
    * Should the content of the dialog be centered
-   * 
+   *
    * @param centerContent true to center content
    */
   public void setCenterContent(boolean centerContent) {
@@ -257,7 +256,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
 
   /**
    * Should the dialog hide itself if there is a tap outside the dialog
-   * 
+   *
    * @param hideOnBackgroundClick true if the dialog automatically hides, otherwise false
    */
   public void setHideOnBackgroundClick(boolean hideOnBackgroundClick) {
@@ -266,7 +265,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
 
   /**
    * set the panel that should be overlayed by the dialog
-   * 
+   *
    * @param panel the area to be overlayed
    */
   public void setPanelToOverlay(HasWidgets panel) {
@@ -275,7 +274,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
 
   /**
    * should the dialog add a shadow over the area that it covers
-   * 
+   *
    * @param shadow true to add a shadow
    */
   public void setShadow(boolean shadow) {

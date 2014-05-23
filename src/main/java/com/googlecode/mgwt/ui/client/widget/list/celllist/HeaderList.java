@@ -1,12 +1,12 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -16,6 +16,10 @@
 package com.googlecode.mgwt.ui.client.widget.list.celllist;
 
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
@@ -24,11 +28,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellListAppearance.CellListCss;
@@ -50,12 +50,12 @@ import java.util.Map;
  * This widget uses a {@link GroupingCellList} to render children within groups.
  * On top of that it provides a fast selection through a bar on the right by
  * displaying symbols for group names.
- * 
+ *
  * It also animates a header group so that the user can always see which group
  * he is currently scrolling in.
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  * @param <G> type of the group
  * @param <T> type of the children1
  */
@@ -98,13 +98,11 @@ public class HeaderList<G, T> extends Composite implements IsFlexible {
 		@Override
 		public void onTouchEnd(TouchEndEvent event) {
 			removeStyleName(css.selectionBarActive());
-
 		}
 
 		@Override
-		public void onTouchCanceled(TouchCancelEvent event) {
+		public void onTouchCancel(TouchCancelEvent event) {
 			removeStyleName(css.selectionBarActive());
-
 		}
 
 		protected void calculateSelection(int y) {
@@ -192,7 +190,7 @@ public class HeaderList<G, T> extends Composite implements IsFlexible {
 
 	/**
 	 * Construct a HeaderList
-	 * 
+	 *
 	 * @param cellList the cell list that renders its children inside this
 	 *            widget.
 	 */
@@ -202,7 +200,7 @@ public class HeaderList<G, T> extends Composite implements IsFlexible {
 
 	/**
 	 * Construct a cell list with a given cell list and css
-	 * 
+	 *
 	 * @param cellList the cell list that renders its children inside this
 	 *            widget
 	 * @param css the css to use
@@ -278,7 +276,7 @@ public class HeaderList<G, T> extends Composite implements IsFlexible {
 
   /**
    * Render the list of models
-   * 
+   *
    * @param list the models to render
    */
 	public void render(List<CellGroup<G, T>> list) {

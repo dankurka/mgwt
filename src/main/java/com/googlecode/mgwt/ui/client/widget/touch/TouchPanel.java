@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -15,7 +15,11 @@
  */
 package com.googlecode.mgwt.ui.client.widget.touch;
 
-import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.TouchCancelHandler;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchEvent;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 
@@ -24,12 +28,7 @@ import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 import com.googlecode.mgwt.dom.client.recognizer.longtap.HasLongTapHandlers;
 import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapEvent;
 import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapHandler;
@@ -46,20 +45,16 @@ import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
 
 /**
  * A simple panel that supports {@link TouchEvent}
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  */
-
 public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHandlers, HasPinchHandlers, HasSwipeHandlers, HasLongTapHandlers {
 
-	private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
+  private static final TouchWidgetImpl impl = TouchWidgetImpl.get();
 
 	protected final GestureUtility gestureUtility;
 
-  /**
-   * Construct a touch panel
-   */
 	public TouchPanel() {
 		gestureUtility = new GestureUtility(this);
 	}
@@ -79,13 +74,11 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 	@Override
 	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
 		return impl.addTouchCancelHandler(this, handler);
-
 	}
 
 	@Override
 	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
 		return impl.addTouchEndHandler(this, handler);
-
 	}
 
 	@Override
@@ -134,5 +127,4 @@ public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHan
 		gestureUtility.ensureLongTapHandler();
 		return addHandler(handler, LongTapEvent.getType());
 	}
-
 }

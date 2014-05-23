@@ -1,12 +1,12 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -17,22 +17,22 @@ package com.googlecode.mgwt.dom.client.recognizer;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.Touch;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.shared.HasHandlers;
+
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
-import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 
 /**
  * A recognizer that recognizes Tap events
- * 
+ *
  * A Tap is the mobile equivalent of a click
- * 
+ *
  * @author Daniel Kurka
- * 
  */
 public class TapRecognizer implements TouchHandler {
 
@@ -47,7 +47,7 @@ public class TapRecognizer implements TouchHandler {
 	private int start_x;
 
 	private int start_y;
-	
+
 	private Element targetElement;
 
 	private final HasHandlers source;
@@ -67,7 +67,6 @@ public class TapRecognizer implements TouchHandler {
 			throw new IllegalArgumentException("distance has to be greater than zero");
 		this.source = source;
 		this.distance = distance;
-
 	}
 
 	@Override
@@ -79,7 +78,7 @@ public class TapRecognizer implements TouchHandler {
 		}else {
 			targetElement = null;
 		}
-			
+
 		start_x = event.getTouches().get(0).getPageX();
 		start_y = event.getTouches().get(0).getPageY();
 	}
@@ -90,7 +89,6 @@ public class TapRecognizer implements TouchHandler {
 		if (Math.abs(touch.getPageX() - start_x) > distance || Math.abs(touch.getPageY() - start_y) > distance) {
 			hasMoved = true;
 		}
-
 	}
 
 	@Override
@@ -99,14 +97,12 @@ public class TapRecognizer implements TouchHandler {
 			TapEvent tapEvent = new TapEvent(source, targetElement, start_x, start_y);
 			getEventPropagator().fireEvent(source, tapEvent);
 		}
-
 	}
 
-	@Override
-	public void onTouchCanceled(TouchCancelEvent event) {
-		touchCanceled = true;
-
-	}
+  @Override
+  public void onTouchCancel(TouchCancelEvent event) {
+    touchCanceled = true;
+  }
 
 	public int getDistance() {
 		return distance;
@@ -121,9 +117,8 @@ public class TapRecognizer implements TouchHandler {
 		}
 		return eventPropagator;
 	}
-	
+
 	public Element getTargetElement() {
 	  return targetElement;
 	}
-
 }

@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -16,20 +16,25 @@
 package com.googlecode.mgwt.ui.client.widget.button;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.dom.client.TouchCancelHandler;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.GwtEvent;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiFactory;
 
 /**
  * <h1>A simple button class</h1> This is a simple class for rendering button in mgwt.
- * 
+ *
  * <h2>Styling notes:</h2> The button consists of a simple div element like this:
- * 
+ *
  * <pre>
  * &lt;div class="mgwt-Button">ButtonText&lt;/div>
  * </pre>
- * 
+ *
  * The following classes are added as needed:
- * 
+ *
  * <ul>
  * <li>.mgwt-Button-active - Button is pressed</li>
  * <li>.mgwt-Button-small - Button should be rendered small</li>
@@ -37,9 +42,9 @@ import com.google.gwt.uibinder.client.UiFactory;
  * <li>.mgwt-Button-important - Button should be rendered as important (e.g. red on iOS)</li>
  * <li>.mgwt-Button-round - Button should be rendered with rounded corners</li>
  * </ul>
- * 
- * 
- * 
+ *
+ *
+ *
  * @author Daniel Kurka
  */
 public class Button extends ButtonBase {
@@ -70,7 +75,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button have rounded corners
-   * 
+   *
    * @return true if the button has rounded corners, otherwise false
    */
   public boolean isRound() {
@@ -79,7 +84,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button have rounded corners
-   * 
+   *
    * @param round true if the button should have rounded corners, otherwise false
    */
   public void setRound(boolean round) {
@@ -93,7 +98,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button be rendered small
-   * 
+   *
    * @param small true if the button should be rendered small, otherwise false
    */
   public void setSmall(boolean small) {
@@ -107,7 +112,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button be rendered small
-   * 
+   *
    * @return true if the button should be rendered small, otherwise false
    */
   public boolean isSmall() {
@@ -119,7 +124,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button be rendered as important
-   * 
+   *
    * @return true if the button should be rendered as important, otherwise false
    */
   public boolean isImportant() {
@@ -128,7 +133,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button be rendered as important
-   * 
+   *
    * @param important true if the button should be rendered as important, otherwise false
    */
   public void setImportant(boolean important) {
@@ -142,7 +147,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button be rendered as a confirm button
-   * 
+   *
    * @return a boolean.
    */
   public boolean isConfirm() {
@@ -151,7 +156,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button be rendered as a confirm button
-   * 
+   *
    * @param confirm true if the button should be rendered as a confirm button, otherwise false
    */
   public void setConfirm(boolean confirm) {
@@ -165,7 +170,7 @@ public class Button extends ButtonBase {
 
   /**
    * Should the button be disabled. By default, the button will be grayed out.
-   * 
+   *
    * @param disabled true if the button should be disabled, otherwise false
    */
   public void setDisabled(boolean disabled) {
@@ -187,6 +192,6 @@ public class Button extends ButtonBase {
 
   @UiFactory
   protected ButtonAppearance getAppearance() {
-	return appearance;
+	  return appearance;
   }
 }

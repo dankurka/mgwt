@@ -13,10 +13,16 @@ import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.dom.client.Touch;
 import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseWheelEvent;
 import com.google.gwt.event.dom.client.MouseWheelHandler;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -34,13 +40,7 @@ import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
 import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
-import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.BeforeScrollEndEvent;
@@ -61,7 +61,7 @@ import java.util.Iterator;
 import java.util.logging.Logger;
 
 public class ScrollPanelTouchImpl extends ScrollPanelImpl {
-  
+
   // TODO fix this by refactoring
   private static final ScrollPanelAppearance SPA = GWT.create(ScrollPanelAppearance.class);
 
@@ -97,11 +97,11 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
     }
 
     @Override
-    public void onTouchCanceled(TouchCancelEvent event) {
-      if (!listenForCancelEvent)
+    public void onTouchCancel(TouchCancelEvent event) {
+      if (!listenForCancelEvent) {
         return;
+      }
       end(event);
-
     }
 
   }
@@ -151,7 +151,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
     private final int dist;
 
     /**
-		 * 
+		 *
 		 */
     public Momentum(int dist, int time) {
       this.dist = dist;
@@ -615,7 +615,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
     this.dirX = 0;
     this.dirY = 0;
 
-    LightArray<Touch> touches = event.getTouches();
+    JsArray<Touch> touches = event.getTouches();
 
     if (this.zoom && touches.length() > 1) {
       int c1 = Math.abs(touches.get(0).getPageX() - touches.get(1).getPageX());
@@ -671,7 +671,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
       event.preventDefault();
     }
 
-    LightArray<Touch> touches = event.getTouches();
+    JsArray<Touch> touches = event.getTouches();
     int deltaX = touches.get(0).getPageX() - this.pointX;
     int deltaY = touches.get(0).getPageY() - this.pointY;
     int newX = this.x + deltaX;
@@ -1760,7 +1760,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   /**
-	 * 
+	 *
 	 */
   private void bindResizeEvent() {
     if (!MGWT.getOsDetection().isDesktop()) {

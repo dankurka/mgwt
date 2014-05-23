@@ -1,12 +1,12 @@
 /*
  * Copyright 2011 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -15,23 +15,126 @@
  */
 package com.googlecode.mgwt.ui.client.widget.touch;
 
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseMoveEvent;
+import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchCancelHandler;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
+import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
 
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
+import com.googlecode.mgwt.dom.client.event.mouse.HandlerRegistrationCollection;
+import com.googlecode.mgwt.dom.client.event.mouse.TouchEndToMouseUpHandler;
+import com.googlecode.mgwt.dom.client.event.mouse.TouchMoveToMouseMoveHandler;
+import com.googlecode.mgwt.dom.client.event.mouse.TouchStartToMouseDownHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
+import com.googlecode.mgwt.ui.client.util.NoopHandlerRegistration;
 
 /**
  * The touch widget interface is used to abstract implementation details for
  * adding touch handlers on touch devices / mouse devices
  *
  * @author Daniel Kurka
- * @version $Id: $
  */
-public interface TouchWidgetImpl {
+public abstract class TouchWidgetImpl {
+
+  private static class TouchWidgetMobileImpl extends TouchWidgetImpl {
+
+    @Override
+    public HandlerRegistration addTouchStartHandler(Widget w, TouchStartHandler handler) {
+      return w.addDomHandler(handler, TouchStartEvent.getType());
+    }
+
+    @Override
+    public HandlerRegistration addTouchMoveHandler(Widget w, TouchMoveHandler handler) {
+      return w.addDomHandler(handler, TouchMoveEvent.getType());
+    }
+
+    @Override
+    public HandlerRegistration addTouchCancelHandler(Widget w, TouchCancelHandler handler) {
+      return w.addDomHandler(handler, TouchCancelEvent.getType());
+    }
+
+    @Override
+    public HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler) {
+      return w.addDomHandler(handler, TouchEndEvent.getType());
+    }
+
+    @Override
+    public HandlerRegistration addTouchHandler(Widget w, TouchHandler handler) {
+      HandlerRegistrationCollection hrc = new HandlerRegistrationCollection();
+      hrc.addHandlerRegistration(addTouchStartHandler(w, handler));
+      hrc.addHandlerRegistration(addTouchMoveHandler(w, handler));
+      hrc.addHandlerRegistration(addTouchEndHandler(w, handler));
+      hrc.addHandlerRegistration(addTouchCancelHandler(w, handler));
+      return hrc;
+    }
+  }
+
+  private static class TouchWidgetDesktopImpl extends TouchWidgetImpl {
+
+    @Override
+    public HandlerRegistration addTouchStartHandler(Widget w, TouchStartHandler handler) {
+      return w.addDomHandler(new TouchStartToMouseDownHandler(handler), MouseDownEvent.getType());
+    }
+
+    @Override
+    public HandlerRegistration addTouchMoveHandler(Widget w, TouchMoveHandler handler) {
+      TouchMoveToMouseMoveHandler touchMoveToMouseMoveHandler = new TouchMoveToMouseMoveHandler(handler);
+      HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
+      handlerRegistrationCollection.addHandlerRegistration(w.addDomHandler(touchMoveToMouseMoveHandler, MouseDownEvent.getType()));
+      handlerRegistrationCollection.addHandlerRegistration(w.addDomHandler(touchMoveToMouseMoveHandler, MouseUpEvent.getType()));
+      handlerRegistrationCollection.addHandlerRegistration(w.addDomHandler(touchMoveToMouseMoveHandler, MouseMoveEvent.getType()));
+      return handlerRegistrationCollection;
+    }
+
+    @Override
+    public HandlerRegistration addTouchCancelHandler(Widget w, TouchCancelHandler handler) {
+      return new NoopHandlerRegistration();
+    }
+
+    @Override
+    public HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler) {
+      return w.addDomHandler(new TouchEndToMouseUpHandler(handler), MouseUpEvent.getType());
+    }
+
+    @Override
+    public HandlerRegistration addTouchHandler(Widget w, TouchHandler handler) {
+      HandlerRegistrationCollection hrc = new HandlerRegistrationCollection();
+      hrc.addHandlerRegistration(addTouchStartHandler(w, handler));
+      hrc.addHandlerRegistration(addTouchMoveHandler(w, handler));
+      hrc.addHandlerRegistration(addTouchEndHandler(w, handler));
+      hrc.addHandlerRegistration(addTouchCancelHandler(w, handler));
+      return hrc;
+    }
+  }
+
+  private static boolean tested;
+  private static boolean hasTouchSupport;
+
+  public static TouchWidgetImpl get() {
+    if(!tested) {
+      tested = true;
+      hasTouchSupport = hasTouch();
+    }
+    if(hasTouchSupport) {
+      return new TouchWidgetMobileImpl();
+    }
+    return new TouchWidgetDesktopImpl();
+  }
+
+  private static native boolean hasTouch() /*-{
+    return 'ontouchstart' in $doc.documentElement;
+  }-*/;
+
+
+
 	/**
 	 * Add a touch start handler to a widget
 	 *
@@ -39,7 +142,7 @@ public interface TouchWidgetImpl {
 	 * @param handler the handler to add
 	 * @return the handlerregistration
 	 */
-	public HandlerRegistration addTouchStartHandler(Widget w, TouchStartHandler handler);
+	public abstract HandlerRegistration addTouchStartHandler(Widget w, TouchStartHandler handler);
 
 	/**
 	 * Add a touch move handler to a widget
@@ -48,7 +151,7 @@ public interface TouchWidgetImpl {
 	 * @param handler the handler to add
 	 * @return the handlerregistration
 	 */
-	public HandlerRegistration addTouchMoveHandler(Widget w, TouchMoveHandler handler);
+	public abstract HandlerRegistration addTouchMoveHandler(Widget w, TouchMoveHandler handler);
 
 	/**
 	 * Add a touch cancel handler to a widget
@@ -57,7 +160,7 @@ public interface TouchWidgetImpl {
 	 * @param handler the handler to add
 	 * @return the handlerregistration
 	 */
-	public HandlerRegistration addTouchCancelHandler(Widget w, TouchCancelHandler handler);
+	public abstract HandlerRegistration addTouchCancelHandler(Widget w, TouchCancelHandler handler);
 
 	/**
 	 * Add a touch end handler to a widget
@@ -66,8 +169,8 @@ public interface TouchWidgetImpl {
 	 * @param handler the handler to add
 	 * @return the handlerregistration
 	 */
-	public HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler);
+	public abstract HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler);
 
-  public HandlerRegistration addTouchHandler(Widget w, TouchHandler handler);
+  public abstract HandlerRegistration addTouchHandler(Widget w, TouchHandler handler);
 
 }

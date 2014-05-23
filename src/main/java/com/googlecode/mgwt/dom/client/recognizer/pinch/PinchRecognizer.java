@@ -1,11 +1,11 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -14,21 +14,22 @@
 package com.googlecode.mgwt.dom.client.recognizer.pinch;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Touch;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.shared.HasHandlers;
-import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
+
+import com.googlecode.mgwt.dom.client.event.touch.TouchCopy;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchUtil;
 import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 
 /**
  * A PinchRecognizer tracks two finger on a screen that perform a zooming / pinching action
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class PinchRecognizer implements TouchHandler {
 
@@ -44,8 +45,8 @@ public class PinchRecognizer implements TouchHandler {
 
   private State state;
 
-  private Touch touchStart1;
-  private Touch touchStart2;
+  private TouchCopy touchStart1;
+  private TouchCopy touchStart2;
 
   private int touchCount;
   private double distance;
@@ -54,7 +55,7 @@ public class PinchRecognizer implements TouchHandler {
 
   /**
    * Construct a {@link PinchRecognizer}
-   * 
+   *
    * @param source the source to fire events on
    * @param offsetProvider the offset provider
    */
@@ -75,7 +76,7 @@ public class PinchRecognizer implements TouchHandler {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler#onTouchStart(com.googlecode.mgwt
    * .dom.client.event.touch.TouchStartEvent)
@@ -85,11 +86,11 @@ public class PinchRecognizer implements TouchHandler {
     touchCount++;
     switch (state) {
       case READY:
-        touchStart1 = TouchUtil.cloneTouch(event.getTouches().get(0));
+        touchStart1 = TouchCopy.copy(event.getTouches().get(0));
         state = State.ONE_FINGER;
         break;
       case ONE_FINGER:
-        touchStart2 = TouchUtil.cloneTouch(event.getTouches().get(1));
+        touchStart2 = TouchCopy.copy(event.getTouches().get(1));
         distance = (int) Math.sqrt(Math.pow(touchStart1.getPageX() - touchStart2.getPageX(), 2) + Math.pow(touchStart1.getPageY() - touchStart1.getPageY(), 2));
         state = State.TWO_FINGER;
         break;
@@ -103,7 +104,7 @@ public class PinchRecognizer implements TouchHandler {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler#onTouchMove(com.googlecode.mgwt
    * .dom.client.event.touch.TouchMoveEvent)
@@ -142,7 +143,7 @@ public class PinchRecognizer implements TouchHandler {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler#onTouchEnd(com.googlecode.mgwt.dom
    * .client.event.touch.TouchEndEvent)
@@ -164,15 +165,8 @@ public class PinchRecognizer implements TouchHandler {
 
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler#onTouchCanceled(com.googlecode
-   * .mgwt.dom.client.event.touch.TouchCancelEvent)
-   */
   @Override
-  public void onTouchCanceled(TouchCancelEvent event) {
+  public void onTouchCancel(TouchCancelEvent event) {
     touchCount--;
     if (touchCount <= 0) {
       reset();
@@ -187,7 +181,14 @@ public class PinchRecognizer implements TouchHandler {
     }
   }
 
-  protected EventPropagator getEventPropagator() {
+  private void reset() {
+    touchCount = 0;
+    state = State.READY;
+
+  }
+
+  // Visible for testing
+  EventPropagator getEventPropagator() {
     if (eventPropagator == null) {
       if (DEFAULT_EVENT_PROPAGATOR == null) {
         DEFAULT_EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
@@ -196,16 +197,4 @@ public class PinchRecognizer implements TouchHandler {
     }
     return eventPropagator;
   }
-
-  protected void setEventPropagator(EventPropagator eventPropagator) {
-    this.eventPropagator = eventPropagator;
-
-  }
-
-  private void reset() {
-    touchCount = 0;
-    state = State.READY;
-
-  }
-
 }

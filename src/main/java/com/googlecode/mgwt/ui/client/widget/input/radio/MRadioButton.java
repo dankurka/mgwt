@@ -18,11 +18,16 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.dom.client.LabelElement;
+import com.google.gwt.dom.client.Touch;
 import com.google.gwt.editor.client.IsEditor;
 import com.google.gwt.editor.client.LeafValueEditor;
 import com.google.gwt.editor.client.adapters.TakesValueEditor;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -37,13 +42,9 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HasWordWrap;
+
 import com.googlecode.mgwt.dom.client.event.tap.Tap;
-import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
 
 /**
@@ -98,19 +99,21 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
       private int last_y;
 
       @Override
-      public void onTouchCanceled(TouchCancelEvent event) {
-        if (ignore)
+      public void onTouchCancel(TouchCancelEvent event) {
+        if (ignore) {
           return;
-
+        }
       }
 
       @Override
       public void onTouchEnd(TouchEndEvent event) {
-        if (!isEnabled())
+        if (!isEnabled()) {
           return;
+        }
 
-        if (ignore)
+        if (ignore) {
           return;
+        }
 
         if (Math.abs(last_x - start_x) < Tap.RADIUS && Math.abs(last_y - start_y) < Tap.RADIUS) {
           if (labelOrContainer) {
@@ -118,7 +121,6 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
             setValue(true, true);
           }
         }
-
       }
 
       @Override
@@ -158,7 +160,6 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
             labelOrContainer = false;
           }
         }
-
       }
     });
 

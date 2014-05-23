@@ -13,9 +13,11 @@
  */
 package com.googlecode.mgwt.ui.client.widget.panel;
 
-import java.util.Iterator;
-
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.dom.client.TouchCancelHandler;
+import com.google.gwt.event.dom.client.TouchEndHandler;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
@@ -24,14 +26,11 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.tap.HasTapHandlers;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.dom.client.event.touch.HasTouchHandlers;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler;
 import com.googlecode.mgwt.dom.client.recognizer.longtap.HasLongTapHandlers;
 import com.googlecode.mgwt.dom.client.recognizer.longtap.LongTapHandler;
 import com.googlecode.mgwt.dom.client.recognizer.pinch.HasPinchHandlers;
@@ -41,6 +40,8 @@ import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEndHandler;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeMoveHandler;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchPanel;
+
+import java.util.Iterator;
 
 public class Panel extends Composite implements HasTouchHandlers, HasTapHandlers, HasPinchHandlers,
     HasSwipeHandlers, HasLongTapHandlers, InsertPanel.ForIsWidget, HasWidgets {

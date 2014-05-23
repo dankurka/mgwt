@@ -1,12 +1,12 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -29,9 +29,9 @@ import java.util.Iterator;
 
 /**
  * A {@link FormEntry} entry renders a widget together with a describing label
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class FormEntry extends Composite implements HasWidgets, HasHTML {
 
@@ -39,7 +39,7 @@ public class FormEntry extends Composite implements HasWidgets, HasHTML {
 	protected HTML label;
   @UiField
   protected SimplePanel widgetContainer;
-  
+
   private FormAppearance appearance;
   private boolean valid = true;
 
@@ -53,7 +53,7 @@ public class FormEntry extends Composite implements HasWidgets, HasHTML {
 
   /**
    * Construct a {@link FormEntry} with a label and a widget
-   * 
+   *
    * @param fieldName the text of the label
    * @param w the widget
    */
@@ -63,7 +63,7 @@ public class FormEntry extends Composite implements HasWidgets, HasHTML {
 
   /**
    * Construct a {@link FormEntry} with a label, a widget and a given appearance
-   * 
+   *
    * @param fieldName the text of the label
    * @param w the widget
    * @param appearance the appearance to use
@@ -76,7 +76,7 @@ public class FormEntry extends Composite implements HasWidgets, HasHTML {
 
   /**
    * set the label and the widget
-   * 
+   *
    * @param fieldName the text of the label
    * @param w the widget
    */
@@ -127,7 +127,7 @@ public class FormEntry extends Composite implements HasWidgets, HasHTML {
 	public boolean remove(Widget w) {
 		return widgetContainer.remove(w);
 	}
-	
+
 	public void setValid(boolean valid) {
 	  this.valid = valid;
 	  if(valid) {

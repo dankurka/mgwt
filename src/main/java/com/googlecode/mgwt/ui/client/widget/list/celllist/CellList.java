@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -17,6 +17,11 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.Touch;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
@@ -24,13 +29,9 @@ import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.tap.Tap;
-import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
 import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl;
@@ -38,14 +39,14 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl;
 import java.util.List;
 
 /**
- * 
+ *
  * A widget that renders its children as a list
- * 
+ *
  * You can control the markup of the children by using the Cell interface, therefore you can render
  * any kind of arbitrary markup
- * 
+ *
  * <h2>Styling</h2> The DOM will look like this:
- * 
+ *
  * <pre>
  * &lt;ul class="mgwt-List">
  *  &lt;li class="mgwt-List-first">&lt;!-- your markup -->&lt;/li>
@@ -54,19 +55,19 @@ import java.util.List;
  *  &lt;li class="mgwt-List-last">&lt;!-- your markup -->&lt;/li>
  * &lt;/ul>
  * </pre>
- * 
+ *
  * These styles will be applied to the main ul element:
- * 
+ *
  * <ul>
  * <li>.mgwt-List-round- if the list should be rendered with rounded corners</li>
  * </ul>
- * 
+ *
  * These styles will be applied to one or more of the li elements:
  * <ul>
  * <li>.mgwt-List-selected - if the li got selected</li>
  * <li>.mgwt-List-group - if the element should be rendered as selectable (is has more content)</li>
  * </ul>
- * 
+ *
  * @author Daniel Kurka
  * @param <T> the type of the model to render
  */
@@ -76,7 +77,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
   public interface EntryTemplate {
     SafeHtml li(int idx, String classes, SafeHtml cellContents);
   }
-  
+
   protected static final EventPropagator EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
 
 
@@ -91,7 +92,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
     private Element originalElement;
 
     @Override
-    public void onTouchCanceled(TouchCancelEvent event) {
+    public void onTouchCancel(TouchCancelEvent event) {
 
     }
 
@@ -208,7 +209,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   /**
    * Construct a CellList
-   * 
+   *
    * @param cell the cell to use
    */
   public CellList(Cell<T> cell) {
@@ -217,7 +218,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   /**
    * Construct a celllist with a given cell and css
-   * 
+   *
    * @param cell the cell to use
    * @param css the css to use
    */
@@ -235,7 +236,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   /**
    * Should the CellList be rendered with rounded corners
-   * 
+   *
    * @param round true to render with rounded corners, otherwise false
    */
   public void setRound(boolean round) {
@@ -252,7 +253,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   /**
    * Render a List of models in this cell list
-   * 
+   *
    * @param models the list of models to render
    */
   public void render(List<T> models) {
@@ -302,7 +303,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   /**
    * Set a selected element in the celllist
-   * 
+   *
    * @param index the index of the element
    * @param selected true to select the element, false to deselect
    */
@@ -318,7 +319,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   /**
    * set this widget a group (by default rendered with an arrow)
-   * 
+   *
    * @param group
    */
   public void setGroup(boolean group) {
@@ -327,7 +328,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   /**
    * set this widget a group (by default rendered with an arrow)
-   * 
+   *
    * @return group
    */
   public boolean isGroup() {

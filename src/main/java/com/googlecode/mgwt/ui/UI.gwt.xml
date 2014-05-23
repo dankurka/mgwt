@@ -12,245 +12,173 @@ under * the License.
 -->
 
 <module>
+  <inherits name='com.google.gwt.user.User' />
+  <inherits name='com.googlecode.mgwt.dom.DOM' />
 
-	
-	
-	
-	<inherits name='com.google.gwt.user.User' />
-	<inherits name='com.googlecode.mgwt.dom.DOM' />
+  <inherits name="com.googlecode.mgwt.ui.client.resource.MainResource" />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.animation.Animation' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.button.Button' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBar' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.dialog.Dialog' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.header.Header' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.carousel.Carousel' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.list.celllist.CellList' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetList' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.menu.overlay.OverlayMenu' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.menu.swipe.SwipeMenu' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.input.Input' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.input.listbox.MListBox' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.input.checkbox.MCheckBox' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.input.radio.MRadioButton' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.input.search.MSearchBox' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.input.slider.Slider' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.form.Form' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.panel.Panel' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.panel.pull.PullPanel' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.progress.Progress' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.tabbar.TabBar' />
 
-	
-	
-	
-	<inherits name="com.googlecode.mgwt.ui.client.resource.MainResource" />
-	
-	<inherits name='com.googlecode.mgwt.ui.client.widget.animation.Animation' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.dialog.Dialog' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.header.Header' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.carousel.Carousel' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.list.celllist.CellList' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetList' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.menu.overlay.OverlayMenu' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.menu.swipe.SwipeMenu' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.input.Input' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.input.listbox.MListBox' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.input.checkbox.MCheckBox' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.input.radio.MRadioButton' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.input.search.MSearchBox' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.input.slider.Slider' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.form.Form' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.panel.Panel' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.panel.pull.PullPanel' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel' />
-	
-	
-	
-	
-	<inherits name='com.googlecode.mgwt.ui.client.widget.progress.Progress' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.button.Button' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBar' />
-	<inherits name='com.googlecode.mgwt.ui.client.widget.tabbar.TabBar' />
+  <source path="client" />
 
-	<define-configuration-property name="mgwt.css" is-multi-valued="false" />
-	<set-configuration-property name="mgwt.css" value="obf" />
-	<define-configuration-property name="mgwt.css.inject" is-multi-valued="false" />
-	<set-configuration-property name="mgwt.css.inject" value="end" />
+  <define-configuration-property name="mgwt.css" is-multi-valued="false" />
+    <set-configuration-property name="mgwt.css" value="obf" />
 
-	<generate-with class="com.googlecode.mgwt.ui.generator.OsDetectionGenerator">
-		<when-type-assignable class="com.googlecode.mgwt.ui.client.OsDetection" />
-	</generate-with>
+  <define-configuration-property name="mgwt.css.inject" is-multi-valued="false" />
+  <set-configuration-property name="mgwt.css.inject" value="end" />
 
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetDesktopImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl" />
-		<all>
-			<when-property-is name="mobile.user.agent" value="not_mobile" />
-		</all>
-	</replace-with>
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetMobileImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl" />
-		<all>
-			<when-property-is name="mobile.user.agent" value="mobilesafari" />
-		</all>
-	</replace-with>
-	
-		
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelTouchImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelImpl" />
-	</replace-with>
-	
-	
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelIE9Impl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelImpl" />
-		 <any> 
-   			<when-property-is name="user.agent" value="ie9" />
-			<when-property-is name="user.agent" value="ie10" />
-  		</any>
-		
-	</replace-with>
-	
+  <generate-with class="com.googlecode.mgwt.ui.generator.OsDetectionGenerator">
+    <when-type-assignable class="com.googlecode.mgwt.ui.client.OsDetection" />
+  </generate-with>
 
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelBlackberryImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelImpl" />
-		<all>
-			<when-property-is name="mgwt.os" value="blackberry" />
-		</all>
-	</replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetDesktopImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl" />
+    <all>
+      <when-property-is name="mobile.user.agent" value="not_mobile" />
+    </all>
+  </replace-with>
 
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetMobileImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl" />
+    <all>
+      <when-property-is name="mobile.user.agent" value="mobilesafari" />
+    </all>
+  </replace-with>
+	
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelTouchImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelImpl" />
+  </replace-with>
+	
+  <!-- CSS UTIL -->
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.FailingImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />	
+  </replace-with>
 
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.WebkitCssUtilImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
+    <all>
+        <when-property-is name="user.agent" value="safari" />
+    </all>
+  </replace-with>
+
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.FireFoxCssUtilImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
+    <all> 
+      <when-property-is name="user.agent" value="gecko1_8" />
+    </all>	
+  </replace-with>
+
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.CssUtilIE9Impl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
+    <any> 
+      <when-property-is name="user.agent" value="ie9" />
+      <when-property-is name="user.agent" value="ie10" />
+    </any>
+  </replace-with>
 	
+  <!-- Tabbar Buttons -->
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerBackground">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
+  </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerWebkit">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
+    <all> 
+      <when-property-is name="user.agent" value="safari" />
+    </all>	
+  </replace-with>
+
+  <!-- ButtonBar Buttons -->
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarButtonBase.DefaultIconHandler">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarButtonBase.IconHandler" />
+  </replace-with>
 	
+  <!-- value box base -->
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseDefaultImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
+  </replace-with>
+
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
+     <when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
+     <any> 
+       <when-property-is name="user.agent" value="ie9" />
+       <when-property-is name="user.agent" value="ie10" />
+     </any>
+  </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
+    <all> 
+      <when-property-is name="mobile.user.agent" value="not_mobile" />
+    </all>
+  </replace-with>
+
+  <!-- super dev mode -->
+  <define-configuration-property name="mgwt.superdevmode" is-multi-valued="false" />
+  <set-configuration-property name="mgwt.superdevmode" value="off" />
+
+  <define-configuration-property name="mgwt.superdevmode_host" is-multi-valued="false" />
 	
+  <!-- generater to build util! -->
+  <generate-with class="com.googlecode.mgwt.ui.generator.SuperDevModeGenerator">
+    <when-type-assignable class="com.googlecode.mgwt.ui.client.util.impl.SuperDevModeHelper" />
+  </generate-with>
+
+  <!-- Addressbar Util -->
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilNoOpImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
+  </replace-with>
+
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilIphoneImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
+    <all>
+      <when-property-is name="mgwt.os" value="iphone" />
+    </all>
+  </replace-with>
 	
-	<!-- CSS UTIL -->
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.FailingImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />	
-	</replace-with>
-	
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.WebkitCssUtilImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
-		 <all> 
-   			<when-property-is name="user.agent" value="safari" />
-  		</all>
-		
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.FireFoxCssUtilImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
-		 <all> 
-   			<when-property-is name="user.agent" value="gecko1_8" />
-  		</all>
-		
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.CssUtilIE9Impl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
-		 <any> 
-   			<when-property-is name="user.agent" value="ie9" />
-			<when-property-is name="user.agent" value="ie10" />
-  		</any>
-		
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.OperaCssUtilImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.util.impl.CssUtilImpl" />
-		<all>
-			<when-property-is name="user.agent" value="opera" />
-		</all>
-	</replace-with>
-	
-	
-	
-	
-	<!-- Tabbar Buttons -->
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerWebkit">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
-		 <all> 
-   			<when-property-is name="user.agent" value="safari" />
-  		</all>
-		
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerBackground">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
-		 <none> 
-   			<when-property-is name="user.agent" value="safari" />
-  		</none>
-		
-	</replace-with>
-	
-	<!-- ButtonBar Buttons -->
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarButtonBase.DefaultIconHandler">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarButtonBase.IconHandler" />
-	</replace-with>
-	
-	<!-- value box base -->
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseDefaultImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
-		<any> 
-   			<when-property-is name="user.agent" value="ie9" />
-			<when-property-is name="user.agent" value="ie10" />
-  		</any>
-	</replace-with>
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
-		<all> 
-   			<when-property-is name="mobile.user.agent" value="not_mobile" />
-  		</all>
-	</replace-with>
-	
-	<!-- Carousel -->
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.button.carousel.Carousel.CarouselImplSafari">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.button.carousel.Carousel.CarouselImpl" />
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.widget.button.carousel.Carousel.CarouselImplGecko">
-		<when-type-is class="com.googlecode.mgwt.ui.client.widget.button.carousel.Carousel.CarouselImpl" />
-		<all>
-			<when-property-is name="user.agent" value="gecko1_8" />
-		</all>
-	</replace-with>
-	
-	<!-- super dev mode -->
-	<define-configuration-property name="mgwt.superdevmode" is-multi-valued="false" />
-	<set-configuration-property name="mgwt.superdevmode" value="off" />
-	
-	<define-configuration-property name="mgwt.superdevmode_host" is-multi-valued="false" />
-	
-	<!-- generater to build util! -->
-	<generate-with class="com.googlecode.mgwt.ui.generator.SuperDevModeGenerator">
-		<when-type-assignable class="com.googlecode.mgwt.ui.client.util.impl.SuperDevModeHelper" />
-	</generate-with>
-	
-	
-	<!-- Addressbar Util -->
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilNoOpImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilIphoneImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
-		<all>
-			<when-property-is name="mgwt.os" value="iphone" />
-		</all>
-	</replace-with>
-	
-	<replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilIphoneImpl">
-		<when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
-		<all>
-			<when-property-is name="mgwt.os" value="retina" />
-		</all>
-	</replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilIphoneImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
+	<all>
+	  <when-property-is name="mgwt.os" value="retina" />
+	</all>
+  </replace-with>
 
 	<!-- Orientation handler -->
 <!--     <replace-with class="com.googlecode.mgwt.ui.client.util.impl.IOSOrientationHandler"> -->
 <!--         <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" /> -->
 <!--     </replace-with> -->
     
-    <replace-with class="com.googlecode.mgwt.ui.client.util.impl.ResizeOrientationHandler">
-        <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
-    </replace-with>
-    
-    <replace-with class="com.googlecode.mgwt.ui.client.util.impl.IOSOrientationHandler">
-        <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
-            <any>
-                <when-property-is name="mgwt.os" value="iphone" />
-                <when-property-is name="mgwt.os" value="ipad"/>
-                <when-property-is name="mgwt.os" value="retina" />
-                <when-property-is name="mgwt.os" value="ipad_retina"/>
-            </any>
-    </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.ResizeOrientationHandler">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
+  </replace-with>
 
-
-	<source path="client" />
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.IOSOrientationHandler">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
+      <any>
+        <when-property-is name="mgwt.os" value="iphone" />
+        <when-property-is name="mgwt.os" value="ipad"/>
+        <when-property-is name="mgwt.os" value="retina" />
+        <when-property-is name="mgwt.os" value="ipad_retina"/>
+      </any>
+  </replace-with>
 </module>

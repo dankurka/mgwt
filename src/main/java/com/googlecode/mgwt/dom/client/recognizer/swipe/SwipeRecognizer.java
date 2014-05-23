@@ -1,11 +1,11 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -14,15 +14,15 @@
 package com.googlecode.mgwt.dom.client.recognizer.swipe;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Touch;
+import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.shared.HasHandlers;
 
-import com.googlecode.mgwt.dom.client.event.touch.Touch;
-import com.googlecode.mgwt.dom.client.event.touch.TouchCancelEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchEndEvent;
+import com.googlecode.mgwt.dom.client.event.touch.TouchCopy;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
-import com.googlecode.mgwt.dom.client.event.touch.TouchMoveEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchStartEvent;
-import com.googlecode.mgwt.dom.client.event.touch.TouchUtil;
 import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
 import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeEvent.DIRECTION;
 
@@ -56,7 +56,7 @@ public class SwipeRecognizer implements TouchHandler {
 
   /**
    * construct a swipe recognizer
-   * 
+   *
    * @param source the source to fire events on
    */
   public SwipeRecognizer(HasHandlers source) {
@@ -65,7 +65,7 @@ public class SwipeRecognizer implements TouchHandler {
 
   /**
    * construct a swipe recognizer
-   * 
+   *
    * @param source the source to fire events on
    * @param minDistance the minimum distance to cover before this counts as a swipe
    */
@@ -75,7 +75,7 @@ public class SwipeRecognizer implements TouchHandler {
 
   /**
    * construct a swipe recognizer
-   * 
+   *
    * @param source the source to fire events on
    * @param minDistance the minimum distance to cover before this counts as a swipe
    * @param threshold the initial threshold before swipe start is fired
@@ -99,13 +99,6 @@ public class SwipeRecognizer implements TouchHandler {
     state = State.READY;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler#onTouchStart(com.googlecode.mgwt
-   * .dom.client.event.touch.TouchStartEvent)
-   */
   @Override
   public void onTouchStart(TouchStartEvent event) {
     touchCount++;
@@ -126,16 +119,8 @@ public class SwipeRecognizer implements TouchHandler {
         state = State.INVALID;
         break;
     }
-
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler#onTouchMove(com.googlecode.mgwt
-   * .dom.client.event.touch.TouchMoveEvent)
-   */
   @Override
   public void onTouchMove(TouchMoveEvent event) {
     Touch touch = event.getTouches().get(0);
@@ -158,7 +143,7 @@ public class SwipeRecognizer implements TouchHandler {
           direction = touch.getPageX() - x > 0 ? DIRECTION.LEFT_TO_RIGHT : DIRECTION.RIGHT_TO_LEFT;
 
           SwipeStartEvent swipeStartEvent =
-              new SwipeStartEvent(TouchUtil.cloneTouch(touch), touch.getPageX() - x, direction);
+              new SwipeStartEvent(TouchCopy.copy(touch), touch.getPageX() - x, direction);
 
           getEventPropagator().fireEvent(source, swipeStartEvent);
 
@@ -169,7 +154,7 @@ public class SwipeRecognizer implements TouchHandler {
             direction = touch.getPageY() - y > 0 ? DIRECTION.TOP_TO_BOTTOM : DIRECTION.BOTTOM_TO_TOP;
 
             SwipeStartEvent swipeStartEvent =
-                new SwipeStartEvent(TouchUtil.cloneTouch(touch), touch.getPageY() - y, direction);
+                new SwipeStartEvent(TouchCopy.copy(touch), touch.getPageY() - y, direction);
 
             getEventPropagator().fireEvent(source, swipeStartEvent);
 
@@ -186,7 +171,7 @@ public class SwipeRecognizer implements TouchHandler {
             lastDistance = Math.abs(touch.getPageY() - y);
             getEventPropagator().fireEvent(
                 source,
-                new SwipeMoveEvent(TouchUtil.cloneTouch(touch), lastDistance > minDistance,
+                new SwipeMoveEvent(TouchCopy.copy(touch), lastDistance > minDistance,
                     lastDistance, direction));
             break;
 
@@ -195,7 +180,7 @@ public class SwipeRecognizer implements TouchHandler {
             lastDistance = Math.abs(touch.getPageX() - x);
             getEventPropagator().fireEvent(
                 source,
-                new SwipeMoveEvent(TouchUtil.cloneTouch(touch), lastDistance > minDistance,
+                new SwipeMoveEvent(TouchCopy.copy(touch), lastDistance > minDistance,
                     lastDistance, direction));
 
             break;
@@ -209,20 +194,8 @@ public class SwipeRecognizer implements TouchHandler {
       default:
         break;
     }
-
   }
 
-  public native void log(String l)/*-{
-		$wnd.console.log(l);
-  }-*/;
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler#onTouchEnd(com.googlecode.mgwt.dom
-   * .client.event.touch.TouchEndEvent)
-   */
   @Override
   public void onTouchEnd(TouchEndEvent event) {
     touchCount--;
@@ -232,32 +205,23 @@ public class SwipeRecognizer implements TouchHandler {
         getEventPropagator().fireEvent(source, new SwipeEndEvent(lastDistance > minDistance, lastDistance, direction));
         reset();
         break;
-
       default:
         reset();
         break;
     }
-
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * com.googlecode.mgwt.dom.client.event.touch.TouchCancelHandler#onTouchCanceled(com.googlecode
-   * .mgwt.dom.client.event.touch.TouchCancelEvent)
-   */
   @Override
-  public void onTouchCanceled(TouchCancelEvent event) {
+  public void onTouchCancel(TouchCancelEvent event) {
     touchCount--;
-    if (touchCount <= 0)
+    if (touchCount <= 0) {
       reset();
-
+    }
   }
 
   /**
    * the threshold before an event is fired (deadzone)
-   * 
+   *
    * @return the threshold in px
    */
   public int getThreshold() {
@@ -266,14 +230,20 @@ public class SwipeRecognizer implements TouchHandler {
 
   /**
    * the distance that needs to be covered before counting as a swipe
-   * 
+   *
    * @return the distance in px
    */
   public int getMinDistance() {
     return minDistance;
   }
 
-  protected EventPropagator getEventPropagator() {
+  private void reset() {
+    state = State.READY;
+    touchCount = 0;
+  }
+
+  // Visible for testing
+  EventPropagator getEventPropagator() {
     if (eventPropagator == null) {
       if (DEFAULT_EVENT_PROPAGATOR == null) {
         DEFAULT_EVENT_PROPAGATOR = GWT.create(EventPropagator.class);
@@ -282,16 +252,4 @@ public class SwipeRecognizer implements TouchHandler {
     }
     return eventPropagator;
   }
-
-  protected void setEventPropagator(EventPropagator eventPropagator) {
-    this.eventPropagator = eventPropagator;
-
-  }
-
-  private void reset() {
-    state = State.READY;
-    touchCount = 0;
-
-  }
-
 }
