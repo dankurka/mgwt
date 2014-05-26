@@ -77,15 +77,37 @@ public abstract class TouchWidgetImpl {
     }
   }
 
-  private static class TouchWidgetDesktopImpl extends TouchWidgetImpl {
+  // Used with deffered binding
+  @SuppressWarnings("unused")
+  private static class TouchWidgetRuntimeImpl extends TouchWidgetImpl {
+    private static boolean hasTouchSupport;
+    private static TouchWidgetImpl delegate;
+
+    static {
+      hasTouchSupport = hasTouch();
+      if (hasTouchSupport) {
+        delegate = new TouchWidgetMobileImpl();
+      }
+    }
+
+    private static native boolean hasTouch() /*-{
+      return 'ontouchstart' in $doc.documentElement;
+    }-*/;
+
 
     @Override
     public HandlerRegistration addTouchStartHandler(Widget w, TouchStartHandler handler) {
+      if (hasTouchSupport) {
+        return delegate.addTouchStartHandler(w, handler);
+      }
       return w.addDomHandler(new TouchStartToMouseDownHandler(handler), MouseDownEvent.getType());
     }
 
     @Override
     public HandlerRegistration addTouchMoveHandler(Widget w, TouchMoveHandler handler) {
+      if (hasTouchSupport) {
+        return delegate.addTouchMoveHandler(w, handler);
+      }
       TouchMoveToMouseMoveHandler touchMoveToMouseMoveHandler = new TouchMoveToMouseMoveHandler(handler);
       HandlerRegistrationCollection handlerRegistrationCollection = new HandlerRegistrationCollection();
       handlerRegistrationCollection.addHandlerRegistration(w.addDomHandler(touchMoveToMouseMoveHandler, MouseDownEvent.getType()));
@@ -96,16 +118,25 @@ public abstract class TouchWidgetImpl {
 
     @Override
     public HandlerRegistration addTouchCancelHandler(Widget w, TouchCancelHandler handler) {
+      if (hasTouchSupport) {
+        return delegate.addTouchCancelHandler(w, handler);
+      }
       return new NoopHandlerRegistration();
     }
 
     @Override
     public HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler) {
+      if (hasTouchSupport) {
+        return delegate.addTouchEndHandler(w, handler);
+      }
       return w.addDomHandler(new TouchEndToMouseUpHandler(handler), MouseUpEvent.getType());
     }
 
     @Override
     public HandlerRegistration addTouchHandler(Widget w, TouchHandler handler) {
+      if (hasTouchSupport) {
+        return delegate.addTouchHandler(w, handler);
+      }
       HandlerRegistrationCollection hrc = new HandlerRegistrationCollection();
       hrc.addHandlerRegistration(addTouchStartHandler(w, handler));
       hrc.addHandlerRegistration(addTouchMoveHandler(w, handler));
@@ -115,23 +146,7 @@ public abstract class TouchWidgetImpl {
     }
   }
 
-  private static boolean tested;
-  private static boolean hasTouchSupport;
 
-  public static TouchWidgetImpl get() {
-    if(!tested) {
-      tested = true;
-      hasTouchSupport = hasTouch();
-    }
-    if(hasTouchSupport) {
-      return new TouchWidgetMobileImpl();
-    }
-    return new TouchWidgetDesktopImpl();
-  }
-
-  private static native boolean hasTouch() /*-{
-    return 'ontouchstart' in $doc.documentElement;
-  }-*/;
 
 
 

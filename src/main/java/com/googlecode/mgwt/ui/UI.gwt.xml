@@ -49,21 +49,26 @@ under * the License.
   <define-configuration-property name="mgwt.css.inject" is-multi-valued="false" />
   <set-configuration-property name="mgwt.css.inject" value="end" />
 
-  <generate-with class="com.googlecode.mgwt.ui.generator.OsDetectionGenerator">
-    <when-type-assignable class="com.googlecode.mgwt.ui.client.OsDetection" />
+<!--   <generate-with class="com.googlecode.mgwt.ui.generator.OsDetectionGenerator"> -->
+<!--     <when-type-assignable class="com.googlecode.mgwt.ui.client.OsDetection" /> -->
+<!--   </generate-with> -->
+
+  <generate-with class="com.googlecode.mgwt.ui.generator.DeviceDensityGenerator">
+    <when-type-assignable class="com.googlecode.mgwt.ui.client.DeviceDensity" />
+  </generate-with>
+  
+    <generate-with class="com.googlecode.mgwt.ui.generator.FormFactorGenerator">
+    <when-type-assignable class="com.googlecode.mgwt.ui.client.FormFactor" />
   </generate-with>
 
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetDesktopImpl">
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl.TouchWidgetRuntimeImpl">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl" />
-    <all>
-      <when-property-is name="mobile.user.agent" value="not_mobile" />
-    </all>
   </replace-with>
 
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetMobileImpl">
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl.TouchWidgetMobileImpl">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl" />
     <all>
-      <when-property-is name="mobile.user.agent" value="mobilesafari" />
+      <when-property-is name="mgwt.user.agent" value="mobile" />
     </all>
   </replace-with>
 	
@@ -119,20 +124,6 @@ under * the License.
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
   </replace-with>
 
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
-     <when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
-     <any> 
-       <when-property-is name="user.agent" value="ie9" />
-       <when-property-is name="user.agent" value="ie10" />
-     </any>
-  </replace-with>
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseNoOpImpl">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.base.MValueBoxBase.MValueBoxBaseImpl" />
-    <all> 
-      <when-property-is name="mobile.user.agent" value="not_mobile" />
-    </all>
-  </replace-with>
-
   <!-- super dev mode -->
   <define-configuration-property name="mgwt.superdevmode" is-multi-valued="false" />
   <set-configuration-property name="mgwt.superdevmode" value="off" />
@@ -148,37 +139,38 @@ under * the License.
   <replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilNoOpImpl">
     <when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
   </replace-with>
-
-  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilIphoneImpl">
-    <when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
-    <all>
-      <when-property-is name="mgwt.os" value="iphone" />
-    </all>
-  </replace-with>
+<!-- TODO dankurka fix this -->
+<!--   <replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilIphoneImpl"> -->
+<!--     <when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" /> -->
+<!--     <all> -->
+<!--       <when-property-is name="mgwt.os" value="iphone" /> -->
+<!--     </all> -->
+<!--   </replace-with> -->
 	
-  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilIphoneImpl">
-    <when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" />
-	<all>
-	  <when-property-is name="mgwt.os" value="retina" />
-	</all>
-  </replace-with>
+<!--   <replace-with class="com.googlecode.mgwt.ui.client.util.impl.AddressBarUtilIphoneImpl"> -->
+<!--     <when-type-is class="com.googlecode.mgwt.ui.client.util.AddressBarUtil" /> -->
+<!-- 	<all> -->
+<!-- 	  <when-property-is name="mgwt.os" value="retina" /> -->
+<!-- 	</all> -->
+<!--   </replace-with> -->
 
 	<!-- Orientation handler -->
 <!--     <replace-with class="com.googlecode.mgwt.ui.client.util.impl.IOSOrientationHandler"> -->
 <!--         <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" /> -->
 <!--     </replace-with> -->
     
-  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.ResizeOrientationHandler">
-    <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
-  </replace-with>
+<!--   <replace-with class="com.googlecode.mgwt.ui.client.util.impl.ResizeOrientationHandler"> -->
+<!--     <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" /> -->
+<!--   </replace-with> -->
 
+<!--  TODO dankurka fix this -->
   <replace-with class="com.googlecode.mgwt.ui.client.util.impl.IOSOrientationHandler">
     <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
-      <any>
-        <when-property-is name="mgwt.os" value="iphone" />
-        <when-property-is name="mgwt.os" value="ipad"/>
-        <when-property-is name="mgwt.os" value="retina" />
-        <when-property-is name="mgwt.os" value="ipad_retina"/>
-      </any>
+<!--       <any> -->
+<!--         <when-property-is name="mgwt.os" value="iphone" /> -->
+<!--         <when-property-is name="mgwt.os" value="ipad"/> -->
+<!--         <when-property-is name="mgwt.os" value="retina" /> -->
+<!--         <when-property-is name="mgwt.os" value="ipad_retina"/> -->
+<!--       </any> -->
   </replace-with>
 </module>

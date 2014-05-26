@@ -1,0 +1,9 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
+  <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAppearance" />
+    
+  <div ui:field="button" class="{apperance.css.button}">
+    <div ui:field="icon" class="{apperance.css.icon}"/>
+    <div ui:field="text" class="{apperance.css.text}"/>
+  </div>
+</ui:UiBinder>

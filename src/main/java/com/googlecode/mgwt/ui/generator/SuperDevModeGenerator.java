@@ -1,3 +1,18 @@
+/*
+ * Copyright 2012 Daniel Kurka
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.googlecode.mgwt.ui.generator;
 
 import java.io.PrintWriter;
@@ -29,7 +44,7 @@ public class SuperDevModeGenerator extends Generator{
 			logger.log(TreeLogger.ERROR, "can not resolve mgwt.superdevmode variable", e);
 			throw new UnableToCompleteException();
 		}
-		
+
 		ConfigurationProperty superDevModeServer = null;
 		try {
 			// get mgwt.superdevmode variable
@@ -38,7 +53,7 @@ public class SuperDevModeGenerator extends Generator{
 			// if we can`t find it die
 			logger.log(TreeLogger.INFO, "can not resolve mgwt.superdevmode_host variable - using default - http://<server>:9876", e);
 		}
-		
+
 
 		JClassType classType = null;
 
@@ -53,27 +68,27 @@ public class SuperDevModeGenerator extends Generator{
 
 		// get value of mgwt.os
 		String mgwtSuperDevmodePropertyValue = property.getValues().get(0);
-		
+
 		if("on".equals(mgwtSuperDevmodePropertyValue)){
 			return buildOnImplementation(logger, context, classType, typeName, superDevModeServer);
 		}else{
 			return "com.googlecode.mgwt.ui.client.util.impl.SuperDevModeOffImpl";
 		}
-		
-		
-		
+
+
+
 	}
 
 	private String buildOnImplementation(TreeLogger logger, GeneratorContext context, JClassType classType, String typeName, ConfigurationProperty superDevModeServer) {
-		
-		
-		
+
+
+
 		if(superDevModeServer.getValues().get(0) == null){
 			//use default impl!
 			return "com.googlecode.mgwt.ui.client.util.impl.SuperDevModeHelperOnDefaultImpl";
 		}
-		
-		
+
+
 		// get the package name
 		String packageName = classType.getPackage().getName();
 		// build name for implementation class
@@ -84,14 +99,14 @@ public class SuperDevModeGenerator extends Generator{
 		ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(packageName, simpleName);
 		composer.setSuperclass("com.googlecode.mgwt.ui.client.util.impl.SuperDevModeHelperOnImpl");
 		composer.addImport("com.googlecode.mgwt.ui.client.util.impl.SuperDevModeHelperOnImpl");
-		
+
 
 		PrintWriter printWriter = context.tryCreate(logger, packageName, simpleName);
 
 		if (printWriter == null) {
 			return fullName;
 		}
-		
+
 
 		// start writing the implementation
 		SourceWriter writer = composer.createSourceWriter(context, printWriter);
@@ -100,7 +115,7 @@ public class SuperDevModeGenerator extends Generator{
 		writer.println("return \"" + superDevModeServer.getValues().get(0) + "\";");
 		writer.println("}");
 
-		
+
 
 		writer.commit(logger);
 

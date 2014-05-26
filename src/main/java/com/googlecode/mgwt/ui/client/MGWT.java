@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -45,12 +45,16 @@ import com.googlecode.mgwt.ui.client.util.OrientationHandler;
 /**
  * The MGWT Object is used to apply settings for an MGWT App. It also provides an instance of
  * {@link OsDetection}, as well a way to determine the device orientation
- * 
- * 
- * 
+ *
+ *
+ *
  * @author Daniel Kurka
  */
 public class MGWT {
+
+  private static FormFactor FORM_FACTOR;
+
+  private static DeviceDensity DEVICE_DENSITY;
 
   private static OsDetection OS_DETECTION;
 
@@ -71,13 +75,13 @@ public class MGWT {
   public static OrientationHandler getOrientationHandler() {
 	  if ( orientationHandler == null){
 		  orientationHandler = GWT.create(OrientationHandler.class);
-		  
+
 	  }
 	return orientationHandler;
 }
   /**
    * Add a orientation handler to detect the device orientation
-   * 
+   *
    * @param handler the handler to add
    *          {@link com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler} .
    * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
@@ -90,11 +94,11 @@ public class MGWT {
   /**
    * Apply settings for this mgwt app. Every app should call this method with the options its wants
    * for their app
-   * 
+   *
    * The options are documented in @link {@link MGWTSettings}
-   * 
+   *
    * @param settings the settings for this app
-   * 
+   *
    */
   public static void applySettings(MGWTSettings settings) {
 
@@ -185,9 +189,9 @@ public class MGWT {
 
   /**
    * Detect if a web app is in full screen mode
-   * 
+   *
    * fullscreen currently only exits on ios
-   * 
+   *
    * @return true if the web app is in full screen mode, otherwise false
    */
   public static native boolean isFullScreen()/*-{
@@ -198,7 +202,7 @@ public class MGWT {
   }-*/;
 
   /**
-   * 
+   *
    * Considered internal don`t call!
    * <p>
    * fixIOSScrollIssueBlur
@@ -243,27 +247,42 @@ public class MGWT {
     timer = null;
   }
 
+
+  public static DeviceDensity getDeviceDensity() {
+    if (DEVICE_DENSITY == null) {
+      DEVICE_DENSITY = GWT.create(DeviceDensity.class);
+    }
+    return DEVICE_DENSITY;
+  }
+
+  public static FormFactor getFormFactor() {
+    if (FORM_FACTOR == null) {
+      FORM_FACTOR = GWT.create(FormFactor.class);
+    }
+    return FORM_FACTOR;
+  }
+
   /**
    * Get the os detection interface
-   * 
+   *
    * @return a {@link com.googlecode.mgwt.ui.client.OsDetection} object.
    */
   public static OsDetection getOsDetection() {
     if (OS_DETECTION == null) {
-      OS_DETECTION = GWT.create(OsDetection.class);
+      OS_DETECTION = new OsDetectionRuntimeImpl();
     }
     return OS_DETECTION;
   }
 
   /**
    * Get the current orientation of the device
-   * 
+   *
    * @return the current orientation of the device
    */
   public static ORIENTATION getOrientation(){
 	  return getOrientationHandler().getOrientation();
   }
-  
+
   private static Element getHead() {
     NodeList<Element> elementsByTagName = Document.get().getElementsByTagName("head");
 

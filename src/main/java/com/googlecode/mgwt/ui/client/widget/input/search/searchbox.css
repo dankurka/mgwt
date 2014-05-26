@@ -48,13 +48,7 @@
 	width: 85%; /* TODO */
 }
 
-@if mgwt.os android android_tablet {
-	.mgwt-SearchBox-input {
-		background-color: transparent;
-		color: white;
-		\-webkit-user-modify: read-write-plaintext-only;
-	}
-}
+
 
 @if user.agent safari {
 	.mgwt-SearchBox-input {

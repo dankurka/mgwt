@@ -78,11 +78,13 @@
 }
 
 @if user.agent safari {
-	
+    /* TODO dankurka add resolution variable */
+    /*
 	@if mgwt.os ipad_retina {
 		.mgwt-PullToRefresh-arrow {
 			background-size: 23px 18px;
 		}
 	}
+	*/
 	
 }

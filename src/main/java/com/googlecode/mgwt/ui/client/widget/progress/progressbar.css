@@ -1,3 +1,47 @@
+@if mgwt.css pretty {
+  @external mgwt-ProgressBar;
+}
+
+.mgwt-ProgressBar {
+  position: relative;
+  width: 250px;
+  height: 15px;
+  background-repeat: repeat-x;
+  background-position-x: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;	
+}
+
+@if user.agent safari {
+  .mgwt-ProgressBar {
+    \-webkit-animation-duration: 9s;
+    \-webkit-animation-name: anmiateProgressBar;
+    \-webkit-animation-iteration-count: infinite;
+    \-webkit-animation-timing-function: linear;
+  }
+
+  @-webkit-keyframes anmiateProgressBar {
+    0% { background-position-x:  0%;}
+	100% { background-position-x: 100%;}	
+  }
+}
+
+@if user.agent gecko1_8 {
+  .mgwt-ProgressBar {
+    \-moz-animation-duration: 9s;
+    \-moz-animation-name: anmiateProgressBar;
+    \-moz-animation-iteration-count: infinite;
+    \-moz-animation-timing-function: linear;
+  }
+
+  @-moz-keyframes anmiateProgressBar {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0;}
+  }
+}
+
 .mgwt-ProgressBar {
 	border: 1px solid #bebebe;
 	background-color: rgb(57, 137, 214);
@@ -31,3 +75,4 @@
 
 	}
 }
+

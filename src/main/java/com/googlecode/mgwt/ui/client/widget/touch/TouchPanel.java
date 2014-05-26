@@ -15,6 +15,7 @@
  */
 package com.googlecode.mgwt.ui.client.widget.touch;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.event.dom.client.TouchCancelHandler;
 import com.google.gwt.event.dom.client.TouchEndHandler;
 import com.google.gwt.event.dom.client.TouchEvent;
@@ -51,7 +52,7 @@ import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
  */
 public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHandlers, HasPinchHandlers, HasSwipeHandlers, HasLongTapHandlers {
 
-  private static final TouchWidgetImpl impl = TouchWidgetImpl.get();
+  private static final TouchWidgetImpl impl = GWT.create(TouchWidgetImpl.class);
 
 	protected final GestureUtility gestureUtility;
 

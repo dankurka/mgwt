@@ -3,7 +3,7 @@ package com.googlecode.mgwt.ui.client.widget.progress;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
-public class ProgressBarAndroidAppearance extends ProgressBarAbstractAppearance {
+public class ProgressBarDefaultAppearance extends ProgressBarAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();
@@ -13,7 +13,7 @@ public class ProgressBarAndroidAppearance extends ProgressBarAbstractAppearance 
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"progressbar-base.css", "progressbar-android.css"})
+    @Source({"progressbar.css"})
     ProgressBarCss css();
   }
 

@@ -1,0 +1,31 @@
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, mgwt-TabBar-Button-active, mgwt-TabBar-Button-selected, mgwt-TabBar-Button-icon, mgwt-TabBar-Button-text;
+}
+
+.mgwt-TabBar-Button-active {
+	
+}
+
+.mgwt-TabBar-Button-selected {
+	
+}
+
+.mgwt-TabBar-Button {
+	min-width: 60px;
+	background-color: transparent;
+	box-sizing: content-box;
+}
+
+@if user.agent safari {
+	.mgwt-TabBar-Button {
+		\-webkit-appearance: none;
+		\-webkit-box-flex: 1;
+	}
+}
+
+@if user.agent gecko1_8 {
+	.mgwt-TabBar-Button {
+		\-moz-appearance: none;
+		\-moz-box-flex: 1;
+	}
+}

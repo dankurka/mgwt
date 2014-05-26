@@ -1,5 +1,5 @@
 /*
- * Copyright 2009 Daniel Kurka
+ * Copyright 2014 Daniel Kurka
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -29,17 +29,18 @@ import com.google.gwt.core.ext.typeinfo.NotFoundException;
 import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
 import com.google.gwt.user.rebind.SourceWriter;
 
+import com.googlecode.mgwt.ui.client.FormFactor;
+
 /**
- * Considered internal
- *
- * {@link OsDetectionGenerator} creates the implementation for
- * OsDetection for each platform
+ * <h1>Considered internal</h1>
+ * <p>
+ * FormFactorGenerator creates the implementation for
+ * {@link FormFactor} for each device.
  *
  * @author Daniel Kurka
  */
-public class OsDetectionGenerator extends Generator {
+public class FormFactorGenerator extends Generator {
 
-	/** {@inheritDoc} */
 	@Override
 	public String generate(TreeLogger logger, GeneratorContext context, String typeName) throws UnableToCompleteException {
 
@@ -48,10 +49,10 @@ public class OsDetectionGenerator extends Generator {
 		SelectionProperty property = null;
 		try {
 			// get mgwt.os variable
-			property = propertyOracle.getSelectionProperty(logger, "mgwt.os");
+			property = propertyOracle.getSelectionProperty(logger, "mgwt.formfactor");
 		} catch (BadPropertyValueException e) {
 			// if we can`t find it die
-			logger.log(TreeLogger.ERROR, "can not resolve mgwt.os variable", e);
+			logger.log(TreeLogger.ERROR, "can not resolve mgwt.formfactor variable", e);
 			throw new UnableToCompleteException();
 		}
 
@@ -66,7 +67,7 @@ public class OsDetectionGenerator extends Generator {
 			throw new UnableToCompleteException();
 		}
 
-		// get value of mgwt.os
+		// get value of mgwt.formfactor
 		String mgwtProperty = property.getCurrentValue();
 		// get the package name
 		String packageName = classType.getPackage().getName();
@@ -77,7 +78,6 @@ public class OsDetectionGenerator extends Generator {
 
 		ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(packageName, simpleName);
 		composer.addImplementedInterface(typeName);
-		composer.addImport(typeName);
 
 		PrintWriter printWriter = context.tryCreate(logger, packageName, simpleName);
 
@@ -88,57 +88,20 @@ public class OsDetectionGenerator extends Generator {
 		// start writing the implementation
 		SourceWriter writer = composer.createSourceWriter(context, printWriter);
 
-		writer.println("public boolean isAndroid() {");
-		writer.println("return isAndroidTablet() || isAndroidPhone();");
-		writer.println("}");
-
-		writer.println("public boolean isIPhone() {");
-		writer.println("return " + mgwtProperty.equals("iphone") + " || " + mgwtProperty.equals("retina") + ";");
-		writer.println("}");
-
-		writer.println("public boolean isIPad() {");
-		writer.println("return " + mgwtProperty.equals("ipad") + " || " + mgwtProperty.equals("ipad_retina") + ";");
-		writer.println("}");
-
-		writer.println("public boolean isIOs() {");
-		writer.println("return isIPhone() || isIPad();");
-		writer.println("}");
-
-		writer.println("public boolean isDesktop() {");
-		writer.println("return " + mgwtProperty.equals("desktop") + ";");
-		writer.println("}");
-
-		writer.println("public boolean isBlackBerry() {");
-		writer.println("return false;");
+		writer.println("public boolean isPhone() {");
+		writer.println("return " + mgwtProperty.equals("phone") + ";");
 		writer.println("}");
 
 		writer.println("public boolean isTablet() {");
-		writer.println("return isDesktop() || isIPad() || isAndroidTablet();");
-		writer.println("}");
+    writer.println("return " + mgwtProperty.equals("tablet") + ";");
+    writer.println("}");
 
-		writer.println("public boolean isPhone() {");
-		writer.println("return isIPhone() || isAndroidPhone() || isBlackBerry();");
-		writer.println("}");
-
-		writer.println("public boolean isAndroidTablet() {");
-		writer.println("return " + mgwtProperty.equals("android_tablet") + ";");
-		writer.println("}");
-
-		writer.println("public boolean isAndroidPhone() {");
-		writer.println("return " + mgwtProperty.equals("android") + ";");
-		writer.println("}");
-
-		writer.println("public boolean isRetina() {");
-		writer.println("return " + mgwtProperty.equals("retina") + ";");
-		writer.println("}");
-
-		writer.println("public boolean isIPadRetina() {");
-		writer.println("return " + mgwtProperty.equals("ipad_retina") + ";");
-		writer.println("}");
+    writer.println("public boolean isDesktop() {");
+    writer.println("return " + mgwtProperty.equals("desktop") + ";");
+    writer.println("}");
 
 		writer.commit(logger);
 
 		return fullName;
-
 	}
 }

@@ -32,17 +32,4 @@
 
     <inherits name='com.googlecode.mgwt.MGWTMin'/>
 
-    <set-property name="mobile.user.agent" value="mobilesafari,not_mobile" />
-    <set-property name="mobile.user.agent" value="not_mobile" >
-      <none>
-        <when-property-is name="user.agent" value="safari" />
-      </none>
-    </set-property>
-    <property-provider name="mobile.user.agent">
-      <![CDATA[
-        return /(android|iphone|ipod|ipad)/i.test(window.navigator.userAgent) 
-          ? 'mobilesafari': 'not_mobile';
-      ]]>
-    </property-provider>
-
 </module>

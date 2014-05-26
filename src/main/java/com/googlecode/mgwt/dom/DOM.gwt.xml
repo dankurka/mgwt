@@ -22,7 +22,6 @@
     
     <define-property name="mgwt.formfactor" values="phone, tablet, desktop" />
     <property-provider name="mgwt.formfactor"><![CDATA[
-      (function() {
         // Look for the formfactor as a url argument.
         var args = location.search;
         var start = args.indexOf("formfactor");
@@ -59,11 +58,9 @@
       
       // Everything else is a desktop.
       return "desktop";
-      })();
     ]]></property-provider>
     <define-property name="mgwt.density" values="low, mid, high" />
     <property-provider name="mgwt.density"><![CDATA[
-      (function() {
         if (!window.devicePixelRatio) {
           return 'low';
         }
@@ -75,16 +72,14 @@
         }
 
         return 'low';
-      })();
     ]]></property-provider>
 
-    
-    <define-configuration-property name="mgwt.user.agent" values="mobile,desktop_or_mobile" is-multi-valued="false" />
-    <set-configuration-property name="mgwt.user.agent" value="desktop_or_mobile"/>
+
+    <define-property name="mgwt.user.agent" values="mobile, desktop_or_mobile" />
+    <set-property name="mgwt.user.agent" value="desktop_or_mobile"/>
 
     <!-- event propagator -->
     <replace-with class="com.googlecode.mgwt.dom.client.recognizer.EventPropagatorMobileImpl">
         <when-type-is class="com.googlecode.mgwt.dom.client.recognizer.EventPropagator"/>
     </replace-with>
-    
 </module>
