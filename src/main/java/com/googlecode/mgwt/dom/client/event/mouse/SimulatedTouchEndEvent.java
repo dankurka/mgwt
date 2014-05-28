@@ -62,13 +62,6 @@ public class SimulatedTouchEndEvent extends TouchEndEvent {
 
   @Override
   public JsArray<Touch> getTouches() {
-    JsArray<Touch> array = SimulatedTouch.createTouchArray();
-    SimulatedTouch touch = SimulatedTouch.createTouch();
-    touch.setClientX(clientX);
-    touch.setClientY(clientY);
-    touch.setPageX(pageX);
-    touch.setPageY(pageY);
-    array.push(touch);
-    return array;
+    return SimulatedTouch.createTouchArray();
   }
 }
