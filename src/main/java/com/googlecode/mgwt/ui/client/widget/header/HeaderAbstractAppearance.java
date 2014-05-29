@@ -13,12 +13,18 @@ public abstract class HeaderAbstractAppearance implements HeaderAppearance {
   }
 
   private static final BinderButton UI_BINDER_BUTTON = GWT.create(BinderButton.class);
-  
+
   @UiTemplate("HeaderPanelAbstractAppearance.ui.xml")
   interface BinderPanel extends UiBinder<Widget, HeaderPanel> {
   }
 
-  private static final BinderPanel UI_BINDER_Panel = GWT.create(BinderPanel.class);
+  private static final BinderPanel UI_BINDER_PANEL = GWT.create(BinderPanel.class);
+
+  @UiTemplate("HeaderTitleAbstractAppearance.ui.xml")
+  interface BinderTitle extends UiBinder<Element, HeaderTitle> {
+  }
+
+  private static final BinderTitle UI_BINDER_TITLE = GWT.create(BinderTitle.class);
 
   @Override
   public UiBinder<? extends Element, HeaderButton> uiBinder() {
@@ -27,6 +33,11 @@ public abstract class HeaderAbstractAppearance implements HeaderAppearance {
 
   @Override
   public UiBinder<Widget, HeaderPanel> panelBinder() {
-    return UI_BINDER_Panel;
+    return UI_BINDER_PANEL;
+  }
+
+  @Override
+  public UiBinder<? extends Element, HeaderTitle> uiBinderTitle() {
+    return UI_BINDER_TITLE;
   }
 }

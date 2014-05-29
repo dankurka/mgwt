@@ -593,7 +593,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   private void start(TouchStartEvent event) {
-
     int x, y;
     if (!this.enabled) {
       return;
@@ -771,7 +770,6 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   private void end(final TouchEvent<?> event) {
-
     if (event != null && event.getTouches().length() != 0) {
       return;
     }

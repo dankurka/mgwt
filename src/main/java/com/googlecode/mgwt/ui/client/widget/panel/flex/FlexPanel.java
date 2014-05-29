@@ -19,6 +19,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.IndexedPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -32,7 +33,7 @@ import java.util.Iterator;
  *
  * @author Daniel Kurka
  */
-public class FlexPanel extends Composite implements HasWidgets.ForIsWidget {
+public class FlexPanel extends Composite implements HasWidgets.ForIsWidget, IndexedPanel.ForIsWidget {
 
   public static enum Alignment {
     START("flex-start"), END("flex-end"), CENTER("center"), STRETCH("stretch"), BASELINE("baseline");
@@ -145,9 +146,9 @@ public class FlexPanel extends Composite implements HasWidgets.ForIsWidget {
     container.add(w);
   }
 
-  public void add(Widget widget, int flex) {
+  public void add(Widget widget, double flex) {
     container.add(widget);
-    widget.getElement().getStyle().setProperty("flex", Integer.toString(flex));
+    widget.getElement().getStyle().setProperty("flex", Double.toString(flex));
   }
 
   @Override
@@ -189,5 +190,34 @@ public class FlexPanel extends Composite implements HasWidgets.ForIsWidget {
   @UiFactory
   protected FlexPanelAppearance getAppearance() {
 	  return appearance;
+  }
+
+  @Override
+  public Widget getWidget(int index) {
+    return container.getWidget(index);
+  }
+
+  @Override
+  public int getWidgetCount() {
+    return container.getWidgetCount();
+  }
+
+  @Override
+  public int getWidgetIndex(Widget child) {
+    return container.getWidgetIndex(child);
+  }
+
+  @Override
+  public boolean remove(int index) {
+    Widget w = getWidget(index);
+    if (w instanceof IsFlexible) {
+      w.removeStyleName(appearance.css().flexible());
+    }
+    return container.remove(index);
+  }
+
+  @Override
+  public int getWidgetIndex(IsWidget child) {
+    return container.getWidgetIndex(child);
   }
 }

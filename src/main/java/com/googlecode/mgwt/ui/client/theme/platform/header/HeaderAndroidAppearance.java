@@ -18,11 +18,11 @@ public class HeaderAndroidAppearance extends HeaderAbstractAppearance {
 
     @Source({"header-button-base.css", "header-button-android.css"})
     HeaderButtonCss css();
-    
+
     @Source({"header-base.css", "header-android.css"})
     HeaderPanelCss cssPanel();
   }
-  
+
   @Override
   public HeaderButtonCss css() {
     return Resources.INSTANCE.css();
@@ -31,6 +31,12 @@ public class HeaderAndroidAppearance extends HeaderAbstractAppearance {
   @Override
   public HeaderPanelCss cssPanel() {
     return Resources.INSTANCE.cssPanel();
+  }
+
+  @Override
+  public HeaderTitleCss cssTitle() {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 }

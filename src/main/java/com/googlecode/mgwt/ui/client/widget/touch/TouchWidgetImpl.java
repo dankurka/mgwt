@@ -187,5 +187,4 @@ public abstract class TouchWidgetImpl {
 	public abstract HandlerRegistration addTouchEndHandler(Widget w, TouchEndHandler handler);
 
   public abstract HandlerRegistration addTouchHandler(Widget w, TouchHandler handler);
-
 }

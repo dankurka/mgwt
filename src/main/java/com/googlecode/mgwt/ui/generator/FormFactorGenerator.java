@@ -15,18 +15,8 @@
  */
 package com.googlecode.mgwt.ui.generator;
 
-import java.io.PrintWriter;
-
-import com.google.gwt.core.ext.BadPropertyValueException;
-import com.google.gwt.core.ext.Generator;
-import com.google.gwt.core.ext.GeneratorContext;
-import com.google.gwt.core.ext.PropertyOracle;
 import com.google.gwt.core.ext.SelectionProperty;
 import com.google.gwt.core.ext.TreeLogger;
-import com.google.gwt.core.ext.UnableToCompleteException;
-import com.google.gwt.core.ext.typeinfo.JClassType;
-import com.google.gwt.core.ext.typeinfo.NotFoundException;
-import com.google.gwt.user.rebind.ClassSourceFileComposerFactory;
 import com.google.gwt.user.rebind.SourceWriter;
 
 import com.googlecode.mgwt.ui.client.FormFactor;
@@ -39,69 +29,28 @@ import com.googlecode.mgwt.ui.client.FormFactor;
  *
  * @author Daniel Kurka
  */
-public class FormFactorGenerator extends Generator {
+public class FormFactorGenerator extends RebindingGenerator {
 
-	@Override
-	public String generate(TreeLogger logger, GeneratorContext context, String typeName) throws UnableToCompleteException {
+  @Override
+  protected void writeImplementatioon(TreeLogger logger, SelectionProperty property,
+      SourceWriter writer) {
+    writer.println("public boolean isPhone() {");
+    writer.println("return " + property.getCurrentValue().equals("phone") + ";");
+    writer.println("}");
 
-		// get the property oracle
-		PropertyOracle propertyOracle = context.getPropertyOracle();
-		SelectionProperty property = null;
-		try {
-			// get mgwt.os variable
-			property = propertyOracle.getSelectionProperty(logger, "mgwt.formfactor");
-		} catch (BadPropertyValueException e) {
-			// if we can`t find it die
-			logger.log(TreeLogger.ERROR, "can not resolve mgwt.formfactor variable", e);
-			throw new UnableToCompleteException();
-		}
-
-		JClassType classType = null;
-
-		try {
-			// get the type we are looking for
-			classType = context.getTypeOracle().getType(typeName);
-		} catch (NotFoundException e) {
-			// if we can`t get it die
-			logger.log(TreeLogger.ERROR, "can not find type: '" + typeName + "'", e);
-			throw new UnableToCompleteException();
-		}
-
-		// get value of mgwt.formfactor
-		String mgwtProperty = property.getCurrentValue();
-		// get the package name
-		String packageName = classType.getPackage().getName();
-		// build name for implementation class
-		String simpleName = classType.getSimpleSourceName() + "_" + property.getCurrentValue();
-		// combine package name and simple name to full qualified
-		String fullName = packageName + "." + simpleName;
-
-		ClassSourceFileComposerFactory composer = new ClassSourceFileComposerFactory(packageName, simpleName);
-		composer.addImplementedInterface(typeName);
-
-		PrintWriter printWriter = context.tryCreate(logger, packageName, simpleName);
-
-		if (printWriter == null) {
-			return fullName;
-		}
-
-		// start writing the implementation
-		SourceWriter writer = composer.createSourceWriter(context, printWriter);
-
-		writer.println("public boolean isPhone() {");
-		writer.println("return " + mgwtProperty.equals("phone") + ";");
-		writer.println("}");
-
-		writer.println("public boolean isTablet() {");
-    writer.println("return " + mgwtProperty.equals("tablet") + ";");
+    writer.println("public boolean isTablet() {");
+    writer.println("return " + property.getCurrentValue().equals("tablet") + ";");
     writer.println("}");
 
     writer.println("public boolean isDesktop() {");
-    writer.println("return " + mgwtProperty.equals("desktop") + ";");
+    writer.println("return " + property.getCurrentValue().equals("desktop") + ";");
     writer.println("}");
 
-		writer.commit(logger);
+    writer.commit(logger);
+  }
 
-		return fullName;
-	}
+  @Override
+  protected String getSelectionPropertyName() {
+    return "mgwt.formfactor";
+  }
 }

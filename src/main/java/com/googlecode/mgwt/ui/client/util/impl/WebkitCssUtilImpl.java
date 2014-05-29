@@ -23,7 +23,6 @@ public class WebkitCssUtilImpl implements CssUtilImpl {
     }
 
     _translate(el, cssText);
-
   }
 
   @Override

@@ -1,0 +1,62 @@
+@if mgwt.css pretty {
+	@external mgwt-ImageButton, mgwt-ImageButton-active, mgwt-ImageButton-disabled;
+}
+
+.mgwt-ImageButton {
+	display: flex;
+	color: #454545;
+	max-width: 102px;
+	overflow: hidden;
+	background-color: #e5e9e8;
+	box-shadow: inset 0 1px #fff;
+	border: 1px solid #9daca9;
+	border-radius: 6px;
+}
+
+.mgwt-ImageButton-active {
+	color: #eff1f1;
+	border: 1px solid #0036ff;
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.36), 0 0 0 2px #6fb5f1;
+	outline: 0;
+}
+
+.mgwt-ImageButton-disabled {
+	opacity: 0.25;
+}
+
+.mgwt-ImageButton-image {
+  z-index: 1;
+  display: inline-block;
+  background-repeat: no-repeat;
+  height: 32px;
+  width: 32px;
+}
+
+.mgwt-ImageButton-text {
+  display: inline-block;
+  position: relative;
+  top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px #fff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 32px;
+}
+
+
+.mgwt-ImageButton.mgwt-ImageButton-small {
+  box-shadow: none;
+  border: none;
+  border-radius: 0px;
+  background-color: transparent;
+  margin: 0 5px 0 5px;
+}
+
+.mgwt-ImageButton.mgwt-ImageButton-small.mgwt-ImageButton-active {
+  color: #eff1f1;
+  border: none;
+  box-shadow: none;
+  outline: 0;
+}

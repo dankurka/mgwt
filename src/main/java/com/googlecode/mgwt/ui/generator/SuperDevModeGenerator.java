@@ -114,9 +114,6 @@ public class SuperDevModeGenerator extends Generator{
 		writer.println("protected String getServerUrl() {");
 		writer.println("return \"" + superDevModeServer.getValues().get(0) + "\";");
 		writer.println("}");
-
-
-
 		writer.commit(logger);
 
 		return fullName;

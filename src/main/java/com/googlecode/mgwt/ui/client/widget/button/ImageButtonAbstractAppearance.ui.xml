@@ -1,0 +1,8 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
+    <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.button.ImageButtonAppearance" />
+	<div ui:field="button" class="{apperance.css.button}">
+	  <div ui:field="image" class="{apperance.css.image}"/>
+	  <div ui:field="text" class="{apperance.css.text}"/>
+	</div>
+</ui:UiBinder>

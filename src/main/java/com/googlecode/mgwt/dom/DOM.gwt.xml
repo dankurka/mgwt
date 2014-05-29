@@ -43,35 +43,30 @@
       } else if (ua.indexOf("ipad") != -1) {
         // ipad.
         return "tablet";
-      } else if (ua.indexOf("android") != -1 || ua.indexOf("mobile") != -1) {
-        /*
-         * Android - determine the form factor of android devices based on the diagonal screen
-         * size. Anything under six inches is a phone, anything over six inches is a tablet.
-         */
-        var dpr = window.devicePixelRatio || 1;
-        var dpi = 160 ;
-        var width = window.screen.width * dpiRatio / dpi;
-        var height = window.screen.height * dpiRatio  / dpi;
-        var size = Math.sqrt(width*width + height*height);
-        return (size < 6) ? "mobile" : "tablet";
+      } else if (ua.indexOf("android") != -1) {
+        if(ua.indexOf('mobile') != -1){
+	      return "phone";
+	    }else{
+	      return "tablet";
+	    }
       }
       
       // Everything else is a desktop.
       return "desktop";
     ]]></property-provider>
-    <define-property name="mgwt.density" values="low, mid, high" />
+    <define-property name="mgwt.density" values="mid, high, xhigh" />
     <property-provider name="mgwt.density"><![CDATA[
         if (!window.devicePixelRatio) {
-          return 'low';
-        }
-
-        if(window.devicePixelRatio > 1.5) {
-          return 'high';
-        } else if(window.devicePixelRatio > 1.0) {
           return 'mid';
         }
 
-        return 'low';
+        if(window.devicePixelRatio > 1.5) {
+          return 'xhigh';
+        } else if(window.devicePixelRatio > 1.0) {
+          return 'high';
+        }
+
+        return 'mid';
     ]]></property-provider>
 
 

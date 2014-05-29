@@ -1,6 +1,6 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-    xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    xmlns:mgwt='urn:import:com.googlecode.mgwt.ui.client.widget'>
     <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.header.HeaderAppearance" />
-	<g:FlowPanel ui:field="container" styleName="{apperance.cssPanel.panel}" />
+	<mgwt:panel.flex.FlexPanel ui:field="container" orientation="HORIZONTAL" alignment="CENTER" addStyleNames="{apperance.cssPanel.panel}" />
 </ui:UiBinder>

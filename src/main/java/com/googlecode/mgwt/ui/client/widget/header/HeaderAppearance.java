@@ -37,15 +37,11 @@ public interface HeaderAppearance extends ButtonBaseAppearance {
   interface HeaderPanelCss extends MGWTCssResource {
     @ClassName("mgwt-HeaderPanel")
     String panel();
+  }
 
-    @ClassName("mgwt-HeaderPanel-left")
-    String left();
-
-    @ClassName("mgwt-HeaderPanel-center")
-    String center();
-
-    @ClassName("mgwt-HeaderPanel-right")
-    String right();
+  interface HeaderTitleCss extends MGWTCssResource {
+    @ClassName("mgwt-HeaderPanel-title")
+    String title();
   }
 
   @Override
@@ -57,4 +53,8 @@ public interface HeaderAppearance extends ButtonBaseAppearance {
   UiBinder<Widget, HeaderPanel> panelBinder();
 
   HeaderPanelCss cssPanel();
+
+  HeaderTitleCss cssTitle();
+
+  UiBinder<? extends Element, HeaderTitle> uiBinderTitle();
 }

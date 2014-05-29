@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -20,22 +20,29 @@ import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
+
+import com.googlecode.mgwt.ui.client.widget.base.IsSizeable;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel.Alignment;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel.Justification;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel.Orientation;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.IsFlexPanel;
 
 import java.util.Iterator;
 
 
 /**
- * 
+ *
  */
-public class ButtonBar extends Composite implements HasWidgets {
+public class ButtonBar extends Composite implements IsFlexPanel, HasWidgets.ForIsWidget {
 
   protected static final ButtonBarAppearance DEFAULT_APPEARANCE = GWT
       .create(ButtonBarAppearance.class);
 
   @UiField
-  protected Panel main;
+  protected FlexPanel container;
 
   protected ButtonBarAppearance appearance;
 
@@ -50,26 +57,72 @@ public class ButtonBar extends Composite implements HasWidgets {
 
   @Override
   public void add(Widget w) {
-    main.add(w);
+    if(w instanceof IsSizeable) {
+      IsSizeable isBar = (IsSizeable) w;
+      isBar.setSmall(true);
+    }
+    container.add(w);
   }
 
   @Override
   public void clear() {
-    main.clear();
+    for(int i = 0; i < container.getWidgetCount(); i++) {
+      Widget w = container.getWidget(i);
+      if(w instanceof IsSizeable) {
+        IsSizeable isBar = (IsSizeable) w;
+        isBar.setSmall(false);
+      }
+    }
+
+    container.clear();
   }
 
   @Override
   public Iterator<Widget> iterator() {
-    return main.iterator();
+    return container.iterator();
   }
 
   @Override
   public boolean remove(Widget w) {
-    return main.remove(w);
+    if(w instanceof IsSizeable) {
+      IsSizeable isBar = (IsSizeable) w;
+      isBar.setSmall(false);
+    }
+    return container.remove(w);
   }
 
   @UiFactory
   protected ButtonBarAppearance getAppearance() {
-	return appearance;
+	  return appearance;
+  }
+
+  @Override
+  public void add(IsWidget w) {
+    add(w.asWidget());
+  }
+
+  @Override
+  public boolean remove(IsWidget w) {
+    return remove(w.asWidget());
+  }
+
+  @Override
+  public void add(Widget widget, int flex) {
+    container.add(widget, flex);
+  }
+
+  @Override
+  public void setOrientation(Orientation value) {
+    container.setOrientation(value);
+  }
+
+  @Override
+  public void setAlignment(Alignment value) {
+    container.setAlignment(value);
+  }
+
+  @Override
+  public void setJustification(Justification value) {
+    container.setJustification(value);
   }
 }

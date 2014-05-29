@@ -1,5 +1,5 @@
 @if mgwt.css pretty {
-	@external mgwt-ButtonBar, text, spacer;
+	@external mgwt-ButtonBar, mgwt-ButtonBar-text;
 }
 
 
@@ -35,12 +35,14 @@
 	}
 }
 
+.mgwt-ButtonBar {
+	display: flex;
+	align-items: center;
+}
 
 
 
-
-.mgwt-ButtonBar-text{
-	margin-top: 14px;
+.mgwt-ButtonBar-text {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -50,33 +52,8 @@
 }
 
 @if user.agent ie9 ie10 {
-	.mgwt-ButtonBar-text{
+	.mgwt-ButtonBar-text {
 		display: table-cell;
 		vertical-align: middle;
-	}
-}
-
-
-
-.mgwt-ButtonBar-spacer{
-}
-
-@if user.agent gecko1_8 {
-	.mgwt-ButtonBar-spacer{
-		\-moz-box-flex: 1;
-	}
-}
-
-@if user.agent safari {
-	.mgwt-ButtonBar-spacer{
-		\-webkit-box-flex: 1;
-	}
-}
-
-@if user.agent ie9 ie10 {
-	.mgwt-ButtonBar-spacer{
-		display: table-cell;
-		width: 50%;
-		
 	}
 }

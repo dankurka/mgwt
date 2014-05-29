@@ -16,4 +16,10 @@ under the License.
   <replace-with class="com.googlecode.mgwt.ui.client.widget.button.ButtonDefaultAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.button.ButtonAppearance" />
   </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.button.ImageButton.IconHandlerImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.button.ImageButton.IconHandler" />
+  </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.button.ImageButtonDefaultAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.button.ImageButtonAppearance" />
+  </replace-with>
 </module>

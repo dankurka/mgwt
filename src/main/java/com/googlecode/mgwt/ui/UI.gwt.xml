@@ -27,6 +27,7 @@ under * the License.
   <inherits name='com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetList' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.menu.overlay.OverlayMenu' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.menu.swipe.SwipeMenu' />
+  <inherits name='com.googlecode.mgwt.ui.client.widget.image.ImageHolder'/>
   <inherits name='com.googlecode.mgwt.ui.client.widget.input.Input' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.input.listbox.MListBox' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.input.checkbox.MCheckBox' />

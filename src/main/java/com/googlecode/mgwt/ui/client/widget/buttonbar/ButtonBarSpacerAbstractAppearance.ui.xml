@@ -1,5 +1,0 @@
-<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
-    <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarAppearance" />
-	<div ui:field="spacer" class="{apperance.barCss.spacer}"></div>
-</ui:UiBinder>

@@ -1,9 +1,9 @@
 package com.googlecode.mgwt.ui.client;
 
 public interface DeviceDensity {
-  boolean isLow();
+  boolean isMidDPI();
 
-  boolean isMiddle();
+  boolean isXHighDPI();
 
-  boolean isHigh();
+  boolean isHighDPI();
 }

@@ -70,7 +70,7 @@ public class OsDetectionRuntimeImpl implements OsDetection {
   @Override
   public boolean isAndroidTablet() {
     String userAgent = getUserAgent();
-    if (userAgent.contains("ipad") && !userAgent.contains("mobile")) {
+    if (userAgent.contains("android") && !userAgent.contains("mobile")) {
       return true;
     }
     return false;
@@ -79,7 +79,7 @@ public class OsDetectionRuntimeImpl implements OsDetection {
   @Override
   public boolean isAndroidPhone() {
     String userAgent = getUserAgent();
-    if (userAgent.contains("ipad") && userAgent.contains("mobile")) {
+    if (userAgent.contains("android") && userAgent.contains("mobile")) {
       return true;
     }
     return false;
