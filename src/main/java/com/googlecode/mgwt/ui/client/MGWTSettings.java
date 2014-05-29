@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -13,66 +13,24 @@
  */
 package com.googlecode.mgwt.ui.client;
 
-import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort.DENSITY;
 import com.googlecode.mgwt.ui.client.resource.IOS71BodyBug;
 
 /**
  * This class acts as a container for all settings for an mgwt app.
- * 
+ *
  * Those include things like the viewport, icons and scrolling behaviour.
- * 
+ *
  * @author Daniel Kurka
  */
 public class MGWTSettings {
 
   /**
    * This class represents the mobile viewport
-   * 
+   *
    * @author Daniel Kurka
-   * 
+   *
    */
   public static class ViewPort {
-
-    /**
-     * densities of the viewport
-     * 
-     * @author Daniel Kurka
-     * 
-     */
-    public enum DENSITY {
-      /**
-       * low density
-       */
-      LOW("low-dpi"),
-      /**
-       * medium density
-       */
-      MEDIUM("medium-dpi"),
-      /**
-       * high density
-       */
-      HIGH("high-dpi"),
-      /**
-       * devive dpi
-       */
-      DEVICE("device-dpi");
-
-      private final String value;
-
-      private DENSITY(String value) {
-        this.value = value;
-
-      }
-
-      /**
-       * get the value of density
-       * 
-       * @return the value of density
-       */
-      public String getValue() {
-        return value;
-      }
-    };
 
     private String width;
     private String height;
@@ -86,7 +44,7 @@ public class MGWTSettings {
 
     /**
      * Set the width of the viewport
-     * 
+     *
      * @param value the width in px
      * @return the viewport instance
      */
@@ -97,7 +55,7 @@ public class MGWTSettings {
 
     /**
      * Set the height of the viewport
-     * 
+     *
      * @param value the height in px
      * @return the viewport instance
      */
@@ -108,9 +66,9 @@ public class MGWTSettings {
 
     /**
      * Set width to device width
-     * 
+     *
      * Most common for most apps
-     * 
+     *
      * @return the viewport instance
      */
     public ViewPort setWidthToDeviceWidth() {
@@ -120,8 +78,8 @@ public class MGWTSettings {
 
     /**
      * Set the height to device height
-     * 
-     * 
+     *
+     *
      * @return the viewport instance
      */
     public ViewPort setHeightToDeviceHeight() {
@@ -134,8 +92,8 @@ public class MGWTSettings {
      * android only
      * </p>
      * set the target density in dpi
-     * 
-     * 
+     *
+     *
      * @param value the target density in dpi
      * @return the viewport instance
      */
@@ -145,23 +103,8 @@ public class MGWTSettings {
     }
 
     /**
-     * <p>
-     * android only
-     * </p>
-     * 
-     * set the target density
-     * 
-     * @param d the density to use
-     * @return the viewport instance
-     */
-    public ViewPort setTargetDensity(DENSITY d) {
-      targetDensity = d.getValue();
-      return this;
-    }
-
-    /**
      * Should the viewport be scalable by the user
-     * 
+     *
      * @param userScaleAble ture to allow scaling
      * @return the viewport instance
      */
@@ -172,7 +115,7 @@ public class MGWTSettings {
 
     /**
      * set the minimum scaling of the viewport
-     * 
+     *
      * @param minimumScale the scale to use
      * @return the viewport instance
      */
@@ -183,7 +126,7 @@ public class MGWTSettings {
 
     /**
      * Set the maximum scale of the viewport
-     * 
+     *
      * @param maximumScale the scale to use
      * @return the viewport instance
      */
@@ -194,7 +137,7 @@ public class MGWTSettings {
 
     /**
      * set the initial scale of the viewport
-     * 
+     *
      * @param initialScale the scale to use
      * @return the viewport instance
      */
@@ -205,7 +148,7 @@ public class MGWTSettings {
 
     /**
      * get the content for the viewport meta tag
-     * 
+     *
      * @return content of the viewport meta tag
      */
     public String getContent() {
@@ -242,12 +185,12 @@ public class MGWTSettings {
 
   /**
    * get the default setting for building an app
-   * 
+   *
    * @return the default setting for building an app
    */
   public static MGWTSettings getAppSetting() {
     ViewPort viewPort = new MGWTSettings.ViewPort();
-    viewPort.setTargetDensity(DENSITY.MEDIUM);
+    viewPort.setWidthToDeviceWidth();
     viewPort.setUserScaleAble(false).setMinimumScale(1.0).setInitialScale(1.0).setMaximumScale(1.0);
 
     MGWTSettings settings = new MGWTSettings();
@@ -263,11 +206,11 @@ public class MGWTSettings {
    * <p>
    * ios only
    * </p>
-   * 
+   *
    * All possible styles for the statusbar if the app is running in fullscreen
-   * 
+   *
    * @author Daniel Kurka
-   * 
+   *
    */
   public enum StatusBarStyle {
     /**
@@ -299,12 +242,12 @@ public class MGWTSettings {
   private boolean disablePhoneNumberDetection;
 
   private StatusBarStyle statusBarStyle;
-  
+
   private boolean fixIOS71BodyBug = true;
 
   /**
    * Get the viewport for the mgwt app
-   * 
+   *
    * @return the viewport
    */
   public ViewPort getViewPort() {
@@ -313,7 +256,7 @@ public class MGWTSettings {
 
   /**
    * Set the viewport the the mgwt app
-   * 
+   *
    * @param viewPort the viewport to use
    */
   public void setViewPort(ViewPort viewPort) {
@@ -322,7 +265,7 @@ public class MGWTSettings {
 
   /**
    * The icon url to use on the home screen on ios
-   * 
+   *
    * @return the icon url
    */
   public String getIconUrl() {
@@ -331,7 +274,7 @@ public class MGWTSettings {
 
   /**
    * Set the icon url to use on the home screen on ios
-   * 
+   *
    * @param url the url of the icon to use
    */
   public void setIconUrl(String url) {
@@ -340,7 +283,7 @@ public class MGWTSettings {
 
   /**
    * Get the url to the image to use at startup if running on home screen
-   * 
+   *
    * @return the url of the image
    */
   public String getStartUrl() {
@@ -349,7 +292,7 @@ public class MGWTSettings {
 
   /**
    * Set the url to the image to use at startup if running on home screen
-   * 
+   *
    * @param startUrl the url to use
    */
   public void setStartUrl(String startUrl) {
@@ -358,7 +301,7 @@ public class MGWTSettings {
 
   /**
    * Can the app be used in full screen mode
-   * 
+   *
    * @return true if the app can be used in full screen mode
    */
   public boolean isFullscreen() {
@@ -367,7 +310,7 @@ public class MGWTSettings {
 
   /**
    * Can the app be used in full screen
-   * 
+   *
    * @param fullscreen true if app can be run in full screen
    */
   public void setFullscreen(boolean fullscreen) {
@@ -378,7 +321,7 @@ public class MGWTSettings {
    * <p>
    * Getter for the field <code>statusBar</code>.
    * </p>
-   * 
+   *
    * @return a {@link java.lang.String} object.
    */
   public String getStatusBar() {
@@ -389,7 +332,7 @@ public class MGWTSettings {
    * <p>
    * Setter for the field <code>statusBar</code>.
    * </p>
-   * 
+   *
    * @param statusBar a {@link java.lang.String} object.
    */
   public void setStatusBar(String statusBar) {
@@ -398,7 +341,7 @@ public class MGWTSettings {
 
   /**
    * Should mgwt prevent default scrolling behaviour
-   * 
+   *
    * @return true if mgwt should prevent default scrolling behaviour
    */
   public boolean isPreventScrolling() {
@@ -407,7 +350,7 @@ public class MGWTSettings {
 
   /**
    * Should mgwt prevent default scrolling behaviour
-   * 
+   *
    * @param preventScrolling true if mgwt should prevent default scrolling behaviour
    */
   public void setPreventScrolling(boolean preventScrolling) {
@@ -432,9 +375,9 @@ public class MGWTSettings {
    * <p>
    * ios only
    * </p>
-   * 
+   *
    * set the style of the status bar if the app is running in full screen
-   * 
+   *
    * @param statusBarStyle the style to use
    */
   public void setStatusBarStyle(StatusBarStyle statusBarStyle) {
@@ -445,9 +388,9 @@ public class MGWTSettings {
    * <p>
    * ios only
    * </p>
-   * 
+   *
    * get the style of the status bar if the app is running in full screen
-   * 
+   *
    * @return statusBarStyle the style to use
    */
   public StatusBarStyle getStatusBarStyle() {
