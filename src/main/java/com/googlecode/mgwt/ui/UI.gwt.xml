@@ -155,23 +155,18 @@ under * the License.
 <!-- 	</all> -->
 <!--   </replace-with> -->
 
-	<!-- Orientation handler -->
-<!--     <replace-with class="com.googlecode.mgwt.ui.client.util.impl.IOSOrientationHandler"> -->
-<!--         <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" /> -->
-<!--     </replace-with> -->
-    
-<!--   <replace-with class="com.googlecode.mgwt.ui.client.util.impl.ResizeOrientationHandler"> -->
-<!--     <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" /> -->
-<!--   </replace-with> -->
 
-<!--  TODO dankurka fix this -->
-  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.IOSOrientationHandler">
+  <!-- Orientation handler -->
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.ResizeOrientationHandler">
     <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
-<!--       <any> -->
-<!--         <when-property-is name="mgwt.os" value="iphone" /> -->
-<!--         <when-property-is name="mgwt.os" value="ipad"/> -->
-<!--         <when-property-is name="mgwt.os" value="retina" /> -->
-<!--         <when-property-is name="mgwt.os" value="ipad_retina"/> -->
-<!--       </any> -->
+  </replace-with>
+  
+  <!-- phones and tablets support this directly -->
+  <replace-with class="com.googlecode.mgwt.ui.client.util.impl.MobileOrientationHandler">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.OrientationHandler" />
+      <any>
+        <when-property-is name="mgwt.formfactor" value="phone" />
+        <when-property-is name="mgwt.formfactor" value="tablet" />
+      </any>
   </replace-with>
 </module>

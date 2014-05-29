@@ -75,10 +75,10 @@ public class MGWT {
   public static OrientationHandler getOrientationHandler() {
 	  if ( orientationHandler == null){
 		  orientationHandler = GWT.create(OrientationHandler.class);
-
 	  }
-	return orientationHandler;
-}
+	  return orientationHandler;
+  }
+
   /**
    * Add a orientation handler to detect the device orientation
    *
@@ -87,7 +87,7 @@ public class MGWT {
    * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
    */
   public static HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
-	getOrientationHandler().maybeSetupOrientation(getManager());
+	  getOrientationHandler().maybeSetupOrientation(getManager());
     return getManager().addHandler(OrientationChangeEvent.getType(), handler);
   }
 

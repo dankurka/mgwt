@@ -8,5 +8,4 @@ public interface OrientationHandler {
 	public abstract ORIENTATION getOrientation();
 
 	void maybeSetupOrientation(EventBus manager);
-	
 }

@@ -36,11 +36,10 @@ public class ResizeOrientationHandler extends BaseOrientationHandler implements
 
 	/**
 	 * Get the current orientation of the device
-	 * 
+	 *
 	 * @return the current orientation of the device
 	 */
 	public ORIENTATION getOrientation() {
-
 		if (!orientationSupport()) {
 			int height = Window.getClientHeight();
 			int width = Window.getClientWidth();
@@ -50,15 +49,12 @@ public class ResizeOrientationHandler extends BaseOrientationHandler implements
 			} else {
 				return ORIENTATION.PORTRAIT;
 			}
-
 		} else {
 			return getBrowserOrientation();
 		}
-
 	}
 
 	private static native boolean orientationSupport() /*-{
 		return "orientation" in $wnd;
 	}-*/;
-
 }
