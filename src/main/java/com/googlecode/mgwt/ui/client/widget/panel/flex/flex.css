@@ -3,31 +3,26 @@
 }
 
 .mgwt-FlexPanel {
-  display: -webkit-box;
+  display: -webkit-box; /* iOS < 7 && Android < 4.4*/
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+  -webkit-box-orient: vertical;
   -webkit-flex-flow: column;
   flex-flow: column;
 }
 
 .mgwt-RootFlexPanel {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  -webkit-flex-flow: column;
-  flex-flow: column;
 }
 
 .mgwt-FlexPanel-flex {
+  -webkit-box-flex: 1; /* iOS < 7 && Android < 4.4*/
   -moz-flex: 1;
   -webkit-flex: 1;
   flex: 1;

@@ -97,11 +97,12 @@
 
 .mgwt-DialogPanel .footer {
 	margin-top: 10px;
-	display: -webkit-box;
+	display: -webkit-box; /* iOS < 7 && Android < 4.4*/
   	display: -moz-box;
   	display: -ms-flexbox;
   	display: -webkit-flex;
   	display: flex;
+  	-webkit-box-pack: center; /* iOS < 7 && Android < 4.4*/
   	-webkit-justify-content: center;
   	-moz-justify-content: center;
   	justify-content: center;

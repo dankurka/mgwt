@@ -23,6 +23,10 @@ import com.google.gwt.user.client.ui.IndexedPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Alignment;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Justification;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Orientation;
+
 import java.util.Iterator;
 
 /**
@@ -34,60 +38,6 @@ import java.util.Iterator;
  * @author Daniel Kurka
  */
 public class FlexPanel extends Composite implements HasWidgets.ForIsWidget, IndexedPanel.ForIsWidget {
-
-  public static enum Alignment {
-    START("flex-start"), END("flex-end"), CENTER("center"), STRETCH("stretch"), BASELINE("baseline");
-
-    private final String cssValue;
-
-    private Alignment(String cssValue) {
-      this.cssValue = cssValue;
-    }
-
-    private static String getCssProperty() {
-      return "AlignItems";
-    }
-
-    private String getCssValue() {
-      return cssValue;
-    }
-  }
-
-  public static enum Justification {
-    START("flex-start"), END("flex-end"), CENTER("center"), SPACE_BETWEEN("space-between");
-
-    private final String cssValue;
-
-    private Justification(String cssValue) {
-      this.cssValue = cssValue;
-    }
-
-    private static String getCssProperty() {
-      return "JustifyContent";
-    }
-
-    private String getCssValue() {
-      return cssValue;
-    }
-  }
-
-  public static enum Orientation {
-    HORIZONTAL("row"), VERTICAL("column");
-
-    private final String cssValue;
-
-    private Orientation(String cssValue) {
-      this.cssValue = cssValue;
-    }
-
-    private static String getCssProperty() {
-      return "Direction";
-    }
-
-    private String getCssValue() {
-      return cssValue;
-    }
-  }
 
   public static final FlexPanelAppearance DEFAULT_APPERANCE = GWT.create(FlexPanelAppearance.class);
 
@@ -148,9 +98,8 @@ public class FlexPanel extends Composite implements HasWidgets.ForIsWidget, Inde
 
   public void add(Widget widget, double flex) {
     container.add(widget);
-    widget.getElement().getStyle().setProperty("MozFlex", Double.toString(flex));
-    widget.getElement().getStyle().setProperty("WebkitFlex", Double.toString(flex));
-    widget.getElement().getStyle().setProperty("flex", Double.toString(flex));
+
+    FlexPropertyHelper.setFlex(widget.getElement(), flex);
   }
 
   @Override
@@ -161,32 +110,16 @@ public class FlexPanel extends Composite implements HasWidgets.ForIsWidget, Inde
     return container.remove(w);
   }
 
-  private void setFlexProperty(String name, String value) {
-    setStyleProperty("MozFlex" + name, value);
-    setStyleProperty("webkitFlex" + name, value);
-    setStyleProperty("flex" + name, value);
-  }
-
-  private void setProperty(String name, String value) {
-    setStyleProperty("Moz" + name, value);
-    setStyleProperty("webkit" + name, value);
-    setStyleProperty(name, value);
-  }
-
   public void setOrientation(Orientation value) {
-    setFlexProperty(Orientation.getCssProperty(), value.getCssValue());
+    FlexPropertyHelper.setOrientation(getElement(), value);
   }
 
   public void setAlignment(Alignment value) {
-    setProperty(Alignment.getCssProperty(), value.getCssValue());
+    FlexPropertyHelper.setAlignment(getElement(), value);
   }
 
   public void setJustification(Justification value) {
-    setProperty(Justification.getCssProperty(), value.getCssValue());
-  }
-
-  private void setStyleProperty(String property, String value) {
-    container.getElement().getStyle().setProperty(property, value);
+    FlexPropertyHelper.setJustification(getElement(), value);
   }
 
   @UiFactory

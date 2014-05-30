@@ -24,9 +24,9 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
-import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel.Alignment;
-import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel.Justification;
-import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel.Orientation;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Alignment;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Justification;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Orientation;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.IsFlexPanel;
 
 import java.util.Iterator;
