@@ -148,6 +148,8 @@ public class FlexPanel extends Composite implements HasWidgets.ForIsWidget, Inde
 
   public void add(Widget widget, double flex) {
     container.add(widget);
+    widget.getElement().getStyle().setProperty("MozFlex", Double.toString(flex));
+    widget.getElement().getStyle().setProperty("WebkitFlex", Double.toString(flex));
     widget.getElement().getStyle().setProperty("flex", Double.toString(flex));
   }
 

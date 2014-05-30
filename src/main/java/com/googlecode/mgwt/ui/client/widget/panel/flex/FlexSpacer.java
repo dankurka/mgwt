@@ -15,6 +15,8 @@ public class FlexSpacer extends Widget {
   }
 
   public void setFlex(double flex) {
+    getElement().getStyle().setProperty("MozFlex", Double.toString(flex));
+    getElement().getStyle().setProperty("WebkitFlex", Double.toString(flex));
     getElement().getStyle().setProperty("flex", Double.toString(flex));
   }
 }
