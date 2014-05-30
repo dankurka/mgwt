@@ -18,7 +18,8 @@
 <module>
     <inherits name='com.google.gwt.user.User'/>
     <inherits name='com.googlecode.mgwt.collection.GwtCollections'/>
-    
+    <!-- Eclipse mixes classpaths so we need to exclude tests here -->
+    <source path='client' excludes='**/*Test.java'/>
     
     <define-property name="mgwt.formfactor" values="phone, tablet, desktop" />
     <property-provider name="mgwt.formfactor"><![CDATA[
