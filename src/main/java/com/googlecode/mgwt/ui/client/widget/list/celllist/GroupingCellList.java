@@ -17,14 +17,14 @@ import java.util.Map;
 
 /**
  * A grouping cell list renders a number of groups with their children
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  * @param <G> the type of the model for the header
  * @param <T> the type if the model for the content
  */
 public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionHandlers<T> {
-  
+
   public static final GroupingCellListAppearance DEFAULT_APPEARANCE = GWT.create(GroupingCellListAppearance.class);
 
   private final Cell<G> header;
@@ -37,30 +37,30 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   /**
    * The cellgroup interface
-   * 
+   *
    * @author Daniel Kurka
-   * 
+   *
    * @param <G> the type of the model for the header
    * @param <T> the type if the model for the content
    */
   public interface CellGroup<G, T> {
     /**
      * get the name of the group
-     * 
+     *
      * @return the name of the group
      */
     public String getKey();
 
     /**
      * get the group header model
-     * 
+     *
      * @return the group header model
      */
     public G getGroup();
 
     /**
      * get the group content models
-     * 
+     *
      * @return the group content models
      */
     public List<T> getMember();
@@ -68,9 +68,9 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   /**
    * The standard implementation of {@link GroupingCellList.CellGroup}
-   * 
+   *
    * @author Daniel Kurka
-   * 
+   *
    * @param <G> the type of the model for the header
    * @param <T> the type if the model for the content
    */
@@ -82,7 +82,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
     /**
      * Construct a {@link GroupingCellList.StandardCellGroup}
-     * 
+     *
      * @param key the key to use
      * @param group the group model to use
      * @param member the list of content models for this group
@@ -109,7 +109,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
     }
 
   }
-  
+
   interface HeaderTemplate {
     SafeHtml li(SafeHtml cellContents, String classes);
   }
@@ -118,7 +118,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   /**
    * Construct a cell list with a given cell for content and for the header
-   * 
+   *
    * @param cell the cell for content
    * @param header the cell for the headers
    */
@@ -128,7 +128,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   /**
    * Construct a cell list with a given cell for content, for the header and a given css
-   * 
+   *
    * @param cell the cell for content
    * @param header the cell for the headers
    * @param css the css to use
@@ -138,13 +138,13 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
     this.groupAppearance = groupAppearance;
     this.header = header;
     headerTemplate = this.groupAppearance.getHeaderTemplate();
-    
+
     setGroup(false);
   }
 
   /**
    * render a given set of models
-   * 
+   *
    * @param groups the model to render
    */
   public void renderGroup(List<CellGroup<G, T>> groups) {
@@ -215,7 +215,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   /**
    * get the css selector for header elements
-   * 
+   *
    * @return the css selector for header elements
    */
   public String getHeaderSelector() {
@@ -224,7 +224,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   /**
    * get the css used by this {@link GroupingCellList}
-   * 
+   *
    * @return the css used by this {@link GroupingCellList}
    */
   public CellListCss getListCss() {
@@ -233,7 +233,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   /**
    * get the mapping of index to content
-   * 
+   *
    * @return the mapping of index to content
    */
   public Map<Integer, Integer> getMapping() {
@@ -242,7 +242,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   /**
    * render a header and return the value as html
-   * 
+   *
    * @param group the header to render
    * @return the string value
    */
@@ -263,7 +263,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
   @Override
   @UiFactory
   protected CellListAppearance getAppearance() {
-	return super.getAppearance();
+	  return super.getAppearance();
   }
 
   @Override

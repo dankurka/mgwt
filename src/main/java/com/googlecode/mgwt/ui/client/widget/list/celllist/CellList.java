@@ -357,7 +357,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   @UiFactory
   protected CellListAppearance getAppearance() {
-	return appearance;
+	  return appearance;
   }
 
   protected void startTimer(final Element node) {
