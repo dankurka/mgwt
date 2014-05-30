@@ -1,8 +1,8 @@
 package com.googlecode.mgwt.ui.client.widget.list.celllist;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
+
 import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellList.EntryTemplate;
 
@@ -36,7 +36,6 @@ public interface CellListAppearance {
 
     @ClassName("mgwt-List-Header")
     String header();
-
   }
 
   CellListCss css();
