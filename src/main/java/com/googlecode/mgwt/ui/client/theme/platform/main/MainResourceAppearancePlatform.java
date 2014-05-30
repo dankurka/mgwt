@@ -19,4 +19,10 @@ public class MainResourceAppearancePlatform implements MainResourceAppearance {
   public MainCss css() {
     return Resources.INSTANCE.css();
   }
+
+  @Override
+  public UtilCss utilCss() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }

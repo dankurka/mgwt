@@ -7,10 +7,11 @@ import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
+
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
-import com.googlecode.mgwt.ui.client.MGWTStyle;
-import com.googlecode.mgwt.ui.client.resource.UtilCss;
+import com.googlecode.mgwt.ui.client.resource.MainResourceAppearance.UtilCss;
+import com.googlecode.mgwt.ui.client.resource.MainResourceHolder;
 import com.googlecode.mgwt.ui.client.util.OrientationHandler;
 
 public abstract class BaseOrientationHandler implements OrientationHandler {
@@ -31,18 +32,16 @@ public abstract class BaseOrientationHandler implements OrientationHandler {
   // update styles on body
   	private static void setClasses(ORIENTATION o) {
 
-  	  // TODO
-  	  // UtilCss utilCss = MGWTStyle.getTheme().getMGWTClientBundle()
-  		//		.getUtilCss();
+  	  UtilCss utilCss = MainResourceHolder.getUtilCss();
   		switch (o) {
 
   		case PORTRAIT:
-  //			Document.get().getBody().addClassName(utilCss.portrait());
-  //			Document.get().getBody().removeClassName(utilCss.landscape());
+  			Document.get().getBody().addClassName(utilCss.portrait());
+  			Document.get().getBody().removeClassName(utilCss.landscape());
   			break;
   		case LANDSCAPE:
-  //			Document.get().getBody().addClassName(utilCss.landscape());
-  //			Document.get().getBody().removeClassName(utilCss.portrait());
+  			Document.get().getBody().addClassName(utilCss.landscape());
+  			Document.get().getBody().removeClassName(utilCss.portrait());
   			break;
 
   		default:
@@ -66,6 +65,7 @@ public abstract class BaseOrientationHandler implements OrientationHandler {
 		}
 		doSetupOrientation();
 		orientationInitialized = true;
+		setClasses(getOrientation());
 	}
 
 	protected abstract void doSetupOrientation();

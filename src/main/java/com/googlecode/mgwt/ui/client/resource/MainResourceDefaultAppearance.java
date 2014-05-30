@@ -16,9 +16,69 @@
 package com.googlecode.mgwt.ui.client.resource;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.TextResource;
 
 public class MainResourceDefaultAppearance implements MainResourceAppearance {
+
+  private static class MyUtilCss implements UtilCss {
+
+    private String text;
+
+    public MyUtilCss(String text) {
+      this.text = text;
+    }
+
+    private boolean injected;
+
+    @Override
+    public boolean ensureInjected() {
+      if(injected) {
+        return false;
+      }
+
+      StyleInjector.inject(getText());
+      return true;
+    }
+
+    @Override
+    public String getText() {
+      return text;
+    }
+
+    @Override
+    public String getName() {
+      return "";
+    }
+
+    @Override
+    public String landscapeonly() {
+      return "landscapeonly";
+    }
+
+    @Override
+    public String portraitonly() {
+      return "portrait";
+    }
+
+    @Override
+    public String portrait() {
+      return "portrait";
+    }
+
+    @Override
+    public String landscape() {
+      return "landscape";
+    }
+
+  }
+
+  private static MyUtilCss utilCss;
+
+  static {
+    utilCss = new MyUtilCss(Resources.INSTANCE.utilTextResource().getText());
+  }
 
   interface Resources extends ClientBundle {
 
@@ -26,10 +86,20 @@ public class MainResourceDefaultAppearance implements MainResourceAppearance {
 
     @Source({"main.css"})
     MainCss css();
+
+    // This is a very nasty workaround because GWT CssResource does not support
+    // @media correctly!
+    @Source("util.css")
+    TextResource utilTextResource();
   }
 
   @Override
   public MainCss css() {
     return Resources.INSTANCE.css();
+  }
+
+  @Override
+  public UtilCss utilCss() {
+    return utilCss;
   }
 }

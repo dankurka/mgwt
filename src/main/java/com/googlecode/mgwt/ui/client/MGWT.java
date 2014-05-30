@@ -52,6 +52,13 @@ import com.googlecode.mgwt.ui.client.util.OrientationHandler;
  */
 public class MGWT {
 
+  private static OrientationHandler orientationHandler;
+
+  static {
+    orientationHandler = GWT.create(OrientationHandler.class);
+    orientationHandler.maybeSetupOrientation(getManager());
+  }
+
   private static FormFactor FORM_FACTOR;
 
   private static DeviceDensity DEVICE_DENSITY;
@@ -62,7 +69,7 @@ public class MGWT {
 
   private static Timer timer;
 
-  private static OrientationHandler orientationHandler;
+
 
   private static boolean scrollingDisabled;
   private static JavaScriptObject nativeJsFunction;
@@ -72,10 +79,7 @@ public class MGWT {
    * Return an orientation handler based on the current os.
    * @return
    */
-  public static OrientationHandler getOrientationHandler() {
-	  if ( orientationHandler == null){
-		  orientationHandler = GWT.create(OrientationHandler.class);
-	  }
+  private static OrientationHandler getOrientationHandler() {
 	  return orientationHandler;
   }
 
@@ -87,7 +91,6 @@ public class MGWT {
    * @return a {@link com.google.gwt.event.shared.HandlerRegistration} object.
    */
   public static HandlerRegistration addOrientationChangeHandler(OrientationChangeHandler handler) {
-	  getOrientationHandler().maybeSetupOrientation(getManager());
     return getManager().addHandler(OrientationChangeEvent.getType(), handler);
   }
 

@@ -1761,7 +1761,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 	 *
 	 */
   private void bindResizeEvent() {
-    if (!MGWT.getOsDetection().isDesktop()) {
+    if (!MGWT.getFormFactor().isDesktop()) {
       orientationChangeRegistration = MGWT.addOrientationChangeHandler(new OrientationChangeHandler() {
 
         @Override

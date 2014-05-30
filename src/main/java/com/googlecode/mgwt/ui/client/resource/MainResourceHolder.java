@@ -17,7 +17,12 @@ package com.googlecode.mgwt.ui.client.resource;
 
 import com.google.gwt.core.shared.GWT;
 
+import com.googlecode.mgwt.ui.client.resource.MainResourceAppearance.UtilCss;
+
 public class MainResourceHolder {
+
+  private static final MainResourceAppearance DEFAULT_APPEARANCE = GWT
+      .create(MainResourceAppearance.class);
 
   public interface MainResourceInjector {
     void inject();
@@ -32,18 +37,20 @@ public class MainResourceHolder {
 
   public static class RealMainResourceInjector implements MainResourceInjector {
 
-    private static final MainResourceAppearance DEFAULT_APPEARANCE = GWT
-        .create(MainResourceAppearance.class);
-
     @Override
     public void inject() {
       DEFAULT_APPEARANCE.css().ensureInjected();
+      DEFAULT_APPEARANCE.utilCss().ensureInjected();
     }
   }
 
   public static void inject() {
     MainResourceInjector injector = GWT.create(MainResourceInjector.class);
     injector.inject();
+  }
+
+  public static UtilCss getUtilCss() {
+    return DEFAULT_APPEARANCE.utilCss();
   }
 
   private MainResourceHolder() {

@@ -21,5 +21,18 @@ public interface MainResourceAppearance {
   public interface MainCss extends MGWTCssResource {
   }
 
+  public interface UtilCss extends MGWTCssResource {
+    public String landscapeonly();
+
+    public String portraitonly();
+
+    public String portrait();
+
+    public String landscape();
+
+  }
+
   MainCss css();
+
+  UtilCss utilCss();
 }

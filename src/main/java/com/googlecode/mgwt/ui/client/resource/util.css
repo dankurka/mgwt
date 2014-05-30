@@ -1,18 +1,10 @@
-.landscapeonly {
-	
-}
-
-.portraitonly {
-	
-}
-
-@media only screen and (orientation:portrait) {
+@media (orientation:portrait) {
 	.landscapeonly {
 		display: none;
 	}
 }
 
-@media only screen and (orientation:landscape) {
+@media (orientation:landscape) {
 	.portraitonly {
 		display: none;
 	}
