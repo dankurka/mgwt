@@ -90,7 +90,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 			}
 			event.stopPropagation();
 			event.preventDefault();
-			if (MGWT.getOsDetection().isDesktop()) {
+			if (MGWT.getFormFactor().isDesktop()) {
 				DOM.releaseCapture(getElement());
 			}
 			setValue(getValue());
@@ -104,7 +104,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 			event.stopPropagation();
 			event.preventDefault();
-			if (MGWT.getOsDetection().isDesktop()) {
+			if (MGWT.getFormFactor().isDesktop()) {
 				DOM.releaseCapture(getElement());
 			}
 
@@ -154,7 +154,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 			}
 			event.stopPropagation();
 			event.preventDefault();
-			if (MGWT.getOsDetection().isDesktop()) {
+			if (MGWT.getFormFactor().isDesktop()) {
 				DOM.setCapture(getElement());
 			}
 

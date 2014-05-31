@@ -332,7 +332,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
     this.snapSelector = null;
     this.snapThreshold = 1;
 
-    this.fixedScrollbar = MGWT.getOsDetection().isAndroid();
+    this.fixedScrollbar = MGWT.getOsDetection().isAndroid() && !MGWT.getOsDetection().isAndroid4_4_OrHigher();
     this.hideScrollBar = true;
     this.fadeScrollBar = MGWT.getOsDetection().isIOs() && CssUtil.has3d();
 
@@ -502,15 +502,13 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   private void resize() {
+    int delay = MGWT.getOsDetection().isAndroid() && !MGWT.getOsDetection().isAndroid4_4_OrHigher() ? 200: 1;
     new Timer() {
-
       @Override
       public void run() {
         refresh();
-
       }
-
-    }.schedule(MGWT.getOsDetection().isAndroid() ? 200 : 1);
+    }.schedule(delay);
   }
 
   private void pos(int x, int y) {

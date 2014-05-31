@@ -50,7 +50,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText {
         event.stopPropagation();
         event.preventDefault();
         removeStyleName(ButtonBase.this.baseAppearance.css().active());
-        if (MGWT.getOsDetection().isDesktop()) {
+        if (MGWT.getFormFactor().isDesktop()) {
           DOM.releaseCapture(getElement());
         }
       }
@@ -60,7 +60,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText {
         event.stopPropagation();
         event.preventDefault();
         removeStyleName(ButtonBase.this.baseAppearance.css().active());
-        if (MGWT.getOsDetection().isDesktop()) {
+        if (MGWT.getFormFactor().isDesktop()) {
           DOM.releaseCapture(getElement());
         }
       }
@@ -76,7 +76,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText {
         event.stopPropagation();
         event.preventDefault();
         addStyleName(ButtonBase.this.baseAppearance.css().active());
-        if (MGWT.getOsDetection().isDesktop()) {
+        if (MGWT.getFormFactor().isDesktop()) {
           DOM.setCapture(getElement());
         }
       }

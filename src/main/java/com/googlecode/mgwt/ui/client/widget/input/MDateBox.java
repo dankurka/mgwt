@@ -190,7 +190,7 @@ public class MDateBox extends MValueBoxBase<Date> {
   public void setFormat(String pattern) {
     format = DateTimeFormat.getFormat(pattern);
 
-    if (!MGWT.getOsDetection().isIOs()) {
+    if (!MGWT.getOsDetection().isIOs() && !MGWT.getOsDetection().isAndroid4_4_OrHigher()) {
       setPlaceHolder(pattern);
     }
 

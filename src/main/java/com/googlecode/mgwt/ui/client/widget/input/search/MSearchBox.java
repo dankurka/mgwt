@@ -80,7 +80,7 @@ public class MSearchBox extends Composite implements
 
     @Override
     public void onKeyUp(KeyUpEvent event) {
-      if (!MGWT.getOsDetection().isDesktop()) {
+      if (!MGWT.getFormFactor().isDesktop()) {
         if (textBox.getValue().length() > 0) {
           clearButton.setVisible(true);
         } else {
