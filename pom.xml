@@ -114,7 +114,7 @@
         <version>2.6</version>
         <configuration>
           <includes>
-            <include>**/Test*.java</include>
+            <include>**/*Test.java</include>
           </includes>
           <excludes>
             <exclude>**/*GwtTest.java</exclude>
