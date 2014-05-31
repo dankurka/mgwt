@@ -2,27 +2,7 @@
 	@external mgwt-ScrollPanel, mgwt-ScrollPanel-container, mgwt-Scrollbar, mgwt-Scrollbar-horizontal, mgwt-Scrollbar-vertical, mgwt-Scrollbar-Bar;
 }
 
-@if user.agent safari {
-  .mgwt-ScrollPanel {
-    /* old CSS box model version IS 6 && Android < 4.4 */
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    /* prefixed version */
-    display: -webkit-flex;
-    -webkit-flex-flow: column;
-  }
-}
-
-@if user.agent gecko1_8 {
-  .mgwt-ScrollPanel {
-    display: -moz-box;
-    -moz-box-orient: vertical;
-  }
-}
-
 .mgwt-ScrollPanel {
-  display: flex;
-  flex-flow: column;
   overflow: hidden;
   position: relative;
   z-index: 0;
