@@ -222,12 +222,13 @@ public class WidgetList extends Composite implements HasWidgets, HasSelectionHan
   }
 
   public void setHeader(Widget header) {
+    headerContainer.setVisible(header != null);
     headerContainer.clear();
     headerContainer.add(header);
   }
 
   @UiFactory
   protected WidgetListAppearance getAppearance() {
-	return appearance;
+	  return appearance;
   }
 }
