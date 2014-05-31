@@ -64,7 +64,7 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
 
     @Override
     public void onTouchStart(TouchStartEvent event) {
-      setValueContrained(event.getTouches().get(0).getPageX());
+      setValueContrained(event.getTouches().get(0).getClientX());
       if (MGWT.getFormFactor().isDesktop()) {
         DOM.setCapture(getElement());
       }
@@ -75,7 +75,7 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
     @Override
     public void onTouchMove(TouchMoveEvent event) {
 
-      setValueContrained(event.getTouches().get(0).getPageX());
+      setValueContrained(event.getTouches().get(0).getClientX());
       event.stopPropagation();
       event.preventDefault();
     }
