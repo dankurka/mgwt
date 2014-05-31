@@ -2,14 +2,23 @@
 	@external mgwt-FlexPanel, mgwt-RootFlexPanel, mgwt-FlexPanel-flex;
 }
 
+@if user.agent safari {
+  .mgwt-FlexPanel {
+    display: -webkit-box; /* iOS < 7 && Android < 4.4*/
+    display: -webkit-flex;
+    -webkit-box-orient: vertical; /* iOS < 7 && Android < 4.4*/
+    -webkit-flex-flow: column;
+  }
+}
+
+@if user.agent gecko1_8 {
+  .mgwt-FlexPanel {
+    display: -moz-box;
+  }
+}
+
 .mgwt-FlexPanel {
-  display: -webkit-box; /* iOS < 7 && Android < 4.4*/
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-flex-flow: column;
   flex-flow: column;
 }
 
@@ -21,9 +30,20 @@
   bottom: 0px;
 }
 
+
+@if user.agent safari {
+  .mgwt-FlexPanel-flex {
+    -webkit-box-flex: 1; /* iOS < 7 && Android < 4.4*/
+    -webkit-flex: 1;
+  }
+}
+
+@if user.agent gecko1_8 {
+  .mgwt-FlexPanel-flex {
+    -moz-flex: 1;
+  }
+}
+
 .mgwt-FlexPanel-flex {
-  -webkit-box-flex: 1; /* iOS < 7 && Android < 4.4*/
-  -moz-flex: 1;
-  -webkit-flex: 1;
   flex: 1;
 }
