@@ -22,20 +22,20 @@ import java.util.Date;
 /**
  * A simple Date input widget. So far it uses &lt;input type="date" /> on iOS with a nice looking
  * native date picker.
- * 
+ *
  * On other platforms it displays the pattern to use for date input (no picker so far).
- * 
+ *
  * <h2>Date format</h2>
- * 
+ *
  * For iOS there is no need to set a dateformat, since the iOS will automatically display the date
  * formated according to the locale of the device, while we get the date in the W3C Format.
- * 
+ *
  * On other platforms you can set the format to fit what you like.
- * 
- * 
- * 
+ *
+ *
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class MDateBox extends MValueBoxBase<Date> {
 
@@ -44,9 +44,9 @@ public class MDateBox extends MValueBoxBase<Date> {
 
   /**
    * Using ValueBoxBase as a base class for our input element.
-   * 
+   *
    * @author Daniel Kurka
-   * 
+   *
    */
   private static class DateValueBoxBase extends ValueBoxBase<Date> implements HasSource {
 
@@ -145,7 +145,7 @@ public class MDateBox extends MValueBoxBase<Date> {
 
     // fix ios issue with onchange event
 
-    if (MGWT.getOsDetection().isIOs()) {
+    if (MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isAndroid4_4_OrHigher()) {
       // only set input type to date if there is a native picker iOS >= 5
       impl.setType(box.getElement(), "date");
       // use w3c format
@@ -182,9 +182,9 @@ public class MDateBox extends MValueBoxBase<Date> {
   /**
    * set the format to use in the datebox. Important: This should only be set on non iOS devices,
    * since iOS handles locale on dates under the cover.
-   * 
+   *
    * See: {@link MDateBox}
-   * 
+   *
    * @param pattern
    */
   public void setFormat(String pattern) {

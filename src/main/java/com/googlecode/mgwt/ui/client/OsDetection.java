@@ -132,4 +132,5 @@ public interface OsDetection {
 	@Deprecated
 	public boolean isBlackBerry();
 
+	boolean isAndroid4_4_OrHigher();
 }

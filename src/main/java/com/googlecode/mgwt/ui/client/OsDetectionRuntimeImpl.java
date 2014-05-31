@@ -94,4 +94,13 @@ public class OsDetectionRuntimeImpl implements OsDetection {
   public boolean isBlackBerry() {
     return false;
   }
+
+  @Override
+  public boolean isAndroid4_4_OrHigher() {
+    String userAgent = getUserAgent();
+    if (userAgent.contains("android") && userAgent.contains("chrome")) {
+      return true;
+    }
+    return false;
+  }
 }
