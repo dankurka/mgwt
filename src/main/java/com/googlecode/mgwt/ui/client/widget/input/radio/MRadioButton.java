@@ -225,12 +225,11 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
       value = false;
     }
 
-    boolean oldValue = getValue();
     inputRadio.setChecked(value);
     inputRadio.setDefaultChecked(value);
 
     if (fireEvents) {
-      ValueChangeEvent.fireIfNotEqual(this, oldValue, value);
+      ValueChangeEvent.fire(this, value);
     }
   }
 
