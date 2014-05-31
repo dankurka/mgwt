@@ -4,7 +4,7 @@
 	xmlns:m="urn:import:com.googlecode.mgwt.ui.client.widget">
 	<ui:with field="appearance" type="com.googlecode.mgwt.ui.client.widget.form.FormAppearance"></ui:with>
 	<g:FlowPanel>
-	  <g:FlowPanel ui:field="headerContainer" styleName="{appearance.css.formHeader}" />
+	  <g:FlowPanel ui:field="headerContainer" visible="false" styleName="{appearance.css.formHeader}" />
 	  <g:FlowPanel ui:field="container" styleName="{appearance.css.form}" />
 	</g:FlowPanel>
 </ui:UiBinder> 

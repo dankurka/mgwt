@@ -1,11 +1,11 @@
 /*
  * Copyright 2014 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -36,11 +36,11 @@ public class Form extends Composite implements HasWidgets {
 
   @UiField
   protected Panel headerContainer;
-  
+
   private List<FormEntry> children = new ArrayList<FormEntry>();
   private FormEntry firstChild;
   private FormEntry lastChild;
-  
+
   public Form() {
     this(DEFAULT_APPEARANCE);
   }
@@ -87,7 +87,7 @@ public class Form extends Composite implements HasWidgets {
   public boolean remove(Widget w) {
     children.remove(w);
     boolean remove = container.remove(w);
-    
+
     if(w == firstChild) {
       firstChild.removeStyleName(this.appearance.css().formEntryFirstChild());
       firstChild = null;
@@ -106,7 +106,7 @@ public class Form extends Composite implements HasWidgets {
     }
     return remove;
   }
-  
+
   public boolean isValid() {
     for (FormEntry entry : children) {
       if(!entry.isValid()) {
@@ -125,6 +125,7 @@ public class Form extends Composite implements HasWidgets {
   }
 
   public void setHeader(Widget header) {
+    headerContainer.setVisible(header != null);
     headerContainer.clear();
     if (header != null) {
       headerContainer.add(header);
