@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.googlecode.mgwt.linker.server.propertyprovider.PropertyProviderException;
 import com.googlecode.mgwt.linker.server.propertyprovider.UserAgentPropertyProvider;
 
-public class TestUserAgentPropertyProvider {
+public class UserAgentPropertyProviderTest {
 
 	private UserAgentPropertyProvider provider;
 

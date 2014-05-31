@@ -25,7 +25,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-public class TestHtml5ManifestServlet {
+public class Html5ManifestServletTest {
 
   private Html5ManifestServletBase servlet;
 
@@ -68,7 +68,7 @@ public class TestHtml5ManifestServlet {
 
   @Test
   public void testCalculateBindinPropertiesForClient() throws ServletException {
-    
+
     HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
     Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn(UserAgents.BLACKBERRY_USER_AGENT);
 
@@ -114,34 +114,33 @@ public class TestHtml5ManifestServlet {
 
     }
   }
-  
+
   private Answer<String> getRealPathAnswer() {
     return new Answer<String>() {
       @Override
       public String answer(InvocationOnMock invocation) throws Throwable {
         String arg = (String) invocation.getArguments()[0];
-        
+
         Assert.assertEquals("asdf/" + PermutationMapLinker.MANIFEST_MAP_FILE_NAME, arg);
-        URL url = TestHtml5ManifestServlet.class.getResource("/com/googlecode/mgwt/linker/server/test/resources/example.manifestmap.xml");
+        URL url = Html5ManifestServletTest.class.getResource("/com/googlecode/mgwt/linker/server/test/resources/example.manifestmap.xml");
         try {
           return url.toURI().toString().substring("file:".length());
         } catch (URISyntaxException e) {
           Assert.fail("should not happen");
           return "asdf";
         }
-        
       }
   };
 }
 
   @Test
   public void testGetPermutationStrongName() throws ServletException, FileNotFoundException {
-    
+
     ServletContext context = Mockito.mock(ServletContext.class);
-    Mockito.when(context.getRealPath(Mockito.anyString())).then(getRealPathAnswer());    
+    Mockito.when(context.getRealPath(Mockito.anyString())).then(getRealPathAnswer());
     ServletConfig config = Mockito.mock(ServletConfig.class);
     Mockito.when(config.getServletContext()).thenReturn(context);
-    
+
     servlet.init(config);
 
     HashSet<BindingProperty> set = new HashSet<BindingProperty>();
@@ -157,7 +156,7 @@ public class TestHtml5ManifestServlet {
   public void testGetPermutationStrongName1() throws ServletException, FileNotFoundException {
 
     ServletContext context = Mockito.mock(ServletContext.class);
-    Mockito.when(context.getRealPath(Mockito.anyString())).then(getRealPathAnswer());    
+    Mockito.when(context.getRealPath(Mockito.anyString())).then(getRealPathAnswer());
     ServletConfig config = Mockito.mock(ServletConfig.class);
     Mockito.when(config.getServletContext()).thenReturn(context);
 
@@ -186,12 +185,12 @@ public class TestHtml5ManifestServlet {
   @Test
   public void testGetModuleNameWithInvalidURI() throws ServletException {
     HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
-    
+
     Mockito.when(mockServletRequest.getServletPath()).thenReturn("test");
-    
+
     ServletConfig servletConfig = Mockito.mock(ServletConfig.class);
     Mockito.when(servletConfig.getServletContext()).thenReturn(Mockito.mock(ServletContext.class));
-    
+
     servlet.init(servletConfig);
     try {
       servlet.getModuleName(mockServletRequest);
@@ -203,12 +202,12 @@ public class TestHtml5ManifestServlet {
   @Test
   public void testGetModuleNameWithValidURI() throws ServletException {
     HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
-    
+
     Mockito.when(mockServletRequest.getServletPath()).thenReturn("/test.manifest");
 
     ServletConfig servletConfig = Mockito.mock(ServletConfig.class);
     Mockito.when(servletConfig.getServletContext()).thenReturn(Mockito.mock(ServletContext.class));
-    
+
     servlet.init(servletConfig);
 
     String moduleName = servlet.getModuleName(mockServletRequest);
@@ -217,14 +216,14 @@ public class TestHtml5ManifestServlet {
 
   @Test
   public void testGetModuleNameWithValidURIWithUnderScoreInit() throws ServletException {
-    
+
     HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
-    
+
     Mockito.when(mockServletRequest.getServletPath()).thenReturn("/test_bla.manifest");
 
     ServletConfig servletConfig = Mockito.mock(ServletConfig.class);
     Mockito.when(servletConfig.getServletContext()).thenReturn(Mockito.mock(ServletContext.class));
-    
+
     servlet.init(servletConfig);
 
     String moduleName = servlet.getModuleName(mockServletRequest);

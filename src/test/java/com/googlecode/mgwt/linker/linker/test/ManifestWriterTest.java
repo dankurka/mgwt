@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.googlecode.mgwt.linker.linker.ManifestWriter;
 
-public class TestManifestWriter {
+public class ManifestWriterTest {
 
 	private ManifestWriter writer;
 

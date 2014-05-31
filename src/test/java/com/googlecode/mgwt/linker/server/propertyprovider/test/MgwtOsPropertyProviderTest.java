@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 import com.googlecode.mgwt.linker.server.propertyprovider.MgwtOsPropertyProvider;
 import com.googlecode.mgwt.linker.server.propertyprovider.PropertyProviderException;
 
-public class TestMgwtOsPropertyProvider {
+public class MgwtOsPropertyProviderTest {
 
   private MgwtOsPropertyProvider provider;
 

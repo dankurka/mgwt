@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.googlecode.mgwt.linker.server.propertyprovider.MobileUserAgentProvider;
 import com.googlecode.mgwt.linker.server.propertyprovider.PropertyProviderException;
 
-public class TestMobileUserAgentPropertyProvider {
+public class MobileUserAgentPropertyProviderTest {
 
 	private MobileUserAgentProvider provider;
 
