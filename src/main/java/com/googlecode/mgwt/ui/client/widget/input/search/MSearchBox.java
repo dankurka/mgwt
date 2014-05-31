@@ -146,6 +146,7 @@ public class MSearchBox extends Composite implements
         });
       }
     });
+    setValue("");
   }
 
   public HandlerRegistration addSearchSubmitHandler(SearchSubmitHandler handler) {
@@ -233,7 +234,9 @@ public class MSearchBox extends Composite implements
   @Override
   public void setValue(String value, boolean fireEvents) {
     textBox.setValue(value, false);
-
+    if (value == null || "".equals(value)) {
+      clearButton.setVisible(false);
+    }
     if (fireEvents) {
       ValueChangeEvent.fire(this, getValue());
     }

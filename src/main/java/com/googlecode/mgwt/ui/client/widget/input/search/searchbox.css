@@ -5,6 +5,8 @@
 	@external mgwt-SearchBox, mgwt-SearchBox-round, mgwt-SearchBox-input, mgwt-SearchBox-clear, mgwt-SearchBox-clear-active;
 }
 
+::-webkit-search-cancel-button { -webkit-appearance: none; }
+
 .mgwt-SearchBox {
 	height: 44px;
 	width: 100%;
