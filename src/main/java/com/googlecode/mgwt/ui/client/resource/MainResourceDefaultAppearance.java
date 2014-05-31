@@ -87,6 +87,9 @@ public class MainResourceDefaultAppearance implements MainResourceAppearance {
     @Source({"main.css"})
     MainCss css();
 
+    @Source({"selection.css"})
+    SelectionCss selectionCss();
+
     // This is a very nasty workaround because GWT CssResource does not support
     // @media correctly!
     @Source("util.css")
@@ -96,6 +99,11 @@ public class MainResourceDefaultAppearance implements MainResourceAppearance {
   @Override
   public MainCss css() {
     return Resources.INSTANCE.css();
+  }
+
+  @Override
+  public SelectionCss selectionCss() {
+    return Resources.INSTANCE.selectionCss();
   }
 
   @Override

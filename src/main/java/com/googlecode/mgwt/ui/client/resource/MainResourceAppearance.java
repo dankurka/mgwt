@@ -18,21 +18,32 @@ package com.googlecode.mgwt.ui.client.resource;
 import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 
 public interface MainResourceAppearance {
-  public interface MainCss extends MGWTCssResource {
+  interface MainCss extends MGWTCssResource {
   }
 
-  public interface UtilCss extends MGWTCssResource {
-    public String landscapeonly();
+  interface UtilCss extends MGWTCssResource {
+    String landscapeonly();
 
-    public String portraitonly();
+    String portraitonly();
 
-    public String portrait();
+    String portrait();
 
-    public String landscape();
+    String landscape();
+  }
 
+  interface SelectionCss extends MGWTCssResource {
+    String userSelectNone();
+
+    String userSelectText();
+
+    String userSelectAll();
+
+    String userSelectElement();
   }
 
   MainCss css();
 
   UtilCss utilCss();
+
+  SelectionCss selectionCss();
 }

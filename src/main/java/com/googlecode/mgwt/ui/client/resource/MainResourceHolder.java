@@ -40,6 +40,7 @@ public class MainResourceHolder {
     @Override
     public void inject() {
       DEFAULT_APPEARANCE.css().ensureInjected();
+      DEFAULT_APPEARANCE.selectionCss().ensureInjected();
       DEFAULT_APPEARANCE.utilCss().ensureInjected();
     }
   }

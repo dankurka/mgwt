@@ -25,4 +25,10 @@ public class MainResourceAppearancePlatform implements MainResourceAppearance {
     // TODO Auto-generated method stub
     return null;
   }
+
+  @Override
+  public SelectionCss selectionCss() {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }
