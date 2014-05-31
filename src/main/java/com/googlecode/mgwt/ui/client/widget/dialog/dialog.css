@@ -68,6 +68,7 @@
     border: 1px solid #9daca9;
     color: #454545;
     border-radius: 5px;
+    min-width: 150px;
 }
 
 
@@ -93,6 +94,7 @@
 
 .mgwt-DialogPanel .content {
 	margin: 10px;
+	text-align: center;
 }
 
 .mgwt-DialogPanel .footer {
