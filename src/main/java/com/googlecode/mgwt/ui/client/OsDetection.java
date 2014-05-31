@@ -133,4 +133,6 @@ public interface OsDetection {
 	public boolean isBlackBerry();
 
 	boolean isAndroid4_4_OrHigher();
+
+	boolean isAndroid2x();
 }

@@ -2,15 +2,6 @@ package com.googlecode.mgwt.ui.client;
 
 public class OsDetectionRuntimeImpl implements OsDetection {
 
-  private static native String getUserAgent() /*-{
-    return $wnd.navigator.userAgent.toLowerCase();
-  }-*/;
-
-  private static native double getDevicePixelRatio() /*-{
-    return $wnd.devicePixelRatio || 1;
-  }-*/;
-
-
   @Override
   public boolean isAndroid() {
     return isAndroidPhone() || isAndroidTablet();
@@ -103,4 +94,21 @@ public class OsDetectionRuntimeImpl implements OsDetection {
     }
     return false;
   }
+
+  @Override
+  public boolean isAndroid2x() {
+    String userAgent = getUserAgent();
+    if (userAgent.contains("android 2.")) {
+      return true;
+    }
+    return false;
+  }
+
+  native String getUserAgent() /*-{
+    return $wnd.navigator.userAgent.toLowerCase();
+  }-*/;
+
+  native double getDevicePixelRatio() /*-{
+    return $wnd.devicePixelRatio || 1;
+  }-*/;
 }

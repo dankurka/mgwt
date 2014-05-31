@@ -45,7 +45,7 @@ public class MobileUserAgentPropertyProviderTest {
 	public void testGetPropertyValueAndroid() throws PropertyProviderException {
 	  HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
     Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn(
-        UserAgents.ANDROID_PHONE_2x_USER_AGENT);
+        UserAgents.ANDROID_2_X_PHONE_NEXUS_S_USER_AGENT);
 		Assert.assertEquals("mobilesafari", provider.getPropertyValue(mockServletRequest));
 	}
 

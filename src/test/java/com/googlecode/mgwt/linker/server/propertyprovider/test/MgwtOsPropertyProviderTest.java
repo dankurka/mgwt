@@ -110,7 +110,7 @@ public class MgwtOsPropertyProviderTest {
   public void testGetPropertyValueAndroid() throws PropertyProviderException {
     HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
     Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn(
-        UserAgents.ANDROID_PHONE_2x_USER_AGENT);
+        UserAgents.ANDROID_2_X_PHONE_NEXUS_S_USER_AGENT);
 
     String propertyValue = provider.getPropertyValue(mockServletRequest);
 
@@ -121,7 +121,7 @@ public class MgwtOsPropertyProviderTest {
   public void testGetPropertyValueAndroidTablet() throws PropertyProviderException {
     HttpServletRequest mockServletRequest = Mockito.mock(HttpServletRequest.class);
     Mockito.when(mockServletRequest.getHeader("User-Agent")).thenReturn(
-        UserAgents.ANDROID_TABLET_USER_AGENT);
+        UserAgents.ANDROID_3_0_TABLET_MOTOROLA_XOOM_USER_AGENT);
 
     String propertyValue = provider.getPropertyValue(mockServletRequest);
 
