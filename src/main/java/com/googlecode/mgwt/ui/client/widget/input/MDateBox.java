@@ -4,6 +4,8 @@ import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
+import com.google.gwt.event.dom.client.FocusEvent;
+import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -145,12 +147,49 @@ public class MDateBox extends MValueBoxBase<Date> {
 
     // fix ios issue with onchange event
 
-    if (MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isAndroid4_4_OrHigher()) {
-      // only set input type to date if there is a native picker iOS >= 5
+    if (MGWT.getOsDetection().isAndroid4_4_OrHigher()) {
+      // only set input type to date if there is a native picker
       impl.setType(box.getElement(), "date");
       // use w3c format
       format = W3C_FORMAT;
     }
+
+    if (MGWT.getOsDetection().isRetina()) {
+      // IOS needs a workaround for empty date picker
+      // Since it will not render them properly (iOS7)
+      format = W3C_FORMAT;
+      box.addFocusHandler(new FocusHandler() {
+
+        @Override
+        public void onFocus(FocusEvent event) {
+          impl.setType(box.getElement(), "date");
+        }
+      });
+
+      box.addBlurHandler(new BlurHandler() {
+
+        @Override
+        public void onBlur(BlurEvent event) {
+          impl.setType(box.getElement(), "text");
+        }
+      });
+    }
+
+    if (MGWT.getOsDetection().isIPadRetina() || MGWT.getOsDetection().isIPad()) {
+      // for iPad workaround does not work
+      // adding default date, not happy about this
+      impl.setType(box.getElement(), "date");
+      format = W3C_FORMAT;
+
+      Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+
+        @Override
+        public void execute() {
+           box.setValue(new Date());
+        }
+      });
+    }
+
 
     // apply format to parsers
     getBox().getDateParser().setFormat(format);
