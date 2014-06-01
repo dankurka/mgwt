@@ -1,11 +1,11 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -14,9 +14,8 @@
 package com.googlecode.mgwt.ui.client.widget.carousel;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
@@ -24,11 +23,13 @@ import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiFactory;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.collection.shared.LightArrayInt;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
@@ -49,9 +50,9 @@ import java.util.Set;
 /**
  * the carousel widget renders its children in a horizontal row. users can select a different child
  * by swiping between them
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class Carousel extends Composite implements HasWidgets, HasSelectionHandlers<Integer> {
 
@@ -120,7 +121,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
     }
   }
 
-  private FlowPanel main;
+  private FlexPanel main;
   private ScrollPanel scrollPanel;
   private FlowPanel container;
   private CarouselIndicatorContainer carouselIndicatorContainer;
@@ -135,7 +136,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
   private static final CarouselAppearance DEFAULT_APPEARANCE = GWT.create(CarouselAppearance.class);
   private final CarouselAppearance appearance;
-  
+
   /**
    * Construct a carousel widget with the default css
    */
@@ -145,14 +146,14 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
   /**
    * Construct a carousel widget with a given css
-   * 
+   *
    * @param css the css to use
    */
   public Carousel(CarouselAppearance appearance) {
 
     this.appearance = appearance;
     childToHolder = new HashMap<Widget, Widget>();
-    main = new FlowPanel();
+    main = new FlexPanel();
     initWidget(main);
 
     main.addStyleName(this.appearance.css().carousel());
@@ -193,14 +194,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
       @Override
       public void onOrientationChanged(OrientationChangeEvent event) {
-        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-
-          @Override
-          public void execute() {
-            refresh();
-
-          }
-        });
+        refresh();
       }
     });
 
@@ -219,15 +213,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
         @Override
         public void onResize(ResizeEvent event) {
-          Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-
-            @Override
-            public void execute() {
-              refresh();
-
-            }
-          });
-
+          refresh();
         }
       });
     }
@@ -237,7 +223,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   @Override
   public void add(Widget w) {
 
-    FlexPanel widgetHolder = new FlexPanel();
+    FlowPanel widgetHolder = new FlowPanel();
     widgetHolder.addStyleName(this.appearance.css().carouselHolder());
     widgetHolder.add(w);
 
@@ -245,13 +231,14 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
     container.add(widgetHolder);
 
+    IMPL.adjust(main, container);
+
   }
 
   @Override
   public void clear() {
     container.clear();
     childToHolder.clear();
-
   }
 
   @Override
@@ -271,8 +258,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   }
 
   @Override
-  protected void onAttach() {
-    super.onAttach();
+  protected void onLoad() {
     refresh();
   }
 
@@ -281,46 +267,60 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
    */
   public void refresh() {
 
-    IMPL.adjust(main, container);
+    final int delay = MGWT.getOsDetection().isAndroid() ? 200 : 1;
 
-    scrollPanel.setScrollingEnabledX(true);
-    scrollPanel.setScrollingEnabledY(false);
-
-    scrollPanel.setShowScrollBarX(false);
-    scrollPanel.setShowScrollBarY(false);
-
-    if (carouselIndicatorContainer != null) {
-      carouselIndicatorContainer.removeFromParent();
-
-    }
-
-    int widgetCount = container.getWidgetCount();
-
-    carouselIndicatorContainer = new CarouselIndicatorContainer(this.appearance.css(), widgetCount);
-
-    if(isVisibleCarouselIndicator){
-      main.add(carouselIndicatorContainer);
-    }
-
-    if (currentPage >= widgetCount) {
-      currentPage = widgetCount - 1;
-    }
-
-    carouselIndicatorContainer.setSelectedIndex(currentPage);
-
-    scrollPanel.refresh();
-
-    refreshHandler = scrollPanel.addScrollRefreshHandler(new ScrollRefreshEvent.Handler() {
+    // allow layout to happen..
+    new Timer() {
 
       @Override
-      public void onScrollRefresh(ScrollRefreshEvent event) {
-        refreshHandler.removeHandler();
-        refreshHandler = null;
+      public void run() {
+        IMPL.adjust(main, container);
 
-        scrollPanel.scrollToPage(currentPage, 0, 0);
+        scrollPanel.setScrollingEnabledX(true);
+        scrollPanel.setScrollingEnabledY(false);
+
+        scrollPanel.setShowScrollBarX(false);
+        scrollPanel.setShowScrollBarY(false);
+
+        if (carouselIndicatorContainer != null) {
+          carouselIndicatorContainer.removeFromParent();
+
+        }
+
+        int widgetCount = container.getWidgetCount();
+
+        carouselIndicatorContainer = new CarouselIndicatorContainer(appearance.css(), widgetCount);
+
+        if(isVisibleCarouselIndicator){
+          main.add(carouselIndicatorContainer);
+        }
+
+        if (currentPage >= widgetCount) {
+          currentPage = widgetCount - 1;
+        }
+
+        carouselIndicatorContainer.setSelectedIndex(currentPage);
+
+        scrollPanel.refresh();
+
+        refreshHandler = scrollPanel.addScrollRefreshHandler(new ScrollRefreshEvent.Handler() {
+
+          @Override
+          public void onScrollRefresh(ScrollRefreshEvent event) {
+            refreshHandler.removeHandler();
+            refreshHandler = null;
+
+            scrollPanel.scrollToPage(currentPage, 0, 0);
+
+          }
+        });
+
+
 
       }
-    });
+
+    }.schedule(delay);
+
 
   }
 
@@ -346,54 +346,39 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
     return scrollPanel;
   }
 
-  /**
-   * 
-   * @author Daniel Kurka
-   * 
-   */
-  public static interface CarouselImpl {
 
-    /**
-     * 
-     * @param main
-     * @param container
-     */
-    void adjust(FlowPanel main, FlowPanel container);
-
+  interface CarouselImpl {
+    void adjust(Widget main, FlowPanel container);
   }
 
-  /**
-   * 
-   * @author Daniel Kurka
-   * 
-   */
-  public static class CarouselImplSafari implements CarouselImpl {
+  // GWT rebinding
+  @SuppressWarnings("unused")
+  private static class CarouselImplSafari implements CarouselImpl {
 
     @Override
-    public void adjust(FlowPanel main, FlowPanel container) {
+    public void adjust(Widget main, FlowPanel container) {
       int widgetCount = container.getWidgetCount();
 
-      double sizeFactor = 100d / widgetCount;
+      double scaleFactor = 100d / widgetCount;
 
       for (int i = 0; i < widgetCount; i++) {
-        container.getWidget(i).setWidth(sizeFactor + "%");
+        Widget w = container.getWidget(i);
+        w.setWidth(scaleFactor + "%");
+        w.getElement().getStyle().setLeft(i * scaleFactor, Unit.PCT);
       }
 
       container.setWidth((widgetCount * 100) + "%");
-
+      container.getElement().getStyle().setHeight(main.getOffsetHeight(), Unit.PX);
     }
 
   }
 
-  /**
-   * 
-   * @author Daniel Kurka
-   * 
-   */
-  public static class CarouselImplGecko implements CarouselImpl {
+  //GWT rebinding
+  @SuppressWarnings("unused")
+  private static class CarouselImplGecko implements CarouselImpl {
 
     @Override
-    public void adjust(FlowPanel main, FlowPanel container) {
+    public void adjust(Widget main, FlowPanel container) {
       int widgetCount = container.getWidgetCount();
       int offsetWidth = main.getOffsetWidth();
 

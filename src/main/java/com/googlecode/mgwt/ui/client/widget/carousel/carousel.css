@@ -4,58 +4,38 @@
 
 
 @if user.agent safari {
-	.mgwt-Carousel {
-		display: \-webkit-box;
-		\-webkit-box-flex: 1;
-	}
-}
-
-@if user.agent gecko1_8 {
-	.mgwt-Carousel {
-		display: \-moz-box;
-		\-moz-box-flex: 1;
-	}
+  .mgwt-Carousel {
+    display: -webkit-box; /* iOS < 7 && Android < 4.4*/
+    display: -webkit-flex;
+    -webkit-box-flex: 1; /* iOS < 7 && Android < 4.4*/
+    -webkit-flex: 1;
+  }
 }
 
 .mgwt-Carousel {
-	position: relative;
-	display: flex;
-	flex: 1;
-}
-
-
-.mgwt-Carousel-Scroller {
-	
+    flex:1;
+    flex-flow: column;
+    overflow: visible;
 }
 
 @if user.agent safari {
-	.mgwt-Carousel-Scroller {
-		\-webkit-box-flex: 1;
-	}
+  .mgwt-Carousel-Scroller, .mgwt-Carousel-Container  {
+    -webkit-box-flex: 1; /* iOS < 7 && Android < 4.4*/
+    -webkit-flex: 1;
+  }
 }
 
-@if user.agent gecko1_8 {
-	.mgwt-Carousel-Scroller {
-		\-moz-box-flex: 1;
-	}
+.mgwt-Carousel-Scroller {
+    flex: 1
 }
 
 .mgwt-Carousel-Container {
-	
+	flex: 1;
 }
 
-@if user.agent safari {
-	.mgwt-Carousel-Container {
-		display: \-webkit-box;
-		\-webkit-box-flex: 1;
-	}
-}
-
-@if user.agent gecko1_8 {
-	.mgwt-Carousel-Container {
-		display: \-moz-box;
-		\-moz-box-flex: 1;
-	}
+.mgwt-Carousel-Holder {
+	position: absolute;
+	height: 100%;
 }
 
 .mgwt-Carousel-Indicator-Container {
@@ -89,20 +69,4 @@
 
 .mgwt-Carousel-Indicator-active {
 	background-color: #757575;
-}
-
-.mgwt-Carousel-Holder {
-	position: relative;
-}
-
-@if user.agent safari {
-	.mgwt-Carousel-Holder {
-		display: \-webkit-box;
-	}
-}
-
-@if user.agent gecko1_8 {
-	.mgwt-Carousel-Holder {
-		display: \-moz-box;
-	}
 }

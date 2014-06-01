@@ -464,10 +464,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
       }
     }
 
-    Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-
+    int delay = MGWT.getOsDetection().isAndroid() ? 200 : 1;
+    new Timer() {
       @Override
-      public void execute() {
+      public void run() {
         switch (direction) {
           case HORIZONTAL:
             ScrollPanelTouchImpl.this.scrollBarSize[dir] = ScrollPanelTouchImpl.this.scrollBarWrapper[dir].getClientWidth();
@@ -495,9 +495,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
         // Reset position
         scrollbarPos(direction, true);
-
       }
-    });
+    }.schedule(delay);
 
   }
 
