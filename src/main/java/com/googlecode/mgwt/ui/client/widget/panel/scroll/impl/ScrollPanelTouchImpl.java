@@ -502,7 +502,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   private void resize() {
-    int delay = MGWT.getOsDetection().isAndroid() && !MGWT.getOsDetection().isAndroid4_4_OrHigher() ? 200: 1;
+    int delay = MGWT.getOsDetection().isAndroid() ? 200 : 1;
     new Timer() {
       @Override
       public void run() {
