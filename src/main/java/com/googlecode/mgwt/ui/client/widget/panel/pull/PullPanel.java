@@ -1,11 +1,11 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -46,14 +46,14 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh, IsFl
 
     /**
      * get the position in px that triggers a state change
-     * 
+     *
      * @return the position in px that triggers the state change
      */
     public int getStateSwitchPosition();
 
     /**
      * set the html of a pull header
-     * 
+     *
      * @param html the html as String
      */
     public void setHTML(String html);
@@ -63,7 +63,7 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh, IsFl
   public interface Pullhandler {
     /**
      * this method get called if the pull state of the panel changes
-     * 
+     *
      * @param pullWidget the PullWidget set for the region (header, footer)
      * @param state the current state of the pull panel
      */
@@ -71,7 +71,7 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh, IsFl
 
     /**
      * called if a pull got executed
-     * 
+     *
      * @param pullWidget the PullWidget set for the region (header, footer)
      */
     public void onPullAction(PullWidget pullWidget);
@@ -298,11 +298,6 @@ public class PullPanel extends Composite implements HasWidgets, HasRefresh, IsFl
 
   public void setHeaderPullHandler(Pullhandler headerPullhandler) {
     this.headerPullhandler = headerPullhandler;
-  }
-
-  @Deprecated
-  public void setHeaderPullhandler(Pullhandler headerPullhandler) {
-    setHeaderPullHandler(headerPullhandler);
   }
 
   public void setFooterPullHandler(Pullhandler headerPullhandler) {
