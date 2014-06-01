@@ -3,11 +3,12 @@
 }
 
 .mgwt-Form {
+	display: block;
 	position: relative;
 	list-style: none;
 	border-collapse: collapse;
 	color: #454545;
-	
+	width: 100%;
 }
 
 .mgwt-Form-Entry {
