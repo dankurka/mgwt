@@ -5,20 +5,18 @@
 }
 
 .in {
-	z-index: 10;
 	\-webkit-animation-name: fadein;
 }
 .out {
-	z-index: 8;
 	\-webkit-animation-name: fadeout;
 }
 
 .in.reverse {
-	\-webkit-animation-name: fadeout;
+	\-webkit-animation-name: fadein;
 }
 
 .out.reverse {
-	\-webkit-animation-name: fadein;	
+	\-webkit-animation-name: fadeout;
 }
 
 @-webkit-keyframes fadein {

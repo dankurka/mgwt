@@ -6,23 +6,19 @@
 
 
 .in {
-	z-index: 10;
-	\-webkit-animation-name: dissolve;
+	\-webkit-animation-name: appear;
 }
 
 .out {
-	z-index: 1;
-	\-webkit-animation-name: donothing;	
+	\-webkit-animation-name: dissolve;
 }
 
 .in.reverse {
-	z-index: 1;
-	\-webkit-animation-name: donothing;
+	\-webkit-animation-name: appear;
 }
 
 .out.reverse {
-	z-index: 10;
-	\-webkit-animation-name: dissolve;	
+	\-webkit-animation-name: dissolve;
 }
 
 @-webkit-keyframes dissolve {
@@ -30,7 +26,7 @@
     to { opacity: 0; }
 }
 
-@-webkit-keyframes donothing {
-    from { opacity: 1; }
+@-webkit-keyframes appear {
+    from { opacity: 0; }
     to { opacity: 1; }
 }
