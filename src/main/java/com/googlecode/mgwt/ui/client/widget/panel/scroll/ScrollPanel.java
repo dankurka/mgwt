@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -27,12 +27,12 @@ import com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelImpl;
 
 /**
  * A scroll panel that can handle touch input and has momentum
- * 
- * 
+ *
+ *
  * <h2>Styling</h2>
- * 
+ *
  * The DOM structure looks like:
- * 
+ *
  * <pre>
  * &lt;div class="mgwt-ScrollPanel">
  * 	&lt;yourChild class="mgwt-ScrollPanel-container">....&lt;/yourChild>
@@ -44,11 +44,11 @@ import com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelImpl;
  * 	&lt;/div>
  * &lt;/div>
  * </pre>
- * 
+ *
  * The scrollbars maybe missing from the DOM if scrolling is disabled for a certain direction.
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
 
@@ -114,7 +114,7 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
 
   /**
    * Should scrolling in x-axis be enabled
-   * 
+   *
    * @param enabled true to enable
    */
   public void setScrollingEnabledX(boolean enabled) {
@@ -124,10 +124,10 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
 
   /**
    * Refresh the scroll panel
-   * 
+   *
    * This method needs to be called if the content of the child widget has changed without calling
    * {@link #setWidget(IsWidget)}
-   * 
+   *
    * ScrollPanel needs to recalculate sizes.
    */
   public void refresh() {
@@ -137,7 +137,7 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
 
   /**
    * Should scrolling in y-axis be enabled
-   * 
+   *
    * @param enabled true to enable
    */
   public void setScrollingEnabledY(boolean enabled) {
@@ -147,11 +147,11 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
 
   /**
    * Use position absolute instead of -webkit-translate
-   * 
+   *
    * This is required on android if the scrolling area contains input elements
-   * 
+   *
    * default: false
-   * 
+   *
    * @param android a boolean.
    */
   public void setUsePos(boolean android) {
@@ -246,12 +246,10 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
 
   public void setShowScrollBarX(boolean b) {
     impl.setShowScrollBarX(b);
-
   }
 
   public void setShowScrollBarY(boolean b) {
     impl.setShowScrollBarY(b);
-
   }
 
   public int getCurrentPageX() {
@@ -286,5 +284,9 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
 
   public void setHideScrollBar(boolean hideScrollBar) {
     impl.setHideScrollBar(hideScrollBar);
+  }
+
+  public void setScrollLock(boolean lock) {
+    impl.setScrollLock(lock);
   }
 }

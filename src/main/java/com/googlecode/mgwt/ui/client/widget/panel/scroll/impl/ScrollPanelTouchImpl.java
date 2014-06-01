@@ -1972,4 +1972,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
     this.hideScrollBar = hideScrollBar;
   }
 
+  @Override
+  public void setScrollLock(boolean lock) {
+    this.lockDirection = lock;
+  }
 }
