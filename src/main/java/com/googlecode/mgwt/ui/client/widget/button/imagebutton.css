@@ -2,6 +2,20 @@
 	@external mgwt-ImageButton, mgwt-ImageButton-active, mgwt-ImageButton-disabled;
 }
 
+
+@if user.agent safari {
+  .mgwt-ImageButton {
+    display: -webkit-box; /* iOS < 7 && Android < 4.4*/
+    display: -webkit-flex;
+  }
+}
+
+@if user.agent gecko1_8 {
+  .mgwt-ImageButton {
+    display: -moz-box;
+  }
+}
+
 .mgwt-ImageButton {
 	display: flex;
 	color: #454545;
