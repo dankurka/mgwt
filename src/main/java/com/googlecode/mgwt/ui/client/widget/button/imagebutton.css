@@ -5,7 +5,7 @@
 .mgwt-ImageButton {
 	display: flex;
 	color: #454545;
-	max-width: 102px;
+	max-width: 130px;
 	overflow: hidden;
 	background-color: #e5e9e8;
 	box-shadow: inset 0 1px #fff;
@@ -14,8 +14,7 @@
 }
 
 .mgwt-ImageButton-active {
-	color: #eff1f1;
-	border: 1px solid #0036ff;
+	color: #757575;
 	box-shadow: inset 0 1px rgba(255, 255, 255, 0.36), 0 0 0 2px #6fb5f1;
 	outline: 0;
 }

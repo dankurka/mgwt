@@ -5,7 +5,7 @@
 .mgwt-Button {
 	color: #454545;
 	text-shadow: 0 1px #fff;
-	display: block;
+	display: inline;
 	position: relative;
 	padding: 9px 13px;
 	margin: 5px;
