@@ -33,7 +33,6 @@ import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.dom.client.event.tap.Tap;
 import com.googlecode.mgwt.dom.client.event.touch.TouchHandler;
 import com.googlecode.mgwt.dom.client.recognizer.EventPropagator;
-import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl;
 
 import java.util.List;
@@ -172,21 +171,12 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
         target = target.getParentElement();
       }
       if (idxString.length() > 0) {
-
         try {
-          // see: http://code.google.com/p/mgwt/issues/detail?id=154
-          if (MGWT.getOsDetection().isBlackBerry()) {
-            index = (int) Long.parseLong(idxString);
-          } else {
-            index = Integer.parseInt(idxString);
-          }
-
+          index = Integer.parseInt(idxString);
           node = target;
           startTimer(node);
         } catch (Exception e) {
-
         }
-
       }
 
     }
