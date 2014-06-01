@@ -1,8 +1,8 @@
 package com.googlecode.mgwt.ui.client.widget.input.checkbox;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
+
 import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 
 public interface MCheckBoxAppearance {
