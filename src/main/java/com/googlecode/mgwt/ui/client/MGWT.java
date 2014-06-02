@@ -185,7 +185,7 @@ public class MGWT {
       head.appendChild(statusBarTag);
     }
 
-    if(settings.fixIOS71BodyBug()) {
+    if(settings.shouldFixIOS71BodyBug()) {
       IOS71BodyBug.applyWorkaround();
     }
   }

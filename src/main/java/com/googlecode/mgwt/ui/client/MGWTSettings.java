@@ -402,7 +402,7 @@ public class MGWTSettings {
    *
    * @see IOS71BodyBug
    */
-  public boolean fixIOS71BodyBug() {
+  public boolean shouldFixIOS71BodyBug() {
     return fixIOS71BodyBug;
   }
 
