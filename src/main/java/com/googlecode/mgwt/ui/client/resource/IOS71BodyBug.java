@@ -41,7 +41,7 @@ public class IOS71BodyBug {
   }
 
   public static void applyWorkaround() {
-    if (MGWT.getOsDetection().isIPad()) {
+    if (MGWT.getOsDetection().isIPad() || MGWT.getOsDetection().isIPadRetina()) {
       if (isIOS71()) {
         String text = Resources.INSTANCE.css().getText();
         StyleInjector.inject(text);
