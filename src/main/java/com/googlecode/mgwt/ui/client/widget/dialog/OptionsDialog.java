@@ -13,9 +13,11 @@
  */
 package com.googlecode.mgwt.ui.client.widget.dialog;
 
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
+import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
 
 import java.util.Iterator;
@@ -46,6 +48,10 @@ public class OptionsDialog implements HasWidgets, Dialog {
 
   @Override
   public void add(Widget w) {
+    // Older versions need block style for flexible box model to work
+    if(MGWT.getOsDetection().isIOS6() || MGWT.getOsDetection().isAndroid4_3_orLower()) {
+      w.getElement().getStyle().setDisplay(Display.BLOCK);
+    }
     container.add(w);
   }
 

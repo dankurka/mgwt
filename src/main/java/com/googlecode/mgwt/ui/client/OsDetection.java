@@ -135,4 +135,8 @@ public interface OsDetection {
 	boolean isAndroid4_4_OrHigher();
 
 	boolean isAndroid2x();
+
+  boolean isIOS6();
+
+  boolean isAndroid4_3_orLower();
 }

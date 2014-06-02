@@ -96,6 +96,7 @@ public class OsDetectionRuntimeImplTest {
     Assert.assertFalse(osDetection.isAndroidPhone());
     Assert.assertFalse(osDetection.isBlackBerry());
     Assert.assertFalse(osDetection.isDesktop());
+    Assert.assertFalse(osDetection.isIOS6());
     Assert.assertFalse(osDetection.isIPad());
     Assert.assertFalse(osDetection.isIPadRetina());
     Assert.assertFalse(osDetection.isIPhone());
@@ -119,6 +120,7 @@ public class OsDetectionRuntimeImplTest {
     Assert.assertFalse(osDetection.isDesktop());
     Assert.assertFalse(osDetection.isIPad());
     Assert.assertFalse(osDetection.isIPhone());
+    Assert.assertFalse(osDetection.isIOS6());
     Assert.assertFalse(osDetection.isPhone());
     Assert.assertFalse(osDetection.isRetina());
   }
@@ -143,5 +145,51 @@ public class OsDetectionRuntimeImplTest {
     Assert.assertFalse(osDetection.isIPhone());
     Assert.assertFalse(osDetection.isPhone());
     Assert.assertFalse(osDetection.isRetina());
+  }
+
+  @Test
+  public void testIPadIOS6() {
+    userAgent = UserAgents.IOS_IPAD_6_0;
+    devicePixelRatio = 2;
+
+    Assert.assertTrue(osDetection.isIOs());
+    Assert.assertTrue(osDetection.isTablet());
+    Assert.assertTrue(osDetection.isIPadRetina());
+    Assert.assertTrue(osDetection.isIOS6());
+
+    Assert.assertFalse(osDetection.isAndroid());
+    Assert.assertFalse(osDetection.isAndroid4_4_OrHigher());
+    Assert.assertFalse(osDetection.isAndroidTablet());
+    Assert.assertFalse(osDetection.isAndroid2x());
+    Assert.assertFalse(osDetection.isAndroidPhone());
+    Assert.assertFalse(osDetection.isBlackBerry());
+    Assert.assertFalse(osDetection.isDesktop());
+    Assert.assertFalse(osDetection.isIPad());
+    Assert.assertFalse(osDetection.isIPhone());
+    Assert.assertFalse(osDetection.isPhone());
+    Assert.assertFalse(osDetection.isRetina());
+  }
+
+  @Test
+  public void testIPhoneIOS6() {
+    userAgent = UserAgents.IOS_IPHONE_6_0;
+    devicePixelRatio = 2;
+
+    Assert.assertTrue(osDetection.isIOs());
+    Assert.assertTrue(osDetection.isPhone());
+    Assert.assertTrue(osDetection.isRetina());
+    Assert.assertTrue(osDetection.isIOS6());
+
+    Assert.assertFalse(osDetection.isAndroid());
+    Assert.assertFalse(osDetection.isAndroid4_4_OrHigher());
+    Assert.assertFalse(osDetection.isAndroidTablet());
+    Assert.assertFalse(osDetection.isTablet());
+    Assert.assertFalse(osDetection.isAndroid2x());
+    Assert.assertFalse(osDetection.isAndroidPhone());
+    Assert.assertFalse(osDetection.isBlackBerry());
+    Assert.assertFalse(osDetection.isDesktop());
+    Assert.assertFalse(osDetection.isIPad());
+    Assert.assertFalse(osDetection.isIPadRetina());
+    Assert.assertFalse(osDetection.isIPhone());
   }
 }

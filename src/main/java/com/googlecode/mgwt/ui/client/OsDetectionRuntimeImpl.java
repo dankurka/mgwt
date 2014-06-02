@@ -111,4 +111,33 @@ public class OsDetectionRuntimeImpl implements OsDetection {
   native double getDevicePixelRatio() /*-{
     return $wnd.devicePixelRatio || 1;
   }-*/;
+
+  @Override
+  public boolean isIOS6() {
+    if(!isIOs()){
+      return false;
+    }
+
+    String userAgent = getUserAgent();
+    if (userAgent.contains("os 6_")) {
+      return true;
+    }
+
+    return false;
+  }
+
+  @Override
+  public boolean isAndroid4_3_orLower() {
+    if(isAndroid4_4_OrHigher())
+    {
+      return false;
+    }
+
+    String userAgent = getUserAgent();
+    if (userAgent.contains("android")) {
+      return true;
+    }
+
+    return false;
+  }
 }

@@ -2,6 +2,7 @@ package com.googlecode.mgwt.ui.client.widget.button;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.dom.client.TouchCancelEvent;
 import com.google.gwt.event.dom.client.TouchEndEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
@@ -123,6 +124,12 @@ public class ImageButton extends ButtonBase implements IsSizeable {
     setElement(appearance.uiBinder().createAndBindUi(this));
     setIcon(iconImage);
     setHighlightImage(highlightImage);
+
+    // iOS6 and old android have problems with the aligning in flexible box model with inline-block
+    // elements
+    if (MGWT.getOsDetection().isAndroid4_3_orLower() || MGWT.getOsDetection().isIOS6()) {
+      this.text.getStyle().setDisplay(Display.BLOCK);
+    }
 
     addTouchHandler(new TouchHandler() {
 
