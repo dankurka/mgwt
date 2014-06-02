@@ -65,11 +65,11 @@ public class OverlayMenu extends Composite {
     css.append("@media (orientation:portrait) {\n");
 
     css.append("#" + id + " ." + mainClass + "{\n");
-    css.append("left: 150px;");
+    css.append("left: 200px;");
     css.append("}");
 
     css.append("#" + id + " ." + navClass + "{\n");
-    css.append("width: 150px;");
+    css.append("width: 200px;");
     css.append("}");
 
     css.append("}");
