@@ -42,7 +42,7 @@ public class IOS71BodyBug {
 
   public static void applyWorkaround() {
     if (MGWT.getOsDetection().isIPad() || MGWT.getOsDetection().isIPadRetina()) {
-      if (isIOS71()) {
+      if (isIOS71() && windowInnerHeight() == 672) {
         String text = Resources.INSTANCE.css().getText();
         StyleInjector.inject(text);
         Document.get().getBody().addClassName("__fixIOS7BodyBug");
@@ -52,5 +52,9 @@ public class IOS71BodyBug {
 
   private native static boolean isIOS71() /*-{
 		return !!$wnd.navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i);
+  }-*/;
+
+  private native static int windowInnerHeight() /*-{
+    return window.innerHeight
   }-*/;
 }
