@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 
+import com.googlecode.mgwt.ui.client.widget.base.IsSizeable;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Alignment;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Justification;
@@ -107,11 +108,23 @@ public class HeaderPanel extends Composite implements IsFlexPanel, HasWidgets.Fo
 
   @Override
   public void add(Widget w) {
+    if(w instanceof IsSizeable) {
+      IsSizeable isBar = (IsSizeable) w;
+      isBar.setSmall(true);
+    }
     container.add(w);
   }
 
   @Override
   public void clear() {
+    for(int i = 0; i < container.getWidgetCount(); i++) {
+      Widget w = container.getWidget(i);
+      if(w instanceof IsSizeable) {
+        IsSizeable isBar = (IsSizeable) w;
+        isBar.setSmall(false);
+      }
+    }
+
     container.clear();
   }
 
@@ -122,6 +135,10 @@ public class HeaderPanel extends Composite implements IsFlexPanel, HasWidgets.Fo
 
   @Override
   public boolean remove(Widget w) {
+    if(w instanceof IsSizeable) {
+      IsSizeable isBar = (IsSizeable) w;
+      isBar.setSmall(false);
+    }
     return container.remove(w);
   }
 
