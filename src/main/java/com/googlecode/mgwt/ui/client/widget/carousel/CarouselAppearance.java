@@ -17,6 +17,9 @@ public interface CarouselAppearance {
     @ClassName("mgwt-Carousel-Indicator-Container")
     String indicatorContainer();
 
+    @ClassName("mgwt-Carousel-Indicator-main")
+    String indicatorMain();
+
     @ClassName("mgwt-Carousel-Indicator")
     String indicator();
 

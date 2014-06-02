@@ -36,6 +36,8 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler
 import com.googlecode.mgwt.ui.client.MGWT;
 import com.googlecode.mgwt.ui.client.widget.carousel.CarouselAppearance.CarouselCss;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Justification;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Orientation;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollEndEvent;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollRefreshEvent;
@@ -57,7 +59,7 @@ import java.util.Set;
 public class Carousel extends Composite implements HasWidgets, HasSelectionHandlers<Integer> {
 
   private static class CarouselIndicatorContainer extends Composite {
-    private FlowPanel main;
+    private FlexPanel main;
     private final CarouselCss css;
     private ArrayList<CarouselIndicator> indicators;
     private int selectedIndex;
@@ -67,10 +69,17 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
         throw new IllegalArgumentException();
       }
       this.css = css;
-      main = new FlowPanel();
+      main = new FlexPanel();
       initWidget(main);
+      main.setOrientation(Orientation.HORIZONTAL);
+      main.setJustification(Justification.CENTER);
 
-      main.addStyleName(this.css.indicatorContainer());
+      main.addStyleName(this.css.indicatorMain());
+
+      FlexPanel container = new FlexPanel();
+      container.addStyleName(this.css.indicatorContainer());
+      container.setOrientation(Orientation.HORIZONTAL);
+      main.add(container);
 
       indicators = new ArrayList<Carousel.CarouselIndicator>(numberOfPages);
       selectedIndex = 0;
@@ -78,8 +87,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
       for (int i = 0; i < numberOfPages; i++) {
         CarouselIndicator indicator = new CarouselIndicator(css);
         indicators.add(indicator);
-        main.add(indicator);
-
+        container.add(indicator);
       }
 
       setSelectedIndex(selectedIndex);
@@ -268,7 +276,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   public void refresh() {
 
     final int delay = MGWT.getOsDetection().isAndroid() ? 200 : 1;
-
+    IMPL.adjust(main, container);
     // allow layout to happen..
     new Timer() {
 
