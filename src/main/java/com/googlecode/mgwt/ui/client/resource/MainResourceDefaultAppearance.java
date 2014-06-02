@@ -59,7 +59,7 @@ public class MainResourceDefaultAppearance implements MainResourceAppearance {
 
     @Override
     public String portraitonly() {
-      return "portrait";
+      return "portraitonly";
     }
 
     @Override
