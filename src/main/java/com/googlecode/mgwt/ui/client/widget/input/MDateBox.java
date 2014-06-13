@@ -95,13 +95,17 @@ public class MDateBox extends MValueBoxBase<Date> {
 
     @Override
     public String render(Date object) {
+      if (object == null) {
+        return "";
+      }
       return format.format(object);
     }
 
     @Override
     public void render(Date object, Appendable appendable) throws IOException {
-      appendable.append(format.format(object));
-
+      if (object != null) {
+        appendable.append(format.format(object));
+      }
     }
   }
 
