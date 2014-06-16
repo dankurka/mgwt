@@ -30,7 +30,7 @@ public class HeaderAndroidAppearance extends HeaderAbstractAppearance {
 
   @Override
   public HeaderButtonCss css() {
-    return Resources.INSTANCE.css();
+    return Resources.INSTANCE.css();  
   }
 
   @Override
