@@ -2,6 +2,7 @@ package com.googlecode.mgwt.ui.client.theme.platform.header;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
+
 import com.googlecode.mgwt.ui.client.widget.header.HeaderAbstractAppearance;
 
 public class HeaderIOSAppearance extends HeaderAbstractAppearance {
@@ -9,6 +10,7 @@ public class HeaderIOSAppearance extends HeaderAbstractAppearance {
   static {
     Resources.INSTANCE.css().ensureInjected();
     Resources.INSTANCE.cssPanel().ensureInjected();
+    Resources.INSTANCE.cssTitle().ensureInjected();
   }
 
   interface Resources extends ClientBundle {

@@ -1,8 +1,17 @@
+.mgwt-List {
+  border: none;
+}
+
 .mgwt-List > li {
 	background-color: white;
 	border: 1px solid rgb(171, 173, 176);
 	border-bottom: none;
 }
+
+.mgwt-List-first {
+  border: none;
+}
+
 
 
 .mgwt-List-round > .mgwt-List-first {

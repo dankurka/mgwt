@@ -16,9 +16,10 @@ public class CellListAndroidAppearance extends CellListAbstractAppearance {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"celllist-base.css", "celllist-android.css"})
+    @Source({
+        "com/googlecode/mgwt/ui/client/widget/list/celllist/celllist.css", "celllist-android.css"})
     CellListCss css();
-    
+
     @Source("arrow.png")
     DataResource listArrow();
   }
