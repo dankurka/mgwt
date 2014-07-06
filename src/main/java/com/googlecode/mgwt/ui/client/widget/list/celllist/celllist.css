@@ -21,10 +21,6 @@
 	padding: 12px;
 }
 
-.mgwt-List-round {
-	padding: 0 10px 0 10px;
-}
-
 
 
 .mgwt-List-last {
@@ -37,14 +33,6 @@
 }
 .mgwt-List > li.mgwt-List-first {
 	border-top: 1px solid #d6dcdb;
-}
-
-.mgwt-List-round > .mgwt-List-first {
-
-}
-
-.mgwt-List-round > .mgwt-List-last {
-
 }
 
 .mgwt-List-canbeSelected.mgwt-List-selected {
