@@ -5,7 +5,7 @@ import com.google.gwt.resources.client.ClientBundle;
 
 import com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarAbstractAppearance;
 
-public class ButtonBarIPhoneRetinaAppearance extends ButtonBarAbstractAppearance {
+public class ButtonBarIOSAppearance extends ButtonBarAbstractAppearance {
 
   static {
     Resources.INSTANCE.barCss().ensureInjected();
@@ -15,7 +15,7 @@ public class ButtonBarIPhoneRetinaAppearance extends ButtonBarAbstractAppearance
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"buttonbar-base.css", "buttonbar-iphone.css"})
+    @Source({"com/googlecode/mgwt/ui/client/widget/buttonbar/buttonbar.css", "buttonbar-ios.css"})
     ButtonBarCss barCss();
   }
 
