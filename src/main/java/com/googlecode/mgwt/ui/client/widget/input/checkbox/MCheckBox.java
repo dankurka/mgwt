@@ -79,7 +79,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 		private int x_start;
 		private int x_min;
 		private int x_max;
-		private int offset;
+	  private int offset;
 		private boolean moved;
 		private int now_x;
 
@@ -123,23 +123,28 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 			event.stopPropagation();
 			event.preventDefault();
 			Touch touch = event.getTouches().get(0);
-			now_x = touch.getPageX();
-
+			now_x = touch.getClientX();
+			System.out.println("move: " + now_x);
 			if (!moved) {
-				if (Math.abs(now_x - x_start) < DRAG_DEADZONE) {
+				if (Math.abs(now_x - x_start) < appearance.css().DRAG_DEADZONE()) {
+				  System.out.println("dead");
 					return;
 				}
 			}
-
+			System.out.println("go");
 			moved = true;
 
 			int translate_x = now_x - x_start;
 
+			System.out.println("goto: " + translate_x);
+
 			if (translate_x < x_min) {
+			  System.out.println("smaller min");
 				return;
 			}
 
 			if (translate_x > x_max) {
+			  System.out.println("bigger max");
 				return;
 			}
 
@@ -159,24 +164,20 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 			}
 
 			Touch touch = event.getTouches().get(0);
-			x_start = touch.getPageX();
+			x_start = touch.getClientX();
+			System.out.println("start: " + x_start);
 			moved = false;
 			if (value) {
-				x_min = -CONTAINER_WIDTH;
-				x_max = 0;
-				offset = 0;
+				x_min = appearance.css().CONTAINER_MIN_ON();
+				x_max = appearance.css().CONTAINER_MAX_ON();
+				offset = appearance.css().CONTAINER_OFFSET_ON();
 			} else {
-				x_min = 0;
-				x_max = CONTAINER_WIDTH;
-				offset = -CONTAINER_WIDTH;
+			  x_min = appearance.css().CONTAINER_MIN_OFF();
+        x_max = appearance.css().CONTAINER_MAX_OFF();
+        offset = appearance.css().CONTAINER_OFFSET_OFF();
 			}
-
 		}
 	}
-
-
-  private static final int CONTAINER_WIDTH = 54;
-  private static final int DRAG_DEADZONE = 8;
 
 	private boolean value;
 	@UiField

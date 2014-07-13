@@ -3,7 +3,7 @@
 }
 
 .mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox .mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
-	color: #777;
+	color: #151515;
 	border: 0;
 	font: normal 17px Helvetica;
 	padding: 0;
@@ -16,6 +16,7 @@
 	\-moz-user-select: text;
 	\-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	\-webkit-user-modify: read-write-plaintext-only;
+	background-color: white;
 }
 
 

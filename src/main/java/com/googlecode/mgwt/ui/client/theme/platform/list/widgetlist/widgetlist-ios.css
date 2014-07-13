@@ -4,6 +4,13 @@
 	border-bottom: none;
 }
 
+.mgwt-WidgetList-headerContainer {
+  background-color: #EBEBF2;
+  text-transform: uppercase;
+  color: #66666B;
+  font-size: 12px;
+  font: Helvetica Neue UltraLight;
+}
 
 .mgwt-WidgetList-round > .mgwt-WidgetList-Entry-first {
 	border-top-left-radius: 8px 8px;
