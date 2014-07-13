@@ -47,10 +47,20 @@
 	right: 60px;
 	bottom: 1px;
 	outline: none;
-	width: 85%; /* TODO */
+	width: literal("calc(100% - 47px)");
 }
 
+@if user.agent safari {
+	.mgwt-SearchBox-input {
+	  width: literal("-webkit-calc(100% - 47px)");
+	}
+}
 
+@if user.agent gecko1_8 {
+	.mgwt-SearchBox-input {
+	  width: literal("-moz-calc(100% - 47px);");
+	}
+}
 
 @if user.agent safari {
 	.mgwt-SearchBox-input {
