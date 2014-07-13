@@ -6,6 +6,12 @@
 	position: relative;
 }
 
+@if mgwt.formfactor desktop {
+  .mgwt-RadioButton-label, .mgwt-RadioButton-input {
+    cursor: pointer;
+  }
+}
+
 .mgwt-RadioButton-label {
 	
 }

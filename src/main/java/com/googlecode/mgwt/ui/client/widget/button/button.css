@@ -18,6 +18,12 @@
 	text-align: center;
 }
 
+@if mgwt.formfactor desktop {
+  .mgwt-Button {
+    cursor: pointer;
+  }
+}
+
 .mgwt-Button-small {
 	padding: 7px;
 	margin: 5px;

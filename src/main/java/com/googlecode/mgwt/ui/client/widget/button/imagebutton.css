@@ -16,6 +16,12 @@
   }
 }
 
+@if mgwt.formfactor desktop {
+  .mgwt-ImageButton {
+    cursor: pointer;
+  }
+}
+
 .mgwt-ImageButton {
 	display: flex;
 	color: #454545;
