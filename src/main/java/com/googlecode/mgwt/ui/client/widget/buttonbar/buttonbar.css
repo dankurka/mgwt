@@ -8,10 +8,9 @@
 	overflow:hidden;
 	width: 100%;
 	position: relative;
-	background: #e5e9e8;
+	background-color: #e5e9e8;
   	color: #454545;
   	border-top: 1px solid #454545;
-  	box-shadow: inset 0 1px #9daca9, 0 -1px #d6dcdb;
 	height: 44px;
 }
 

@@ -13,39 +13,13 @@ under the License.
 -->
 
 <module>
-  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBarIPadAppearance">
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBarIOSAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarAppearance" />
-    <any>
-      <when-property-is name="mgwt.os" value="ipad" />
-      <when-property-is name="mgwt.os" value="desktop" />
-    </any>
-  </replace-with>
-  
-  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBarIPadRetinaAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarAppearance" />
-    <when-property-is name="mgwt.os" value="ipad_retina" />
-  </replace-with>
-
-  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBarIPhoneAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarAppearance" />
-    <when-property-is name="mgwt.os" value="iphone" />
-  </replace-with>
-
-  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBarIPhoneRetinaAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarAppearance" />
-    <when-property-is name="mgwt.os" value="retina" />
+    <when-property-is name="mgwt.os" value="ios" />
   </replace-with>
 
   <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBarAndroidAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarAppearance" />
-    <any>
-      <when-property-is name="mgwt.os" value="android" />
-      <when-property-is name="mgwt.os" value="android_tablet" />
-    </any>
-  </replace-with>
-
-  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBarBlackberryAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarAppearance" />
-    <when-property-is name="mgwt.os" value="blackberry" />
+    <when-property-is name="mgwt.os" value="android" />
   </replace-with>
 </module>

@@ -34,6 +34,7 @@ under the License.
     
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.main.MainResource" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.button.Button" />
+  <inherits name="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBar" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.dialog.Dialog" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.form.Form" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.header.Header" />
