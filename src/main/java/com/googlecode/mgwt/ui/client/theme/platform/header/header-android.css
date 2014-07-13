@@ -4,28 +4,3 @@
 	background-image: none;
 	border-bottom: 2px solid rgb(82, 163, 196);
 }
-
-.mgwt-HeaderPanel-left {
-	top: 6px;
-	left: 6px;
-}
-
-.mgwt-HeaderPanel-right {
-	top: 6px;
-	right: 6px;
-}
-
-.mgwt-HeaderPanel-center {
-	left: 50%;
-	height: 31px;
-	width: 240px;
-	opacity: 1;
-	margin-left: -110px;
-	margin-top: 12px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	text-align: center;
-	font-size: 24px;
-	color: white;
-}

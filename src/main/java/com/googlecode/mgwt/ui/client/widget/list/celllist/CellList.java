@@ -224,19 +224,6 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
     impl.addTouchHandler(this, touchHandler);
   }
 
-  /**
-   * Should the CellList be rendered with rounded corners
-   *
-   * @param round true to render with rounded corners, otherwise false
-   */
-  public void setRound(boolean round) {
-    if (round) {
-      addStyleName(this.appearance.css().round());
-    } else {
-      removeStyleName(this.appearance.css().round());
-    }
-  }
-
   public HandlerRegistration addCellSelectedHandler(CellSelectedHandler cellSelectedHandler) {
     return addHandler(cellSelectedHandler, CellSelectedEvent.getType());
   }

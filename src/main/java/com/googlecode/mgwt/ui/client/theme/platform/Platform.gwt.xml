@@ -12,6 +12,26 @@ License for the specific language governing permissions and limitations
 under the License.
 -->
 <module>
+  <define-property name="mgwt.os" values="android, ios" />
+  <property-provider name="mgwt.os"><![CDATA[
+    // Detect mgwt.os from user agent.
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf("iphone") != -1 || ua.indexOf("ipod") != -1) {
+      // iphone and ipod.
+        return "ios";
+    } else if (ua.indexOf("ipad") != -1) {
+      // ipad.
+      return "ios";
+    } else if (ua.indexOf("android") != -1) {
+      return "android";  
+    }
+    return "ios";
+    ]]></property-provider>
+
+  <set-property name="mgwt.density" value="xhigh" >
+    <when-property-is name="mgwt.os" value="ios" />
+  </set-property>
+    
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.main.MainResource" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.button.Button" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.dialog.Dialog" />
