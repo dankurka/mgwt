@@ -244,12 +244,28 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
     impl.setBounceFactor(bounceFactor);
   }
 
+  /**
+   * @deprecated use {@link #setShowVerticalScrollBar(boolean)}
+   */
+  @Deprecated
   public void setShowScrollBarX(boolean b) {
     impl.setShowScrollBarX(b);
   }
 
+  /**
+   * @deprecated use {@link #setShowHorizontalScrollBar(boolean)}
+   */
+  @Deprecated
   public void setShowScrollBarY(boolean b) {
     impl.setShowScrollBarY(b);
+  }
+
+  public void setShowHorizontalScrollBar(boolean show) {
+    impl.setShowHorizontalScrollBar(show);
+  }
+
+  public void setShowVerticalScrollBar(boolean show) {
+    impl.setShowVerticalScrollBar(show);
   }
 
   public int getCurrentPageX() {

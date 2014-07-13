@@ -1914,20 +1914,32 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   @Override
   public void setBounceFactor(double factor) {
     this.bounceFactor = factor;
+  }
 
+  @Deprecated
+  @Override
+  public void setShowScrollBarX(boolean show) {
+    this.hScrollbar = show;
+    scrollBar[DIRECTION.VERTICAL.ordinal()] = show;
+  }
+
+  @Deprecated
+  @Override
+  public void setShowScrollBarY(boolean show) {
+    this.vScrollbar = show;
+    scrollBar[DIRECTION.HORIZONTAL.ordinal()] = show;
   }
 
   @Override
-  public void setShowScrollBarX(boolean b) {
-    this.hScrollbar = b;
-    scrollBar[DIRECTION.VERTICAL.ordinal()] = b;
+  public void setShowHorizontalScrollBar(boolean show) {
+    this.hScrollbar = show;
+    scrollBar[DIRECTION.HORIZONTAL.ordinal()] = show;
   }
 
   @Override
-  public void setShowScrollBarY(boolean b) {
-    this.vScrollbar = b;
-    scrollBar[DIRECTION.HORIZONTAL.ordinal()] = b;
-
+  public void setShowVerticalScrollBar(boolean show) {
+    this.vScrollbar = show;
+    scrollBar[DIRECTION.VERTICAL.ordinal()] = show;
   }
 
   @Override
