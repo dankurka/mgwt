@@ -172,9 +172,13 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets {
 
   public abstract void setBounceFactor(double factor);
 
-  public abstract void setShowScrollBarX(boolean b);
+  public abstract void setShowScrollBarX(boolean show);
 
-  public abstract void setShowScrollBarY(boolean b);
+  public abstract void setShowScrollBarY(boolean show);
+
+  public abstract void setShowHorizontalScrollBar(boolean show);
+
+  public abstract void setShowVerticalScrollBar(boolean show);
 
   public abstract int getCurrentPageX();
 
