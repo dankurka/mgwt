@@ -9,6 +9,12 @@
 	padding-bottom: 10px;
 }
 
+@if mgwt.formfactor desktop {
+  .mgwt-Slider {
+    cursor: pointer;
+  }
+}
+
 .mgwt-Slider-bar {
 	position: relative;
 	height: 10px;

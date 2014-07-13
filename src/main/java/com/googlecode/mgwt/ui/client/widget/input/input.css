@@ -22,6 +22,7 @@
 
 
 
+
 @if user.agent safari {
 	.mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox .mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
 		display: -webkit-box;

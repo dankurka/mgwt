@@ -14,6 +14,12 @@
 	
 }
 
+@if mgwt.formfactor desktop {
+  .mgwt-ListBox {
+    cursor: pointer;
+  }
+}
+
 
 @if user.agent safari {
 	.mgwt-ListBox {
