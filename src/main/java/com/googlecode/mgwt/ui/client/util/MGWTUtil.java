@@ -11,17 +11,16 @@ public class MGWTUtil {
 		if(d.isAndroid()){
 			final String zIndex = Document.get().getBody().getStyle().getZIndex();
 			Document.get().getBody().getStyle().setZIndex(-1);
-			
+
 			new Timer(){
 
 				@Override
 				public void run() {
 					Document.get().getBody().getStyle().setProperty("zIndex", zIndex);
-					
+
 				}
-				
+
 			}.schedule(50);
-			
 		}
 	}
 }

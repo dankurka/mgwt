@@ -1,12 +1,12 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -20,20 +20,14 @@ import com.google.gwt.event.shared.HasHandlers;
 
 /**
  * Propagate events to a source
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class EventPropagatorStandardImpl implements EventPropagator {
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.googlecode.mgwt.dom.client.recognizer.EventPropagator#fireEvent(com.google.gwt.event.shared.HasHandlers, com.google.gwt.event.shared.GwtEvent)
-	 */
 	@Override
 	public void fireEvent(HasHandlers source, GwtEvent<?> event) {
 		source.fireEvent(event);
-
 	}
-
 }

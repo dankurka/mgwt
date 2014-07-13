@@ -35,7 +35,6 @@ import com.googlecode.mgwt.dom.client.recognizer.TimerExecutor.CodeToRun;
  * This class can recognize long taps
  *
  * @author Daniel Kurka
- *
  */
 public class LongTapRecognizer implements TouchHandler {
 
@@ -61,22 +60,10 @@ public class LongTapRecognizer implements TouchHandler {
 
   private static EventPropagator DEFAULT_EVENT_PROPAGATOR;
 
-  /**
-   * Construct a LongTapRecognizer with that fires on one finger after 1.5s
-   *
-   * @param source the source on which to fire events on
-   */
   public LongTapRecognizer(HasHandlers source) {
     this(source, 1);
   }
 
-  /**
-   *
-   * Construct a LongTapRecognizer with that after 1.5s
-   *
-   * @param source source the source on which to fire events on
-   * @param numberOfFingers the number of fingers to detect
-   */
   public LongTapRecognizer(HasHandlers source, int numberOfFingers) {
     this(source, numberOfFingers, DEFAULT_WAIT_TIME_IN_MS);
   }
@@ -125,7 +112,6 @@ public class LongTapRecognizer implements TouchHandler {
     state = State.READY;
     startPositions = CollectionFactory.constructArray();
     touchCount = 0;
-
   }
 
   @Override
@@ -171,7 +157,6 @@ public class LongTapRecognizer implements TouchHandler {
     if (touchCount > numberOfFingers) {
       state = State.INVALID;
     }
-
   }
 
   @Override
@@ -204,7 +189,6 @@ public class LongTapRecognizer implements TouchHandler {
         state = State.INVALID;
         break;
     }
-
   }
 
   @Override
@@ -233,7 +217,6 @@ public class LongTapRecognizer implements TouchHandler {
           reset();
         break;
     }
-
   }
 
   @Override

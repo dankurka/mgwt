@@ -48,7 +48,6 @@ import com.googlecode.mgwt.dom.client.recognizer.swipe.SwipeStartHandler;
  * A simple panel that supports {@link TouchEvent}
  *
  * @author Daniel Kurka
- *
  */
 public class TouchPanel extends FlowPanel implements HasTouchHandlers, HasTapHandlers, HasPinchHandlers, HasSwipeHandlers, HasLongTapHandlers {
 

@@ -1,12 +1,12 @@
 /*
  * Copyright 2012 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -19,18 +19,18 @@ import com.google.gwt.event.shared.GwtEvent;
 
 /**
  * A {@link PinchEvent} is fired when a user moves to finger on the display.
- * 
+ *
  * A pinch event is fired around a center point which is calculated by looking
  * at the two fingers producing the event.
- * 
+ *
  * <p>
  * if finger one is at x1, y1 and finger two is at x2, y2 the center point is
  * (x1 + x2) / 2 and (y1 + y2) / 2
  * </p>
- * 
- * 
+ *
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class PinchEvent extends GwtEvent<PinchHandler> {
 
@@ -45,7 +45,7 @@ public class PinchEvent extends GwtEvent<PinchHandler> {
 
 	/**
 	 * Construct a pinch event
-	 * 
+	 *
 	 * @param x the mid point of the pinch in x
 	 * @param y the mid point of the pinch in y
 	 * @param scaleFactor the new scaling factor
@@ -56,19 +56,11 @@ public class PinchEvent extends GwtEvent<PinchHandler> {
 		this.scaleFactor = scaleFactor;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.google.gwt.event.shared.GwtEvent#getAssociatedType()
-	 */
 	@Override
 	public com.google.gwt.event.shared.GwtEvent.Type<PinchHandler> getAssociatedType() {
 		return TYPE;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see com.google.gwt.event.shared.GwtEvent#dispatch(com.google.gwt.event.shared.EventHandler)
-	 */
 	@Override
 	protected void dispatch(PinchHandler handler) {
 		handler.onPinch(this);
@@ -77,8 +69,8 @@ public class PinchEvent extends GwtEvent<PinchHandler> {
 
 	/**
 	 * The x position of the center point of the pinch.
-	 * 
-	 * 
+	 *
+	 *
 	 * @return the x position
 	 */
 	public int getX() {
@@ -87,8 +79,8 @@ public class PinchEvent extends GwtEvent<PinchHandler> {
 
 	/**
 	 * The y position of the center point of the pinch.
-	 * 
-	 * 
+	 *
+	 *
 	 * @return the y position
 	 */
 	public int getY() {
@@ -97,11 +89,10 @@ public class PinchEvent extends GwtEvent<PinchHandler> {
 
 	/**
 	 * the new scale factor that can be applied for getting a zoom effect
-	 * 
+	 *
 	 * @return the scale factor
 	 */
 	public double getScaleFactor() {
 		return scaleFactor;
 	}
-
 }

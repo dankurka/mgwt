@@ -28,13 +28,13 @@ import com.google.gwt.event.shared.HasHandlers;
  */
 public interface HasTouchHandlers extends HasHandlers {
 
-	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler);
+	HandlerRegistration addTouchStartHandler(TouchStartHandler handler);
 
-	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler);
+	HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler);
 
-	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler);
+	HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler);
 
-	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler);
+	HandlerRegistration addTouchEndHandler(TouchEndHandler handler);
 
-	public HandlerRegistration addTouchHandler(TouchHandler handler);
+	HandlerRegistration addTouchHandler(TouchHandler handler);
 }

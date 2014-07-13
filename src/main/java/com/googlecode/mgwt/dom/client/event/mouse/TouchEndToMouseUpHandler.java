@@ -25,18 +25,10 @@ import com.google.gwt.event.dom.client.TouchEndHandler;
 public class TouchEndToMouseUpHandler implements MouseUpHandler {
   private final TouchEndHandler handler;
 
-  /**
-   * <p>
-   * Constructor for TouchEndToMouseUpHandler.
-   * </p>
-   *
-   * @param handler a {@link com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler} object.
-   */
   public TouchEndToMouseUpHandler(TouchEndHandler handler) {
     this.handler = handler;
   }
 
-  /** {@inheritDoc} */
   @Override
   public void onMouseUp(MouseUpEvent event) {
     SimulatedTouchEndEvent simulatedTouchEndEvent = new SimulatedTouchEndEvent(event);

@@ -1,13 +1,13 @@
 /*
- * 
+ *
  * Copyright 2011 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -24,7 +24,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  * A utility class to load images from a remote resource
  *
  * @author Daniel Kurka
- * @version $Id: $
  */
 public class ImageLoader {
 
@@ -34,14 +33,12 @@ public class ImageLoader {
 
 		public ImageElementWrapper(ImageElement element) {
 			this.element = element;
-
 		}
 
 		@Override
 		public ImageElement getElement() {
 			return element;
 		}
-
 	}
 
 	private boolean canceled;
@@ -50,11 +47,7 @@ public class ImageLoader {
 	private ImageElement imgElement;
 	private AsyncCallback<IsImage> callback;
 
-	/**
-	 * Construct a loader
-	 */
 	public ImageLoader() {
-
 	}
 
 	/**
@@ -88,20 +81,14 @@ public class ImageLoader {
 		}
 	}
 
-	/**
-	 * <p>onError</p>
-	 */
-	protected void onError() {
+	private void onError() {
 		started = false;
 		if (canceled)
 			return;
 		callback.onFailure(new Exception());
 	}
 
-	/**
-	 * <p>onLoad</p>
-	 */
-	protected void onLoad() {
+	private void onLoad() {
 		started = false;
 		if (canceled)
 			return;
@@ -125,5 +112,4 @@ public class ImageLoader {
 
 		img.src = url;
 	}-*/;
-
 }
