@@ -7,9 +7,6 @@ import com.googlecode.mgwt.linker.server.propertyprovider.UserAgentPropertyProvi
 
 public class MGWTPhonegapHtml5ManifestServlet extends Html5ManifestServletBase {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3480215265307651028L;
 
 	public MGWTPhonegapHtml5ManifestServlet() {
@@ -17,7 +14,5 @@ public class MGWTPhonegapHtml5ManifestServlet extends Html5ManifestServletBase {
 		addPropertyProvider(new PhoneGapPropertyProvider());
 		addPropertyProvider(new UserAgentPropertyProvider());
 		addPropertyProvider(new MobileUserAgentProvider());
-
 	}
-
 }

@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -42,10 +42,10 @@ import com.googlecode.mgwt.ui.client.widget.animation.AnimationEndCallback;
 /**
  * This is a fork of @link {@link ActivityManager} that has the same features,
  * but also adds animations to the lifecycle of Activities.
- * 
+ *
  * It can be used as a replacement for {@link ActivityManager}, but requires an
  * instance of {@link AnimationMapper} to work properly
- * 
+ *
  * @author Daniel Kurka
  */
 public class AnimatingActivityManager implements PlaceChangeEvent.Handler, PlaceChangeRequestEvent.Handler {
@@ -70,7 +70,6 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 					showWidget(view, currentIsFirst);
 				}
 			}
-
 		}
 	}
 
@@ -78,7 +77,6 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 		@Override
 		public void start(AcceptsOneWidget panel, com.google.gwt.event.shared.EventBus eventBus) {
 			panel.setWidget(null);
-
 		}
 	};
 
@@ -107,7 +105,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	/**
 	 * Create an ActivityManager. Next call {@link #setDisplay}.
-	 * 
+	 *
 	 * @param mapper finds the {@link Activity} for a given
 	 *            {@link com.google.gwt.place.shared.Place}
 	 * @param eventBus source of {@link PlaceChangeEvent} and
@@ -124,7 +122,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * Deactivate the current activity, find the next one from our
 	 * ActivityMapper, and start it.
 	 * <p>
@@ -133,7 +131,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	 * be minimized by decent caching. Perenially slow activities might mitigate
 	 * this by providing a widget immediately, with some kind of "loading"
 	 * treatment.
-	 * 
+	 *
 	 * @see com.google.gwt.place.shared.PlaceChangeEvent.Handler#onPlaceChange(PlaceChangeEvent)
 	 */
 	public void onPlaceChange(PlaceChangeEvent event) {
@@ -219,27 +217,12 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 		// animate
 		animate(animation);
-
 	}
 
-	/**
-	 * <p>
-	 * Setter for the field <code>fireAnimationEvents</code>.
-	 * </p>
-	 * 
-	 * @param fireAnimationEvents a boolean.
-	 */
 	public void setFireAnimationEvents(boolean fireAnimationEvents) {
 		this.fireAnimationEvents = fireAnimationEvents;
 	}
 
-	/**
-	 * <p>
-	 * isFireAnimationEvents
-	 * </p>
-	 * 
-	 * @return a boolean.
-	 */
 	public boolean isFireAnimationEvents() {
 		return fireAnimationEvents;
 	}
@@ -260,7 +243,6 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 						ignorePlaceChange = false;
 						PlaceChangeEvent poll = placeChangeStack.poll();
 						onPlaceChange(poll);
-
 					}
 				});
 
@@ -270,10 +252,6 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 		}
 	}
 
-	/**
-	 * @param animation
-	 * 
-	 */
 	private void animate(Animation animation) {
 
 		listeningForAnimationEnd = true;
@@ -296,25 +274,13 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 
 			}
 		});
-
 	}
 
-	/**
-	 * @param event
-	 * @return
-	 */
 	private Animation getAnimation(PlaceChangeEvent event) {
 		Place newPlace = event.getNewPlace();
 		return animationMapper.getAnimation(currentPlace, newPlace);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * Reject the place change if the current activity is not willing to stop.
-	 * 
-	 * @see com.google.gwt.place.shared.PlaceChangeRequestEvent.Handler#onPlaceChangeRequest(PlaceChangeRequestEvent)
-	 */
 	public void onPlaceChangeRequest(PlaceChangeRequestEvent event) {
 		if (!currentActivity.equals(NULL_ACTIVITY)) {
 			event.setWarning(currentActivity.mayStop());
@@ -328,7 +294,7 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 	 * If you are disposing of an ActivityManager, it is important to call
 	 * setDisplay(null) to get it to deregister from the event bus, so that it
 	 * can be garbage collected.
-	 * 
+	 *
 	 * @param display an instance of AcceptsOneWidget
 	 */
 	public void setDisplay(AnimatableDisplay display) {
@@ -361,7 +327,6 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 			} else {
 				display.setSecondWidget(view);
 			}
-
 		}
 	}
 
@@ -376,7 +341,6 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 					placeRequestReg.removeHandler();
 				}
 			};
-
 		} else {
 			if (handlerRegistration != null) {
 				handlerRegistration.removeHandler();
@@ -384,5 +348,4 @@ public class AnimatingActivityManager implements PlaceChangeEvent.Handler, Place
 			}
 		}
 	}
-
 }

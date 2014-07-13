@@ -11,7 +11,7 @@ import com.googlecode.mgwt.linker.server.BindingProperty;
 public class PermutationArtifact extends Artifact<PermutationArtifact> {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -2097933260935878782L;
 	private final Set<String> permutationFiles;
@@ -51,5 +51,4 @@ public class PermutationArtifact extends Artifact<PermutationArtifact> {
 	public Set<BindingProperty> getBindingProperties() {
 		return bindingProperties;
 	}
-
 }

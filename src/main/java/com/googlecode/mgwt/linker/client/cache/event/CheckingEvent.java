@@ -1,12 +1,12 @@
 /*
  * Copyright 2011 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -21,9 +21,9 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * The user agent is checking for an update, or attempting to download the
  * manifest for the first time. This is always the first event in the sequence.
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class CheckingEvent extends GwtEvent<CheckingEvent.Handler> {
 
@@ -41,11 +41,9 @@ public class CheckingEvent extends GwtEvent<CheckingEvent.Handler> {
 	@Override
 	protected void dispatch(Handler handler) {
 		handler.onCheckingEvent(this);
-
 	}
 
 	public static Type<Handler> getType() {
 		return TYPE;
 	}
-
 }

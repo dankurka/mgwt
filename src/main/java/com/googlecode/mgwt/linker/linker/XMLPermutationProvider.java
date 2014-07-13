@@ -35,9 +35,7 @@ import org.xml.sax.SAXException;
 import com.googlecode.mgwt.linker.server.BindingProperty;
 
 public class XMLPermutationProvider implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -8892369911664489332L;
 	private static final String PERMUTATION_NODE = "permutation";
 	private static final String PERMUTATION_NAME = "name";
@@ -72,7 +70,6 @@ public class XMLPermutationProvider implements Serializable {
 		}
 
 		return map;
-
 	}
 
 	protected void handlePermutation(Map<String, List<BindingProperty>> map, Element permutationNode) throws XMLPermutationProviderException {
@@ -116,12 +113,9 @@ public class XMLPermutationProvider implements Serializable {
 				Element variable = document.createElement(b.getName());
 				variable.appendChild(document.createTextNode(b.getValue()));
 				node.appendChild(variable);
-
 			}
-
 		}
 		return transformDocumentToString(document);
-
 	}
 
 	protected Document createDocument() throws XMLPermutationProviderException {
@@ -207,15 +201,11 @@ public class XMLPermutationProvider implements Serializable {
 
 			if ("files".equals(varKey)) {
 				NodeList fileNodes = variables.getChildNodes();
-
 				handleFileNodes(set, fileNodes);
-
 			}
-
 		}
 
 		return set;
-
 	}
 
 	protected Document createDocumentFromInputStream(InputStream inputStream) throws XMLPermutationProviderException {
@@ -251,9 +241,6 @@ public class XMLPermutationProvider implements Serializable {
 
 			String varValue = childNodes.item(0).getNodeValue();
 			set.add(varValue);
-
 		}
-
 	}
-
 }

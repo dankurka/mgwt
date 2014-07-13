@@ -6,16 +6,11 @@ import com.googlecode.mgwt.linker.server.propertyprovider.UserAgentPropertyProvi
 
 public class MGWTHtml5ManifestServlet extends Html5ManifestServletBase {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3480215265307651028L;
 
 	public MGWTHtml5ManifestServlet() {
 		addPropertyProvider(new MgwtOsPropertyProvider());
 		addPropertyProvider(new UserAgentPropertyProvider());
 		addPropertyProvider(new MobileUserAgentProvider());
-
 	}
-
 }
