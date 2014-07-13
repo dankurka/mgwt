@@ -6,7 +6,7 @@ import com.google.gwt.resources.client.DataResource;
 
 import com.googlecode.mgwt.ui.client.widget.list.celllist.CellListAbstractAppearance;
 
-public class CellListIPhoneAppearance extends CellListAbstractAppearance {
+public class CellListIOSAppearance extends CellListAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();
@@ -16,9 +16,9 @@ public class CellListIPhoneAppearance extends CellListAbstractAppearance {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"celllist-base.css", "celllist-iphone.css"})
+    @Source({"com/googlecode/mgwt/ui/client/widget/list/celllist/celllist.css", "celllist-ios.css"})
     CellListCss css();
-    
+
     @Source("arrow.png")
     DataResource listArrow();
   }

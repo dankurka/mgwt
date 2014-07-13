@@ -12,25 +12,25 @@ import com.googlecode.mgwt.linker.client.cache.event.ProgressEvent;
 import com.googlecode.mgwt.linker.client.cache.event.UpdateReadyEvent;
 
 public interface ApplicationCache {
-	public ApplicationCacheStatus getStatus();
+	ApplicationCacheStatus getStatus();
 
-	public void swapCache();
+	void swapCache();
 
-	public void update();
+	void update();
 
-	public HandlerRegistration addCheckingHandler(CheckingEvent.Handler handler);
+	HandlerRegistration addCheckingHandler(CheckingEvent.Handler handler);
 
-	public HandlerRegistration addCachedHandler(CachedEvent.Handler handler);
+	HandlerRegistration addCachedHandler(CachedEvent.Handler handler);
 
-	public HandlerRegistration addDownloadingHandler(DownloadingEvent.Handler handler);
+	HandlerRegistration addDownloadingHandler(DownloadingEvent.Handler handler);
 
-	public HandlerRegistration addErrorHandler(ErrorEvent.Handler handler);
+	HandlerRegistration addErrorHandler(ErrorEvent.Handler handler);
 
-	public HandlerRegistration addNoUpdateHandler(NoUpdateEvent.Handler handler);
+	HandlerRegistration addNoUpdateHandler(NoUpdateEvent.Handler handler);
 
-	public HandlerRegistration addObsoleteHandler(ObsoleteEvent.Handler handler);
+	HandlerRegistration addObsoleteHandler(ObsoleteEvent.Handler handler);
 
-	public HandlerRegistration addProgressHandler(ProgressEvent.Handler handler);
+	HandlerRegistration addProgressHandler(ProgressEvent.Handler handler);
 
-	public HandlerRegistration addUpdateReadyHandler(UpdateReadyEvent.Handler handler);
+	HandlerRegistration addUpdateReadyHandler(UpdateReadyEvent.Handler handler);
 }

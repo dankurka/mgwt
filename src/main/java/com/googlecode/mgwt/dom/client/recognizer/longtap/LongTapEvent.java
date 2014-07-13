@@ -64,7 +64,6 @@ public class LongTapEvent extends GwtEvent<LongTapHandler> {
 		return TYPE;
 	}
 
-
 	@Override
 	protected void dispatch(LongTapHandler handler) {
 		handler.onLongTap(this);

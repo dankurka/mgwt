@@ -33,13 +33,13 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.RootPanel;
+
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
 import com.googlecode.mgwt.ui.client.resource.IOS71BodyBug;
 import com.googlecode.mgwt.ui.client.resource.MainResourceHolder;
-import com.googlecode.mgwt.ui.client.util.AddressBarUtil;
 import com.googlecode.mgwt.ui.client.util.OrientationHandler;
 
 /**
@@ -74,7 +74,6 @@ public class MGWT {
   private static boolean scrollingDisabled;
   private static JavaScriptObject nativeJsFunction;
 
-  private static AddressBarUtil addressBarUtil;
   /**
    * Return an orientation handler based on the current os.
    * @return
@@ -328,22 +327,6 @@ public class MGWT {
 
       }
     });
-
-  }
-
-  public static void showAddressBar(boolean s) {
-    if (s) {
-      getAddressBarUtil().showAddressBar();
-    } else {
-      getAddressBarUtil().hideAddressBar();
-    }
-  }
-
-  private static AddressBarUtil getAddressBarUtil() {
-    if (addressBarUtil == null) {
-      addressBarUtil = GWT.create(AddressBarUtil.class);
-    }
-    return addressBarUtil;
   }
 
   private static EventBus getManager() {

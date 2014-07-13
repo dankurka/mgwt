@@ -146,10 +146,6 @@ public abstract class TouchWidgetImpl {
     }
   }
 
-
-
-
-
 	/**
 	 * Add a touch start handler to a widget
 	 *

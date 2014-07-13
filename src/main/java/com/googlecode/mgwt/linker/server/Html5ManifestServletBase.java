@@ -36,9 +36,6 @@ import com.googlecode.mgwt.linker.server.propertyprovider.PropertyProviderExcept
 
 public class Html5ManifestServletBase extends HttpServlet {
 
-  /**
-	 * 
-	 */
   private static final long serialVersionUID = -2540671294104865306L;
   private XMLPermutationProvider permutationProvider;
 
@@ -46,7 +43,6 @@ public class Html5ManifestServletBase extends HttpServlet {
 
   public Html5ManifestServletBase() {
     permutationProvider = new XMLPermutationProvider();
-
   }
 
   protected void addPropertyProvider(PropertyProvider propertyProvider) {
@@ -111,9 +107,7 @@ public class Html5ManifestServletBase extends HttpServlet {
 
     // if we got here we just don`t know the device react with 500 -> no
     // manifest...
-
     throw new ServletException("unkown device");
-
   }
 
   protected String getBaseUrl(HttpServletRequest req) {
@@ -147,9 +141,7 @@ public class Html5ManifestServletBase extends HttpServlet {
           // so now we need to serve two manifests
           // retina...
           // non retina
-
           return true;
-
         }
       }
     }
@@ -172,13 +164,7 @@ public class Html5ManifestServletBase extends HttpServlet {
       log("can not read permutation file");
       throw new ServletException("can not read permutation file", e);
     } finally {
-      if (inputStream != null) {
-        try {
-          inputStream.close();
-        } catch (IOException e) {
-
-        }
-      }
+      closeQuitly(inputStream);
     }
   }
 
@@ -193,7 +179,6 @@ public class Html5ManifestServletBase extends HttpServlet {
       String line = null;
 
       while ((line = br.readLine()) != null) {
-
         manifestWriter.append(line + "\n");
       }
 
@@ -205,13 +190,7 @@ public class Html5ManifestServletBase extends HttpServlet {
       log("error while reading manifest file", e);
       throw new ServletException("error while reading manifest file", e);
     } finally {
-      if (br != null) {
-        try {
-          br.close();
-        } catch (IOException e) {
-
-        }
-      }
+      closeQuitly(br);
     }
   }
 
@@ -236,7 +215,6 @@ public class Html5ManifestServletBase extends HttpServlet {
       log("cam not calculate properties for client", e);
       throw new ServletException("can not calculate properties for client", e);
     }
-
   }
 
   public void serveStringManifest(HttpServletRequest req, HttpServletResponse resp, String manifest) throws ServletException {
@@ -263,7 +241,6 @@ public class Html5ManifestServletBase extends HttpServlet {
       log("can not write manifest to output stream", e);
       throw new ServletException("can not write manifest to output stream", e);
     }
-
   }
 
   public String getPermutationStrongName(String baseUrl, String moduleName, Set<BindingProperty> computedBindings) throws ServletException {
@@ -298,15 +275,8 @@ public class Html5ManifestServletBase extends HttpServlet {
       log("can not read xml file", e);
       throw new ServletException("can not read permutation information", e);
     } finally {
-      if (fileInputStream != null) {
-        try {
-          fileInputStream.close();
-        } catch (IOException e) {
-
-        }
-      }
+      closeQuitly(fileInputStream);
     }
-
   }
 
   public String getModuleName(HttpServletRequest req) throws ServletException {
@@ -325,6 +295,23 @@ public class Html5ManifestServletBase extends HttpServlet {
 
     String module = matcher.group(1);
     return module;
+  }
 
+  private void closeQuitly(BufferedReader br) {
+    if (br != null) {
+      try {
+        br.close();
+      } catch (IOException ignored) {
+      }
+    }
+  }
+
+  private void closeQuitly(InputStream stream) {
+    if (stream != null) {
+      try {
+        stream.close();
+      } catch (IOException ignored) {
+      }
+    }
   }
 }

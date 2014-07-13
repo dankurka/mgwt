@@ -223,9 +223,6 @@ public class PermutationMapLinker extends AbstractLinker {
       }
 
     }
-
     return map;
-
   }
-
 }

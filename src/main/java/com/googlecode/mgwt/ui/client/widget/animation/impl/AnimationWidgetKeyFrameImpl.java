@@ -1,11 +1,11 @@
 /*
  * Copyright 2011 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -30,7 +30,7 @@ import com.googlecode.mgwt.ui.client.widget.animation.AnimationEndCallback;
 
 /**
  * Considered internal
- * 
+ *
  * @author Daniel Kurka
  */
 public class AnimationWidgetKeyFrameImpl implements AnimationWidgetImpl {
@@ -53,23 +53,49 @@ public class AnimationWidgetKeyFrameImpl implements AnimationWidgetImpl {
 
   }
 
-  protected boolean animationRunning;
-  protected Animation currentAnimation;
+  protected class AnimationEndListener implements AnimationEndHandler {
 
-  protected FlowPanel main;
+    private Animation animation;
 
-  protected SimplePanel first;
+    public AnimationEndListener(Animation animation) {
+      this.animation = animation;
+    }
 
-  protected SimplePanel second;
+    @Override
+    public void onAnimationEnd(AnimationEndEvent event) {
+      AnimationWidgetKeyFrameImpl.this.onAnimationEnd(animation);
+    }
+  }
 
-  protected boolean lastDir;
+  private boolean animationRunning;
+
+  private Animation currentAnimation;
+
+  private FlowPanel main;
+
+  private SimplePanel first;
+
+  private SimplePanel second;
+
+  private boolean lastDir;
+
+  private boolean showFirst;
+
+  private HandlerRegistration animationEnd;
+
+  private AnimationEndListener listener;
+
+  private AnimationEndCallback lastCallback;
 
   public AnimationWidgetKeyFrameImpl() {
 
     main = new FlowPanel() {
       protected void onDetach() {
         super.onDetach();
-        onDeattach();
+
+        if (animationRunning) {
+          onAnimationEnd(currentAnimation);
+        }
 
       };
     };
@@ -88,98 +114,11 @@ public class AnimationWidgetKeyFrameImpl implements AnimationWidgetImpl {
 
   }
 
-  protected class AnimationEndListener implements AnimationEndHandler {
-
-    private Animation animation;
-
-    public AnimationEndListener(Animation animation) {
-      this.animation = animation;
-    }
-
-    @Override
-    public void onAnimationEnd(AnimationEndEvent event) {
-      AnimationWidgetKeyFrameImpl.this.onAnimationEnd(animation);
-    }
-  }
-
-  @Override
-  public void setFirstWidget(IsWidget w) {
-    first.setWidget(w);
-  }
-
-  @Override
-  public void setSecondWidget(IsWidget w) {
-    second.setWidget(w);
-  }
-
-  protected void removeAllStyles(Animation animation) {
-    first.removeStyleName(animation.css().in());
-    first.removeStyleName(animation.css().out());
-    first.removeStyleName(animation.css().reverse());
-
-    second.removeStyleName(animation.css().in());
-    second.removeStyleName(animation.css().out());
-    second.removeStyleName(animation.css().reverse());
-  }
-
-  protected boolean showFirst;
-  protected HandlerRegistration animationEnd;
-
-  protected AnimationEndListener listener;
-
-  protected AnimationEndCallback lastCallback;
-
-  protected native void blurBeforeAnimation() /*-{
-		var node = $doc.querySelector(":focus");
-
-		if (node != null) {
-			if (typeof (node.blur) == "function") {
-				node.blur();
-			}
-
-		}
-  }-*/;
-
-  @Override
-  public Widget asWidget() {
-    return main;
-  }
-
-  protected void onAnimationEnd(Animation animation) {
-    animationRunning = false;
-    if (showFirst) {
-
-      second.getElement().getStyle().setDisplay(Display.NONE);
-      second.clear();
-
-    } else {
-
-      first.getElement().getStyle().setDisplay(Display.NONE);
-      first.clear();
-
-    }
-    if(animation != null) {
-      removeAllStyles(animation);
-    }
-    
-
-    if (animationEnd != null) {
-      animationEnd.removeHandler();
-      animationEnd = null;
-    }
-
-    if (lastCallback != null) {
-      lastCallback.onAnimationEnd();
-      lastCallback = null;
-    }
-  }
-
-  /** {@inheritDoc} */
   @Override
   public void animate(Animation animation, boolean currentIsFirst, AnimationEndCallback callback) {
 
     if (animationRunning) {
-      // TODO throw?
+      throw new RuntimeException("Animation is already running");
     }
 
     this.currentAnimation = animation;
@@ -228,14 +167,64 @@ public class AnimationWidgetKeyFrameImpl implements AnimationWidgetImpl {
 
     first.getElement().getStyle().setDisplay(Display.BLOCK);
     second.getElement().getStyle().setDisplay(Display.BLOCK);
-
   }
 
-  // TODO
-  protected void onDeattach() {
-    if (animationRunning) {
-      onAnimationEnd(currentAnimation);
+  @Override
+  public Widget asWidget() {
+    return main;
+  }
+
+  @Override
+  public void setFirstWidget(IsWidget w) {
+    first.setWidget(w);
+  }
+
+  @Override
+  public void setSecondWidget(IsWidget w) {
+    second.setWidget(w);
+  }
+
+  private native void blurBeforeAnimation() /*-{
+  	var node = $doc.querySelector(":focus");
+  	if (node != null) {
+  		if (typeof (node.blur) == "function") {
+  			node.blur();
+  		}
+  	}
+  }-*/;
+
+  private void onAnimationEnd(Animation animation) {
+    animationRunning = false;
+    if (showFirst) {
+      second.getElement().getStyle().setDisplay(Display.NONE);
+      second.clear();
+    } else {
+      first.getElement().getStyle().setDisplay(Display.NONE);
+      first.clear();
+    }
+
+    if(animation != null) {
+      removeAllStyles(animation);
+    }
+
+    if (animationEnd != null) {
+      animationEnd.removeHandler();
+      animationEnd = null;
+    }
+
+    if (lastCallback != null) {
+      lastCallback.onAnimationEnd();
+      lastCallback = null;
     }
   }
 
+  private void removeAllStyles(Animation animation) {
+    first.removeStyleName(animation.css().in());
+    first.removeStyleName(animation.css().out());
+    first.removeStyleName(animation.css().reverse());
+
+    second.removeStyleName(animation.css().in());
+    second.removeStyleName(animation.css().out());
+    second.removeStyleName(animation.css().reverse());
+  }
 }

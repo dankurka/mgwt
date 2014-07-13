@@ -1,20 +1,18 @@
+.mgwt-List {
+  border: none;
+}
+
 .mgwt-List > li {
 	background-color: white;
-	border: 1px solid rgb(171, 173, 176);
+	border: 1px solid #D5D5D5;
 	border-bottom: none;
 }
 
-
-.mgwt-List-round > .mgwt-List-first {
-	border-top-left-radius: 8px 8px;
-	border-top-right-radius: 8px 8px;
+.mgwt-List-first {
+  border: none;
 }
 
-.mgwt-List-round > .mgwt-List-last {
-	border-bottom-left-radius: 8px 8px;
-	border-bottom-right-radius: 8px 8px;
-	border-bottom: 1px solid rgb(171, 173, 176);
-}
+
 
 .mgwt-List-canbeSelected.mgwt-List-selected {
 	font-weight: bold;

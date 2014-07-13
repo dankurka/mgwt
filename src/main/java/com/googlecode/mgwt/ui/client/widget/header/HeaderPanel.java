@@ -15,6 +15,8 @@
  */
 package com.googlecode.mgwt.ui.client.widget.header;
 
+import java.util.Iterator;
+
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
@@ -22,15 +24,12 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
-
 import com.googlecode.mgwt.ui.client.widget.base.IsSizeable;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Alignment;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Justification;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Orientation;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.IsFlexPanel;
-
-import java.util.Iterator;
 
 /**
  * A HeaderPanel is usually at the top of a page containing navigation elements

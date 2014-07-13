@@ -71,16 +71,8 @@ public class PinchRecognizer implements TouchHandler {
     this.source = source;
     this.offsetProvider = offsetProvider;
     state = State.READY;
-
   }
 
-  /*
-   * (non-Javadoc)
-   *
-   * @see
-   * com.googlecode.mgwt.dom.client.event.touch.TouchStartHandler#onTouchStart(com.googlecode.mgwt
-   * .dom.client.event.touch.TouchStartEvent)
-   */
   @Override
   public void onTouchStart(TouchStartEvent event) {
     touchCount++;
@@ -99,16 +91,8 @@ public class PinchRecognizer implements TouchHandler {
         state = State.INVALID;
         break;
     }
-
   }
 
-  /*
-   * (non-Javadoc)
-   *
-   * @see
-   * com.googlecode.mgwt.dom.client.event.touch.TouchMoveHandler#onTouchMove(com.googlecode.mgwt
-   * .dom.client.event.touch.TouchMoveEvent)
-   */
   @Override
   public void onTouchMove(TouchMoveEvent event) {
     switch (state) {
@@ -138,16 +122,8 @@ public class PinchRecognizer implements TouchHandler {
         state = State.INVALID;
         break;
     }
-
   }
 
-  /*
-   * (non-Javadoc)
-   *
-   * @see
-   * com.googlecode.mgwt.dom.client.event.touch.TouchEndHandler#onTouchEnd(com.googlecode.mgwt.dom
-   * .client.event.touch.TouchEndEvent)
-   */
   @Override
   public void onTouchEnd(TouchEndEvent event) {
     touchCount--;
@@ -162,7 +138,6 @@ public class PinchRecognizer implements TouchHandler {
         }
       }
     }
-
   }
 
   @Override
@@ -184,7 +159,6 @@ public class PinchRecognizer implements TouchHandler {
   private void reset() {
     touchCount = 0;
     state = State.READY;
-
   }
 
   // Visible for testing

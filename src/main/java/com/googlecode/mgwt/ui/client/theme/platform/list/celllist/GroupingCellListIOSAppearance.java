@@ -6,7 +6,7 @@ import com.google.gwt.resources.client.DataResource;
 
 import com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellListAbstractAppearance;
 
-public class GroupingCellListIPadAppearance extends GroupingCellListAbstractAppearance {
+public class GroupingCellListIOSAppearance extends GroupingCellListAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();
@@ -16,12 +16,14 @@ public class GroupingCellListIPadAppearance extends GroupingCellListAbstractAppe
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"celllist-base.css", "celllist-ipad.css"})
+    @Source({"com/googlecode/mgwt/ui/client/widget/list/celllist/celllist.css", "celllist-ios.css"})
     CellListCss css();
-    
-    @Source({"grouping-celllist-base.css", "grouping-celllist-ipad.css"})
+
+    @Source({
+        "com/googlecode/mgwt/ui/client/widget/list/celllist/grouping-celllist.css",
+        "grouping-celllist-ios.css"})
     GroupingListCss groupCss();
-    
+
     @Source("arrow.png")
     DataResource listArrow();
   }

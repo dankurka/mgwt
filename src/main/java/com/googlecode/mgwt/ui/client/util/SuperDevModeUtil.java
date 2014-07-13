@@ -8,9 +8,6 @@ public class SuperDevModeUtil {
 	private static final SuperDevModeHelper HELPER = GWT.create(SuperDevModeHelper.class);
 
 	public static void showDevMode() {
-
 		HELPER.showDevMode();
-
 	}
-
 }
