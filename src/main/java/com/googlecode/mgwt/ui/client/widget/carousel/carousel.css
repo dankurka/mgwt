@@ -13,9 +13,10 @@
 }
 
 .mgwt-Carousel {
-    flex:1;
-    flex-flow: column;
-    overflow: visible;
+  position: relative;
+  flex:1;
+  flex-flow: column;
+  overflow: visible;
 }
 
 @if user.agent safari {
@@ -26,11 +27,11 @@
 }
 
 .mgwt-Carousel-Scroller {
-    flex: 1
+  flex: 1
 }
 
 .mgwt-Carousel-Container {
-	flex: 1;
+  flex: 1;
 }
 
 .mgwt-Carousel-Holder {
@@ -42,7 +43,7 @@
 	position: absolute;
 	right: 0px;
 	left: 0px;
-	bottom: 0px;
+	bottom: 3px;
 }
 
 
