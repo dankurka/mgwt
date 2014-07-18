@@ -37,7 +37,7 @@ public class MainResourceDefaultAppearance implements MainResourceAppearance {
       if(injected) {
         return false;
       }
-
+      injected = true;
       StyleInjector.inject(getText());
       return true;
     }
