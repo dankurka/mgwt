@@ -2,7 +2,6 @@
 	@external mgwt-ImageButton, mgwt-ImageButton-active, mgwt-ImageButton-disabled, mgwt-ImageButton-image, mgwt-ImageButton-small;
 }
 
-
 @if user.agent safari {
   .mgwt-ImageButton {
     display: -webkit-box; /* iOS < 7 && Android < 4.4*/
@@ -34,9 +33,8 @@
 }
 
 .mgwt-ImageButton-active {
-	color: #757575;
-	box-shadow: inset 0 1px rgba(255, 255, 255, 0.36), 0 0 0 2px #6fb5f1;
-	outline: 0;
+	box-shadow: inset 0 1px rgba(255, 255, 255, 0.36);
+	background-color: #d4d9d7;
 }
 
 .mgwt-ImageButton-disabled {
@@ -63,7 +61,6 @@
   text-align: center;
   line-height: 32px;
 }
-
 
 .mgwt-ImageButton.mgwt-ImageButton-small {
   box-shadow: none;
