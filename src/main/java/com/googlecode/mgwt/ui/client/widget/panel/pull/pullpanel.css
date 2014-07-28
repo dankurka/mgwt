@@ -1,3 +1,10 @@
+@if mgwt.css pretty {
+  @external mgwt-PullPanel, mgwt-PullPanel-container, mgwt-PullPanel-main;
+  @external mgwt-PullToRefresh, mgwt-PullToRefresh-arrow;
+  @external mgwt-PullToRefresh-spinner, mgwt-PullToRefresh-error;
+  @external mgwt-PullToRefresh-text, .mgwt-PullToRefresh-arrowFooter;
+}
+
 .mgwt-PullPanel {
 	flex: 1;
 	overflow:hidden;
@@ -7,13 +14,7 @@
 
 
 .mgwt-PullPanel-container{}
-.mgwt-PullPanel-main{
-  
-}
-
-@if mgwt.css pretty {
-	@external mgwt-PullToRefresh, mgwt-PullToRefresh-arrow, mgwt-PullToRefresh-spinner, mgwt-PullToRefresh-error, mgwt-PullToRefresh-text, .mgwt-PullToRefresh-arrowFooter;
-}
+.mgwt-PullPanel-main{}
 
 .mgwt-PullToRefresh {
 	position: relative;
