@@ -22,7 +22,7 @@ public class ProgressIndicatorAndroidAppearance extends ProgressIndicatorAbstrac
     @Source("spinner_white.png")
     DataResource spinnerImage();
   }
-  
+
   @Override
   public ProgressIndicatorCss css() {
     return Resources.INSTANCE.css();
