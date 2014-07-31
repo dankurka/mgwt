@@ -1,0 +1,18 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
+ <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.progress.ProgressSpinnerAppearance" />
+  <div ui:field="container" class="{apperance.css.progressSpinner}">
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+    <span/>
+  </div>
+</ui:UiBinder> 
