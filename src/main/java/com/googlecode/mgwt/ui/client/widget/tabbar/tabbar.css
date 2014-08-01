@@ -2,63 +2,41 @@
   @external mgwt-TabBar, mgwt-TabPanel;
 }
 
-.mgwt-TabPanel{
-	display: \-webkit-box;
-	\-webkit-box-flex: 1;
-	\-webkit-box-orient: vertical;
-	width: 100%;
-	height: 100%;
-	
-	display: flex;
-	flex: 1;
-	flex-flow: column;
+.mgwt-TabPanel {
+  display: -webkit-box;
+  -webkit-box-flex: 1;
+  -webkit-box-orient: vertical;
+  display: flex;
+  flex: 1;
+  flex-flow: column;
 }
 
-.mgwt-TabPanel-container{
-	display: \-webkit-box;
-	\-webkit-box-flex: 1;
-	\-webkit-box-orient: vertical;
-	overflow: hidden;
-	display: flex;
-	flex:1;
+.mgwt-TabPanel-container {
+  display: \-webkit-box;
+  -webkit-box-flex: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: flex;
+  flex:1;
 }
 
-.mgwt-TabBar {
-	
-	display: \-webkit-box;
-	\-webkit-box-orient: horizontal;
-	
-	display: flex;
-	justify-content: space-around;
-}
 
 @if user.agent safari {
-	.mgwt-TabBar {
-		display: \-webkit-box;
-		\-webkit-box-orient: horizontal;
-	}
+  .mgwt-TabBar {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+  }
 }
-
 @if user.agent gecko1_8 {
-	.mgwt-TabBar {
-		display: \-moz-box;
-		\-moz-box-orient: horizontal;
-	}
+  .mgwt-TabBar {
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+  }
 }
-
 .mgwt-TabBar {
-	height: 48px;
-	border-top: 1px solid black;
-}
-
-@if user.agent safari {
-	.mgwt-TabBar {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(46, 46, 46)), color-stop(50%,rgb(22, 22, 22)), color-stop(51%, rgb(0,0,0)), to(rgb(0,0,0)))');
-	}
-}
-
-@if user.agent gecko1_8 {
-	.mgwt-TabBar {
-		background-image: literal('-moz-linear-gradient(top, rgb(46, 46, 46), rgb(22, 22, 22) 50%, rgb(0,0,0) 51%, rgb(0,0,0))');
-	}
+  display: flex;
+  justify-content: space-around;
+  height: 48px;
+  border-top: 1px solid black;
+  background-color: #e5e9e8;
 }

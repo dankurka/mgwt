@@ -1,0 +1,56 @@
+@if mgwt.css pretty {
+	@external mgwt-TabBar-Button, mgwt-TabBar-Button-active, mgwt-TabBar-Button-selected;
+	@external mgwt-TabBar-Button-icon, mgwt-TabBar-Button-text;
+}
+
+.mgwt-TabBar-Button-active {
+}
+
+@if user.agent safari {
+  .mgwt-TabBar-Button {
+    -webkit-appearance: none;
+    -webkit-box-flex: 1;
+  }
+}
+
+@if user.agent gecko1_8 {
+  .mgwt-TabBar-Button {
+    -moz-appearance: none;
+    -moz-box-flex: 1;
+  }
+}
+
+.mgwt-TabBar-Button {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 60px;
+  background-color: transparent;
+  height: 39px;
+  margin-top: 9px;
+}
+
+.mgwt-TabBar-Button-selected .mgwt-TabBar-Button-text {
+  color: #454545;
+}
+
+.mgwt-TabBar-Button-selected .mgwt-TabBar-Button-icon {
+  background-color: #288ede;
+}
+
+.mgwt-TabBar-Button-text {
+  font-size: 9px;
+  color: #454545;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  top: 3px;
+}
+
+.mgwt-TabBar-Button-icon {
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 0;
+  background-color: #454545;
+}
+
