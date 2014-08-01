@@ -2,8 +2,8 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
     <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicatorAppearance" />
 	<div ui:field="container" class="{apperance.css.progressIndicator}">
-	    <span class="{apperance.css.child}"></span>
-	    <span class="{apperance.css.child}"></span>
-	    <span class="{apperance.css.child}"></span>
+	    <span/>
+	    <span/>
+	    <span/>
 	</div>
 </ui:UiBinder>

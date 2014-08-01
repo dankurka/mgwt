@@ -11,8 +11,6 @@ public interface ProgressIndicatorAppearance {
   interface ProgressIndicatorCss extends MGWTCssResource {
     @ClassName("mgwt-ProgressIndicator")
     String progressIndicator();
-    @ClassName("mgwt-ProgressIndicator-child")
-    String child();
   }
 
   ProgressIndicatorCss css();

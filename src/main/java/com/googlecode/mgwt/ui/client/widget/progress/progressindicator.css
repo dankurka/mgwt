@@ -1,87 +1,46 @@
 @if mgwt.css pretty {
-	@external mgwt-ProgressIndicator, mgwt-ProgressIndicator-child;	
+  @external mgwt-ProgressIndicator;
 }
 
 .mgwt-ProgressIndicator {
-	width: 88px;
+  width: 88px;
 }
 
-.mgwt-ProgressIndicator-child {
-	background-color: #454545;
-	display: inline-block;
-	width: 24px;
-	height: 24px;
-	border-radius: 12px;
-	border: 1px solid white;
+.mgwt-ProgressIndicator > span {
+  background-color: #454545;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1px solid white;
 }
 
 @if user.agent safari {
-  .mgwt-ProgressIndicator-child {
-	\-webkit-animation-duration: 1s;
-	\-webkit-animation-iteration-count: infinite;
-	\-webkit-animation-timing-function: linear;
+  .mgwt-ProgressIndicator > span {
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-name: progressIndicatorAnimation;
   }
 
-  .mgwt-ProgressIndicator-child:nth-child\(1\) {
-    \-webkit-animation-name: progressIndicatorAnimation;	
+  .mgwt-ProgressIndicator > span:nth-child\(2\) {
+    -webkit-animation-delay: 0.33s;
   }
-  .mgwt-ProgressIndicator-child:nth-child\(2\) {
-    \-webkit-animation-name: progressIndicatorAnimation2;	
-  }
-  .mgwt-ProgressIndicator-child:nth-child\(3\) {
-    \-webkit-animation-name: progressIndicatorAnimation3;	
+  .mgwt-ProgressIndicator > span:nth-child\(3\) {
+    -webkit-animation-delay: 0.66s;
   }
 
   @-webkit-keyframes progressIndicatorAnimation {
     0% {
-      -webkit-transform: scale(0.25); 
+      -webkit-transform: scale(0.25);
       background-color: #1e7dc8;
     }
     16% {
       -webkit-transform: scale(1.0);
       background-color: #1e7dc8;
-    }   
-    33% {
-      -webkit-transform: scale(0.25); 
-    }
-    100% {
-      -webkit-transform: scale(0.25);
-    }
-  }
-
-  @-webkit-keyframes progressIndicatorAnimation2 {
-    0% {
-      -webkit-transform: scale(0.25); 
     }
     33% {
-      -webkit-transform: scale(0.25); 
-    }
-    49% {
-      -webkit-transform: scale(1); 
-      background-color: #1e7dc8;
-    }
-	67% {
       -webkit-transform: scale(0.25);
-	}
-    100% {
-      -webkit-transform: scale(0.25);
-	}
-  }
-
-  @-webkit-keyframes progressIndicatorAnimation3 {
-    0% {
-      -webkit-transform: scale(0.25);
-    }
-    66% {
-      -webkit-transform: scale(0.25); 
-    }
-    67% {
-      -webkit-transform: scale(0.25); 
-      background-color: #1e7dc8;
-    }
-    83% {
-      -webkit-transform: scale(1.0);
-	  background-color: #1e7dc8;
     }
     100% {
       -webkit-transform: scale(0.25);
@@ -90,24 +49,23 @@
 }
 
 @if user.agent gecko1_8 {
-  .mgwt-ProgressIndicator-child {
-	\-moz-animation-duration: 1s;
-	\-moz-animation-iteration-count: infinite;
-	\-moz-animation-timing-function: linear;
-  }
-  .mgwt-ProgressIndicator-child:nth-child\(1\) {
-    \-moz-animation-name: progressIndicatorAnimation1;	
-  }
-  .mgwt-ProgressIndicator-child:nth-child\(2\) {
-    \-moz-animation-name: progressIndicatorAnimation2;	
-  }
-  .mgwt-ProgressIndicator-child:nth-child\(3\) {
-    \-moz-animation-name: progressIndicatorAnimation3;	
+  .mgwt-ProgressIndicator > span {
+	-moz-animation-duration: 1s;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+	-moz-animation-name: progressIndicatorAnimation;
   }
 
-  @-moz-keyframes progressIndicatorAnimation1 {
+  .mgwt-ProgressIndicator > span:nth-child\(2\) {
+    -moz-animation-delay: 0.33s;
+  }
+  .mgwt-ProgressIndicator > span:nth-child\(3\) {
+    -moz-animation-delay: 0.66s;
+  }
+
+  @-moz-keyframes progressIndicatorAnimation {
     0% {
-	  -moz-transform: scale(0.25); 
+	  -moz-transform: scale(0.25);
       background-color: #1e7dc8;
     }
     16% {
@@ -115,50 +73,7 @@
       background-color: #1e7dc8;
     }
     33% {
-      -moz-transform: scale(0.25); 
-    }
-    100% {
       -moz-transform: scale(0.25);
-    }
-  }
-
-  @-moz-keyframes progressIndicatorAnimation2 {
-    0% {
-	  -moz-transform: scale(0.25); 
-    }
-    32% {
-      -moz-transform: scale(0.25); 
-    }
-    33% {
-      background-color: #1e7dc8;
-      -moz-transform: scale(0.25);
-    }
-    49% {
-      -moz-transform: scale(1.0);
-      background-color: #1e7dc8;
-    }
-    66% {
-      -moz-transform: scale(0.25); 
-    }
-    100% {
-      -moz-transform: scale(0.25);
-    }
-  }
-
-  @-moz-keyframes progressIndicatorAnimation3 {
-    0% {
-	  -moz-transform: scale(0.25); 
-    }
-    65% {
-      -moz-transform: scale(0.25); 
-    }
-    66% {
-      background-color: #1e7dc8;
-      -moz-transform: scale(0.25);
-    }
-    83% {
-      -moz-transform: scale(1.0);
-      background-color: #1e7dc8;
     }
     100% {
       -moz-transform: scale(0.25);
