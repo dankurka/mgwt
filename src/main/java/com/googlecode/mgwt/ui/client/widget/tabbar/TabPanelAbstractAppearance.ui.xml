@@ -3,8 +3,8 @@
     xmlns:g='urn:import:com.google.gwt.user.client.ui'
     xmlns:mgwt='urn:import:com.googlecode.mgwt.ui.client.widget'>
     <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAppearance" />
-	<g:FlowPanel ui:field="container" styleName="{apperance.barCss.tabPanel}">
-	    <mgwt:tabbar.TabPanel.TabContainer ui:field="tabContainer"/>
+	<mgwt:panel.flex.FlexPanel ui:field="container" styleName="{apperance.barCss.tabPanel}">
+	    <mgwt:carousel.Carousel ui:field="tabContainer" />
 	    <mgwt:tabbar.TabPanel.TabBar ui:field="tabBar"/>
-	</g:FlowPanel>
+	</mgwt:panel.flex.FlexPanel>
 </ui:UiBinder>

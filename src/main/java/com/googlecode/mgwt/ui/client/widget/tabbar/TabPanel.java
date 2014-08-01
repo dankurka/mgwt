@@ -25,17 +25,15 @@ import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
+
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.util.HandlerRegistrationConverter;
 import com.googlecode.mgwt.ui.client.widget.carousel.Carousel;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
-import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -160,13 +158,12 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
     private TabBarButtonBase getWidgetForIndex(int index) {
       return children.get(index);
     }
-
   }
 
   public static final TabBarAppearance DEFAULT_APPEARANCE = GWT.create(TabBarAppearance.class);
 
   @UiField
-  protected FlowPanel container;
+  protected FlexPanel container;
 
   @UiField(provided=true)
   protected Carousel tabContainer;
@@ -174,7 +171,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
   @UiField(provided=true)
   protected TabBar tabBar;
 
-  protected TabBarAppearance appearance;
+  protected final TabBarAppearance appearance;
 
   public TabPanel() {
     this(DEFAULT_APPEARANCE);
@@ -182,24 +179,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
 
   public TabPanel(TabBarAppearance appearance) {
     this.appearance = appearance;
-
-
-    FlexPanel flexPanel = new FlexPanel();
-
     tabContainer = new Carousel();
     tabContainer.setShowCarouselIndicator(false);
-
-
-
-    flexPanel.add(tabContainer, 1);
-
     tabBar = new TabBar(appearance);
-    flexPanel.add(tabBar);
-
-//    container = new FlowPanel();
-    initWidget(flexPanel);
-
-
+    initWidget(appearance.panelBinder().createAndBindUi(this));
 
     tabBar.addSelectionHandler(new SelectionHandler<Integer>() {
       @Override
@@ -214,11 +197,6 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
         tabBar.setSelectedButton(event.getSelectedItem(), false);
       }
     });
-
-
-
-    //setDisplayTabBarOnTop(MGWT.getOsDetection().isAndroid());
-
   }
 
   public void setSelectedChild(int index) {

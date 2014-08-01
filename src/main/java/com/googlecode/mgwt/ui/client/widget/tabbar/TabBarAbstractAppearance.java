@@ -23,20 +23,16 @@ import com.googlecode.mgwt.ui.client.widget.tabbar.TabPanel.TabBar;
 
 public abstract class TabBarAbstractAppearance implements TabBarAppearance {
 
-//  @UiTemplate("TabPanelAbstractAppearance.ui.xml")
-//  interface PanelBinder extends UiBinder<Widget, TabPanel> {
-//  }
+  @UiTemplate("TabPanelAbstractAppearance.ui.xml")
+  interface PanelBinder extends UiBinder<Widget, TabPanel> {}
 
   @UiTemplate("TabBarAbstractAppearance.ui.xml")
-  interface BarBinder extends UiBinder<Widget, TabPanel.TabBar> {
-  }
-
+  interface BarBinder extends UiBinder<Widget, TabPanel.TabBar> {}
 
   @UiTemplate("TabBarButtonBaseAppearance.ui.xml")
-  interface ButtonBinder extends UiBinder<Element, TabBarButtonBase> {
-  }
+  interface ButtonBinder extends UiBinder<Element, TabBarButtonBase> {}
 
-//  private static final PanelBinder UI_BINDER_PANEL = GWT.create(PanelBinder.class);
+  private static final PanelBinder UI_BINDER_PANEL = GWT.create(PanelBinder.class);
 
   private static final ButtonBinder UI_BINDER = GWT.create(ButtonBinder.class);
 
@@ -47,10 +43,10 @@ public abstract class TabBarAbstractAppearance implements TabBarAppearance {
     return UI_BINDER;
   }
 
-//  @Override
-//  public UiBinder<Widget, TabPanel> panelBinder() {
-//    return UI_BINDER_PANEL;
-//  }
+  @Override
+  public UiBinder<Widget, TabPanel> panelBinder() {
+    return UI_BINDER_PANEL;
+  }
 
   @Override
   public UiBinder<Widget, TabBar> barBinder() {

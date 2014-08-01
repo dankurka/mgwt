@@ -21,8 +21,6 @@ public class TabBarAndroidAppearance extends TabBarAbstractAppearance {
   interface PanelBinder extends UiBinder<Widget, TabPanel> {
   }
 
-  private static final PanelBinder UI_BINDER_PANEL = GWT.create(PanelBinder.class);
-
   interface Resources extends ClientBundle, TabBarIcons {
 
     Resources INSTANCE = GWT.create(Resources.class);
@@ -63,11 +61,6 @@ public class TabBarAndroidAppearance extends TabBarAbstractAppearance {
     @Source("resources/search.png")
     ImageResource searchImage();
   }
-
-//  @Override
-//  public UiBinder<Widget, TabPanel> panelBinder() {
-//    return UI_BINDER_PANEL;
-//  }
 
   @Override
   public TabBarButtonCss css() {

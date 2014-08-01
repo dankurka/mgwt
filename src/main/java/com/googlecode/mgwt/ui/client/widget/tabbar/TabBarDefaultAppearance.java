@@ -15,11 +15,11 @@ public class TabBarDefaultAppearance extends TabBarAbstractAppearance {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"tabbar-base.css", "tabbar-ios.css"})
+    @Source({"tabbar.css"})
     TabBarCss barCss();
     @Source({"tabbar-button-base.css", "tabbar-button-ios.css"})
     TabBarButtonCss css();
-    
+
     @Override
     @Source("resources/bookmarks.png")
     ImageResource bookMarkImage();
