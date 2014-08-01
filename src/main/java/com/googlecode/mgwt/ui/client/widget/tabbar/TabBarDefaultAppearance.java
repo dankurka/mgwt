@@ -1,12 +1,10 @@
-package com.googlecode.mgwt.ui.client.theme.platform.tabbar;
+package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
-import com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAbstractAppearance;
-
-public class TabBarBlackberryAppearance extends TabBarAbstractAppearance {
+public class TabBarDefaultAppearance extends TabBarAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();
@@ -17,9 +15,9 @@ public class TabBarBlackberryAppearance extends TabBarAbstractAppearance {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"tabbar-base.css", "tabbar-blackberry.css"})
+    @Source({"tabbar.css"})
     TabBarCss barCss();
-    @Source({"tabbar-button-base.css", "tabbar-button-blackberry.css"})
+    @Source({"tabbar-button-base.css", "tabbar-button-ios.css"})
     TabBarButtonCss css();
 
     @Override

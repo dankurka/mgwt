@@ -31,11 +31,4 @@ under the License.
         <when-property-is name="mgwt.os" value="android_tablet" />
       </any>
   </replace-with>
-
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarBlackberryAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAppearance" />
-      <any>
-        <when-property-is name="mgwt.os" value="blackberry" />
-      </any>
-  </replace-with>
 </module>

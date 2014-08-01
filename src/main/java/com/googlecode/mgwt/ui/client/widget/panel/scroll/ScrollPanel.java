@@ -171,6 +171,10 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
     impl.scrollToPage(pageX, pageY, time);
   }
 
+  public void scrollToPage(int pageX, int pageY, int time, boolean issueEvent) {
+    impl.scrollToPage(pageX, pageY, time, issueEvent);
+  }
+
   public void setBounce(boolean bounce) {
     impl.setBounce(bounce);
   }
@@ -287,7 +291,6 @@ public class ScrollPanel extends Composite implements HasWidgets, IsFlexible {
 
   public void setSnapSelector(String selector) {
     impl.setSnapSelector(selector);
-
   }
 
   public LightArrayInt getPagesY() {

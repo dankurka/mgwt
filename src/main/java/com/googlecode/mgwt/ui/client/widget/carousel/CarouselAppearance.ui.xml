@@ -1,0 +1,11 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:m="urn:import:com.googlecode.mgwt.ui.client.widget">
+	<ui:with field="appearance" type="com.googlecode.mgwt.ui.client.widget.carousel.CarouselAppearance"></ui:with>
+	<m:panel.flex.FlexPanel ui:field="main" styleName="{appearance.cssCarousel.carousel}">
+	  <m:panel.scroll.ScrollPanel ui:field="scrollPanel" addStyleNames="{appearance.cssCarousel.carouselScroller}">
+	    <g:FlowPanel ui:field="container" styleName="{appearance.cssCarousel.carouselContainer}" />
+	  </m:panel.scroll.ScrollPanel>
+	</m:panel.flex.FlexPanel>
+</ui:UiBinder> 

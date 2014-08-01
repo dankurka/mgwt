@@ -14,24 +14,20 @@
 package com.googlecode.mgwt.ui.client.widget.carousel;
 
 import com.google.gwt.core.shared.GWT;
-import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.ui.Widget;
 
-public class CarouselDefaultAppearance extends CarouselAbstractAppearance {
+public abstract class CarouselAbstractAppearance implements CarouselAppearance {
 
-  static {
-    Resources.INSTANCE.css().ensureInjected();
+  @UiTemplate("CarouselAppearance.ui.xml")
+  interface Binder extends UiBinder<Widget, Carousel> {
   }
 
-  interface Resources extends ClientBundle {
-
-    Resources INSTANCE = GWT.create(Resources.class);
-
-    @Source({"carousel.css"})
-    CarouselCss css();
-  }
+  private static final Binder UI_BINDER = GWT.create(Binder.class);
 
   @Override
-  public CarouselCss cssCarousel() {
-    return Resources.INSTANCE.css();
+  public UiBinder<Widget, Carousel> carouselBinder() {
+    return UI_BINDER;
   }
 }

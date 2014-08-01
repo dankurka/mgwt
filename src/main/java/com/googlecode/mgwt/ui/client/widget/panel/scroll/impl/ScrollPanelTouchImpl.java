@@ -1024,7 +1024,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
   }
 
-  private void onTransistionEnd(TransitionEndEvent event) {
+  private void onTransistionEnd(TransitionEndEvent event, boolean issueEvent) {
     EventTarget eventTarget = event.getNativeEvent().getEventTarget();
     if (Node.is(eventTarget)) {
       if (Element.is(eventTarget)) {
@@ -1042,11 +1042,11 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
     unbindTransistionEnd();
 
-    startAnimation();
+    startAnimation(issueEvent);
 
   }
 
-  private void startAnimation() {
+  private void startAnimation(final boolean issueEvent) {
     if (this.animating)
       return;
 
@@ -1072,7 +1072,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
       pos(step.getX(), step.getY());
       this.animating = false;
       if (step.getTime() != 0) {
-        bindTransistionEndEvent();
+        bindTransistionEndEvent(issueEvent);
       } else {
         resetPos(0);
       }
@@ -1089,8 +1089,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
         if (now >= startTime + step.getTime()) {
           ScrollPanelTouchImpl.this.pos(step.x, step.y);
           ScrollPanelTouchImpl.this.animating = false;
-          fireEvent(new ScrollAnimationEndEvent());
-          ScrollPanelTouchImpl.this.startAnimation();
+          if (issueEvent) {
+            fireEvent(new ScrollAnimationEndEvent());
+          }
+          ScrollPanelTouchImpl.this.startAnimation(issueEvent);
           return;
         }
 
@@ -1205,20 +1207,20 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
     // Snap with constant speed (proportional duration)
     int time = Math.max(sizeX, sizeY);
-    if (time == 0)
+    if (time == 0) {
       time = 200;
+    }
 
     return new Snap(x, y, time);
-
   }
 
-  private void bindTransistionEndEvent() {
+  private void bindTransistionEndEvent(final boolean issueEvent) {
     if (CssUtil.hasTransistionEndEvent()) {
       transistionEndRegistration = scroller.addDomHandler(new TransitionEndHandler() {
 
         @Override
         public void onTransitionEnd(TransitionEndEvent event) {
-          onTransistionEnd(event);
+          onTransistionEnd(event, issueEvent);
 
         }
       }, TransitionEndEvent.getType());
@@ -1348,6 +1350,10 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   public void scrollTo(int x, int y, int time, boolean relative) {
+    scrollTo(x, y, time, relative, true);
+  }
+
+  public void scrollTo(int x, int y, int time, boolean relative, boolean issueEvent) {
     stop();
 
     int destX;
@@ -1365,7 +1371,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
 
     this.steps.push(step);
 
-    startAnimation();
+    startAnimation(issueEvent);
 
   }
 
@@ -1386,8 +1392,15 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   public void scrollToPage(int pageX, int pageY, int time) {
+    scrollToPage(pageX, pageY, time, true);
+  }
 
-    fireEvent(new ScrollStartEvent(null));
+
+  @Override
+  public void scrollToPage(int pageX, int pageY, int time, boolean issueEvent) {
+    if (issueEvent) {
+      fireEvent(new ScrollStartEvent(null));
+    }
 
     int x, y;
     if (this.snap || snapSelector != null) {
@@ -1408,8 +1421,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
         y = this.maxScrollY;
     }
 
-    scrollTo(x, y, time);
-
+    scrollTo(x, y, time, issueEvent);
   }
 
   public void disable() {
