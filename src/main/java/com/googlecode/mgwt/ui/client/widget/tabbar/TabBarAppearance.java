@@ -6,6 +6,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBaseAppearance;
+import com.googlecode.mgwt.ui.client.widget.carousel.CarouselAppearance;
 
 public interface TabBarAppearance extends ButtonBaseAppearance {
   interface TabBarCss extends MGWTCssResource {
@@ -70,11 +71,9 @@ public interface TabBarAppearance extends ButtonBaseAppearance {
 
   TabBarCss barCss();
 
-  UiBinder<Widget, TabPanel> panelBinder();
+//  UiBinder<Widget, TabPanel> panelBinder();
 
   TabBarIcons icons();
-
-  UiBinder<Widget, TabPanel.TabContainer> containerBinder();
 
   UiBinder<Widget, TabPanel.TabBar> barBinder();
 }

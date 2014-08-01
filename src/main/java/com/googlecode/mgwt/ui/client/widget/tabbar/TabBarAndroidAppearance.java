@@ -13,7 +13,7 @@ public class TabBarAndroidAppearance extends TabBarAbstractAppearance {
     Resources.INSTANCE.css().ensureInjected();
     Resources.INSTANCE.barCss().ensureInjected();
   }
-  
+
   @UiTemplate("TabPanelAndroidAppearance.ui.xml")
   interface PanelBinder extends UiBinder<Widget, TabPanel> {
   }
@@ -28,7 +28,7 @@ public class TabBarAndroidAppearance extends TabBarAbstractAppearance {
     TabBarCss barCss();
     @Source({"tabbar-button-base.css", "tabbar-button-android.css"})
     TabBarButtonCss css();
-    
+
     @Override
     @Source("resources/bookmarks.png")
     ImageResource bookMarkImage();
@@ -60,12 +60,12 @@ public class TabBarAndroidAppearance extends TabBarAbstractAppearance {
     @Source("resources/search.png")
     ImageResource searchImage();
   }
-  
-  @Override
-  public UiBinder<Widget, TabPanel> panelBinder() {
-    return UI_BINDER_PANEL;
-  }
-  
+
+//  @Override
+//  public UiBinder<Widget, TabPanel> panelBinder() {
+//    return UI_BINDER_PANEL;
+//  }
+
   @Override
   public TabBarButtonCss css() {
     return Resources.INSTANCE.css();

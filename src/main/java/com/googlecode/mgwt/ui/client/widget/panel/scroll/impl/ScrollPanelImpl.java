@@ -58,6 +58,8 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets {
    */
   public abstract void scrollTo(int destX, int destY, int newDuration);
 
+  public abstract void scrollToPage(int pageX, int pageY, int time, boolean issueEvent);
+
   /**
    * Is scrolling enabled in x-axis
    *
@@ -197,5 +199,4 @@ public abstract class ScrollPanelImpl extends Composite implements HasWidgets {
   public abstract void setHideScrollBar(boolean hideScrollBar);
 
   public abstract void setScrollLock(boolean lock);
-
 }

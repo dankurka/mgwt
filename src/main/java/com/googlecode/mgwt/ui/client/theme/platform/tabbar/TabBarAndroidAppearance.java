@@ -64,10 +64,10 @@ public class TabBarAndroidAppearance extends TabBarAbstractAppearance {
     ImageResource searchImage();
   }
 
-  @Override
-  public UiBinder<Widget, TabPanel> panelBinder() {
-    return UI_BINDER_PANEL;
-  }
+//  @Override
+//  public UiBinder<Widget, TabPanel> panelBinder() {
+//    return UI_BINDER_PANEL;
+//  }
 
   @Override
   public TabBarButtonCss css() {

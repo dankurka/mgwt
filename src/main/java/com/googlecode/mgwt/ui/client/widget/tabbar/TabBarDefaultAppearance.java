@@ -4,7 +4,7 @@ import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
 
-public class TabBarIOSAppearance extends TabBarAbstractAppearance {
+public class TabBarDefaultAppearance extends TabBarAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();
