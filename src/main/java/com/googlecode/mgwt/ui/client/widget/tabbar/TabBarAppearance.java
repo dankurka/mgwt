@@ -1,7 +1,6 @@
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -41,28 +40,6 @@ public interface TabBarAppearance extends ButtonBaseAppearance {
     public String text();
   }
 
-  interface TabBarIcons {
-    ImageResource bookMarkImage();
-
-    ImageResource contactsImage();
-
-    ImageResource downloadsImage();
-
-    ImageResource favoritesImage();
-
-    ImageResource featuredImage();
-
-    ImageResource historyImage();
-
-    ImageResource moreImage();
-
-    ImageResource mostRecentImage();
-
-    ImageResource mostViewedImage();
-
-    ImageResource searchImage();
-  }
-
   @Override
   TabBarButtonCss css();
 
@@ -72,8 +49,6 @@ public interface TabBarAppearance extends ButtonBaseAppearance {
   TabBarCss barCss();
 
   UiBinder<Widget, TabPanel> panelBinder();
-
-  TabBarIcons icons();
 
   UiBinder<Widget, TabPanel.TabBar> barBinder();
 }

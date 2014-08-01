@@ -13,7 +13,33 @@ under the License.
 -->
 
 <module>
+  <inherits name="com.googlecode.mgwt.ui.client.widget.tabbar.resources.ImageHolder"/>
   <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarDefaultAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAppearance" />
+  </replace-with>
+  
+  
+    <!-- Tabbar Buttons -->
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerBackground">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
+  </replace-with>
+  
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerWebkit">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
+    <when-property-is name="user.agent" value="safari" />
+  </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerWebkitHighDPI">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
+    <all>
+      <when-property-is name="user.agent" value="safari" />
+      <when-property-is name="mgwt.density" value="high" />
+    </all>
+  </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerWebkitXHighDPI">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
+        <all>
+      <when-property-is name="user.agent" value="safari" />
+      <when-property-is name="mgwt.density" value="xhigh" />
+    </all>
   </replace-with>
 </module>

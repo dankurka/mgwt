@@ -1,12 +1,12 @@
 /*
  * Copyright 2011 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -15,14 +15,14 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
-import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.widget.tabbar.resources.TabBarImageHolder;
 
 /**
- * 
+ *
  * A simple bookmark button
- * 
+ *
  * @author Daniel Kurka
- * 
+ *
  */
 public class BookmarkTabBarButton extends TabBarButton {
 
@@ -31,8 +31,8 @@ public class BookmarkTabBarButton extends TabBarButton {
   }
 
   public BookmarkTabBarButton(TabBarAppearance appearance) {
-    super(appearance, MGWT.getOsDetection().isIOs() || MGWT.getOsDetection().isDesktop()
-        ? appearance.icons().bookMarkImage() : null);
+    super(appearance, TabBarImageHolder.get().bookmarks(),
+        TabBarImageHolder.get().bookmarksSelected());
     setText("Bookmarks");
   }
 }

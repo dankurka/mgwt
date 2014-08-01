@@ -105,17 +105,6 @@ under * the License.
       <when-property-is name="user.agent" value="ie10" />
     </any>
   </replace-with>
-	
-  <!-- Tabbar Buttons -->
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerBackground">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
-  </replace-with>
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandlerWebkit">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarButtonBase.TabBarButtonStylerHandler" />
-    <all> 
-      <when-property-is name="user.agent" value="safari" />
-    </all>	
-  </replace-with>
 
   <!-- ButtonBar Buttons -->
   <replace-with class="com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBarButtonBase.DefaultIconHandler">
