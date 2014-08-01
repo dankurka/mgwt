@@ -1,17 +1,20 @@
 @if mgwt.css pretty {
-	@external mgwt-HeaderButton, mgwt-HeaderButton-active, mgwt-HeaderButton-back, mgwt-HeaderButton-forward, mgwt-HeaderButton-round, mgwt-HeaderButton-text, mgwt-HeaderButton-border-content, mgwt-HeaderButton-border-container;
+  @external mgwt-HeaderButton, mgwt-HeaderButton-active;
+  @external mgwt-HeaderButton-back, mgwt-HeaderButton-forward;
+  @external mgwt-HeaderButton-round, mgwt-HeaderButton-text;
+  @external mgwt-HeaderButton-border-content, mgwt-HeaderButton-border-container;
 }
 
 .mgwt-HeaderButton {
-	height: 26px;
-	margin: 0 5px 0 5px;
-	color: #454545;
-    text-shadow: 0 1px #fff;
-    background-color: #e5e9e8;
-    box-shadow: inset 0 1px #fff;
-    border: 1px solid #9daca9;
-    border-radius: 6px;
-    cursor: pointer;
+  height: 26px;
+  margin: 0 5px 0 5px;
+  color: #454545;
+  text-shadow: 0 1px #fff;
+  background-color: #e5e9e8;
+  box-shadow: inset 0 1px #fff;
+  border: 1px solid #9daca9;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 @if mgwt.formfactor desktop {
@@ -21,18 +24,18 @@
 }
 
 .mgwt-HeaderButton-text {
-	padding: 5px;
-	font-size: 12px;
-	text-align: center;
-	min-width: 40px;
-	max-width: 60px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+  min-width: 40px;
+  max-width: 60px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .mgwt-HeaderButton .mgwt-HeaderButton-text {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .mgwt-HeaderButton-active{

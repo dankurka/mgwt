@@ -1,12 +1,12 @@
 @if mgwt.css pretty {
-	@external mgwt-Slider, mgwt-Slider-bar, mgwt-Slider-pointer;
+  @external mgwt-Slider, mgwt-Slider-bar, mgwt-Slider-pointer;
 }
 
 .mgwt-Slider {
-	display: inline-block;
-	width: 277px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+  display: inline-block;
+  width: 277px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 @if mgwt.formfactor desktop {
@@ -16,12 +16,12 @@
 }
 
 .mgwt-Slider-bar {
-	position: relative;
-	height: 10px;
-	background-repeat: no-repeat, repeat-x;
-	background-color: #288edf;
-	border: 1px solid #9daca9;
-	border-radius: 4px;
+  position: relative;
+  height: 10px;
+  background-repeat: no-repeat, repeat-x;
+  background-color: #288edf;
+  border: 1px solid #9daca9;
+  border-radius: 4px;
 }
 
 .mgwt-Slider-pointer {

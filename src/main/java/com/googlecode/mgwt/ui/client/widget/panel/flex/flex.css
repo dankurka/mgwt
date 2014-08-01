@@ -30,7 +30,6 @@
   bottom: 0px;
 }
 
-
 @if user.agent safari {
   .mgwt-FlexPanel-flex {
     -webkit-box-flex: 1; /* iOS < 7 && Android < 4.4*/

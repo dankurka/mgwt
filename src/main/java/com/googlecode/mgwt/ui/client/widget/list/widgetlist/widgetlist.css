@@ -1,14 +1,16 @@
 @if mgwt.css pretty {
-	@external mgwt-WidgetList, mgwt-WidgetList-Entry-first, mgwt-WidgetList-Entry-last, mgwt-WidgetList-round,mgwt-WidgetList-Entry, mgwt-WidgetList-headerContainer;
+  @external mgwt-WidgetList, mgwt-WidgetList-Entry-first;
+  @external mgwt-WidgetList-Entry-last, mgwt-WidgetList-round;
+  @external mgwt-WidgetList-Entry, mgwt-WidgetList-headerContainer;
 }
 
 .mgwt-WidgetList {
-	position: relative;
-	list-style: none;
-	border-collapse: collapse;
-	border-top: 1px solid #9daca9;
-    background-color: #e5e9e8;
-    color: #454545;
+  position: relative;
+  list-style: none;
+  border-collapse: collapse;
+  border-top: 1px solid #9daca9;
+  background-color: #e5e9e8;
+  color: #454545;
 }
 
 .mgwt-WidgetList-Entry {
@@ -24,11 +26,9 @@
 }
 
 .mgwt-WidgetList-Entry-first {
-	
 }
 
 .mgwt-WidgetList-Entry-last {
-	
 }
 
 .mgwt-WidgetList-Entry{
@@ -38,22 +38,21 @@
 }
 
 @if user.agent safari {
-	.mgwt-WidgetList-Entry {
-		display: \-webkit-box;
-	}
+  .mgwt-WidgetList-Entry {
+    display: -webkit-box;
+  }
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-WidgetList-Entry {
-		width: 100%;
-	}
+  .mgwt-WidgetList-Entry {
+    width: 100%;
+  }
 }
 
 /* TODO */
 .mgwt-WidgetList-Entry-selectable{}
 
 .mgwt-WidgetList-Entry {
-	
 }
 
 .mgwt-WidgetList-headerContainer{
@@ -68,24 +67,24 @@
 }
 
 .mgwt-WidgetList-round > .mgwt-WidgetList-Entry-first {
-	border-top-left-radius: 8px 8px;
-	border-top-right-radius: 8px 8px;
+  border-top-left-radius: 8px 8px;
+  border-top-right-radius: 8px 8px;
 }
 
 .mgwt-WidgetList-round > .mgwt-WidgetList-Entry-last {
-	border-bottom-left-radius: 8px 8px;
-	border-bottom-right-radius: 8px 8px;
-	border-bottom: 1px solid rgb(171, 173, 176);
+  border-bottom-left-radius: 8px 8px;
+  border-bottom-right-radius: 8px 8px;
+  border-bottom: 1px solid rgb(171, 173, 176);
 }
 
 .mgwt-WidgetList-round > .mgwt-WidgetList-Entry-first.mgwt-WidgetList-Entry {
-	border-top-left-radius: 7px 7px;
-	border-top-right-radius: 7px 7px;
-	overflow: hidden;
+  border-top-left-radius: 7px 7px;
+  border-top-right-radius: 7px 7px;
+  overflow: hidden;
 }
 
 .mgwt-WidgetList-round > .mgwt-WidgetList-Entry-last.mgwt-WidgetList-Entry {
-	border-bottom-left-radius: 7px 7px;
-	border-bottom-right-radius: 7px 7px;
-	overflow: hidden;
+  border-bottom-left-radius: 7px 7px;
+  border-bottom-right-radius: 7px 7px;
+  overflow: hidden;
 }

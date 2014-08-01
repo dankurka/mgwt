@@ -3,15 +3,14 @@
 }
 
 .mgwt-ListBox {
-	color: #777;
-	border: 0;
-	font: normal 17px Helvetica;
-	padding: 0;
-	margin-left: 0px;
-	width: 100%;
-	height: 100%;
-	background-color: transparent;
-	
+  color: #777;
+  border: 0;
+  font: normal 17px Helvetica;
+  padding: 0;
+  margin-left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
 }
 
 @if mgwt.formfactor desktop {
@@ -20,19 +19,18 @@
   }
 }
 
-
 @if user.agent safari {
-	.mgwt-ListBox {
-		display: -webkit-box;
-		\-webkit-appearance: none;
-		\-webkit-user-select: text;
-	}
+  .mgwt-ListBox {
+    display: -webkit-box;
+    -webkit-appearance: none;
+    -webkit-user-select: text;
+  }
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-ListBox {
-		display: -moz-box;
-		\-moz-appearance: none;
-		\-moz-user-select: text;
-	}
+  .mgwt-ListBox {
+    display: -moz-box;
+    -moz-appearance: none;
+    -moz-user-select: text;
+  }
 }
