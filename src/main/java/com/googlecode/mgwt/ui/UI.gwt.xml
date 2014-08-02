@@ -13,7 +13,7 @@ under * the License.
 
 <module>
   <!-- Eclipse mixes classpaths so we need to exclude tests here -->
-  <source path='client' excludes='**/*Test.java'/>
+  <source path='client'/>
   <inherits name='com.google.gwt.user.User' />
   <inherits name='com.googlecode.mgwt.dom.DOM' />
 
