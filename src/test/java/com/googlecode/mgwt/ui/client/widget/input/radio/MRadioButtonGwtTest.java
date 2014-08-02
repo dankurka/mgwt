@@ -1,5 +1,7 @@
 package com.googlecode.mgwt.ui.client.widget.input.radio;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.junit.client.GWTTestCase;
@@ -51,7 +53,15 @@ public class MRadioButtonGwtTest extends GWTTestCase {
     });
 
     delayTestFinish(200);
-    radioButton1.setValue(true, true);
+    Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+
+      @Override
+      public void execute() {
+        radioButton1.setValue(true, true);
+
+      }
+    });;
+
   }
 
   public void testNoEvents() {
