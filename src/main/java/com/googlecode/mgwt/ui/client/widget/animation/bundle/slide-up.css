@@ -1,46 +1,45 @@
 .in, .out {
-	\-webkit-animation-timing-function: ease-in-out;
-	\-webkit-animation-duration: 300ms;
-	\-webkit-animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-duration: 300ms;
+  -webkit-animation-fill-mode: both;
 }
 
 .in {
-	\-webkit-animation-name: slideupfrombottom;
-	z-index: 10;
+  -webkit-animation-name: slideupfrombottom;
+  z-index: 10;
 }
 
 .out {
-	\-webkit-animation-name: slideupfrommiddle;
-	z-index: 0;
+  -webkit-animation-name: slideupfrommiddle;
+  z-index: 0;
 }
 
 .out.reverse {
-	z-index: 10;
-	\-webkit-animation-name: slidedownfrommiddle;
+  z-index: 10;
+  -webkit-animation-name: slidedownfrommiddle;
 }
 
 .in.reverse {
-	z-index: 0;
-	\-webkit-animation-name: slidedownfromtop;
+  z-index: 0;
+  -webkit-animation-name: slidedownfromtop;
 }
 
-
 @-webkit-keyframes slideupfrombottom {
-    from { -webkit-transform: translateY(100%); }
-    to { -webkit-transform: translateY(0); }
+  from { -webkit-transform: translateY(100%); }
+  to { -webkit-transform: translateY(0); }
 }
 
 @-webkit-keyframes slidedownfrommiddle {
-    from { -webkit-transform: translateY(0); }
-    to { -webkit-transform: translateY(100%); }
+  from { -webkit-transform: translateY(0); }
+  to { -webkit-transform: translateY(100%); }
 }
 
 @-webkit-keyframes slideupfrommiddle {
-    from { -webkit-transform: translateY(0); }
-    to { -webkit-transform: translateY(-100%); }
+  from { -webkit-transform: translateY(0); }
+  to { -webkit-transform: translateY(-100%); }
 }
 
 @-webkit-keyframes slidedownfromtop {
-    from { -webkit-transform: translateY(-100%); }
-    to { -webkit-transform: translateY(0%); }
+  from { -webkit-transform: translateY(-100%); }
+  to { -webkit-transform: translateY(0%); }
 }

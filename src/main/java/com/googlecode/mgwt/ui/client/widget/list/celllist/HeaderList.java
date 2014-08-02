@@ -226,7 +226,7 @@ public class HeaderList<G, T> extends Composite implements IsFlexible {
 		scrollPanel.setWidget(cellList);
 		scrollPanel.setSnapSelector(cellList.getHeaderSelector());
 
-		scrollPanel.setShowScrollBarX(false);
+		scrollPanel.setShowVerticalScrollBar(false);
 
 		main.add(scrollPanel);
 		movingHeader = new MovingHeader(cellList.getListCss(), css);

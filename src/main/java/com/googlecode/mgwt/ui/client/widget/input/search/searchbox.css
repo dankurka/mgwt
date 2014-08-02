@@ -2,128 +2,116 @@
 @url clearImage searchClearImage;
 @url clearTouchedImage searchClearTouchedImage;
 @if mgwt.css pretty {
-	@external mgwt-SearchBox, mgwt-SearchBox-round, mgwt-SearchBox-input, mgwt-SearchBox-clear, mgwt-SearchBox-clear-active;
+  @external mgwt-SearchBox, mgwt-SearchBox-round;
+  @external mgwt-SearchBox-input, mgwt-SearchBox-clear;
+  @external mgwt-SearchBox-clear-active;
 }
 
 ::-webkit-search-cancel-button { -webkit-appearance: none; }
 
 .mgwt-SearchBox {
-	height: 44px;
-	width: 100%;
-	padding-left: 5px;
-	padding-right: 5px;
-	position: relative;
+  height: 44px;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
 }
 
 .mgwt-SearchBox-round {
-	background-clip: padding-box;
-	background-image: searchImage;
-	background-repeat: no-repeat;
-	background-position: 10px 50%;
-	height: 24px;
-	display: block;
-	position: relative;
-	top: 10px;
-	margin: 0px;
-	padding: 0px;
-	margin-right: 10px;
-	
-	
-	font-size: 16px;
-    border: 1px solid #9daca9;
-    background-color: #fff;
-    box-shadow: inset 0 1px 0 rgba(0,0,0,0.23);
-    color: #454545;
+  background-clip: padding-box;
+  background-image: searchImage;
+  background-repeat: no-repeat;
+  background-position: 10px 50%;
+  height: 24px;
+  display: block;
+  position: relative;
+  top: 10px;
+  margin: 0px;
+  padding: 0px;
+  margin-right: 10px;
+  font-size: 16px;
+  border: 1px solid #9daca9;
+  background-color: #fff;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.23);
+  color: #454545;
 }
 
 .mgwt-SearchBox-input {
-	border: 0;
-	font-size: 13px;
-	padding: 0;
-	position: absolute;
-	display: block;
-	top: 1px;
-	left: 25px;
-	right: 60px;
-	bottom: 1px;
-	outline: none;
-	width: literal("calc(100% - 47px)");
+  border: 0;
+  font-size: 13px;
+  padding: 0;
+  position: absolute;
+  display: block;
+  top: 1px;
+  left: 25px;
+  right: 60px;
+  bottom: 1px;
+  outline: none;
+  width: literal("calc(100% - 47px)");
 }
 
 @if user.agent safari {
-	.mgwt-SearchBox-input {
-	  width: literal("-webkit-calc(100% - 47px)");
-	}
+  .mgwt-SearchBox-input {
+    width: literal("-webkit-calc(100% - 47px)");
+  }
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-SearchBox-input {
-	  width: literal("-moz-calc(100% - 47px);");
-	}
+  .mgwt-SearchBox-input {
+    width: literal("-moz-calc(100% - 47px);");
+  }
 }
 
 @if user.agent safari {
-	.mgwt-SearchBox-input {
-		\-webkit-appearance: none;
-		\-webkit-user-select: text;
-		\-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	}
+  .mgwt-SearchBox-input {
+    -webkit-appearance: none;
+    -webkit-user-select: text;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-SearchBox-input {
-		top: 5px;
-		\-moz-appearance: none;
-		\-moz-user-select: text;
-		\-moz-tap-highlight-color: rgba(0, 0, 0, 0);
-	}
+  .mgwt-SearchBox-input {
+    top: 5px;
+    -moz-appearance: none;
+    -moz-user-select: text;
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
 }
 
 @if user.agent ie9 ie10 {
-	.mgwt-SearchBox-input {
-		top: 5px;
-	}
+  .mgwt-SearchBox-input {
+    top: 5px;
+  }
 }
 
 .mgwt-SearchBox-clear {
-	position: absolute;
-	top: -8.5px;
-	right: 10px;
-	width: 40px;
-	height: 40px;
-	font-size: 13px;
-	padding: 0;
-	background-image: clearImage;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
+  position: absolute;
+  top: -8.5px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 13px;
+  padding: 0;
+  background-image: clearImage;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 .mgwt-SearchBox-clear-active {
-	background-image: clearTouchedImage;
+  background-image: clearTouchedImage;
 }
 
 .mgwt-SearchBox {
-	background-size: 100% 44px;
-	background-repeat: repeat;
-	background-position: 0px 0px;
-}
-
-@if user.agent safari {
-	.mgwt-SearchBox {
-/* 		background-image: literal('-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f1f3f4), color-stop(3%, #e0e4e7), color-stop(50%, #c7cfd4), color-stop(51%, #bec7cd), color-stop(97%, #b4bec6), to(#8999a5) )'); */
-	}
-}
-
-@if user.agent gecko1_8 {
-	.mgwt-SearchBox {
-/* 		background-image: literal('-moz-linear-gradient(top, #f1f3f4, #e0e4e7 3%, #c7cfd4 50%, #bec7cd 51%, #b4bec6 97%, #8999a5)'); */
-	}
+  background-size: 100% 44px;
+  background-repeat: repeat;
+  background-position: 0px 0px;
 }
 
 .mgwt-SearchBox-round {
-	border-bottom-left-radius: 16px 16px;
-	border-bottom-right-radius: 16px 16px;
-	border-top-left-radius: 16px 16px;
-	border-top-right-radius: 16px 16px;
-	background-color: white;
+  border-bottom-left-radius: 16px 16px;
+  border-bottom-right-radius: 16px 16px;
+  border-top-left-radius: 16px 16px;
+  border-top-right-radius: 16px 16px;
+  background-color: white;
 }

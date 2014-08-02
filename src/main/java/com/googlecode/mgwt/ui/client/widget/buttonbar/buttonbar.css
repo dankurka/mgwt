@@ -1,58 +1,54 @@
 @if mgwt.css pretty {
-	@external mgwt-ButtonBar, mgwt-ButtonBar-text;
+  @external mgwt-ButtonBar, mgwt-ButtonBar-text;
 }
 
-
-
 .mgwt-ButtonBar {
-	overflow:hidden;
-	width: 100%;
-	position: relative;
-	background-color: #e5e9e8;
-  	color: #454545;
-  	border-top: 1px solid #454545;
-	height: 44px;
+  overflow:hidden;
+  width: 100%;
+  position: relative;
+  background-color: #e5e9e8;
+  color: #454545;
+  border-top: 1px solid #454545;
+  height: 44px;
 }
 
 @if user.agent safari {
-	.mgwt-ButtonBar {
-		display: \-webkit-box;
-		\-webkit-box-orient: horizontal;
-	}
+  .mgwt-ButtonBar {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+  }
 }
 
 @if user.agent gecko1_8 {
-	.mgwt-ButtonBar {
-		display: \-moz-box;
-		\-moz-box-orient: horizontal;
-	}
+  .mgwt-ButtonBar {
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+  }
 }
 
 @if user.agent ie9 ie10 {
-	.mgwt-ButtonBar {
-		display: table;
-	}
+  .mgwt-ButtonBar {
+    display: table;
+  }
 }
 
 .mgwt-ButtonBar {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-
-
 .mgwt-ButtonBar-text {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	text-align: center;
-	font-size: 12px;
-	font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 @if user.agent ie9 ie10 {
-	.mgwt-ButtonBar-text {
-		display: table-cell;
-		vertical-align: middle;
-	}
+  .mgwt-ButtonBar-text {
+    display: table-cell;
+    vertical-align: middle;
+  }
 }

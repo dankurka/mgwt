@@ -1,5 +1,6 @@
 @if mgwt.css pretty {
-	@external mgwt-ScrollPanel, mgwt-ScrollPanel-container, mgwt-Scrollbar, mgwt-Scrollbar-horizontal, mgwt-Scrollbar-vertical, mgwt-Scrollbar-Bar;
+	@external mgwt-ScrollPanel, mgwt-ScrollPanel-container, mgwt-Scrollbar;
+	@external mgwt-Scrollbar-horizontal, mgwt-Scrollbar-vertical, mgwt-Scrollbar-Bar;
 }
 
 .mgwt-ScrollPanel {

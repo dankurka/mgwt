@@ -1,5 +1,5 @@
 @if mgwt.css pretty {
-	@external mgwt-Panel, mgwt-Panel-round;
+  @external mgwt-Panel, mgwt-Panel-round;
 }
 
 .mgwt-Panel {
@@ -13,5 +13,5 @@
 }
 
 .mgwt-Panel-round {
-	border-radius: 15px;
+  border-radius: 15px;
 }

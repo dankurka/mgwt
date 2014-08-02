@@ -2,24 +2,49 @@
   @external mgwt-TabBar, mgwt-TabPanel;
 }
 
+@if user.agent safari {
+  .mgwt-TabPanel {
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    -webkit-box-orient: vertical;
+  }
+}
+
+@if user.agent gecko1_8 {
+  .mgwt-TabPanel {
+    display: -webkit-box;
+    -moz-box-flex: 1;
+    -moz-box-orient: vertical;
+  }
+}
+
 .mgwt-TabPanel {
-  display: -webkit-box;
-  -webkit-box-flex: 1;
-  -webkit-box-orient: vertical;
   display: flex;
   flex: 1;
   flex-flow: column;
 }
 
+@if user.agent safari {
+  .mgwt-TabPanel-container {
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+    -webkit-box-orient: vertical;
+  }
+}
+
+@if user.agent gecko1_8 {
+  .mgwt-TabPanel-container {
+    display: -webkit-box;
+    -moz-box-flex: 1;
+    -moz-box-orient: vertical;
+  }
+}
+
 .mgwt-TabPanel-container {
-  display: \-webkit-box;
-  -webkit-box-flex: 1;
-  -webkit-box-orient: vertical;
   overflow: hidden;
   display: flex;
   flex:1;
 }
-
 
 @if user.agent safari {
   .mgwt-TabBar {
