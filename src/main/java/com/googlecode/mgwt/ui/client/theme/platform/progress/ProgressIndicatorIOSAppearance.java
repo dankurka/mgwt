@@ -11,6 +11,12 @@ import com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicatorAppearance
 public class ProgressIndicatorIOSAppearance implements
     ProgressIndicatorAppearance {
 
+  // If we supply a full package name for a ui.xml file its fine with the GWT compiler
+  // But eclipse reports a compile error...
+  // This tricks eclipse to not show a compile error.
+  public static final String TRICKING_ECLIPSE_WITH_FILENAME =
+      "com.googlecode.mgwt.ui.client.widget.progress.ProgressSpinnerBaseAppearance.ui.xml";
+
   static {
     Resources.INSTANCE.css().ensureInjected();
   }
@@ -33,7 +39,7 @@ public class ProgressIndicatorIOSAppearance implements
     return Resources.INSTANCE.css();
   }
 
-  @UiTemplate("com.googlecode.mgwt.ui.client.widget.progress.ProgressSpinnerBaseAppearance.ui.xml")
+  @UiTemplate(TRICKING_ECLIPSE_WITH_FILENAME)
   interface Binder extends UiBinder<Element, ProgressIndicator> {
   }
 
