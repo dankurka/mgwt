@@ -84,6 +84,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
     private List<TabBarButtonBase> children = new ArrayList<TabBarButtonBase>();;
     private List<HandlerRegistration> handlers = new ArrayList<HandlerRegistration>();
 
+    public TabBar() {
+      this(DEFAULT_APPEARANCE);
+    }
+
     public TabBar(TabBarAppearance appearance) {
       initWidget(appearance.barBinder().createAndBindUi(this));
     }
