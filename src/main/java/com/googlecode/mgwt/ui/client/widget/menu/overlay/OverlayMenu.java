@@ -34,7 +34,7 @@ import com.googlecode.mgwt.ui.client.widget.animation.AnimationWidget;
  */
 public class OverlayMenu extends Composite {
 
-  private static final int TRANSITION_TIME = 200;
+  private static final int TRANSITION_TIME_IN_MS = 200;
 
   private static final OverlayMenuAppearance APPEARANCE = GWT.create(OverlayMenuAppearance.class);
 
@@ -117,8 +117,8 @@ public class OverlayMenu extends Composite {
     }
 
     if (show) {
-      CssUtil.setTransitionDuration(nav.getElement(), TRANSITION_TIME);
-      CssUtil.setTransitionDuration(main.getElement(), TRANSITION_TIME);
+      CssUtil.setTransitionDuration(nav.getElement(), TRANSITION_TIME_IN_MS);
+      CssUtil.setTransitionDuration(main.getElement(), TRANSITION_TIME_IN_MS);
       nav.getElement().getStyle().setOpacity(1);
       nav.getElement().getStyle().setDisplay(Display.BLOCK);
 
@@ -135,8 +135,8 @@ public class OverlayMenu extends Composite {
         }
       }, TransitionEndEvent.getType());
     } else {
-      CssUtil.setTransitionDuration(nav.getElement(), TRANSITION_TIME);
-      CssUtil.setTransitionDuration(main.getElement(), TRANSITION_TIME);
+      CssUtil.setTransitionDuration(nav.getElement(), TRANSITION_TIME_IN_MS);
+      CssUtil.setTransitionDuration(main.getElement(), TRANSITION_TIME_IN_MS);
       nav.getElement().getStyle().setOpacity(0);
 
       main.getElement().getStyle().setLeft(0, Unit.PX);
