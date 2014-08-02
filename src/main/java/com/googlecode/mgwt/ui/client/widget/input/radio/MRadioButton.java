@@ -64,6 +64,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
   private MRadioButtonAppearance appearance;
   private final static MRadioButtonAppearance DEFAULT_APPEARANCE = GWT
       .create(MRadioButtonAppearance.class);
+  private boolean ignoreChangeEvent;
 
   /**
    * Construct a radio button
@@ -167,6 +168,10 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
 
       @Override
       public void onChange(ChangeEvent event) {
+        if (ignoreChangeEvent) {
+          ignoreChangeEvent = false;
+          return;
+        }
         setValue(true, true);
       }
     }, ChangeEvent.getType());
@@ -223,6 +228,10 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
   public void setValue(Boolean value, boolean fireEvents) {
     if (value == null) {
       value = false;
+    }
+
+    if (!fireEvents && value) {
+      ignoreChangeEvent = true;
     }
 
     inputRadio.setChecked(value);
