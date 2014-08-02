@@ -136,6 +136,7 @@
             <configuration>
               <includes>**/*GwtTest.java</includes>
               <productionMode>true</productionMode>
+              <sourceLevel>1.7</sourceLevel>
               <mode>htmlunit</mode>
             </configuration>
           </execution>
