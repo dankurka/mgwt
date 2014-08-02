@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -18,18 +18,21 @@ import com.google.gwt.user.client.ui.Label;
 
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
+import com.googlecode.mgwt.ui.client.widget.dialog.overlay.PopinDialogOverlay;
+import com.googlecode.mgwt.ui.client.widget.dialog.panel.DialogPanel;
+import com.googlecode.mgwt.ui.client.widget.dialog.panel.DialogPanelAppearance;
 
 /**
  * A simple confirm dialog with ok and cancel buttons
- * 
+ *
  * @author Daniel Kurka
  */
 public class ConfirmDialog implements HasText, HasTitleText, Dialog {
   /**
    * The callback used when buttons are taped
-   * 
+   *
    * @author Daniel Kurka
-   * 
+   *
    */
   public interface ConfirmCallback {
     /**
@@ -43,45 +46,45 @@ public class ConfirmDialog implements HasText, HasTitleText, Dialog {
     public void onCancel();
   }
 
-  private PopinDialog popinDialog;
+  private PopinDialogOverlay popinDialog;
   private DialogPanel dialogPanel1;
   private Label textLabel;
   private ConfirmCallback callback;
 
   /**
    * Construct a Confirmdialg
-   * 
+   *
    * @param title - the title of the dialog
    * @param text - the text of the dialog
    * @param callback - the callback used when a button of the dialog is taped
    */
   public ConfirmDialog(String title, String text, ConfirmCallback callback) {
-    this(Dialogs.DEFAULT_APPEARANCE, title, text, callback);
+    this(DialogPanel.DEFAULT_APPEARANCE, title, text, callback);
   }
 
   /**
    * Construct a Confirmdialg
-   * 
+   *
    * @param css . css to use
    * @param title - the title of the dialog
    * @param text - the text of the dialog
    * @param callback - the callback used when a button of the dialog is taped
    */
-  public ConfirmDialog(DialogAppearance appearance, String title, String text, ConfirmCallback callback) {
+  public ConfirmDialog(DialogPanelAppearance appearance, String title, String text, ConfirmCallback callback) {
     this(appearance, title, text, callback, "Ok", "Cancel");
   }
 
   /**
    * Construct a Confirmdialg
-   * 
+   *
    * @param css . css to use
    * @param title - the title of the dialog
    * @param text - the text of the dialog
    * @param callback - the callback used when a button of the dialog is taped
    */
-  public ConfirmDialog(DialogAppearance appearance, String title, String text, ConfirmCallback callback, String okButtonText, String cancelButtonText) {
+  public ConfirmDialog(DialogPanelAppearance appearance, String title, String text, ConfirmCallback callback, String okButtonText, String cancelButtonText) {
     this.callback = callback;
-    popinDialog = new PopinDialog(appearance);
+    popinDialog = new PopinDialogOverlay(appearance);
     dialogPanel1 = new DialogPanel(appearance);
     dialogPanel1.showCancelButton(true);
     dialogPanel1.showOkButton(true);

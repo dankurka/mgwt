@@ -1,5 +1,5 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder">
-    <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.dialog.DialogAppearance" />
+    <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.dialog.panel.DialogPanelAppearance" />
 	<div ui:field="button" class="{apperance.css.button}"></div>
 </ui:UiBinder>

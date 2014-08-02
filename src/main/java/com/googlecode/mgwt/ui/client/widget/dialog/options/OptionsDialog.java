@@ -11,13 +11,16 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget.dialog;
+package com.googlecode.mgwt.ui.client.widget.dialog.options;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
 import com.googlecode.mgwt.ui.client.MGWT;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialog;
+import com.googlecode.mgwt.ui.client.widget.dialog.overlay.SlideUpDialogOverlay;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
 
 import java.util.Iterator;
@@ -31,18 +34,20 @@ import java.util.Iterator;
  */
 public class OptionsDialog implements HasWidgets, Dialog {
 
-  private SlideUpPanel slideUpPanel;
+  private static final OptionsDialogAppearance DEFAULT_APPEARANCE = GWT
+      .create(OptionsDialogAppearance.class);
+
+  private SlideUpDialogOverlay slideUpPanel;
   private FlexPanel container;
 
-  /**
-   * Construct an OptionDialog with a css class
-   *
-   * @param css the css class to use
-   */
-  public OptionsDialog(DialogAppearance appearance) {
-    slideUpPanel = new SlideUpPanel();
+  public OptionsDialog() {
+    this(DEFAULT_APPEARANCE);
+  }
+
+  public OptionsDialog(OptionsDialogAppearance appearance) {
+    slideUpPanel = new SlideUpDialogOverlay(appearance);
     container = new FlexPanel();
-    container.addStyleName(appearance.dialogCss().getBottomPanel());
+    container.addStyleName(appearance.css().optionsDialog());
     slideUpPanel.add(container);
   }
 
@@ -60,9 +65,6 @@ public class OptionsDialog implements HasWidgets, Dialog {
     container.clear();
   }
 
-  /**
-   * Hide the options dialog
-   */
   @Override
   public void hide() {
     slideUpPanel.hide();
@@ -78,11 +80,6 @@ public class OptionsDialog implements HasWidgets, Dialog {
     return container.remove(w);
   }
 
-  /**
-   * Set the area to cover
-   *
-   * @param widgetToCover the widet to cover
-   */
   public void setPanelToOverlay(HasWidgets widgetToCover) {
     slideUpPanel.setPanelToOverlay(widgetToCover);
   }

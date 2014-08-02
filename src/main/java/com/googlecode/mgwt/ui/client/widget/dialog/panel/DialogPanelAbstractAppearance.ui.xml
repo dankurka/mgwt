@@ -2,14 +2,14 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
     xmlns:g='urn:import:com.google.gwt.user.client.ui'
     xmlns:mgwt='urn:import:com.googlecode.mgwt.ui.client.widget'>
-    <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.dialog.DialogAppearance" />
+    <ui:with field="apperance" type="com.googlecode.mgwt.ui.client.widget.dialog.panel.DialogPanelAppearance" />
     <g:FlowPanel ui:field="main" styleName="{apperance.dialogCss.dialogPanel}">
       <g:FlowPanel ui:field="container" styleName="{apperance.dialogCss.container}">
         <g:HTML ui:field="title" styleName="{apperance.dialogCss.title}"/>
         <g:FlowPanel ui:field="content" styleName="{apperance.dialogCss.content}"/>
         <g:FlowPanel ui:field="buttonContainer" styleName="{apperance.dialogCss.footer}">
-          <mgwt:dialog.DialogButton ui:field="okButton" text="Ok" />
-          <mgwt:dialog.DialogButton ui:field="cancelButton" text="Cancel"/>
+          <mgwt:dialog.panel.DialogButton ui:field="okButton" text="Ok" />
+          <mgwt:dialog.panel.DialogButton ui:field="cancelButton" text="Cancel"/>
         </g:FlowPanel>
       </g:FlowPanel>
     </g:FlowPanel>

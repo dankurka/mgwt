@@ -13,7 +13,7 @@ under the License.
 -->
 
 <module>
-  <inherits name="com.googlecode.mgwt.ui.client.widget.dialog.overlay.DialogOverlay" />
-  <inherits name="com.googlecode.mgwt.ui.client.widget.dialog.options.OptionsDialog" />
-  <inherits name="com.googlecode.mgwt.ui.client.widget.dialog.panel.DialogPanel" />
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.dialog.panel.DialogPanelDefaultAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.dialog.panel.DialogPanelAppearance" />
+  </replace-with>
 </module>
