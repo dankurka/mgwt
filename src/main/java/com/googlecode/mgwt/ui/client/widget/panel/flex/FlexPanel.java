@@ -122,6 +122,15 @@ public class FlexPanel extends Composite implements HasWidgets.ForIsWidget, Inde
     FlexPropertyHelper.setJustification(getElement(), value);
   }
 
+
+  public void clearAlignment() {
+    FlexPropertyHelper.clearAlignment(getElement());
+  }
+
+  public void clearJustification() {
+    FlexPropertyHelper.clearJustification(getElement());
+  }
+
   @UiFactory
   protected FlexPanelAppearance getAppearance() {
 	  return appearance;

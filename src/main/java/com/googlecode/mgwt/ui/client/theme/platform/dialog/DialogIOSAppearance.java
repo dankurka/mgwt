@@ -1,7 +1,7 @@
 package com.googlecode.mgwt.ui.client.theme.platform.dialog;
 
 
-//public class DialogAndroidAppearance extends DialogAbstractAppearance {
+//public class DialogIOSAppearance extends DialogAbstractAppearance {
 //
 //  static {
 //    Resources.INSTANCE.css().ensureInjected();
@@ -12,10 +12,10 @@ package com.googlecode.mgwt.ui.client.theme.platform.dialog;
 //
 //    Resources INSTANCE = GWT.create(Resources.class);
 //
-//    @Source({"dialog-button-base.css", "dialog-button-android.css"})
+//    @Source({"dialog-button-base.css", "dialog-button-iphone.css"})
 //    DialogButtonCss css();
 //
-//    @Source({"dialog-base.css", "dialog-android.css"})
+//    @Source({"dialog-base.css", "dialog-iphone.css"})
 //    DialogCss cssPanel();
 //  }
 //

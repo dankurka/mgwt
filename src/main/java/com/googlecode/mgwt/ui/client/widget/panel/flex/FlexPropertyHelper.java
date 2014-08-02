@@ -145,4 +145,12 @@ public final class FlexPropertyHelper {
 
   private FlexPropertyHelper() {
   }
+
+  public static void clearAlignment(Element element) {
+    setProperty(element, Alignment.getCssProperty(), "");
+  }
+
+  public static void clearJustification(Element element) {
+    setProperty(element, Justification.getCssProperty(), "");
+  }
 }

@@ -1,11 +1,9 @@
-package com.googlecode.mgwt.ui.client.theme.platform.dialog;
+package com.googlecode.mgwt.ui.client.widget.dialog.panel;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 
-import com.googlecode.mgwt.ui.client.widget.dialog.DialogAbstractAppearance;
-
-public class DialogIPhoneAppearance extends DialogAbstractAppearance {
+public class DialogPanelDefaultAppearance extends DialogPanelAbstractAppearance {
 
   static {
     Resources.INSTANCE.css().ensureInjected();
@@ -16,10 +14,10 @@ public class DialogIPhoneAppearance extends DialogAbstractAppearance {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"dialog-button-base.css", "dialog-button-iphone.css"})
+    @Source({"dialog-button.css"})
     DialogButtonCss css();
-    
-    @Source({"dialog-base.css", "dialog-iphone.css"})
+
+    @Source({"dialog.css"})
     DialogCss cssPanel();
   }
 

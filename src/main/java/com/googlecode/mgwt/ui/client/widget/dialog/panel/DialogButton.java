@@ -1,12 +1,13 @@
-package com.googlecode.mgwt.ui.client.widget.dialog;
+package com.googlecode.mgwt.ui.client.widget.dialog.panel;
 
 import com.google.gwt.uibinder.client.UiFactory;
+
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
 
 public class DialogButton extends ButtonBase {
-  private DialogAppearance appearance;
+  private DialogPanelAppearance appearance;
 
-  public DialogButton(DialogAppearance appearance, String text) {
+  public DialogButton(DialogPanelAppearance appearance, String text) {
     super(appearance);
     this.appearance = appearance;
     setElement(appearance.uiBinder().createAndBindUi(this));
@@ -19,7 +20,7 @@ public class DialogButton extends ButtonBase {
       addStyleName(appearance.css().cancelbutton());
     }
   }
-  
+
   public void setOK(boolean ok) {
     removeStyleNames();
     if (ok) {
@@ -28,8 +29,8 @@ public class DialogButton extends ButtonBase {
   }
 
   @UiFactory
-  protected DialogAppearance getAppearance() {
-	return appearance;
+  protected DialogPanelAppearance getAppearance() {
+	  return appearance;
   }
 
   private void removeStyleNames() {

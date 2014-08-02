@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 Daniel Kurka
+ * Copyright 2014 Daniel Kurka
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,16 +11,16 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget.dialog;
+package com.googlecode.mgwt.ui.client.widget.dialog.options;
 
-/**
- * Simple interface implemented by all dialogs
- *
- * @author Daniel Kurka
- */
-public interface Dialog {
+import com.googlecode.mgwt.ui.client.util.MGWTCssResource;
+import com.googlecode.mgwt.ui.client.widget.dialog.overlay.DialogOverlayAppearance;
 
-  void show();
+public interface OptionsDialogAppearance extends DialogOverlayAppearance {
+  public interface OptionsDialogCss extends MGWTCssResource {
+    @ClassName("mgwt-OptionsDialog")
+    String optionsDialog();
+  }
 
-  void hide();
+  public OptionsDialogCss css();
 }

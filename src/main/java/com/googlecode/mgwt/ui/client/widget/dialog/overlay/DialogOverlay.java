@@ -11,8 +11,9 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.widget.dialog;
+package com.googlecode.mgwt.ui.client.widget.dialog.overlay;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.EventTarget;
 import com.google.gwt.dom.client.Node;
@@ -26,7 +27,6 @@ import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -40,6 +40,10 @@ import com.googlecode.mgwt.ui.client.util.MGWTUtil;
 import com.googlecode.mgwt.ui.client.widget.animation.Animation;
 import com.googlecode.mgwt.ui.client.widget.animation.AnimationEndCallback;
 import com.googlecode.mgwt.ui.client.widget.animation.AnimationWidget;
+import com.googlecode.mgwt.ui.client.widget.dialog.Dialog;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Alignment;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Justification;
+import com.googlecode.mgwt.ui.client.widget.panel.flex.RootFlexPanel;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchDelegate;
 
 import java.util.Iterator;
@@ -49,10 +53,15 @@ import java.util.Iterator;
  *
  * @author Daniel Kurka
  */
-public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTapHandlers,
+public abstract class DialogOverlay implements HasWidgets, HasTouchHandlers, HasTapHandlers,
     Dialog {
 
-  private final class InternalTouchHandler implements TouchHandler {
+  private static class NoopAnimationEndCallback implements AnimationEndCallback {
+    public void onAnimationEnd() {
+    }
+  }
+
+  private class InternalTouchHandler implements TouchHandler {
     private final Element shadow;
     private Element startTarget;
 
@@ -102,38 +111,38 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
     }
   }
 
-  protected FlowPanel container;
-  protected HasWidgets panelToOverlay;
+  private static final NoopAnimationEndCallback NOOP_CALLBACK = new NoopAnimationEndCallback();
 
+  public static final DialogOverlayAppearance DEFAULT_APPEARANCE = GWT
+      .create(DialogOverlayAppearance.class);
+
+  protected final DialogOverlayAppearance appearance;
+
+  private RootFlexPanel container;
+  private HasWidgets panelToOverlay;
   private AnimationWidget display;
 
-  private boolean centerContent;
-  private boolean hideOnBackgroundClick;
+  private boolean centerChildren;
+  private boolean autoHide;
   private boolean isVisible;
-  private TouchDelegate touchDelegate;
-  protected DialogAppearance appearance;
+  private TouchDelegate touchDelegateForDisplay;
 
-  /**
-   * Create an instance of an animated dialog
-   *
-   * @param css a {@link com.googlecode.mgwt.ui.client.theme.base.DialogCss} object.
-   */
-  public DialogBase(DialogAppearance appearance) {
+
+  public DialogOverlay() {
+    this(DEFAULT_APPEARANCE);
+  }
+
+  public DialogOverlay(DialogOverlayAppearance appearance) {
     this.appearance = appearance;
     display = new AnimationWidget();
+    display.addStyleName(appearance.overlayCss().dialogOverlay());
+    touchDelegateForDisplay = new TouchDelegate(display);
+    display.addStyleName(appearance.overlayCss().animationContainerShadow());
 
-    display.addStyleName(appearance.dialogCss().animationContainerShadow());
-    display.addStyleName(appearance.dialogCss().z_index());
+    container = new RootFlexPanel();
 
-    touchDelegate = new TouchDelegate(display);
 
-    container = new FlowPanel();
-
-    container.addStyleName(appearance.dialogCss().animationContainer());
-
-    Element shadow = container.getElement();
-
-    addTouchHandler(new InternalTouchHandler(shadow));
+    addTouchHandler(new InternalTouchHandler(container.getElement()));
 
   }
 
@@ -144,29 +153,28 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
 
   @Override
   public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
-    return touchDelegate.addTouchStartHandler(handler);
+    return touchDelegateForDisplay.addTouchStartHandler(handler);
   }
 
   @Override
   public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
-    return touchDelegate.addTouchMoveHandler(handler);
+    return touchDelegateForDisplay.addTouchMoveHandler(handler);
   }
 
   @Override
   public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
-    return touchDelegate.addTouchCancelHandler(handler);
+    return touchDelegateForDisplay.addTouchCancelHandler(handler);
   }
 
   @Override
   public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
-    return touchDelegate.addTouchEndHandler(handler);
+    return touchDelegateForDisplay.addTouchEndHandler(handler);
   }
 
   @Override
   public HandlerRegistration addTouchHandler(TouchHandler handler) {
     HandlerRegistrationCollection handlerRegistrationCollection =
         new HandlerRegistrationCollection();
-
     handlerRegistrationCollection.addHandlerRegistration(addTouchCancelHandler(handler));
     handlerRegistrationCollection.addHandlerRegistration(addTouchStartHandler(handler));
     handlerRegistrationCollection.addHandlerRegistration(addTouchEndHandler(handler));
@@ -175,14 +183,14 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
   }
 
   public HandlerRegistration addTapHandler(TapHandler handler) {
-    return touchDelegate.addTapHandler(handler);
+    return touchDelegateForDisplay.addTapHandler(handler);
   }
 
   /**
    * Show the dialog centered
    */
   public void center() {
-    centerContent = true;
+    centerChildren = true;
     show();
   }
 
@@ -220,10 +228,8 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
         panel.remove(display.asWidget());
         // see issue 247 => http://code.google.com/p/mgwt/issues/detail?id=247
         MGWTUtil.forceFullRepaint();
-
       }
     });
-
   }
 
   /**
@@ -232,7 +238,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
    * @return true if the dialog automatically hides, otherwise false
    */
   public boolean isHideOnBackgroundClick() {
-    return hideOnBackgroundClick;
+    return autoHide;
   }
 
   @Override
@@ -251,7 +257,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
    * @param centerContent true to center content
    */
   public void setCenterContent(boolean centerContent) {
-    this.centerContent = centerContent;
+    this.centerChildren = centerContent;
   }
 
   /**
@@ -260,7 +266,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
    * @param hideOnBackgroundClick true if the dialog automatically hides, otherwise false
    */
   public void setHideOnBackgroundClick(boolean hideOnBackgroundClick) {
-    this.hideOnBackgroundClick = hideOnBackgroundClick;
+    this.autoHide = hideOnBackgroundClick;
   }
 
   /**
@@ -279,10 +285,9 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
    */
   public void setShadow(boolean shadow) {
     if (shadow) {
-      display.asWidget().addStyleName(appearance.dialogCss().animationContainerShadow());
+      display.asWidget().addStyleName(appearance.overlayCss().animationContainerShadow());
     } else {
-      display.asWidget().removeStyleName(appearance.dialogCss().animationContainerShadow());
-
+      display.asWidget().removeStyleName(appearance.overlayCss().animationContainerShadow());
     }
   }
 
@@ -296,23 +301,18 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
     HasWidgets panel = getPanelToOverlay();
     panel.add(display.asWidget());
 
-    if (centerContent) {
-      container.addStyleName(appearance.dialogCss().animationContainerCenter());
-
+    if (centerChildren) {
+      container.setAlignment(Alignment.CENTER);
+      container.setJustification(Justification.CENTER);
+    } else {
+      container.clearAlignment();
+      container.clearJustification();
     }
 
     display.setFirstWidget(container);
 
     // and animiate
-    Animation animation = getShowAnimation();
-
-    display.animate(animation, true, new AnimationEndCallback() {
-
-      @Override
-      public void onAnimationEnd() {
-
-      }
-    });
+    display.animate(getShowAnimation(), true, NOOP_CALLBACK);
   }
 
   protected abstract Animation getShowAnimation();
@@ -320,7 +320,7 @@ public abstract class DialogBase implements HasWidgets, HasTouchHandlers, HasTap
   protected abstract Animation getHideAnimation();
 
   protected void maybeHide() {
-    if (hideOnBackgroundClick) {
+    if (autoHide) {
       hide();
     }
   }
