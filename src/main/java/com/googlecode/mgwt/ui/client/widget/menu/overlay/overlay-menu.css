@@ -1,5 +1,6 @@
 @if mgwt.css pretty {
-	@external mgwt-OverlayMenu, mgwt-OverlayMenu-nav, mgwt-OverlayMenu-animation, mgwt-OverlayMenu-main;
+	@external mgwt-OverlayMenu, mgwt-OverlayMenu-nav;
+	@external mgwt-OverlayMenu-animation, mgwt-OverlayMenu-main;
 }
 
 .mgwt-OverlayMenu {
@@ -16,7 +17,6 @@
   left: 0;
   bottom:0;
   width: 300px;
-  border-right: 1px solid black;
 }
 
 .mgwt-OverlayMenu-animation {
@@ -35,4 +35,22 @@
   right: 0px;
   bottom:0;
   border-left: 1px solid black;
+}
+
+@if user.agent safari {
+  .mgwt-OverlayMenu-nav {
+    -webkit-transform-property: opacity;
+  }
+  .mgwt-OverlayMenu-main {
+    -webkit-transform-property: left;
+  }
+}
+
+@if user.agent gecko1_8 {
+  .mgwt-OverlayMenu-nav {
+    -moz-transform-property: opacity;
+  }
+  .mgwt-OverlayMenu-main {
+    -moz-transform-property: left;
+  }
 }

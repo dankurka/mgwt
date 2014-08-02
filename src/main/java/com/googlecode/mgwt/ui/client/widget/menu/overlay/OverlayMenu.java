@@ -14,19 +14,27 @@
 package com.googlecode.mgwt.ui.client.widget.menu.overlay;
 
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.dom.client.Style.Display;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.dom.client.StyleInjector;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import com.googlecode.mgwt.dom.client.event.animation.TransitionEndEvent;
+import com.googlecode.mgwt.dom.client.event.animation.TransitionEndHandler;
+import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.animation.AnimationWidget;
 
 /**
  * Considered experimental and might change, use at your own risk
  */
 public class OverlayMenu extends Composite {
+
+  private static final int TRANSITION_TIME = 200;
 
   private static final OverlayMenuAppearance APPEARANCE = GWT.create(OverlayMenuAppearance.class);
 
@@ -43,8 +51,11 @@ public class OverlayMenu extends Composite {
 
   private String id;
 
-  @UiField(provided = true)
   protected final OverlayMenuAppearance appearance;
+
+  private HandlerRegistration showNavHandler;
+
+  private HandlerRegistration hideNavHandler;
 
   public OverlayMenu() {
     this(APPEARANCE);
@@ -92,5 +103,54 @@ public class OverlayMenu extends Composite {
   @UiFactory
   protected static OverlayMenuAppearance getAppearance() {
 	  return APPEARANCE;
+  }
+
+  public void showNav(boolean show) {
+    if (!CssUtil.hasTransistionEndEvent()) {
+      nav.setVisible(show);
+      if (show) {
+        main.getElement().getStyle().clearLeft();
+      } else {
+        main.getElement().getStyle().setLeft(0, Unit.PX);
+      }
+      return;
+    }
+
+    if (show) {
+      CssUtil.setTransitionDuration(nav.getElement(), TRANSITION_TIME);
+      CssUtil.setTransitionDuration(main.getElement(), TRANSITION_TIME);
+      nav.getElement().getStyle().setOpacity(1);
+      nav.getElement().getStyle().setDisplay(Display.BLOCK);
+
+
+      main.getElement().getStyle().clearLeft();
+      showNavHandler = nav.addDomHandler(new TransitionEndHandler() {
+
+        @Override
+        public void onTransitionEnd(TransitionEndEvent event) {
+          if (showNavHandler != null) {
+            showNavHandler.removeHandler();
+            showNavHandler = null;
+          }
+        }
+      }, TransitionEndEvent.getType());
+    } else {
+      CssUtil.setTransitionDuration(nav.getElement(), TRANSITION_TIME);
+      CssUtil.setTransitionDuration(main.getElement(), TRANSITION_TIME);
+      nav.getElement().getStyle().setOpacity(0);
+
+      main.getElement().getStyle().setLeft(0, Unit.PX);
+      hideNavHandler = nav.addDomHandler(new TransitionEndHandler() {
+
+        @Override
+        public void onTransitionEnd(TransitionEndEvent event) {
+          if (hideNavHandler != null) {
+            hideNavHandler.removeHandler();
+            hideNavHandler = null;
+            nav.getElement().getStyle().setDisplay(Display.NONE);
+          }
+        }
+      }, TransitionEndEvent.getType());
+    }
   }
 }
