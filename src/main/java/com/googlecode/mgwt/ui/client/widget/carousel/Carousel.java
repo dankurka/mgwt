@@ -386,6 +386,10 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
     this.isVisibleCarouselIndicator = isVisibleCarouselIndicator;
   }
 
+  public ScrollPanel getScrollPanel() {
+    return scrollPanel;
+  }
+
   @UiFactory
   protected CarouselAppearance getAppearance() {
 	  return appearance;
