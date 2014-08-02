@@ -50,101 +50,102 @@ import com.googlecode.mgwt.ui.client.widget.panel.flex.RootFlexPanel;
  */
 public class RootTabPanel extends Composite implements HasSelectionHandlers<Integer> {
 
-	private RootFlexPanel container;
+  private RootFlexPanel container;
 
-	private FlowPanel aniContainer;
+  private FlowPanel animatableDisplayContainer;
 
-	private TabPanel.TabBar tabBar;
+  private TabPanel.TabBar tabBar;
 
-	private final AnimatableDisplay animatableDisplay;
+  private final AnimatableDisplay animatableDisplay;
 
-	private HandlerRegistration addDomHandler;
+  private HandlerRegistration hideTabBarHandler;
 
-	private HandlerRegistration addDomHandler1;
+  private HandlerRegistration showTabBarHandler;
 
-	public RootTabPanel() {
-		this(new AnimationWidget());
-	}
+  public RootTabPanel() {
+    this(new AnimationWidget());
+  }
 
-	public RootTabPanel(AnimatableDisplay display) {
-		this.animatableDisplay = display;
-		container = new RootFlexPanel();
-		initWidget(container);
-		aniContainer = new FlowPanel();
-		aniContainer.getElement().getStyle().setPosition(Position.RELATIVE);
-		aniContainer.add(animatableDisplay);
-		container.add(aniContainer, 1);
-		tabBar = new TabPanel.TabBar();
-		tabBar.getElement().getStyle().setProperty("WebkitTransformProperty", "opacity");
-		tabBar.getElement().getStyle().setProperty("MozTransformProperty", "opacity");
-		container.add(tabBar);
-	}
+  public RootTabPanel(AnimatableDisplay display) {
+    this.animatableDisplay = display;
+    container = new RootFlexPanel();
+    initWidget(container);
+    animatableDisplayContainer = new FlowPanel();
+    animatableDisplayContainer.getElement().getStyle().setPosition(Position.RELATIVE);
+    animatableDisplayContainer.add(animatableDisplay);
+    container.add(animatableDisplayContainer, 1);
+    tabBar = new TabPanel.TabBar();
+    tabBar.getElement().getStyle().setProperty("WebkitTransformProperty", "opacity");
+    tabBar.getElement().getStyle().setProperty("MozTransformProperty", "opacity");
+    container.add(tabBar);
+  }
 
-	public void showTabBar(boolean show) {
+  public void showTabBar(boolean show) {
 
-	  if (!CssUtil.hasTransistionEndEvent()) {
+    if (!CssUtil.hasTransistionEndEvent()) {
       if (show) {
         tabBar.setVisible(true);
       } else {
         tabBar.setVisible(false);
       }
-	    return;
+      return;
     }
 
-		if (show) {
-			CssUtil.setTransitionDuration(tabBar.getElement(), 200);
-			CssUtil.setOpacity(tabBar.getElement(), 0);
-			addDomHandler1 = tabBar.addDomHandler(new TransitionEndHandler() {
+    if (show) {
+      CssUtil.setTransitionDuration(tabBar.getElement(), 200);
+      CssUtil.setOpacity(tabBar.getElement(), 0);
+      showTabBarHandler = tabBar.addDomHandler(new TransitionEndHandler() {
 
-				@Override
-				public void onTransitionEnd(TransitionEndEvent event) {
-					if (addDomHandler1 != null) {
-						addDomHandler1.removeHandler();
-						tabBar.setVisible(true);
-						addDomHandler1 = null;
-					}
+        @Override
+        public void onTransitionEnd(TransitionEndEvent event) {
+          if (showTabBarHandler != null) {
+            showTabBarHandler.removeHandler();
+            tabBar.setVisible(true);
+            showTabBarHandler = null;
+          }
 
-				}
-			}, TransitionEndEvent.getType());
-		} else {
-			CssUtil.setTransitionDuration(tabBar.getElement(), 200);
-			CssUtil.setOpacity(tabBar.getElement(), 0);
-			addDomHandler = tabBar.addDomHandler(new TransitionEndHandler() {
-				@Override
-				public void onTransitionEnd(TransitionEndEvent event) {
-					if (addDomHandler != null) {
-						addDomHandler.removeHandler();
-						tabBar.setVisible(false);
-						addDomHandler = null;
-					}
-				}
-			}, TransitionEndEvent.getType());
-		}
-	}
+        }
+      }, TransitionEndEvent.getType());
+    } else {
+      CssUtil.setTransitionDuration(tabBar.getElement(), 200);
+      CssUtil.setOpacity(tabBar.getElement(), 0);
+      hideTabBarHandler = tabBar.addDomHandler(new TransitionEndHandler() {
+        @Override
+        public void onTransitionEnd(TransitionEndEvent event) {
+          if (hideTabBarHandler != null) {
+            hideTabBarHandler.removeHandler();
+            tabBar.setVisible(false);
+            hideTabBarHandler = null;
+          }
+        }
+      }, TransitionEndEvent.getType());
+    }
+  }
 
-	public AnimatableDisplay getAnimatableDisplay() {
-		return animatableDisplay;
-	}
+  public AnimatableDisplay getAnimatableDisplay() {
+    return animatableDisplay;
+  }
 
-	public void setSelectedChild(int index) {
-		tabBar.setSelectedButton(index, true);
-	}
+  public void setSelectedChild(int index) {
+    tabBar.setSelectedButton(index, true);
+  }
 
-	public void add(TabBarButtonBase button) {
-		tabBar.add(button);
-	}
+  public void add(TabBarButtonBase button) {
+    tabBar.add(button);
+  }
 
-	public void remove(int index) {
-		tabBar.remove(index);
-	}
+  public void remove(int index) {
+    tabBar.remove(index);
+  }
 
-	public void remove(TabBarButtonBase w) {
-		int childIndex = tabBar.getIndexForWidget(w);
-		tabBar.remove(childIndex);
-	}
+  public void remove(TabBarButtonBase w) {
+    int childIndex = tabBar.getIndexForWidget(w);
+    tabBar.remove(childIndex);
+  }
 
-	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(SelectionHandler<Integer> handler) {
-		return tabBar.addSelectionHandler(handler);
-	}
+  @Override
+  public com.google.gwt.event.shared.HandlerRegistration addSelectionHandler(
+      SelectionHandler<Integer> handler) {
+    return tabBar.addSelectionHandler(handler);
+  }
 }
