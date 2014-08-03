@@ -188,7 +188,6 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
   protected final Cell<T> cell;
 
-  private boolean group = true;
   protected Timer timer;
 
   @UiField
@@ -248,10 +247,6 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
         clazz = this.appearance.css().canbeSelected() + " ";
       }
 
-      if (group) {
-        clazz += this.appearance.css().group() + " ";
-      }
-
       if (i == 0) {
         clazz += this.appearance.css().first() + " ";
       }
@@ -292,24 +287,6 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
     } else {
       li.removeClassName(this.appearance.css().selected());
     }
-  }
-
-  /**
-   * set this widget a group (by default rendered with an arrow)
-   *
-   * @param group
-   */
-  public void setGroup(boolean group) {
-    this.group = group;
-  }
-
-  /**
-   * set this widget a group (by default rendered with an arrow)
-   *
-   * @return group
-   */
-  public boolean isGroup() {
-    return group;
   }
 
   protected void fixBug(final String html) {

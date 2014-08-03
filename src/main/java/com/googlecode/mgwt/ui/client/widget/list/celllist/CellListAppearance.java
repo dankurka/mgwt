@@ -13,9 +13,6 @@ public interface CellListAppearance {
     @ClassName("mgwt-List")
     public String listCss();
 
-    @ClassName("mgwt-List-group")
-    public String group();
-
     @ClassName("mgwt-List-selected")
     public String selected();
 
