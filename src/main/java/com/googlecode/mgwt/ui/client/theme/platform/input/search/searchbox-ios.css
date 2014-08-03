@@ -26,10 +26,7 @@
 .mgwt-SearchBox-round {
   height: 30px;
   border: none;
-  border-bottom-left-radius: 4px 4px;
-  border-bottom-right-radius: 4px 4px;
-  border-top-left-radius: 4px 4px;
-  border-top-right-radius: 4px 4px;
+  border-radius: 4px;
   background-color: white;
 }
 

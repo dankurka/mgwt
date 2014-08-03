@@ -31,7 +31,7 @@ public class MSearchBoxDefaultXHighDPIAppearance extends MSearchBoxAbstractAppea
     MSearchBoxCss css();
 
     @Source("search_xhdpi.png")
-    ImageResource searchSearchImage();
+    ImageResource searchImage();
 
     @Source("clear_xhdpi.png")
     ImageResource searchClearImage();

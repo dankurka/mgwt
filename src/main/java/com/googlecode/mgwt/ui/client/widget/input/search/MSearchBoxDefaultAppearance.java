@@ -31,7 +31,7 @@ public class MSearchBoxDefaultAppearance extends MSearchBoxAbstractAppearance {
     MSearchBoxCss css();
 
     @Source("search_mdpi.png")
-    ImageResource searchSearchImage();
+    ImageResource searchImage();
 
     @Source("clear_mdpi.png")
     ImageResource searchClearImage();

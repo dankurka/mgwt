@@ -30,7 +30,7 @@ public class MSearchBoxIOSHighDPIAppearance extends MSearchBoxAbstractAppearance
     MSearchBoxCss css();
 
     @Source("com/googlecode/mgwt/ui/client/widget/input/search/search_hdpi.png")
-    ImageResource searchSearchImage();
+    ImageResource searchImage();
 
     @Source("com/googlecode/mgwt/ui/client/widget/input/search/clear_hdpi.png")
     ImageResource searchClearImage();

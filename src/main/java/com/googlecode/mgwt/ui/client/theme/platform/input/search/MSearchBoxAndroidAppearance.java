@@ -32,7 +32,7 @@ public class MSearchBoxAndroidAppearance extends MSearchBoxAbstractAppearance {
     MSearchBoxCss css();
 
     @Source("com/googlecode/mgwt/ui/client/widget/input/search/search_mdpi.png")
-    ImageResource searchSearchImage();
+    ImageResource searchImage();
 
     @Source("com/googlecode/mgwt/ui/client/widget/input/search/clear_mdpi.png")
     ImageResource searchClearImage();
