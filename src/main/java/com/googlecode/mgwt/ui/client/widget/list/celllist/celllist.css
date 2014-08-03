@@ -1,6 +1,6 @@
 @url arrowImage listArrow;
 @if mgwt.css pretty {
-  @external mgwt-List, mgwt-List-selected, mgwt-List-group;
+  @external mgwt-List, mgwt-List-selected;
   @external mgwt-List-first, mgwt-List-last, mgwt-List-Header;
   @external mgwt-List-round, mgwt-FormList-Element;
   @external mgwt-FormList-Element-label, mgwt-FormList-Element-container;
@@ -37,6 +37,12 @@
   border-top: 1px solid #d6dcdb;
 }
 
+.mgwt-List-canbeSelected {
+  background-image: arrowImage;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+}
+
 .mgwt-List-canbeSelected.mgwt-List-selected {
   font-weight: bold;
   color: white;
@@ -46,22 +52,10 @@
 
 .mgwt-List-canbeSelected.mgwt-List-selected {
   background-color: #288ede;
-}
-
-.mgwt-List-group {
-  background-image: arrowImage;
-  background-repeat: no-repeat;
-  background-position: 100% 50%;
-}
-
-.mgwt-List-group.mgwt-List-selected {
   font-weight: bold;
   color: white;
   background-repeat: no-repeat;
   background-position: 100% 50%;
-}
-
-.mgwt-List-group.mgwt-List-selected {
   background-color: #288ede;
 }
 

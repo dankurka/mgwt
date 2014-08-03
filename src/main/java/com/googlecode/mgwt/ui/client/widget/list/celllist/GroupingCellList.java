@@ -138,8 +138,6 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
     this.groupAppearance = groupAppearance;
     this.header = header;
     headerTemplate = this.groupAppearance.getHeaderTemplate();
-
-    setGroup(false);
   }
 
   /**
@@ -179,10 +177,6 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
         String clazz = "";
         if (cell.canBeSelected(model)) {
           clazz = this.groupAppearance.css().canbeSelected() + " ";
-        }
-
-        if (isGroup()) {
-          clazz = this.groupAppearance.css().group() + " ";
         }
 
         cell.render(cellBuilder, model);
