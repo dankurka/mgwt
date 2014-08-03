@@ -141,6 +141,7 @@
               <timeOut>300</timeOut>
               <testTimeOut>300</testTimeOut>
               <testBeginTimeout>5</testBeginTimeout>
+              <testFailureIgnore>false</testFailureIgnore>
             </configuration>
           </execution>
         </executions>
