@@ -48,14 +48,6 @@
   color: white;
   background-repeat: no-repeat;
   background-position: 100% 50%;
-}
-
-.mgwt-List-canbeSelected.mgwt-List-selected {
-  background-color: #288ede;
-  font-weight: bold;
-  color: white;
-  background-repeat: no-repeat;
-  background-position: 100% 50%;
   background-color: #288ede;
 }
 
