@@ -159,4 +159,9 @@ public class TapRecognizerTest {
     tapRecognizer.onTouchEnd(mock(TouchEndEvent.class));
     verifyNoMoreInteractions(hasHandlers);
   }
+
+  @Test
+  public void testFail() {
+    Assert.fail("fail the jenkins build");
+  }
 }
