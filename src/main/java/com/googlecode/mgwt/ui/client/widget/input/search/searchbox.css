@@ -87,16 +87,19 @@
 
 @if user.agent safari {
   .mgwt-SearchBox-icon {
+    -webkit-mask-image: searchImage;
+    -webkit-mask-repeat: no-repeat;
+  }
+}
+
+.mgwt-SearchBox-icon {
     position: relative;
     top: 7px;
     left: 8px;
     height: 16px;
     weight: 16px;
-    -webkit-mask-image: searchImage;
-    -webkit-mask-repeat: no-repeat;
     background-color: #78787E;
   }
-}
 
 @if mgwt.density high {
   .mgwt-SearchBox-icon {
@@ -112,16 +115,19 @@
 
 @if user.agent safari {
   .mgwt-SearchBox-clear {
-    position: absolute;
-    top: -2px;
-    right: 0px;
-    height: 30px;
-    width: 30px;
     -webkit-mask-image: clearImage;
     -webkit-mask-position: center center;
     -webkit-mask-repeat: no-repeat;
-    background-color: #78787E;
   }	
+}
+
+.mgwt-SearchBox-clear {
+  position: absolute;
+  top: -2px;
+  right: 0px;
+  height: 30px;
+  width: 30px;
+  background-color: #78787E;
 }
 
 @if mgwt.density high {
