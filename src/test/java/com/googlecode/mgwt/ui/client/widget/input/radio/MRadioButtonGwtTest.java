@@ -95,4 +95,8 @@ public class MRadioButtonGwtTest extends GWTTestCase {
       }
     }.schedule(delayInMs);
   }
+
+  public void testFail() {
+    fail("jenkins should fail on this");
+  }
 }
