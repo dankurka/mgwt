@@ -138,6 +138,9 @@
               <productionMode>true</productionMode>
               <sourceLevel>1.7</sourceLevel>
               <mode>htmlunit</mode>
+              <timeOut>300</timeOut>
+              <testTimeOut>300</testTimeOut>
+              <testBeginTimeout>5</testBeginTimeout>
             </configuration>
           </execution>
         </executions>
