@@ -22,4 +22,14 @@ under the License.
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.button.ButtonAppearance" />
     <when-property-is name="mgwt.os" value="android" />
   </replace-with>
+
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.button.ImageButtonIOSAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.button.ImageButtonAppearance" />
+    <when-property-is name="mgwt.os" value="ios" />
+  </replace-with>
+
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.button.ImageButtonAndroidAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.button.ImageButtonAppearance" />
+    <when-property-is name="mgwt.os" value="android" />
+  </replace-with>
 </module>
