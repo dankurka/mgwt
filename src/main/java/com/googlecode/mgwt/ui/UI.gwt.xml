@@ -17,6 +17,7 @@ under * the License.
   <inherits name='com.google.gwt.user.User' />
   <inherits name='com.googlecode.mgwt.dom.DOM' />
 
+  <inherits name="com.googlecode.mgwt.image.Image" />
   <inherits name="com.googlecode.mgwt.ui.client.resource.MainResource" />
   <inherits name='com.googlecode.mgwt.ui.client.widget.animation.Animation' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.button.Button' />

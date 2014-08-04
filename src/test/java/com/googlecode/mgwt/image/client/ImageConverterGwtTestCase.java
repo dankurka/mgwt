@@ -41,7 +41,7 @@ public class ImageConverterGwtTestCase extends GWTTestCase {
   public void testConvert_withKnownImage() {
     ImageConverter imageConverter = new ImageConverter();
     ImageResource convertedResource = imageConverter.convert(
-        ImageConverterTestBundle.INSTANCE.knownImage(), "#F10000");
+        ImageConverterTestBundle.INSTANCE.knownImage(), "#0000F1");
 
     /*
      * Dirty hack to test, should be improved.
