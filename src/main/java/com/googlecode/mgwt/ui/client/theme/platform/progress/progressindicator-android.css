@@ -1,4 +1,4 @@
-@url spinner spinnerImage;
-.mgwt-ProgressIndicator {
-	background-image: spinner;
+.mgwt-ProgressIndicator > span {
+  background-color: #62b3d4;
+  border: none;
 }
