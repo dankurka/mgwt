@@ -13,7 +13,12 @@ under the License.
 -->
 
 <module>
-  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.panel.PanelDefaultAppearance">
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.panel.PanelIOSAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.panel.PanelAppearance" />
+    <when-property-is name="mgwt.os" value="ios" />
+  </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.panel.PanelAndroidAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.panel.PanelAppearance" />
+    <when-property-is name="mgwt.os" value="android" />
   </replace-with>
 </module>
