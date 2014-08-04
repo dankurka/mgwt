@@ -13,22 +13,13 @@ under the License.
 -->
 
 <module>
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarIOSAppearance">
-  <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAppearance" />
-    <any>
-      <when-property-is name="mgwt.os" value="iphone" />
-      <when-property-is name="mgwt.os" value="ipad" />
-      <when-property-is name="mgwt.os" value="retina" />
-      <when-property-is name="mgwt.os" value="ipad_retina" />
-      <when-property-is name="mgwt.os" value="desktop" />
-    </any>
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.tabbar.TabBarIOSAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAppearance" />
+    <when-property-is name="mgwt.os" value="ios" />
   </replace-with>
 
-  <replace-with class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAndroidAppearance">
+  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.tabbar.TabBarAndroidAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.tabbar.TabBarAppearance" />
-      <any>
-        <when-property-is name="mgwt.os" value="android" />
-        <when-property-is name="mgwt.os" value="android_tablet" />
-      </any>
+      <when-property-is name="mgwt.os" value="android" />
   </replace-with>
 </module>
