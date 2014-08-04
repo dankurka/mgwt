@@ -124,32 +124,24 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 			event.preventDefault();
 			Touch touch = event.getTouches().get(0);
 			now_x = touch.getClientX();
-			System.out.println("move: " + now_x);
 			if (!moved) {
 				if (Math.abs(now_x - x_start) < appearance.css().DRAG_DEADZONE()) {
-				  System.out.println("dead");
 					return;
 				}
 			}
-			System.out.println("go");
 			moved = true;
 
 			int translate_x = now_x - x_start;
 
-			System.out.println("goto: " + translate_x);
-
 			if (translate_x < x_min) {
-			  System.out.println("smaller min");
 				return;
 			}
 
 			if (translate_x > x_max) {
-			  System.out.println("bigger max");
 				return;
 			}
 
 			translate(translate_x + offset);
-
 		}
 
 		@Override
@@ -165,7 +157,6 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 			Touch touch = event.getTouches().get(0);
 			x_start = touch.getClientX();
-			System.out.println("start: " + x_start);
 			moved = false;
 			if (value) {
 				x_min = appearance.css().CONTAINER_MIN_ON();
