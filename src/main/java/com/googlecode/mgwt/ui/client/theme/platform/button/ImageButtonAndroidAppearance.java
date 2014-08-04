@@ -23,5 +23,4 @@ public class ImageButtonAndroidAppearance extends ImageButtonAbstractAppearance 
   public ImageButtonCss css() {
     return Resources.INSTANCE.css();
   }
-
 }
