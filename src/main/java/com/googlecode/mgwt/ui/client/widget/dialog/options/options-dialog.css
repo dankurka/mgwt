@@ -1,3 +1,7 @@
+@if mgwt.css pretty {
+  @external mgwt-OptionsDialog;
+}
+
 .mgwt-OptionsDialog {
   position: absolute;
   bottom: 0px;
