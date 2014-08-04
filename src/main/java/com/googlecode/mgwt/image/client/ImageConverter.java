@@ -112,9 +112,9 @@ public class ImageConverter {
 
     int hexColor = Integer.parseInt(color.substring(1), 16);
 
-    int red = hexColor & 0xFF;
+    int red = hexColor >> 16 & 0xFF;
     int green = hexColor >> 8 & 0xFF;
-    int blue = hexColor >> 16 & 0xFF;
+    int blue = hexColor & 0xFF;
 
     int height = resource.getHeight();
     int width = resource.getWidth();

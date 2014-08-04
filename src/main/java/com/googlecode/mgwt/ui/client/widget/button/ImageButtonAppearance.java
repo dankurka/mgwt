@@ -42,6 +42,10 @@ public interface ImageButtonAppearance extends ButtonBaseAppearance {
 
     @ClassName("mgwt-ImageButton-small")
     String small();
+
+    String ICON_BACKGROUND_COLOR();
+
+    String ICON_BACKGROUND_COLOR_HIGHLIGHT();
   }
 
   ImageButtonCss css();
