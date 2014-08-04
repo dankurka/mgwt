@@ -1,52 +1,6 @@
-.mgwt-TabBar-Button {
-	margin: 2px;
-}
-
-@if user.agent safari {
-	.mgwt-TabBar-Button {
-		\-webkit-border-radius: 3px;
-	}
-}
-
-@if user.agent gecko1_8 {
-	.mgwt-TabBar-Button {
-		\-moz-border-radius: 3px;
-		border-radius: 3px;
-	}
-}
-
-.mgwt-TabBar-Button-selected {
-	background-color: rgba(255, 255, 255, 0.15);
-}
+@def BUTTON_BACKGROUND_COLOR #7E7F7E;
+@def BUTTON_BACKGROUND_HIGHLIGHT_COLOR #0D66FB;
 
 .mgwt-TabBar-Button-selected .mgwt-TabBar-Button-text {
-	color: white;
+  color: BUTTON_BACKGROUND_HIGHLIGHT_COLOR;
 }
-
-.mgwt-TabBar-Button-text {
-	font-size: 9px;
-	color: #999995;
-	text-align: center;
-	z-index: 1;
-	margin-top: -5px;
-}
-
-.mgwt-TabBar-Button-icon {
-	margin-left: auto;
-	margin-right: auto;
-	z-index: 0;
-}
-
-@if user.agent safari {
-	.mgwt-TabBar-Button-icon {
-		background-image: literal('-webkit-gradient(linear, 30% 0%, 60% 70%, from(#ccc), to(#888))');
-	}
-}
-
-@if user.agent safari {
-	.mgwt-TabBar-Button-selected .mgwt-TabBar-Button-icon {
-		background-image: literal('-webkit-gradient(linear, 30% 0%, 60% 70%,  from(#dee8f1), to(#3ec6f9), color-stop(0.6,#7ab3ed),color-stop(0.7,#2f92e6))');
-	}
-}
-
-/*TODO icons in ff*/

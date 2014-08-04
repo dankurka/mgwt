@@ -1,16 +1,5 @@
 .mgwt-TabBar {
-	height: 48px;
-	border-top: 1px solid black;
-}
-
-@if user.agent safari {
-	.mgwt-TabBar {
-		background-image: literal('-webkit-gradient(linear, left top, left bottom, from(rgb(46, 46, 46)), color-stop(50%,rgb(22, 22, 22)), color-stop(51%, rgb(0,0,0)), to(rgb(0,0,0)))');
-	}
-}
-
-@if user.agent gecko1_8 {
-	.mgwt-TabBar {
-		background-image: literal('-moz-linear-gradient(top, rgb(46, 46, 46), rgb(22, 22, 22) 50%, rgb(0,0,0) 51%, rgb(0,0,0))');
-	}
+  height: 48px;
+  background: #F5F5F5;
+  border-top: 1px solid #B4B4B7;
 }

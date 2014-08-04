@@ -38,6 +38,10 @@ public interface TabBarAppearance extends ButtonBaseAppearance {
 
     @ClassName("mgwt-TabBar-Button-text")
     public String text();
+
+    public String BUTTON_BACKGROUND_COLOR();
+
+    public String BUTTON_BACKGROUND_HIGHLIGHT_COLOR();
   }
 
   @Override

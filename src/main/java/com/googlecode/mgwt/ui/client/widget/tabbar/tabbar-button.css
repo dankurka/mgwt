@@ -3,6 +3,10 @@
 	@external mgwt-TabBar-Button-icon, mgwt-TabBar-Button-text;
 }
 
+@def BUTTON_BACKGROUND_COLOR #454545;
+@def BUTTON_BACKGROUND_HIGHLIGHT_COLOR #288ede;
+
+
 .mgwt-TabBar-Button-active {
 }
 
@@ -31,11 +35,11 @@
 }
 
 .mgwt-TabBar-Button-selected .mgwt-TabBar-Button-text {
-  color: #454545;
+  color: BUTTON_BACKGROUND_COLOR;
 }
 
 .mgwt-TabBar-Button-selected .mgwt-TabBar-Button-icon {
-  background-color: #288ede;
+  background-color: BUTTON_BACKGROUND_HIGHLIGHT_COLOR;
 }
 
 .mgwt-TabBar-Button-text {
@@ -51,5 +55,5 @@
   margin-left: auto;
   margin-right: auto;
   z-index: 0;
-  background-color: #454545;
+  background-color: BUTTON_BACKGROUND_COLOR;
 }

@@ -161,4 +161,13 @@ under * the License.
         <when-property-is name="mgwt.formfactor" value="tablet" />
       </any>
   </replace-with>
+
+  <!-- rebind IconHandler implementation -->
+  <replace-with class="com.googlecode.mgwt.ui.client.util.IconHandler.IconHandlerEmulatedImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.IconHandler.IconHandlerImpl" />
+  </replace-with>
+  <replace-with class="com.googlecode.mgwt.ui.client.util.IconHandler.IconHandlerNativeImpl">
+    <when-type-is class="com.googlecode.mgwt.ui.client.util.IconHandler.IconHandlerImpl" />
+    <when-property-is name="user.agent" value="safari" />
+  </replace-with>
 </module>

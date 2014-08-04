@@ -15,12 +15,12 @@
  */
 package com.googlecode.mgwt.ui.client.widget.tabbar;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.uibinder.client.UiFactory;
 import com.google.gwt.uibinder.client.UiField;
+
+import com.googlecode.mgwt.ui.client.util.IconHandler;
 import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
 
 /**
@@ -30,84 +30,6 @@ import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
  */
 
 public class TabBarButtonBase extends ButtonBase {
-
-  public interface TabBarButtonStylerHandler {
-    /**
-     * set an image as background
-     *
-     * @param element the element to set the image on
-     * @param imageResource the image to use
-     */
-    public void applyImage(Element element, ImageResource imageResource);
-  }
-
-  private static class TabBarButtonStylerHandlerWebkitBase implements TabBarButtonStylerHandler {
-
-    private double factor;
-
-    public TabBarButtonStylerHandlerWebkitBase(double factor) {
-      this.factor = factor;
-    }
-
-    @Override
-    public void applyImage(Element element, ImageResource imageResource) {
-      if (imageResource == null)
-        return;
-
-      int height = (int) (imageResource.getHeight() / factor);
-      int width = (int) (imageResource.getWidth() / factor);
-
-      element.getStyle().setProperty("WebkitMaskBoxImage",
-          "url(" + imageResource.getSafeUri().asString() + ")");
-      element.getStyle().setWidth(width, Unit.PX);
-      element.getStyle().setHeight(height, Unit.PX);
-      element.getStyle().setProperty("WebkitMaskSize", width + "px, " + height + "px");
-    }
-  }
-
-  //used by deferred binding...
-  @SuppressWarnings("unused")
-  private static class TabBarButtonStylerHandlerWebkit extends
-      TabBarButtonStylerHandlerWebkitBase {
-    public TabBarButtonStylerHandlerWebkit() {
-      super(1);
-    }
-  }
-
-  //used by deferred binding...
-  @SuppressWarnings("unused")
-  private static class TabBarButtonStylerHandlerWebkitHighDPI extends
-      TabBarButtonStylerHandlerWebkitBase {
-    public TabBarButtonStylerHandlerWebkitHighDPI() {
-      super(1.5d);
-    }
-  }
-
-  //used by deferred binding...
-  @SuppressWarnings("unused")
-  private static class TabBarButtonStylerHandlerWebkitXHighDPI extends
-      TabBarButtonStylerHandlerWebkitBase {
-    public TabBarButtonStylerHandlerWebkitXHighDPI() {
-      super(2);
-    }
-  }
-
-  @SuppressWarnings("unused")
-  private static class TabBarButtonStylerHandlerBackground implements TabBarButtonStylerHandler {
-
-    @Override
-    public void applyImage(Element element, ImageResource imageResource) {
-      if (imageResource == null)
-        return;
-      element.getStyle().setBackgroundImage("url(" + imageResource.getSafeUri().asString() + ")");
-      element.getStyle().setHeight(imageResource.getHeight(), Unit.PX);
-      element.getStyle().setWidth(imageResource.getWidth(), Unit.PX);
-    }
-  }
-
-  protected static final TabBarButtonStylerHandler tabBarButtonStylerHandler = GWT
-      .create(TabBarButtonStylerHandler.class);
-
   @UiField
   protected Element icon;
   @UiField
@@ -125,19 +47,19 @@ public class TabBarButtonBase extends ButtonBase {
     this.selectedResource = selectedResource;
     setElement(this.appearance.uiBinder().createAndBindUi(this));
 
-    tabBarButtonStylerHandler.applyImage(icon, imageResource);
+    IconHandler.setIcons(icon, imageResource, appearance.css().BUTTON_BACKGROUND_COLOR());
   }
 
   public void setSelected(boolean selected) {
     if (selected) {
       addStyleName(this.appearance.css().selected());
       if (selectedResource != null) {
-        tabBarButtonStylerHandler.applyImage(icon, selectedResource);
+        IconHandler.setIcons(icon, selectedResource, appearance.css().BUTTON_BACKGROUND_COLOR());
       }
     } else {
       removeStyleName(this.appearance.css().selected());
       if (selectedResource != null) {
-        tabBarButtonStylerHandler.applyImage(icon, imageResource);
+        IconHandler.setIcons(icon, imageResource, appearance.css().BUTTON_BACKGROUND_COLOR());
       }
     }
   }
