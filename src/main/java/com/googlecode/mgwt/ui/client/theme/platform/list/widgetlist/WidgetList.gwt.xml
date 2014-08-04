@@ -15,7 +15,7 @@ under the License.
 <module>
   <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.list.widgetlist.WidgetListIOSAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetListAppearance" />
-    <when-property-is name="mgwt.os" value="ios" />
+	<when-property-is name="mgwt.os" value="ios" />
   </replace-with>
 
   <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.list.widgetlist.WidgetListAndroidAppearance">

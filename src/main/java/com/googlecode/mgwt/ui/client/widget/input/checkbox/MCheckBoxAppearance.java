@@ -32,6 +32,19 @@ public interface MCheckBoxAppearance {
     @ClassName("mgwt-CheckBox-notchecked")
     public String notChecked();
 
+    public int DRAG_DEADZONE();
+
+    public int CONTAINER_MIN_ON();
+
+    public int CONTAINER_MAX_ON();
+
+    public int CONTAINER_OFFSET_ON();
+
+    public int CONTAINER_MIN_OFF();
+
+    public int CONTAINER_MAX_OFF();
+
+    public int CONTAINER_OFFSET_OFF();
   }
 
   CheckBoxCss css();

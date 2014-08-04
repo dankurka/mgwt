@@ -4,6 +4,13 @@
   @external mgwt-CheckBox-notchecked, mgwt-CheckBox-checked;
 }
 
+@def CONTAINER_MIN_ON -54;
+@def CONTAINER_MAX_ON 0;
+@def CONTAINER_OFFSET_ON 0;
+@def CONTAINER_MIN_OFF 0;
+@def CONTAINER_MAX_OFF 54;
+@def CONTAINER_OFFSET_OFF -54;
+
 .mgwt-CheckBox {
   width: 94px;
   overflow: hidden;
@@ -35,7 +42,6 @@
     -moz-box-sizing: border-box;
   }
 }
-
 
 .mgwt-CheckBox-middle {
   height: 25px;
@@ -118,7 +124,6 @@
   border-radius-topright: 6px;
   border-radius-bottomright: 6px;
 }
-
 
 @if user.agent safari {
   .mgwt-CheckBox-off {
