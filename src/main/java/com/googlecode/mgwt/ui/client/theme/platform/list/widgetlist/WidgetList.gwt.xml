@@ -15,27 +15,11 @@ under the License.
 <module>
   <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.list.widgetlist.WidgetListIOSAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetListAppearance" />
-      <any>
-	    <when-property-is name="mgwt.os" value="ipad" />
-        <when-property-is name="mgwt.os" value="ipad_retina" />
-        <when-property-is name="mgwt.os" value="desktop" />
-        <when-property-is name="mgwt.os" value="iphone" />
-        <when-property-is name="mgwt.os" value="retina" />
-     </any>
+    <when-property-is name="mgwt.os" value="ios" />
   </replace-with>
 
   <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.list.widgetlist.WidgetListAndroidAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetListAppearance" />
-      <any>
-        <when-property-is name="mgwt.os" value="android" />
-        <when-property-is name="mgwt.os" value="android_tablet" />
-     </any>
-  </replace-with>
-
-  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.list.widgetlist.WidgetListBlackberryAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetListAppearance" />
-	  <any>
-        <when-property-is name="mgwt.os" value="blackberry" />
-      </any>
+    <when-property-is name="mgwt.os" value="android" />
   </replace-with>
 </module>
