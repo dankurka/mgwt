@@ -1,4 +1,8 @@
-.button {
+@if mgwt.css pretty {
+  @external mgwt-DialogButton, mgwt-DialogButton-ok;
+  @external mgwt-DialogButton-cancel, mgwt-DialogButton-active;
+}
+.mgwt-DialogButton {
   -webkit-flex: 1;
   flex: 1;
   padding: 9px 13px;
@@ -9,18 +13,17 @@
   font-size: 17px;
   text-align: center;
   background-color: #e5e9e8;
-  box-shadow: inset 0 1px #fff;
   border: 1px solid #9daca9;
   border-radius: 6px;
 }
 
 @if mgwt.formfactor desktop {
-  .button {
+  .mgwt-DialogButton  {
     cursor: pointer;
   }
 }
 
-.okbutton,.cancelbutton {
+.mgwt-DialogButton-ok, .mgwt-DialogButton-cancel {
   margin-top: 10px;
   margin-right: 5px;
   padding-right: 5px;
@@ -35,9 +38,8 @@
   box-shadow: none;
 }
 
-.active {
+.mgwt-DialogButton-active {
   color: #eff1f1;
   border: 1px solid #0036ff;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.36), 0 0 0 2px #6fb5f1;
   outline: 0;
 }

@@ -10,15 +10,18 @@ import com.googlecode.mgwt.ui.client.widget.dialog.overlay.DialogOverlayAppearan
 
 public interface DialogPanelAppearance extends ButtonBaseAppearance, DialogOverlayAppearance {
   interface DialogButtonCss extends ButtonBaseAppearance.ButtonBaseCss {
+    @ClassName("mgwt-DialogButton-cancel")
     public String okbutton();
 
+    @ClassName("mgwt-DialogButton-ok")
     public String cancelbutton();
 
     @Override
+    @ClassName("mgwt-DialogButton-active")
     public String active();
 
     @Override
-    @ClassName("button")
+    @ClassName("mgwt-DialogButton")
     public String button();
   }
 

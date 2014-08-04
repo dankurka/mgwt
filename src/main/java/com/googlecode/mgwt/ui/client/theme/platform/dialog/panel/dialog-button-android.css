@@ -1,0 +1,10 @@
+.mgwt-DialogButton {
+  background-color: transparent;
+  color: #52a3c4;
+  border: 1px solid #52a3c4;
+}
+
+.mgwt-DialogButton-active {
+  background-color: #52a3c4;
+  color: white;
+}
