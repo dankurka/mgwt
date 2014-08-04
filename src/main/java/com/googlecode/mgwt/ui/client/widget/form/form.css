@@ -1,7 +1,8 @@
 @if mgwt.css pretty {
-	@external mgwt-Form, mgwt-Form-Entry-first, mgwt-Form-Entry-last;
-	@external mgwt-Form-round,mgwt-Form-Entry, mgwt-Form-Entry-label;
-	@external mgwt-Form-Entry-container, mgwt-Form-Entry-invalid;
+  @external mgwt-Form, mgwt-Form-Entry-first, mgwt-Form-Entry-last;
+  @external mgwt-Form-round,mgwt-Form-Entry, mgwt-Form-Entry-label;
+  @external mgwt-Form-Entry-container, mgwt-Form-Entry-invalid;
+  @external mgwt-Form-Header;
 }
 
 .mgwt-Form {
@@ -127,7 +128,6 @@
   font-weight: bold;
   color: #454545;
   background-color: #d2d6d6;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
   border-top: 1px solid rgba(255,255,255,0.5);
   border-bottom: 1px solid rgba(255,255,255,0.25);
   padding: 4px 10px;
