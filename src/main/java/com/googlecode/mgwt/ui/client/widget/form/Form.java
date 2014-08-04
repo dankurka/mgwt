@@ -134,6 +134,6 @@ public class Form extends Composite implements HasWidgets {
 
   @UiFactory
   protected FormAppearance getAppearance() {
-	return appearance;
+	  return appearance;
   }
 }

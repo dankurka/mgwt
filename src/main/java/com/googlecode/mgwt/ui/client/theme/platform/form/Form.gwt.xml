@@ -15,27 +15,11 @@ under the License.
 <module>
   <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.form.FormIOSAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.form.FormAppearance" />
-      <any>
-	    <when-property-is name="mgwt.os" value="ipad" />
-        <when-property-is name="mgwt.os" value="ipad_retina" />
-        <when-property-is name="mgwt.os" value="desktop" />
-        <when-property-is name="mgwt.os" value="iphone" />
-        <when-property-is name="mgwt.os" value="retina" />
-     </any>
+	<when-property-is name="mgwt.os" value="ios" />
   </replace-with>
 
   <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.form.FormAndroidAppearance">
     <when-type-is class="com.googlecode.mgwt.ui.client.widget.form.FormAppearance" />
-      <any>
-        <when-property-is name="mgwt.os" value="android" />
-        <when-property-is name="mgwt.os" value="android_tablet" />
-     </any>
-  </replace-with>
-
-  <replace-with class="com.googlecode.mgwt.ui.client.theme.platform.form.FormBlackberryAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.widget.form.FormAppearance" />
-	  <any>
-        <when-property-is name="mgwt.os" value="blackberry" />
-      </any>
+      <when-property-is name="mgwt.os" value="android" />
   </replace-with>
 </module>
