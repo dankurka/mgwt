@@ -149,10 +149,10 @@ public class ImageConverter {
   }
 
   protected native ImageElement loadImage(String dataUrl, int width, int height) /*-{
-		var img = new Image();
-		img.width = width;
-		img.height = height;
-		img.src = dataUrl;
-		return img;
+    var img = new Image();
+    img.width = width;
+    img.height = height;
+    img.src = dataUrl;
+    return img;
   }-*/;
 }
