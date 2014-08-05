@@ -20,7 +20,7 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
-
+import com.google.gwt.user.client.Window;
 import com.googlecode.mgwt.ui.client.MGWT;
 
 /**
@@ -55,6 +55,6 @@ public class IOS71BodyBug {
   }-*/;
 
   private native static int windowInnerHeight() /*-{
-    return window.innerHeight
+    return $wnd.innerHeight;
   }-*/;
 }
