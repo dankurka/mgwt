@@ -1,6 +1,6 @@
 .mgwt-ProgressBar {
   background-color: inherit;
-  border: 2px solid rbga(82, 163, 196, 0);
+  border: none;
 }
 
 @if user.agent safari {

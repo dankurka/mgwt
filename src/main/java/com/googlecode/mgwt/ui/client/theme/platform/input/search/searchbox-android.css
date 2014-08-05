@@ -5,4 +5,10 @@
 
 .mgwt-SearchBox-round {
 	background-color: transparent;
+	border: none;
+}
+
+.mgwt-SearchBox-input {
+  background-color: transparent;
+  color: white;
 }
