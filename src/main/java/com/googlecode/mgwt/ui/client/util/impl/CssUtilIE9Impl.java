@@ -70,7 +70,7 @@ public class CssUtilIE9Impl implements CssUtilImpl {
 
 	@Override
 	public native int getTopPositionFromCssPosition(Element element) /*-{
-		return getComputedStyle(that.scroller, null).top
+		return getComputedStyle(element.scroller, null).top
 				.replace(/[^0-9-]/g, '') * 1;
   }-*/;
 
