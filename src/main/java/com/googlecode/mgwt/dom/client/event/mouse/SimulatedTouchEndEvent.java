@@ -31,14 +31,17 @@ public class SimulatedTouchEndEvent extends TouchEndEvent {
   private final int clientY;
   private final int pageX;
   private final int pageY;
+  private int touchId;
 
   /**
    * Construct a simulated TouchEndEvent from a {@link MouseUpEvent}
    *
    * @param mouseUpEvent the data for the simulated event;
+   * @param touchId
    * @param multiTouch
    */
-  public SimulatedTouchEndEvent(MouseUpEvent mouseUpEvent) {
+  public SimulatedTouchEndEvent(MouseUpEvent mouseUpEvent, int touchId) {
+    this.touchId = touchId;
     clientX = mouseUpEvent.getClientX();
     clientY = mouseUpEvent.getClientY();
     pageX = mouseUpEvent.getScreenX();
@@ -56,6 +59,7 @@ public class SimulatedTouchEndEvent extends TouchEndEvent {
     touch.setClientY(clientY);
     touch.setPageX(pageX);
     touch.setPageY(pageY);
+    touch.setId(touchId);
     array.push(touch);
     return array;
   }

@@ -26,13 +26,16 @@ public class TouchStartToMouseDownHandler implements MouseDownHandler {
 
   private final TouchStartHandler handler;
 
+  public static int lastTouchId = 0;
+
   public TouchStartToMouseDownHandler(TouchStartHandler handler) {
     this.handler = handler;
   }
 
   @Override
   public void onMouseDown(MouseDownEvent event) {
-      SimulatedTouchStartEvent simulatedTouchStartEvent = new SimulatedTouchStartEvent(event);
-      handler.onTouchStart(simulatedTouchStartEvent);
+    lastTouchId++;
+    SimulatedTouchStartEvent simulatedTouchStartEvent = new SimulatedTouchStartEvent(event, lastTouchId);
+    handler.onTouchStart(simulatedTouchStartEvent);
   }
 }
