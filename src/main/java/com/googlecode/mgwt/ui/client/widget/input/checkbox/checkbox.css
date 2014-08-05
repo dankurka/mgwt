@@ -4,6 +4,7 @@
   @external mgwt-CheckBox-notchecked, mgwt-CheckBox-checked;
 }
 
+@def DRAG_DEADZONE 8;
 @def CONTAINER_MIN_ON -54;
 @def CONTAINER_MAX_ON 0;
 @def CONTAINER_OFFSET_ON 0;

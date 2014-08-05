@@ -15,7 +15,7 @@ public class ProgressBarIOSAppearance extends ProgressBarAbstractAppearance {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"progressbar-base.css", "progressbar-ios.css"})
+    @Source({"com/googlecode/mgwt/ui/client/widget/progress/progressbar.css", "progressbar-ios.css"})
     ProgressBarCss css();
   }
 
