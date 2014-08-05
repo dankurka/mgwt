@@ -1421,7 +1421,7 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
         y = this.maxScrollY;
     }
 
-    scrollTo(x, y, time, issueEvent);
+    scrollTo(x, y, time, false, issueEvent);
   }
 
   public void disable() {
