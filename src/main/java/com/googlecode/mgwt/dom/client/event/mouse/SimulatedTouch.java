@@ -53,4 +53,8 @@ public class SimulatedTouch extends Touch {
   public final native void setScreenY(int screenY) /*-{
     this.screenY = screenY;
   }-*/;
+
+  public final native void setId(int touchId) /*-{
+    this.identifier = touchId
+  }-*/;
 }

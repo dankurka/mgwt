@@ -32,8 +32,10 @@ public class SimulatedTouchStartEvent extends TouchStartEvent {
   private final int clientY;
   private final int pageX;
   private final int pageY;
+  private int touchId;
 
-  public SimulatedTouchStartEvent(MouseDownEvent event) {
+  public SimulatedTouchStartEvent(MouseDownEvent event, int touchId) {
+    this.touchId = touchId;
     clientX = event.getClientX();
     clientY = event.getClientY();
     pageX = event.getScreenX();
@@ -50,6 +52,7 @@ public class SimulatedTouchStartEvent extends TouchStartEvent {
     touch.setClientY(clientY);
     touch.setPageX(pageX);
     touch.setPageY(pageY);
+    touch.setId(touchId);
     array.push(touch);
     return array;
   }
@@ -62,6 +65,7 @@ public class SimulatedTouchStartEvent extends TouchStartEvent {
     touch.setClientY(clientY);
     touch.setPageX(pageX);
     touch.setPageY(pageY);
+    touch.setId(touchId);
     array.push(touch);
     return array;
   }

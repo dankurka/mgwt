@@ -43,7 +43,7 @@ public class TouchMoveToMouseMoveHandler implements MouseMoveHandler, MouseDownH
 	public void onMouseMove(MouseMoveEvent event) {
 		if (ignoreEvent)
 			return;
-		touchMoveHandler.onTouchMove(new SimulatedTouchMoveEvent(event));
+		touchMoveHandler.onTouchMove(new SimulatedTouchMoveEvent(event, TouchStartToMouseDownHandler.lastTouchId));
 	}
 
 	@Override

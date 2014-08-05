@@ -31,8 +31,10 @@ public class SimulatedTouchMoveEvent extends TouchMoveEvent {
   private final int clientY;
   private final int pageX;
   private final int pageY;
+  private int touchId;
 
-  public SimulatedTouchMoveEvent(MouseMoveEvent event) {
+  public SimulatedTouchMoveEvent(MouseMoveEvent event, int touchId) {
+    this.touchId = touchId;
     clientX = event.getClientX();
     clientY = event.getClientY();
     pageX = event.getScreenX();
@@ -49,6 +51,7 @@ public class SimulatedTouchMoveEvent extends TouchMoveEvent {
     touch.setClientY(clientY);
     touch.setPageX(pageX);
     touch.setPageY(pageY);
+    touch.setId(touchId);
     array.push(touch);
     return array;
   }
@@ -61,6 +64,7 @@ public class SimulatedTouchMoveEvent extends TouchMoveEvent {
     touch.setClientY(clientY);
     touch.setPageX(pageX);
     touch.setPageY(pageY);
+    touch.setId(touchId);
     array.push(touch);
     return array;
   }

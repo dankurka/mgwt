@@ -31,7 +31,8 @@ public class TouchEndToMouseUpHandler implements MouseUpHandler {
 
   @Override
   public void onMouseUp(MouseUpEvent event) {
-    SimulatedTouchEndEvent simulatedTouchEndEvent = new SimulatedTouchEndEvent(event);
+    SimulatedTouchEndEvent simulatedTouchEndEvent =
+        new SimulatedTouchEndEvent(event, TouchStartToMouseDownHandler.lastTouchId);
     handler.onTouchEnd(simulatedTouchEndEvent);
   }
 }
