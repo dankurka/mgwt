@@ -28,10 +28,6 @@ under the License.
     return "ios";
     ]]></property-provider>
 
-  <set-property name="mgwt.density" value="xhigh" >
-    <when-property-is name="mgwt.os" value="ios" />
-  </set-property>
-    
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.main.MainResource" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.button.Button" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.buttonbar.ButtonBar" />
