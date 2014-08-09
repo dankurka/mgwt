@@ -11,12 +11,14 @@ public class ProgressBarAndroidAppearance extends ProgressBarAbstractAppearance 
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends ProgressBarCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/progress/progressbar.css", "progressbar-android.css"})
-    ProgressBarCss css();
+    Css css();
   }
 
   @Override

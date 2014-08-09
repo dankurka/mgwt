@@ -13,12 +13,14 @@ public class MCheckBoxIOSAppearance extends MCheckBoxAbstractAppearance {
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface IOSCheckBoxCss extends CheckBoxCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/input/checkbox/checkbox.css", "checkbox-ios.css"})
-    CheckBoxCss css();
+    IOSCheckBoxCss css();
   }
 
   @Override

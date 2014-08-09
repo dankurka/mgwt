@@ -11,6 +11,8 @@ public class MListBoxAndroidAppearance implements MListBoxAppearance {
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends MListBoxCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);

@@ -16,6 +16,7 @@ package com.googlecode.mgwt.ui.client.theme.platform.input.search;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.ImageResource;
+
 import com.googlecode.mgwt.ui.client.widget.input.search.MSearchBoxAbstractAppearance;
 
 public class MSearchBoxIOSHighDPIAppearance extends MSearchBoxAbstractAppearance {
@@ -24,10 +25,12 @@ public class MSearchBoxIOSHighDPIAppearance extends MSearchBoxAbstractAppearance
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends MSearchBoxCss {}
+
   interface Resources extends ClientBundle {
     Resources INSTANCE = GWT.create(Resources.class);
     @Source({"com/googlecode/mgwt/ui/client/widget/input/search/searchbox.css", "searchbox-ios.css"})
-    MSearchBoxCss css();
+    Css css();
 
     @Source("com/googlecode/mgwt/ui/client/widget/input/search/search_hdpi.png")
     ImageResource searchImage();

@@ -11,12 +11,14 @@ public class ProgressIndicatorAndroidAppearance extends ProgressIndicatorAbstrac
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends ProgressIndicatorCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/progress/progressindicator.css", "progressindicator-android.css"})
-    ProgressIndicatorCss css();
+    Css css();
   }
 
   @Override

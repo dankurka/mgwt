@@ -11,12 +11,14 @@ public class ImageButtonAndroidAppearance extends ImageButtonAbstractAppearance 
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends ImageButtonCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/button/imagebutton.css", "imagebutton-android.css"})
-    ImageButtonCss css();
+    Css css();
   }
 
   @Override

@@ -7,12 +7,14 @@ import com.googlecode.mgwt.ui.client.resource.MainResourceDefaultAppearance;
 
 public class MainResourceAppearancePlatform extends MainResourceDefaultAppearance {
 
+  interface Css extends MainCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/resource/main.css", "main.css"})
-    MainCss css();
+    Css css();
   }
 
   @Override

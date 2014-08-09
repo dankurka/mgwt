@@ -5,6 +5,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiTemplate;
+
 import com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicator;
 import com.googlecode.mgwt.ui.client.widget.progress.ProgressIndicatorAppearance;
 
@@ -21,6 +22,8 @@ public class ProgressIndicatorIOSAppearance implements
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends IOSProgressIndicatorCss {}
+
   interface IOSProgressIndicatorCss extends ProgressIndicatorCss {
     @ClassName("mgwt-ProgressSpinner")
     String progressIndicator();
@@ -31,7 +34,7 @@ public class ProgressIndicatorIOSAppearance implements
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({ "com/googlecode/mgwt/ui/client/widget/progress/progressspinner.css" })
-    IOSProgressIndicatorCss css();
+    Css css();
   }
 
   @Override

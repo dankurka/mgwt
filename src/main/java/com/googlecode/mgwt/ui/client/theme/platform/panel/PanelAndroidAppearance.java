@@ -11,12 +11,14 @@ public class PanelAndroidAppearance extends PanelAbstractAppearance {
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends PanelCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"panel-android.css"})
-    PanelCss css();
+    Css css();
   }
 
   @Override

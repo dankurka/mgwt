@@ -28,14 +28,18 @@ public class TabBarAndroidAppearance extends TabBarAbstractAppearance {
     Resources.INSTANCE.barCss().ensureInjected();
   }
 
+  interface CssBar extends TabBarCss {}
+
+  interface CssButton extends TabBarButtonCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/tabbar/tabbar.css", "tabbar-android.css"})
-    TabBarCss barCss();
+    CssBar barCss();
     @Source({"com/googlecode/mgwt/ui/client/widget/tabbar/tabbar-button.css", "tabbar-button-android.css"})
-    TabBarButtonCss css();
+    CssButton css();
   }
 
   @Override
