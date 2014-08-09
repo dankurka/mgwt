@@ -15,7 +15,7 @@ public class MListBoxIOSAppearance implements MListBoxAppearance {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"mlistbox-base.css", "mlistbox-ios.css"})
+    @Source({"com/googlecode/mgwt/ui/client/widget/input/listbox/mlistbox.css", "mlistbox-ios.css"})
     MListBoxCss css();
   }
 
