@@ -23,7 +23,7 @@ public class HeaderAndroidAppearance extends HeaderAbstractAppearance {
     @Source({
         "com/googlecode/mgwt/ui/client/widget/header/header-button.css",
         "header-button-android.css"})
-    HeaderButtonCss css();
+    CssButton css();
 
     @Source({"com/googlecode/mgwt/ui/client/widget/header/header.css", "header-android.css"})
     CssPanel cssPanel();
