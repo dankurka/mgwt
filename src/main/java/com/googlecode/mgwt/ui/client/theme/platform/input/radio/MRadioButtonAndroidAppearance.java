@@ -1,11 +1,11 @@
 /*
  * Copyright 2013 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -25,15 +25,17 @@ public class MRadioButtonAndroidAppearance extends MRadioButtonAbstractAppearanc
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends MRadioButtonCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"mradiobutton-base.css", "mradiobutton-android.css"})
-    MRadioButtonCss css();
+    @Source({"com/googlecode/mgwt/ui/client/widget/input/radio/mradiobutton.css", "mradiobutton-android.css"})
+    Css css();
 
     @Source("resources/check_android_checked.png")
-    DataResource android_check_checked();
+    DataResource inputCheckImage();
 
     @Source("resources/check_android_not_checked.png")
     DataResource android_check_not_checked();
