@@ -18,8 +18,12 @@ package com.googlecode.mgwt.ui.client.resource;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.StyleInjector;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.TextResource;
+import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
+import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
+import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
 
 /**
@@ -31,6 +35,8 @@ import com.googlecode.mgwt.ui.client.MGWT;
  */
 public class IOS71BodyBug {
 
+  private static HandlerRegistration orientationChangeHandler;
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
@@ -40,6 +46,13 @@ public class IOS71BodyBug {
   }
 
   public static void applyWorkaround() {
+    // iOS bug fix needs only be applied in portrait orientation.
+    // Fix is deferred until the orientation change event is fired.
+    if (MGWT.getOrientation() == ORIENTATION.PORTRAIT) {
+      registerOrientationChangeEvent();
+      return;
+    }
+
     if (MGWT.getOsDetection().isIPad() || MGWT.getOsDetection().isIPadRetina()) {
       if (isIOS71() && windowInnerHeight() == 672) {
         String text = Resources.INSTANCE.css().getText();
@@ -47,6 +60,17 @@ public class IOS71BodyBug {
         Document.get().getBody().addClassName("__fixIOS7BodyBug");
       }
     }
+  }
+
+  private static void registerOrientationChangeEvent() {
+    orientationChangeHandler = MGWT.addOrientationChangeHandler(new OrientationChangeHandler() {
+
+      @Override
+      public void onOrientationChanged(OrientationChangeEvent event) {
+        orientationChangeHandler = null;
+        applyWorkaround();
+      }
+    });
   }
 
   private native static boolean isIOS71() /*-{
