@@ -13,6 +13,10 @@ public class HeaderIOSAppearance extends HeaderAbstractAppearance {
     Resources.INSTANCE.cssTitle().ensureInjected();
   }
 
+  interface CssButton extends HeaderButtonCss {}
+  interface CssPanel extends HeaderPanelCss {}
+  interface CssTitle extends HeaderTitleCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
@@ -20,13 +24,13 @@ public class HeaderIOSAppearance extends HeaderAbstractAppearance {
     @Source({
         "com/googlecode/mgwt/ui/client/widget/header/header-button.css",
  "header-button-ios.css"})
-    HeaderButtonCss css();
+    CssButton css();
 
     @Source({"com/googlecode/mgwt/ui/client/widget/header/header.css", "header-ios.css"})
-    HeaderPanelCss cssPanel();
+    CssPanel cssPanel();
 
     @Source({"com/googlecode/mgwt/ui/client/widget/header/header-title.css", "header-title-ios.css"})
-    HeaderTitleCss cssTitle();
+    CssTitle cssTitle();
   }
 
   @Override

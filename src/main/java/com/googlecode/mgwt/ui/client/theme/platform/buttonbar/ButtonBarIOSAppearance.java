@@ -11,12 +11,14 @@ public class ButtonBarIOSAppearance extends ButtonBarAbstractAppearance {
     Resources.INSTANCE.barCss().ensureInjected();
   }
 
+  interface Css extends ButtonBarCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/buttonbar/buttonbar.css", "buttonbar-ios.css"})
-    ButtonBarCss barCss();
+    Css barCss();
   }
 
   @Override

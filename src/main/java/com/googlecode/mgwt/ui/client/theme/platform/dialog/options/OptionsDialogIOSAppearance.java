@@ -25,12 +25,14 @@ public class OptionsDialogIOSAppearance extends DialogOverlayDefaultAppearance i
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends OptionsDialogCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/dialog/options/options-dialog.css", "options-dialog-ios.css"})
-    OptionsDialogCss css();
+    Css css();
   }
 
   @Override

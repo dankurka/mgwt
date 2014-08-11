@@ -24,12 +24,14 @@ public class ButtonIOSAppearance extends ButtonAbstractAppearance {
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends ButtonCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/button/button.css", "button-ios.css"})
-    ButtonCss css();
+    Css css();
   }
 
   @Override

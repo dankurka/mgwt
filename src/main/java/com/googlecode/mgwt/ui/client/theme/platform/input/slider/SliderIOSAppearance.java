@@ -24,12 +24,14 @@ public class SliderIOSAppearance extends SliderAbstractAppearance {
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends SliderCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/input/slider/slider.css", "slider-ios.css"})
-    SliderCss css();
+    Css css();
   }
 
   @Override

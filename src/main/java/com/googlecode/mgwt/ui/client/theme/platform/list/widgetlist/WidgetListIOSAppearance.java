@@ -11,12 +11,14 @@ public class WidgetListIOSAppearance extends WidgetListAbstractAppearance {
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends WidgetListCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/list/widgetlist/widgetlist.css", "widgetlist-ios.css"})
-    WidgetListCss css();
+    Css css();
   }
 
   @Override

@@ -24,12 +24,14 @@ public class CarouselAndroidAppearance extends CarouselAbstractAppearance {
     Resources.INSTANCE.css().ensureInjected();
   }
 
+  interface Css extends CarouselCss {}
+
   interface Resources extends ClientBundle {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
     @Source({"com/googlecode/mgwt/ui/client/widget/carousel/carousel.css", "carousel-android.css"})
-    CarouselCss css();
+    Css css();
   }
 
   @Override
