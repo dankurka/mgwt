@@ -83,7 +83,7 @@ public class PinchRecognizer implements TouchHandler {
         break;
       case ONE_FINGER:
         touchStart2 = TouchCopy.copy(event.getTouches().get(1));
-        distance = (int) Math.sqrt(Math.pow(touchStart1.getPageX() - touchStart2.getPageX(), 2) + Math.pow(touchStart1.getPageY() - touchStart1.getPageY(), 2));
+        distance = (int) Math.sqrt(Math.pow(touchStart1.getPageX() - touchStart2.getPageX(), 2) + Math.pow(touchStart1.getPageY() - touchStart2.getPageY(), 2));
         state = State.TWO_FINGER;
         break;
 
