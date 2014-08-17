@@ -5,53 +5,35 @@
 }
 
 @def DRAG_DEADZONE 8;
-@def CONTAINER_MIN_ON -54;
+@def CONTAINER_MIN_ON -41;
 @def CONTAINER_MAX_ON 0;
 @def CONTAINER_OFFSET_ON 0;
 @def CONTAINER_MIN_OFF 0;
-@def CONTAINER_MAX_OFF 54;
-@def CONTAINER_OFFSET_OFF -54;
+@def CONTAINER_MAX_OFF 41;
+@def CONTAINER_OFFSET_OFF -41;
+
 
 .mgwt-CheckBox {
-  width: 94px;
+  width: 81px;
+  height: 27px;
   overflow: hidden;
   text-align: center;
   line-height: 28px;
   cursor: pointer;
+  position: relative;
   border-radius: 6px;
-}
-
-@if user.agent safari {
-  .mgwt-CheckBox {
-    display: -webkit-box;
-    -webkit-box-orient: horizontal;
-    -webkit-box-pack: justify;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-box-sizing: border-box;
-  }
-}
-
-@if user.agent gecko1_8 {
-  .mgwt-CheckBox {
-    width: 88px;
-    line-height: 27px;
-    display: -moz-box;
-    -moz-box-orient: horizontal;
-    -moz-box-pack: justify;
-    -moz-tap-highlight-color: transparent;
-    -moz-border-radius: 6px;
-    -moz-box-sizing: border-box;
-  }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: solid 1px #a2a2a2;
 }
 
 .mgwt-CheckBox-middle {
+  position: absolute;
+  left: 40px;
   height: 25px;
-  position: relative;
   z-index: 1;
-  border: solid 1px #929292;
-  border-radius: 6px;
 }
-
 
 @if user.agent safari {
   .mgwt-CheckBox-middle {
@@ -68,10 +50,9 @@
 
 .mgwt-CheckBox-middle-content {
   display: block;
-  position: relative;
+  position: absolute;
   height: 25px;
   width: 38px;
-  border-top: solid 1px #eeeeee;
   background-color: #e5e9e8;
   border-radius: 5px;
 }
@@ -89,16 +70,13 @@
 }
 
 .mgwt-CheckBox-on {
-  position: relative;
+  position: absolute;
   height: 25px;
   color: #ffffff;
-  margin-right: -6px;
   width: 54px;
-  padding-right: 4px;
-  border: solid 1px #093888;
   background-color: #288edf;
-  border-radius-bottomleft: 6px;
-  border-radius-topleft: 6px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 @if user.agent safari {
@@ -114,16 +92,14 @@
 }
 
 .mgwt-CheckBox-off {
-  position: relative;
+  position: absolute;
   color: #666666;
   width: 54px;
-  padding-left: 4px;
-  border: solid 1px #a2a2a2;
-  margin-left: -6px;
+  left: 74px;
   height: 25px;
   background-color: #d2d6d6;
-  border-radius-topright: 6px;
-  border-radius-bottomright: 6px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 @if user.agent safari {
@@ -140,23 +116,22 @@
 
 @if user.agent safari {
   .mgwt-CheckBox-important .mgwt-CheckBox-on {
-    border: solid 1px #d87101;
     background-color: #fe9c12;
   }
   .mgwt-CheckBox-notchecked .mgwt-CheckBox-middle {
-    -webkit-transform: translate3d(-54px,0,0);
+    -webkit-transform: translate3d(-41px,0,0);
   }
   .mgwt-CheckBox-checked .mgwt-CheckBox-middle {
     -webkit-transform: translate3d(0px,0,0);
   }
   .mgwt-CheckBox-notchecked .mgwt-CheckBox-off {
-    -webkit-transform: translate3d(-54px,0,0);
+    -webkit-transform: translate3d(-41px,0,0);
   }
   .mgwt-CheckBox-checked .mgwt-CheckBox-off {
     -webkit-transform: translate3d(10px,0,0);
   }
   .mgwt-CheckBox-notchecked .mgwt-CheckBox-on {
-    -webkit-transform: translate3d(-62px,0,0);
+    -webkit-transform: translate3d(-81px,0,0);
   }
   .mgwt-CheckBox-checked .mgwt-CheckBox-on {
     -webkit-transform: translate3d(0px,0,0);
