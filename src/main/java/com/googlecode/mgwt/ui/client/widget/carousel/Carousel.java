@@ -160,6 +160,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
     childToHolder = new HashMap<Widget, Widget>();
 
     scrollPanel.setSnap(true);
+    scrollPanel.setSnapThreshold(50);
     scrollPanel.setMomentum(false);
     scrollPanel.setShowVerticalScrollBar(false);
     scrollPanel.setShowHorizontalScrollBar(false);
