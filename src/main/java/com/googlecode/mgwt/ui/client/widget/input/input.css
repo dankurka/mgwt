@@ -5,8 +5,8 @@
 
 
 @if user.agent safari {
-  .mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox,
-  .mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
+  .mgwt-TextBox, .mgwt-InputBox-box, .mgwt-PasswordTextBox,
+  .mgwt-InputBox-box, .mgwt-TextArea, .mgwt-InputBox-box {
     display: -webkit-box;
     -webkit-box-flex: 1;
     -webkit-appearance: none;
@@ -17,8 +17,8 @@
 }
 
 @if user.agent gecko1_8 {
-  .mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox,
-  .mgwt-InputBox-box,.mgwt-TextArea, .mgwt-InputBox-box {
+  .mgwt-TextBox, .mgwt-InputBox-box, .mgwt-PasswordTextBox,
+  .mgwt-InputBox-box, .mgwt-TextArea, .mgwt-InputBox-box {
     display: -moz-box;
     -moz-box-flex: 1;
     -moz-appearance: none;
@@ -26,34 +26,17 @@
   }
 }
 
-.mgwt-TextBox .mgwt-InputBox-box,.mgwt-PasswordTextBox,
-.mgwt-InputBox-box,.mgwt-TextArea .mgwt-InputBox-box {
+.mgwt-TextBox, .mgwt-InputBox-box, .mgwt-PasswordTextBox,
+.mgwt-InputBox-box, .mgwt-TextArea, .mgwt-InputBox-box {
   color: #777;
   border: 0;
   font: normal 17px Helvetica;
   padding: 0;
-  display: inline-block;
+  display: flex;
+  flex: 1;
   margin-left: 0px;
   background-color: #e5e9e8;
-}
-
-.mgwt-TextBox,.mgwt-PasswordTextBox,.mgwt-TextArea {
   position: relative;
-}
-
-
-@if user.agent safari {
-  .mgwt-TextBox,.mgwt-PasswordTextBox,.mgwt-TextArea {
-    display: -webkit-box;
-    -webkit-box-flex: 1;
-  }
-}
-
-@if user.agent gecko1_8 {
-  .mgwt-TextBox,.mgwt-PasswordTextBox,.mgwt-TextArea {
-    display: -moz-box;
-    -moz-box-flex: 1;
-  }
 }
 
 /*todo*/
