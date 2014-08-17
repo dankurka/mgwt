@@ -3,11 +3,6 @@
   @external mgwt-GroupingList-Selection-Bar, mgwt-GroupingList-Selection-Bar-active;
 }
 
-.mgwt-GroupingList {
-  position: relative;
-  overflow: hidden;
-}
-
 @if user.agent safari {
   .mgwt-GroupingList {
     display: -webkit-box;
@@ -20,6 +15,12 @@
   }
 }
 
+.mgwt-GroupingList {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
 /* TODO use newer flex box model here! */
 
 .mgwt-GroupingList-Moving-Header {
@@ -29,14 +30,7 @@
   right: 0px;
 }
 
-.mgwt-GroupingList-Selection-Bar {
-  position: absolute;
-  top: 20px;
-  right: 5px;
-  bottom: 20px;
-  z-index: 1;
-  padding: 5px;
-}
+
 
 @if mgwt.formfactor desktop {
   .mgwt-GroupingList-Selection-Bar {
@@ -58,10 +52,15 @@
   }
 }
 
-.mgwt-GroupingList-Selection-Bar > li {
-  list-style-type: none;
-  font-size: 8pt;
-  font-weight: bolder;
+.mgwt-GroupingList-Selection-Bar {
+  position: absolute;
+  top: 20px;
+  right: 5px;
+  bottom: 20px;
+  z-index: 1;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 @if user.agent safari {
@@ -74,6 +73,13 @@
   .mgwt-GroupingList-Selection-Bar > li{
     -moz-box-flex: 1;
   }
+}
+
+.mgwt-GroupingList-Selection-Bar > li {
+  list-style-type: none;
+  font-size: 8pt;
+  font-weight: bolder;
+  flex: 1;
 }
 
 .mgwt-GroupingList-Selection-Bar-active{
