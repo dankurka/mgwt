@@ -885,8 +885,8 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
     }
 
     if (this.snap) {
-      distX = newPosX - this.absDistX;
-      distY = newPosY - this.absDistY;
+      distX = newPosX - this.absStartX;
+      distY = newPosY - this.absStartY;
 
       if (Math.abs(distX) < this.snapThreshold && Math.abs(distY) < this.snapThreshold) {
         scrollTo(this.absStartX, this.absStartY, 200);
