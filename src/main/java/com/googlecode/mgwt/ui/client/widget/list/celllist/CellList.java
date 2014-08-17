@@ -242,9 +242,9 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
 
       SafeHtmlBuilder cellBuilder = new SafeHtmlBuilder();
 
-      String clazz = "";
+      String clazz = this.appearance.css().entry() + " ";
       if (cell.canBeSelected(model)) {
-        clazz = this.appearance.css().canbeSelected() + " ";
+        clazz += this.appearance.css().canbeSelected() + " ";
       }
 
       if (i == 0) {

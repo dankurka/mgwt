@@ -13,20 +13,23 @@ public interface CellListAppearance {
     @ClassName("mgwt-List")
     public String listCss();
 
-    @ClassName("mgwt-List-selected")
+    @ClassName("mgwt-List-entry")
+    public String entry();
+
+    @ClassName("mgwt-List-entry-selected")
     public String selected();
 
-    @ClassName("mgwt-List-first")
+    @ClassName("mgwt-List-entry-first")
     public String first();
 
-    @ClassName("mgwt-List-last")
+    @ClassName("mgwt-List-entry-last")
     public String last();
+
+    @ClassName("mgwt-List-entry-canbeSelected")
+    public String canbeSelected();
 
     @ClassName("mgwt-List-Head-Element")
     public String listHeadElement();
-
-    @ClassName("mgwt-List-canbeSelected")
-    public String canbeSelected();
 
     @ClassName("mgwt-List-Header")
     String header();

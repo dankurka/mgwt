@@ -174,9 +174,9 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
       for (T model : models) {
         SafeHtmlBuilder cellBuilder = new SafeHtmlBuilder();
 
-        String clazz = "";
+        String clazz = this.groupAppearance.css().entry() + " ";
         if (cell.canBeSelected(model)) {
-          clazz = this.groupAppearance.css().canbeSelected() + " ";
+          clazz += this.groupAppearance.css().canbeSelected() + " ";
         }
 
         cell.render(cellBuilder, model);

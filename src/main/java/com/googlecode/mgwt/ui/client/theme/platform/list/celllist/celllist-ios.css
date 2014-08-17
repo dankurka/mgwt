@@ -2,22 +2,22 @@
   border: none;
 }
 
-.mgwt-List > li {
+.mgwt-List-entry {
   background-color: white;
   border: 1px solid #D5D5D5;
   border-bottom: none;
   color: black;
 }
 
-.mgwt-List-first {
+.mgwt-List-entry-first {
   border: none;
 }
 
-.mgwt-List-canbeSelected {
+.mgwt-List-entry-canbeSelected {
   background-position: literal('calc(100% - 20px) 50%');
 }
 
-.mgwt-List-canbeSelected.mgwt-List-selected {
+.mgwt-List-entry-canbeSelected.mgwt-List-entry-selected {
   font-weight: bold;
   color: white;
   background-color: #0D66FB;
