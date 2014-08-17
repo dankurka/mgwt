@@ -8,11 +8,9 @@ import com.googlecode.mgwt.ui.client.widget.header.HeaderAbstractAppearance;
 public class HeaderAndroidAppearance extends HeaderAbstractAppearance {
 
   static {
-    Resources.INSTANCE.css().ensureInjected();
     Resources.INSTANCE.cssPanel().ensureInjected();
   }
 
-  interface CssButton extends HeaderButtonCss {}
   interface CssPanel extends HeaderPanelCss {}
   interface CssTitle extends HeaderTitleCss {}
 
@@ -20,22 +18,12 @@ public class HeaderAndroidAppearance extends HeaderAbstractAppearance {
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({
-        "com/googlecode/mgwt/ui/client/widget/header/header-button.css",
-        "header-button-android.css"})
-    CssButton css();
-
     @Source({"com/googlecode/mgwt/ui/client/widget/header/header.css", "header-android.css"})
     CssPanel cssPanel();
 
     @Source({
         "com/googlecode/mgwt/ui/client/widget/header/header-title.css", "header-title-android.css"})
     CssTitle cssTitle();
-  }
-
-  @Override
-  public HeaderButtonCss css() {
-    return Resources.INSTANCE.css();
   }
 
   @Override
