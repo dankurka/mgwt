@@ -1,0 +1,6 @@
+<module>
+  <inherits name="com.googlecode.mgwt.ui.UI" />
+  <set-property name="mgwt.formfactor" value="phone" />
+  <set-property name="mgwt.density" value="xhigh" />
+  <set-property name="user.agent" value="safari" />
+</module>

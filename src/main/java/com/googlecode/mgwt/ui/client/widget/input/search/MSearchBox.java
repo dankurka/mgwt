@@ -18,6 +18,7 @@ package com.googlecode.mgwt.ui.client.widget.input.search;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.core.shared.GWT;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -33,6 +34,7 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.TextBox;
+
 import com.googlecode.mgwt.dom.client.event.tap.TapEvent;
 import com.googlecode.mgwt.dom.client.event.tap.TapHandler;
 import com.googlecode.mgwt.ui.client.MGWT;
@@ -108,23 +110,21 @@ public class MSearchBox extends Composite implements
     textBox.getElement().setAttribute("type", "search");
     setPlaceHolder("Search");
 
-    textBox.addValueChangeHandler(new ValueChangeHandler<String>() {
-
-      @Override
-      public void onValueChange(ValueChangeEvent<String> event) {
-        fireEvent(new SearchSubmitEvent(event.getValue()));
-      }
-    });
-
     textBox.addKeyUpHandler(new KeyUpHandler() {
 
       @Override
       public void onKeyUp(KeyUpEvent event) {
+        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+          fireEvent(new SearchSubmitEvent(getValue()));
+          return;
+        }
+
         Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
           @Override
           public void execute() {
-            ValueChangeEvent.fire(MSearchBox.this, getValue());          }
+            ValueChangeEvent.fire(MSearchBox.this, getValue());
+          }
         });
       }
     });
