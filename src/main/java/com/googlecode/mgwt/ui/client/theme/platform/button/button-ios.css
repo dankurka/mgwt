@@ -23,16 +23,17 @@
 }
 
 .mgwt-Button.mgwt-Button-active {
-  background-color: #F2F2F2;
+  background-color: white;
   box-shadow: none;
 }
 
 .mgwt-Button-important.mgwt-Button-active {
-  background-color: #F2F2F2;
+  background-color: white;
   box-shadow: none;
 }
 
 .mgwt-Button-confirm.mgwt-Button-active {
-  background-color: #F2F2F2;
+  background-color: white;
+  color: #41D452;
   box-shadow: none;
 }
