@@ -25,6 +25,14 @@ import com.googlecode.mgwt.ui.client.MGWT;
 
 public class IconHandler {
 
+  static {
+    if (MGWT.getOsDetection().isAndroid4_3_orLower()) {
+      ICON_HANDLER = new IconHandlerEmulatedImpl();
+    } else {
+      ICON_HANDLER = GWT.create(IconHandlerImpl.class);
+    }
+  }
+
 
   private interface IconHandlerImpl {
     public void setIcons(Element element, ImageResource icon, String color);
@@ -72,8 +80,6 @@ public class IconHandler {
     }
   }
 
-  // Used with GWT.create
-  @SuppressWarnings("unused")
   private static class IconHandlerEmulatedImpl extends IconHandlerNativeImpl {
 
     private static final ImageConverter converter = new ImageConverter();
@@ -87,6 +93,8 @@ public class IconHandler {
       element.getStyle().setBackgroundColor("transparent");
       ImageResource convertImageResource = converter.convert(icon, color);
       Dimension dimensions = calculateDimensions(convertImageResource);
+      element.getStyle().setWidth(dimensions.width, Unit.PX);
+      element.getStyle().setHeight(dimensions.height, Unit.PX);
       element.getStyle().setBackgroundImage(
           "url(" + convertImageResource.getSafeUri().asString() + ")");
       element.getStyle().setProperty("backgroundSize",
@@ -94,7 +102,7 @@ public class IconHandler {
     }
   }
 
-  private static final IconHandlerImpl ICON_HANDLER = GWT.create(IconHandlerImpl.class);
+  private static final IconHandlerImpl ICON_HANDLER;
 
   public static void setIcons(Element element, ImageResource icon, String color) {
     ICON_HANDLER.setIcons(element, icon, color);
