@@ -33,9 +33,6 @@ import com.googlecode.mgwt.ui.client.widget.panel.flex.IsFlexPanel;
 import java.util.Iterator;
 
 
-/**
- *
- */
 public class ButtonBar extends Composite implements IsFlexPanel, HasWidgets.ForIsWidget {
 
   protected static final ButtonBarAppearance DEFAULT_APPEARANCE = GWT

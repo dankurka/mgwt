@@ -43,31 +43,6 @@ import java.util.List;
  *
  * You can control the markup of the children by using the Cell interface, therefore you can render
  * any kind of arbitrary markup
- *
- * <h2>Styling</h2> The DOM will look like this:
- *
- * <pre>
- * &lt;ul class="mgwt-List">
- *  &lt;li class="mgwt-List-first">&lt;!-- your markup -->&lt;/li>
- *  &lt;li class="">&lt;!-- your markup -->&lt;/li>
- *  ...
- *  &lt;li class="mgwt-List-last">&lt;!-- your markup -->&lt;/li>
- * &lt;/ul>
- * </pre>
- *
- * These styles will be applied to the main ul element:
- *
- * <ul>
- * <li>.mgwt-List-round- if the list should be rendered with rounded corners</li>
- * </ul>
- *
- * These styles will be applied to one or more of the li elements:
- * <ul>
- * <li>.mgwt-List-selected - if the li got selected</li>
- * <li>.mgwt-List-group - if the element should be rendered as selectable (is has more content)</li>
- * </ul>
- *
- * @author Daniel Kurka
  * @param <T> the type of the model to render
  */
 public class CellList<T> extends Widget implements HasCellSelectedHandler {

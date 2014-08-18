@@ -32,35 +32,7 @@ import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Orient
 import com.googlecode.mgwt.ui.client.widget.panel.flex.IsFlexPanel;
 
 /**
- * A HeaderPanel is usually at the top of a page containing navigation elements
- *
- * it can contain three child elements. A left Widget, a center widget and a
- * right widget.
- *
- * <h2>Styling</h2>
- *
- * The DOM structure looks like this:
- *
- * <pre>
- * &lt;div class="mgwt-HeaderPanel">
- *
- * &lt;/div>
- * </pre>
- *
- * If elements are added to the header panel they are directly appended to the
- * div.
- *
- * A HeaderPanel with left, center and right child could look like this:
- *
- * <pre>
- * &lt;div class="mgwt-HeaderPanel">
- * 	&lt;div class="mgwt-HeaderPanel-left">custom child&lt;/div>
- * 	&lt;div class="mgwt-HeaderPanel-center">custom child&lt;/div>
- * 	&lt;div class="mgwt-HeaderPanel-right">custom child&lt;/div>
- * &lt;/div>
- * </pre>
- *
- * @author Daniel Kurka
+ * A HeaderPanel is usually at the top of a page containing navigation elements.
  */
 public class HeaderPanel extends Composite implements IsFlexPanel, HasWidgets.ForIsWidget {
 

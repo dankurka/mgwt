@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -23,9 +23,6 @@ import com.googlecode.mgwt.ui.client.widget.base.MTextBoxBase;
 
 /**
  * A simple text box
- * 
- * @author Daniel Kurka
- * @version $Id: $
  */
 public class MTextBox extends MTextBoxBase {
 
@@ -56,7 +53,7 @@ public class MTextBox extends MTextBoxBase {
 	/**
 	 * Construct a text box with a given css and a {@link TextBox} to delegate
 	 * to
-	 * 
+	 *
 	 * @param css the css to use
 	 * @param textBox the text box to use
 	 */
@@ -67,7 +64,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * get the number of characters for this input element
-	 * 
+	 *
 	 * @return a int.
 	 */
 	public int getMaxLength() {
@@ -76,7 +73,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * get the number of visible characters
-	 * 
+	 *
 	 * @return a int.
 	 */
 	public int getVisibleLength() {
@@ -85,7 +82,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * set the maximum number of characters
-	 * 
+	 *
 	 * @param length the maximum number of characters
 	 */
 	public void setMaxLength(int length) {
@@ -94,7 +91,7 @@ public class MTextBox extends MTextBoxBase {
 
 	/**
 	 * set the number of visible characters
-	 * 
+	 *
 	 * @param length the number of visible characters
 	 */
 	public void setVisibleLength(int length) {

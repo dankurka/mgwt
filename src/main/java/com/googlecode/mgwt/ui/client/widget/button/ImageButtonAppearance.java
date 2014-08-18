@@ -18,8 +18,9 @@ package com.googlecode.mgwt.ui.client.widget.button;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.uibinder.client.UiBinder;
 
-
-
+/**
+ * The apperance for all ImageButtons.
+ */
 public interface ImageButtonAppearance extends ButtonBaseAppearance {
 
   interface ImageButtonCss extends ButtonBaseCss {
