@@ -14,14 +14,14 @@
 }
 
 .mgwt-List-entry-canbeSelected {
-  background-position: literal('calc(100% - 20px) 50%');
+  background-position: literal('calc(100% - 5px) 50%');
 }
 
 .mgwt-List-entry-canbeSelected.mgwt-List-entry-selected {
   font-weight: bold;
   color: white;
   background-color: #0D66FB;
-  background-position: literal('calc(100% - 20px) 50%');
+  background-position: literal('calc(100% - 5px) 50%');
 }
 
 .mgwt-List-Header {
