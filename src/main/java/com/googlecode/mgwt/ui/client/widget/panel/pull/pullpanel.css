@@ -53,9 +53,9 @@
 
 
 .mgwt-PullToRefresh-spinner {
-	position: absolute;
-	margin-left: 15px;
 	top: 18px;
+	left: 15px;
+	position: absolute !important;
 }
 
 .mgwt-PullToRefresh-error {
