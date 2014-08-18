@@ -54,7 +54,7 @@ public class TabBarButtonBase extends ButtonBase {
     if (selected) {
       addStyleName(this.appearance.css().selected());
       if (selectedResource != null) {
-        IconHandler.setIcons(icon, selectedResource, appearance.css().BUTTON_BACKGROUND_COLOR());
+        IconHandler.setIcons(icon, selectedResource, appearance.css().BUTTON_BACKGROUND_HIGHLIGHT_COLOR());
       }
     } else {
       removeStyleName(this.appearance.css().selected());
