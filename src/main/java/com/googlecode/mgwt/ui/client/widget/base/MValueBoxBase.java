@@ -75,289 +75,293 @@ import java.text.ParseException;
  */
 public class MValueBoxBase<T> extends Composite implements AutoDirectionHandler.Target,
     HasAllKeyHandlers, HasAutoCapitalize, HasAutoCorrect, HasBlurHandlers, HasChangeHandlers,
-    HasDirectionEstimator, HasEnabled, HasFocusHandlers, HasName,HasPlaceHolder, HasTouchHandlers,
+    HasDirectionEstimator, HasEnabled, HasFocusHandlers, HasName, HasPlaceHolder, HasTouchHandlers,
     HasValue<T>, IsEditor<ValueBoxEditor<T>> {
 
-	public interface HasSource {
-		public void setSource(Object source);
-	}
+  public interface HasSource {
+    public void setSource(Object source);
+  }
 
-	public interface MValueBoxBaseImpl {
-		public void setType(Element element, String type);
-	}
+  public interface MValueBoxBaseImpl {
+    public void setType(Element element, String type);
+  }
 
-	public static class MValueBoxBaseDefaultImpl implements MValueBoxBaseImpl {
+  public static class MValueBoxBaseDefaultImpl implements MValueBoxBaseImpl {
 
-		@Override
-		public void setType(Element element, String type) {
-			element.setPropertyString("type", type);
-		}
-	}
+    @Override
+    public void setType(Element element, String type) {
+      element.setPropertyString("type", type);
+    }
+  }
 
-	public static class MValueBoxBaseNoOpImpl implements MValueBoxBaseImpl {
+  public static class MValueBoxBaseNoOpImpl implements MValueBoxBaseImpl {
 
-		@Override
-		public void setType(Element element, String type) {
-			//no op ...
-		}
-	}
+    @Override
+    public void setType(Element element, String type) {
+      // no op ...
+    }
+  }
 
-	protected static final MValueBoxBaseImpl impl = GWT.create(MValueBoxBaseImpl.class);
+  protected static final MValueBoxBaseImpl impl = GWT.create(MValueBoxBaseImpl.class);
 
-	private TouchPanel main;
-	protected final ValueBoxBase<T> box;
-	private boolean enabled = true;
+  private TouchPanel main;
+  protected final ValueBoxBase<T> box;
+  private boolean enabled;
+  private boolean invalid;
   private InputAppearance appearance;
 
-	public MValueBoxBase(InputAppearance appearance, final ValueBoxBase<T> box) {
-		this.appearance = appearance;
+  public MValueBoxBase(InputAppearance appearance, final ValueBoxBase<T> box) {
+    this.appearance = appearance;
     if (!(box instanceof HasSource)) {
-			throw new IllegalStateException("box must implement HasSource..");
-		}
-		this.box = box;
+      throw new IllegalStateException("box must implement HasSource..");
+    }
+    this.box = box;
+    box.addStyleName(appearance.css().box());
+    main = new TouchPanel();
+    initWidget(main);
 
-		box.addStyleName(appearance.css().box());
-		main = new TouchPanel();
-		initWidget(main);
+    setEnabled(true);
+    setInvalid(false);
 
-		main.add(box);
+    main.add(box);
 
-		((HasSource) box).setSource(this);
-		box.addBlurHandler(new BlurHandler() {
+    ((HasSource) box).setSource(this);
+    box.addBlurHandler(new BlurHandler() {
 
-			@Override
-			public void onBlur(BlurEvent event) {
-				MGWT.fixIOSScrollIssueBlur();
-			}
-		});
+      @Override
+      public void onBlur(BlurEvent event) {
+        MGWT.fixIOSScrollIssueBlur();
+      }
+    });
 
-		box.addFocusHandler(new FocusHandler() {
+    box.addFocusHandler(new FocusHandler() {
 
-			@Override
-			public void onFocus(FocusEvent event) {
-				MGWT.fixIOSScrollIssueFocus();
-			}
-		});
+      @Override
+      public void onFocus(FocusEvent event) {
+        MGWT.fixIOSScrollIssueFocus();
+      }
+    });
 
-	}
+  }
 
-	@Override
-	public void setPlaceHolder(String value) {
-		box.getElement().setAttribute("placeholder", value);
-	}
+  @Override
+  public void setPlaceHolder(String value) {
+    box.getElement().setAttribute("placeholder", value);
+  }
 
-	@Override
-	public String getPlaceHolder() {
-		return box.getElement().getAttribute("placeholder");
-	}
+  @Override
+  public String getPlaceHolder() {
+    return box.getElement().getAttribute("placeholder");
+  }
 
-	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addChangeHandler(ChangeHandler handler) {
-		return box.addChangeHandler(handler);
-	}
+  @Override
+  public com.google.gwt.event.shared.HandlerRegistration addChangeHandler(ChangeHandler handler) {
+    return box.addChangeHandler(handler);
+  }
 
-	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(ValueChangeHandler<T> handler) {
-		return box.addValueChangeHandler(handler);
-	}
+  @Override
+  public com.google.gwt.event.shared.HandlerRegistration addValueChangeHandler(
+      ValueChangeHandler<T> handler) {
+    return box.addValueChangeHandler(handler);
+  }
 
-	@Override
-	public ValueBoxEditor<T> asEditor() {
-		return box.asEditor();
-	}
+  @Override
+  public ValueBoxEditor<T> asEditor() {
+    return box.asEditor();
+  }
 
-	public void cancelKey() {
-		box.cancelKey();
-	}
+  public void cancelKey() {
+    box.cancelKey();
+  }
 
-	public int getCursorPos() {
-		return box.getCursorPos();
-	}
+  public int getCursorPos() {
+    return box.getCursorPos();
+  }
 
-	@Override
-	public Direction getDirection() {
-		return box.getDirection();
-	}
+  @Override
+  public Direction getDirection() {
+    return box.getDirection();
+  }
 
-	@Override
-	public DirectionEstimator getDirectionEstimator() {
-		return box.getDirectionEstimator();
-	}
+  @Override
+  public DirectionEstimator getDirectionEstimator() {
+    return box.getDirectionEstimator();
+  }
 
-	@Override
-	public String getName() {
-		return box.getName();
-	}
+  @Override
+  public String getName() {
+    return box.getName();
+  }
 
-	public String getSelectedText() {
-		return box.getSelectedText();
-	}
+  public String getSelectedText() {
+    return box.getSelectedText();
+  }
 
-	public int getSelectionLength() {
-		return box.getSelectionLength();
-	}
+  public int getSelectionLength() {
+    return box.getSelectionLength();
+  }
 
-	@Override
-	public String getText() {
-		return box.getText();
-	}
+  @Override
+  public String getText() {
+    return box.getText();
+  }
 
-	@Override
-	public T getValue() {
-		return box.getValue();
-	}
+  @Override
+  public T getValue() {
+    return box.getValue();
+  }
 
-	public T getValueOrThrow() throws ParseException {
-		return box.getValueOrThrow();
-	}
+  public T getValueOrThrow() throws ParseException {
+    return box.getValueOrThrow();
+  }
 
-	public boolean isReadOnly() {
-		return box.isReadOnly();
-	}
+  public boolean isReadOnly() {
+    return box.isReadOnly();
+  }
 
-	@Override
-	public void onBrowserEvent(Event event) {
-		box.onBrowserEvent(event);
-	}
+  @Override
+  public void onBrowserEvent(Event event) {
+    box.onBrowserEvent(event);
+  }
 
-	public void selectAll() {
-		box.selectAll();
-	}
+  public void selectAll() {
+    box.selectAll();
+  }
 
-	public void setAlignment(TextAlignment align) {
-		box.setAlignment(align);
-	}
+  public void setAlignment(TextAlignment align) {
+    box.setAlignment(align);
+  }
 
-	public void setCursorPos(int pos) {
-		box.setCursorPos(pos);
-	}
+  public void setCursorPos(int pos) {
+    box.setCursorPos(pos);
+  }
 
-	@Override
-	public void setDirection(Direction direction) {
-		box.setDirection(direction);
-	}
+  @Override
+  public void setDirection(Direction direction) {
+    box.setDirection(direction);
+  }
 
-	@Override
-	public void setDirectionEstimator(boolean enabled) {
-		box.setDirectionEstimator(enabled);
-	}
+  @Override
+  public void setDirectionEstimator(boolean enabled) {
+    box.setDirectionEstimator(enabled);
+  }
 
-	@Override
-	public void setDirectionEstimator(DirectionEstimator directionEstimator) {
-		box.setDirectionEstimator(directionEstimator);
-	}
+  @Override
+  public void setDirectionEstimator(DirectionEstimator directionEstimator) {
+    box.setDirectionEstimator(directionEstimator);
+  }
 
-	@Override
-	public void setName(String name) {
-		box.setName(name);
-	}
+  @Override
+  public void setName(String name) {
+    box.setName(name);
+  }
 
-	public void setReadOnly(boolean readOnly) {
-		box.setReadOnly(readOnly);
-	}
+  public void setReadOnly(boolean readOnly) {
+    box.setReadOnly(readOnly);
+  }
 
-	public void setSelectionRange(int pos, int length) {
-		box.setSelectionRange(pos, length);
-	}
+  public void setSelectionRange(int pos, int length) {
+    box.setSelectionRange(pos, length);
+  }
 
-	@Override
-	public void setText(String text) {
-		box.setText(text);
-	}
+  @Override
+  public void setText(String text) {
+    box.setText(text);
+  }
 
-	@Override
-	public void setValue(T value) {
-		box.setValue(value);
-	}
+  @Override
+  public void setValue(T value) {
+    box.setValue(value);
+  }
 
-	@Override
-	public void setValue(T value, boolean fireEvents) {
-		box.setValue(value, fireEvents);
-	}
+  @Override
+  public void setValue(T value, boolean fireEvents) {
+    box.setValue(value, fireEvents);
+  }
 
-	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
-		return box.addKeyUpHandler(handler);
-	}
+  @Override
+  public com.google.gwt.event.shared.HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
+    return box.addKeyUpHandler(handler);
+  }
 
-	@Override
-	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
-		return main.addTouchStartHandler(handler);
-	}
+  @Override
+  public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
+    return main.addTouchStartHandler(handler);
+  }
 
-	@Override
-	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
-		return main.addTouchMoveHandler(handler);
-	}
+  @Override
+  public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
+    return main.addTouchMoveHandler(handler);
+  }
 
-	@Override
-	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
-		return main.addTouchCancelHandler(handler);
-	}
+  @Override
+  public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
+    return main.addTouchCancelHandler(handler);
+  }
 
-	@Override
-	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
-		return main.addTouchEndHandler(handler);
-	}
+  @Override
+  public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
+    return main.addTouchEndHandler(handler);
+  }
 
-	@Override
-	public HandlerRegistration addTouchHandler(TouchHandler handler) {
-		return main.addTouchHandler(handler);
-	}
+  @Override
+  public HandlerRegistration addTouchHandler(TouchHandler handler) {
+    return main.addTouchHandler(handler);
+  }
 
-	@Override
-	public void setAutoCorrectEnabled(boolean enabled) {
-		if (enabled) {
-			box.getElement().setPropertyString("autocorrect", "on");
-		} else {
-			box.getElement().setPropertyString("autocorrect", "off");
-		}
-	}
+  @Override
+  public void setAutoCorrectEnabled(boolean enabled) {
+    if (enabled) {
+      box.getElement().setPropertyString("autocorrect", "on");
+    } else {
+      box.getElement().setPropertyString("autocorrect", "off");
+    }
+  }
 
-	@Override
-	public boolean isAutoCorrectEnabled() {
-		String autoCorrent = box.getElement().getPropertyString("autocorrect");
-		return "on".equals(autoCorrent);
-	}
+  @Override
+  public boolean isAutoCorrectEnabled() {
+    String autoCorrent = box.getElement().getPropertyString("autocorrect");
+    return "on".equals(autoCorrent);
+  }
 
-	@Override
-	public void setAutoCapitalize(boolean capitalize) {
-		if (capitalize) {
-			box.getElement().setPropertyString("autocapitalize", "on");
-		} else {
-			box.getElement().setPropertyString("autocapitalize", "off");
-		}
-	}
+  @Override
+  public void setAutoCapitalize(boolean capitalize) {
+    if (capitalize) {
+      box.getElement().setPropertyString("autocapitalize", "on");
+    } else {
+      box.getElement().setPropertyString("autocapitalize", "off");
+    }
+  }
 
-	@Override
-	public boolean isAutoCapitalize() {
-		String auto = box.getElement().getPropertyString("autocapitalize");
-		return "on".equals(auto);
-	}
+  @Override
+  public boolean isAutoCapitalize() {
+    String auto = box.getElement().getPropertyString("autocapitalize");
+    return "on".equals(auto);
+  }
 
-	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
-		return box.addKeyDownHandler(handler);
-	}
+  @Override
+  public com.google.gwt.event.shared.HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
+    return box.addKeyDownHandler(handler);
+  }
 
-	@Override
-	public com.google.gwt.event.shared.HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
-		return box.addKeyPressHandler(handler);
-	}
+  @Override
+  public com.google.gwt.event.shared.HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
+    return box.addKeyPressHandler(handler);
+  }
 
-	@Override
-	public HandlerRegistration addFocusHandler(FocusHandler handler) {
-		return box.addFocusHandler(handler);
-	}
+  @Override
+  public HandlerRegistration addFocusHandler(FocusHandler handler) {
+    return box.addFocusHandler(handler);
+  }
 
-	public void setFocus(boolean b) {
-		box.setFocus(b);
-	}
+  public void setFocus(boolean b) {
+    box.setFocus(b);
+  }
 
-	@Override
-	public HandlerRegistration addBlurHandler(BlurHandler handler) {
-		return box.addBlurHandler(handler);
-	}
+  @Override
+  public HandlerRegistration addBlurHandler(BlurHandler handler) {
+    return box.addBlurHandler(handler);
+  }
 
   @Override
   public boolean isEnabled() {
@@ -369,9 +373,22 @@ public class MValueBoxBase<T> extends Composite implements AutoDirectionHandler.
     this.enabled = enabled;
     box.setReadOnly(!enabled);
     if (enabled) {
-      removeStyleName(appearance.css().disabled());
+      box.removeStyleName(appearance.css().disabled());
     } else {
-      addStyleName(appearance.css().disabled());
+      box.addStyleName(appearance.css().disabled());
+    }
+  }
+
+  public boolean isInvalid() {
+    return invalid;
+  }
+
+  public void setInvalid(boolean invalid) {
+    this.invalid = invalid;
+    if (invalid) {
+      box.addStyleName(appearance.css().invalid());
+    } else {
+      box.removeStyleName(appearance.css().invalid());
     }
   }
 }

@@ -19,6 +19,9 @@ public interface InputAppearance {
 
     @ClassName("mgwt-InputBox-disabled")
     String disabled();
+
+    @ClassName("mgwt-InputBox-invalid")
+    String invalid();
   }
 
   InputCss css();
