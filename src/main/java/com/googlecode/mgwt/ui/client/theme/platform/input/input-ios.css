@@ -1,8 +1,3 @@
-@if mgwt.css pretty {
-  @external mgwt-TextBox, mgwt-PasswordTextBox, mgwt-TextArea
-  @external mgwt-InputBox-box, mgwt-InputBox-disabled;
-}
-
 .mgwt-TextBox, .mgwt-InputBox-box, .mgwt-PasswordTextBox,
 .mgwt-InputBox-box, .mgwt-TextArea, .mgwt-InputBox-box {
   color: #151515;
@@ -10,4 +5,17 @@
 }
 
 .mgwt-InputBox-disabled {
+  color: #CCC;
+}
+
+.mgwt-InputBox-disabled::-webkit-input-placeholder {
+  color: #CCC;
+}
+
+.mgwt-InputBox-invalid {
+  color: rgb(197, 3, 3);
+}
+
+.mgwt-InputBox-invalid::-webkit-input-placeholder {
+  color: rgb(197, 3, 3);
 }
