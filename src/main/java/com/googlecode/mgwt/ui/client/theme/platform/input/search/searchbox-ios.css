@@ -34,10 +34,11 @@
   font-family: HelveticaNeue-Light;
   font-size: 16px;
   color: #64636B;
+  top: 2px;
 }
 
 .mgwt-SearchBox-icon {
-  top: 9px;
+  top: 10px;
   left: 8px;
 }
 
