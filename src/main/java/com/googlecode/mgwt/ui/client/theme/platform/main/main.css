@@ -7,6 +7,7 @@
 @if mgwt.os android {
   body {
 	  background-attachment: fixed;
+	  color: white;
   }
 
   /* Certain chrome versions to not render a background correctly on body. THe body height is zero for some reason.
