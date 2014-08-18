@@ -20,7 +20,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <url>http://code.google.com/p/mgwt/</url>
+  <url>http://www.m-gwt.com</url>
   <description>using gwt to write mobile (native) apps</description>
 
   <licenses>
@@ -44,8 +44,8 @@
 
   <scm>
     <url>https://code.google.com/p/mgwt/</url>
-    <connection>scm:git:https://code.google.com/p/mgwt/</connection>
-    <developerConnection>scm:git:https://code.google.com/p/mgwt/</developerConnection>
+    <connection>scm:git:git@github.com:mgwt/mgwt.git</connection>
+    <developerConnection>scm:git:git@github.com:mgwt/mgwt.git</developerConnection>
   </scm>
 
   <build>
