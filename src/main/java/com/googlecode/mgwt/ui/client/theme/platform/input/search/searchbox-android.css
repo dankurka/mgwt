@@ -11,4 +11,9 @@
 .mgwt-SearchBox-input {
   background-color: transparent;
   color: white;
+  top: 10px;
+}
+
+.mgwt-SearchBox-icon {
+	top: 10px;
 }
