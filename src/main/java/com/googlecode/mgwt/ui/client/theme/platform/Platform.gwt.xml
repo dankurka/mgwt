@@ -45,6 +45,7 @@ under the License.
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.list.celllist.GroupingCellList" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.list.widgetlist.WidgetList" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.panel.Panel" />
+  <inherits name="com.googlecode.mgwt.ui.client.theme.platform.panel.pull.PullPanel" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.progress.Progress" />
   <inherits name="com.googlecode.mgwt.ui.client.theme.platform.tabbar.TabBar" />
 </module>
