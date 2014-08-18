@@ -37,26 +37,9 @@ import com.googlecode.mgwt.ui.client.util.CssUtil;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidgetImpl;
 
 /**
- * <h1>The mgwt pointer widget</h1>
- *
- *
- * <h2>Styling</h2>
- *
- * The DOM structure looks like this:
- *
- * <pre>
- * &lt;div class="mgwt-Slider">
- * 	&lt;div class="mgwt-Slider-bar">
- * 		&lt;div class="mgwt-Slider-pointer"/>
- * 	&lt;/div>
- * &lt;/div>
- * </pre>
- *
+ * The mgwt pointer widget.
  *
  * The pointer element is moved along the bar element to represent the value of the Slider
- *
- *
- * @author Daniel Kurka
  */
 public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor<Integer> {
 

@@ -28,23 +28,6 @@ import com.googlecode.mgwt.ui.client.widget.panel.scroll.impl.ScrollPanelImpl;
 /**
  * A scroll panel that can handle touch input and has momentum
  *
- *
- * <h2>Styling</h2>
- *
- * The DOM structure looks like:
- *
- * <pre>
- * &lt;div class="mgwt-ScrollPanel">
- * 	&lt;yourChild class="mgwt-ScrollPanel-container">....&lt;/yourChild>
- * 	&lt;div class="mgwt-ScrollBar mgwt-ScrollBar-vertical">
- * 		&ltdiv class="mgwt-ScrollBar-Bar mgwt-ScrollBar-vertical">&lt;/div>
- * 	&lt;/div>
- * 	&lt;div class="mgwt-ScrollBar mgwt-ScrollBar-horizontal">
- * 		&ltdiv class="mgwt-ScrollBar-Bar mgwt-ScrollBar-horizontal">&lt;/div>
- * 	&lt;/div>
- * &lt;/div>
- * </pre>
- *
  * The scrollbars maybe missing from the DOM if scrolling is disabled for a certain direction.
  *
  * @author Daniel Kurka

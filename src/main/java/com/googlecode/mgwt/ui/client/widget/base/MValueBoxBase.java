@@ -61,16 +61,6 @@ import java.text.ParseException;
  *
  * This is a clone of {@link com.google.gwt.user.client.ui.ValueBoxBase}
  *
- * <h2>Styling</h2>
- *
- * The DOM looks like (depending on the actual class)
- *
- * <pre>
- * &lt;div class="mgwt-TextBox">
- * 	&lt;input class="mgwt-InputBox-box"/>
- * &lt;/div>
- * </pre>
- *
  * @author Daniel Kurka
  */
 public class MValueBoxBase<T> extends Composite implements AutoDirectionHandler.Target,

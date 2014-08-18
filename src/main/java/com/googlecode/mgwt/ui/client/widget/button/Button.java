@@ -22,24 +22,6 @@ import com.google.gwt.uibinder.client.UiFactory;
 /**
  * <h1>A simple button class</h1> This is a simple class for rendering button in mgwt.
  *
- * <h2>Styling notes:</h2> The button consists of a simple div element like this:
- *
- * <pre>
- * &lt;div class="mgwt-Button">ButtonText&lt;/div>
- * </pre>
- *
- * The following classes are added as needed:
- *
- * <ul>
- * <li>.mgwt-Button-active - Button is pressed</li>
- * <li>.mgwt-Button-small - Button should be rendered small</li>
- * <li>.mgwt-Button-confirm - Button should be rendered as a confirm button (e.g. green on iOS)</li>
- * <li>.mgwt-Button-important - Button should be rendered as important (e.g. red on iOS)</li>
- * <li>.mgwt-Button-round - Button should be rendered with rounded corners</li>
- * </ul>
- *
- *
- *
  * @author Daniel Kurka
  */
 public class Button extends ButtonBase {

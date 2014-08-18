@@ -51,10 +51,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * the carousel widget renders its children in a horizontal row. users can select a different child
- * by swiping between them
- *
- * @author Daniel Kurka
+ * A carousel renders its children in a row.
+ * A user can select a different child by swiping between them.
  *
  */
 public class Carousel extends Composite implements HasWidgets, HasSelectionHandlers<Integer> {
