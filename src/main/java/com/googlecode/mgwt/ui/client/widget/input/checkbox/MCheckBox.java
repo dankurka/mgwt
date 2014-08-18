@@ -172,11 +172,11 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 
 	private boolean value;
 	@UiField
-	protected Element on;
+	public Element on;
 	@UiField
-	protected Element middle;
+	public Element middle;
 	@UiField
-	protected Element off;
+	public Element off;
 
 	private LeafValueEditor<Boolean> editor;
 	private boolean readonly;
@@ -271,7 +271,7 @@ public class MCheckBox extends TouchWidget implements HasValue<Boolean>, IsEdito
 	}
 
 	@UiFactory
-	protected MCheckBoxAppearance getAppearance() {
+	public MCheckBoxAppearance getAppearance() {
 		return appearance;
 	}
 
