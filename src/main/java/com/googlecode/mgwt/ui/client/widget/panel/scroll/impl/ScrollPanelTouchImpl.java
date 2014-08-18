@@ -764,7 +764,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
       this.startY = this.y;
     }
 
-    fireEvent(new ScrollMoveEvent(event));
+    if (this.dirX != 0 && isScrollingEnabledX() || this.dirY != 0 && isScrollingEnabledY()) {
+      fireEvent(new ScrollMoveEvent(event));
+    }
   }
 
   private void end(final TouchEvent<?> event) {
@@ -1695,12 +1697,12 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   private native int getMouseWheelVelocityX(NativeEvent evt)/*-{
-		return Math.round(-evt.wheelDeltaX) || 0;
+		return Math.round(evt.wheelDeltaX) || 0;
   }-*/;
 
   private native int getMouseWheelVelocityY(NativeEvent evt)/*-{
 
-		var val = (evt.detail * 40) || -evt.wheelDeltaY || 0;
+		var val = (evt.detail * 40) || evt.wheelDeltaY || 0;
 		return Math.round(val);
   }-*/;
 
