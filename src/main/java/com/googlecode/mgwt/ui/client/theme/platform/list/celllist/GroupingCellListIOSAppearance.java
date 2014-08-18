@@ -19,7 +19,7 @@ public class GroupingCellListIOSAppearance extends GroupingCellListAbstractAppea
 
     Resources INSTANCE = GWT.create(Resources.class);
 
-    @Source({"com/googlecode/mgwt/ui/client/widget/list/celllist/celllist.css", "celllist-ios.css"})
+    @Source({"com/googlecode/mgwt/ui/client/widget/list/celllist/celllist.css", "celllist-ios.css", "celllist-grouping-ios.css"})
     Css css();
 
     @Source({
