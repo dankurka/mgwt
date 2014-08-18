@@ -764,7 +764,9 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
       this.startY = this.y;
     }
 
-    fireEvent(new ScrollMoveEvent(event));
+    if (this.dirX != 0 && isScrollingEnabledX() || this.dirY != 0 && isScrollingEnabledY()) {
+      fireEvent(new ScrollMoveEvent(event));
+    }
   }
 
   private void end(final TouchEvent<?> event) {
