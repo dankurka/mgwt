@@ -1697,12 +1697,12 @@ public class ScrollPanelTouchImpl extends ScrollPanelImpl {
   }
 
   private native int getMouseWheelVelocityX(NativeEvent evt)/*-{
-		return Math.round(-evt.wheelDeltaX) || 0;
+		return Math.round(evt.wheelDeltaX) || 0;
   }-*/;
 
   private native int getMouseWheelVelocityY(NativeEvent evt)/*-{
 
-		var val = (evt.detail * 40) || -evt.wheelDeltaY || 0;
+		var val = (evt.detail * 40) || evt.wheelDeltaY || 0;
 		return Math.round(val);
   }-*/;
 
