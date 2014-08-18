@@ -4,6 +4,10 @@
   border-bottom: none;
 }
 
+.mgwt-Form-Entry-container {
+  background-color: white;
+}
+
 
 .mgwt-Form-round > .mgwt-Form-Entry-first {
   border-top-left-radius: 8px 8px;
