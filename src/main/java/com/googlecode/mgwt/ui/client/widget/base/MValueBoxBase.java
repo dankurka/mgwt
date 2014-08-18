@@ -42,6 +42,7 @@ import com.google.gwt.i18n.shared.DirectionEstimator;
 import com.google.gwt.i18n.shared.HasDirectionEstimator;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasEnabled;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.ValueBoxBase;
@@ -72,8 +73,10 @@ import java.text.ParseException;
  *
  * @author Daniel Kurka
  */
-public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasTouchHandlers, HasPlaceHolder, HasAutoCapitalize, HasAutoCorrect, HasChangeHandlers, HasName, HasDirectionEstimator,
-		HasValue<T>, AutoDirectionHandler.Target, IsEditor<ValueBoxEditor<T>>, HasAllKeyHandlers, HasFocusHandlers {
+public class MValueBoxBase<T> extends Composite implements AutoDirectionHandler.Target,
+    HasAllKeyHandlers, HasAutoCapitalize, HasAutoCorrect, HasBlurHandlers, HasChangeHandlers,
+    HasDirectionEstimator, HasEnabled, HasFocusHandlers, HasName,HasPlaceHolder, HasTouchHandlers,
+    HasValue<T>, IsEditor<ValueBoxEditor<T>> {
 
 	public interface HasSource {
 		public void setSource(Object source);
@@ -103,9 +106,12 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 
 	private TouchPanel main;
 	protected final ValueBoxBase<T> box;
+	private boolean enabled = true;
+  private InputAppearance appearance;
 
 	public MValueBoxBase(InputAppearance appearance, final ValueBoxBase<T> box) {
-		if (!(box instanceof HasSource)) {
+		this.appearance = appearance;
+    if (!(box instanceof HasSource)) {
 			throw new IllegalStateException("box must implement HasSource..");
 		}
 		this.box = box;
@@ -352,4 +358,20 @@ public class MValueBoxBase<T> extends Composite implements HasBlurHandlers, HasT
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return box.addBlurHandler(handler);
 	}
+
+  @Override
+  public boolean isEnabled() {
+    return enabled;
+  }
+
+  @Override
+  public void setEnabled(boolean enabled) {
+    this.enabled = enabled;
+    box.setReadOnly(!enabled);
+    if (enabled) {
+      removeStyleName(appearance.css().disabled());
+    } else {
+      addStyleName(appearance.css().disabled());
+    }
+  }
 }

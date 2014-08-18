@@ -39,6 +39,10 @@
   position: relative;
 }
 
-/*todo*/
-.mgwt-InputBox-disabled {	
+.mgwt-InputBox-disabled {
+  color: #CCC;
+}
+
+.mgwt-InputBox-disabled .mgwt-InputBox-box::-webkit-input-placeholder {
+  color: #CCC;
 }
