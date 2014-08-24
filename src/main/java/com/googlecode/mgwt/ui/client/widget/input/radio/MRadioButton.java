@@ -57,9 +57,9 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
     IsEditor<LeafValueEditor<Boolean>> {
 
   @UiField
-  protected InputElement inputRadio;
+  public InputElement inputRadio;
   @UiField
-  protected LabelElement labelElement;
+  public LabelElement labelElement;
   private LeafValueEditor<Boolean> editor;
   private MRadioButtonAppearance appearance;
   private final static MRadioButtonAppearance DEFAULT_APPEARANCE = GWT
@@ -327,7 +327,7 @@ public class MRadioButton extends TouchWidget implements HasText, HasEnabled,
   }
 
   @UiFactory
-  protected MRadioButtonAppearance getAppearance() {
-	return appearance;
+  public MRadioButtonAppearance getAppearance() {
+	  return appearance;
   }
 }

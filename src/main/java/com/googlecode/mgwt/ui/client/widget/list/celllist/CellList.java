@@ -166,7 +166,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
   protected Timer timer;
 
   @UiField
-  protected Element container;
+  public Element container;
   private CellListAppearance appearance;
 
   protected EntryTemplate entryTemplate;
@@ -285,7 +285,7 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
   }
 
   @UiFactory
-  protected CellListAppearance getAppearance() {
+  public CellListAppearance getAppearance() {
 	  return appearance;
   }
 

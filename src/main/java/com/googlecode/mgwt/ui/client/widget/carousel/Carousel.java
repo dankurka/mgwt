@@ -129,11 +129,11 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   }
 
   @UiField
-  protected FlexPanel main;
+  public FlexPanel main;
   @UiField
-  protected ScrollPanel scrollPanel;
+  public ScrollPanel scrollPanel;
   @UiField
-  protected FlowPanel container;
+  public FlowPanel container;
   private CarouselIndicatorContainer carouselIndicatorContainer;
   private boolean isVisibleCarouselIndicator = true;
 
@@ -390,7 +390,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   }
 
   @UiFactory
-  protected CarouselAppearance getAppearance() {
+  public CarouselAppearance getAppearance() {
 	  return appearance;
   }
 }

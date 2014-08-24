@@ -42,10 +42,10 @@ public class ImageButton extends ButtonBase implements IsSizeable {
   private final ImageButtonAppearance appearance;
 
   @UiField
-  Element text;
+  public Element text;
 
   @UiField
-  Element image;
+  public Element image;
 
   private ImageResource icon;
 
@@ -107,7 +107,7 @@ public class ImageButton extends ButtonBase implements IsSizeable {
   }
 
   @UiFactory
-  protected ImageButtonAppearance getAppearance() {
+  public ImageButtonAppearance getAppearance() {
     return appearance;
   }
 

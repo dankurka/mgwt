@@ -168,7 +168,7 @@ public class Button extends ButtonBase {
   }
 
   @UiFactory
-  protected ButtonAppearance getAppearance() {
+  public ButtonAppearance getAppearance() {
 	  return appearance;
   }
 }

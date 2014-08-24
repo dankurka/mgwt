@@ -31,9 +31,9 @@ import com.googlecode.mgwt.ui.client.widget.button.ButtonBase;
 
 public class TabBarButtonBase extends ButtonBase {
   @UiField
-  protected Element icon;
+  public Element icon;
   @UiField
-  protected Element text;
+  public Element text;
 
   private TabBarAppearance appearance;
 
@@ -75,7 +75,7 @@ public class TabBarButtonBase extends ButtonBase {
   }
 
   @UiFactory
-  protected TabBarAppearance getAppearance() {
+  public TabBarAppearance getAppearance() {
 	  return appearance;
   }
 }

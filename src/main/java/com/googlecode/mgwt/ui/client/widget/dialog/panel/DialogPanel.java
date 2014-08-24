@@ -34,16 +34,16 @@ public class DialogPanel extends Composite {
       .create(DialogPanelAppearance.class);
 
   @UiField
-  protected HTML title;
+  public HTML title;
   @UiField
-  protected FlowPanel content;
+  public FlowPanel content;
   @UiField
-  protected FlowPanel buttonContainer;
+  public FlowPanel buttonContainer;
 
   @UiField(provided = true)
-  protected DialogButton okButton;
+  public DialogButton okButton;
   @UiField(provided = true)
-  protected DialogButton cancelButton;
+  public DialogButton cancelButton;
 
   private DialogPanelAppearance appearance;
 

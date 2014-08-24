@@ -80,7 +80,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
     }
 
     @UiField
-    protected FlowPanel container;
+    public FlowPanel container;
     private List<TabBarButtonBase> children = new ArrayList<TabBarButtonBase>();;
     private List<HandlerRegistration> handlers = new ArrayList<HandlerRegistration>();
 
@@ -167,13 +167,13 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
   public static final TabBarAppearance DEFAULT_APPEARANCE = GWT.create(TabBarAppearance.class);
 
   @UiField
-  protected FlexPanel container;
+  public FlexPanel container;
 
   @UiField(provided=true)
-  protected Carousel tabContainer;
+  public Carousel tabContainer;
 
   @UiField(provided=true)
-  protected TabBar tabBar;
+  public TabBar tabBar;
 
   protected final TabBarAppearance appearance;
 
@@ -244,7 +244,7 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
   }
 
   @UiFactory
-  protected TabBarAppearance getAppearance() {
+  public TabBarAppearance getAppearance() {
 	  return appearance;
   }
 }

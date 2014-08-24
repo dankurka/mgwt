@@ -125,7 +125,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   }
 
-  interface HeaderTemplate {
+  public interface HeaderTemplate {
     SafeHtml li(SafeHtml cellContents, String classes);
   }
 
@@ -271,7 +271,7 @@ public class GroupingCellList<G, T> extends CellList<T> implements HasSelectionH
 
   @Override
   @UiFactory
-  protected CellListAppearance getAppearance() {
+  public CellListAppearance getAppearance() {
 	  return super.getAppearance();
   }
 
