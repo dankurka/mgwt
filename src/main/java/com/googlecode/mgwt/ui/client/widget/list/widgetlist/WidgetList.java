@@ -61,7 +61,7 @@ public class WidgetList extends Composite implements HasWidgets, HasSelectionHan
     private static final TouchWidgetImpl IMPL = GWT.create(TouchWidgetImpl.class);
 
     @UiField
-    protected Panel container;
+    public Panel container;
     // UiBinder needs this field
     private WidgetListAppearance appearance;
 
@@ -99,10 +99,10 @@ public class WidgetList extends Composite implements HasWidgets, HasSelectionHan
   private List<WidgetListEntry> children = new ArrayList<WidgetListEntry>();
 
   @UiField
-  protected ComplexPanel container;
+  public ComplexPanel container;
 
   @UiField
-  protected Panel headerContainer;
+  public Panel headerContainer;
 
   private Map<Widget, Entry> map;
 
@@ -230,7 +230,7 @@ public class WidgetList extends Composite implements HasWidgets, HasSelectionHan
   }
 
   @UiFactory
-  protected WidgetListAppearance getAppearance() {
+  public WidgetListAppearance getAppearance() {
 	  return appearance;
   }
 }

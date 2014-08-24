@@ -13,7 +13,7 @@ import com.googlecode.mgwt.ui.client.widget.dialog.panel.DialogPanel;
 public abstract class DialogPanelAbstractAppearance extends DialogOverlayDefaultAppearance
     implements DialogPanelAppearance {
 
-  @UiTemplate("ButtonAbstractAppearance.ui.xml")
+  @UiTemplate("DialogButtonAbstractAppearance.ui.xml")
   interface Binder extends UiBinder<Element, DialogButton> {
   }
 

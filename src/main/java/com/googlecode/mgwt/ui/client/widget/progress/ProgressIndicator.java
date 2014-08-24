@@ -39,7 +39,7 @@ public class ProgressIndicator extends Widget {
   }
 
   @UiFactory
-  protected ProgressIndicatorAppearance getAppearance() {
+  public ProgressIndicatorAppearance getAppearance() {
 	  return appearance;
   }
 }

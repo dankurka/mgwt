@@ -29,7 +29,7 @@ public class DialogButton extends ButtonBase {
   }
 
   @UiFactory
-  protected DialogPanelAppearance getAppearance() {
+  public DialogPanelAppearance getAppearance() {
 	  return appearance;
   }
 

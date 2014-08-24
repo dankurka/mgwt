@@ -52,7 +52,7 @@ public class HeaderTitle extends Widget implements HasText {
   }
 
   @UiFactory
-  protected HeaderAppearance getAppearance() {
+  public HeaderAppearance getAppearance() {
     return appearance;
   }
 }

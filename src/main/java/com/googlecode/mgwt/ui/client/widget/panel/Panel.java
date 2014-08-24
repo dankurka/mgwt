@@ -51,7 +51,7 @@ public class Panel extends Composite implements HasTouchHandlers, HasTapHandlers
   private PanelAppearance apperance;
 
   @UiField
-  protected TouchPanel container;
+  public TouchPanel container;
 
   public Panel() {
     this(DEFAULT_APPERANCE);
@@ -171,8 +171,8 @@ public class Panel extends Composite implements HasTouchHandlers, HasTapHandlers
   }
 
   @UiFactory
-  protected PanelAppearance getApperance() {
-	return apperance;
+  public PanelAppearance getApperance() {
+	  return apperance;
   }
 
   @Override

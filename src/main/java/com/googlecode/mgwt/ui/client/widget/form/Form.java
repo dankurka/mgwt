@@ -32,10 +32,10 @@ public class Form extends Composite implements HasWidgets {
   private FormAppearance appearance;
 
   @UiField
-  protected Panel container;
+  public Panel container;
 
   @UiField
-  protected Panel headerContainer;
+  public Panel headerContainer;
 
   private List<FormEntry> children = new ArrayList<FormEntry>();
   private FormEntry firstChild;
@@ -133,7 +133,7 @@ public class Form extends Composite implements HasWidgets {
   }
 
   @UiFactory
-  protected FormAppearance getAppearance() {
+  public FormAppearance getAppearance() {
 	  return appearance;
   }
 }

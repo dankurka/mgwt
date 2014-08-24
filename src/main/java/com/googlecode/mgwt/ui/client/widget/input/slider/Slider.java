@@ -89,9 +89,9 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
   private final SliderAppearance apperance;
 
   @UiField
-  protected Element pointer;
+  public Element pointer;
   @UiField
-  protected Element bar;
+  public Element bar;
 
   public Slider() {
     this(DEFAULT_APPEARANCE);
@@ -158,8 +158,8 @@ public class Slider extends Widget implements HasValue<Integer>, LeafValueEditor
   }
 
   @UiFactory
-  protected SliderAppearance getApperance() {
-	return apperance;
+  public SliderAppearance getApperance() {
+	  return apperance;
   }
 
   protected void setValue(Integer value, boolean fireEvents, boolean updateSlider) {

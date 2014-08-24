@@ -36,9 +36,9 @@ import java.util.Iterator;
 public class FormEntry extends Composite implements HasWidgets, HasHTML {
 
   @UiField
-	protected HTML label;
+  public HTML label;
   @UiField
-  protected SimplePanel widgetContainer;
+  public SimplePanel widgetContainer;
 
   private FormAppearance appearance;
   private boolean valid = true;
@@ -142,7 +142,7 @@ public class FormEntry extends Composite implements HasWidgets, HasHTML {
   }
 
   @UiFactory
-  protected FormAppearance getAppearance() {
-	return appearance;
+  public FormAppearance getAppearance() {
+	  return appearance;
   }
 }

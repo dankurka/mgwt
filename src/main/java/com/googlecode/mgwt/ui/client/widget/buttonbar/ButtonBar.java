@@ -39,7 +39,7 @@ public class ButtonBar extends Composite implements IsFlexPanel, HasWidgets.ForI
       .create(ButtonBarAppearance.class);
 
   @UiField
-  protected FlexPanel container;
+  public FlexPanel container;
 
   protected ButtonBarAppearance appearance;
 
@@ -89,7 +89,7 @@ public class ButtonBar extends Composite implements IsFlexPanel, HasWidgets.ForI
   }
 
   @UiFactory
-  protected ButtonBarAppearance getAppearance() {
+  public ButtonBarAppearance getAppearance() {
 	  return appearance;
   }
 

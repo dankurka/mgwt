@@ -78,13 +78,13 @@ public class MSearchBox extends Composite implements
       .create(MSearchBoxAppearance.class);
 
   @UiField
-  protected TextBox textBox;
+  public TextBox textBox;
 
   @UiField
-  protected ButtonBase clearButton;
+  public ButtonBase clearButton;
 
   @UiField
-  protected FormPanel form;
+  public FormPanel form;
 
   private HandlerRegistration clearButtonHandler;
   private HandlerRegistration boxHandler;
@@ -225,7 +225,7 @@ public class MSearchBox extends Composite implements
   }
 
   @UiFactory
-  protected MSearchBoxAppearance getAppearance() {
+  public MSearchBoxAppearance getAppearance() {
     return appearance;
   }
 }

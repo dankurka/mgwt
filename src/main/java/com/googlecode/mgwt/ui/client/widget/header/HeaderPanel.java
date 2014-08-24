@@ -41,7 +41,7 @@ public class HeaderPanel extends Composite implements IsFlexPanel, HasWidgets.Fo
   private HeaderAppearance appearance;
 
   @UiField
-  protected FlexPanel container;
+  public FlexPanel container;
 
   public HeaderPanel() {
     this(DEFAULT_APPEARANCE);
@@ -53,7 +53,7 @@ public class HeaderPanel extends Composite implements IsFlexPanel, HasWidgets.Fo
   }
 
   @UiFactory
-  protected HeaderAppearance getAppearance() {
+  public HeaderAppearance getAppearance() {
 	  return appearance;
   }
 
