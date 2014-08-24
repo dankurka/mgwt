@@ -38,9 +38,9 @@ import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeEvent.ORIENTATION;
 import com.googlecode.mgwt.dom.client.event.orientation.OrientationChangeHandler;
 import com.googlecode.mgwt.ui.client.MGWTSettings.ViewPort;
-import com.googlecode.mgwt.ui.client.resource.IOS71BodyBug;
-import com.googlecode.mgwt.ui.client.resource.MainResourceHolder;
 import com.googlecode.mgwt.ui.client.util.OrientationHandler;
+import com.googlecode.mgwt.ui.client.widget.main.IOS71BodyBug;
+import com.googlecode.mgwt.ui.client.widget.main.MainResourceHolder;
 
 /**
  * The MGWT Object is used to apply settings for an MGWT App. It also provides an instance of
