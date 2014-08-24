@@ -13,7 +13,7 @@
  */
 package com.googlecode.mgwt.ui.client;
 
-import com.googlecode.mgwt.ui.client.resource.IOS71BodyBug;
+import com.googlecode.mgwt.ui.client.widget.main.IOS71BodyBug;
 
 /**
  * This class acts as a container for all settings for an mgwt app.

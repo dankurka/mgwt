@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.mgwt.ui.client.resource;
+package com.googlecode.mgwt.ui.client.widget.main;
 
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.StyleInjector;
