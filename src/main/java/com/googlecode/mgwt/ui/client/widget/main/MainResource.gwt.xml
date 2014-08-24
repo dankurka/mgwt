@@ -16,16 +16,16 @@ under the License.
   <define-property name="mgwt.mainresource.inject" values="yes,no" />
   <set-property name="mgwt.mainresource.inject" value="yes" />
     
-  <replace-with class="com.googlecode.mgwt.ui.client.resource.MainResourceHolder.RealMainResourceInjector">
-    <when-type-is class="com.googlecode.mgwt.ui.client.resource.MainResourceHolder.MainResourceInjector" />
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.main.MainResourceHolder.RealMainResourceInjector">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.main.MainResourceHolder.MainResourceInjector" />
   </replace-with>
   
-  <replace-with class="com.googlecode.mgwt.ui.client.resource.MainResourceHolder.NoopMainResourceInjector">
-    <when-type-is class="com.googlecode.mgwt.ui.client.resource.MainResourceHolder.MainResourceInjector" />
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.main.MainResourceHolder.NoopMainResourceInjector">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.main.MainResourceHolder.MainResourceInjector" />
     <when-property-is name="mgwt.mainresource.inject" value="no" />
   </replace-with>
   
-  <replace-with class="com.googlecode.mgwt.ui.client.resource.MainResourceDefaultAppearance">
-    <when-type-is class="com.googlecode.mgwt.ui.client.resource.MainResourceAppearance" />
+  <replace-with class="com.googlecode.mgwt.ui.client.widget.main.MainResourceDefaultAppearance">
+    <when-type-is class="com.googlecode.mgwt.ui.client.widget.main.MainResourceAppearance" />
   </replace-with>
 </module>

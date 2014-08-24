@@ -18,7 +18,6 @@ under * the License.
   <inherits name='com.googlecode.mgwt.dom.DOM' />
 
   <inherits name="com.googlecode.mgwt.image.Image" />
-  <inherits name="com.googlecode.mgwt.ui.client.resource.MainResource" />
   <inherits name='com.googlecode.mgwt.ui.client.widget.animation.Animation' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.button.Button' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.buttonbar.ButtonBar' />
@@ -28,6 +27,7 @@ under * the License.
   <inherits name='com.googlecode.mgwt.ui.client.widget.list.celllist.CellList' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.list.celllist.GroupingCellList' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.list.widgetlist.WidgetList' />
+  <inherits name="com.googlecode.mgwt.ui.client.widget.main.MainResource" />
   <inherits name='com.googlecode.mgwt.ui.client.widget.menu.overlay.OverlayMenu' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.menu.swipe.SwipeMenu' />
   <inherits name='com.googlecode.mgwt.ui.client.widget.image.ImageHolder'/>
