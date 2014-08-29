@@ -127,13 +127,10 @@ public class TabPanel extends Composite implements HasSelectionHandlers<Integer>
     }
 
     public void setSelectedButton(int index, boolean issueEvent) {
-      if (index < 0) {
-        throw new IllegalArgumentException("invalud index");
+      if (index < 0 || index >= children.size()) {
+        throw new IllegalArgumentException("invalid index");
       }
 
-      if (index >= children.size()) {
-        throw new IllegalArgumentException("invalud index");
-      }
       int count = 0;
       for (TabBarButtonBase button : children) {
         if (count == index) {
