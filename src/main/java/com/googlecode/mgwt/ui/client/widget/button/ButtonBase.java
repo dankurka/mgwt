@@ -17,7 +17,6 @@ import com.google.gwt.event.dom.client.TouchCancelEvent;
 import com.google.gwt.event.dom.client.TouchEndEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.dom.client.TouchStartEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.HasText;
 
@@ -31,6 +30,8 @@ import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
  * Base class for all buttons
  */
 public abstract class ButtonBase extends TouchWidget implements HasText {
+
+  private boolean active;
 
   private final ButtonBaseAppearance baseAppearance;
 
@@ -53,6 +54,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText {
         if (MGWT.getFormFactor().isDesktop()) {
           DOM.releaseCapture(getElement());
         }
+        active = false;
       }
 
       @Override
@@ -63,6 +65,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText {
         if (MGWT.getFormFactor().isDesktop()) {
           DOM.releaseCapture(getElement());
         }
+        active = false;
       }
 
       @Override
@@ -79,6 +82,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText {
         if (MGWT.getFormFactor().isDesktop()) {
           DOM.setCapture(getElement());
         }
+        active = true;
       }
     });
 
@@ -101,8 +105,7 @@ public abstract class ButtonBase extends TouchWidget implements HasText {
     getElement().setInnerText(text);
   }
 
-  @Override
-  public HandlerRegistration addTapHandler(TapHandler handler) {
-    return super.addTapHandler(handler);
+  public boolean isActive() {
+    return active;
   }
 }
