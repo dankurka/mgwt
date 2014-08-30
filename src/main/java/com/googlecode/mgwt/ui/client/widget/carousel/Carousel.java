@@ -16,6 +16,7 @@ package com.googlecode.mgwt.ui.client.widget.carousel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
@@ -40,6 +41,7 @@ import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Justification;
 import com.googlecode.mgwt.ui.client.widget.panel.flex.FlexPropertyHelper.Orientation;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollEndEvent;
+import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollMoveEvent;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollPanel;
 import com.googlecode.mgwt.ui.client.widget.panel.scroll.ScrollRefreshEvent;
 import com.googlecode.mgwt.ui.client.widget.touch.TouchWidget;
@@ -177,6 +179,16 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
         currentPage = page;
         SelectionEvent.fire(Carousel.this, currentPage);
 
+      }
+    });
+
+    scrollPanel.addScrollMoveHandler(new ScrollMoveEvent.Handler() {
+
+      @Override
+      public void onScrollMove(ScrollMoveEvent event) {
+        TouchMoveEvent moveEvent = event.getEvent();
+        moveEvent.stopPropagation();
+        moveEvent.preventDefault();
       }
     });
 
