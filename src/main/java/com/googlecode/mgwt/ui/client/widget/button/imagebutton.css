@@ -5,7 +5,7 @@
 }
 
 @def ICON_BACKGROUND_COLOR #454545;
-@def ICON_BACKGROUND_COLOR_HIGHLIGHT #288ede;
+@def ICON_BACKGROUND_COLOR_ACTIVE #288ede;
 
 @if user.agent safari {
   .mgwt-ImageButton {
@@ -55,7 +55,7 @@
 }
 
 .mgwt-ImageButton-active .mgwt-ImageButton-image {
-  background-color: ICON_BACKGROUND_COLOR_HIGHLIGHT;
+  background-color: ICON_BACKGROUND_COLOR_ACTIVE;
 }
 
 .mgwt-ImageButton-text {

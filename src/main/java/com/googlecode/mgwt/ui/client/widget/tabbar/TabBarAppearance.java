@@ -41,7 +41,7 @@ public interface TabBarAppearance extends ButtonBaseAppearance {
 
     public String BUTTON_BACKGROUND_COLOR();
 
-    public String BUTTON_BACKGROUND_HIGHLIGHT_COLOR();
+    public String BUTTON_BACKGROUND_SELECTED_COLOR();
   }
 
   @Override

@@ -1,5 +1,5 @@
 @def ICON_BACKGROUND_COLOR #0D66FB;
-@def ICON_BACKGROUND_COLOR_HIGHLIGHT #B2D0F7;
+@def ICON_BACKGROUND_COLOR_ACTIVE #B2D0F7;
 
 
 .mgwt-ImageButton {
@@ -12,5 +12,5 @@
 .mgwt-ImageButton-active {
   box-shadow: none;
   background-color: white;
-  color: ICON_BACKGROUND_COLOR_HIGHLIGHT;
+  color: ICON_BACKGROUND_COLOR_ACTIVE;
 }

@@ -46,7 +46,7 @@ public interface ImageButtonAppearance extends ButtonBaseAppearance {
 
     String ICON_BACKGROUND_COLOR();
 
-    String ICON_BACKGROUND_COLOR_HIGHLIGHT();
+    String ICON_BACKGROUND_COLOR_ACTIVE();
   }
 
   ImageButtonCss css();

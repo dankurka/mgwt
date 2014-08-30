@@ -74,7 +74,7 @@ public class ImageButton extends ButtonBase implements IsSizeable {
     this.appearance = appearance;
     setElement(appearance.uiBinder().createAndBindUi(this));
     this.iconColor = appearance.css().ICON_BACKGROUND_COLOR();
-    this.iconActiveColor = appearance.css().ICON_BACKGROUND_COLOR_HIGHLIGHT();
+    this.iconActiveColor = appearance.css().ICON_BACKGROUND_COLOR_ACTIVE();
     setIcon(iconImage);
 
     // iOS6 and old android have problems with the aligning in flexible box model with inline-block

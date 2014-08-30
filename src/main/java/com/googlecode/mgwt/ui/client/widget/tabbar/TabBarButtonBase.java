@@ -40,7 +40,7 @@ public class TabBarButtonBase extends ButtonBase {
   protected final ImageResource selectedResource;
   protected final ImageResource imageResource;
   private String iconColor;
-  private String iconActiveColor;
+  private String iconSelectedColor;
   private boolean selected;
 
   public TabBarButtonBase(TabBarAppearance appearance, ImageResource imageResource, ImageResource selectedResource) {
@@ -50,7 +50,7 @@ public class TabBarButtonBase extends ButtonBase {
     this.selectedResource = selectedResource;
     setElement(this.appearance.uiBinder().createAndBindUi(this));
     this.iconColor = appearance.css().BUTTON_BACKGROUND_COLOR();
-    this.iconActiveColor = appearance.css().BUTTON_BACKGROUND_HIGHLIGHT_COLOR();
+    this.iconSelectedColor = appearance.css().BUTTON_BACKGROUND_SELECTED_COLOR();
 
     IconHandler.setIcons(icon, imageResource, iconColor);
   }
@@ -85,17 +85,17 @@ public class TabBarButtonBase extends ButtonBase {
     updateIcon();
   }
 
-  public void setIconActiveColor(String iconActiveColor) {
-    this.iconActiveColor = iconActiveColor;
+  public void setIconSelectedColor(String iconSelectedColor) {
+    this.iconSelectedColor = iconSelectedColor;
     updateIcon();
   }
 
   protected void updateIcon() {
     if (selected) {
       if (selectedResource != null) {
-        IconHandler.setIcons(icon, selectedResource, iconActiveColor);
+        IconHandler.setIcons(icon, selectedResource, iconSelectedColor);
       } else {
-        IconHandler.setIcons(icon, imageResource, iconActiveColor);
+        IconHandler.setIcons(icon, imageResource, iconSelectedColor);
       }
     } else {
       IconHandler.setIcons(icon, imageResource, iconColor);
