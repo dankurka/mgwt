@@ -63,6 +63,7 @@ public class IconHandler {
       element.getStyle().setHeight(dimensions.height, Unit.PX);
       element.getStyle().setProperty("WebkitMaskSize",
           dimensions.width + "px, " + dimensions.height + "px");
+      element.getStyle().setBackgroundColor(color);
     }
 
     protected Dimension calculateDimensions(ImageResource icon) {
