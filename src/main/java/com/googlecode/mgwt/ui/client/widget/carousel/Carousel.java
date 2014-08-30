@@ -148,6 +148,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
   private static final CarouselAppearance DEFAULT_APPEARANCE = GWT.create(CarouselAppearance.class);
   private final CarouselAppearance appearance;
+  private boolean hasScollData;
 
   public Carousel() {
     this(DEFAULT_APPEARANCE);
@@ -268,7 +269,7 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
    * refresh the carousel widget, this is necessary after changing child elements
    */
   public void refresh() {
-
+    hasScollData = false;
     final int delay = MGWT.getOsDetection().isAndroid() ? 200 : 1;
     IMPL.adjust(main, container);
     // allow layout to happen..
@@ -303,17 +304,23 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
 
         carouselIndicatorContainer.setSelectedIndex(currentPage);
 
-        scrollPanel.refresh();
-
         refreshHandler = scrollPanel.addScrollRefreshHandler(new ScrollRefreshEvent.Handler() {
 
           @Override
           public void onScrollRefresh(ScrollRefreshEvent event) {
             refreshHandler.removeHandler();
             refreshHandler = null;
+            LightArrayInt pagesX = scrollPanel.getPagesX();
+            if (currentPage < 0) {
+              currentPage = 0;
+            } else if(currentPage >= pagesX.length()) {
+              currentPage = pagesX.length() - 1;
+            }
             scrollPanel.scrollToPage(currentPage, 0, 0);
+            hasScollData = true;
           }
         });
+        scrollPanel.refresh();
       }
 
     }.schedule(delay);
@@ -326,12 +333,16 @@ public class Carousel extends Composite implements HasWidgets, HasSelectionHandl
   }
 
   public void setSelectedPage(int index, boolean issueEvent) {
-    LightArrayInt pagesX = scrollPanel.getPagesX();
-    if (index < 0 || index >= pagesX.length()) {
-      throw new IllegalArgumentException("invalid value for index: " + index);
+    if (isAttached() && hasScollData) {
+      LightArrayInt pagesX = scrollPanel.getPagesX();
+      if (index < 0 || index >= pagesX.length()) {
+        throw new IllegalArgumentException("invalid value for index: " + index);
+      }
+      currentPage = index;
+      scrollPanel.scrollToPage(index, 0, 300, issueEvent);
+    } else {
+      currentPage = index;
     }
-    currentPage = index;
-    scrollPanel.scrollToPage(index, 0, 300, issueEvent);
   }
 
   public int getSelectedPage() {
