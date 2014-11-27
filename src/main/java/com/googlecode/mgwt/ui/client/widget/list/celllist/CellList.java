@@ -311,4 +311,17 @@ public class CellList<T> extends Widget implements HasCellSelectedHandler {
       timer = null;
     }
   }
+
+  /**
+   * update a specific item in the list
+   * @param index index of the item to update
+   * @param model data to use for rendering
+   */
+  public void updateItem(int index, T model){
+    Node child = container.getChild(index);
+    if(child == null) return;
+    SafeHtmlBuilder cellBuilder = new SafeHtmlBuilder();
+    cell.render(cellBuilder, model);
+    Element.as(child).setInnerHTML(cellBuilder.toSafeHtml().asString());
+  }
 }
